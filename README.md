@@ -1,2 +1,2 @@
 # edonusum-documentation
-E-Dönüşüm projesinin müşteri dokümantasyonu
+E-Dönüşüm projesinin müşteri dokümantasyonu...
