@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Örnekleri — e-Gider Pusulası</title>
+<meta name="description" content="SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.">
+
+<meta name="author" content="Erdem Özkara">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+.docs-article script.code-block { display: none; }
+.docs-article .badge-required,
+.docs-article .badge-optional,
+.docs-article .badge-conditional { white-space: nowrap; }
+</style>
+</head>
+<body class="docs-page">
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
+<nav class="docs-top-links"><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="../../../index.html">Rehberler</a></nav>
+<div class="docs-top-actions">
+<a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a>
+<button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button>
+<button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Tema değiştir"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Dark</span></button>
+</div></div></header>
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
+<a class="docs-nav-link active" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="gib-paketi-referansi.html">GİB Paketi Referansı</a>
+</div></div></aside>
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.</p></header>
+<section id="section-request-ornekleri">
+<p>Her örnek ilgili senaryoya referans verir.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Senaryo</th><th>Tip</th><th>Kargo</th><th>Vekalet</th><th>Belge Ref</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="#ex1">1</a></td><td>S1</td><td>SATIS</td><td>—</td><td>—</td><td>—</td></tr>
+                        <tr><td><a href="#ex2">2</a></td><td>S3</td><td>SATIS</td><td>—</td><td>—</td><td>— (Yabancı)</td></tr>
+                        <tr><td><a href="#ex3">3</a></td><td>I1</td><td>IADE</td><td>—</td><td>—</td><td>EARSIV_FATURA</td></tr>
+                        <tr><td><a href="#ex4">4</a></td><td>I2</td><td>IADE</td><td>—</td><td>—</td><td>SATIS_FISI</td></tr>
+                        <tr><td><a href="#ex5">5</a></td><td>I3</td><td>IADE</td><td>—</td><td>—</td><td>BELGESIZ</td></tr>
+                        <tr><td><a href="#ex6">6</a></td><td>I4</td><td>IADE</td><td>—</td><td>—</td><td>EARSIV_FATURA (Yabancı)</td></tr>
+                        <tr><td><a href="#ex7">7</a></td><td>I5</td><td>IADE</td><td>✅</td><td>—</td><td>EARSIV_FATURA</td></tr>
+                        <tr><td><a href="#ex8">8</a></td><td>I6</td><td>IADE</td><td>✅</td><td>—</td><td>EARSIV_FATURA (Yabancı)</td></tr>
+                        <tr><td><a href="#ex9">9</a></td><td>I8</td><td>IADE</td><td>—</td><td>✅</td><td>EARSIV_FATURA</td></tr>
+                        <tr><td><a href="#ex10">10</a></td><td>I9</td><td>IADE</td><td>—</td><td>✅ (Yabancı vekil)</td><td>EARSIV_FATURA</td></tr>
+                        <tr><td><a href="#ex11">11</a></td><td>I10</td><td>IADE</td><td>✅</td><td>✅</td><td>EARSIV_FATURA</td></tr>
+                        <tr><td><a href="#ex12">12</a></td><td>I10 varyant</td><td>IADE</td><td>✅</td><td>✅</td><td>BELGESIZ</td></tr>
+                        <tr><td><a href="#ex13">13</a></td><td>I10 varyant</td><td>IADE</td><td>✅</td><td>✅</td><td>SATIS_FISI</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Ex 1: S1 -->
+            <details id="ex1" class="example-details"><summary><b>Örnek 1:</b> SATIS — Normal Satın Alma, SMS ile <span class="badge-required" style="margin-left:.5rem">S1</span></summary>
+                <div class="example-body">
+                    <p>KDV mükellefi olmayan gerçek kişiden hizmet alımı. <code>SMS_PROVIDER</code> + <code>SMS</code>.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-001",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "SATIS",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T12:00:00.000Z",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "SMS_PROVIDER",
+                            "ApplicationName": "NetGSM",
+                            "Vkn": "1234567890"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "12345678901" }
+                                ],
+                                "PartyName": "Mehmet Usta",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "123456",
+                            "PhoneNumber": "05321234567",
+                            "Type": "SMS"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 1000.00,
+                            "TaxExclusiveAmount": 1000.00,
+                            "TaxInclusiveAmount": 1200.00,
+                            "PayableAmount": 1200.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 200.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 1000.00,
+                                        "TaxAmount": 200.00,
+                                        "Percent": 20.0,
+                                        "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 1000.00,
+                                "Item": { "Name": "Klima tamiri hizmeti" },
+                                "Price": 1000.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 200.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 0.01
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                </div>
+            </details>
+
+            <!-- Ex 2: S3 — Yabancı SATIS (türetildi) -->
+            <details id="ex2" class="example-details"><summary><b>Örnek 2:</b> SATIS — Yabancı Uyruklu, SMS ile <span class="badge-required" style="margin-left:.5rem">S3</span></summary>
+                <div class="example-body">
+                    <p>Yabancı uyruklu kişiden hizmet alımı. <code>SchemeId = PASAPORTNO</code>.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-002",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "SATIS",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T14:00:00",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "SMS_PROVIDER",
+                            "ApplicationName": "NetGSM",
+                            "Vkn": "1234567890"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "PASAPORTNO", "Value": "AB1234567" }
+                                ],
+                                "PartyName": "John Smith",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "789012",
+                            "PhoneNumber": "05551234567",
+                            "Type": "SMS"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 800.00,
+                            "TaxExclusiveAmount": 800.00,
+                            "TaxInclusiveAmount": 960.00,
+                            "PayableAmount": 960.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 160.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 800.00, "TaxAmount": 160.00,
+                                        "Percent": 20.0,
+                                        "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 800.00,
+                                "Item": { "Name": "Tercümanlık hizmeti" },
+                                "Price": 800.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 160.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 0.01
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-info"><b>💡 Fark:</b> SchemeId = <code>PASAPORTNO</code>, Value = ICAO pasaport no (max 9 karakter).</div>
+                </div>
+            </details>
+
+            <!-- Ex 3: I1 -->
+            <details id="ex3" class="example-details"><summary><b>Örnek 3:</b> IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu <span class="badge-required" style="margin-left:.5rem">I1</span></summary>
+                <div class="example-body">
+                    <p>Müşteri kasada, iade kodu doğrulanmış. <code>IADE_PROVIDER</code> + <code>IADEKODU</code>.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-041",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T15:00:00",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "ABC123",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "EARSIV_FATURA",
+                            "DocumentNumber": "GIB2026000000456",
+                            "IssueDate": "2026-03-15"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                </div>
+            </details>
+
+            <!-- Ex 4: I2 — Satış fişi (türetildi) -->
+            <details id="ex4" class="example-details"><summary><b>Örnek 4:</b> IADE — Yüz Yüze, Satış Fişi ile <span class="badge-required" style="margin-left:.5rem">I2</span></summary>
+                <div class="example-body">
+                    <p>Satış fişine karşılık yüz yüze iade. Örnek 3 ile aynı, sadece <code>ReturnedDocumentReference</code> farklı.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-044",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T15:30:00",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "DEF456",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "SATIS_FISI",
+                            "DocumentNumber": "SF2026001234",
+                            "IssueDate": "2026-04-10"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-info"><b>💡 Fark:</b> <code>DocumentType = "SATIS_FISI"</code>, DocumentNumber = fiş numarası.</div>
+                </div>
+            </details>
+
+            <!-- Ex 5: I3 — Belgesiz (türetildi) -->
+            <details id="ex5" class="example-details"><summary><b>Örnek 5:</b> IADE — Yüz Yüze, Belgesiz <span class="badge-required" style="margin-left:.5rem">I3</span></summary>
+                <div class="example-body">
+                    <p>Karşılığında belge yok. <code>DocumentNumber</code> boş, gerçek TCKN zorunlu.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-045",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T16:00:00",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "GHI789",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "BELGESIZ",
+                            "IssueDate": "2026-05-01"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 300.00,
+                            "TaxExclusiveAmount": 300.00,
+                            "TaxInclusiveAmount": 360.00,
+                            "PayableAmount": 360.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 60.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 300.00, "TaxAmount": 60.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 300.00,
+                                "Item": { "Name": "Tişört" },
+                                "Price": 300.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 60.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 60.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-warning"><b>⚠️ Fark:</b> <code>DocumentNumber</code> alanı yok (boş). BELGESIZ iadede gerçek TCKN zorunlu — sahte kimlik GİB reddi alır.</div>
+                </div>
+            </details>
+
+            <!-- Ex 6: I4 — Yabancı yüz yüze (türetildi) -->
+            <details id="ex6" class="example-details"><summary><b>Örnek 6:</b> IADE — Yüz Yüze, Yabancı Uyruklu <span class="badge-required" style="margin-left:.5rem">I4</span></summary>
+                <div class="example-body">
+                    <p>Yabancı uyruklu müşteri yüz yüze iade yapıyor. <code>SchemeId = PASAPORTNO</code>.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-046",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-26T10:00:00",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "PASAPORTNO", "Value": "CD9876543" }
+                                ],
+                                "PartyName": "Elena Petrova",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "XYZ999",
+                            "PhoneNumber": "05331112233",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "EARSIV_FATURA",
+                            "DocumentNumber": "GIB2026000000789",
+                            "IssueDate": "2026-04-20"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 750.00,
+                            "TaxExclusiveAmount": 750.00,
+                            "TaxInclusiveAmount": 900.00,
+                            "PayableAmount": 900.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 150.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 750.00, "TaxAmount": 150.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 750.00,
+                                "Item": { "Name": "Deri çanta" },
+                                "Price": 750.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 150.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 150.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-info"><b>💡 Fark:</b> SchemeId = <code>PASAPORTNO</code>. Kargo/vekalet yok, yabancı uyruklu yüz yüze iade.</div>
+                </div>
+            </details>
+
+            <!-- Ex 7: I5 — Kargo, vekalet yok -->
+            <details id="ex7" class="example-details"><summary><b>Örnek 7:</b> IADE — Kargo, Vekalet Yok <span class="badge-required" style="margin-left:.5rem">I5</span></summary>
+                <div class="example-body">
+                    <p>Kargo ile iade, vekil yok. <code>IADE_PROVIDER</code> + <code>IADEKODU</code> + <code>CargoCompanyCode</code>.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-043",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T15:00:00",
+                        "CargoCompanyCode": "YURTICI",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "ABC123",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "EARSIV_FATURA",
+                            "DocumentNumber": "GIB2026000000456",
+                            "IssueDate": "2026-03-15"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-info"><b>💡 Fark:</b> <code>CargoCompanyCode</code> dolu, <code>DelegateReceiver</code> yok. Kargo kuralları geçerli: IADE_PROVIDER + IADEKODU zorunlu.</div>
+                </div>
+            </details>
+
+            <!-- Ex 8: I6 — Kargo + Yabancı (türetildi) -->
+            <details id="ex8" class="example-details"><summary><b>Örnek 8:</b> IADE — Kargo, Yabancı Uyruklu <span class="badge-required" style="margin-left:.5rem">I6</span></summary>
+                <div class="example-body">
+                    <p>Kargo ile iade, alıcı yabancı. Kargo kuralları uyruğa bakılmaksızın geçerli.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-047",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-26T11:00:00",
+                        "CargoCompanyCode": "YURTICI",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "PASAPORTNO", "Value": "EF4567890" }
+                                ],
+                                "PartyName": "Hans Müller",
+                                "PostalAddress": {
+                                    "CityName": "Antalya",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "VerificationInfo": {
+                            "Code": "RET001",
+                            "PhoneNumber": "05421119988",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "EARSIV_FATURA",
+                            "DocumentNumber": "GIB2026000000999",
+                            "IssueDate": "2026-05-01"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 1500.00,
+                            "TaxExclusiveAmount": 1500.00,
+                            "TaxInclusiveAmount": 1800.00,
+                            "PayableAmount": 1800.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 300.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 1500.00, "TaxAmount": 300.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 1500.00,
+                                "Item": { "Name": "Halı" },
+                                "Price": 1500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 300.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 300.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-info"><b>💡 Fark:</b> SchemeId = <code>PASAPORTNO</code> + <code>CargoCompanyCode</code> dolu. Kargo kuralı uyruğa bakmaz.</div>
+                </div>
+            </details>
+
+            <!-- Ex 9: I8 — Vekalet, kargo yok -->
+            <details id="ex9" class="example-details"><summary><b>Örnek 9:</b> IADE — Vekalet, Kargo Yok <span class="badge-required" style="margin-left:.5rem">I8</span></summary>
+                <div class="example-body">
+                    <p>Yüz yüze vekalet ile iade. <code>DelegateReceiver</code> dolu, <code>CargoCompanyCode</code> yok.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-039",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T15:00:00",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "DelegateReceiver": {
+                            "Identification": "55566677788",
+                            "IdentificationType": "TCKN",
+                            "Name": "Ayşe Çelik"
+                        },
+                        "VerificationInfo": {
+                            "Code": "ABC123",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "EARSIV_FATURA",
+                            "DocumentNumber": "GIB2026000000456",
+                            "IssueDate": "2026-03-15"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-info"><b>💡 Fark:</b> <code>DelegateReceiver</code> dolu, <code>CargoCompanyCode</code> yok. VerificationInfo vekilin telefonuna yönlendirilir.</div>
+                </div>
+            </details>
+
+            <!-- Ex 10: I9 — Vekalet + Yabancı vekil (türetildi) -->
+            <details id="ex10" class="example-details"><summary><b>Örnek 10:</b> IADE — Vekalet, Yabancı Vekil <span class="badge-required" style="margin-left:.5rem">I9</span></summary>
+                <div class="example-body">
+                    <p>Orijinal alıcı TC vatandaşı, vekil yabancı uyruklu. Yüz yüze.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-048",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-26T14:00:00",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "DelegateReceiver": {
+                            "Identification": "GH1234567",
+                            "IdentificationType": "PASAPORTNO",
+                            "Name": "Maria Garcia"
+                        },
+                        "VerificationInfo": {
+                            "Code": "VKL999",
+                            "PhoneNumber": "05559876543",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "EARSIV_FATURA",
+                            "DocumentNumber": "GIB2026000000456",
+                            "IssueDate": "2026-03-15"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-info"><b>💡 Fark:</b> <code>DelegateReceiver.IdentificationType = "PASAPORTNO"</code>. Vekil yabancı, ICAO max 9 karakter. AccountingCustomerParty değişmiyor (orijinal alıcı).</div>
+                </div>
+            </details>
+
+            <!-- Ex 11: I10 — Kargo + Vekalet + e-Arşiv -->
+            <details id="ex11" class="example-details"><summary><b>Örnek 11:</b> IADE — Kargo + Vekalet + e-Arşiv Fatura <span class="badge-required" style="margin-left:.5rem">I10</span></summary>
+                <div class="example-body">
+                    <p>En karmaşık kombinasyon: kargo + vekil + e-arşiv fatura.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-042",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T15:00:00",
+                        "CargoCompanyCode": "YURTICI",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "DelegateReceiver": {
+                            "Identification": "55566677788",
+                            "IdentificationType": "TCKN",
+                            "Name": "Ayşe Çelik"
+                        },
+                        "VerificationInfo": {
+                            "Code": "ABC123",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "EARSIV_FATURA",
+                            "DocumentNumber": "GIB2026000000456",
+                            "IssueDate": "2026-03-15"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                    <div class="callout callout-warning"><b>⚠️</b> Kargo + Vekalet birlikte: <code>VerificationInfo.Type</code> = IADEKODU zorunlu (kargo kuralı). DelegateReceiver.Type da IADEKODU olmalı (kargo → SMS seçilemez).</div>
+                </div>
+            </details>
+
+            <!-- Ex 12: I10 varyant — Kargo + Vekalet + Belgesiz -->
+            <details id="ex12" class="example-details"><summary><b>Örnek 12:</b> IADE — Kargo + Vekalet + Belgesiz <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
+                <div class="example-body">
+                    <p>Kargo + vekil + belgesiz iade. DocumentNumber boş, gerçek TCKN zorunlu.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-043",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T15:00:00",
+                        "CargoCompanyCode": "YURTICI",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "DelegateReceiver": {
+                            "Identification": "55566677788",
+                            "IdentificationType": "TCKN",
+                            "Name": "Ayşe Çelik"
+                        },
+                        "VerificationInfo": {
+                            "Code": "ABC123",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "BELGESIZ",
+                            "IssueDate": "2026-03-15"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                </div>
+            </details>
+
+            <!-- Ex 13: I10 varyant — Kargo + Vekalet + Satış Fişi -->
+            <details id="ex13" class="example-details"><summary><b>Örnek 13:</b> IADE — Kargo + Vekalet + Satış Fişi <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
+                <div class="example-body">
+                    <p>Kargo + vekil + satış fişi referansı ile iade.</p>
+                    <pre><code>{
+                        "ExpenseVoucherExternalId": "ERP-2026-IADE-033",
+                        "ProfileId": "GIDERPUSULASI",
+                        "ExpenseVoucherTypeCode": "IADE",
+                        "DocumentCurrencyCode": "TRY",
+                        "IssueDate": "2026-05-25T15:00:00",
+                        "CargoCompanyCode": "YURTICI",
+                        "VerificationProvider": {
+                            "ChannelCodeName": "IADE_PROVIDER",
+                            "ApplicationName": "İade360",
+                            "Vkn": "9876543210"
+                        },
+                        "AccountingCustomerParty": {
+                            "Party": {
+                                "PartyIdentifications": [
+                                    { "SchemeId": "TCKN", "Value": "99988877766" }
+                                ],
+                                "PartyName": "Hasan Çelik",
+                                "PostalAddress": {
+                                    "CityName": "İstanbul",
+                                    "Country": { "Name": "Türkiye" }
+                                }
+                            }
+                        },
+                        "DelegateReceiver": {
+                            "Identification": "55566677788",
+                            "IdentificationType": "TCKN",
+                            "Name": "Ayşe Çelik"
+                        },
+                        "VerificationInfo": {
+                            "Code": "ABC123",
+                            "PhoneNumber": "05441234567",
+                            "Type": "IADEKODU"
+                        },
+                        "ReturnedDocumentReference": {
+                            "DocumentType": "SATIS_FISI",
+                            "DocumentNumber": "EOA123456",
+                            "IssueDate": "2026-03-15"
+                        },
+                        "LegalMonetaryTotal": {
+                            "LineExtensionAmount": 500.00,
+                            "TaxExclusiveAmount": 500.00,
+                            "TaxInclusiveAmount": 600.00,
+                            "PayableAmount": 600.00
+                        },
+                        "TaxTotal": [
+                            {
+                                "TaxAmount": 100.00,
+                                "TaxSubtotal": [
+                                    {
+                                        "TaxableAmount": 500.00, "TaxAmount": 100.00,
+                                        "CalculationSequenceNumeric": 1, "TransactionCurrencyTaxAmount": 0,
+                                        "Percent": 20.0, "PerUnitAmount": 0,
+                                        "TaxCategory": { "TaxScheme": { "Name": "KDV GERCEK", "TaxTypeCode": "0015" } }
+                                    }
+                                ]
+                            }
+                        ],
+                        "ExpenseVoucherLine": [
+                            {
+                                "Id": "1",
+                                "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+                                "LineExtensionAmount": 500.00,
+                                "Item": { "Name": "Spor ayakkabı" },
+                                "Price": 500.00,
+                                "TaxTotal": {
+                                    "TaxSubtotal": [
+                                        {
+                                            "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } },
+                                            "TaxAmount": 100.00, "TaxableAmount": 1,
+                                            "CalculationSequenceNumeric": 1, "Percent": 1
+                                        }
+                                    ],
+                                    "TaxAmount": 100.00
+                                }
+                            }
+                        ]
+                    }</code></pre>
+                </div>
+            </details>
+</section>
+<nav class="docs-pagination">
+<a class="docs-page-link docs-page-previous" href="api-endpoint-referansi.html"><span>Önceki</span><strong>API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="gib-paketi-referansi.html"><span>Sonraki</span><strong>GİB Paketi Referansı</strong></a>
+</nav>
+</article></main>
+<aside class="docs-toc"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"GİB Paketi Referansı","text":"Resmi GİB paketi, teknik kılavuz, UBL-TR dosyaları ve kullanım kaynakları.","keywords":"Kaynaklar","url":"gib-paketi-referansi.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:"readingProgress",contentSelector:".docs-article"};</script>
+
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+</body>
+</html>

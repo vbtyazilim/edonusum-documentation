@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kullanım Senaryoları — e-Gider Pusulası</title>
+<meta name="description" content="SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.">
+
+<meta name="author" content="Erdem Özkara">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+.docs-article script.code-block { display: none; }
+.docs-article .badge-required,
+.docs-article .badge-optional,
+.docs-article .badge-conditional { white-space: nowrap; }
+</style>
+</head>
+<body class="docs-page">
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
+<nav class="docs-top-links"><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="../../../index.html">Rehberler</a></nav>
+<div class="docs-top-actions">
+<a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a>
+<button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button>
+<button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Tema değiştir"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Dark</span></button>
+</div></div></header>
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link active" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="gib-paketi-referansi.html">GİB Paketi Referansı</a>
+</div></div></aside>
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<header class="docs-article-header"><p class="docs-eyebrow">Senaryolar</p><h1>Kullanım Senaryoları</h1><p class="docs-lead">SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.</p></header>
+<section id="section-kullanim-senaryolari">
+<h3 id="h-karar-agaci">Karar Ağacı</h3>
+            <div class="diagram-wrapper">
+                <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+                <style>
+                .kb{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:8}
+                .kq{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:2;rx:8}
+                .kr{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:8}
+                .kw{fill:var(--svg-warn-bg);stroke:var(--svg-warn-s);stroke-width:2;rx:8}
+                .kt{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+                .ks{fill:var(--svg-muted);font:9.5px Inter,system-ui,sans-serif;text-anchor:middle}
+                .kl{stroke:var(--svg-line);stroke-width:1.2;fill:none;stroke-dasharray:5 3;animation:dash .9s linear infinite}
+                </style>
+                <defs><marker id="a3" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs>
+                <!-- Root -->
+                <rect class="kq" x="310" y="10" width="180" height="38"/>
+                <text class="kt" x="400" y="29">Belge Tipi?</text>
+                <!-- SATIS -->
+                <path class="kl" d="M350,48 L160,80" marker-end="url(#a3)"/>
+                <text class="ks" x="240" y="60">SATIS</text>
+                <rect class="kr" x="50" y="75" width="220" height="48"/>
+                <text class="kt" x="160" y="93" style="fill:var(--svg-ok-s)">SMS_PROVIDER + SMS</text>
+                <text class="ks" x="160" y="112">Tek seçenek — başka yok</text>
+                <!-- IADE -->
+                <path class="kl" d="M450,48 L600,80" marker-end="url(#a3)"/>
+                <text class="ks" x="535" y="60">IADE</text>
+                <rect class="kq" x="520" y="75" width="160" height="38"/>
+                <text class="kt" x="600" y="94">Nasıl iade?</text>
+                <!-- Yüz yüze -->
+                <path class="kl" d="M555,113 L370,148" marker-end="url(#a3)"/>
+                <text class="ks" x="448" y="128">Yüz yüze</text>
+                <rect class="kq" x="250" y="143" width="230" height="38"/>
+                <text class="kt" x="365" y="162">Doğrulama yöntemi?</text>
+                <!-- SMS -->
+                <path class="kl" d="M300,181 L170,215" marker-end="url(#a3)"/>
+                <text class="ks" x="220" y="198">SMS</text>
+                <rect class="kr" x="50" y="210" width="230" height="42"/>
+                <text class="kt" x="165" y="226" style="fill:var(--svg-ok-s)">SMS_PROVIDER + SMS</text>
+                <text class="ks" x="165" y="243">Kasada, müşteri hazır</text>
+                <!-- İade kodu -->
+                <path class="kl" d="M430,181 L520,215" marker-end="url(#a3)"/>
+                <text class="ks" x="488" y="198">İade kodu</text>
+                <rect class="kr" x="420" y="210" width="230" height="42"/>
+                <text class="kt" x="535" y="226" style="fill:var(--svg-ok-s)">IADE_PROVIDER + IADEKODU</text>
+                <text class="ks" x="535" y="243">Kasada, iade kodu onaylı</text>
+                <!-- Kargo -->
+                <path class="kl" d="M645,113 L700,148" marker-end="url(#a3)"/>
+                <text class="ks" x="685" y="128">Kargo</text>
+                <rect class="kw" x="615" y="143" width="175" height="55"/>
+                <text class="kt" x="702" y="160" style="fill:var(--svg-warn-s)">❗ ZORUNLU</text>
+                <text class="kt" x="702" y="176">IADE_PROVIDER + IADEKODU</text>
+                <text class="ks" x="702" y="192">+ Kargo bilgileri</text>
+                <!-- Vekalet -->
+                <rect class="kb" x="180" y="285" width="440" height="75" style="stroke-dasharray:5 3"/>
+                <text class="kt" x="400" y="305">Vekalet Senaryosu (Opsiyonel — yalnızca IADE)</text>
+                <text class="ks" x="400" y="323">DelegateReceiver doldurulur → 6 alan zorunlu</text>
+                <text class="ks" x="400" y="339">Doğrulama kodu vekilin telefonuna gönderilir</text>
+                <text class="ks" x="400" y="355" style="fill:var(--svg-warn-s)">Kargo + Vekalet → DelegateReceiver.Type = IADEKODU zorunlu</text>
+                </svg>
+            </div>
+
+            <h3 id="h-satis">SATIS Senaryoları</h3>
+            <div class="scenario-card">
+                <h4 id="h-s1">S1: Normal Satın Alma</h4>
+
+                <p class="scenario-description">KDV mükellefi olmayan gerçek kişiden yüz yüze hizmet alımı, SMS doğrulama.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ExpenseVoucherTypeCode</td><td><code>SATIS</code></td></tr>
+                            <tr><td>ChannelCodeName / Type</td><td><code>SMS_PROVIDER</code> / <code>SMS</code></td></tr>
+                            <tr><td>SchemeId</td><td><code>TCKN</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-s2">S2: Depozito İadesi</h4>
+
+                <p class="scenario-description">Ambalaj teslim, depozito geri ödeme. GİB'de SATIS kapsamında.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ExpenseVoucherTypeCode</td><td><code>SATIS</code></td></tr>
+                            <tr><td>ChannelCodeName / Type</td><td><code>SMS_PROVIDER</code> / <code>SMS</code></td></tr>
+                            <tr><td>SchemeId</td><td><code>TCKN</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-s3">S3: Yabancı Uyruklu Alıcı</h4>
+
+                <p class="scenario-description">Yabancı uyruklu kişiden hizmet alımı. SchemeId = <code>PASAPORTNO</code>.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ExpenseVoucherTypeCode</td><td><code>SATIS</code></td></tr>
+                            <tr><td>ChannelCodeName / Type</td><td><code>SMS_PROVIDER</code> / <code>SMS</code></td></tr>
+                            <tr><td>SchemeId</td><td><code>PASAPORTNO</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 id="h-iade-genel">IADE — GENEL BAKIŞ</h3>
+
+            <div class="scenario-card">
+                <h4>Uyruğa göre</h4>
+
+                <p class="scenario-description">Iade eden kişinin uyruğu ve buna göre kullanılacak SchemeId.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Uyruk</th><th>SchemeId</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TC Vatandaşı</td><td><code>TCKN</code></td></tr>
+                            <tr><td>Yabancı</td><td><code>PASAPORTNO</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4> İade doğrulama Yöntemine Göre</h4>
+
+                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemleri.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>İade Yöntemi</th><th>Doğrulama Yöntemi</th><th>Doğrulama Sağlayıcı</th><th>Doğrulama Yöntemi</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Yüz Yüze</td><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
+                            <tr><td>Yüz Yüze</td><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>Kargo</td><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4> Belge Tipine Göre İade Detayı</h4>
+
+                <p class="scenario-description">Hangi belgeye göre iade yapıldığı ve ilgili bilgilerin detayları.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Belge Tipi</th><th>DocumentType</th><th>DocumentNumber</th><th>IssueDate</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EArşiv Fatura</td><td><code>EARSIV_FATURA</code></td><td>Fatura No</td><td>Fatura tarihi</td></tr>
+                            <tr><td>Satış Fişi</td><td><code>SATIS_FISI</code></td><td>Fiş No</td><td>Fiş tarihi</td></tr>
+                            <tr><td>Belgesiz</td><td><code>BELGESIZ</code></td><td>-</td><td>İşlem tarihi</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 id="h-iade-yuzyuze">IADE — Yüz Yüze</h3>
+            <div class="scenario-card">
+                <h4 id="h-i1">I1: e-Arşiv Fatura ile İade</h4>
+
+                <p class="scenario-description">Müşteri mağazaya gelip satış fişi ile aldığı ürünü iade ediyor.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TypeCode</td><td><code>IADE</code></td></tr>
+                            <tr><td>DocumentType / DocumentNumber / IssueDate</td><td><code>EARSIV_FATURA</code> / fatura no / tarih</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
+                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-i2">I2: Satış Fişi ile İade</h4>
+
+                <p class="scenario-description">Müşteri mağazaya gelip satış fişi ile aldığı ürünü iade ediyor.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TypeCode</td><td><code>IADE</code></td></tr>
+                            <tr><td>DocumentType / DocumentNumber / IssueDate</td><td><code><strong>SATIS_FISI</strong></code> / fiş no / tarih</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
+                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-i3">I3: Belgesiz İade</h4>
+
+                <p class="scenario-description">DocumentType = <code>BELGESIZ</code>, DocumentNumber boş.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TypeCode</td><td><code>IADE</code></td></tr>
+                            <tr><td>DocumentType / DocumentNumber / IssueDate</td><td><code><strong>BELGESIZ</strong></code> / - / işlem tarihi</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout callout-error"><b>⛔ BELGESIZ İade:</b> Gerçek TCKN veya PASAPORTNO zorunlu. Sahte kimlik GİB tarafından reddedilir.</div>
+
+                <p class="scenario-description">Iade eden kişinin uyruğu ve buna göre kullanılacak SchemeId girilmelidir.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Uyruk</th><th>SchemeId</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TC Vatandaşı</td><td><code>TCKN</code></td></tr>
+                            <tr><td>Yabancı</td><td><code>PASAPORTNO</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
+                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-i4">I4: Yabancı Uyruklu — Yüz Yüze İade</h4>
+
+                <p class="scenario-description">SchemeId = <code>PASAPORTNO</code>. SMS veya iade kodu ile doğrulama.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TypeCode</td><td><code>IADE</code></td></tr>
+                            <tr><td>SchemeId</td><td><code><strong>PASAPORTNO</strong></code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
+                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Hangi belgeye göre iade yapıldığı ve ilgili bilgilerin detayları girilmelidir</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Belge Tipi</th><th>DocumentType</th><th>DocumentNumber</th><th>IssueDate</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EArşiv Fatura</td><td><code>EARSIV_FATURA</code></td><td>Fatura No</td><td>Fatura tarihi</td></tr>
+                            <tr><td>Satış Fişi</td><td><code>SATIS_FISI</code></td><td>Fiş No</td><td>Fiş tarihi</td></tr>
+                            <tr><td>Belgesiz</td><td><code>BELGESIZ</code></td><td>-</td><td>İşlem tarihi</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 id="h-iade-kargo">IADE — Kargo ile</h3>
+            <div class="scenario-card">
+                <h4 id="h-i5">I5: Kargo İade — TC Vatandaşı</h4>
+
+                <p class="scenario-description">Kargo iadelerde <code>IADE_PROVIDER</code> + <code>IADEKODU</code> + kargo bilgileri zorunlu.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th><th>Kural</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TypeCode</td><td><code>IADE</code></td><td></td></tr>
+                            <tr><td>SchemeId</td><td><code><strong>TCKN</strong></code></td><td></td></tr>
+                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td rowspan="3">Kargo → zorunlu</td></tr>
+                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>CargoCompany (Vkn/Title/ClassificationCode)</td><td>Dolu</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Hangi belgeye göre iade yapıldığı ve ilgili bilgilerin detayları girilmelidir</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Belge Tipi</th><th>DocumentType</th><th>DocumentNumber</th><th>IssueDate</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EArşiv Fatura</td><td><code>EARSIV_FATURA</code></td><td>Fatura No</td><td>Fatura tarihi</td></tr>
+                            <tr><td>Satış Fişi</td><td><code>SATIS_FISI</code></td><td>Fiş No</td><td>Fiş tarihi</td></tr>
+                            <tr><td>Belgesiz</td><td><code>BELGESIZ</code></td><td>-</td><td>İşlem tarihi</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-i6">I6: Kargo İade — Yabancı Uyruklu</h4>
+
+                <p class="scenario-description">SchemeId = <code>PASAPORTNO</code> + kargo kuralları aynen geçerli (uyruğa bakılmaz).</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th><th>Kural</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TypeCode</td><td><code>IADE</code></td><td></td></tr>
+                            <tr><td>SchemeId</td><td><code><strong>PASAPORTNO</strong></code></td><td></td></tr>
+                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td rowspan="3">Kargo → zorunlu</td></tr>
+                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>CargoCompany (Vkn/Title/ClassificationCode)</td><td>Dolu</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Hangi belgeye göre iade yapıldığı ve ilgili bilgilerin detayları girilmelidir</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Belge Tipi</th><th>DocumentType</th><th>DocumentNumber</th><th>IssueDate</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EArşiv Fatura</td><td><code>EARSIV_FATURA</code></td><td>Fatura No</td><td>Fatura tarihi</td></tr>
+                            <tr><td>Satış Fişi</td><td><code>SATIS_FISI</code></td><td>Fiş No</td><td>Fiş tarihi</td></tr>
+                            <tr><td>Belgesiz</td><td><code>BELGESIZ</code></td><td>-</td><td>İşlem tarihi</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-i7">I7: Kargo + Belgesiz + Yabancı Uyruklu</h4>
+
+                <p class="scenario-description">İki kural birlikte: BELGESIZ → gerçek PASAPORTNO zorunlu; Kargo → IADE_PROVIDER + IADEKODU + kargo bilgileri zorunlu.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th><th>Kural</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TypeCode</td><td><code>IADE</code></td><td></td></tr>
+                            <tr><td>SchemeId</td><td><code><strong>PASAPORTNO</strong></code></td><td></td></tr>
+                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td rowspan="3">Kargo → zorunlu</td></tr>
+                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>CargoCompany (Vkn/Title/ClassificationCode)</td><td>Dolu</td></tr>
+                            <tr><td>DocumentType / DocumentNumber / IssueDate</td><td><code><strong>BELGESIZ</strong></code> / - / işlem tarihi</td><td>Belgesiz → zorunlu</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Belge Tipi</th><th>DocumentType</th><th>DocumentNumber</th><th>IssueDate</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Belgesiz</td><td><code>BELGESIZ</code></td><td>-</td><td>İşlem tarihi</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 id="h-iade-vekalet">IADE — Vekalet ile</h3>
+            <div class="scenario-card">
+                <h4 id="h-i8">I8: Vekalet — TC Vatandaşı Vekil (Yüz Yüze)</h4>
+
+                <p class="scenario-description">Orijinal alıcı bilgileri değişmez</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>AccountingCustomerParty</td><td>Orijinal alıcı (değişmez)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Orijinal alıcı yerine iade yapan kişinin bilgileri girilmelidir</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>DelegateReceiver.IdentificationType</td><td><code>TCKN</code></td></tr>
+                            <tr><td>DelegateReceiver.Identification</td><td>Vekilin TCKN'si</td></tr>
+                            <tr><td>DelegateReceiver.Name</td><td>Vekilin adı soyadı</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-i9">I9: Vekalet — Yabancı Uyruklu Vekil (Yüz Yüze)</h4>
+
+                <p class="scenario-description">IdentificationType = <code>PASAPORTNO</code>, ICAO max 9 karakter.</p>
+                <p class="scenario-description">Orijinal alıcı bilgileri değişmez</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>AccountingCustomerParty</td><td>Orijinal alıcı (değişmez)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Orijinal alıcı yerine iade yapan kişinin bilgileri girilmelidir</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>DelegateReceiver.IdentificationType</td><td><code>PASAPORTNO</code></td></tr>
+                            <tr><td>DelegateReceiver.Identification</td><td>Vekilin PASAPORTNO'su</td></tr>
+                            <tr><td>DelegateReceiver.Name</td><td>Vekilin adı soyadı</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4 id="h-i10">I10: Kargo + Vekalet + Yabancı Vekil (En Karmaşık)</h4>
+
+                <p class="scenario-description">Orijinal alıcı TC, vekil yabancı, kargo ile iade. Üç kural birlikte uygulanır.</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th><th>Kaynak</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>AccountingCustomerParty.SchemeId</td><td><code>TCKN</code></td><td>Orijinal alıcı</td></tr>
+                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td>Kargo kuralı</td></tr>
+                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td><td>Kargo kuralı</td></tr>
+                            <tr><td>CargoCompany</td><td>Tüm alanlar dolu</td><td>Kargo kuralı</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="scenario-description">Orijinal alıcı yerine iade yapan kişinin bilgileri girilmelidir</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Alan</th><th>Değer</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>DelegateReceiver.IdentificationType</td><td><code>PASAPORTNO</code></td></tr>
+                            <tr><td>DelegateReceiver.Identification</td><td>Vekilin PASAPORTNO'su</td></tr>
+                            <tr><td>DelegateReceiver.Name</td><td>Vekilin adı soyadı</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 id="h-edge-case">Edge-Case Tablosu</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Durum</th><th>Sonuç</th><th>Neden</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>E1</td><td>SATIS + IADE_PROVIDER</td><td>❌</td><td>SATIS'te yalnızca SMS_PROVIDER</td></tr>
+                        <tr><td>E2</td><td>IADE + ReturnedDocRef yok</td><td>❌</td><td>IADE'de zorunlu</td></tr>
+                        <tr><td>E3</td><td>BELGESIZ + kimlik yok</td><td>❌</td><td>Kimlik zorunlu</td></tr>
+                        <tr><td>E4</td><td>Kargo + SMS_PROVIDER veya Type=SMS</td><td>❌</td><td>Kargo → sadece IADE_PROVIDER + IADEKODU</td></tr>
+                        <tr><td>E5</td><td>EARSIV_FATURA + DocumentNumber boş</td><td>❌</td><td>Belgeli iadede no zorunlu</td></tr>
+                        <tr><td>E6</td><td>Aynı ExternalId tekrar</td><td>❌</td><td>Tekil zorunlu</td></tr>
+                        <tr><td>E7</td><td>DelegateReceiver dolu + alan eksik</td><td>❌</td><td>Tüm 3 alan zorunlu</td></tr>
+                        <tr><td>E8</td><td>SATIS + DelegateReceiver</td><td>❌</td><td>Vekalet yalnızca IADE</td></tr>
+                        <tr><td>E9</td><td>SchemeId = VKN</td><td>❌</td><td>Tüzel kişi olamaz</td></tr>
+                        <tr><td>E10</td><td>Kargo + DelegateReceiver.Type=SMS</td><td>❌</td><td>Kargo → IADEKODU zorunlu</td></tr>
+                        <tr><td>E11</td><td>SATIS + ReturnedDocRef dolu</td><td>✅</td><td>Ignore edilir</td></tr>
+                        <tr><td>E12</td><td>Kargo + PASAPORTNO + bilgiler tam</td><td>✅</td><td>Yabancı kargo iade geçerli</td></tr>
+                        <tr><td>E13</td><td>BELGESIZ + PASAPORTNO</td><td>✅</td><td>Yabancı belgesiz geçerli</td></tr>
+                        <tr><td>E14</td><td>Kargo + DelegateReceiver(PASAPORTNO) + IADEKODU</td><td>✅</td><td>Kargo + yabancı vekil geçerli</td></tr>
+                        <tr><td>E15</td><td>Yüz yüze + PASAPORTNO + SMS_PROVIDER</td><td>✅</td><td>Yabancı, Türk GSM hattı var</td></tr>
+                    </tbody>
+                </table>
+            </div>
+</section>
+<nav class="docs-pagination">
+<a class="docs-page-link docs-page-previous" href="gib-teknik-gereksinimleri.html"><span>Önceki</span><strong>GİB Teknik Gereksinimleri</strong></a>
+<a class="docs-page-link docs-page-next" href="entegrator-sorumluluklari.html"><span>Sonraki</span><strong>Entegratör Sorumlulukları</strong></a>
+</nav>
+</article></main>
+<aside class="docs-toc"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"GİB Paketi Referansı","text":"Resmi GİB paketi, teknik kılavuz, UBL-TR dosyaları ve kullanım kaynakları.","keywords":"Kaynaklar","url":"gib-paketi-referansi.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:"readingProgress",contentSelector:".docs-article"};</script>
+
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+</body>
+</html>

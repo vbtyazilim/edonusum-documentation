@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GİB Teknik Gereksinimleri — e-Gider Pusulası</title>
+<meta name="description" content="UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.">
+
+<meta name="author" content="Erdem Özkara">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+.docs-article script.code-block { display: none; }
+.docs-article .badge-required,
+.docs-article .badge-optional,
+.docs-article .badge-conditional { white-space: nowrap; }
+</style>
+</head>
+<body class="docs-page">
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
+<nav class="docs-top-links"><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="../../../index.html">Rehberler</a></nav>
+<div class="docs-top-actions">
+<a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a>
+<button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button>
+<button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Tema değiştir"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Dark</span></button>
+</div></div></header>
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
+<a class="docs-nav-link active" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="gib-paketi-referansi.html">GİB Paketi Referansı</a>
+</div></div></aside>
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<header class="docs-article-header"><p class="docs-eyebrow">Teknik Temel</p><h1>GİB Teknik Gereksinimleri</h1><p class="docs-lead">UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.</p></header>
+<section id="section-gib-teknik-gereksinimleri">
+<h3 id="h-ubl-standart">UBL Belge Standardı</h3>
+            <p>e-Gider Pusulası UBL 2.1 <code>CreditNote</code> doküman tipi üzerinden ifade edilir.</p>
+
+            <h3 id="h-operator">Operatör Bilgisi (Madde 3.1.15)</h3>
+
+            <div class="callout callout-info">
+            <b>Operatör Kavramı</b>
+            <p>GİB'in "operatör" dediği: müşteri doğrulaması (SMS/iade kodu) hizmetini sağlayan <strong>üçüncü parti şirket</strong>tir.</p>
+            <ul>
+            <li><code>SMS_PROVIDER</code> — SMS kodu üreten/gönderen hizmet sağlayıcı</li>
+            <li><code>IADE_PROVIDER</code> — İade kodu üreten/doğrulayan hizmet sağlayıcı</li>
+            </ul>
+            </div>
+
+            <script type="text/plain" class="code-block language-xml">
+            <cac:AccountingSupplierParty>
+                <cac:Party>
+                    <cac:Contact>
+                        <cac:OtherCommunication>
+                            <cbc:ChannelCode name="SMS_PROVIDER">Uygulama Adı</cbc:ChannelCode>
+                            <cbc:Value>1234567890</cbc:Value>
+                        </cac:OtherCommunication>
+                    </cac:Contact>
+                </cac:Party>
+            </cac:AccountingSupplierParty>
+            </script>
+
+            <h3 id="h-alici-dogrulama">Alıcı Doğrulama (Madde 3.1.16)</h3>
+            <p>Hem SATIS hem IADE'de zorunlu:</p>
+            <script type="text/plain" class="code-block language-xml">
+            <cac:Contact>
+                <cbc:ID>Doğrulama kodu</cbc:ID>
+                <cbc:Name>SMS</cbc:Name>        <!-- veya IADEKODU -->
+                <cbc:Telephone>05551234567</cbc:Telephone>
+            </cac:Contact>
+            </script>
+
+            <div class="callout callout-info"><b>💡 Vekalet Override:</b> DelegateReceiver doluysa GİB raporundaki <code>bilgiDetay</code> alanları VerificationInfo yerine DelegateReceiver'dan alınır (Code→kod, Type→tip, PhoneNumber→telefon).</div>
+
+            <h3 id="h-iade-ref">İade Belgesi Referansı (Madde 3.1.12)</h3>
+            <script type="text/plain" class="code-block language-xml">
+            <cac:BillingReference>
+                <cac:InvoiceDocumentReference>
+                    <cbc:ID schemeID="EARSIV_FATURA">GIB2026000000002</cbc:ID>
+                    <cbc:IssueDate>2026-02-01</cbc:IssueDate>
+                </cac:InvoiceDocumentReference>
+            </cac:BillingReference>
+            </script>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>schemeID</th><th>Anlamı</th><th>ID İçeriği</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>EARSIV_FATURA</code></td><td>e-Arşiv faturasına karşı iade</td><td>Fatura no</td></tr>
+                        <tr><td><code>SATIS_FISI</code></td><td>Satış fişine karşı iade</td><td>Fiş no</td></tr>
+                        <tr><td><code>BELGESIZ</code></td><td>Karşılığında belge yok</td><td>Boş</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-error"><b>⛔ BELGESIZ İade:</b> Gerçek TCKN veya PASAPORTNO zorunlu. Sahte kimlik GİB tarafından reddedilir.</div>
+
+            <h3 id="h-channelcode">ChannelCode — VerificationInfo Uyumu</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>ChannelCodeName</th><th>VerificationInfo.Type</th><th>Belge Tipi</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td><td>SATIS veya IADE</td></tr>
+                        <tr><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td><td>Sadece IADE</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="h-alici-kimlik">Alıcı Kimlik Tipleri</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>SchemeId</th><th>Açıklama</th><th>Rapor</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>TCKN</code></td><td>TC Kimlik No (11 hane)</td><td><code>gercekKisi/tckn</code></td></tr>
+                        <tr><td><code>PASAPORTNO</code></td><td>Yabancı uyruklu</td><td><code>yabanci/pasaportNo</code></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout callout-error"><b>⛔ VKN kullanılamaz</b> — Gider pusulası alıcısı veya vekili tüzel kişi olamaz.</div>
+
+            <h3 id="h-telefon">Telefon Format</h3>
+            <p>GİB XSD: <code>0[1-9][0-9]{9}</code> — 11 karakter, 0 ile başlar. ✅ <code>05551234567</code> ❌ <code>5551234567</code></p>
+
+            <h3 id="h-gib-rapor">GİB Rapor Alanları</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>Alan</th><th></th><th>Açıklama</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>giderPusulasiBelgeNo</code></td><td><span class="badge-required">Z</span></td><td>Belge no</td></tr>
+                        <tr><td><code>UUID</code></td><td><span class="badge-required">Z</span></td><td>ETTN</td></tr>
+                        <tr><td><code>belgeTip</code></td><td><span class="badge-required">Z</span></td><td>SATIS/IADE</td></tr>
+                        <tr><td><code>gonderimSekli</code></td><td><span class="badge-required">Z</span></td><td>Sabit: ELEKTRONIK</td></tr>
+                        <tr><td><code>ozetDeger</code></td><td><span class="badge-required">Z</span></td><td>İmza hash</td></tr>
+                        <tr><td><code>duzenlenmeTarihi</code> + <code>Zamani</code></td><td><span class="badge-required">Z</span></td><td>Tarih/saat</td></tr>
+                        <tr><td><code>paraBirimi</code></td><td><span class="badge-required">Z</span></td><td>ISO 4217</td></tr>
+                        <tr><td><code>toplamTutar</code> / <code>odenecekTutar</code></td><td><span class="badge-required">Z</span></td><td>Tutarlar</td></tr>
+                        <tr><td><code>vergiBilgisi</code></td><td><span class="badge-required">Z</span></td><td>matrah + vergiKodu + vergiTutari + vergiOrani</td></tr>
+                        <tr><td><code>aliciBilgileri</code></td><td><span class="badge-required">Z</span></td><td>kisi + bilgiDetay (kod, tip, telefon)</td></tr>
+                        <tr><td><code>operatorUygulamaBilgi</code></td><td><span class="badge-required">Z</span></td><td>yontem + saglayiciAdi + vkn</td></tr>
+                        <tr><td><code>url</code> / <code>imzaZamani</code></td><td><span class="badge-required">Z</span></td><td>—</td></tr>
+                        <tr><td><code>iadeDetay</code></td><td><span class="badge-conditional">Ş</span></td><td>IADE'de zorunlu</td></tr>
+                        <tr><td><code>kargoBilgi</code></td><td><span class="badge-conditional">Ş</span></td><td>Kargo iadede</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="h-iptal-rapor">İptal Raporu</h3>
+            <script type="text/plain" class="code-block language-xml">
+            <eGiderPusulasiIptal>
+                <giderPusulasiBelgeNo>GIP2026000000001</giderPusulasiBelgeNo>
+                <UUID>7DC52246-5750-496E-8BF2-BD27BC0764DC</UUID>
+                <iptalTarihi>2026-03-15</iptalTarihi>
+            </eGiderPusulasiIptal>
+            </script>
+</section>
+<nav class="docs-pagination">
+<a class="docs-page-link docs-page-previous" href="egider-pusulasi-nedir.html"><span>Önceki</span><strong>e-Gider Pusulası Nedir?</strong></a>
+<a class="docs-page-link docs-page-next" href="kullanim-senaryolari.html"><span>Sonraki</span><strong>Kullanım Senaryoları</strong></a>
+</nav>
+</article></main>
+<aside class="docs-toc"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"GİB Paketi Referansı","text":"Resmi GİB paketi, teknik kılavuz, UBL-TR dosyaları ve kullanım kaynakları.","keywords":"Kaynaklar","url":"gib-paketi-referansi.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:"readingProgress",contentSelector:".docs-article"};</script>
+
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+</body>
+</html>

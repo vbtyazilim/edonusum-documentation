@@ -1,0 +1,9 @@
+/* ============================================================
+   CORE.CSS - Site shell stylesheet package
+   ============================================================ */
+
+@import url("../features/base/base.css");
+@import url("../features/author-link/author-link.css");
+@import url("../features/theme/theme.css");
+@import url("../features/docs-layout/docs-layout.css");
+@import url("../features/navigation-progress/navigation-progress.css");

@@ -1,0 +1,221 @@
+/* ============================================================
+   CODE-TABS.CSS — Yerel sekmeler ve grup bazlı global seçim
+   Bağımlılık: base/base.css
+   ============================================================ */
+
+.code-tabs-global {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0 1.5rem;
+    padding: .9rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.code-tabs-global-copy {
+    display: grid;
+    gap: .15rem;
+    min-width: 12rem;
+}
+
+.code-tabs-global-label {
+    color: var(--text);
+    font-size: .84rem;
+    font-weight: 750;
+}
+
+.code-tabs-global-description {
+    color: var(--text-dim);
+    font-size: .74rem;
+    line-height: 1.45;
+}
+
+.code-tabs-global-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;
+    padding: .3rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.code-tabs-global-header {
+    flex: 0 0 auto;
+    gap: .2rem;
+    margin: 0;
+    padding: .25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.code-tabs-global-header .code-tabs-global-copy {
+    display: none;
+}
+
+.code-tabs-global-header .code-tabs-global-options {
+    flex-wrap: nowrap;
+    gap: .1rem;
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+
+.code-tabs-global-header button {
+    min-height: 30px;
+    padding: .4rem .65rem;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.code-tabs-header-demo {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    min-width: 0;
+    padding: .75rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.code-tabs-header-demo .docs-top-actions {
+    flex: 0 0 auto;
+    position: static;
+    right: auto;
+    margin-left: auto;
+}
+
+.code-tabs-global button,
+.code-tab {
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 650;
+}
+
+.code-tabs-global button {
+    padding: .5rem .75rem;
+    border-radius: 6px;
+}
+
+.code-tabs-global button:hover,
+.code-tab:hover {
+    color: var(--text);
+}
+
+.code-tabs-global button[aria-pressed="true"] {
+    color: var(--brand);
+    background: var(--bg);
+    box-shadow: var(--shadow);
+}
+
+.code-tabs {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 1.25rem 0 1.5rem;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.code-tabs-list {
+    display: flex;
+    gap: .25rem;
+    overflow-x: auto;
+    padding: .4rem .5rem 0;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+}
+
+.code-tab {
+    position: relative;
+    flex: 0 0 auto;
+    padding: .65rem .8rem .75rem;
+}
+
+.code-tab[aria-selected="true"] {
+    color: var(--brand);
+}
+
+.code-tab[aria-selected="true"]::after {
+    content: "";
+    position: absolute;
+    right: .45rem;
+    bottom: 0;
+    left: .45rem;
+    height: 2px;
+    background: var(--brand);
+    border-radius: 999px 999px 0 0;
+}
+
+.code-tab-panel {
+    max-width: 100%;
+    min-width: 0;
+    padding: 1rem 1.2rem 1.2rem;
+}
+
+.code-tab-panel[hidden] {
+    display: none;
+}
+
+.code-tab-panel > :last-child {
+    margin-bottom: 0;
+}
+
+.code-tab-panel pre {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+@media (max-width: 860px) {
+    .docs-topbar .docs-top-actions .code-tabs-global-header {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .code-tabs-global:not(.code-tabs-global-header) {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .code-tabs-global:not(.code-tabs-global-header) .code-tabs-global-options { width: 100%; }
+    .code-tabs-global:not(.code-tabs-global-header) .code-tabs-global-options button { flex: 1 1 auto; }
+
+    .code-tab-panel {
+        padding: .8rem;
+    }
+}
+
+@media print {
+    .code-tabs-global,
+    .code-tabs-list {
+        display: none;
+    }
+
+    .code-tab-panel[hidden] {
+        display: block;
+    }
+
+    .code-tab-panel {
+        border-top: 1px solid var(--border);
+    }
+}
