@@ -28,7 +28,7 @@
 <header class="docs-topbar"><div class="docs-topbar-inner">
 <button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
 <a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
-<nav class="docs-top-links"><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="../../../index.html">Rehberler</a></nav>
+<nav class="docs-top-links"><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="../../../index.html">Ana Sayfa</a></nav>
 <div class="docs-top-actions">
 <a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a>
 <button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button>
@@ -82,7 +82,8 @@
             </div>
 
             <!-- Ex 1: S1 -->
-            <details id="ex1" class="example-details"><summary><b>Örnek 1:</b> SATIS — Normal Satın Alma, SMS ile <span class="badge-required" style="margin-left:.5rem">S1</span></summary>
+            <h3 id="ex1">Örnek 1: SATIS — Normal Satın Alma, SMS ile</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S1</span></summary>
                 <div class="example-body">
                     <p>KDV mükellefi olmayan gerçek kişiden hizmet alımı. <code>SMS_PROVIDER</code> + <code>SMS</code>.</p>
                     <pre><code>{
@@ -147,7 +148,7 @@
                                             "CalculationSequenceNumeric": 1, "Percent": 1
                                         }
                                     ],
-                                    "TaxAmount": 0.01
+                                    "TaxAmount": 200.00
                                 }
                             }
                         ]
@@ -156,7 +157,8 @@
             </details>
 
             <!-- Ex 2: S3 — Yabancı SATIS (türetildi) -->
-            <details id="ex2" class="example-details"><summary><b>Örnek 2:</b> SATIS — Yabancı Uyruklu, SMS ile <span class="badge-required" style="margin-left:.5rem">S3</span></summary>
+            <h3 id="ex2">Örnek 2: SATIS — Yabancı Uyruklu, SMS ile</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S3</span></summary>
                 <div class="example-body">
                     <p>Yabancı uyruklu kişiden hizmet alımı. <code>SchemeId = PASAPORTNO</code>.</p>
                     <pre><code>{
@@ -220,7 +222,7 @@
                                             "CalculationSequenceNumeric": 1, "Percent": 1
                                         }
                                     ],
-                                    "TaxAmount": 0.01
+                                    "TaxAmount": 160.00
                                 }
                             }
                         ]
@@ -230,7 +232,8 @@
             </details>
 
             <!-- Ex 3: I1 -->
-            <details id="ex3" class="example-details"><summary><b>Örnek 3:</b> IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu <span class="badge-required" style="margin-left:.5rem">I1</span></summary>
+            <h3 id="ex3">Örnek 3: IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I1</span></summary>
                 <div class="example-body">
                     <p>Müşteri kasada, iade kodu doğrulanmış. <code>IADE_PROVIDER</code> + <code>IADEKODU</code>.</p>
                     <pre><code>{
@@ -309,7 +312,8 @@
             </details>
 
             <!-- Ex 4: I2 — Satış fişi (türetildi) -->
-            <details id="ex4" class="example-details"><summary><b>Örnek 4:</b> IADE — Yüz Yüze, Satış Fişi ile <span class="badge-required" style="margin-left:.5rem">I2</span></summary>
+            <h3 id="ex4">Örnek 4: IADE — Yüz Yüze, Satış Fişi ile</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I2</span></summary>
                 <div class="example-body">
                     <p>Satış fişine karşılık yüz yüze iade. Örnek 3 ile aynı, sadece <code>ReturnedDocumentReference</code> farklı.</p>
                     <pre><code>{
@@ -389,7 +393,8 @@
             </details>
 
             <!-- Ex 5: I3 — Belgesiz (türetildi) -->
-            <details id="ex5" class="example-details"><summary><b>Örnek 5:</b> IADE — Yüz Yüze, Belgesiz <span class="badge-required" style="margin-left:.5rem">I3</span></summary>
+            <h3 id="ex5">Örnek 5: IADE — Yüz Yüze, Belgesiz</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I3</span></summary>
                 <div class="example-body">
                     <p>Karşılığında belge yok. <code>DocumentNumber</code> boş, gerçek TCKN zorunlu.</p>
                     <pre><code>{
@@ -468,7 +473,8 @@
             </details>
 
             <!-- Ex 6: I4 — Yabancı yüz yüze (türetildi) -->
-            <details id="ex6" class="example-details"><summary><b>Örnek 6:</b> IADE — Yüz Yüze, Yabancı Uyruklu <span class="badge-required" style="margin-left:.5rem">I4</span></summary>
+            <h3 id="ex6">Örnek 6: IADE — Yüz Yüze, Yabancı Uyruklu</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I4</span></summary>
                 <div class="example-body">
                     <p>Yabancı uyruklu müşteri yüz yüze iade yapıyor. <code>SchemeId = PASAPORTNO</code>.</p>
                     <pre><code>{
@@ -548,7 +554,8 @@
             </details>
 
             <!-- Ex 7: I5 — Kargo, vekalet yok -->
-            <details id="ex7" class="example-details"><summary><b>Örnek 7:</b> IADE — Kargo, Vekalet Yok <span class="badge-required" style="margin-left:.5rem">I5</span></summary>
+            <h3 id="ex7">Örnek 7: IADE — Kargo, Vekalet Yok</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I5</span></summary>
                 <div class="example-body">
                     <p>Kargo ile iade, vekil yok. <code>IADE_PROVIDER</code> + <code>IADEKODU</code> + <code>CargoCompanyCode</code>.</p>
                     <pre><code>{
@@ -629,7 +636,8 @@
             </details>
 
             <!-- Ex 8: I6 — Kargo + Yabancı (türetildi) -->
-            <details id="ex8" class="example-details"><summary><b>Örnek 8:</b> IADE — Kargo, Yabancı Uyruklu <span class="badge-required" style="margin-left:.5rem">I6</span></summary>
+            <h3 id="ex8">Örnek 8: IADE — Kargo, Yabancı Uyruklu</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I6</span></summary>
                 <div class="example-body">
                     <p>Kargo ile iade, alıcı yabancı. Kargo kuralları uyruğa bakılmaksızın geçerli.</p>
                     <pre><code>{
@@ -710,7 +718,8 @@
             </details>
 
             <!-- Ex 9: I8 — Vekalet, kargo yok -->
-            <details id="ex9" class="example-details"><summary><b>Örnek 9:</b> IADE — Vekalet, Kargo Yok <span class="badge-required" style="margin-left:.5rem">I8</span></summary>
+            <h3 id="ex9">Örnek 9: IADE — Vekalet, Kargo Yok</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I8</span></summary>
                 <div class="example-body">
                     <p>Yüz yüze vekalet ile iade. <code>DelegateReceiver</code> dolu, <code>CargoCompanyCode</code> yok.</p>
                     <pre><code>{
@@ -795,7 +804,8 @@
             </details>
 
             <!-- Ex 10: I9 — Vekalet + Yabancı vekil (türetildi) -->
-            <details id="ex10" class="example-details"><summary><b>Örnek 10:</b> IADE — Vekalet, Yabancı Vekil <span class="badge-required" style="margin-left:.5rem">I9</span></summary>
+            <h3 id="ex10">Örnek 10: IADE — Vekalet, Yabancı Vekil</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I9</span></summary>
                 <div class="example-body">
                     <p>Orijinal alıcı TC vatandaşı, vekil yabancı uyruklu. Yüz yüze.</p>
                     <pre><code>{
@@ -880,7 +890,8 @@
             </details>
 
             <!-- Ex 11: I10 — Kargo + Vekalet + e-Arşiv -->
-            <details id="ex11" class="example-details"><summary><b>Örnek 11:</b> IADE — Kargo + Vekalet + e-Arşiv Fatura <span class="badge-required" style="margin-left:.5rem">I10</span></summary>
+            <h3 id="ex11">Örnek 11: IADE — Kargo + Vekalet + e-Arşiv Fatura</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10</span></summary>
                 <div class="example-body">
                     <p>En karmaşık kombinasyon: kargo + vekil + e-arşiv fatura.</p>
                     <pre><code>{
@@ -966,7 +977,8 @@
             </details>
 
             <!-- Ex 12: I10 varyant — Kargo + Vekalet + Belgesiz -->
-            <details id="ex12" class="example-details"><summary><b>Örnek 12:</b> IADE — Kargo + Vekalet + Belgesiz <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
+            <h3 id="ex12">Örnek 12: IADE — Kargo + Vekalet + Belgesiz</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
                 <div class="example-body">
                     <p>Kargo + vekil + belgesiz iade. DocumentNumber boş, gerçek TCKN zorunlu.</p>
                     <pre><code>{
@@ -1050,7 +1062,8 @@
             </details>
 
             <!-- Ex 13: I10 varyant — Kargo + Vekalet + Satış Fişi -->
-            <details id="ex13" class="example-details"><summary><b>Örnek 13:</b> IADE — Kargo + Vekalet + Satış Fişi <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
+            <h3 id="ex13">Örnek 13: IADE — Kargo + Vekalet + Satış Fişi</h3>
+            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
                 <div class="example-body">
                     <p>Kargo + vekil + satış fişi referansı ile iade.</p>
                     <pre><code>{
