@@ -70,15 +70,15 @@
     --text: #e2e4e9;
     --text-muted: #9ca3b4;
     --text-dim: #6b7280;
-    --brand: #E2685C;
-    --brand-light: #ef9086;
-    --brand-subtle: rgba(226, 104, 92, .1);
-    --brand-border: rgba(226, 104, 92, .28);
+    --brand: #D62A24;
+    --brand-light: #e9645f;
+    --brand-subtle: rgba(214, 42, 36, .1);
+    --brand-border: rgba(214, 42, 36, .28);
     --page-start-gradient:
-        radial-gradient(ellipse at 50% 0%, rgba(226, 104, 92, .18), transparent 62%),
+        radial-gradient(ellipse at 50% 0%, rgba(214, 42, 36, .18), transparent 62%),
         linear-gradient(180deg, rgba(22, 25, 33, .94), transparent);
     --page-end-gradient:
-        radial-gradient(ellipse at 50% 100%, rgba(226, 104, 92, .15), transparent 64%),
+        radial-gradient(ellipse at 50% 100%, rgba(214, 42, 36, .15), transparent 64%),
         linear-gradient(0deg, rgba(22, 25, 33, .94), transparent);
     --success: #34d399;
     --success-bg: rgba(52, 211, 153, .08);
@@ -108,8 +108,8 @@
     --svg-text: #e2e4e9;
     --svg-muted: #9ca3b4;
     --svg-line: #7c8fb8;
-    --svg-brand-bg: #3a201c;
-    --svg-brand-s: #E2685C;
+    --svg-brand-bg: #3a1614;
+    --svg-brand-s: #D62A24;
     --svg-ok-bg: #0f2a1f;
     --svg-ok-s: #34d399;
     --svg-err-bg: #2a1a1a;

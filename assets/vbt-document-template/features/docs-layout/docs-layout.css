@@ -421,6 +421,51 @@
     line-height: 1.75;
 }
 
+/* Standart doküman/guide ana sayfa hero'su: başlığın yanında marka görseli.
+   Varsayılan görsel VBT mark'ıdır (assets/vbt-mark.svg); özelleştirme
+   gereken sayfalarda .docs-home-hero-mark içindeki <img> src'i değiştirilir. */
+.docs-home-hero-with-mark {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1100px;
+}
+
+.docs-home-hero-with-mark .docs-home-hero-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.docs-home-hero-with-mark .docs-home-hero-text > p:not(.docs-eyebrow) {
+    max-width: 650px;
+    margin: 2rem 0 0;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.75;
+}
+
+.docs-home-hero-with-mark .docs-home-hero-mark {
+    flex-shrink: 0;
+    width: clamp(110px, 16vw, 200px);
+}
+
+.docs-home-hero-with-mark .docs-home-hero-mark img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 760px) {
+    .docs-home-hero-with-mark {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    .docs-home-hero-with-mark .docs-home-hero-mark {
+        width: 84px;
+    }
+}
+
 .docs-home-actions {
     display: flex;
     flex-wrap: wrap;

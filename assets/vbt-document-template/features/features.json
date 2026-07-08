@@ -54,7 +54,8 @@
       "mobile navigation drawer",
       "previous and next page navigation",
       "VBT brand mark",
-      "standard favicon assets"
+      "standard favicon assets",
+      "home hero with brand mark layout"
     ],
     "html": [
       ".docs-topbar",
@@ -65,6 +66,9 @@
       "assets/vbt-mark-192.png",
       "favicon-48.png",
       "apple-touch-icon.png",
+      ".docs-home-hero-with-mark",
+      ".docs-home-hero-text",
+      ".docs-home-hero-mark",
       ".docs-shell",
       "[data-docs-sidebar]",
       "[data-docs-toc]",
