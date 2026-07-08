@@ -1,0 +1,293 @@
+{
+  "base": {
+    "css": [
+      "features/base/base.css"
+    ],
+    "js": [],
+    "requires": [],
+    "provides": [
+      "design tokens",
+      "common document styles",
+      "header-actions layout",
+      "skip-link accessibility",
+      "optional section dividers",
+      "slogan banner",
+      "content figures"
+    ],
+    "html": [
+      ".skip-link",
+      ".section-dividers",
+      ".slogan-banner",
+      ".content-figure"
+    ]
+  },
+  "author-link": {
+    "css": [
+      "features/author-link/author-link.css"
+    ],
+    "js": [],
+    "requires": [
+      "base"
+    ],
+    "provides": [
+      "compact author link",
+      "site return link for document headers"
+    ],
+    "html": [
+      ".author-link"
+    ]
+  },
+  "docs-layout": {
+    "css": [
+      "features/docs-layout/docs-layout.css"
+    ],
+    "js": [
+      "features/docs-layout/docs-layout.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "provides": [
+      "multi-page documentation shell",
+      "persistent site navigation",
+      "automatic on-this-page navigation",
+      "mobile navigation drawer",
+      "previous and next page navigation",
+      "VBT brand mark",
+      "standard favicon assets",
+      "home hero with brand mark layout"
+    ],
+    "html": [
+      ".docs-topbar",
+      ".docs-brand-mark.vbt-brand-mark",
+      "assets/vbt-mark.svg",
+      "assets/vbt-mark.png",
+      "assets/vbt-mark-96.png",
+      "assets/vbt-mark-192.png",
+      "favicon-48.png",
+      "apple-touch-icon.png",
+      ".docs-home-hero-with-mark",
+      ".docs-home-hero-text",
+      ".docs-home-hero-mark",
+      ".docs-shell",
+      "[data-docs-sidebar]",
+      "[data-docs-toc]",
+      "[data-docs-nav-toggle]",
+      "[data-docs-overlay]"
+    ],
+    "api": [
+      "docsLayout.toggleNavigation()",
+      "docsLayout.closeNavigation()"
+    ]
+  },
+  "theme": {
+    "css": [
+      "features/theme/theme.css"
+    ],
+    "js": [
+      "features/theme/theme.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "html": [
+      "features/theme/theme-boot.js",
+      ".theme-toggle",
+      ".theme-toggle-icon",
+      ".theme-toggle-label"
+    ],
+    "api": [
+      "theme.toggleTheme()",
+      "theme.setTheme(name)"
+    ]
+  },
+  "code-highlight": {
+    "css": [
+      "features/code-highlight/code-highlight.css"
+    ],
+    "js": [
+      "features/code-highlight/code-highlight.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "provides": [
+      "HTML/XML syntax highlighting",
+      "JSON syntax highlighting",
+      "C# syntax highlighting",
+      "Bash syntax highlighting",
+      "YAML syntax highlighting",
+      "SQL syntax highlighting"
+    ],
+    "html": [
+      "pre > code",
+      "script.code-block[type=\"text/plain\"]"
+    ],
+    "api": [
+      "CodeHighlight.formatCode(code, lang)"
+    ]
+  },
+  "copy-code": {
+    "css": [
+      "features/copy-code/copy-code.css"
+    ],
+    "js": [
+      "features/copy-code/copy-code.js"
+    ],
+    "requires": [
+      "base",
+      "code-highlight"
+    ],
+    "loadAfter": [
+      "code-highlight"
+    ],
+    "html": [
+      "pre > code"
+    ]
+  },
+  "copy-table": {
+    "css": [
+      "features/copy-table/copy-table.css"
+    ],
+    "js": [
+      "features/copy-table/copy-table.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "provides": [
+      "copyable key/value tables",
+      "row-level clipboard actions",
+      "code-tabs compatible selectable table panels"
+    ],
+    "html": [
+      "[data-copy-table]",
+      "[data-copy-value]"
+    ],
+    "api": [
+      "copyTable.init(root)"
+    ]
+  },
+  "sidemenu": {
+    "css": [
+      "features/sidemenu/sidemenu.css"
+    ],
+    "js": [
+      "features/sidemenu/sidemenu.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "html": [
+      "#sidenav",
+      "#sidenavOverlay",
+      "#sidenav-body",
+      "section h2[id]",
+      "section h3[id]",
+      "section h4[id]"
+    ],
+    "api": [
+      "sidemenu.toggleSidenav()",
+      "sidemenu.closeSidenav()"
+    ],
+    "config": "window.SIDEMENU_CONFIG",
+    "ignoredByDefault": [
+      ".demo-output"
+    ]
+  },
+  "scroll-top": {
+    "css": [
+      "features/scroll-top/scroll-top.css"
+    ],
+    "js": [
+      "features/scroll-top/scroll-top.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "html": [
+      "#scrollTop"
+    ],
+    "config": "window.SCROLL_TOP_CONFIG"
+  },
+  "reading-progress": {
+    "css": [
+      "features/reading-progress/reading-progress.css"
+    ],
+    "js": [
+      "features/reading-progress/reading-progress.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "html": [
+      "#readingProgress"
+    ],
+    "config": "window.READING_PROGRESS_CONFIG"
+  },
+  "navigation-progress": {
+    "css": [
+      "features/navigation-progress/navigation-progress.css"
+    ],
+    "js": [
+      "features/navigation-progress/navigation-progress.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "provides": [
+      "navigation loading feedback"
+    ],
+    "html": []
+  },
+  "search": {
+    "css": [
+      "features/search/search.css"
+    ],
+    "js": [
+      "features/search/search.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "provides": [
+      "current-page content search",
+      "optional cross-page search entries"
+    ],
+    "html": [
+      "#searchOverlay",
+      "#searchInput",
+      "#searchResults"
+    ],
+    "api": [
+      "search.openSearch()",
+      "search.closeSearch()",
+      "search.closeSearchOnOverlay(event)",
+      "search.navigateToResult(anchor, sectionId)"
+    ],
+    "config": "window.SEARCH_CONFIG"
+  },
+  "code-tabs": {
+    "css": [
+      "features/code-tabs/code-tabs.css"
+    ],
+    "js": [
+      "features/code-tabs/code-tabs.js"
+    ],
+    "requires": [
+      "base"
+    ],
+    "html": [
+      "[data-code-tabs]",
+      "[data-code-tab][data-code-option]",
+      "[data-code-panel][data-code-option]",
+      "[data-code-tabs-global]",
+      ".code-tabs-global-header"
+    ],
+    "api": [
+      "codeTabs.init(root)",
+      "codeTabs.select(panel, option)",
+      "codeTabs.selectAll(group, option)"
+    ]
+  }
+}

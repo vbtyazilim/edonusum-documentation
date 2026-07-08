@@ -1,0 +1,58 @@
+{
+  "core": {
+    "css": [
+      "feature-packages/core.css"
+    ],
+    "js": [
+      "feature-packages/core.js"
+    ],
+    "provides": [
+      "site shell CSS package",
+      "site shell JS package",
+      "shared navigation and theme behavior"
+    ],
+    "includes": [
+      "base",
+      "author-link",
+      "theme",
+      "docs-layout",
+      "navigation-progress"
+    ],
+    "html": [],
+    "api": [
+      "documentTemplateCore.load()"
+    ]
+  },
+  "full": {
+    "css": [
+      "feature-packages/full.css"
+    ],
+    "js": [
+      "feature-packages/full.js"
+    ],
+    "provides": [
+      "optional full CSS package",
+      "optional full JS package",
+      "single-entry loading for all template features"
+    ],
+    "includes": [
+      "base",
+      "author-link",
+      "theme",
+      "docs-layout",
+      "code-highlight",
+      "copy-code",
+      "copy-table",
+      "code-tabs",
+      "sidemenu",
+      "search",
+      "scroll-top",
+      "reading-progress",
+      "navigation-progress"
+    ],
+    "html": [],
+    "api": [
+      "documentTemplateFull.load()"
+    ]
+  }
+}

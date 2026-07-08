@@ -1,0 +1,151 @@
+/* ============================================================
+   COPY-TABLE.CSS - Copyable key/value tables
+   Dependency: base/base.css
+   ============================================================ */
+
+.copy-table {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 1.25rem 0 1.5rem;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.code-tab-panel .copy-table {
+    margin: 0;
+}
+
+.copy-table table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.copy-table th {
+    padding: .75rem 1rem;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    font-size: .76rem;
+    font-weight: 750;
+    text-align: left;
+}
+
+.copy-table th:first-child,
+.copy-table td:first-child {
+    width: 30%;
+}
+
+.copy-table td {
+    padding: .7rem 1rem;
+    vertical-align: middle;
+    background: transparent;
+}
+
+.copy-table tr {
+    border-bottom: 1px solid var(--border);
+}
+
+.copy-table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+.copy-table-key {
+    overflow-wrap: anywhere;
+    color: var(--text);
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: .8rem;
+    line-height: 1.55;
+}
+
+.copy-table-value {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: .75rem;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: .55rem .55rem .55rem .8rem;
+    color: var(--code-text);
+    background: var(--code-surface);
+    border: 1px solid var(--code-border);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+}
+
+.copy-table-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+    font-size: .78rem;
+    line-height: 1.7;
+}
+
+.copy-table-button {
+    flex: 0 0 auto;
+    min-width: 3rem;
+    min-height: 1.8rem;
+    padding: .35rem .65rem;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+    font-size: .72rem;
+    font-weight: 650;
+    line-height: 1;
+    transition:
+        color .18s ease,
+        background-color .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease;
+}
+
+.copy-table-button:hover {
+    color: var(--text);
+    background: var(--surface-2);
+    border-color: var(--brand-border);
+}
+
+.copy-table-button:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
+.copy-table-button.is-copied {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.copy-table-button.is-error {
+    color: var(--error);
+    border-color: var(--error);
+}
+
+@media (max-width: 720px) {
+    .copy-table {
+        overflow-x: auto;
+    }
+
+    .copy-table table {
+        min-width: 640px;
+    }
+
+    .copy-table th:first-child,
+    .copy-table td:first-child {
+        width: 42%;
+    }
+}
+
+@media print {
+    .copy-table-button {
+        display: none;
+    }
+
+    .copy-table-value {
+        display: block;
+    }
+}

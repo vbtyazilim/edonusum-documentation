@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Example article cover</title>
+  <desc id="desc">A neutral article cover image used to demonstrate content figure styling.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="70" y="70" width="1060" height="490" rx="28" fill="#ffffff" stroke="#dbe4ee" stroke-width="2"/>
+  <rect x="130" y="130" width="230" height="48" rx="24" fill="#eef2ff"/>
+  <text x="155" y="162" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#4f46e5">ARTICLE</text>
+  <text x="130" y="265" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="60" font-weight="800" fill="#111827">Document Visual</text>
+  <text x="130" y="335" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="500" fill="#475569">Shared figure frame and caption example</text>
+  <g transform="translate(820 190)">
+    <circle cx="92" cy="92" r="92" fill="#e0f2fe"/>
+    <path d="M38 106h108" stroke="#0284c7" stroke-width="14" stroke-linecap="round"/>
+    <path d="M58 75h68" stroke="#0284c7" stroke-width="14" stroke-linecap="round"/>
+    <path d="M77 137h31" stroke="#0284c7" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <text x="130" y="505" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" fill="#64748b">Vbt Document Template</text>
+</svg>

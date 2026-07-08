@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-Gider Pusulası Nedir? — e-Gider Pusulası</title>
+<meta name="description" content="e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.">
+
+<meta name="author" content="Erdem Özkara">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+.docs-article script.code-block { display: none; }
+.docs-article .badge-required,
+.docs-article .badge-optional,
+.docs-article .badge-conditional { white-space: nowrap; }
+</style>
+</head>
+<body class="docs-page">
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
+<nav class="docs-top-links"><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="../../../index.html">Ana Sayfa</a></nav>
+<div class="docs-top-actions">
+<a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a>
+<button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button>
+<button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Tema değiştir"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Dark</span></button>
+</div></div></header>
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link active" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="gib-paketi-referansi.html">GİB Paketi Referansı</a>
+</div></div></aside>
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<header class="docs-article-header"><p class="docs-eyebrow">Başlangıç</p><h1>e-Gider Pusulası Nedir?</h1><p class="docs-lead">e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.</p></header>
+<section id="section-egider-pusulasi-nedir">
+<h3 id="h-temel-kavram">Temel Kavram</h3>
+            <p>Gider pusulası, bir işletmenin <strong>fatura kesemeyen kişilerden</strong> mal veya hizmet satın aldığında düzenlediği vergi belgesidir. Alıcı: KDV mükellefi olmayan gerçek kişiler — serbest meslek erbabı, esnaf olmayan bireyler veya yabancı uyruklular.</p>
+            <p><strong>e-Gider Pusulası</strong> bu belgenin elektronik formudur. UBL-TR standardında üretilir, e-imza ile kesinleştirilir ve GİB'e bildirilir.</p>
+
+            <div class="callout callout-info"><b>💡 Örnek:</b> Firma, bağımsız bir tamirciye iş yaptırıp ödeme yapıyor. Tamirci vergi mükellefi olmadığı için fatura kesemiyor → firma e-Gider Pusulası düzenler.</div>
+
+            <h3 id="h-belge-tipleri">Belge Tipleri</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>Tip</th><th>İş Anlamı</th><th>Örnek</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>SATIS</code></td><td>KDV mükellefi olmayanlardan satın alma <strong>veya</strong> depozito bedeli geri ödeme</td><td>Tamirciye ödeme; depozitosu olan şişe iade</td></tr>
+                        <tr><td><code>IADE</code></td><td>Nihai tüketicilere satılan malların iadesi</td><td>Müşteri daha önce aldığı ürünü geri getirdi</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="callout callout-warning"><b>⚠️ Depozito İadesi = SATIS</b> — GİB kılavuzunda depozito iade senaryosu açıkça SATIS kapsamında tanımlanmıştır, IADE değildir.</div>
+
+            <h3 id="h-iki-ayri-xml">İki Ayrı XML</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>XML</th><th>Amaç</th><th>Standart</th><th>Üretim</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>UBL XML</strong></td><td>Her belge için — imzalanır, saklanır</td><td>UBL 2.1 CreditNote</td><td>Anlık</td></tr>
+                        <tr><td><strong>GİB Rapor XML</strong></td><td>Dönemdeki TÜM belgelerin toplu GİB bildirimi</td><td>eArsiv XSD</td><td>Periyodik job</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="h-yasam-dongusu">Belge Yaşam Döngüsü</h3>
+            <div class="diagram-wrapper">
+                <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                    .diagram-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:10}
+                    .diagram-brand-box{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.5;rx:10}
+                    .diagram-success-box{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:10}
+                    .diagram-error-box{fill:var(--svg-err-bg);stroke:var(--svg-err-s);stroke-width:1.5;rx:10}
+                    .diagram-main-text{fill:var(--svg-text);font:600 11px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+                    .diagram-muted-text{fill:var(--svg-muted);font:10px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+                    .diagram-connector{stroke:var(--svg-line);stroke-width:1.4;fill:none;stroke-dasharray:6 4;animation:dash .8s linear infinite}
+                    .diagram-arrow-head{fill:var(--svg-line)}
+                    </style>
+                    <defs><marker id="lifecycle-arrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" class="diagram-arrow-head"/></marker></defs>
+                    <!-- Row 1 -->
+                    <rect class="diagram-box" x="5" y="25" width="120" height="44"/>
+                    <text class="diagram-main-text" x="65" y="42">API Request</text>
+                    <text class="diagram-muted-text" x="65" y="58">(JSON)</text>
+                    <path class="diagram-connector" d="M125,47 L158,47" marker-end="url(#lifecycle-arrow)"/>
+                    <rect class="diagram-box" x="163" y="25" width="110" height="44"/>
+                    <text class="diagram-main-text" x="218" y="47">Validasyon</text>
+                    <path class="diagram-connector" d="M273,47 L306,47" marker-end="url(#lifecycle-arrow)"/>
+                    <rect class="diagram-brand-box" x="311" y="25" width="130" height="44"/>
+                    <text class="diagram-main-text" x="376" y="40">UBL XML Üret</text>
+                    <text class="diagram-muted-text" x="376" y="57">+ e-İmza</text>
+                    <path class="diagram-connector" d="M441,47 L474,47" marker-end="url(#lifecycle-arrow)"/>
+                    <rect class="diagram-success-box" x="479" y="25" width="100" height="44"/>
+                    <text class="diagram-main-text" x="529" y="42" style="fill:var(--svg-ok-s)">DB Kayıt ✓</text>
+                    <path class="diagram-connector" d="M579,47 L612,47" marker-end="url(#lifecycle-arrow)"/>
+                    <rect class="diagram-success-box" x="617" y="25" width="170" height="44"/>
+                    <text class="diagram-main-text" x="702" y="40" style="fill:var(--svg-ok-s)">Yanıt Dön</text>
+                    <text class="diagram-muted-text" x="702" y="57">ExpenseVoucherNumber + Ettn</text>
+                    <!-- Down -->
+                    <path class="diagram-connector" d="M529,69 L529,105" marker-end="url(#lifecycle-arrow)"/>
+                    <!-- Row 2 -->
+                    <rect class="diagram-box" x="440" y="110" width="180" height="44"/>
+                    <text class="diagram-main-text" x="530" y="127">Periyodik Rapor Job</text>
+                    <text class="diagram-muted-text" x="530" y="143">Otomatik</text>
+                    <path class="diagram-connector" d="M440,132 L383,132" marker-end="url(#lifecycle-arrow)"/>
+                    <rect class="diagram-brand-box" x="255" y="110" width="123" height="44"/>
+                    <text class="diagram-main-text" x="316" y="132">GİB Rapor XML</text>
+                    <path class="diagram-connector" d="M255,132 L198,132" marker-end="url(#lifecycle-arrow)"/>
+                    <rect class="diagram-box" x="80" y="110" width="113" height="44"/>
+                    <text class="diagram-main-text" x="136" y="132">GİB'e Gönder</text>
+                    <!-- Results -->
+                    <path class="diagram-connector" d="M115,154 L90,192" marker-end="url(#lifecycle-arrow)"/>
+                    <path class="diagram-connector" d="M158,154 L183,192" marker-end="url(#lifecycle-arrow)"/>
+                    <rect class="diagram-success-box" x="40" y="197" width="90" height="36"/>
+                    <text class="diagram-main-text" x="85" y="215" style="fill:var(--svg-ok-s)">✓ KABUL</text>
+                    <rect class="diagram-error-box" x="145" y="197" width="90" height="36"/>
+                    <text class="diagram-main-text" x="190" y="215" style="fill:var(--svg-err-s)">✗ RED</text>
+                    <text class="diagram-muted-text" x="190" y="248">Düzelt → Sonraki döngü</text>
+                    <!-- Labels -->
+                    <text class="diagram-muted-text" x="65" y="16" style="font-style:italic">Entegratör tetikler</text>
+                    <text class="diagram-muted-text" x="530" y="100" style="font-style:italic">Platform otomatik yönetir</text>
+                </svg>
+            </div>
+
+            <h3 id="h-iptal-akisi">İptal Akışı</h3>
+            <div class="diagram-wrapper">
+                <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                    .cancel-flow-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:8}
+                    .cancel-flow-question{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.5;rx:6}
+                    .cancel-flow-success{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:8}
+                    .cancel-flow-error{fill:var(--svg-err-bg);stroke:var(--svg-err-s);stroke-width:1.5;rx:8}
+                    .cancel-flow-main-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+                    .cancel-flow-muted-text{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}
+                    .cancel-flow-connector{stroke:var(--svg-line);stroke-width:1.2;fill:none;stroke-dasharray:5 3;animation:dash 1s linear infinite}
+                    </style>
+                    <defs><marker id="cancel-flow-arrow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs>
+                    <rect class="cancel-flow-box" x="5" y="50" width="100" height="36"/>
+                    <text class="cancel-flow-main-text" x="55" y="68">İptal Talebi</text>
+                    <path class="cancel-flow-connector" d="M105,68 L145,68" marker-end="url(#cancel-flow-arrow)"/>
+                    <rect class="cancel-flow-question" x="150" y="45" width="120" height="45"/>
+                    <text class="cancel-flow-main-text" x="210" y="68">Belge Durumu?</text>
+                    <!-- İmzalanmamış -->
+                    <path class="cancel-flow-connector" d="M210,90 L210,125" marker-end="url(#cancel-flow-arrow)"/>
+                    <text class="cancel-flow-muted-text" x="228" y="110">İmzalanmamış</text>
+                    <rect class="cancel-flow-error" x="155" y="130" width="110" height="30"/>
+                    <text class="cancel-flow-main-text" x="210" y="145" style="fill:var(--svg-err-s)">İptal edilemez</text>
+                    <!-- Raporlanmamış -->
+                    <path class="cancel-flow-connector" d="M270,58 L355,40" marker-end="url(#cancel-flow-arrow)"/>
+                    <text class="cancel-flow-muted-text" x="320" y="38">Raporlanmamış</text>
+                    <rect class="cancel-flow-success" x="360" y="22" width="120" height="36"/>
+                    <text class="cancel-flow-main-text" x="420" y="40" style="fill:var(--svg-ok-s)">Doğrudan İptal ✓</text>
+                    <!-- Raporlanmış -->
+                    <path class="cancel-flow-connector" d="M270,78 L355,95" marker-end="url(#cancel-flow-arrow)"/>
+                    <text class="cancel-flow-muted-text" x="320" y="100">Raporlanmış</text>
+                    <rect class="cancel-flow-box" x="360" y="80" width="125" height="36"/>
+                    <text class="cancel-flow-main-text" x="422" y="98">İptal Raporu Üret</text>
+                    <path class="cancel-flow-connector" d="M485,98 L525,98" marker-end="url(#cancel-flow-arrow)"/>
+                    <rect class="cancel-flow-success" x="530" y="80" width="130" height="36"/>
+                    <text class="cancel-flow-main-text" x="595" y="93">GİB'e Bildir</text>
+                    <text class="cancel-flow-main-text" x="595" y="107" style="fill:var(--svg-ok-s)">✓</text>
+                </svg>
+            </div>
+</section>
+<nav class="docs-pagination">
+<span></span>
+<a class="docs-page-link docs-page-next" href="gib-teknik-gereksinimleri.html"><span>Sonraki</span><strong>GİB Teknik Gereksinimleri</strong></a>
+</nav>
+</article></main>
+<aside class="docs-toc"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"GİB Teknik Gereksinimleri","text":"UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"GİB Paketi Referansı","text":"Resmi GİB paketi, teknik kılavuz, UBL-TR dosyaları ve kullanım kaynakları.","keywords":"Kaynaklar","url":"gib-paketi-referansi.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:"readingProgress",contentSelector:".docs-article"};</script>
+
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+</body>
+</html>

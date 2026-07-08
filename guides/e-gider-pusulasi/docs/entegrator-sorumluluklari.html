@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entegratör Sorumlulukları — e-Gider Pusulası</title>
+<meta name="description" content="Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.">
+
+<meta name="author" content="Erdem Özkara">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+.docs-article script.code-block { display: none; }
+.docs-article .badge-required,
+.docs-article .badge-optional,
+.docs-article .badge-conditional { white-space: nowrap; }
+</style>
+</head>
+<body class="docs-page">
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
+<nav class="docs-top-links"><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="../../../index.html">Ana Sayfa</a></nav>
+<div class="docs-top-actions">
+<a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a>
+<button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button>
+<button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Tema değiştir"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Dark</span></button>
+</div></div></header>
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link active" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="gib-paketi-referansi.html">GİB Paketi Referansı</a>
+</div></div></aside>
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<header class="docs-article-header"><p class="docs-eyebrow">Sorumluluklar</p><h1>Entegratör Sorumlulukları</h1><p class="docs-lead">Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.</p></header>
+<section id="section-entegrator-sorumluluklari">
+<h3 id="h-veri-sorumluluk">Veri Sorumluluk Tablosu</h3>
+<p>Entegratörün (ERP/POS) <strong>API çağırmadan önce</strong> sağlaması gerekenler:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Veri</th><th>Kim Üretir</th><th>Entegratör Ne Yapmalı</th><th>Hata</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td><b>SMS/İade Kodu</b></td><td>3. parti sağlayıcı</td><td>Kodu doğrulatıp sonra platforma gönder</td><td>GİB reddi</td></tr>
+                        <tr><td>2</td><td><b>Sağlayıcı bilgileri</b></td><td>Doğrulama firması</td><td>VKN + uygulama adı set et</td><td>GİB reddi</td></tr>
+                        <tr><td>3</td><td><b>İade belgesi bilgisi</b></td><td>Kendi sistemi</td><td>Orijinal belge no/tarih/tür bul</td><td>Validasyon hatası</td></tr>
+                        <tr><td>4</td><td><b>Kargo firma kodu</b></td><td>Platform (<code>CargoCompanies/GetAll</code>)</td><td>Endpointten kargo listesini çek, <code>CargoCompanyCode</code> gönder — detay bilgiyi platform doldurur</td><td>RED</td></tr>
+                        <tr><td>5</td><td><b>Gerçek kimlik</b></td><td>Müşteri</td><td>BELGESIZ iadede doğrula</td><td>GİB reddi</td></tr>
+                        <tr><td>6</td><td><b>ChannelCodeName</b></td><td>Entegratör</td><td>İşlem tipine göre seç</td><td>Validasyon hatası</td></tr>
+                        <tr><td>7</td><td><b>Telefon</b></td><td>Müşteri</td><td>0XXXXXXXXXX formatında gönder</td><td>Format hatası</td></tr>
+                        <tr><td>8</td><td><b>Vekil bilgisi</b></td><td>Entegratör</td><td>6 alanı eksiksiz doldur</td><td>EGP0054</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="h-adim-sureci">Adım Süreci</h3>
+            <div class="diagram-wrapper">
+                <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg">
+                <style>
+                .sb{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.4;rx:7}
+                .sq{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.4;rx:6}
+                .so{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.4;rx:7}
+                .st{fill:var(--svg-text);font:600 10px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+                .ss{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}
+                .sl{stroke:var(--svg-line);stroke-width:1.1;fill:none;stroke-dasharray:4 3;animation:dash .9s linear infinite}
+                </style>
+                <defs><marker id="a4" markerWidth="5" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0,5 2,0 4" fill="var(--svg-line)"/></marker></defs>
+                <!-- SATIS lane -->
+                <text class="st" x="120" y="12" style="fill:var(--svg-brand-s)">SATIS</text>
+                <rect class="sb" x="30" y="20" width="180" height="26"/>
+                <text class="st" x="120" y="33">SMS sağlayıcı çağır → kod al</text>
+                <path class="sl" d="M120,46 L120,56" marker-end="url(#a4)"/>
+                <rect class="sb" x="30" y="59" width="180" height="26"/>
+                <text class="st" x="120" y="72">Müşteriden kodu doğrula</text>
+                <path class="sl" d="M120,85 L120,95" marker-end="url(#a4)"/>
+                <rect class="so" x="30" y="98" width="180" height="26"/>
+                <text class="st" x="120" y="111" style="fill:var(--svg-ok-s)">API'ye gönder ✓</text>
+
+                <!-- IADE Yüz yüze lane -->
+                <text class="st" x="380" y="12" style="fill:var(--svg-brand-s)">IADE (Yüz yüze)</text>
+                <rect class="sb" x="290" y="20" width="180" height="26"/>
+                <text class="st" x="380" y="33">SMS veya iade kodu doğrula</text>
+                <path class="sl" d="M380,46 L380,56" marker-end="url(#a4)"/>
+                <rect class="sb" x="290" y="59" width="180" height="26"/>
+                <text class="st" x="380" y="72">İade belgesi bilgisi hazırla</text>
+                <path class="sl" d="M380,85 L380,95" marker-end="url(#a4)"/>
+                <rect class="sq" x="290" y="98" width="180" height="26"/>
+                <text class="st" x="380" y="111">Vekalet? → 3 alan doldur</text>
+                <path class="sl" d="M380,124 L380,134" marker-end="url(#a4)"/>
+                <rect class="so" x="290" y="137" width="180" height="26"/>
+                <text class="st" x="380" y="150" style="fill:var(--svg-ok-s)">API'ye gönder ✓</text>
+
+                <!-- IADE Kargo lane -->
+                <text class="st" x="640" y="12" style="fill:var(--svg-warn-s)">IADE (Kargo)</text>
+                <rect class="sb" x="550" y="20" width="180" height="26"/>
+                <text class="st" x="640" y="33">İade kodu sağlayıcı çağır</text>
+                <path class="sl" d="M640,46 L640,56" marker-end="url(#a4)"/>
+                <rect class="sb" x="550" y="59" width="180" height="26"/>
+                <text class="st" x="640" y="72">Kargo bilgilerini al</text>
+                <path class="sl" d="M640,85 L640,95" marker-end="url(#a4)"/>
+                <rect class="sb" x="550" y="98" width="180" height="26"/>
+                <text class="st" x="640" y="111">İade belgesi hazırla</text>
+                <path class="sl" d="M640,124 L640,134" marker-end="url(#a4)"/>
+                <rect class="so" x="550" y="137" width="180" height="26"/>
+                <text class="st" x="640" y="150" style="fill:var(--svg-ok-s)">API'ye gönder ✓</text>
+
+                <!-- Note -->
+                <text class="ss" x="380" y="195">Platform kod geçerliliğini kontrol etmez — sadece alanların dolu olup olmadığını kontrol eder.</text>
+                <text class="ss" x="380" y="210">Kodun gerçekten doğrulanmış olması tamamen entegratörün sorumluluğundadır.</text>
+                </svg>
+            </div>
+</section>
+<nav class="docs-pagination">
+<a class="docs-page-link docs-page-previous" href="kullanim-senaryolari.html"><span>Önceki</span><strong>Kullanım Senaryoları</strong></a>
+<a class="docs-page-link docs-page-next" href="platform-sorumluluklari.html"><span>Sonraki</span><strong>Platform Sorumlulukları</strong></a>
+</nav>
+</article></main>
+<aside class="docs-toc"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"GİB Paketi Referansı","text":"Resmi GİB paketi, teknik kılavuz, UBL-TR dosyaları ve kullanım kaynakları.","keywords":"Kaynaklar","url":"gib-paketi-referansi.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:"readingProgress",contentSelector:".docs-article"};</script>
+
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+</body>
+</html>
