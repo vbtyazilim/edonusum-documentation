@@ -8,6 +8,7 @@
     "provides": [
       "design tokens",
       "common document styles",
+      "accented inline code tokens",
       "header-actions layout",
       "skip-link accessibility",
       "optional section dividers",
@@ -54,6 +55,7 @@
       "mobile navigation drawer",
       "previous and next page navigation",
       "VBT brand mark",
+      "borderless VBT brand mark in document headers",
       "standard favicon assets",
       "home hero with brand mark layout"
     ],

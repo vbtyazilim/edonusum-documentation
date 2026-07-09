@@ -7,6 +7,19 @@
 <meta name="description" content="Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.">
 
 <meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/entegrator-sorumluluklari.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Entegratör Sorumlulukları — e-Gider Pusulası">
+<meta property="og:description" content="Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/entegrator-sorumluluklari.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/vbt-document-template/assets/vbt-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Entegratör Sorumlulukları — e-Gider Pusulası">
+<meta name="twitter:description" content="Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/vbt-document-template/assets/vbt-mark.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
@@ -39,7 +52,7 @@
 <aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
 <div class="docs-nav-label">Başlangıç</div>
 <a class="docs-nav-link" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
-<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Uygulama</div>
@@ -48,10 +61,15 @@
 <a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
 </div>
 <div class="docs-nav-group">
-<div class="docs-nav-label">Referans</div>
+<div class="docs-nav-label">API</div>
 <a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
 <a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
-<a class="docs-nav-link" href="gib-paketi-referansi.html">GİB Paketi Referansı</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
 <a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
 </div></div></aside>
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
@@ -78,6 +96,7 @@
             </div>
 
             <h3 id="h-adim-sureci">Adım Süreci</h3>
+<p>Entegratör tarafındaki hazırlık süreci, belge senaryosu ve doğrulama bilgisinin doğru kurulmasıyla başlar; akış bu hazırlığın API gönderimine nasıl bağlandığını gösterir.</p>
             <div class="diagram-wrapper">
                 <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg">
                 <style>
@@ -134,7 +153,7 @@
                 </svg>
             </div>
 </section>
-<nav class="docs-pagination">
+<nav class="docs-pagination" aria-label="Sayfalar">
 <a class="docs-page-link docs-page-previous" href="kullanim-senaryolari.html"><span>Önceki</span><strong>Kullanım Senaryoları</strong></a>
 <a class="docs-page-link docs-page-next" href="platform-sorumluluklari.html"><span>Sonraki</span><strong>Platform Sorumlulukları</strong></a>
 </nav>
@@ -143,7 +162,7 @@
 </div>
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"GİB Paketi Referansı","text":"Resmi GİB paketi, teknik kılavuz, UBL-TR dosyaları ve kullanım kaynakları.","keywords":"Kaynaklar","url":"gib-paketi-referansi.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:"readingProgress",contentSelector:".docs-article"};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratör request alanlarının UBL CreditNote XML karşılıkları.","keywords":"API","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 </body>

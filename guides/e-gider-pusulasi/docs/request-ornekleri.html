@@ -7,6 +7,19 @@
 <meta name="description" content="SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.">
 
 <meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/request-ornekleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Request Örnekleri — e-Gider Pusulası">
+<meta property="og:description" content="SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/request-ornekleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/vbt-document-template/assets/vbt-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Request Örnekleri — e-Gider Pusulası">
+<meta name="twitter:description" content="SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/vbt-document-template/assets/vbt-mark.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
@@ -39,7 +52,7 @@
 <aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
 <div class="docs-nav-label">Başlangıç</div>
 <a class="docs-nav-link" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
-<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Uygulama</div>
@@ -48,10 +61,15 @@
 <a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
 </div>
 <div class="docs-nav-group">
-<div class="docs-nav-label">Referans</div>
+<div class="docs-nav-label">API</div>
 <a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
 <a class="docs-nav-link active" href="request-ornekleri.html">Request Örnekleri</a>
-<a class="docs-nav-link" href="gib-paketi-referansi.html">GİB Paketi Referansı</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
 <a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
 </div></div></aside>
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
@@ -84,6 +102,7 @@
 
             <!-- Ex 1: S1 -->
             <h3 id="ex1">Örnek 1: SATIS — Normal Satın Alma, SMS ile</h3>
+<p>Request gövdesi, SATIS — Normal Satın Alma, SMS ile akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S1</span></summary>
                 <div class="example-body">
                     <p>KDV mükellefi olmayan gerçek kişiden hizmet alımı. <code>SMS_PROVIDER</code> + <code>SMS</code>.</p>
@@ -159,6 +178,7 @@
 
             <!-- Ex 2: S3 — Yabancı SATIS (türetildi) -->
             <h3 id="ex2">Örnek 2: SATIS — Yabancı Uyruklu, SMS ile</h3>
+<p>Request gövdesi, SATIS — Yabancı Uyruklu, SMS ile akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S3</span></summary>
                 <div class="example-body">
                     <p>Yabancı uyruklu kişiden hizmet alımı. <code>SchemeId = PASAPORTNO</code>.</p>
@@ -234,6 +254,7 @@
 
             <!-- Ex 3: I1 -->
             <h3 id="ex3">Örnek 3: IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu</h3>
+<p>Request gövdesi, IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I1</span></summary>
                 <div class="example-body">
                     <p>Müşteri kasada, iade kodu doğrulanmış. <code>IADE_PROVIDER</code> + <code>IADEKODU</code>.</p>
@@ -314,6 +335,7 @@
 
             <!-- Ex 4: I2 — Satış fişi (türetildi) -->
             <h3 id="ex4">Örnek 4: IADE — Yüz Yüze, Satış Fişi ile</h3>
+<p>Request gövdesi, IADE — Yüz Yüze, Satış Fişi ile akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I2</span></summary>
                 <div class="example-body">
                     <p>Satış fişine karşılık yüz yüze iade. Örnek 3 ile aynı, sadece <code>ReturnedDocumentReference</code> farklı.</p>
@@ -395,6 +417,7 @@
 
             <!-- Ex 5: I3 — Belgesiz (türetildi) -->
             <h3 id="ex5">Örnek 5: IADE — Yüz Yüze, Belgesiz</h3>
+<p>Request gövdesi, IADE — Yüz Yüze, Belgesiz akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I3</span></summary>
                 <div class="example-body">
                     <p>Karşılığında belge yok. <code>DocumentNumber</code> boş, gerçek TCKN zorunlu.</p>
@@ -475,6 +498,7 @@
 
             <!-- Ex 6: I4 — Yabancı yüz yüze (türetildi) -->
             <h3 id="ex6">Örnek 6: IADE — Yüz Yüze, Yabancı Uyruklu</h3>
+<p>Request gövdesi, IADE — Yüz Yüze, Yabancı Uyruklu akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I4</span></summary>
                 <div class="example-body">
                     <p>Yabancı uyruklu müşteri yüz yüze iade yapıyor. <code>SchemeId = PASAPORTNO</code>.</p>
@@ -556,6 +580,7 @@
 
             <!-- Ex 7: I5 — Kargo, vekalet yok -->
             <h3 id="ex7">Örnek 7: IADE — Kargo, Vekalet Yok</h3>
+<p>Request gövdesi, IADE — Kargo, Vekalet Yok akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I5</span></summary>
                 <div class="example-body">
                     <p>Kargo ile iade, vekil yok. <code>IADE_PROVIDER</code> + <code>IADEKODU</code> + <code>CargoCompanyCode</code>.</p>
@@ -638,6 +663,7 @@
 
             <!-- Ex 8: I6 — Kargo + Yabancı (türetildi) -->
             <h3 id="ex8">Örnek 8: IADE — Kargo, Yabancı Uyruklu</h3>
+<p>Request gövdesi, IADE — Kargo, Yabancı Uyruklu akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I6</span></summary>
                 <div class="example-body">
                     <p>Kargo ile iade, alıcı yabancı. Kargo kuralları uyruğa bakılmaksızın geçerli.</p>
@@ -720,6 +746,7 @@
 
             <!-- Ex 9: I8 — Vekalet, kargo yok -->
             <h3 id="ex9">Örnek 9: IADE — Vekalet, Kargo Yok</h3>
+<p>Request gövdesi, IADE — Vekalet, Kargo Yok akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I8</span></summary>
                 <div class="example-body">
                     <p>Yüz yüze vekalet ile iade. <code>DelegateReceiver</code> dolu, <code>CargoCompanyCode</code> yok.</p>
@@ -806,6 +833,7 @@
 
             <!-- Ex 10: I9 — Vekalet + Yabancı vekil (türetildi) -->
             <h3 id="ex10">Örnek 10: IADE — Vekalet, Yabancı Vekil</h3>
+<p>Request gövdesi, IADE — Vekalet, Yabancı Vekil akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I9</span></summary>
                 <div class="example-body">
                     <p>Orijinal alıcı TC vatandaşı, vekil yabancı uyruklu. Yüz yüze.</p>
@@ -892,6 +920,7 @@
 
             <!-- Ex 11: I10 — Kargo + Vekalet + e-Arşiv -->
             <h3 id="ex11">Örnek 11: IADE — Kargo + Vekalet + e-Arşiv Fatura</h3>
+<p>Request gövdesi, IADE — Kargo + Vekalet + e-Arşiv Fatura akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10</span></summary>
                 <div class="example-body">
                     <p>En karmaşık kombinasyon: kargo + vekil + e-arşiv fatura.</p>
@@ -979,6 +1008,7 @@
 
             <!-- Ex 12: I10 varyant — Kargo + Vekalet + Belgesiz -->
             <h3 id="ex12">Örnek 12: IADE — Kargo + Vekalet + Belgesiz</h3>
+<p>Request gövdesi, IADE — Kargo + Vekalet + Belgesiz akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
                 <div class="example-body">
                     <p>Kargo + vekil + belgesiz iade. DocumentNumber boş, gerçek TCKN zorunlu.</p>
@@ -1064,6 +1094,7 @@
 
             <!-- Ex 13: I10 varyant — Kargo + Vekalet + Satış Fişi -->
             <h3 id="ex13">Örnek 13: IADE — Kargo + Vekalet + Satış Fişi</h3>
+<p>Request gövdesi, IADE — Kargo + Vekalet + Satış Fişi akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
                 <div class="example-body">
                     <p>Kargo + vekil + satış fişi referansı ile iade.</p>
@@ -1148,16 +1179,16 @@
                 </div>
             </details>
 </section>
-<nav class="docs-pagination">
+<nav class="docs-pagination" aria-label="Sayfalar">
 <a class="docs-page-link docs-page-previous" href="api-endpoint-referansi.html"><span>Önceki</span><strong>API Endpoint Referansı</strong></a>
-<a class="docs-page-link docs-page-next" href="gib-paketi-referansi.html"><span>Sonraki</span><strong>GİB Paketi Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="request-ubl-xml-mapping.html"><span>Sonraki</span><strong>Request → UBL XML Mapping</strong></a>
 </nav>
 </article></main>
 <aside class="docs-toc"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
 </div>
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"UBL-TR kuralları, operatör bilgisi, alıcı doğrulama ve GİB rapor alanları.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"GİB Paketi Referansı","text":"Resmi GİB paketi, teknik kılavuz, UBL-TR dosyaları ve kullanım kaynakları.","keywords":"Kaynaklar","url":"gib-paketi-referansi.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:"readingProgress",contentSelector:".docs-article"};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":40,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratör request alanlarının UBL CreditNote XML karşılıkları.","keywords":"API","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 </body>
