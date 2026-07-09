@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vbtyazilim.github.io/sitemap.xml

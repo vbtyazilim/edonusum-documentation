@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Örnekleri — Müstahsil Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/request-ornekleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Request Örnekleri — Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/request-ornekleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/vbt-document-template/assets/vbt-mark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Request Örnekleri — Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/vbt-document-template/assets/vbt-mark.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+</head>
+<body class="docs-page">
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>Müstahsil Makbuzu</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="mustahsil-makbuzu-nedir.html">Rehber</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">İletişim</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="mustahsil-makbuzu-nedir.html">Müstahsil Makbuzu Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
+<a class="docs-nav-link active" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.</p></header>
+<section id="request-ornekleri">
+<h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
+<p>Bu sayfa, her örnekte aynı okuma düzenini izler: önce senaryonun iş anlamı, sonra fark noktası, ardından doğrudan kullanılabilir JSON gövdesi verilir. Örnek seti <code>MUSTAHSILMAKBUZ</code> belge tipi, çiftçi/alıcı tarafları, ürün kalemleri, vergi/kesinti kodları, tevkifat ve iptal akışı etrafında toplanır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Örnek</th><th>Senaryo</th><th>Ayırt Edici Nokta</th></tr></thead><tbody><tr><td>1</td><td>Normal Oluşturma</td><td>Tek ürün kalemi, ek kesintisiz temel belge</td></tr><tr><td>2</td><td>Tevkifatlı İşlem</td><td><code>WithholdingTaxTotal</code> ve net <code>PayableAmount</code></td></tr><tr><td>3</td><td>Çok Kalemli Makbuz</td><td>Aynı çiftçiden birden fazla ürün satırı</td></tr><tr><td>4</td><td>GV Stopajı</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>0003</code></td></tr><tr><td>5</td><td>Borsa Tescil</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>8001</code></td></tr><tr><td>6</td><td>SGK Prim</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>SGK_PRIM</code></td></tr><tr><td>7</td><td>Mera Fonu</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>9040</code></td></tr><tr><td>8</td><td>Çoklu Kesinti</td><td>Birden fazla kesinti kodunun aynı belgede birlikte kullanılması</td></tr><tr><td>9</td><td>İptal</td><td>Belge içeriği yerine iptal modeli ve <code>Signed</code> ön koşulu</td></tr></tbody></table></div>
+<p>Her örnek ilgili senaryoya referans verir.</p>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>Senaryo</th><th>Kalem Sayısı</th><th>Kesinti/Tevkifat</th></tr></thead><tbody>
+<tr><td><a href="#h-ex1">1</a></td><td>Normal Oluşturma</td><td>1</td><td>—</td></tr>
+<tr><td><a href="#h-ex2">2</a></td><td>Tevkifatlı İşlem</td><td>1</td><td><code>WithholdingTaxTotal</code></td></tr>
+<tr><td><a href="#h-ex3">3</a></td><td>Çok Kalemli Makbuz</td><td>2</td><td><code>WithholdingTaxTotal</code></td></tr>
+<tr><td><a href="#h-ex4">4</a></td><td>GV Stopajı</td><td>1</td><td><code>0003</code></td></tr>
+<tr><td><a href="#h-ex5">5</a></td><td>Borsa Tescil</td><td>1</td><td><code>8001</code></td></tr>
+<tr><td><a href="#h-ex6">6</a></td><td>SGK Prim</td><td>1</td><td><code>SGK_PRIM</code></td></tr>
+<tr><td><a href="#h-ex7">7</a></td><td>Mera Fonu</td><td>1</td><td><code>9040</code></td></tr>
+<tr><td><a href="#h-ex8">8</a></td><td>Çoklu Kesinti</td><td>1</td><td><code>TaxTotal.TaxSubtotal[]</code></td></tr>
+<tr><td><a href="#h-ex9">9</a></td><td>İptal</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h3 id="h-ex1">Örnek 1: Normal Oluşturma</h3>
+<p>Request gövdesi, Normal Oluşturma akışını ayırt eden alanları öne çıkarır.</p><details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>KDV mükellefi olmayan bir çiftçiden, ek kesinti olmayan bir tarımsal ürün alımı için Müstahsil Makbuzu oluşturma.</p><pre><code class="language-json">{
+  "CreditNoteExternalId": "ERP-MM-2026-001",
+  "ProfileId": "EARSIVBELGE",
+  "CreditNoteTypeCode": "MUSTAHSILMAKBUZ",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        { "SchemeId": "TCKN", "Value": "12345678901" }
+      ],
+      "PartyName": "Ahmet Çiftçi",
+      "PostalAddress": { "CityName": "Denizli", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        { "SchemeId": "VKN", "Value": "1234567890" }
+      ],
+      "PartyName": "Örnek Tarım Ürünleri A.Ş."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000.00,
+    "TaxExclusiveAmount": 5000.00,
+    "TaxInclusiveAmount": 5000.00,
+    "PayableAmount": 5000.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 0.00,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 5000.00,
+          "TaxAmount": 0.00,
+          "Percent": 0.0,
+          "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } }
+        }
+      ]
+    }
+  ],
+  "CreditNoteLine": [
+    {
+      "Id": "1",
+      "CreditedQuantity": { "UnitCode": "KGM", "Value": 1000 },
+      "LineExtensionAmount": 5000.00,
+      "Item": { "Name": "Yaş Sebze" },
+      "Price": 5.00,
+      "TaxTotal": {
+        "TaxAmount": 0.00,
+        "TaxSubtotal": [
+          { "TaxableAmount": 5000.00, "TaxAmount": 0.00, "Percent": 0.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }
+        ]
+      }
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex2">Örnek 2: Tevkifatlı İşlem</h3>
+<p>Request gövdesi, Tevkifatlı İşlem akışını ayırt eden alanları öne çıkarır.</p><details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>GV STOPAJI tevkifatı uygulanan bir alım; <code>WithholdingTaxTotal</code> hem belge seviyesinde doldurulur, <code>PayableAmount</code> kesinti düşülmüş net tutarı yansıtır.</p><div class="callout callout-info"><b>Fark:</b> Örnek 1'e ek olarak <code>WithholdingTaxTotal</code> alanı doldurulmuştur; <code>PayableAmount</code>, tevkifat tutarı düşülerek hesaplanır (5000 − 250 = 4750).</div><pre><code class="language-json">{
+  "CreditNoteExternalId": "ERP-MM-2026-002",
+  "ProfileId": "EARSIVBELGE",
+  "CreditNoteTypeCode": "MUSTAHSILMAKBUZ",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        { "SchemeId": "TCKN", "Value": "12345678901" }
+      ],
+      "PartyName": "Ahmet Çiftçi",
+      "PostalAddress": { "CityName": "Denizli", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        { "SchemeId": "VKN", "Value": "1234567890" }
+      ],
+      "PartyName": "Örnek Tarım Ürünleri A.Ş."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000.00,
+    "TaxExclusiveAmount": 5000.00,
+    "TaxInclusiveAmount": 5000.00,
+    "PayableAmount": 4750.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 0.00,
+      "TaxSubtotal": [
+        { "TaxableAmount": 5000.00, "TaxAmount": 0.00, "Percent": 0.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }
+      ]
+    }
+  ],
+  "WithholdingTaxTotal": [
+    {
+      "TaxAmount": 250.00,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 5000.00,
+          "TaxAmount": 250.00,
+          "Percent": 5.0,
+          "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } }
+        }
+      ]
+    }
+  ],
+  "CreditNoteLine": [
+    {
+      "Id": "1",
+      "CreditedQuantity": { "UnitCode": "KGM", "Value": 1000 },
+      "LineExtensionAmount": 5000.00,
+      "Item": { "Name": "Yaş Sebze" },
+      "Price": 5.00,
+      "TaxTotal": {
+        "TaxAmount": 0.00,
+        "TaxSubtotal": [
+          { "TaxableAmount": 5000.00, "TaxAmount": 0.00, "Percent": 0.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }
+        ]
+      },
+      "WithholdingTaxTotal": [
+        {
+          "TaxAmount": 250.00,
+          "TaxSubtotal": [
+            { "TaxableAmount": 5000.00, "TaxAmount": 250.00, "Percent": 5.0, "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } } }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex3">Örnek 3: Çok Kalemli Makbuz</h3>
+<p>Request gövdesi, Çok Kalemli Makbuz akışını ayırt eden alanları öne çıkarır.</p><details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Aynı çiftçiden birden fazla ürün kalemi tek makbuzda toplanır; <code>CreditNoteLine</code> dizisine her kalem ayrı eklenir.</p><div class="callout callout-info"><b>💡 Fark:</b> Örnek 2'den tek değişiklik <code>CreditNoteLine</code> dizisine ikinci bir kalem eklenmesi ve toplam tutarların buna göre büyümesidir; belge yapısı aynıdır.</div><pre><code class="language-json">{
+  "CreditNoteExternalId": "ERP-MM-2026-003",
+  "ProfileId": "EARSIVBELGE",
+  "CreditNoteTypeCode": "MUSTAHSILMAKBUZ",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-11T10:30:00",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        { "SchemeId": "TCKN", "Value": "98765432109" }
+      ],
+      "PartyName": "Fatma Üretici",
+      "PostalAddress": { "CityName": "Antalya", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        { "SchemeId": "VKN", "Value": "1234567890" }
+      ],
+      "PartyName": "Örnek Tarım Ürünleri A.Ş."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 8000.00,
+    "TaxExclusiveAmount": 8000.00,
+    "TaxInclusiveAmount": 8000.00,
+    "PayableAmount": 7600.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 0.00,
+      "TaxSubtotal": [
+        { "TaxableAmount": 8000.00, "TaxAmount": 0.00, "Percent": 0.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }
+      ]
+    }
+  ],
+  "WithholdingTaxTotal": [
+    {
+      "TaxAmount": 400.00,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 8000.00,
+          "TaxAmount": 400.00,
+          "Percent": 5.0,
+          "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } }
+        }
+      ]
+    }
+  ],
+  "CreditNoteLine": [
+    {
+      "Id": "1",
+      "CreditedQuantity": { "UnitCode": "KGM", "Value": 500 },
+      "LineExtensionAmount": 5000.00,
+      "Item": { "Name": "Domates" },
+      "Price": 10.00,
+      "TaxTotal": {
+        "TaxAmount": 0.00,
+        "TaxSubtotal": [
+          { "TaxableAmount": 5000.00, "TaxAmount": 0.00, "Percent": 0.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }
+        ]
+      },
+      "WithholdingTaxTotal": [
+        {
+          "TaxAmount": 250.00,
+          "TaxSubtotal": [
+            { "TaxableAmount": 5000.00, "TaxAmount": 250.00, "Percent": 5.0, "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } } }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "2",
+      "CreditedQuantity": { "UnitCode": "KGM", "Value": 600 },
+      "LineExtensionAmount": 3000.00,
+      "Item": { "Name": "Biber" },
+      "Price": 5.00,
+      "TaxTotal": {
+        "TaxAmount": 0.00,
+        "TaxSubtotal": [
+          { "TaxableAmount": 3000.00, "TaxAmount": 0.00, "Percent": 0.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }
+        ]
+      },
+      "WithholdingTaxTotal": [
+        {
+          "TaxAmount": 150.00,
+          "TaxSubtotal": [
+            { "TaxableAmount": 3000.00, "TaxAmount": 150.00, "Percent": 5.0, "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } } }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex4">Örnek 4: GV Stopajı</h3>
+<p>GV stopajı, kod bazında izlenecekse <code>TaxTotal.TaxSubtotal</code> altında <code>0003</code> koduyla gönderilir.</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><p>Bu senaryoda belge root alanları, taraflar ve ürün kalemi normal oluşturma ile aynıdır; fark vergi/kesinti alt toplamında <code>GV STOPAJI</code> satırının bulunmasıdır.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody><tr><td><code>TaxTotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>GV stopajı toplam tutarı</td></tr><tr><td><code>TaxSubtotal[].TaxableAmount</code></td><td><span class="badge-required">Z</span></td><td>Stopaja tabi matrah</td></tr><tr><td><code>TaxSubtotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>Stopaj tutarı</td></tr><tr><td><code>TaxSubtotal[].Percent</code></td><td><span class="badge-required">Z</span></td><td>Stopaj oranı</td></tr><tr><td><code>TaxScheme.Name</code></td><td><span class="badge-required">Z</span></td><td><code>GV STOPAJI</code></td></tr><tr><td><code>TaxScheme.TaxTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>0003</code></td></tr><tr><td><code>LegalMonetaryTotal.PayableAmount</code></td><td><span class="badge-required">Z</span></td><td>Net ödenecek tutar</td></tr></tbody></table></div><pre><code class="language-json">{
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000.00,
+    "TaxExclusiveAmount": 5000.00,
+    "TaxInclusiveAmount": 5000.00,
+    "PayableAmount": 4750.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 250.00,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 5000.00,
+          "TaxAmount": 250.00,
+          "Percent": 5.0,
+          "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } }
+        }
+      ]
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex5">Örnek 5: Borsa Tescil</h3>
+<p>Borsa tescil kesintisi, <code>TaxTotal.TaxSubtotal</code> altında <code>8001</code> koduyla ayrı bir alt toplam olarak taşınır.</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><p>Bu örnekte yalnızca borsa tescil kesintisi gösterilir; başka kesinti varsa ayrı <code>TaxSubtotal</code> satırı eklenir.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody><tr><td><code>TaxTotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>Borsa tescil toplam tutarı</td></tr><tr><td><code>TaxSubtotal[].TaxableAmount</code></td><td><span class="badge-required">Z</span></td><td>Kesintiye tabi matrah</td></tr><tr><td><code>TaxSubtotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>Kesinti tutarı</td></tr><tr><td><code>TaxSubtotal[].Percent</code></td><td><span class="badge-required">Z</span></td><td>Kesinti oranı</td></tr><tr><td><code>TaxScheme.Name</code></td><td><span class="badge-required">Z</span></td><td><code>BORSA TES.ÜC.</code></td></tr><tr><td><code>TaxScheme.TaxTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>8001</code></td></tr><tr><td><code>LegalMonetaryTotal.PayableAmount</code></td><td><span class="badge-required">Z</span></td><td>Net ödenecek tutar</td></tr></tbody></table></div><pre><code class="language-json">{
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000.00,
+    "TaxExclusiveAmount": 5000.00,
+    "TaxInclusiveAmount": 5000.00,
+    "PayableAmount": 4950.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 50.00,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 5000.00,
+          "TaxAmount": 50.00,
+          "Percent": 1.0,
+          "TaxCategory": { "TaxScheme": { "Name": "BORSA TES.ÜC.", "TaxTypeCode": "8001" } }
+        }
+      ]
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex6">Örnek 6: SGK Prim</h3>
+<p>SGK prim kesintisi <code>SGK_PRIM</code> koduyla <code>TaxTotal.TaxSubtotal</code> altında gönderilir.</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><p>Bu senaryo yalnızca SGK prim kesintisinin teknik alanlarını izole eder.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody><tr><td><code>TaxTotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>SGK prim toplam tutarı</td></tr><tr><td><code>TaxSubtotal[].TaxableAmount</code></td><td><span class="badge-required">Z</span></td><td>Kesintiye tabi matrah</td></tr><tr><td><code>TaxSubtotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>Kesinti tutarı</td></tr><tr><td><code>TaxSubtotal[].Percent</code></td><td><span class="badge-required">Z</span></td><td>Kesinti oranı</td></tr><tr><td><code>TaxScheme.Name</code></td><td><span class="badge-required">Z</span></td><td><code>SGK PRIM KESINTISI</code></td></tr><tr><td><code>TaxScheme.TaxTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>SGK_PRIM</code></td></tr><tr><td><code>LegalMonetaryTotal.PayableAmount</code></td><td><span class="badge-required">Z</span></td><td>Net ödenecek tutar</td></tr></tbody></table></div><pre><code class="language-json">{
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000.00,
+    "TaxExclusiveAmount": 5000.00,
+    "TaxInclusiveAmount": 5000.00,
+    "PayableAmount": 4970.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 30.00,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 5000.00,
+          "TaxAmount": 30.00,
+          "Percent": 0.6,
+          "TaxCategory": { "TaxScheme": { "Name": "SGK PRIM KESINTISI", "TaxTypeCode": "SGK_PRIM" } }
+        }
+      ]
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex7">Örnek 7: Mera Fonu</h3>
+<p>Mera fonu kesintisi, <code>TaxTotal.TaxSubtotal</code> altında <code>9040</code> koduyla taşınır.</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><p>Bu örnek, mera fonu için gerekli alt toplam alanlarını diğer kesintilerden bağımsız gösterir.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody><tr><td><code>TaxTotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>Mera fonu toplam tutarı</td></tr><tr><td><code>TaxSubtotal[].TaxableAmount</code></td><td><span class="badge-required">Z</span></td><td>Kesintiye tabi matrah</td></tr><tr><td><code>TaxSubtotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>Kesinti tutarı</td></tr><tr><td><code>TaxSubtotal[].Percent</code></td><td><span class="badge-required">Z</span></td><td>Kesinti oranı</td></tr><tr><td><code>TaxScheme.Name</code></td><td><span class="badge-required">Z</span></td><td><code>MERA FONU</code></td></tr><tr><td><code>TaxScheme.TaxTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>9040</code></td></tr><tr><td><code>LegalMonetaryTotal.PayableAmount</code></td><td><span class="badge-required">Z</span></td><td>Net ödenecek tutar</td></tr></tbody></table></div><pre><code class="language-json">{
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000.00,
+    "TaxExclusiveAmount": 5000.00,
+    "TaxInclusiveAmount": 5000.00,
+    "PayableAmount": 4975.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 25.00,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 5000.00,
+          "TaxAmount": 25.00,
+          "Percent": 0.5,
+          "TaxCategory": { "TaxScheme": { "Name": "MERA FONU", "TaxTypeCode": "9040" } }
+        }
+      ]
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex8">Örnek 8: Çoklu Kesinti</h3>
+<p>Birden fazla kesinti aynı makbuzda uygulanıyorsa her kesinti ayrı <code>TaxSubtotal</code> satırı olarak gönderilir.</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><p>Çoklu kesintide <code>TaxTotal[].TaxAmount</code>, alt satırlardaki <code>TaxAmount</code> toplamıyla uyumlu olmalıdır; <code>PayableAmount</code> tek net sonucu gösterir.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody><tr><td><code>TaxTotal[].TaxAmount</code></td><td><span class="badge-required">Z</span></td><td>Tüm kesinti satırlarının toplamı</td></tr><tr><td><code>TaxSubtotal[]</code></td><td><span class="badge-required">Z</span></td><td>Her kesinti için ayrı satır</td></tr><tr><td><code>TaxScheme.Name</code></td><td><span class="badge-required">Z</span></td><td>Kodla uyumlu ad</td></tr><tr><td><code>TaxScheme.TaxTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>0003</code>, <code>8001</code>, <code>SGK_PRIM</code>, <code>9040</code></td></tr><tr><td><code>CreditNoteLine[].TaxTotal</code></td><td><span class="badge-conditional">Ş</span></td><td>Satır seviyesinde izlenecekse aynı kod dağılımı</td></tr><tr><td><code>LegalMonetaryTotal.PayableAmount</code></td><td><span class="badge-required">Z</span></td><td>Net ödenecek tutar</td></tr></tbody></table></div><pre><code class="language-json">{
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000.00,
+    "TaxExclusiveAmount": 5000.00,
+    "TaxInclusiveAmount": 5000.00,
+    "PayableAmount": 4645.00
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 355.00,
+      "TaxSubtotal": [
+        { "TaxableAmount": 5000.00, "TaxAmount": 250.00, "Percent": 5.0, "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } } },
+        { "TaxableAmount": 5000.00, "TaxAmount": 50.00, "Percent": 1.0, "TaxCategory": { "TaxScheme": { "Name": "BORSA TES.ÜC.", "TaxTypeCode": "8001" } } },
+        { "TaxableAmount": 5000.00, "TaxAmount": 30.00, "Percent": 0.6, "TaxCategory": { "TaxScheme": { "Name": "SGK PRIM KESINTISI", "TaxTypeCode": "SGK_PRIM" } } },
+        { "TaxableAmount": 5000.00, "TaxAmount": 25.00, "Percent": 0.5, "TaxCategory": { "TaxScheme": { "Name": "MERA FONU", "TaxTypeCode": "9040" } } }
+      ]
+    }
+  ]
+}</code></pre></div></details><h3 id="h-ex9">Örnek 9: İptal</h3>
+<p>Request gövdesi, İptal akışını ayırt eden alanları öne çıkarır.</p><details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Yalnızca <code>Signed</code> durumundaki bir makbuz için geçerlidir.</p><div class="callout callout-warning"><b>Fark:</b> Bu örnek farklı bir endpoint (<code>CancelOutgoingCreditNote</code>) ve model (<code>CreditNoteCancelRequestModel</code>) kullanır; <code>CreditNoteLine</code>/<code>LegalMonetaryTotal</code> gibi belge içeriği alanları burada yer almaz.</div><pre><code class="language-json">{
+  "CreditNoteExternalId": "ERP-MM-2026-001",
+  "Ettn": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "CreditNoteNumber": "MMB2026000000001",
+  "EArchiveStatus": 2,
+  "EArchiveCancelDescription": "Mükerrer kayıt"
+}</code></pre></div></details>
+</section>
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="api-endpoint-referansi.html"><span>Önceki</span><strong>API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="request-ubl-xml-mapping.html"><span>Sonraki</span><strong>Request → UBL XML Mapping</strong></a>
+</nav>
+</article></main>
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Ara..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"Müstahsil Makbuzu Nedir?","text":"Müstahsil Makbuzu'nun kapsamı, belge tipi, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"mustahsil-makbuzu-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal, kesintili, çok kalemli oluşturma ve iptal akışları için karar ağacı.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, alt modeller ve response alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratör request alanlarının UBL CreditNote XML karşılıkları.","keywords":"API","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"Müstahsil Makbuzu rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+</body>
+</html>
