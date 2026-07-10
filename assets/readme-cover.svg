@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">VBT e-Dönüşüm Dokümantasyonu</title>
+  <desc id="desc">VBT e-Dönüşüm ürünleri için müşteri ve entegratör dokümantasyon kartı.</desc>
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect x="70" y="70" width="1060" height="490" rx="28" fill="#ffffff" stroke="#dbe4ee" stroke-width="2"/>
+  <rect x="130" y="130" width="250" height="48" rx="24" fill="#fff1f1"/>
+  <text x="155" y="162" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#d21e1e">VBT GUIDE</text>
+  <text x="130" y="245" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="56" font-weight="800" fill="#111827">VBT e-Dönüşüm</text>
+  <text x="130" y="310" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="56" font-weight="800" fill="#111827">Dokümantasyonu</text>
+  <text x="130" y="375" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="500" fill="#475569">Müşteri ve entegratör entegrasyon rehberleri</text>
+  <text x="130" y="505" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" fill="#64748b">VBT Yazılım • API • UBL XML • Teknik Referans</text>
+  <g transform="translate(790 170)">
+    <g transform="translate(22 62) scale(.43)">
+      <path d="M58.1876 290.553C39.4026 291.947 22.4026 292.863 7.30664 291.709C120.578 264.919 241.16 206.048 304.008 142.709C372.28 73.9068 350.248 22.1792 258.754 15.1582C288.844 8.03519 318.407 3.19018 346.236 1.11618C478.87 -8.77782 521.914 48.2045 442.371 128.375C362.828 208.545 190.825 280.678 58.1876 290.553Z" fill="#ff0000"/>
+      <path d="M26.146 214.818C16.49 215.532 7.769 215.549 0 214.933C58.208 201.218 120.158 171.024 152.439 138.486C187.493 103.16 176.137 76.5549 129.115 72.8999C144.568 69.2619 159.764 66.7799 174.078 65.7259C242.25 60.7109 264.382 90.0189 223.533 131.193C182.697 172.352 94.3143 209.803 26.146 214.818Z" fill="#ff0000"/>
+    </g>
+  </g>
+</svg>

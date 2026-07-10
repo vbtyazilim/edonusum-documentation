@@ -1,29 +1,46 @@
-# edonusum-documentation
+![VBT e-Dönüşüm Dokümantasyonu](assets/readme-cover.png)
 
-VBT ürünlerinin müşteri/entegratör entegrasyon rehberleri (guide).
+# VBT e-Dönüşüm Dokümantasyonu
 
-## Şablon referansı
+Bu repo, VBT e-Dönüşüm ürünleri için hazırlanan müşteri ve entegratör entegrasyon rehberlerini içerir. Rehberler; ürünün iş kapsamını, teknik entegrasyon adımlarını, API kullanımını, örnek request yapılarını, UBL XML eşleştirmelerini ve sıkça sorulan soruları tek bir yerde toplar.
 
-Görsel/işlevsel altyapı `Vbt.DocumentTemplate` (private, `oxara.github.com/Template/DocumentTemplate/Vbt.DocumentTemplate`, kendisi `Oxara.DocumentTemplate`'in markalanmış bir türevidir) reposundan **vendor edilmiş** bir kopyadır: `assets/vbt-document-template/` (2026-07-08 tarihli kopya). Bu repo CDN'e bağımlı değildir; `Vbt.DocumentTemplate` güncellendiğinde bu klasör elle yeniden kopyalanmalıdır.
+## Mevcut rehberler
 
-## Yapı
+- [e-Gider Pusulası Entegrasyon Rehberi](guides/e-gider-pusulasi/index.html)
+- [Müstahsil Makbuzu Entegrasyon Rehberi](guides/mustahsil-makbuzu/index.html)
 
-```text
-index.html                     → rehberler hub sayfası
-guides/<guide-adı>/            → her ürün için ayrı bir guide (bkz. guides/e-gider-pusulasi)
-  index.html                   → guide'a özel konu kartları
-  docs/*.html                  → guide'ın alt sayfaları
-assets/vbt-document-template/  → vendor edilmiş şablon (elle güncellenir)
-```
+## Kimler için?
 
-## Yeni guide eklerken özelleştirilmesi gereken noktalar
+Bu dokümantasyon aşağıdaki ekiplerin entegrasyon sürecinde güvenilir ve güncel referans olarak kullanması için hazırlanmıştır:
 
-Yeni bir ürün guide'ı eklerken aşağıdakiler **her guide için** değişir, geri kalan her şey (favicon linkleri, `vbt-brand-mark`, `author-link`, vendor edilen CSS/JS yolları) şablondan olduğu gibi kopyalanır:
+- VBT e-Dönüşüm ürünlerini kullanan müşteriler
+- VBT ürünleriyle entegrasyon geliştiren entegratör firmalar
+- API, UBL XML, test ve canlı ortam geçiş süreçlerinde çalışan teknik ekipler
+- Yazılım geliştirme, analiz, test ve operasyon ekipleri
 
-- `<title>` / `<meta name="description">` — guide ve her alt sayfa için özgün
-- Topbar'daki guide adı (`<span>e-Gider Pusulası</span>` benzeri) ve üst nav bağlantıları (`Rehber`, `API` gibi guide'a özel kısayollar)
-- `docs-home-grid` içindeki konu kartları (index.html) ve `docs-nav-group`/`docs-nav-link` sidebar yapısı (her docs sayfası)
-- `window.SEARCH_CONFIG.externalItems` — sayfa arası arama için guide'a özel sayfa listesi
-- İçerik gövdesi (`docs-article` içi) — guide'ın kendi teknik/iş içeriği
+## Nasıl kullanılır?
 
-**Değişmemesi gerekenler:** `<meta name="author">` (Erdem Özkara), `author-link` hedefi (`vbt.com.tr`), `vbt-brand-mark` işareti, favicon linkleri, `assets/vbt-document-template/` altındaki dosyalara giden relative path'lerin yapısı (guide derinliğine göre `../../` veya `../../../` sayısı doğru ayarlanmalı).
+Önce entegrasyon yapılacak ürüne ait rehberden başlayın. Her ürün rehberi, konu başlıklarını ürünün iş akışı ve teknik entegrasyon sırasına göre düzenler.
+
+Rehber içinde özellikle şu bölümleri takip edebilirsiniz:
+
+- Ürünün kapsamı ve temel kullanım senaryoları
+- Platform, entegratör ve GİB sorumlulukları
+- API endpoint referansı
+- Request örnekleri
+- Request ile UBL XML alan eşleştirmeleri
+- Teknik referans, changelog ve sıkça sorulan sorular
+
+Sorularınız veya destek talepleriniz için merkezi [İletişim](iletisim.html) sayfasını kullanabilirsiniz.
+
+## Destek ve iletişim
+
+Destek e-postası, destek telefonu, destek portalı, test portalı ve kurumsal site bağlantıları [İletişim](iletisim.html) sayfasında yer alır.
+
+Entegrasyon sürecinde bir hata, eksik bilgi veya belirsizlikle karşılaşırsanız, ilgili ürün rehberindeki teknik referans ve SSS sayfalarını kontrol ettikten sonra destek kanalları üzerinden VBT ekibiyle iletişime geçebilirsiniz.
+
+## Yayın adresi
+
+Bu dokümantasyon müşteri erişimine açık statik dokümantasyon olarak yayınlanır:
+
+[https://vbtyazilim.github.io/](https://vbtyazilim.github.io/)
