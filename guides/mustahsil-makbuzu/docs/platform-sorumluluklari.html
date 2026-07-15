@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Platform Sorumlulukları — Müstahsil Makbuzu Entegrasyon Rehberi</title>
+<title>Platform Sorumlulukları — e-Müstahsil Makbuzu Entegrasyon Rehberi</title>
 <meta name="description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
@@ -11,12 +11,12 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
-<meta property="og:title" content="Platform Sorumlulukları — Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta property="og:title" content="Platform Sorumlulukları — e-Müstahsil Makbuzu Entegrasyon Rehberi">
 <meta property="og:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
 <meta property="og:url" content="https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/platform-sorumluluklari.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Platform Sorumlulukları — Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:title" content="Platform Sorumlulukları — e-Müstahsil Makbuzu Entegrasyon Rehberi">
 <meta name="twitter:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
@@ -30,15 +30,15 @@
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <header class="docs-topbar"><div class="docs-topbar-inner">
 <button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>Müstahsil Makbuzu</span></a>
-<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="mustahsil-makbuzu-nedir.html">Rehber</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">İletişim</a></nav>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Müstahsil Makbuzu</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="mustahsil-makbuzu-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">İletişim</a></nav>
 <div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
 </div></header>
 <div class="docs-overlay" data-docs-overlay></div>
 <div class="docs-shell">
 <aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
 <div class="docs-nav-label">Başlangıç</div>
-<a class="docs-nav-link" href="mustahsil-makbuzu-nedir.html">Müstahsil Makbuzu Nedir?</a>
+<a class="docs-nav-link" href="mustahsil-makbuzu-nedir.html">e-Müstahsil Makbuzu Nedir?</a>
 <a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
 </div>
 <div class="docs-nav-group">
@@ -54,6 +54,10 @@
 <a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
 </div>
 <div class="docs-nav-group">
+<div class="docs-nav-label">Gelecek Değişiklikler</div>
+<a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">SMS Doğrulamalı Gönderim</a>
+</div>
+<div class="docs-nav-group">
 <div class="docs-nav-label">Referans</div>
 <a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
 <a class="docs-nav-link" href="changelog.html">Changelog</a>
@@ -63,7 +67,7 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Uygulama</p><h1>Platform Sorumlulukları</h1><p class="docs-lead">Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.</p></header>
 <section id="platform-sorumluluklari">
 <h3 id="h-otomatik">Otomatik İşlemler</h3>
-<p>Platform, entegratörün gönderdiği request'i doğruladıktan sonra Müstahsil Makbuzu'na özgü UBL XML üretimi, imza kuyruğu, GİB raporu ve belge görüntüleme adımlarını yönetir. Entegratör belge içeriğini sağlar; platform teknik yaşam döngüsünü işletir.</p>
+<p>Platform, entegratörün gönderdiği request'i doğruladıktan sonra e-Müstahsil Makbuzu'na özgü UBL XML üretimi, imza kuyruğu, GİB raporu ve belge görüntüleme adımlarını yönetir. Entegratör belge içeriğini sağlar; platform teknik yaşam döngüsünü işletir.</p>
 <div class="table-wrapper"><table><thead><tr><th>#</th><th>İşlem</th><th>Açıklama</th></tr></thead><tbody>
 <tr><td>1</td><td>Validasyon</td><td>Alan zorunluluk, format, kombinasyon kontrolleri</td></tr>
 <tr><td>2</td><td>UBL XML Üretimi</td><td>UBL 2.1 CreditNote standardında XML</td></tr>
@@ -79,7 +83,7 @@
 </tbody></table></div>
 
 <h3 id="h-validasyon">Validasyon Kuralları</h3>
-<p>Validasyonlar, Müstahsil Makbuzu request'inin teknik olarak üretilebilir ve GİB raporuna taşınabilir olmasını kontrol eder; ana odak çiftçi/alıcı tarafları, ürün kalemleri ve stopaj hesaplarıdır.</p>
+<p>Validasyonlar, e-Müstahsil Makbuzu request'inin teknik olarak üretilebilir ve GİB raporuna taşınabilir olmasını kontrol eder; ana odak çiftçi/alıcı tarafları, ürün kalemleri ve stopaj hesaplarıdır.</p>
 <div class="table-wrapper"><table><thead><tr><th>Kontrol</th><th>Kod</th><th>Açıklama</th></tr></thead><tbody>
 <tr><td>CreditNoteExternalId dolu</td><td>EMM0020</td><td>Her belgede zorunlu</td></tr>
 <tr><td>CreditNoteExternalId tekil</td><td>EMM0028</td><td>Mükerrer engeli</td></tr>
@@ -119,7 +123,7 @@
 </div>
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Ara..." autocomplete="off"><button class="search-close" onclick="search.closeSearch()">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"Müstahsil Makbuzu Nedir?","text":"Müstahsil Makbuzu'nun kapsamı, belge tipi, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"mustahsil-makbuzu-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal, kesintili, çok kalemli oluşturma ve iptal akışları için karar ağacı.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, alt modeller ve response alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratör request alanlarının UBL CreditNote XML karşılıkları.","keywords":"API","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"Müstahsil Makbuzu rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Müstahsil Makbuzu Nedir?","text":"e-Müstahsil Makbuzu'nun kapsamı, belge tipi, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç","url":"mustahsil-makbuzu-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal, kesintili, çok kalemli oluşturma ve iptal akışları için karar ağacı.","keywords":"Senaryolar","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, alt modeller ve response alanları.","keywords":"API","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratör request alanlarının UBL CreditNote XML karşılıkları.","keywords":"API","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"SMS Doğrulamalı Gönderim","text":"Henüz aktif olmayan SMS doğrulama sözleşmesi, yürürlük koşulları ve entegratör hazırlıkları.","keywords":"Gelecek Değişiklikler Planlanan SMS Doğrulama","url":"sms-dogrulamali-gonderim.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Müstahsil Makbuzu rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 </body>
 </html>
