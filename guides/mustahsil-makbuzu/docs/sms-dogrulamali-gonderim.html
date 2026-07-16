@@ -4,21 +4,21 @@
 <!-- vbt:head:start -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Request → UBL XML Mapping — e-Müstahsil Makbuzu Entegrasyon Rehberi</title>
-<meta name="description" content="Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.">
+<title>SMS Doğrulamalı Gönderim — e-Müstahsil Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile hedef kitleye göre hazırlanan ayrıntılar.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/request-ubl-xml-mapping.html">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/sms-dogrulamali-gonderim.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
-<meta property="og:title" content="Request → UBL XML Mapping — e-Müstahsil Makbuzu Entegrasyon Rehberi">
-<meta property="og:description" content="Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.">
-<meta property="og:url" content="https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/request-ubl-xml-mapping.html">
+<meta property="og:title" content="SMS Doğrulamalı Gönderim — e-Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile hedef kitleye göre hazırlanan ayrıntılar.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/sms-dogrulamali-gonderim.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Request → UBL XML Mapping — e-Müstahsil Makbuzu Entegrasyon Rehberi">
-<meta name="twitter:description" content="Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.">
+<meta name="twitter:title" content="SMS Doğrulamalı Gönderim — e-Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile hedef kitleye göre hazırlanan ayrıntılar.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -56,11 +56,11 @@
 <div class="docs-nav-label">API</div>
 <a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
 <a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
-<a class="docs-nav-link active" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Gelecek Değişiklikler</div>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">SMS Doğrulamalı Gönderim</a>
+<a class="docs-nav-link active" href="sms-dogrulamali-gonderim.html">SMS Doğrulamalı Gönderim</a>
 <a class="docs-nav-link" href="sms-dogrulamali-gonderim-entegratorler.html">Entegratörler İçin</a>
 <a class="docs-nav-link" href="sms-dogrulamali-gonderim-portal.html">Portal Kullanıcıları İçin</a>
 </div>
@@ -73,58 +73,28 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Request → UBL XML Mapping</h1><p class="docs-lead">Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>SMS Doğrulamalı Gönderim</h1><p class="docs-lead">GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile hedef kitleye göre hazırlanan ayrıntılar.</p></header>
 <!-- vbt:article-header:end -->
-<section id="request-ubl-xml-mapping">
-<h3 id="h-mapping-kapsami">Mapping Kapsamı</h3>
-<p>Request modeli, UBL 2.1 <code>CreditNote</code> XML'e çiftçi/alıcı tarafları, ürün kalemleri, belge toplamları, vergi/kesinti toplamları ve tevkifat alanları üzerinden yansır.</p>
-<div class="callout callout-info"><b>Kısa kural:</b> Request tarafındaki ekonomik veri <code>CreditNoteLine</code>, <code>TaxTotal</code>, <code>WithholdingTaxTotal</code> ve <code>LegalMonetaryTotal</code> alanlarında; kimlik verisi ise <code>AccountingSupplierParty</code> ve <code>AccountingCustomerParty</code> altında UBL'e yansır. Müstahsil kesinti kodları <code>TaxTotal.TaxSubtotal</code> içinde de izlenebilir.</div>
-<h3 id="h-referans-tablo">Request Alanı → UBL XML Path</h3>
-<p>Mapping tablosu, request modelindeki iş kararlarının UBL XML'de hangi node'lara taşındığını izlenebilir hale getirir.</p>
-<div class="table-wrapper"><table><thead><tr><th>Request Alanı</th><th>UBL XML Path</th><th>Açıklama</th></tr></thead><tbody>
-<tr><td colspan="3" style="background:var(--surface-2);font-weight:600">Root Alanlar</td></tr>
-<tr><td><code>UUId</code></td><td><code>cbc:UUID</code></td><td>ETTN — evrensel tekil belge kimliği</td></tr>
-<tr><td><code>CreditNoteNumber</code></td><td><code>cbc:ID</code></td><td>Belge numarası (16 karakter)</td></tr>
-<tr><td><code>ProfileId</code></td><td><code>cbc:ProfileID</code></td><td>Sabit: <code>EARSIVBELGE</code></td></tr>
-<tr><td><code>CreditNoteTypeCode</code></td><td><code>cbc:CreditNoteTypeCode</code></td><td>Sabit: <code>MUSTAHSILMAKBUZ</code></td></tr>
-<tr><td><code>DocumentCurrencyCode</code></td><td><code>cbc:DocumentCurrencyCode</code></td><td>ISO 4217 para birimi</td></tr>
-<tr><td><code>IssueDate</code></td><td><code>cbc:IssueDate</code> + <code>cbc:IssueTime</code></td><td>Tarih ve saat ayrı yazılır</td></tr>
-<tr><td><code>Note[]</code></td><td><code>cbc:Note</code> (tekrarlanabilir)</td><td>Genel açıklamalar</td></tr>
-<tr><td colspan="3" style="background:var(--surface-2);font-weight:600">Taraflar</td></tr>
-<tr><td><code>AccountingSupplierParty</code></td><td><code>cac:AccountingSupplierParty/cac:Party</code></td><td>Çiftçi (tedarikçi); <code>SchemeId=TCKN</code></td></tr>
-<tr><td><code>AccountingCustomerParty</code></td><td><code>cac:AccountingCustomerParty/cac:Party</code></td><td>Alıcı firma; <code>SchemeId=VKN</code></td></tr>
-<tr><td colspan="3" style="background:var(--surface-2);font-weight:600">LegalMonetaryTotal → cac:LegalMonetaryTotal</td></tr>
-<tr><td><code>LegalMonetaryTotal.LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount[@currencyID]</code></td><td>Satır toplamı</td></tr>
-<tr><td><code>LegalMonetaryTotal.TaxExclusiveAmount</code></td><td><code>cbc:TaxExclusiveAmount[@currencyID]</code></td><td>KDV hariç tutar</td></tr>
-<tr><td><code>LegalMonetaryTotal.TaxInclusiveAmount</code></td><td><code>cbc:TaxInclusiveAmount[@currencyID]</code></td><td>KDV dahil tutar</td></tr>
-<tr><td><code>LegalMonetaryTotal.PayableAmount</code></td><td><code>cbc:PayableAmount[@currencyID]</code></td><td>Ödenecek tutar (kesinti/tevkifat etkisi yansıtılmış)</td></tr>
-<tr><td colspan="3" style="background:var(--surface-2);font-weight:600">TaxTotal[] → cac:TaxTotal</td></tr>
-<tr><td><code>TaxTotal[].TaxAmount</code></td><td><code>cbc:TaxAmount[@currencyID]</code></td><td>Vergi/kesinti toplam tutarı</td></tr>
-<tr><td><code>TaxTotal[].TaxSubtotal.TaxableAmount</code></td><td><code>cac:TaxSubtotal/cbc:TaxableAmount</code></td><td>Matrah</td></tr>
-<tr><td><code>TaxTotal[].TaxSubtotal.Percent</code></td><td><code>cbc:Percent</code></td><td>KDV oranı (%)</td></tr>
-<tr><td><code>TaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Vergi/kesinti kodu: <code>0015</code>, <code>0003</code>, <code>8001</code>, <code>SGK_PRIM</code>, <code>9040</code></td></tr>
-<tr><td><code>TaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.Name</code></td><td><code>cac:TaxScheme/cbc:Name</code></td><td>Kesinti adı: <code>GV STOPAJI</code>, <code>BORSA TES.ÜC.</code>, <code>SGK PRIM KESINTISI</code>, <code>MERA FONU</code></td></tr>
-<tr><td colspan="3" style="background:var(--surface-2);font-weight:600">WithholdingTaxTotal[] → cac:WithholdingTaxTotal</td></tr>
-<tr><td><code>WithholdingTaxTotal[].TaxAmount</code></td><td><code>cbc:TaxAmount[@currencyID]</code></td><td>Tevkifat tutarı</td></tr>
-<tr><td><code>WithholdingTaxTotal[].TaxSubtotal.Percent</code></td><td><code>cbc:Percent</code></td><td>Tevkifat oranı (%)</td></tr>
-<tr><td><code>WithholdingTaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Tevkifat kodu; GV stopajı için <code>0003</code></td></tr>
-<tr><td colspan="3" style="background:var(--surface-2);font-weight:600">CreditNoteLine[] → cac:CreditNoteLine</td></tr>
-<tr><td><code>CreditNoteLine[].Id</code></td><td><code>cbc:ID</code></td><td>Satır no (1'den başlar)</td></tr>
-<tr><td><code>CreditNoteLine[].CreditedQuantity / UnitCode</code></td><td><code>cbc:CreditedQuantity[@unitCode]</code></td><td>Miktar + birim</td></tr>
-<tr><td><code>CreditNoteLine[].LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount[@currencyID]</code></td><td>Satır toplamı</td></tr>
-<tr><td><code>CreditNoteLine[].Item.Name</code></td><td><code>cac:Item/cbc:Name</code></td><td>Ürün adı</td></tr>
-<tr><td><code>CreditNoteLine[].Price</code></td><td><code>cac:Price/cbc:PriceAmount[@currencyID]</code></td><td>Birim fiyat</td></tr>
-<tr><td><code>CreditNoteLine[].TaxTotal</code></td><td><code>cac:TaxTotal</code> (satır altında)</td><td>Satır seviyesi vergi/kesinti alt toplamları</td></tr>
-<tr><td><code>CreditNoteLine[].WithholdingTaxTotal</code></td><td><code>cac:WithholdingTaxTotal</code> (satır altında)</td><td>Satır seviyesi tevkifat (varsa)</td></tr>
-</tbody></table></div>
-<h3 id="h-uygulama-notlari">Uygulama Notları</h3>
-<p>Mapping notları, platformun otomatik tamamladığı alanlar ile entegratörün göndermesi gereken alanlar arasındaki sınırı netleştirir.</p>
-<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>Kontrol</th><th>Sonuç</th></tr></thead><tbody><tr><td>Taraf kimliği</td><td>Çiftçi <code>TCKN</code>, alıcı firma <code>VKN</code> ile gönderilir</td><td>UBL taraf rolleri ve GİB raporu aynı kimliği kullanır</td></tr><tr><td>Vergi/kesinti kodları</td><td><code>TaxTotal.TaxSubtotal</code> içinde <code>0003</code>, <code>8001</code>, <code>SGK_PRIM</code>, <code>9040</code> kodları gerektiği kadar taşınır</td><td>Barkod ve rapor üretimi kesinti tutarlarını kod bazında okuyabilir</td></tr><tr><td>Tevkifat</td><td><code>WithholdingTaxTotal</code> belge ve satır seviyesinde uyumlu hesaplanır</td><td>GİB raporundaki tevkifat alanları beslenir</td></tr><tr><td>Satır kalemleri</td><td>Her ürün ayrı <code>CreditNoteLine</code> olarak yazılır</td><td>Çok kalemli makbuzlarda her ürün kendi miktar/fiyat bilgisini taşır</td></tr><tr><td>Sabit değerler</td><td><code>ProfileID=EARSIVBELGE</code>, <code>CreditNoteTypeCode=MUSTAHSILMAKBUZ</code></td><td>Belgenin GİB tarafında e-Müstahsil Makbuzu olarak sınıflanmasını sağlar</td></tr></tbody></table></div>
+<section id="sms-dogrulamali-gonderim">
+<div class="callout callout-warning"><b>Henüz aktif değildir.</b> Bu sayfadaki alanlar ve davranışlar mevcut sözleşmenin parçası değildir. Entegratörlerin bugün çalışan requestlerini değiştirmesi, Portal kullanıcılarının da farklı bir işlem uygulaması gerekmez. Geçiş, GİB zorunluluğu kesinleşip VBT tarafından aktivasyon tarihi duyurulduktan sonra başlayacaktır.</div>
+
+<h2 id="yururluk-kosulu">Yürürlük koşulu</h2>
+<p>SMS doğrulaması, e-müstahsil makbuzunun üretici tarafından doğrulandığını belgelemek amacıyla hazırlanmıştır. Aktivasyon duyurusuna kadar mevcut oluşturma, güncelleme, UBL gönderimi, Excel ve iptal akışları aynı şekilde kullanılmaya devam eder.</p>
+<div class="table-wrapper"><table><thead><tr><th>Dönem</th><th>Entegratörler</th><th>Portal kullanıcıları</th></tr></thead><tbody><tr><td>Aktivasyon öncesi</td><td>Mevcut endpoint ve modeller kullanılmaya devam eder.</td><td>Mevcut belge ekranları aynı şekilde kullanılır.</td></tr><tr><td>Geçiş duyurusu</td><td>Yeni model alanları test ortamında doğrulanmalıdır.</td><td>Yeni SMS doğrulama ekranları VBT tarafından kullanıma açılır.</td></tr><tr><td>Aktivasyon sonrası</td><td>Doğrulama bilgileri aşağıdaki sözleşmeye göre gönderilmelidir.</td><td>Hazır Portal akışı üzerinden doğrulama tamamlanır.</td></tr></tbody></table></div>
+
+
+<h2 id="kullanim-amaciniza-gore-ilerleyin">Kullanım amacınıza göre ilerleyin</h2>
+<p>Doğrudan API veya UBL entegrasyonu geliştiriyorsanız entegratör gereksinimlerini; işlemleri VBT Portal üzerinden yürütecekseniz hazır Portal akışını inceleyin.</p>
+<div class="docs-home-grid">
+  <a class="docs-home-card" href="sms-dogrulamali-gonderim-entegratorler.html"><span class="docs-home-card-label">Doğrudan entegrasyon</span><strong>Entegratörler İçin</strong><span>Endpoint, request ve response modelleri, JSON/UBL örnekleri, state akışı ve hata davranışları.</span><span class="docs-home-card-action">Entegratör gereksinimlerini inceleyin</span></a>
+  <a class="docs-home-card" href="sms-dogrulamali-gonderim-portal.html"><span class="docs-home-card-label">VBT Portal</span><strong>Portal Kullanıcıları İçin</strong><span>Hazır SMS gönderme ve kod doğrulama akışı, durumlar, Excel, iptal ve kullanıcı soruları.</span><span class="docs-home-card-action">Portal akışını inceleyin</span></a>
+</div>
+
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
-<a class="docs-page-link docs-page-previous" href="request-ornekleri.html"><span>Önceki</span><strong>Request Örnekleri</strong></a>
-<a class="docs-page-link docs-page-next" href="sms-dogrulamali-gonderim.html"><span>Sonraki</span><strong>SMS Doğrulamalı Gönderim</strong></a>
+<a class="docs-page-link docs-page-previous" href="request-ubl-xml-mapping.html"><span>Önceki</span><strong>Request → UBL XML Mapping</strong></a>
+<a class="docs-page-link docs-page-next" href="sms-dogrulamali-gonderim-entegratorler.html"><span>Sonraki</span><strong>Entegratörler İçin</strong></a>
 </nav>
 <!-- vbt:pagination:end -->
 </article></main>

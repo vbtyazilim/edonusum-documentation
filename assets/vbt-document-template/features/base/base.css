@@ -417,7 +417,7 @@ td > code:first-child { margin-left: -.4rem; }
 .endpoint-description { color: var(--text-muted); font-size: .88rem; }
 .endpoint-body .table-wrapper { background: var(--bg); box-shadow: 0 1px 2px rgba(0, 0, 0, .04); }
 .endpoint-body td:first-child { color: var(--text); font-weight: 700; width: 18%; }
-.endpoint-body td:nth-child(2) { color: var(--code-keyword); font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
+.endpoint-body td:nth-child(2) { color: var(--text-muted); }
 
 /* ── Example details/accordion ── */
 details.example-details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 1.2rem; box-shadow: var(--shadow); overflow: hidden; transition: border-color .2s; }

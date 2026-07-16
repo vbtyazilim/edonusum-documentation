@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "id": "mustahsil-makbuzu",
+  "dir": "mustahsil-makbuzu",
+  "title": "e-Müstahsil Makbuzu Entegrasyon Rehberi",
+  "shortTitle": "e-Müstahsil Makbuzu",
+  "description": "Tarımsal ürün alımlarında KDV mükellefi olmayan çiftçilerden yapılan alışlar için GİB standardında e-Müstahsil Makbuzu düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
+  "eyebrow": "GİB e-Arşiv Belgesi (UBL CreditNote)",
+  "canonicalBase": "https://vbtyazilim.github.io/guides/mustahsil-makbuzu/",
+  "templateVersion": "local-2026-07-08",
+  "searchPlaceholder": "Ara...",
+  "searchMaxResults": 60,
+  "home": {
+    "title": "e-Müstahsil Makbuzu Entegrasyon Rehberi",
+    "description": "Tarımsal ürün alımlarında KDV mükellefi olmayan çiftçilerden yapılan alışlar için GİB standardında e-Müstahsil Makbuzu düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
+    "primaryAction": {
+      "target": "mustahsil-makbuzu-nedir",
+      "label": "Dokümanı inceleyin"
+    },
+    "announcement": {
+      "enabled": true,
+      "target": "sms-dogrulamali-gonderim",
+      "label": "Gelecek Değişiklikler",
+      "ariaLabel": "Henüz aktif olmayan gelecek değişiklikleri inceleyin"
+    }
+  },
+  "sections": [
+    {
+      "label": "Başlangıç",
+      "pages": [
+        {
+          "slug": "mustahsil-makbuzu-nedir",
+          "title": "e-Müstahsil Makbuzu Nedir?",
+          "description": "e-Müstahsil Makbuzu'nun kapsamı, belge tipi, XML yapısı ve belge yaşam döngüsü.",
+          "eyebrow": "Başlangıç",
+          "keywords": ["Başlangıç", "e-Müstahsil Makbuzu", "CreditNote"],
+          "roles": ["guide-start"],
+          "homeCard": { "label": "Başlangıç" }
+        },
+        {
+          "slug": "gib-teknik-gereksinimleri",
+          "title": "GİB Referansı",
+          "description": "GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.",
+          "eyebrow": "Teknik Temel",
+          "keywords": ["Teknik Temel", "GİB", "UBL-TR"],
+          "homeCard": { "label": "Teknik Temel" }
+        }
+      ]
+    },
+    {
+      "label": "Uygulama",
+      "pages": [
+        {
+          "slug": "kullanim-senaryolari",
+          "title": "Kullanım Senaryoları",
+          "description": "Normal, GV stopajı, borsa tescil, SGK prim, mera fonu, çoklu kesinti, tevkifat, çok kalemli oluşturma ve iptal akışları için karar ağacı.",
+          "eyebrow": "Uygulama",
+          "keywords": ["Senaryolar", "kesinti", "stopaj", "iptal"],
+          "homeCard": {
+            "label": "Senaryolar",
+            "description": "Normal, kesintili, çok kalemli oluşturma ve iptal akışları için karar ağacı."
+          }
+        },
+        {
+          "slug": "entegrator-sorumluluklari",
+          "title": "Entegratör Sorumlulukları",
+          "description": "Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.",
+          "eyebrow": "Uygulama",
+          "keywords": ["Sorumluluklar", "entegratör"],
+          "homeCard": { "label": "Sorumluluklar" }
+        },
+        {
+          "slug": "platform-sorumluluklari",
+          "title": "Platform Sorumlulukları",
+          "description": "Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.",
+          "eyebrow": "Uygulama",
+          "keywords": ["Sorumluluklar", "platform", "validasyon"],
+          "homeCard": { "label": "Sorumluluklar" }
+        }
+      ]
+    },
+    {
+      "label": "API",
+      "pages": [
+        {
+          "slug": "api-endpoint-referansi",
+          "title": "API Endpoint Referansı",
+          "description": "Kimlik doğrulama, belge işlemleri, sorgulama, alt modeller ve response alanları.",
+          "eyebrow": "API",
+          "keywords": ["API", "endpoint", "request", "response"],
+          "roles": ["api"],
+          "homeCard": { "label": "API" }
+        },
+        {
+          "slug": "request-ornekleri",
+          "title": "Request Örnekleri",
+          "description": "Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir JSON örnekleri.",
+          "eyebrow": "Örnekler",
+          "keywords": ["Örnekler", "JSON", "request"],
+          "homeCard": { "label": "Örnekler" }
+        },
+        {
+          "slug": "request-ubl-xml-mapping",
+          "title": "Request → UBL XML Mapping",
+          "description": "Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.",
+          "eyebrow": "API",
+          "keywords": ["API", "UBL", "XML", "mapping"],
+          "homeCard": {
+            "label": "API",
+            "description": "Entegratör request alanlarının UBL CreditNote XML karşılıkları."
+          }
+        }
+      ]
+    },
+    {
+      "label": "Gelecek Değişiklikler",
+      "pages": [
+        {
+          "slug": "sms-dogrulamali-gonderim",
+          "title": "SMS Doğrulamalı Gönderim",
+          "description": "GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile hedef kitleye göre hazırlanan ayrıntılar.",
+          "eyebrow": "Gelecek Değişiklikler",
+          "keywords": ["Gelecek Değişiklikler", "Planlanan", "SMS", "Doğrulama"],
+          "homeCard": {
+            "label": "Gelecek Değişiklikler",
+            "description": "Henüz aktif olmayan SMS doğrulama değişikliğinin yürürlük koşulu ile entegratör ve Portal rehberleri.",
+            "action": "Planlanan değişikliği inceleyin"
+          }
+        },
+        {
+          "slug": "sms-dogrulamali-gonderim-entegratorler",
+          "title": "Entegratörler İçin",
+          "description": "Doğrudan JSON API veya UBL kullanan entegratörlerin aktivasyon öncesinde hazırlaması gereken sözleşme değişiklikleri.",
+          "eyebrow": "Gelecek Değişiklikler",
+          "keywords": ["Gelecek Değişiklikler", "Entegratör", "SMS", "UBL", "API"],
+          "homeCard": false
+        },
+        {
+          "slug": "sms-dogrulamali-gonderim-portal",
+          "title": "Portal Kullanıcıları İçin",
+          "description": "VBT Portalda hazır sunulacak SMS gönderme, kod doğrulama ve belgeyi ilerletme davranışları.",
+          "eyebrow": "Gelecek Değişiklikler",
+          "keywords": ["Gelecek Değişiklikler", "Portal", "SMS", "Doğrulama"],
+          "homeCard": false
+        }
+      ]
+    },
+    {
+      "label": "Referans",
+      "pages": [
+        {
+          "slug": "teknik-referans",
+          "title": "Teknik Referans",
+          "description": "Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.",
+          "eyebrow": "Referans",
+          "keywords": ["Referans", "enum", "hata kodları", "validasyon"],
+          "homeCard": { "label": "Referans" }
+        },
+        {
+          "slug": "changelog",
+          "title": "Changelog",
+          "description": "e-Müstahsil Makbuzu rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.",
+          "eyebrow": "Referans",
+          "keywords": ["Referans", "changelog", "değişiklik"],
+          "homeCard": { "label": "Referans" }
+        },
+        {
+          "slug": "sss",
+          "title": "Sıkça Sorulan Sorular",
+          "description": "Müşteri ve entegratör tarafından en sık sorulan sorular.",
+          "eyebrow": "Referans",
+          "keywords": ["SSS", "sorular"],
+          "roles": ["faq"],
+          "homeCard": { "label": "SSS" }
+        }
+      ]
+    }
+  ]
+}

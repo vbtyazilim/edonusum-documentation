@@ -57,7 +57,8 @@
       "VBT brand mark",
       "borderless VBT brand mark in document headers",
       "standard favicon assets",
-      "home hero with brand mark layout"
+      "home hero with brand mark layout",
+      "home card entry indicator asset"
     ],
     "html": [
       ".docs-topbar",
@@ -66,6 +67,8 @@
       "assets/vbt-mark.png",
       "assets/vbt-mark-96.png",
       "assets/vbt-mark-192.png",
+      "assets/home-card-entry.gif",
+      "assets/home-card-entry-static.svg",
       "favicon-48.png",
       "apple-touch-icon.png",
       ".docs-home-hero-with-mark",

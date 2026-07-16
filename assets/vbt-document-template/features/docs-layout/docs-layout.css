@@ -494,6 +494,37 @@
 .docs-secondary-action { color: var(--text); border: 1px solid var(--border); }
 .docs-secondary-action:hover { background: var(--surface); }
 
+/* VBT announcement action standard */
+.docs-announcement-action {
+    overflow: hidden;
+    gap: .75rem;
+    padding: 0 1rem 0 0;
+    color: var(--brand);
+    background: #fff;
+    border-color: var(--brand);
+    box-shadow: 0 7px 18px color-mix(in srgb, var(--brand) 14%, transparent);
+}
+.docs-announcement-action:hover {
+    color: var(--brand);
+    background: #fff;
+    box-shadow: 0 9px 22px color-mix(in srgb, var(--brand) 20%, transparent);
+}
+.docs-announcement-icon {
+    align-self: stretch;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    margin: 0;
+    padding: 0 .75rem;
+    color: #fff;
+    background: var(--brand);
+}
+.docs-announcement-action:hover .docs-announcement-icon {
+    background: color-mix(in srgb, var(--brand) 88%, #000);
+}
+/* /VBT announcement action standard */
+
 .docs-home-section { margin-bottom: 7rem; }
 .docs-home-section-heading {
     margin-bottom: 2.5rem;
@@ -592,6 +623,9 @@
     .docs-home-card > span:not(.docs-home-card-label, .docs-home-card-action),
     .docs-home-card-label {
         transition: none;
+    }
+    .docs-home-card-label::before {
+        background-image: url("../../assets/home-card-entry-static.svg");
     }
 }
 
