@@ -107,21 +107,39 @@
       "label": "API",
       "pages": [
         {
-          "slug": "api-endpoint-referansi",
-          "title": "API Endpoint Referansı",
-          "description": "Entegratör belge endpointleri ile Portal doğrulama ve PersonParty API sözleşmeleri.",
+          "slug": "entegrator-api-endpoint-referansi",
+          "title": "Entegratör API Endpoint Referansı",
+          "description": "Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.",
           "eyebrow": "API",
           "keywords": [
             "API",
             "endpoint",
             "request",
-            "response"
+            "response",
+            "entegratör"
           ],
           "roles": [
             "api"
           ],
           "homeCard": {
-            "label": "API"
+            "label": "API",
+            "description": "Entegratör belge endpointleri, alan sözleşmeleri ve yanıt örnekleri."
+          }
+        },
+        {
+          "slug": "portal-api-endpoint-referansi",
+          "title": "Portal API Endpoint Referansı",
+          "description": "Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.",
+          "eyebrow": "API",
+          "keywords": [
+            "API",
+            "Portal",
+            "PersonParty",
+            "doğrulama"
+          ],
+          "homeCard": {
+            "label": "API",
+            "description": "Portal UI doğrulama ve gerçek kişi cari endpoint sözleşmeleri."
           }
         },
         {
