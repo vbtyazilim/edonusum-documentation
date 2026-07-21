@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal API Endpoint Referansı — e-Gider Pusulası Entegrasyon Rehberi</title>
+<meta name="description" content="Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/portal-api-endpoint-referansi.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Portal API Endpoint Referansı — e-Gider Pusulası Entegrasyon Rehberi">
+<meta property="og:description" content="Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/portal-api-endpoint-referansi.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portal API Endpoint Referansı — e-Gider Pusulası Entegrasyon Rehberi">
+<meta name="twitter:description" content="Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+.docs-article script.code-block { display: none; }
+.docs-article .badge-required,
+.docs-article .badge-optional,
+.docs-article .badge-conditional { white-space: nowrap; }
+</style>
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="egider-pusulasi-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="egider-pusulasi-nedir.html">e-Gider Pusulası Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link active" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Portal API Endpoint Referansı</h1><p class="docs-lead">Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="section-portal-api-endpoint-referansi">
+<div class="callout callout-info"><b>Entegratör mü arıyorsunuz?</b> Bu sayfa yalnızca VBT Portal uygulamasının kendi kullanımı içindir. Doğrudan ERP/API entegrasyonu için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> sayfasına bakın.</div>
+
+<h2 id="h-portal-belge-endpointleri">Belge Oluşturma ve Güncelleme</h2>
+<p>Portal UI, entegratörlerle aynı <code>AddOutgoingExpenseVoucher</code> ve <code>UpdateOutgoingExpenseVoucher</code> endpointlerini kullanır; ancak kullanıcı doğrulaması belge kaydından sonra Portal endpointleriyle tamamlanır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Adım</th><th>Portal UI davranışı</th></tr></thead><tbody>
+<tr><td>1. Cari seçimi</td><td>Alıcı ve varsa vekil <a href="#h-portal-person-party-endpoints">PersonParty endpointleriyle</a> aranır veya kaydedilir.</td></tr>
+<tr><td>2. Belge kaydı</td><td>Seçilen alıcı <code>AccountingCustomerParty.Party.Id</code>, varsa vekil <code>DelegateReceiver.PartyId</code> ile Add/Update request'ine taşınır. Kullanıcının seçtiği tek TCKN veya PASAPORTNO belge kimliği olarak gönderilir.</td></tr>
+<tr><td>3. İlk yanıt</td><td>Portalın ilk Add/Update çağrısında <code>VerificationInfo</code> ve <code>VerificationProvider</code> boş olabilir. UI, response içindeki <code>OutgoingExpenseVoucherStatusForUser</code> değerini esas alır.</td></tr>
+<tr><td>4. Doğrulama</td><td><code>WaitingForVerification</code> için yöntem seçilir; SMS veya iade kodu ilgili Portal endpointiyle tamamlanır.</td></tr>
+<tr><td>5. Güncel durum</td><td>Başarılı işlemden sonra belge yeniden sorgulanır; imzaya hazır veya bekleyen güncel durum gösterilir.</td></tr>
+</tbody></table></div>
+<details class="example-details"><summary>Portal Add/Update alan özeti</summary><div class="example-body"><pre><code class="language-json">{
+  "AccountingCustomerParty": {
+    "Party": {
+      "Id": 12345,
+      "PartyIdentifications": [
+        { "SchemeId": "PASAPORTNO", "Value": "U12345678" }
+      ]
+    }
+  },
+  "DelegateReceiver": {
+    "PartyId": 67890
+  },
+  "VerificationInfo": null,
+  "VerificationProvider": null
+}</code></pre><p>Bu parça tam belge request'i değildir; yalnız Portalın cari ve doğrulama sınırını gösterir. Belgenin diğer zorunlu alanları aynı Add/Update sözleşmesinde gönderilmelidir.</p></div></details>
+
+<h2 id="h-portal-dogrulama-endpointleri">Doğrulama Endpointleri</h2>
+<p>Portal kullanıcısına hazır sunulan doğrulama ekranları, aşağıdaki endpoint sözleşmeleri üzerinden ilerler. Bu endpointler VBT Portal uygulamasının kullanımı içindir; dış entegratörlerin belge oluşturma ve güncelleme sözleşmelerinin yerini almaz.</p>
+<div class="callout callout-info"><b>Görünürlük:</b> UI, doğrulama kontrollerini belgenin dönen durumu ve senaryosuna göre gösterir. <code>WaitingForVerification</code> yöntem seçimini, <code>WaitingForSmsCode</code> SMS kodu girişini açar.</div>
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/ExpenseVoucherApi/SendExpenseVoucherSmsCode</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Satış veya SMS seçilmiş yüz yüze iade senaryosunda doğrulama kodunu gönderir.</p>
+<div class="table-wrapper"><table><tbody>
+<tr><td><b>Çağrı koşulu</b></td><td>Belge <code>WaitingForVerification</code> veya telefon düzeltme/yeniden gönderim için <code>WaitingForSmsCode</code> durumundadır; senaryo SMS doğrulamasına izin verir.</td></tr>
+<tr><td><b>Request</b></td><td><code>SendExpenseVoucherSmsCodeRequestModel</code> — belge kimliği alanlarından en az biri ve <code>PhoneNumber</code></td></tr>
+<tr><td><b>Response</b></td><td><code>SendExpenseVoucherSmsCodeResponseModel</code> — <code>MaskedPhoneNumber</code>, <code>VerificationToken</code>, <code>ExpiresInSeconds</code></td></tr>
+<tr><td><b>UI davranışı</b></td><td>Maskeli telefon ve kalan süre gösterilir; token kullanıcıya gösterilmeden kod doğrulama çağrısına taşınır.</td></tr>
+</tbody></table></div></div></div>
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/ExpenseVoucherApi/CompleteExpenseVoucherSmsVerification</span></div>
+<div class="endpoint-body"><p class="endpoint-description">SMS gönderiminden dönen token ile kullanıcının girdiği kodu doğrular.</p>
+<div class="table-wrapper"><table><tbody>
+<tr><td><b>Çağrı koşulu</b></td><td>Belge <code>WaitingForSmsCode</code> durumundadır.</td></tr>
+<tr><td><b>Request</b></td><td><code>VerifyExpenseVoucherSmsCodeRequestModel</code> — aynı belge kimliği, <code>VerificationToken</code> ve <code>Code</code></td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr>
+<tr><td><b>UI davranışı</b></td><td>Başarılı sonuçta belge yeniden okunur ve güncel state gösterilir; hata halinde doğrulanmış görünümü verilmez.</td></tr>
+</tbody></table></div></div></div>
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/ExpenseVoucherApi/SubmitExpenseVoucherIadeKodu</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Bütün IADE senaryolarında harici sistemde üretilen iade kodunu kaydeder.</p>
+<div class="table-wrapper"><table><tbody>
+<tr><td><b>Çağrı koşulu</b></td><td>Belge <code>WaitingForVerification</code> durumundadır ve <code>ExpenseVoucherTypeCode=IADE</code> değerini taşır. Yüz yüze, kargolu, vekaletli ve bütün iade edilen belge türlerinde kullanılabilir.</td></tr>
+<tr><td><b>Request</b></td><td><code>SubmitExpenseVoucherIadeKoduRequestModel</code> — belge kimliği, <code>Code</code>, <code>PhoneNumber</code> ve <code>VerificationProvider</code></td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr>
+<tr><td><b>UI davranışı</b></td><td>Başarılı sonuçta belge yeniden okunur; hata halinde girilen bilgiler düzeltilebilmesi için mevcut doğrulama adımı korunur.</td></tr>
+</tbody></table></div></div></div>
+<div class="callout callout-warning"><b>İstemci davranışı:</b> Devam eden çağrı sırasında aynı aksiyon yeniden tetiklenmez. İş kuralı hatasında API'nin kullanıcıya dönük mesajı gösterilir ve belge başarılı yanıt alınmadan bir sonraki state'e geçirilmez. Güncel durum için işlem sonrasında belge yeniden sorgulanır.</div>
+
+<h2 id="h-portal-person-party-endpoints">Gerçek Kişi Cari Endpointleri</h2>
+<div class="callout callout-warning"><b>İşlem sırası:</b> Portal önce ad, TCKN veya PASAPORTNO ile arama yapmalıdır. Kayıt bulunursa response içindeki gerçek <code>Party.Id</code> ile <code>Update</code>; bulunamazsa <code>Add</code> çağrılmalıdır. Public cari API'sinde Save/upsert endpointi yoktur.</div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/PersonParty/GetPartyListByNameAndType?partyName={partyName}</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Ad, TCKN veya pasaport numarasıyla gerçek kişi carilerini arar.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Request</b></td><td>Query string içinde <code>partyName</code> değeri — ad, TCKN veya PASAPORTNO içerebilir</td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;IList&lt;PartyResponseModel&gt;&gt;</code></td></tr>
+<tr><td><b>UI davranışı</b></td><td>Yalnız <code>Customer</code>, <code>Supplier</code> ve <code>CustomerAndSupplier</code> rollerindeki gerçek kişiler gösterilir. Arama carinin rolünü değiştirmez.</td></tr>
+</tbody></table></div>
+<details class="example-details"><summary>Çağrı ve seçim örneği</summary><div class="example-body"><pre><code class="language-text">GET /api/PersonParty/GetPartyListByNameAndType?partyName=U12345678</code></pre><p>Kayıt bulunursa <code>Data[].Id</code>, Update request'ine ve belge request'indeki ilgili cari Id alanına taşınır.</p></div></details>
+</div></div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/PersonParty/Get?id={id}</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Firma kapsamındaki gerçek kişi cari detayını getirir.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Request</b></td><td>Query string içinde cari <code>id</code> değeri</td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;PartyResponseModel&gt;</code></td></tr>
+<tr><td><b>UI davranışı</b></td><td><code>Person</code>, <code>Contact</code>, <code>PostalAddress</code> ve <code>PartyIdentifications</code> alanları forma taşınır.</td></tr>
+</tbody></table></div></div></div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/PersonParty/Add</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Customer rolünde yeni gerçek kişi carisi oluşturur.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Çağrı koşulu</b></td><td>TCKN veya PASAPORTNO ile yapılan aramada mevcut cari bulunamamıştır.</td></tr>
+<tr><td><b>Request</b></td><td><code>PartyRequestModel</code> — <code>PartyName</code>, <code>Person</code>, <code>Contact</code>, <code>PostalAddress</code> ve <code>PartyIdentifications</code></td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;PartyResponseModel&gt;</code></td></tr>
+<tr><td><b>Kural</b></td><td>En az bir TCKN veya PASAPORTNO bulunmalıdır. Add mevcut kimliği otomatik güncellemez.</td></tr>
+</tbody></table></div>
+<details class="example-details"><summary>Yeni gerçek kişi request'i</summary><div class="example-body"><pre><code class="language-json">{
+  "Id": 0,
+  "PartyName": "ÖRNEK KİŞİ",
+  "PartyIdentifications": [
+    { "SchemeId": "PASAPORTNO", "Value": "U12345678" }
+  ],
+  "Person": {
+    "FirstName": "ÖRNEK",
+    "FamilyName": "KİŞİ",
+    "NationalityId": "TR"
+  },
+  "Contact": {
+    "Telephone": "05551112233",
+    "ElectronicMail": "ornek.kisi@example.com"
+  },
+  "PostalAddress": {
+    "StreetName": "Örnek Caddesi",
+    "BuildingNumber": "12",
+    "CitySubdivisionName": "Kadıköy",
+    "CityName": "İstanbul",
+    "Country": { "Name": "Türkiye" }
+  }
+}</code></pre></div></details>
+</div></div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/PersonParty/Update</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Arama veya detay response'undan seçilen gerçek kişi carisini günceller.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Çağrı koşulu</b></td><td>Mevcut cari seçilmiştir ve response'taki <code>Id</code> korunmuştur.</td></tr>
+<tr><td><b>Request</b></td><td><code>PartyRequestModel</code> — geçerli <code>Id</code> ve güncel cari modeli</td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;PartyResponseModel&gt;</code></td></tr>
+<tr><td><b>UI davranışı</b></td><td>Update bir patch değildir. Form, Get veya Search response'undan alınan korunacak alanlarla birlikte güncel modeli göndermelidir.</td></tr>
+</tbody></table></div></div></div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/PersonParty/Delete?id={id}</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Firma kapsamındaki gerçek kişi carisini ve bağlı kimlik kayıtlarını siler.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Request</b></td><td>Query string içinde cari <code>id</code> değeri</td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr>
+<tr><td><b>Sonuç</b></td><td>Cari ve bağlı TCKN/PASAPORTNO kayıtları aynı işlem içinde silinir.</td></tr>
+</tbody></table></div></div></div>
+
+<h3 id="h-portal-person-party-identification-endpoints">Gerçek Kişi Kimlik Endpointleri</h3>
+<p>İlk kimlikler cari Add/Update request'indeki <code>PartyIdentifications</code> alanıyla taşınır. Kayıtlı carinin kimliklerini sonradan ayrı yönetmek için aşağıdaki endpointler kullanılır.</p>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/PersonPartyIdentification/Get?partyId={id}</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Carinin aktif TCKN ve PASAPORTNO kayıtlarını, kimlik kayıt Id'leriyle birlikte getirir. Update veya Delete öncesinde kullanılacak kimlik Id'si bu response'tan alınmalıdır.</p></div></div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/PersonPartyIdentification/Add</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Mevcut gerçek kişi carisine yeni bir TCKN veya PASAPORTNO ekler.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Request</b></td><td><code>PartyIdentificationRequestModel</code> — <code>PartyId</code>, <code>SchemeId</code>, <code>Value</code></td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;PartyIdentificationResponseModel&gt;</code></td></tr>
+</tbody></table></div></div></div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/PersonPartyIdentification/Update</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Mevcut kimlik kaydını günceller.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Request</b></td><td><code>PartyIdentificationRequestModel</code> — mevcut kimliğin <code>Id</code> değeri, <code>PartyId</code>, <code>SchemeId</code>, <code>Value</code></td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;PartyIdentificationResponseModel&gt;</code></td></tr>
+</tbody></table></div></div></div>
+
+<div class="endpoint-card">
+<div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/PersonPartyIdentification/Delete?id={id}</span></div>
+<div class="endpoint-body"><p class="endpoint-description">Seçilen kimlik kaydını siler. Carinin son aktif kişi kimliği silinemez.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Request</b></td><td>Query string içinde kimlik kaydının <code>id</code> değeri</td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr>
+</tbody></table></div></div></div>
+
+<div class="callout callout-info"><b>Kimlik özeti:</b> Kimlik Add, Update veya Delete işleminden sonra carinin <code>IdentityOrTaxNumber</code> değeri TCKN önceliğiyle güncellenir. Cari üzerinde TCKN ve PASAPORTNO birlikte bulunabilir; aynı scheme altında iki farklı aktif değer bulunamaz. Silinen kimlik tarihçe olarak korunur; aynı <code>SchemeId</code> ve <code>Value</code> yeniden eklenirse yeni bir aktif kimlik kaydı oluşturulur.</div>
+
+<h3 id="h-portal-person-party-errors">PersonParty Hata Kodları</h3>
+<div class="table-wrapper"><table><thead><tr><th>Kod</th><th>Karşılaşılabilecek durum</th></tr></thead><tbody>
+<tr><td><code>PTY0001</code></td><td><code>Update</code> çağrısında geçerli bir cari <code>Id</code> gönderilmemiştir.</td></tr>
+<tr><td><code>PPY0001</code></td><td>Cari adı gönderilmemiştir.</td></tr>
+<tr><td><code>PPY0003</code></td><td>Gerçek kişi carisi için TCKN veya PASAPORTNO gönderilmemiştir.</td></tr>
+<tr><td><code>PPY0004</code></td><td>Kimlik tipi TCKN veya PASAPORTNO değildir.</td></tr>
+<tr><td><code>PPY0005</code></td><td>Kimlik aynı firmadaki başka bir caride aktiftir.</td></tr>
+<tr><td><code>PPY0006</code></td><td>Carinin son aktif kişi kimliği kaldırılmak istenmiştir.</td></tr>
+<tr><td><code>PPY0007</code></td><td>Cari rolü PersonParty kullanımına uygun değildir.</td></tr>
+<tr><td><code>PPY0008</code></td><td>Seçilen cari gerçek kişi carisi değildir.</td></tr>
+<tr><td><code>PPY0009</code></td><td>Pasaport numarası 9 karakter sınırını aşmıştır.</td></tr>
+<tr><td><code>PTYI0001</code></td><td>Belirtilen kimlik kaydı bulunamamıştır (<code>PersonPartyIdentification/Update</code> veya <code>Delete</code>).</td></tr>
+<tr><td><code>PTYI0009</code></td><td>TCKN 11 haneli sayısal değer değildir.</td></tr>
+<tr><td><code>PTYI0010</code></td><td>Kimlik <code>Value</code> alanı boş gönderilmiştir.</td></tr>
+<tr><td><code>PTYI0017</code></td><td>Aynı caride aynı <code>SchemeId</code> için birden fazla farklı değer gönderilmiştir.</td></tr>
+</tbody></table></div>
+<div class="callout callout-info"><b>Portal belge request'i:</b> Alıcı cari Id'si <code>AccountingCustomerParty.Party.Id</code> alanına, seçilen tek TCKN veya PASAPORTNO <code>PartyIdentifications</code> içine yazılır. Vekil cari Id'si <code>DelegateReceiver.PartyId</code> alanına eklenir.</div>
+<div class="callout callout-warning"><b>Belge sınırı:</b> Cari bilgileri belge oluşturma veya güncelleme anında request'e kopyalanır. Cari kartında daha sonra yapılan değişiklikler mevcut belgeyi, arşiv XML'ini veya GİB raporunu değiştirmez.</div>
+
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="entegrator-api-endpoint-referansi.html"><span>Önceki</span><strong>Entegratör API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="request-ornekleri.html"><span>Sonraki</span><strong>Request Örnekleri</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal PersonParty doğrulama","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

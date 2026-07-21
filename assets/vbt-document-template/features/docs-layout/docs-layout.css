@@ -126,6 +126,7 @@
     top: calc(var(--docs-topbar-height) + 2rem);
     max-height: calc(100vh - var(--docs-topbar-height) - 4rem);
     overflow-y: auto;
+    overflow-x: hidden;
     scrollbar-width: thin;
 }
 
@@ -151,6 +152,7 @@
     font-size: .8rem;
     line-height: 1.45;
     text-decoration: none;
+    overflow-wrap: break-word;
 }
 
 .docs-nav-link:hover {
@@ -362,6 +364,7 @@
     font-size: .75rem;
     line-height: 1.45;
     text-decoration: none;
+    overflow-wrap: break-word;
 }
 
 .docs-toc a[data-level="3"] { padding-left: .7rem; }
