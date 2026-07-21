@@ -31,11 +31,11 @@ Rehber içinde özellikle şu bölümleri takip edebilirsiniz:
 - Request ile UBL XML alan eşleştirmeleri
 - Teknik referans, changelog ve sıkça sorulan sorular
 
-Sorularınız veya destek talepleriniz için merkezi [İletişim](iletisim.html) sayfasını kullanabilirsiniz.
+Sorularınız veya destek talepleriniz için merkezi [Çözüm Merkezi](iletisim.html) sayfasını kullanabilirsiniz.
 
 ## Destek ve iletişim
 
-Destek e-postası, destek telefonu, destek portalı, test portalı ve kurumsal site bağlantıları [İletişim](iletisim.html) sayfasında yer alır.
+Destek e-postası, destek telefonu, destek portalı, test portalı ve kurumsal site bağlantıları [Çözüm Merkezi](iletisim.html) sayfasında yer alır.
 
 Entegrasyon sürecinde bir hata, eksik bilgi veya belirsizlikle karşılaşırsanız, ilgili ürün rehberindeki teknik referans ve SSS sayfalarını kontrol ettikten sonra destek kanalları üzerinden VBT ekibiyle iletişime geçebilirsiniz.
 

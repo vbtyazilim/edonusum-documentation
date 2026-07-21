@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Teknik Referans — e-Gider Pusulası Entegrasyon Rehberi</title>
-<meta name="description" content="Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.">
+<meta name="description" content="Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/teknik-referans.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Teknik Referans — e-Gider Pusulası Entegrasyon Rehberi">
-<meta property="og:description" content="Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.">
+<meta property="og:description" content="Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.">
 <meta property="og:url" content="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/teknik-referans.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Teknik Referans — e-Gider Pusulası Entegrasyon Rehberi">
-<meta name="twitter:description" content="Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.">
+<meta name="twitter:description" content="Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -34,7 +34,7 @@
 <header class="docs-topbar"><div class="docs-topbar-inner">
 <button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
 <a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
-<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">İletişim</a></nav>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
 <div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
 </div></header>
 <!-- vbt:topbar:end -->
@@ -59,12 +59,6 @@
 <a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
 </div>
 <div class="docs-nav-group">
-<div class="docs-nav-label">Gelecek Değişiklikler</div>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">SMS ve İade Kodu Doğrulaması</a>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim-entegratorler.html">Entegratörler İçin</a>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim-portal.html">Portal Kullanıcıları İçin</a>
-</div>
-<div class="docs-nav-group">
 <div class="docs-nav-label">Referans</div>
 <a class="docs-nav-link active" href="teknik-referans.html">Teknik Referans</a>
 <a class="docs-nav-link" href="changelog.html">Changelog</a>
@@ -73,10 +67,9 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Teknik Referans</h1><p class="docs-lead">Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Teknik Referans</h1><p class="docs-lead">Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.</p></header>
 <!-- vbt:article-header:end -->
 <section id="teknik-referans">
-<div class="callout callout-warning"><b>Gelecek hata kodları:</b> SMS ve iade kodu doğrulamasında karşılaşılabilecek <code>EGP0056</code>–<code>EGP0078</code> aralığı, gerçek servis mesajları ve beklenen davranışlarla birlikte <a href="sms-dogrulamali-gonderim-entegratorler.html#hata-kodlari">gelecek değişiklikler</a> sayfasında yer alır.</div>
 <h3 id="h-enumlar">Enumlar</h3>
 <p>e-Gider Pusulası request modeli, belge senaryosunu ve doğrulama yöntemini sabit kod listeleriyle ayrıştırır. Aşağıdaki değerler API modeli, request alanları ve validasyon kuralları üzerinden doğrulanmıştır.</p>
 <div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th><th>Kullanım Bağlamı</th></tr></thead><tbody>
@@ -84,6 +77,10 @@
 <tr><td><code>IADE</code></td><td>İade pusulası; iade edilen belge referansı beklenir</td></tr>
 <tr><td rowspan="2"><code>OutgoingExpenseVoucherStatus</code></td><td><code>ExpenseVoucherAndXmlCreated</code></td><td>Gider pusulası ve UBL XML oluşturuldu</td></tr>
 <tr><td><code>Signed</code></td><td>Belge imzalandı; GİB gönderimine hazır</td></tr>
+<tr><td rowspan="4"><code>OutgoingExpenseVoucherStatusForUser</code></td><td><code>WaitingForVerification</code></td><td>Portal kullanıcısının doğrulama yöntemini tamamlaması beklenir</td></tr>
+<tr><td><code>WaitingForSmsCode</code></td><td>SMS gönderilmiştir; kod girişi beklenir</td></tr>
+<tr><td><code>ExpenseVoucherAndXmlCreated</code></td><td>Belge ve UBL XML oluşturulmuştur</td></tr>
+<tr><td><code>Signed</code></td><td>Belge imzalanmıştır</td></tr>
 <tr><td rowspan="2"><code>VerificationProvider.ChannelCodeName</code></td><td><code>SMS_PROVIDER</code></td><td>SMS doğrulama sağlayıcısı</td></tr>
 <tr><td><code>IADE_PROVIDER</code></td><td>İade kodu doğrulama sağlayıcısı</td></tr>
 <tr><td rowspan="2"><code>VerificationInfo.Type</code></td><td><code>SMS</code></td><td>SMS kodu ile doğrulama</td></tr>
@@ -140,13 +137,68 @@
 <tr><td><code>EGP0047</code></td><td><code>DocumentTypeRequiredForIade</code></td><td><code>IADE</code> senaryosunda iade belge tipi zorunludur</td></tr>
 <tr><td><code>EGP0048</code></td><td><code>InvalidDocumentType</code></td><td><code>DocumentType</code> geçerli değerlerden biri değildir</td></tr>
 <tr><td><code>EGP0049</code></td><td><code>CargoRequiresIadeKodu</code></td><td>Kargo üzerinden iade akışında <code>IADEKODU</code> zorunludur</td></tr>
-<tr><td><code>EGP0050</code></td><td><code>BelgesizRequiresRealTckn</code></td><td><code>BELGESIZ</code> iadede alıcı tarafında gerçek kişi kimliği beklenir</td></tr>
+<tr><td><code>EGP0050</code></td><td><code>BelgesizRequiresPersonIdentification</code></td><td><code>BELGESIZ</code> iadede Türkiye Cumhuriyeti vatandaşı için TCKN, yabancı uyruklu kişi için PASAPORTNO beklenir</td></tr>
 <tr><td><code>EGP0051</code></td><td><code>IssueDateRequiredForReturnedDocumentReference</code></td><td>İade belge referansı için <code>IssueDate</code> zorunludur</td></tr>
 <tr><td><code>EGP0052</code></td><td><code>IssueDateInvalidForReturnedDocumentReference</code></td><td>İade belge referans tarihi geçersizdir</td></tr>
 <tr><td><code>EGP0053</code></td><td><code>DelegateReceiverNotAllowedInSatis</code></td><td><code>SATIS</code> senaryosunda vekil alıcı bilgisi gönderilemez</td></tr>
 <tr><td><code>EGP0054</code></td><td><code>DelegateReceiverInfoRequired</code></td><td>Vekil alıcı modeli gönderildiğinde zorunlu alt alanlar eksiktir</td></tr>
 <tr><td><code>EGP0055</code></td><td><code>DelegateReceiverIdentificationTypeInvalid</code></td><td>Vekil alıcı kimlik tipi <code>TCKN</code> veya <code>PASAPORTNO</code> değildir</td></tr>
+<tr><td><code>EGP0080</code></td><td><code>CustomerMustBePerson</code></td><td>e-Gider Pusulası alıcısı tüzel kişi veya VKN olarak gönderilmiştir</td></tr>
+<tr><td><code>EGP0081</code></td><td><code>CustomerSinglePersonIdentificationRequired</code></td><td>Belge request'i tam olarak bir TCKN veya PASAPORTNO taşımıyordur</td></tr>
+<tr><td><code>EGP0082</code></td><td><code>SelectedPersonPartyIdentificationMismatch</code></td><td>Portalda seçilen alıcı cari ile request'teki kimlik eşleşmiyordur</td></tr>
+<tr><td><code>EGP0083</code></td><td><code>DelegateReceiverPartyIdentificationMismatch</code></td><td>Portalda seçilen vekil cari ile DelegateReceiver kimliği eşleşmiyordur</td></tr>
+<tr><td><code>EGP0084</code></td><td><code>DelegateReceiverIdentificationInvalid</code></td><td>Vekilin TCKN veya pasaport değeri geçersizdir</td></tr>
+<tr><td><code>EGP0085</code></td><td><code>CustomerPersonIdentificationInvalid</code></td><td>Alıcının TCKN veya pasaport değeri geçersizdir</td></tr>
+<tr><td><code>EGP0086</code></td><td><code>CustomerIdentificationSchemeInvalidForReport</code></td><td>Tarihsel belgede kaydedilen kimlik GİB raporunda TCKN/PASAPORTNO olarak güvenle sınıflandırılamamıştır</td></tr>
+<tr><td><code>EGP0087</code></td><td><code>CargoCompanyUblDataMismatch</code></td><td>Hazır UBL içindeki kargo şirketi bilgileri <code>CargoCompanies/GetAll</code> endpointinden dönen aktif kayıtla eşleşmemiştir</td></tr>
+<tr><td><code>EGP0088</code></td><td><code>ExpenseVoucherStatusNotValidForCancellation</code></td><td>Belgenin kayıtlı e-Arşiv durumu <code>Valid</code> olmadığı için iptal isteği reddedilmiştir</td></tr>
 </tbody></table></div>
+<h3 id="h-belge-gecmisi-kodlari">Belge Geçmişi (History) Bilgi Kodları</h3>
+<p>Aşağıdaki kodlar Add/Update yanıtındaki <code>ErrorCode</code> alanında dönmez; SMS ve iade kodu adımları sırasında belgenin geçmiş kaydına (<code>GetOutgoingExpenseVoucherHistory</code>) bilgilendirme mesajı olarak yazılır. Sorun giderme ve operasyonel takip için referans alınır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kod</th><th>Kaynak Üye</th><th>Kapsam</th></tr></thead><tbody>
+<tr><td><code>EGP0062</code></td><td><code>ExpenseVoucherSmsCodeSent</code></td><td>SMS doğrulama kodu gönderildi</td></tr>
+<tr><td><code>EGP0063</code></td><td><code>ExpenseVoucherSmsVerified</code></td><td>SMS doğrulaması tamamlandı</td></tr>
+<tr><td><code>EGP0064</code></td><td><code>ExpenseVoucherSmsVerificationFailed</code></td><td>SMS doğrulama denemesi başarısız oldu</td></tr>
+<tr><td><code>EGP0066</code></td><td><code>ExpenseVoucherSmsPhoneNumberChanged</code></td><td>SMS gönderimi için kayıtlı telefon numarası değiştirildi</td></tr>
+<tr><td><code>EGP0068</code></td><td><code>ExpenseVoucherSmsCancellationNotificationSent</code></td><td>Doğrulama iptali bildirimi SMS ile gönderildi</td></tr>
+<tr><td><code>EGP0069</code></td><td><code>ExpenseVoucherSmsCancellationNotificationFailed</code></td><td>Doğrulama iptali bildirimi SMS ile gönderilemedi</td></tr>
+<tr><td><code>EGP0076</code></td><td><code>ExpenseVoucherIadeKoduSubmitted</code></td><td>İade kodu kaydedildi ve belge imza sürecine alındı</td></tr>
+</tbody></table></div>
+<h3 id="h-dogrulama-hata-kodlari">Doğrulama Hata Kodları ve İstemci Davranışı</h3>
+<p>Aşağıdaki kodlar SMS ve iade kodu işlemlerinde dönen servis mesajlarıdır. Entegrasyonlar mesaj metnine değil hata koduna göre davranmalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kod</th><th>Servis mesajı</th><th>Beklenen davranış</th></tr></thead><tbody>
+<tr><td><code>EGP0056</code></td><td>e-Gider Pusulası doğrulama işlemi için uygun durumda değildir.</td><td>Belgenin güncel durumu sorgulanmalıdır.</td></tr>
+<tr><td><code>EGP0057</code></td><td>e-Gider Pusulası için başka bir doğrulama işlemi devam etmektedir.</td><td>Eşzamanlı istek yinelenmemelidir.</td></tr>
+<tr><td><code>EGP0058</code></td><td>SMS gönderme veya doğrulama deneme sınırına ulaşıldı.</td><td>Bekleme süresinden sonra yeniden denenmelidir.</td></tr>
+<tr><td><code>EGP0059</code></td><td>Gönderilmiş doğrulama kodu hâlâ geçerlidir.</td><td>Yeni kod istenmeden mevcut kod kullanılmalıdır.</td></tr>
+<tr><td><code>EGP0060</code></td><td>SMS doğrulama kodu gönderilemedi.</td><td>İşlem başarılı kabul edilmemeli, tekrar denenmelidir.</td></tr>
+<tr><td><code>EGP0061</code></td><td>Doğrulama kodu geçersizdir veya süresi dolmuştur.</td><td>Yeni kod alınarak doğrulama yeniden başlatılmalıdır.</td></tr>
+<tr><td><code>EGP0070</code></td><td>SMS sağlayıcısının adı veya VKN bilgisi yapılandırılmamıştır.</td><td>İşlem durdurulmalı ve VBT ile iletişime geçilmelidir.</td></tr>
+<tr><td><code>EGP0071</code></td><td>Belgeyi belirlemek için Id, ExternalId, ETTN veya belge numarasından biri gönderilmelidir.</td><td>Tek bir geçerli belge kimliği eklenmelidir.</td></tr>
+<tr><td><code>EGP0072</code></td><td>Telefon numarası geçerli formatta değildir.</td><td>Telefon numarası düzeltilmelidir.</td></tr>
+<tr><td><code>EGP0073</code></td><td>Doğrulama tokenı geçerli değildir.</td><td>SMS gönderme adımı yeniden başlatılmalıdır.</td></tr>
+<tr><td><code>EGP0074</code></td><td>SMS doğrulama kodu geçerli formatta değildir.</td><td>Kod biçimi düzeltilmelidir.</td></tr>
+<tr><td><code>EGP0075</code></td><td>SMS doğrulama işlemleri yalnızca Portal kanalından çağrılabilir.</td><td>Portal endpointi doğrudan entegrasyondan çağrılmamalıdır.</td></tr>
+<tr><td><code>EGP0077</code></td><td>İade kodu, telefon ve sağlayıcı bilgileri geçerli ve eksiksiz gönderilmelidir.</td><td>İade kodu kaydı tam veriyle yinelenmelidir.</td></tr>
+<tr><td><code>EGP0078</code></td><td>Doğrulama sağlayıcısının VKN bilgisi 10 haneli ve yalnızca rakamlardan oluşmalıdır.</td><td>Sağlayıcının geçerli VKN bilgisi gönderilmelidir.</td></tr>
+</tbody></table></div>
+
+<div class="callout callout-info"><b>Hata sonrası devam:</b> Geçersiz telefon, kod biçimi veya eksik iade verisi aynı adımda düzeltilir. Süresi dolmuş kodda yeni SMS istenir; deneme sınırında pencerenin yenilenmesi beklenir; sağlayıcı yapılandırması eksikse VBT ile iletişime geçilir. Entegrasyon kararını mesaj metnine değil gerçek hata responseundaki <code>ErrorCode</code> değerine bağlamalıdır.</div>
+
+
+<h3 id="h-person-party-hata-kodlari">PersonParty Hata Kodları</h3>
+<p>Portal UI, gerçek kişi cari işlemlerinde mesaj metni yerine aşağıdaki hata kodlarını esas almalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kod</th><th>Karşılaşılabilecek durum</th></tr></thead><tbody>
+<tr><td><code>PPY0001</code></td><td>Cari adı zorunludur.</td></tr>
+<tr><td><code>PPY0003</code></td><td>Gerçek kişi carisi için TCKN veya PASAPORTNO zorunludur.</td></tr>
+<tr><td><code>PPY0004</code></td><td>Gerçek kişi carisinde yalnızca TCKN veya PASAPORTNO kimliği kullanılabilir.</td></tr>
+<tr><td><code>PPY0005</code></td><td>Bu TCKN veya pasaport numarası aynı firmadaki başka bir caride kullanılıyor.</td></tr>
+<tr><td><code>PPY0006</code></td><td>Gerçek kişi carisinin son kimlik bilgisi kaldırılamaz.</td></tr>
+<tr><td><code>PPY0007</code></td><td>Gerçek kişi carisi için geçersiz cari rolü istendi.</td></tr>
+<tr><td><code>PPY0008</code></td><td>Seçilen cari gerçek kişi carisi değildir.</td></tr>
+<tr><td><code>PPY0009</code></td><td>Pasaport numarası 9 karakterden uzun olamaz.</td></tr>
+</tbody></table></div>
+
 <h3 id="h-validasyon-referanslari">Validasyon Referansları</h3>
 <p>Validasyon yanıtlarında modüle özgü mesaj kodları dışında ortak hata alanları ve taraf profili kontrollerinden gelen kodlar da görülebilir. Bu bölüm, response içindeki alanların nasıl ayrıştırılacağını teknik olarak sınırlar.</p>
 <div class="table-wrapper"><table><thead><tr><th>Referans</th><th>Kapsam</th><th>Not</th></tr></thead><tbody>
@@ -167,7 +219,7 @@
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
-<a class="docs-page-link docs-page-previous" href="sms-dogrulamali-gonderim-portal.html"><span>Önceki</span><strong>Portal Kullanıcıları İçin</strong></a>
+<a class="docs-page-link docs-page-previous" href="request-ubl-xml-mapping.html"><span>Önceki</span><strong>Request → UBL XML Mapping</strong></a>
 <a class="docs-page-link docs-page-next" href="changelog.html"><span>Sonraki</span><strong>Changelog</strong></a>
 </nav>
 <!-- vbt:pagination:end -->
@@ -179,7 +231,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API endpoint request response","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"SMS ve İade Kodu Doğrulaması","text":"GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile kullanım amacına göre hazırlanan ayrıntılar.","keywords":"Gelecek Değişiklikler SMS IADEKODU","url":"sms-dogrulamali-gonderim.html","sectionType":"Sayfa"},{"title":"Entegratörler İçin","text":"Doğrudan JSON API veya UBL kullanan entegratörlerin satış ve iade senaryoları için hazırlaması gereken sözleşme değişiklikleri.","keywords":"Gelecek Değişiklikler Entegratör SMS IADEKODU UBL API","url":"sms-dogrulamali-gonderim-entegratorler.html","sectionType":"Sayfa"},{"title":"Portal Kullanıcıları İçin","text":"VBT Portalda hazır sunulacak satış, yüz yüze iade ve kargolu iade doğrulama davranışları.","keywords":"Gelecek Değişiklikler Portal SMS IADEKODU","url":"sms-dogrulamali-gonderim-portal.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Entegratör belge endpointleri ile Portal doğrulama ve PersonParty API sözleşmeleri.","keywords":"API endpoint request response","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>

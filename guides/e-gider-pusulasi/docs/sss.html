@@ -43,7 +43,7 @@
 <header class="docs-topbar"><div class="docs-topbar-inner">
 <button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
 <a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
-<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">İletişim</a></nav>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
 <div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
 </div></header>
 <!-- vbt:topbar:end -->
@@ -66,12 +66,6 @@
 <a class="docs-nav-link" href="api-endpoint-referansi.html">API Endpoint Referansı</a>
 <a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
 <a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
-</div>
-<div class="docs-nav-group">
-<div class="docs-nav-label">Gelecek Değişiklikler</div>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">SMS ve İade Kodu Doğrulaması</a>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim-entegratorler.html">Entegratörler İçin</a>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim-portal.html">Portal Kullanıcıları İçin</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Referans</div>
@@ -114,7 +108,7 @@
 
 <details class="example-details"><summary>Portalda SMS kodu kendiliğinden mi gönderilir?</summary>
     <div class="example-body">
-        <p>Hayır. Aktivasyon sonrasında belge kaydedilir, kullanıcı doğrulama ekranında telefonu kontrol eder ve SMS gönderimini başlatır. Kod 6 hanelidir ve ekranda gösterilen süre içinde girilmelidir. Kargolu IADE işleminde SMS yerine iade kodu kullanılır.</p>
+        <p>Hayır. Belge kaydedilir, kullanıcı doğrulama ekranında telefonu kontrol eder ve SMS gönderimini başlatır. Kod 6 hanelidir ve ekranda gösterilen süre içinde girilmelidir. Kargolu IADE işleminde SMS yerine iade kodu kullanılır.</p>
     </div>
 </details>
 
@@ -124,13 +118,19 @@
     </div>
 </details>
 
-<h2 id="sss-entegrator">Entegratör SSS</h2>
-
-<details class="example-details"><summary>Aktivasyon öncesinde yeni doğrulama alanlarını göndermeli miyiz?</summary>
-    <div class="example-body">
-        <p>Hayır. Aktivasyon tarihi VBT tarafından duyurulana kadar mevcut endpoint ve request modelleri aynı şekilde kullanılmaya devam eder. Geçiş sonrasındaki sözleşme için <a href="sms-dogrulamali-gonderim.html">SMS ve İade Kodu Doğrulaması</a> sayfasına bakın.</p>
-    </div>
+<details class="example-details"><summary>Portal için ayrıca entegrasyon geliştirmek gerekir mi?</summary>
+    <div class="example-body"><p>Hayır. SMS gönderme, kod doğrulama, iade kodu kaydetme ve gerçek kişi cari seçme ekranları VBT Portal içinde hazır sunulur.</p></div>
 </details>
+
+<details class="example-details"><summary>Excel ile yüklenen belgeler topluca doğrulanabilir mi?</summary>
+    <div class="example-body"><p>Hayır. Her e-Gider Pusulası ayrı bir doğrulama kaydı taşıdığı için SMS veya iade kodu adımı belge bazında tamamlanır.</p></div>
+</details>
+
+<details class="example-details"><summary>Gönderilmiş SMS kodunun süresi dolarsa ne olur?</summary>
+    <div class="example-body"><p>Geçersiz veya süresi dolmuş kod kabul edilmez. Deneme ve bekleme kuralları uygunsa yeni kod istenir.</p></div>
+</details>
+
+<h2 id="sss-entegrator">Entegratör SSS</h2>
 
 <details class="example-details"><summary>SMS gönderme ve kod doğrulama endpointlerini entegratör mü çağıracak?</summary>
     <div class="example-body">
@@ -144,7 +144,7 @@
     </div>
 </details>
 
-<details class="example-details"><summary>Aktivasyon sonrasında preview requestinde doğrulama alanları gerekir mi?</summary>
+<details class="example-details"><summary>Preview requestinde doğrulama alanları gerekir mi?</summary>
     <div class="example-body">
         <p>Doğrudan ERP/API önizlemesi aynı model validasyonundan geçtiği için doğrulama alanları eksiksiz gönderilmelidir. Portal önizlemesi boş doğrulama verisiyle üretilebilir; ancak önizleme başarısı belgenin doğrulandığı veya gerçek kaydın kabul edileceği anlamına gelmez.</p>
     </div>
@@ -158,13 +158,19 @@
 
 <details class="example-details"><summary>Test ortamı var mı?</summary>
     <div class="example-body">
-        <p>Evet. Swagger üzerinden endpoint'leri deneyebilirsiniz: <a href="api-endpoint-referansi.html#h-paket-icerik">API Endpoint Referansı</a> sayfasındaki test ortamı linkine bakın.</p>
+        <p>Evet. Swagger üzerinden endpoint'leri deneyebilirsiniz: <a href="api-endpoint-referansi.html#h-entegrator-endpointleri">API Endpoint Referansı</a> sayfasındaki test ortamı linkine bakın.</p>
     </div>
 </details>
 
-<details class="example-details"><summary>Hazır, kopyalayıp deneyebileceğim örnek request var mı?</summary>
+<details class="example-details"><summary>Senaryoma uyarlayabileceğim örnek request var mı?</summary>
     <div class="example-body">
-        <p>Evet, SATIS ve IADE senaryolarının tamamı için doğrudan kullanılabilir JSON örnekleri <a href="request-ornekleri.html">Request Örnekleri</a> sayfasında yer alır.</p>
+        <p>Evet. SATIS ve IADE senaryoları için uyarlanabilir JSON şablonları <a href="request-ornekleri.html">Request Örnekleri</a> sayfasında yer alır. Kimlik, telefon, sağlayıcı, kargo ve belge referansı değerleri gerçek işleme göre değiştirilmelidir.</p>
+    </div>
+</details>
+
+<details class="example-details"><summary>İmzalı hazır UBL gönderirken platform belgeyi değiştirir mi?</summary>
+    <div class="example-body">
+        <p>Hayır. <code>IsSigned=true</code>, entegratörün UBL'nin gerçekten imzalı olduğuna ilişkin beyanıdır. Platform bu beyana güvenir ve gönderilen UBL baytlarını tamamlamaz veya yeniden üretmez. Doğrulama, kargo, iade edilen belge ve vekalet alanlarının tamamı imzadan önce UBL içinde hazırlanmalıdır.</p>
     </div>
 </details>
 
@@ -195,7 +201,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API endpoint request response","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"SMS ve İade Kodu Doğrulaması","text":"GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile kullanım amacına göre hazırlanan ayrıntılar.","keywords":"Gelecek Değişiklikler SMS IADEKODU","url":"sms-dogrulamali-gonderim.html","sectionType":"Sayfa"},{"title":"Entegratörler İçin","text":"Doğrudan JSON API veya UBL kullanan entegratörlerin satış ve iade senaryoları için hazırlaması gereken sözleşme değişiklikleri.","keywords":"Gelecek Değişiklikler Entegratör SMS IADEKODU UBL API","url":"sms-dogrulamali-gonderim-entegratorler.html","sectionType":"Sayfa"},{"title":"Portal Kullanıcıları İçin","text":"VBT Portalda hazır sunulacak satış, yüz yüze iade ve kargolu iade doğrulama davranışları.","keywords":"Gelecek Değişiklikler Portal SMS IADEKODU","url":"sms-dogrulamali-gonderim-portal.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Entegratör belge endpointleri ile Portal doğrulama ve PersonParty API sözleşmeleri.","keywords":"API endpoint request response","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>

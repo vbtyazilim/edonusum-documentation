@@ -16,12 +16,6 @@
     "primaryAction": {
       "target": "egider-pusulasi-nedir",
       "label": "Dokümanı inceleyin"
-    },
-    "announcement": {
-      "enabled": true,
-      "target": "sms-dogrulamali-gonderim",
-      "label": "Gelecek Değişiklikler",
-      "ariaLabel": "Henüz aktif olmayan gelecek değişiklikleri inceleyin"
     }
   },
   "sections": [
@@ -33,17 +27,31 @@
           "title": "e-Gider Pusulası Nedir?",
           "description": "e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.",
           "eyebrow": "Başlangıç",
-          "keywords": ["Başlangıç", "e-Gider Pusulası", "CreditNote"],
-          "roles": ["guide-start"],
-          "homeCard": { "label": "Başlangıç" }
+          "keywords": [
+            "Başlangıç",
+            "e-Gider Pusulası",
+            "CreditNote"
+          ],
+          "roles": [
+            "guide-start"
+          ],
+          "homeCard": {
+            "label": "Başlangıç"
+          }
         },
         {
           "slug": "gib-teknik-gereksinimleri",
           "title": "GİB Referansı",
           "description": "GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.",
           "eyebrow": "Teknik Temel",
-          "keywords": ["Teknik Temel", "GİB", "UBL-TR"],
-          "homeCard": { "label": "Teknik Temel" }
+          "keywords": [
+            "Teknik Temel",
+            "GİB",
+            "UBL-TR"
+          ],
+          "homeCard": {
+            "label": "Teknik Temel"
+          }
         }
       ]
     },
@@ -55,24 +63,43 @@
           "title": "Kullanım Senaryoları",
           "description": "SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.",
           "eyebrow": "Senaryolar",
-          "keywords": ["Senaryolar", "SATIS", "IADE", "kargo", "vekalet"],
-          "homeCard": { "label": "Senaryolar" }
+          "keywords": [
+            "Senaryolar",
+            "SATIS",
+            "IADE",
+            "kargo",
+            "vekalet"
+          ],
+          "homeCard": {
+            "label": "Senaryolar"
+          }
         },
         {
           "slug": "entegrator-sorumluluklari",
           "title": "Entegratör Sorumlulukları",
           "description": "Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.",
           "eyebrow": "Sorumluluklar",
-          "keywords": ["Sorumluluklar", "entegratör"],
-          "homeCard": { "label": "Sorumluluklar" }
+          "keywords": [
+            "Sorumluluklar",
+            "entegratör"
+          ],
+          "homeCard": {
+            "label": "Sorumluluklar"
+          }
         },
         {
           "slug": "platform-sorumluluklari",
           "title": "Platform Sorumlulukları",
-          "description": "Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.",
+          "description": "Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.",
           "eyebrow": "Sorumluluklar",
-          "keywords": ["Sorumluluklar", "platform", "validasyon"],
-          "homeCard": { "label": "Sorumluluklar" }
+          "keywords": [
+            "Sorumluluklar",
+            "platform",
+            "validasyon"
+          ],
+          "homeCard": {
+            "label": "Sorumluluklar"
+          }
         }
       ]
     },
@@ -82,63 +109,51 @@
         {
           "slug": "api-endpoint-referansi",
           "title": "API Endpoint Referansı",
-          "description": "Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.",
+          "description": "Entegratör belge endpointleri ile Portal doğrulama ve PersonParty API sözleşmeleri.",
           "eyebrow": "API",
-          "keywords": ["API", "endpoint", "request", "response"],
-          "roles": ["api"],
-          "homeCard": { "label": "API" }
+          "keywords": [
+            "API",
+            "endpoint",
+            "request",
+            "response"
+          ],
+          "roles": [
+            "api"
+          ],
+          "homeCard": {
+            "label": "API"
+          }
         },
         {
           "slug": "request-ornekleri",
           "title": "Request Örnekleri",
-          "description": "SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.",
+          "description": "SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.",
           "eyebrow": "Örnekler",
-          "keywords": ["Örnekler", "SATIS", "IADE", "JSON"],
-          "homeCard": { "label": "Örnekler" }
+          "keywords": [
+            "Örnekler",
+            "SATIS",
+            "IADE",
+            "JSON"
+          ],
+          "homeCard": {
+            "label": "Örnekler"
+          }
         },
         {
           "slug": "request-ubl-xml-mapping",
           "title": "Request → UBL XML Mapping",
           "description": "Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.",
           "eyebrow": "API",
-          "keywords": ["API", "UBL", "XML", "mapping"],
+          "keywords": [
+            "API",
+            "UBL",
+            "XML",
+            "mapping"
+          ],
           "homeCard": {
             "label": "API",
             "description": "Entegratör request alanlarının UBL CreditNote XML karşılıkları."
           }
-        }
-      ]
-    },
-    {
-      "label": "Gelecek Değişiklikler",
-      "pages": [
-        {
-          "slug": "sms-dogrulamali-gonderim",
-          "title": "SMS ve İade Kodu Doğrulaması",
-          "description": "GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile kullanım amacına göre hazırlanan ayrıntılar.",
-          "eyebrow": "Gelecek Değişiklikler",
-          "keywords": ["Gelecek Değişiklikler", "SMS", "IADEKODU"],
-          "homeCard": {
-            "label": "Gelecek Değişiklikler",
-            "description": "Henüz aktif olmayan doğrulama değişikliğinin yürürlük koşulu ile entegratör ve Portal rehberleri.",
-            "action": "Değişiklikleri inceleyin"
-          }
-        },
-        {
-          "slug": "sms-dogrulamali-gonderim-entegratorler",
-          "title": "Entegratörler İçin",
-          "description": "Doğrudan JSON API veya UBL kullanan entegratörlerin satış ve iade senaryoları için hazırlaması gereken sözleşme değişiklikleri.",
-          "eyebrow": "Gelecek Değişiklikler",
-          "keywords": ["Gelecek Değişiklikler", "Entegratör", "SMS", "IADEKODU", "UBL", "API"],
-          "homeCard": false
-        },
-        {
-          "slug": "sms-dogrulamali-gonderim-portal",
-          "title": "Portal Kullanıcıları İçin",
-          "description": "VBT Portalda hazır sunulacak satış, yüz yüze iade ve kargolu iade doğrulama davranışları.",
-          "eyebrow": "Gelecek Değişiklikler",
-          "keywords": ["Gelecek Değişiklikler", "Portal", "SMS", "IADEKODU"],
-          "homeCard": false
         }
       ]
     },
@@ -148,27 +163,47 @@
         {
           "slug": "teknik-referans",
           "title": "Teknik Referans",
-          "description": "Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.",
+          "description": "Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.",
           "eyebrow": "Referans",
-          "keywords": ["Referans", "enum", "hata kodları", "validasyon"],
-          "homeCard": { "label": "Referans" }
+          "keywords": [
+            "Referans",
+            "enum",
+            "hata kodları",
+            "validasyon"
+          ],
+          "homeCard": {
+            "label": "Referans"
+          }
         },
         {
           "slug": "changelog",
           "title": "Changelog",
           "description": "e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.",
           "eyebrow": "Referans",
-          "keywords": ["Referans", "changelog", "değişiklik"],
-          "homeCard": { "label": "Referans" }
+          "keywords": [
+            "Referans",
+            "changelog",
+            "değişiklik"
+          ],
+          "homeCard": {
+            "label": "Referans"
+          }
         },
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
           "description": "e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.",
           "eyebrow": "Referans",
-          "keywords": ["SSS", "sorular"],
-          "roles": ["faq"],
-          "homeCard": { "label": "SSS" }
+          "keywords": [
+            "SSS",
+            "sorular"
+          ],
+          "roles": [
+            "faq"
+          ],
+          "homeCard": {
+            "label": "SSS"
+          }
         }
       ]
     }

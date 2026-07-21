@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Platform Sorumlulukları — e-Gider Pusulası Entegrasyon Rehberi</title>
-<meta name="description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
+<meta name="description" content="Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/platform-sorumluluklari.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Platform Sorumlulukları — e-Gider Pusulası Entegrasyon Rehberi">
-<meta property="og:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
+<meta property="og:description" content="Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.">
 <meta property="og:url" content="https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/platform-sorumluluklari.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Platform Sorumlulukları — e-Gider Pusulası Entegrasyon Rehberi">
-<meta name="twitter:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
+<meta name="twitter:description" content="Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -43,7 +43,7 @@
 <header class="docs-topbar"><div class="docs-topbar-inner">
 <button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
 <a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Gider Pusulası</span></a>
-<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">İletişim</a></nav>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="egider-pusulasi-nedir.html">Rehber</a><a href="api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
 <div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
 </div></header>
 <!-- vbt:topbar:end -->
@@ -68,12 +68,6 @@
 <a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
 </div>
 <div class="docs-nav-group">
-<div class="docs-nav-label">Gelecek Değişiklikler</div>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">SMS ve İade Kodu Doğrulaması</a>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim-entegratorler.html">Entegratörler İçin</a>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim-portal.html">Portal Kullanıcıları İçin</a>
-</div>
-<div class="docs-nav-group">
 <div class="docs-nav-label">Referans</div>
 <a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
 <a class="docs-nav-link" href="changelog.html">Changelog</a>
@@ -82,11 +76,22 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Sorumluluklar</p><h1>Platform Sorumlulukları</h1><p class="docs-lead">Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Sorumluluklar</p><h1>Platform Sorumlulukları</h1><p class="docs-lead">Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.</p></header>
 <!-- vbt:article-header:end -->
 <section id="section-platform-sorumluluklari">
+<div class="callout callout-info"><b>İki ayrı okuma düzeyi:</b> “Portal kullanıcısı” başlıklı bölümler ekranda görülen davranışı; “Portal UI geliştiricisi” başlıklı bölümler ise ekranın uygulayacağı endpoint, model ve durum sözleşmesini anlatır.</div>
+<h3 id="h-portal-uctan-uca">Portal UI Geliştiricisi — Uçtan Uca Belge Akışı</h3>
+<ol>
+    <li>Alıcı ve varsa vekil <a href="api-endpoint-referansi.html#h-portal-person-party-endpoints">PersonParty endpointleriyle</a> aranır. Kayıt bulunursa response içindeki cari <code>Id</code> ile <code>Update</code>, bulunamazsa <code>Add</code> çağrılır.</li>
+    <li>Kullanıcının seçtiği tek TCKN veya PASAPORTNO belge request'ine yazılır. Alıcı cari Id'si <code>AccountingCustomerParty.Party.Id</code>, vekil cari Id'si <code>DelegateReceiver.PartyId</code> alanında taşınır.</li>
+    <li>Belge, mevcut <code>AddOutgoingExpenseVoucher</code> veya <code>UpdateOutgoingExpenseVoucher</code> endpointiyle kaydedilir. Portal kanalında doğrulama alanları bu ilk requestte boş bırakılabilir.</li>
+    <li>Dönen <code>OutgoingExpenseVoucherStatusForUser</code> değerlendirilir. <code>WaitingForVerification</code> ise senaryoya göre SMS veya iade kodu ekranı açılır.</li>
+    <li>SMS için Send ve Complete; iade kodu için Submit endpointi çağrılır. Başarılı yanıttan sonra belge detayı yeniden sorgulanır.</li>
+    <li><code>ExpenseVoucherAndXmlCreated</code> veya <code>Signed</code> durumunda doğrulama ekranı kapatılır; hata kodu varsa kullanıcıya düzeltilebilir alan gösterilir.</li>
+</ol>
+<div class="callout callout-warning"><b>Belge request'i ile cari kartı ayrıdır:</b> PersonParty seçimi request'i hazırlar; belgeyi kendiliğinden oluşturmaz. Belge oluşturma veya güncelleme anında seçilen kişi bilgileri belgeye kaydedilir.</div>
 <h3 id="h-otomatik">Otomatik İşlemler</h3>
-<p>Request kabul edildiğinde platform; XML üretimi, imza, kayıt, raporlama ve çıktı üretimini sıralı bir teknik süreç olarak yönetir.</p>
+<p>Request kabul edildiğinde platform; içerik kontrolü, belge üretimi, imza, saklama, GİB bildirimi ve kullanıcı çıktısını sıralı olarak yönetir.</p>
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -97,8 +102,8 @@
                         <tr><td>2</td><td>UBL XML Üretimi</td><td>UBL 2.1 CreditNote standardında XML</td></tr>
                         <tr><td>3</td><td>e-İmzalama</td><td>Belge kesinleştirme</td></tr>
                         <tr><td>4</td><td>Numara/UUID Atama</td><td>Entegratör göndermezse otomatik</td></tr>
-                        <tr><td>5</td><td>DB Kayıt</td><td>Kalıcı saklama</td></tr>
-                        <tr><td>6</td><td>GİB Rapor</td><td>Periyodik toplu XML</td></tr>
+                        <tr><td>5</td><td>Belge Kaydı</td><td>Kalıcı saklama</td></tr>
+                        <tr><td>6</td><td>GİB Raporu</td><td>Dönemsel toplu bildirim</td></tr>
                         <tr><td>7</td><td>GİB Gönderim</td><td>Rapor iletimi + yanıt işleme</td></tr>
                         <tr><td>8</td><td>İptal Raporu</td><td>Sonraki döngüde bildirim</td></tr>
                         <tr><td>9</td><td>PDF</td><td>Yazdırılabilir çıktı</td></tr>
@@ -115,21 +120,57 @@
                         <tr><th>Kontrol</th><th>Kod</th><th>Açıklama</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>VerificationProvider dolu</td><td>EGP*</td><td>Her belgede zorunlu</td></tr>
-                        <tr><td>ChannelCodeName geçerli</td><td>EGP*</td><td>SMS_PROVIDER / IADE_PROVIDER</td></tr>
-                        <tr><td>ApplicationName + Vkn dolu</td><td>EGP*</td><td>Sağlayıcı bilgileri</td></tr>
-                        <tr><td>VerificationInfo dolu</td><td>EGP*</td><td>Doğrulama bilgisi</td></tr>
-                        <tr><td>IADE → ReturnedDocRef var</td><td>EGP*</td><td>İade belgesi</td></tr>
-                        <tr><td>BELGESIZ → Kimlik var</td><td>EGP*</td><td>Gerçek kimlik</td></tr>
-                        <tr><td>Kargo → bilgiler tam</td><td>EGP*</td><td>VKN + unvan + yetki no</td></tr>
-                        <tr><td>SATIS → SMS_PROVIDER</td><td>EGP*</td><td>Tek seçenek</td></tr>
+                        <tr><td>VerificationProvider ve yöntem uyumu</td><td>EGP0044 / EGP0045 / EGP0078</td><td>SMS_PROVIDER veya IADE_PROVIDER; sağlayıcı adı ve 10 haneli VKN</td></tr>
+                        <tr><td>VerificationInfo biçimi</td><td>EGP0037 / EGP0039 / EGP0077</td><td>SMS veya IADEKODU; geçerli kod ve telefon</td></tr>
+                        <tr><td>IADE → ReturnedDocumentReference</td><td>EGP0038 / EGP0047 / EGP0048 / EGP0051</td><td>İade edilen belgenin türü ve tarihi; belge varsa numarası</td></tr>
+                        <tr><td>BELGESIZ → gerçek kişi kimliği</td><td>EGP0050 / EGP0085</td><td>T.C. vatandaşı için TCKN, yabancı uyruklu kişi için PASAPORTNO</td></tr>
+                        <tr><td>Kargo → iade kodu ve kargo eşleşmesi</td><td>EGP0049 / EGP0087</td><td>IADEKODU ve aktif kargo şirketi kaydı</td></tr>
+                        <tr><td>SATIS → SMS_PROVIDER</td><td>EGP0046</td><td>Satışta iade sağlayıcısı kullanılamaz</td></tr>
                         <tr><td>SATIS → DelegateReceiver yok</td><td>EGP0053</td><td>Vekalet kullanılamaz</td></tr>
-                        <tr><td>DelegateReceiver → 6 alan</td><td>EGP0054</td><td>Doluysa hepsi zorunlu</td></tr>
-                        <tr><td>SchemeId ≠ VKN</td><td>EGP0055</td><td>Tüzel kişi olamaz</td></tr>
-                        <tr><td>ExternalId tekil</td><td>EGP*</td><td>Mükerrer engeli</td></tr>
+                        <tr><td>DelegateReceiver → kimlik tipi, kimlik değeri ve ad</td><td>EGP0054 / EGP0084</td><td>Doluysa üç iş alanı zorunlu ve geçerli olmalıdır</td></tr>
+                        <tr><td>Alıcı tam olarak bir TCKN/PASAPORTNO taşır</td><td>EGP0080 / EGP0081 / EGP0085</td><td>VKN ve tüzel kişi reddedilir</td></tr>
+                        <tr><td>ExternalId mevcut ve tekil</td><td>EGP0020 / EGP0028</td><td>Boş veya aynı firmada daha önce kullanılmış değer reddedilir</td></tr>
                     </tbody>
                 </table>
             </div>
+
+
+            <h3 id="h-portal-dogrulama">Portal Doğrulama Akışı</h3>
+            <p>Portal, belge senaryosuna göre doğrulama adımını hazır sunar. SMS kendiliğinden gönderilmez; kullanıcı telefon numarasını kontrol ederek gönderimi başlatır.</p>
+            <div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Portal davranışı</th><th>Sonuç</th></tr></thead><tbody>
+                <tr><td><code>SATIS</code></td><td>SMS gönderme ve kod giriş ekranı gösterilir.</td><td>Kod doğrulandığında belge imza akışına alınır.</td></tr>
+                <tr><td>Yüz yüze <code>IADE</code></td><td>SMS veya iade kodu yöntemi seçilir.</td><td>Seçilen yöntem tamamlandığında belge imza akışına alınır.</td></tr>
+                <tr><td>Kargolu <code>IADE</code></td><td>İade kodu, telefon ve sağlayıcı bilgileri istenir.</td><td>Belgede daha önce kaydedilmiş kargo ve iade edilen belge bilgileriyle birlikte doğrulama tamamlanır.</td></tr>
+                <tr><td>Vekaletli <code>IADE</code></td><td>Asıl alıcı korunur; vekil aynı gerçek kişi cari kaynağından seçilir.</td><td>Doğrulama bilgisi vekille ilişkilendirilir.</td></tr>
+            </tbody></table></div>
+
+            <h3 id="h-portal-durumlari">Portal Durumları</h3>
+            <div class="table-wrapper"><table><thead><tr><th>Teknik değer</th><th>Portal açıklaması</th><th>Kullanıcı aksiyonu</th></tr></thead><tbody>
+                <tr><td><code>WaitingForVerification</code></td><td>Doğrulama bekleniyor.</td><td>Senaryoya göre SMS gönderilir veya iade kodu girilir.</td></tr>
+                <tr><td><code>WaitingForSmsCode</code></td><td>SMS onayı bekleniyor.</td><td>Telefona gelen kod girilir; gerekirse telefon düzeltilerek yeniden gönderim yapılır.</td></tr>
+                <tr><td><code>ExpenseVoucherAndXmlCreated</code></td><td>e-Gider Pusulası oluşturuldu.</td><td>Belge durumu takip edilir.</td></tr>
+                <tr><td><code>Signed</code></td><td>GİB'e gönderime hazır.</td><td>Ek doğrulama işlemi yapılmaz.</td></tr>
+            </tbody></table></div>
+            <div class="callout callout-info"><b>Güncelleme:</b> Doğrulama bekleyen Portal belgesi güncellendiğinde önceki doğrulama bilgisi otomatik olarak geçerli kabul edilmez. Senaryoyu etkileyen değişiklikten sonra belge yeniden <code>WaitingForVerification</code> durumunda gösterilir ve doğrulama yeniden tamamlanır.</div>
+
+            <h3 id="h-portal-person-party">Gerçek Kişi Cari Seçimi</h3>
+            <p>Alıcı ve yalnız IADE senaryosunda kullanılabilen vekil, aynı gerçek kişi cari kaynağından aranır. Cari bulunursa arama response'undaki <code>Id</code> korunur; yalnız bulunamazsa yeni cari oluşturulur. Birden fazla kimliği varsa belgede kullanılacak TCKN veya PASAPORTNO açıkça seçilir.</p>
+            <div class="diagram-wrapper"><svg viewBox="0 0 820 250" role="img" aria-labelledby="pp-flow-title pp-flow-desc">
+                <title id="pp-flow-title">Portal gerçek kişi cari seçim akışı</title>
+                <desc id="pp-flow-desc">Cari arama, mevcut kaydı getirme veya yeni kayıt oluşturma, kimlik seçme ve belge requestine aktarma adımlarını gösterir.</desc>
+                <style>.ppb{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.ppq{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.ppo{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.ppt{fill:var(--svg-text);font:600 11px Inter,system-ui,sans-serif;text-anchor:middle}.pps{fill:var(--svg-muted);font:9.5px Inter,system-ui,sans-serif;text-anchor:middle}.ppl{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#ppa)}</style>
+                <defs><marker id="ppa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs>
+                <rect class="ppb" x="20" y="85" width="145" height="60" rx="8"/><text class="ppt" x="92" y="110">Cariyi ara</text><text class="pps" x="92" y="130">Ad · TCKN · Pasaport</text>
+                <path class="ppl" d="M165 115 L215 115"/><rect class="ppq" x="215" y="85" width="130" height="60" rx="8"/><text class="ppt" x="280" y="120">Bulundu mu?</text>
+                <path class="ppl" d="M345 100 L405 55"/><text class="pps" x="375" y="70">EVET</text><rect class="ppb" x="405" y="20" width="150" height="60" rx="8"/><text class="ppt" x="480" y="55">Cariyi getir</text>
+                <path class="ppl" d="M345 130 L405 175"/><text class="pps" x="375" y="165">HAYIR</text><rect class="ppb" x="405" y="160" width="150" height="60" rx="8"/><text class="ppt" x="480" y="188">Cariyi kaydet</text><text class="pps" x="480" y="207">En az bir kimlik</text>
+                <path class="ppl" d="M555 50 L610 100"/><path class="ppl" d="M555 190 L610 140"/><rect class="ppo" x="610" y="85" width="190" height="70" rx="8"/><text class="ppt" x="705" y="112">Kimliği seç ve belgeye aktar</text><text class="pps" x="705" y="133">TCKN veya PASAPORTNO</text>
+            </svg></div>
+            <p>Belgeye aktarılan kişi bilgileri oluşturma veya güncelleme anında kaydedilir. Cari kartında daha sonra yapılan değişiklikler mevcut belgeyi değiştirmez. Endpoint sözleşmeleri için <a href="api-endpoint-referansi.html#h-portal-person-party-endpoints">API Endpoint Referansı</a> kullanılmalıdır.</p>
+            <div class="callout callout-info"><b>Belge ve cari ayrımı:</b> Belge request'inde cari Id bulunmasa da TCKN veya PASAPORTNO ile mevcut cari bulunabilir. Bu durumda belge, bulunan cari Id'siyle ilişkilendirilir; kısmi belge taraf bilgileri mevcut cari kartındaki adres, iletişim veya kişi alanlarını güncellemez. Cari kartı yalnız PersonParty Update endpointiyle değiştirilir.</div>
+
+            <h3 id="h-excel-iptal">Excel ve İptal Davranışı</h3>
+            <p>Excel ile oluşturulan belgelerde doğrulama her belge için ayrı tamamlanır; tek kodla toplu doğrulama yapılmaz. <code>WaitingForVerification</code> ve <code>WaitingForSmsCode</code> durumundaki belgeler iptal edilebilir. Portal iptal işlemini başlattığında belge iptal edilir. SMS gönderilmişse kayıtlı telefona bildirim gönderilmeye çalışılır; bildirim hatası iptal işlemini geri almaz.</p>
 
             <h3 id="h-hata-yaniti">Hata Yanıtı</h3>
 <p>Hata yanıtı, entegrasyon tarafının problemi kod üzerinden ayırt edebilmesi için aynı response iskeletini korur.</p>
@@ -140,12 +181,14 @@
             "Data": null
             }</code></pre>
 
-            <h3 id="h-iptal-onkosul">İptal Ön-Koşulları</h3>
-<p>İptal isteği, yalnızca belge durumu uygun olduğunda ilerler; bu koşullar çağrı öncesi beklenen teknik zemini belirler.</p>
+            <h3 id="h-iptal-onkosul">İptal Ön Koşulları</h3>
+            <p>İptal edilebilirlik belgenin kullanıcı durumu ve platformda kayıtlı e-Arşiv durumu üzerinden değerlendirilir.</p>
             <ul>
-                <li>Belge <strong>imzalanmış</strong> olmalı (imzalanmamış → iptal edilemez)</li>
-                <li>İmzalanmış + raporlanmamış → doğrudan iptal</li>
-                <li>İmzalanmış + raporlanmış → iptal raporu → sonraki döngüde GİB'e bildirim</li>
+                <li><code>WaitingForVerification</code> durumundaki belge, Portal iptal işlemini başlattığında bildirim gönderilmeden iptal edilir.</li>
+                <li><code>WaitingForSmsCode</code> durumundaki belge iptal edilir; kayıtlı telefona iptal bildirimi gönderilmeye çalışılır.</li>
+                <li>İmza kuyruğuna alınmış ancak henüz imzalanmamış belge iptal edilemez.</li>
+                <li>İmzalanmış ve raporlanmamış belge doğrudan; raporlanmış belge ise iptal raporuyla iptal edilir.</li>
+                <li>Kayıtlı e-Arşiv durumu <code>Valid</code> olmayan belge için iptal işlemi başlatılmaz.</li>
             </ul>
 </section>
 <!-- vbt:pagination:start -->
@@ -162,7 +205,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, kargo ve request model alanları.","keywords":"API endpoint request response","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryoları için doğrudan kullanılabilir JSON request örnekleri.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"SMS ve İade Kodu Doğrulaması","text":"GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile kullanım amacına göre hazırlanan ayrıntılar.","keywords":"Gelecek Değişiklikler SMS IADEKODU","url":"sms-dogrulamali-gonderim.html","sectionType":"Sayfa"},{"title":"Entegratörler İçin","text":"Doğrudan JSON API veya UBL kullanan entegratörlerin satış ve iade senaryoları için hazırlaması gereken sözleşme değişiklikleri.","keywords":"Gelecek Değişiklikler Entegratör SMS IADEKODU UBL API","url":"sms-dogrulamali-gonderim-entegratorler.html","sectionType":"Sayfa"},{"title":"Portal Kullanıcıları İçin","text":"VBT Portalda hazır sunulacak satış, yüz yüze iade ve kargolu iade doğrulama davranışları.","keywords":"Gelecek Değişiklikler Portal SMS IADEKODU","url":"sms-dogrulamali-gonderim-portal.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"API Endpoint Referansı","text":"Entegratör belge endpointleri ile Portal doğrulama ve PersonParty API sözleşmeleri.","keywords":"API endpoint request response","url":"api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>
