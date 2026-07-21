@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://vbtyazilim.github.io/</loc></url>
-  <url><loc>https://vbtyazilim.github.io/iletisim.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/egider-pusulasi-nedir.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/gib-teknik-gereksinimleri.html</loc></url>
@@ -11,9 +9,6 @@
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/api-endpoint-referansi.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/request-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/request-ubl-xml-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/sms-dogrulamali-gonderim.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/sms-dogrulamali-gonderim-entegratorler.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/sms-dogrulamali-gonderim-portal.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/sss.html</loc></url>
