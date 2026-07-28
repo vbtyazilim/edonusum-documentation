@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Örnekleri — e-Serbest Meslek Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/request-ornekleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Request Örnekleri — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/request-ornekleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Request Örnekleri — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Serbest Meslek Makbuzu</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="esmm-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="esmm-nedir.html">e-Serbest Meslek Makbuzu Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link active" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-belge-gib-raporu-mapping.html">Request → Belge → GİB Raporu Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="request-ornekleri">
+<h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
+<p>Örnekler aynı <code>SmmRequestModel</code> sözleşmesinin gerçek/tüzel alıcı, TRY/döviz, KDV, stopaj, tevkifat, çok kalem, teslim, güncelleme ve iptal varyasyonlarını gösterir. Tutarlar örnek hesaplamadır; oran ve tevkifat kodu işlemin mevzuat bağlamına göre belirlenmelidir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Örnek</th><th>Alıcı</th><th>Para birimi</th><th>Vergi/kesinti</th><th>Teslim</th></tr></thead><tbody>
+<tr><td>1</td><td>Tüzel</td><td>TRY</td><td>KDV + stopaj</td><td>Elektronik</td></tr>
+<tr><td>2</td><td>Gerçek</td><td>TRY</td><td>KDV</td><td>Elektronik</td></tr>
+<tr><td>3</td><td>Tüzel</td><td>USD</td><td>KDV + stopaj</td><td>Elektronik</td></tr>
+<tr><td>4</td><td>Tüzel</td><td>TRY</td><td>Yalnız KDV</td><td>Elektronik</td></tr>
+<tr><td>5</td><td>Tüzel</td><td>TRY</td><td>KDV + stopaj</td><td>Elektronik</td></tr>
+<tr><td>6</td><td>Tüzel</td><td>TRY</td><td>KDV tevkifatı</td><td>Elektronik</td></tr>
+<tr><td>7</td><td>Tüzel</td><td>TRY</td><td>Stopaj + tevkifat</td><td>Elektronik</td></tr>
+<tr><td>8</td><td>Tüzel</td><td>TRY</td><td>Çok kalem</td><td>Kâğıt</td></tr>
+<tr><td>9–11</td><td>Mevcut belge</td><td>—</td><td>Güncelleme, iptal, PDF</td><td>—</td></tr>
+</tbody></table></div>
+
+<h3 id="h-ornek-1">Örnek 1: Tüzel Kişi — TRY, KDV ve Stopaj</h3>
+<details class="example-details" open><summary>Tam oluşturma request’i</summary><div class="example-body"><pre><code class="language-json">{
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T10:30:00+03:00",
+  "BelgeZamanSpecified": true,
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00001",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "muhasebe@example.com",
+  "Alici": {
+    "Unvan": "Örnek Danışmanlık A.Ş.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Zincirlikuyu",
+    "Adres": {
+      "Mahalle": "Esentepe",
+      "CaddeSokak": "Büyükdere Caddesi",
+      "BinaNo": "10",
+      "KapiNo": "5",
+      "Semt": "Şişli",
+      "Sehir": "İstanbul",
+      "PostaKod": "34394",
+      "Ulke": "Türkiye",
+      "Telefon": "02120000000"
+    }
+  },
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "ERP-LINE-1",
+      "MalHizmetAd": "Temmuz ayı danışmanlık hizmeti",
+      "TotalAmount": 1000,
+      "KdvOran": 20,
+      "HesaplananKdv": 200,
+      "StopajOran": 20,
+      "TaxStopajTotalAmount": 200,
+      "TevkifatOran": 0,
+      "TevkifatKodu": null,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 200,
+      "NetUcret": 800,
+      "PayableAmount": 1000,
+      "ToplamVergi": 400
+    }
+  ],
+  "TotalAmount": 1000,
+  "HesaplananKdv": 200,
+  "StopajOran": 20,
+  "TaxStopajTotalAmount": 200,
+  "TevkifatOran": 0,
+  "TevkifatKodu": 0,
+  "WithholdingTaxTotalAmount": 0,
+  "TaxKdvTotalAmount": 200,
+  "NetUcret": 800,
+  "PayableAmount": 1000,
+  "ToplamVergi": 400,
+  "YaziIle": "BİN TÜRK LİRASI",
+  "Aciklamalar": ["Temmuz 2026 danışmanlık hizmet bedeli"]
+}</code></pre></div></details>
+<div class="callout callout-info"><b>Toplam kontrolü:</b> 1.000 brüt − 200 stopaj = 800 net ücret; 200 KDV ile ödenecek tutar 1.000’dir.</div>
+
+<h3 id="h-ornek-2">Örnek 2: Gerçek Kişi Alıcı — TRY</h3>
+<details class="example-details"><summary>Gerçek kişi alanlarıyla tam request</summary><div class="example-body"><pre><code class="language-json">{
+  "LocationCode": "ANKARA",
+  "IssueDate": "2026-07-27T11:00:00+03:00",
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00002",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "ayse.yilmaz@example.com",
+  "Alici": {
+    "Ad": "Ayşe",
+    "Soyad": "Yılmaz",
+    "VknTckn": "11111111111",
+    "Adres": {
+      "Mahalle": "Kavaklıdere",
+      "CaddeSokak": "Atatürk Bulvarı",
+      "BinaNo": "25",
+      "Semt": "Çankaya",
+      "Sehir": "Ankara",
+      "Ulke": "Türkiye"
+    }
+  },
+  "MalHizmetler": [{
+    "LineId": 1,
+    "Id": "ERP-LINE-1",
+    "MalHizmetAd": "Hukuki danışmanlık hizmeti",
+    "TotalAmount": 500,
+    "KdvOran": 20,
+    "HesaplananKdv": 100,
+    "StopajOran": 0,
+    "TaxStopajTotalAmount": 0,
+    "TevkifatOran": 0,
+    "WithholdingTaxTotalAmount": 0,
+    "TaxKdvTotalAmount": 100,
+    "NetUcret": 500,
+    "PayableAmount": 600,
+    "ToplamVergi": 100
+  }],
+  "TotalAmount": 500,
+  "HesaplananKdv": 100,
+  "StopajOran": 0,
+  "TaxStopajTotalAmount": 0,
+  "TevkifatOran": 0,
+  "WithholdingTaxTotalAmount": 0,
+  "TaxKdvTotalAmount": 100,
+  "NetUcret": 500,
+  "PayableAmount": 600,
+  "ToplamVergi": 100,
+  "Aciklamalar": ["Bireysel danışmanlık"]
+}</code></pre></div></details>
+<div class="callout callout-warning"><b>Alıcı farkı:</b> TCKN senaryosunda <code>Ad</code> ve <code>Soyad</code> birlikte gönderilir; <code>Unvan</code> ve <code>VergiDaire</code> kurum alanları kullanılmaz.</div>
+
+<h3 id="h-ornek-3">Örnek 3: USD Belge ve TRY Karşılıkları</h3>
+<details class="example-details"><summary>Dövizli request</summary><div class="example-body"><pre><code class="language-json">{
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T12:00:00+03:00",
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "USD",
+  "CalculationRate": 32.50,
+  "SmmExternalId": "ERP-SMM-2026-00003",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "finance@example.com",
+  "Alici": {
+    "Unvan": "Global Örnek Ltd. Şti.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Boğaziçi Kurumlar",
+    "Adres": { "Semt": "Beşiktaş", "Sehir": "İstanbul", "Ulke": "Türkiye" }
+  },
+  "MalHizmetler": [{
+    "LineId": 1,
+    "Id": "USD-1",
+    "MalHizmetAd": "Uluslararası danışmanlık hizmeti",
+    "TotalAmount": 100,
+    "KdvOran": 20,
+    "HesaplananKdv": 20,
+    "StopajOran": 20,
+    "TaxStopajTotalAmount": 20,
+    "TevkifatOran": 0,
+    "WithholdingTaxTotalAmount": 0,
+    "TaxKdvTotalAmount": 20,
+    "NetUcret": 80,
+    "PayableAmount": 100,
+    "ToplamVergi": 40
+  }],
+  "TotalAmount": 100,
+  "HesaplananKdv": 20,
+  "StopajOran": 20,
+  "TaxStopajTotalAmount": 20,
+  "TevkifatOran": 0,
+  "WithholdingTaxTotalAmount": 0,
+  "TaxKdvTotalAmount": 20,
+  "NetUcret": 80,
+  "PayableAmount": 100,
+  "ToplamVergi": 40,
+  "Kur": {
+    "TotalAmount": 3250,
+    "NetUcret": 2600,
+    "HesaplananKdv": 650,
+    "TaxStopajTotalAmount": 650,
+    "WithholdingTaxTotalAmount": 0,
+    "TaxKdvTotalAmount": 650,
+    "PayableAmount": 3250
+  }
+}</code></pre></div></details>
+<div class="callout callout-info"><b>Kur kontrolü:</b> Belge tutarları USD, <code>Kur</code> içindeki karşılıklar TRY’dir. <code>CalculationRate</code> sıfır olamaz.</div>
+
+<h3 id="h-ornek-4">Örnek 4: Yalnız KDV — Kesintisiz İşlem</h3>
+<details class="example-details"><summary>Vergi/kesinti alanları</summary><div class="example-body"><pre><code class="language-json">{
+  "TotalAmount": 1000,
+  "HesaplananKdv": 200,
+  "StopajOran": 0,
+  "TaxStopajTotalAmount": 0,
+  "TevkifatOran": 0,
+  "TevkifatKodu": 0,
+  "WithholdingTaxTotalAmount": 0,
+  "TaxKdvTotalAmount": 200,
+  "NetUcret": 1000,
+  "PayableAmount": 1200,
+  "ToplamVergi": 200,
+  "MalHizmetler": [{
+    "LineId": 1,
+    "Id": "KDV-1",
+    "MalHizmetAd": "Proje danışmanlığı",
+    "TotalAmount": 1000,
+    "KdvOran": 20,
+    "HesaplananKdv": 200,
+    "StopajOran": 0,
+    "TaxStopajTotalAmount": 0,
+    "TevkifatOran": 0,
+    "WithholdingTaxTotalAmount": 0,
+    "TaxKdvTotalAmount": 200,
+    "NetUcret": 1000,
+    "PayableAmount": 1200,
+    "ToplamVergi": 200
+  }]
+}</code></pre></div></details>
+<p>Bu blok, Örnek 1’deki kimlik, tarih, teslim, alıcı ve dış referans alanlarıyla birlikte kullanılır.</p>
+
+<h3 id="h-ornek-5">Örnek 5: Gelir Vergisi Stopajı</h3>
+<details class="example-details"><summary>Stopajlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json">{
+  "TotalAmount": 2500,
+  "HesaplananKdv": 500,
+  "StopajOran": 20,
+  "TaxStopajTotalAmount": 500,
+  "TevkifatOran": 0,
+  "WithholdingTaxTotalAmount": 0,
+  "TaxKdvTotalAmount": 500,
+  "NetUcret": 2000,
+  "PayableAmount": 2500,
+  "ToplamVergi": 1000
+}</code></pre></div></details>
+<p>Aynı değerler ilgili <code>MalHizmet</code> satırında da kendi satır tutarı üzerinden gönderilir.</p>
+
+<h3 id="h-ornek-6">Örnek 6: KDV Tevkifatı</h3>
+<details class="example-details"><summary>Tevkifatlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json">{
+  "TotalAmount": 1000,
+  "HesaplananKdv": 200,
+  "StopajOran": 0,
+  "TaxStopajTotalAmount": 0,
+  "TevkifatOran": 50,
+  "TevkifatKodu": 601,
+  "WithholdingTaxTotalAmount": 100,
+  "TaxKdvTotalAmount": 100,
+  "NetUcret": 1000,
+  "PayableAmount": 1100,
+  "ToplamVergi": 200,
+  "MalHizmetler": [{
+    "LineId": 1,
+    "Id": "TEV-1",
+    "MalHizmetAd": "Tevkifat kapsamındaki danışmanlık",
+    "TotalAmount": 1000,
+    "KdvOran": 20,
+    "HesaplananKdv": 200,
+    "StopajOran": 0,
+    "TaxStopajTotalAmount": 0,
+    "TevkifatOran": 50,
+    "TevkifatKodu": "601",
+    "WithholdingTaxTotalAmount": 100,
+    "TaxKdvTotalAmount": 100,
+    "NetUcret": 1000,
+    "PayableAmount": 1100,
+    "ToplamVergi": 200
+  }]
+}</code></pre></div></details>
+<div class="callout callout-warning"><b>Kod seçimi:</b> <code>601</code> yalnız örnek değerdir. Gerçek işlemde yürürlükteki mevzuata ve hizmet türüne uygun tevkifat kodu kullanılmalıdır.</div>
+
+<h3 id="h-ornek-7">Örnek 7: Stopaj ve Tevkifat Birlikte</h3>
+<details class="example-details"><summary>İki kesintinin ayrı hesaplandığı blok</summary><div class="example-body"><pre><code class="language-json">{
+  "TotalAmount": 1000,
+  "HesaplananKdv": 200,
+  "StopajOran": 20,
+  "TaxStopajTotalAmount": 200,
+  "TevkifatOran": 50,
+  "TevkifatKodu": 601,
+  "WithholdingTaxTotalAmount": 100,
+  "TaxKdvTotalAmount": 100,
+  "NetUcret": 800,
+  "PayableAmount": 900,
+  "ToplamVergi": 400
+}</code></pre></div></details>
+<p>Stopaj brüt bedelden, tevkifat hesaplanan KDV’den düşülür. Nihai tutar <code>800 + 100 = 900</code> olur.</p>
+
+<h3 id="h-ornek-8">Örnek 8: Çok Kalemli ve Kâğıt Teslim</h3>
+<details class="example-details"><summary>İki hizmet satırı</summary><div class="example-body"><pre><code class="language-json">{
+  "GonderimSekli": "Kagit",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00008",
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "LINE-1",
+      "MalHizmetAd": "Sözleşme inceleme",
+      "TotalAmount": 600,
+      "KdvOran": 20,
+      "HesaplananKdv": 120,
+      "StopajOran": 20,
+      "TaxStopajTotalAmount": 120,
+      "TevkifatOran": 0,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 120,
+      "NetUcret": 480,
+      "PayableAmount": 600,
+      "ToplamVergi": 240
+    },
+    {
+      "LineId": 2,
+      "Id": "LINE-2",
+      "MalHizmetAd": "Toplantı ve mütalaa",
+      "TotalAmount": 400,
+      "KdvOran": 20,
+      "HesaplananKdv": 80,
+      "StopajOran": 20,
+      "TaxStopajTotalAmount": 80,
+      "TevkifatOran": 0,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 80,
+      "NetUcret": 320,
+      "PayableAmount": 400,
+      "ToplamVergi": 160
+    }
+  ],
+  "TotalAmount": 1000,
+  "HesaplananKdv": 200,
+  "StopajOran": 20,
+  "TaxStopajTotalAmount": 200,
+  "TevkifatOran": 0,
+  "WithholdingTaxTotalAmount": 0,
+  "TaxKdvTotalAmount": 200,
+  "NetUcret": 800,
+  "PayableAmount": 1000,
+  "ToplamVergi": 400
+}</code></pre></div></details>
+<p>Alıcı, tarih, kanal ve açıklama alanları Örnek 1’deki gibi eklenir. Kâğıt teslimde <code>EArchiveMailTo</code> zorunlu değildir.</p>
+
+<h3 id="h-ornek-9">Örnek 9: Güncelleme</h3>
+<details class="example-details"><summary>Mevcut kimliklerle tam güncelleme request’i</summary><div class="example-body"><pre><code class="language-json">{
+  "Id": 1842,
+  "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
+  "SmmNumber": "SMM2026000000001",
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T10:30:00+03:00",
+  "BelgeZamanSpecified": true,
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00001",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "yeni-adres@example.com",
+  "Alici": {
+    "Unvan": "Örnek Danışmanlık A.Ş.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Zincirlikuyu",
+    "Adres": {
+      "Mahalle": "Esentepe",
+      "CaddeSokak": "Büyükdere Caddesi",
+      "BinaNo": "10",
+      "KapiNo": "5",
+      "Semt": "Şişli",
+      "Sehir": "İstanbul",
+      "PostaKod": "34394",
+      "Ulke": "Türkiye"
+    }
+  },
+  "MalHizmetler": [{
+    "LineId": 1,
+    "Id": "ERP-LINE-1",
+    "MalHizmetAd": "Temmuz ayı güncel danışmanlık hizmeti",
+    "TotalAmount": 1000,
+    "KdvOran": 20,
+    "HesaplananKdv": 200,
+    "StopajOran": 20,
+    "TaxStopajTotalAmount": 200,
+    "TevkifatOran": 0,
+    "TevkifatKodu": null,
+    "WithholdingTaxTotalAmount": 0,
+    "TaxKdvTotalAmount": 200,
+    "NetUcret": 800,
+    "PayableAmount": 1000,
+    "ToplamVergi": 400
+  }],
+  "TotalAmount": 1000,
+  "HesaplananKdv": 200,
+  "StopajOran": 20,
+  "TaxStopajTotalAmount": 200,
+  "TevkifatOran": 0,
+  "TevkifatKodu": 0,
+  "WithholdingTaxTotalAmount": 0,
+  "TaxKdvTotalAmount": 200,
+  "NetUcret": 800,
+  "PayableAmount": 1000,
+  "ToplamVergi": 400,
+  "YaziIle": "BİN TÜRK LİRASI",
+  "Aciklamalar": ["Güncellenmiş e-posta ve hizmet açıklaması"]
+}</code></pre></div></details>
+<div class="callout callout-info"><b>Güncelleme kuralı:</b> Mevcut belge önce <code>GetOutgoingSmm</code> ile okunur; değiştirilen alanlarla birlikte tam model, mevcut <code>Id</code> ve <code>UUId</code> kullanılarak gönderilir.</div>
+
+<h3 id="h-ornek-10">Örnek 10: İptal</h3>
+<details class="example-details"><summary>İptal request ve response</summary><div class="example-body"><pre><code class="language-json">// POST /api/Smm/CancelOutgoingSmm
+{
+  "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
+}
+
+// Başarılı response
+{
+  "RefreshToken": "",
+  "Data": true
+}</code></pre></div></details>
+
+<h3 id="h-ornek-11">Örnek 11: Liste Sorgusu ve PDF Alma</h3>
+<details class="example-details"><summary>Dış referansla sorgulama</summary><div class="example-body"><pre><code class="language-json">// POST /api/Smm/GetOutgoingSmmList
+{
+  "Query": {
+    "SmmExternalId": "ERP-SMM-2026-00001",
+    "IssueDate": {
+      "StartDate": "2026-07-01T00:00:00+03:00",
+      "EndDate": "2026-07-31T23:59:59+03:00"
+    }
+  },
+  "Skip": 0,
+  "Take": 20,
+  "OrderByName": "IssueDate",
+  "OrderByType": "DESC"
+}</code></pre></div></details>
+<details class="example-details"><summary>UUID listesiyle PDF</summary><div class="example-body"><pre><code class="language-json">// POST /api/Smm/GetOutgoingSmmPdf
+{
+  "Ettns": [
+    "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
+    "941d56fd-d928-4554-880d-6c79a5413ad4"
+  ],
+  "DisplayPdf": false
+}</code></pre></div></details>
+
+<div class="callout callout-warning"><b>Örnek güvenliği:</b> VKN/TCKN, e-posta, UUID, belge numarası, oran ve kod değerleri örnektir. Canlı isteklerde gerçek işlem verisi, geçerli kimlikler ve mevzuata uygun oran/kodlar kullanılmalıdır.</div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="portal-api-endpoint-referansi.html"><span>Önceki</span><strong>Portal API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="request-belge-gib-raporu-mapping.html"><span>Sonraki</span><strong>Request → Belge → GİB Raporu Mapping</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="e-SMM, endpoint, stopaj, tevkifat, PDF..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Serbest Meslek Makbuzu Nedir?","text":"e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.","keywords":"e-SMM serbest meslek makbuzu e-Arşiv","url":"esmm-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.","keywords":"GİB e-Arşiv PAdES karekod","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.","keywords":"senaryolar stopaj tevkifat iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.","keywords":"entegratör sorumluluklar doğrulama","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.","keywords":"VBT Portal PDF GİB raporu","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.","keywords":"Portal önizleme Excel e-posta","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.","keywords":"JSON request TRY döviz","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → Belge → GİB Raporu Mapping","text":"Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.","keywords":"mapping belge GİB raporu XML","url":"request-belge-gib-raporu-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-SMM süreçlerinde müşterilerin ve entegratörlerin sık karşılaştığı sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

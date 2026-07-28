@@ -8,6 +8,7 @@ Bu repo, VBT e-Dönüşüm ürünleri için hazırlanan müşteri ve entegratör
 
 - [e-Gider Pusulası Entegrasyon Rehberi](guides/e-gider-pusulasi/index.html)
 - [e-Müstahsil Makbuzu Entegrasyon Rehberi](guides/mustahsil-makbuzu/index.html)
+- [e-Serbest Meslek Makbuzu Entegrasyon Rehberi](guides/serbest-meslek-makbuzu/index.html)
 
 ## Kimler için?
 
