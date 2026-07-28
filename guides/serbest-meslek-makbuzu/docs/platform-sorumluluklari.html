@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Sorumlulukları — e-Serbest Meslek Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/platform-sorumluluklari.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Platform Sorumlulukları — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/platform-sorumluluklari.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Platform Sorumlulukları — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Serbest Meslek Makbuzu</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="esmm-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="esmm-nedir.html">e-Serbest Meslek Makbuzu Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link active" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-belge-gib-raporu-mapping.html">Request → Belge → GİB Raporu Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Sorumluluklar</p><h1>Platform Sorumlulukları</h1><p class="docs-lead">VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="platform-sorumluluklari">
+<h3 id="h-portal-uctan-uca-akis">Portal Kullanıcısı İçin Uçtan Uca Akış</h3>
+<p>Portal, e-SMM’nin hazırlanması, önizlenmesi, kaydedilmesi, çıktısının alınması ve sonradan izlenmesi için tek bir operasyon akışı sunar. Kullanıcı iş verisini girer; belge üretimi ve GİB raporlamasının teknik adımları VBT tarafından tamamlanır.</p>
+<div class="diagram-wrapper"><svg viewBox="0 0 790 165" xmlns="http://www.w3.org/2000/svg"><style>.pb{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.4;rx:8}.pr{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.4;rx:8}.pg{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.4;rx:8}.pt{fill:var(--svg-text);font:600 9.5px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}.ps{fill:var(--svg-muted);font:8.5px Inter,system-ui,sans-serif;text-anchor:middle}.pl{stroke:var(--svg-line);stroke-width:1.1;fill:none;stroke-dasharray:5 3}</style><defs><marker id="portal-flow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs><rect class="pb" x="10" y="35" width="105" height="44"/><text class="pt" x="62" y="51">Form / Excel</text><text class="ps" x="62" y="68">iş verisi</text><path class="pl" d="M115,57 L140,57" marker-end="url(#portal-flow)"/><rect class="pb" x="145" y="35" width="105" height="44"/><text class="pt" x="197" y="51">Önizleme</text><text class="ps" x="197" y="68">taslak PDF</text><path class="pl" d="M250,57 L275,57" marker-end="url(#portal-flow)"/><rect class="pr" x="280" y="35" width="110" height="44"/><text class="pt" x="335" y="51">Kaydet</text><text class="ps" x="335" y="68">belge + imza</text><path class="pl" d="M390,57 L415,57" marker-end="url(#portal-flow)"/><rect class="pg" x="420" y="35" width="110" height="44"/><text class="pt" x="475" y="51" style="fill:var(--svg-ok-s)">PDF / e-posta</text><text class="ps" x="475" y="68">alıcıya teslim</text><path class="pl" d="M530,57 L555,57" marker-end="url(#portal-flow)"/><rect class="pb" x="560" y="35" width="105" height="44"/><text class="pt" x="612" y="51">Liste / log</text><text class="ps" x="612" y="68">durum izle</text><path class="pl" d="M665,57 L690,57" marker-end="url(#portal-flow)"/><rect class="pg" x="695" y="35" width="85" height="44"/><text class="pt" x="737" y="51" style="fill:var(--svg-ok-s)">İptal</text><text class="ps" x="737" y="68">gerektiğinde</text><path class="pl" d="M475,79 L475,118" marker-end="url(#portal-flow)"/><rect class="pr" x="340" y="120" width="270" height="32"/><text class="pt" x="475" y="136">GİB raporu: VBT otomatik süreci</text></svg></div>
+
+<h3 id="h-otomatik-islemler">Otomatik İşlemler</h3>
+<div class="table-wrapper"><table><thead><tr><th>İşlem</th><th>Portal kullanıcısının yaptığı</th><th>VBT’nin tamamladığı</th></tr></thead><tbody>
+<tr><td>Firma ve düzenleyen bilgisi</td><td>Doğru firma oturumunu seçer.</td><td>Makbuzu düzenleyen tarafın kimlik, unvan ve adres bilgilerini firma kaydından tamamlar.</td></tr>
+<tr><td>Belge numarası ve UUID</td><td>Gerekirse yıl/prefix seçimini yapar.</td><td>Belgeye tekil numara ve UUID atar.</td></tr>
+<tr><td>Belge görünümü</td><td>Formu doldurur ve önizlemeyi kontrol eder.</td><td>PDF görünümünü üretir; kayıtta imzalı belge çıktısını oluşturur.</td></tr>
+<tr><td>Elektronik teslim</td><td>Alıcı e-posta adresini girer veya seçer.</td><td>E-posta gönderim ve yeniden gönderim işlevlerini sağlar.</td></tr>
+<tr><td>GİB raporlama</td><td>Rapor endpointi veya dosyası hazırlamaz.</td><td>Raporu oluşturur, imzalar, paketler, GİB’e gönderir ve durumunu takip eder.</td></tr>
+<tr><td>İptal bildirimi</td><td>Portal’dan uygun belge için iptal işlemini başlatır.</td><td>İptal kaydını oluşturur ve mevzuata uygun GİB bildirim sürecine alır.</td></tr>
+</tbody></table></div>
+
+<h3 id="h-portal-form-kurallari">Portal Formu ve Alan Davranışı</h3>
+<div class="table-wrapper"><table><thead><tr><th>Alan grubu</th><th>Portal davranışı</th><th>Kullanıcının kontrolü</th></tr></thead><tbody>
+<tr><td>Alıcı</td><td>Gerçek/tüzel kişi seçimine göre ilgili ad alanları gösterilir; mükellef yardımcılarıyla profil, adres ve vergi dairesi bilgileri getirilebilir.</td><td>Seçilen kaydın doğru kişi/kuruma ait olduğunu doğrular.</td></tr>
+<tr><td>Hizmet satırları</td><td>Bir veya daha fazla hizmet satırı eklenebilir; oran ve tutarlar form üzerinde gösterilir.</td><td>Hizmet açıklaması, brüt tutar ve oranları işlemle karşılaştırır.</td></tr>
+<tr><td>Para birimi</td><td>TRY veya döviz seçimine göre kur alanları kullanılır.</td><td>Döviz kodu ve işlem kurunun doğru olduğunu doğrular.</td></tr>
+<tr><td>Vergi/kesinti</td><td>KDV, stopaj ve tevkifat alanları aynı makbuz üzerinde yönetilir.</td><td>Oran, kod ve nihai tahsilat tutarını kontrol eder.</td></tr>
+<tr><td>Teslim</td><td>Elektronik veya kâğıt teslim seçilebilir; elektronik teslimde e-posta işlevleri açılır.</td><td>E-posta adresini ve teslim tercihini doğrular.</td></tr>
+</tbody></table></div>
+
+<h3 id="h-validasyon-ve-hata">Validasyon ve Hata Davranışı</h3>
+<p>Portal, API ile aynı belge sözleşmesini kullanır. Eksik veya uyumsuz veri olduğunda belge tamamlanmış sayılmaz; hata bilgileri formda ilgili iş alanına dönük biçimde gösterilir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kontrol grubu</th><th>Kod</th><th>Örnek hata</th><th>Kullanıcı aksiyonu</th></tr></thead><tbody>
+<tr><td>Taraf</td><td><code>SMM003</code>–<code>SMM007</code>, <code>SMM011</code>–<code>SMM018</code></td><td>VKN/TCKN, ad-soyad, unvan veya vergi dairesi eksik</td><td>Alıcı kartını düzeltir veya yeniden seçer.</td></tr>
+<tr><td>Adres</td><td><code>SMM019</code>–<code>SMM022</code></td><td>Ülke, ilçe/semt veya şehir eksik</td><td>Adres bilgilerini tamamlar.</td></tr>
+<tr><td>Belge</td><td><code>SMM002</code>, <code>SMM008</code>/<code>SMM009</code></td><td>Tarih veya dış referans eksik</td><td>Belge başlık bilgilerini düzeltir.</td></tr>
+<tr><td>Para birimi</td><td><code>SMM010</code></td><td>Dövizli belgede kur yok</td><td>İşlem kurunu girer.</td></tr>
+<tr><td>Vergi/kesinti</td><td><code>SMM008</code>/<code>SMM009</code></td><td>Oran geçersiz veya toplamlar uyumsuz</td><td>Satır ve üst toplamları yeniden hesaplar.</td></tr>
+</tbody></table></div>
+<div class="callout callout-info"><b>Kod ile mesaj birlikte değerlendirilmeli:</b> Bazı kodlar birden fazla kontrol grubunu kapsayabilir; kesin alanı belirlemek için dönen hata mesaj metnini de dikkate alın.</div>
+<div class="callout callout-warning"><b>Kaydetme kararı:</b> Önizlemenin açılması tek başına belgenin kaydedildiği anlamına gelmez. Kullanıcı kaydetme sonucunu ve oluşan belge numarasını görmeden işlem tamamlanmış kabul edilmemelidir.</div>
+
+<h3 id="h-onizleme-ve-pdf">Önizleme, PDF ve Belge Paketi</h3>
+<p>Portal, kaydetmeden önce taslak PDF önizlemesi sunar. Kayıt sonrasında imzalı PDF tekil veya çoklu olarak alınabilir; belge paketi seçeneği görüntüleme/indirme akışlarında kullanılır.</p>
+<div class="table-wrapper"><table><thead><tr><th>İşlev</th><th>Ne zaman kullanılır?</th><th>Sonuç</th></tr></thead><tbody>
+<tr><td>Taslak önizleme</td><td>Kaydetmeden önce taraf, hizmet ve toplam görünümünü kontrol etmek için</td><td>Geçici PDF içeriği; belge numarası üretildiği anlamına gelmez.</td></tr>
+<tr><td>PDF görüntüleme</td><td>Kaydedilmiş tek belgeyi ekranda göstermek için</td><td>PDF dosya içeriği</td></tr>
+<tr><td>Çoklu PDF</td><td>Listeden seçilen belgeleri birlikte indirmek için</td><td>Tek veya birleştirilmiş PDF çıktısı</td></tr>
+<tr><td>Belge paketi</td><td>Portal görüntüleme/indirme deneyimi için</td><td>Dosya adı, içerik ve görüntüleme bilgileri</td></tr>
+</tbody></table></div>
+
+<h3 id="h-listeleme-ve-arama">Listeleme, Arama ve Durum İzleme</h3>
+<p>Portal grid ve global arama uçları; UUID, belge numarası, dış referans, alıcı, tarih, e-posta, rapor ve iptal durumlarına göre filtreleme sağlar. İşlem logu, belgenin oluşturulması, görüntülenmesi, PDF alınması, e-posta ve iptal gibi kullanıcıya anlamlı hareketlerini gösterir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Görünüm</th><th>Temel filtreler</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td>e-SMM grid</td><td>UUID, alıcı, belge no, dış referans, düzenleme tarihi, durum</td><td>Günlük belge operasyonu</td></tr>
+<tr><td>Global arama</td><td>Serbest arama ve sayfalama</td><td>Modüller arası hızlı erişim</td></tr>
+<tr><td>İşlem logu</td><td>Belge UUID’si, tarih ve işlem türü</td><td>Belge geçmişini inceleme</td></tr>
+<tr><td>Rapor durumları</td><td>Normal ve iptal raporu filtreleri</td><td>Portal görünümünde raporlama sonucunu izleme</td></tr>
+</tbody></table></div>
+
+<h3 id="h-e-posta-davranisi">E-posta ve Yeniden Gönderim</h3>
+<p>Elektronik teslimde Portal, sayfa seçimi veya global seçim üzerinden belgeyi e-posta gönderimine alabilir. Başarısız ya da yeniden gönderilmesi gereken kayıtlar tekil veya çoklu biçimde tekrar gönderime hazırlanabilir.</p>
+<div class="callout callout-info"><b>Portal davranışı:</b> E-posta gönderimi belgenin GİB raporlama durumunu değiştirmez. Belge teslimi ve GİB bildirimi ayrı süreçler olarak izlenir.</div>
+
+<h3 id="h-mukellef-yardimcilari">Mükellef ve Vergi Yardımcıları</h3>
+<p>Portal formunda alıcı veya düzenleyen bilgi kalitesini artırmak için mükellef profili, izin verilen KDV oranları, NACE kodları, faaliyetler, adresler, tarih bazlı aktiflik ve vergi dairesi arama işlevleri kullanılabilir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Yardımcı</th><th>Portal kullanım amacı</th></tr></thead><tbody>
+<tr><td>Mükellef profili</td><td>Kimlik numarasına bağlı temel mükellef bilgilerini getirir.</td></tr>
+<tr><td>İzin verilen KDV oranları</td><td>Mükellef ve tarih bağlamında kullanılabilecek oranları gösterir.</td></tr>
+<tr><td>NACE / faaliyet</td><td>Mesleki faaliyet bilgisini seçimlerde destekler.</td></tr>
+<tr><td>Adresler</td><td>Kayıtlı adreslerden doğru belge adresinin seçilmesini sağlar.</td></tr>
+<tr><td>Aktiflik</td><td>Mükellefin belirli tarihte aktif olup olmadığını gösterir.</td></tr>
+<tr><td>Vergi dairesi</td><td>Kod veya adla vergi dairesi kaydını bulur.</td></tr>
+</tbody></table></div>
+
+<h3 id="h-gib-raporlama-sorumlulugu">GİB Raporlama Sorumluluğu</h3>
+<p>Gün sonu raporunun oluşturulması, imzalanması, paketlenmesi, GİB’e gönderilmesi, sonuç sorgulaması ve gerektiğinde iptal raporunun hazırlanması VBT tarafından yürütülür. Portal kullanıcısı veya entegratör bu teknik rapor uçlarını çağırmaz.</p>
+<div class="callout callout-warning"><b>Sorumluluk ayrımı:</b> Portal’da rapor durumu görülebilir; ancak görünen durum kullanıcıdan rapor dosyası üretmesini veya GİB servisine doğrudan bağlanmasını beklemez.</div>
+
+<h3 id="h-iptal-davranisi">İptal Davranışı</h3>
+<p>Portal yalnız mevcut ve iptale uygun belge için iptal işlemini başlatır. Başarılı iptalden sonra belge listesi ve log görünümü güncellenir; GİB iptal bildirimi VBT raporlama sürecinde tamamlanır. İptal edilen işlem yeniden belgelenecekse yeni belge oluşturulur.</p>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="entegrator-sorumluluklari.html"><span>Önceki</span><strong>Entegratör Sorumlulukları</strong></a>
+<a class="docs-page-link docs-page-next" href="entegrator-api-endpoint-referansi.html"><span>Sonraki</span><strong>Entegratör API Endpoint Referansı</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="e-SMM, endpoint, stopaj, tevkifat, PDF..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Serbest Meslek Makbuzu Nedir?","text":"e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.","keywords":"e-SMM serbest meslek makbuzu e-Arşiv","url":"esmm-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.","keywords":"GİB e-Arşiv PAdES karekod","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.","keywords":"senaryolar stopaj tevkifat iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.","keywords":"entegratör sorumluluklar doğrulama","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.","keywords":"VBT Portal PDF GİB raporu","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.","keywords":"Portal önizleme Excel e-posta","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.","keywords":"JSON request TRY döviz","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → Belge → GİB Raporu Mapping","text":"Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.","keywords":"mapping belge GİB raporu XML","url":"request-belge-gib-raporu-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-SMM süreçlerinde müşterilerin ve entegratörlerin sık karşılaştığı sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

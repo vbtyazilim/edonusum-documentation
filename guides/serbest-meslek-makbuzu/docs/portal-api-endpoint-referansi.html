@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal API Endpoint Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/portal-api-endpoint-referansi.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Portal API Endpoint Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/portal-api-endpoint-referansi.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portal API Endpoint Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Serbest Meslek Makbuzu</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="esmm-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="esmm-nedir.html">e-Serbest Meslek Makbuzu Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link active" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-belge-gib-raporu-mapping.html">Request → Belge → GİB Raporu Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Portal API Endpoint Referansı</h1><p class="docs-lead">Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="portal-api-endpoint-referansi">
+<div class="callout callout-warning"><b>Kapsam:</b> Bu uçlar VBT Portal kullanıcı deneyimini destekler. Doğrudan ERP entegrasyonu için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> kullanılmalıdır.</div>
+
+<h2 id="h-belge-olusturma">Belge Oluşturma ve Güncelleme</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/AddOutgoingSmm</span></div><div class="endpoint-body"><p>Portal formundaki tekil e-SMM’yi kaydeder; PDF’i üretir ve imzalar.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SmmRequestModel</code></td></tr><tr><td><b>Response</b></td><td>Belge numarası, UUID ve iş sonucu</td></tr><tr><td><b>Portal kullanımı</b></td><td>Formdaki Kaydet işlemi</td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/UpdateOutgoingSmm</span></div><div class="endpoint-body"><p>Portal’da açılan mevcut belgeyi günceller ve çıktısını yeniden üretir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>Id</code> ve <code>UUId</code> içeren tam <code>SmmRequestModel</code></td></tr><tr><td><b>Response</b></td><td>Güncel belge numarası, UUID ve iş sonucu</td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/PreviewOutgoingSmm</span></div><div class="endpoint-body"><p>Belgeyi kaydetmeden taslak PDF önizlemesi üretir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SmmRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>OutgoingSmmPreviewResponseModel.SmmPdfFileBytes</code> ve iş sonucu</td></tr><tr><td><b>Not</b></td><td>Önizleme belge numarası veya kalıcı kayıt oluştuğu anlamına gelmez.</td></tr></tbody></table></div></div></div>
+
+<h2 id="h-excel-aktarimi">Excel ile Toplu Oluşturma</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/AddOutgoingSmmByExcel</span></div><div class="endpoint-body"><p>Portal’ın Excel şablonundan okunan e-SMM satırlarını toplu olarak işler.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>ExcelFileRequestModel</code>; dosya içeriği</td></tr><tr><td><b>Response</b></td><td><code>List&lt;OutgoingSmmAddExcelResponseModel&gt;</code>; her satır için dış referans, belge kimlikleri ve hata sonucu</td></tr><tr><td><b>Portal davranışı</b></td><td>Başarılı ve başarısız satırlar ayrı değerlendirilir; dosyanın tamamı tek sonuç sayılmaz.</td></tr></tbody></table></div></div></div>
+
+<h2 id="h-listeleme-arama">Listeleme ve Arama</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetESMMGridList</span></div><div class="endpoint-body"><p>e-SMM grid görünümü için sayfalı ve sıralı belge listesini getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SearchUIRequestModel&lt;OutgoingSmmListRequestModel&gt;</code></td></tr><tr><td><b>Filtreler</b></td><td>ETTN, alıcı VKN/TCKN/adı, müşteri kayıtları, belge no, dış referans, tarih, belge/rapor/e-posta/iptal/okunma durumları</td></tr><tr><td><b>Response</b></td><td><code>SearchResponseModel&lt;OutgoingSmmGridResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetGlobalSearchESMMList</span></div><div class="endpoint-body"><p>Portal global aramasında e-SMM kayıtlarını getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SearchUIRequestModel&lt;GlobalSearchRequestModel&gt;</code></td></tr><tr><td><b>Response</b></td><td>Sayfalı <code>OutgoingSmmGridResponseModel</code> listesi</td></tr><tr><td><b>Kullanım</b></td><td>Modüller arası tek arama kutusundan belgeye ulaşma</td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/Smm/GetOutgoingSmm?id={uuid}</span></div><div class="endpoint-body"><p>Portal düzenleme ve detay ekranı için tek belgeyi getirir.</p></div></div>
+
+<h2 id="h-goruntuleme-pdf">Görüntüleme, PDF ve Belge Paketi</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/DocumentPreview/DownloadOutgoingSmmPdf</span></div><div class="endpoint-body"><p>Portal belge önizleme bileşeni için tekil PDF indirme yanıtı üretir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>DocumentPreviewRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>DocumentPreviewResponseModel</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmPdf</span></div><div class="endpoint-body"><p>Grid seçimiyle bir veya daha fazla e-SMM PDF çıktısını getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>{ Ettns: ["6b60c576-7ed9-4bf1-9f90-3c97747b7470"], DisplayPdf: true, FirmId: 42 }</code></td></tr><tr><td><b>Response</b></td><td><code>FileBytes</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmDocumentPackage</span></div><div class="endpoint-body"><p>Portal’ın ortak belge görüntüleme/indirme deneyimi için belge paketini getirir.</p></div></div>
+
+<h2 id="h-okunma-ve-log">Okunma Durumu ve İşlem Geçmişi</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/OutgoingSmmIsRead</span></div><div class="endpoint-body"><p>Belgenin Portal’da okundu/okunmadı bilgisini günceller.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>{ Ettn, IsRead }</code></td></tr><tr><td><b>Response</b></td><td><code>bool</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmLog</span></div><div class="endpoint-body"><p>Belgenin Portal’da gösterilen işlem geçmişini sayfalı olarak getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SearchRequestModel&lt;SmmLogRequestModel&gt;</code></td></tr><tr><td><b>Response</b></td><td><code>SearchResponseModel&lt;SmmLogResponseModel&gt;</code></td></tr><tr><td><b>Görülebilen işlemler</b></td><td>Oluşturma, görüntüleme, PDF, e-posta, güncelleme ve iptal hareketleri</td></tr></tbody></table></div></div></div>
+
+<h2 id="h-numara-prefix">Belge Numarası Prefixleri</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/Smm/GetOutgingSmmPrefixList?year={year}</span></div><div class="endpoint-body"><p>Belirtilen yıl için kullanılabilir e-SMM numara prefixlerini getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Parametre</b></td><td><code>year</code> — belge numarası yılı</td></tr><tr><td><b>Response</b></td><td><code>IList&lt;NumberPrefixResponseModel&gt;</code></td></tr><tr><td><b>Portal kullanımı</b></td><td>Belge numara serisinin seçimi veya gösterimi</td></tr></tbody></table></div></div></div>
+
+<h2 id="h-e-posta-islemleri">E-posta İşlemleri</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/AddMailOutgoingSmmPage</span></div><div class="endpoint-body"><p>Grid sayfasında seçilen belgeleri belirtilen alıcıya e-posta gönderimine alır.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>MailSendRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>bool</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/AddMailGlobalOutgoingSmm</span></div><div class="endpoint-body"><p>Global arama seçimindeki belgeleri e-posta gönderimine alır.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>GlobalMailRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>bool</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/Smm/ResetOutgoingOutgoingSmmMailQueue?id={mailId}</span></div><div class="endpoint-body"><p>Tek bir e-posta kaydını yeniden gönderime hazırlar.</p></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/ResetOutgoingOutgoingSmmMailQueueList</span></div><div class="endpoint-body"><p>UUID listesindeki e-posta kayıtlarını yeniden gönderime hazırlar.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>string[]</code> UUID listesi</td></tr><tr><td><b>Response</b></td><td><code>List&lt;MailStateResponseModel&gt;</code>; belge bazlı e-posta durumları</td></tr></tbody></table></div></div></div>
+<div class="callout callout-info"><b>Ayrım:</b> E-posta durumu alıcıya teslim sürecini; GİB rapor durumu ise yasal bildirim sürecini gösterir. Portal bu iki durumu ayrı izler.</div>
+
+<h2 id="h-mukellef-sorgulari">Mükellef ve Vergi Yardımcıları</h2>
+<p>Aşağıdaki uçlar Portal formunda mükellef ve vergi bilgisini seçmeye yardımcı olur. Belge oluşturma entegrasyonunun zorunlu çağrı zinciri değildir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Metot</th><th>Endpoint</th><th>Parametre</th><th>Portal amacı</th></tr></thead><tbody>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/GetTaxPayerProfile</code></td><td><code>identifierNumber</code></td><td>Mükellef profilini getirir.</td></tr>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/GetAllowedVATRates</code></td><td><code>identifierNumber</code>, opsiyonel <code>date</code></td><td>İzin verilen KDV oranlarını listeler.</td></tr>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/GetNACECodes</code></td><td><code>identifierNumber</code></td><td>NACE kodlarını listeler.</td></tr>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/GetActivities</code></td><td><code>identifierNumber</code></td><td>Faaliyet kayıtlarını getirir.</td></tr>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/GetAddresses</code></td><td><code>identifierNumber</code></td><td>Kayıtlı adresleri getirir.</td></tr>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/IsActiveOnDate</code></td><td><code>identifierNumber</code>, <code>date</code></td><td>Belirli tarihte aktiflik kontrolü yapar.</td></tr>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/GetTaxOfficeByCode</code></td><td><code>taxOfficeCode</code></td><td>Kodla vergi dairesini getirir.</td></tr>
+<tr><td>GET</td><td><code>/api/GibTaxPayer/SearchTaxOfficesByName</code></td><td><code>taxOfficeName</code>, opsiyonel <code>take</code> (varsayılan 50)</td><td>Adla vergi dairesi arar.</td></tr>
+</tbody></table></div>
+
+<h2 id="h-iptal">İptal</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/CancelOutgoingSmm</span></div><div class="endpoint-body"><p>Portal’da seçilen uygun belgeyi UUID ile iptal eder.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>{ UUId }</code></td></tr><tr><td><b>Response</b></td><td><code>bool</code></td></tr><tr><td><b>Portal sonrası</b></td><td>Liste ve log yenilenir; raporlanmış belgenin GİB iptal bildirimi VBT tarafından yönetilir.</td></tr></tbody></table></div></div></div>
+
+<h2 id="h-portal-islem-matrisi">Portal İşlem Matrisi</h2>
+<div class="table-wrapper"><table><thead><tr><th>Kullanıcı aksiyonu</th><th>Çağrı</th><th>Başarı göstergesi</th><th>Ekran sonrası</th></tr></thead><tbody>
+<tr><td>Önizle</td><td><code>PreviewOutgoingSmm</code></td><td>PDF byte dizisi ve hatasız sonuç</td><td>Taslak PDF açılır.</td></tr>
+<tr><td>Kaydet</td><td><code>AddOutgoingSmm</code></td><td><code>HasError = false</code>, numara ve UUID</td><td>Detay/liste yenilenir.</td></tr>
+<tr><td>Güncelle</td><td><code>UpdateOutgoingSmm</code></td><td>Hatasız iş sonucu</td><td>Yeni PDF ve detay alınır.</td></tr>
+<tr><td>PDF al</td><td><code>GetOutgoingSmmPdf</code> veya <code>DownloadOutgoingSmmPdf</code></td><td>Dosya içeriği</td><td>Görüntüleme/indirme başlatılır.</td></tr>
+<tr><td>E-posta gönder</td><td><code>AddMailOutgoingSmmPage</code> / <code>AddMailGlobalOutgoingSmm</code></td><td><code>Data = true</code></td><td>E-posta durumu izlenir.</td></tr>
+<tr><td>İptal</td><td><code>CancelOutgoingSmm</code></td><td><code>Data = true</code></td><td>Belge ve log durumu yenilenir.</td></tr>
+</tbody></table></div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="entegrator-api-endpoint-referansi.html"><span>Önceki</span><strong>Entegratör API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="request-ornekleri.html"><span>Sonraki</span><strong>Request Örnekleri</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="e-SMM, endpoint, stopaj, tevkifat, PDF..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Serbest Meslek Makbuzu Nedir?","text":"e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.","keywords":"e-SMM serbest meslek makbuzu e-Arşiv","url":"esmm-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.","keywords":"GİB e-Arşiv PAdES karekod","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.","keywords":"senaryolar stopaj tevkifat iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.","keywords":"entegratör sorumluluklar doğrulama","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.","keywords":"VBT Portal PDF GİB raporu","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.","keywords":"Portal önizleme Excel e-posta","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.","keywords":"JSON request TRY döviz","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → Belge → GİB Raporu Mapping","text":"Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.","keywords":"mapping belge GİB raporu XML","url":"request-belge-gib-raporu-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-SMM süreçlerinde müşterilerin ve entegratörlerin sık karşılaştığı sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

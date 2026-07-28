@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "id": "serbest-meslek-makbuzu",
+  "dir": "serbest-meslek-makbuzu",
+  "title": "e-Serbest Meslek Makbuzu Entegrasyon Rehberi",
+  "shortTitle": "e-Serbest Meslek Makbuzu",
+  "description": "e-Serbest Meslek Makbuzu süreçleri için entegrasyon, API, belge teslimi ve GİB raporlama sorumluluklarını açıklayan uygulama rehberi.",
+  "eyebrow": "GİB e-Arşiv",
+  "canonicalBase": "https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/",
+  "templateVersion": "local-2026-07-08",
+  "searchPlaceholder": "e-SMM, endpoint, stopaj, tevkifat, PDF...",
+  "searchMaxResults": 60,
+  "home": {
+    "title": "e-Serbest Meslek Makbuzu Entegrasyon Rehberi",
+    "description": "e-Serbest Meslek Makbuzu süreçleri için entegrasyon, API, belge teslimi ve GİB raporlama sorumluluklarını açıklayan uygulama rehberi.",
+    "primaryAction": {
+      "target": "esmm-nedir",
+      "label": "Dokümanı inceleyin"
+    }
+  },
+  "sections": [
+    {
+      "label": "Başlangıç",
+      "pages": [
+        {
+          "slug": "esmm-nedir",
+          "title": "e-Serbest Meslek Makbuzu Nedir?",
+          "description": "e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.",
+          "eyebrow": "Başlangıç",
+          "keywords": [
+            "e-SMM",
+            "serbest meslek makbuzu",
+            "e-Arşiv"
+          ],
+          "roles": [
+            "guide-start"
+          ],
+          "homeCard": {
+            "label": "Başlangıç"
+          }
+        },
+        {
+          "slug": "gib-teknik-gereksinimleri",
+          "title": "GİB Referansı",
+          "description": "GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.",
+          "eyebrow": "Teknik Temel",
+          "keywords": [
+            "GİB",
+            "e-Arşiv",
+            "PAdES",
+            "karekod"
+          ],
+          "homeCard": {
+            "label": "Teknik Temel"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Uygulama",
+      "pages": [
+        {
+          "slug": "kullanim-senaryolari",
+          "title": "Kullanım Senaryoları",
+          "description": "Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.",
+          "eyebrow": "Senaryolar",
+          "keywords": [
+            "senaryolar",
+            "stopaj",
+            "tevkifat",
+            "iptal"
+          ],
+          "homeCard": {
+            "label": "Senaryolar"
+          }
+        },
+        {
+          "slug": "entegrator-sorumluluklari",
+          "title": "Entegratör Sorumlulukları",
+          "description": "Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.",
+          "eyebrow": "Sorumluluklar",
+          "keywords": [
+            "entegratör",
+            "sorumluluklar",
+            "doğrulama"
+          ],
+          "homeCard": {
+            "label": "Sorumluluklar"
+          }
+        },
+        {
+          "slug": "platform-sorumluluklari",
+          "title": "Platform Sorumlulukları",
+          "description": "VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.",
+          "eyebrow": "Sorumluluklar",
+          "keywords": [
+            "VBT",
+            "Portal",
+            "PDF",
+            "GİB raporu"
+          ],
+          "homeCard": {
+            "label": "Sorumluluklar"
+          }
+        }
+      ]
+    },
+    {
+      "label": "API",
+      "pages": [
+        {
+          "slug": "entegrator-api-endpoint-referansi",
+          "title": "Entegratör API Endpoint Referansı",
+          "description": "Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.",
+          "eyebrow": "API",
+          "keywords": [
+            "API",
+            "endpoint",
+            "request",
+            "response"
+          ],
+          "roles": [
+            "api"
+          ],
+          "homeCard": {
+            "label": "API",
+            "description": "Entegratörün kullandığı e-SMM endpointleri ve yanıt sözleşmeleri."
+          }
+        },
+        {
+          "slug": "portal-api-endpoint-referansi",
+          "title": "Portal API Endpoint Referansı",
+          "description": "Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.",
+          "eyebrow": "API",
+          "keywords": [
+            "Portal",
+            "önizleme",
+            "Excel",
+            "e-posta"
+          ],
+          "homeCard": {
+            "label": "API",
+            "description": "Portal kullanıcı deneyimini sağlayan e-SMM işlemleri."
+          }
+        },
+        {
+          "slug": "request-ornekleri",
+          "title": "Request Örnekleri",
+          "description": "Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.",
+          "eyebrow": "Örnekler",
+          "keywords": [
+            "JSON",
+            "request",
+            "TRY",
+            "döviz"
+          ],
+          "homeCard": {
+            "label": "Örnekler"
+          }
+        },
+        {
+          "slug": "request-belge-gib-raporu-mapping",
+          "title": "Request → Belge → GİB Raporu Mapping",
+          "description": "Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.",
+          "eyebrow": "Mapping",
+          "keywords": [
+            "mapping",
+            "belge",
+            "GİB raporu",
+            "XML"
+          ],
+          "homeCard": {
+            "label": "Mapping"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Referans",
+      "pages": [
+        {
+          "slug": "teknik-referans",
+          "title": "Teknik Referans",
+          "description": "Enum değerleri, hata/mesaj kodları ve validasyon referansları.",
+          "eyebrow": "Referans",
+          "keywords": [
+            "referans",
+            "enum",
+            "hata kodları",
+            "validasyon"
+          ],
+          "homeCard": {
+            "label": "Referans"
+          }
+        },
+        {
+          "slug": "changelog",
+          "title": "Changelog",
+          "description": "e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.",
+          "eyebrow": "Referans",
+          "keywords": [
+            "changelog",
+            "değişiklik"
+          ],
+          "homeCard": {
+            "label": "Referans"
+          }
+        },
+        {
+          "slug": "sss",
+          "title": "Sıkça Sorulan Sorular",
+          "description": "e-SMM süreçlerinde müşterilerin ve entegratörlerin sık karşılaştığı sorular.",
+          "eyebrow": "Referans",
+          "keywords": [
+            "SSS",
+            "sorular"
+          ],
+          "roles": [
+            "faq"
+          ],
+          "homeCard": {
+            "label": "SSS"
+          }
+        }
+      ]
+    }
+  ]
+}

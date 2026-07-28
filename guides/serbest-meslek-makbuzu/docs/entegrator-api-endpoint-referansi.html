@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entegratör API Endpoint Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/entegrator-api-endpoint-referansi.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Entegratör API Endpoint Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/entegrator-api-endpoint-referansi.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Entegratör API Endpoint Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Serbest Meslek Makbuzu</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="esmm-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="esmm-nedir.html">e-Serbest Meslek Makbuzu Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link active" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-belge-gib-raporu-mapping.html">Request → Belge → GİB Raporu Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Entegratör API Endpoint Referansı</h1><p class="docs-lead">Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="entegrator-api-endpoint-referansi">
+<div class="callout callout-info"><b>Kimlik doğrulama:</b> <code>/api/Account/Token</code> dışındaki tüm entegratör çağrılarında <code>VbtAuthorization</code> header’ı gönderilmelidir. Yanıttaki <code>RefreshToken</code> doluysa bir sonraki çağrıdan önce saklanmalıdır.</div>
+
+<h2 id="h-kimlik-dogrulama">Kimlik Doğrulama</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Account/Token</span></div><div class="endpoint-body"><p class="endpoint-description">Kullanıcı, firma ve kanal bağlamı için API oturum tokenı üretir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>TokenRequestModel</code> — <code>Email</code>, <code>Password</code>, <code>FirmId</code>, <code>ChannelCode</code></td></tr><tr><td><b>Response</b></td><td><code>TokenResponseModel</code>; sonraki çağrılarda kullanılacak token</td></tr><tr><td><b>Başarı kararı</b></td><td>Token alanı boş değilse oturum kullanılabilir.</td></tr></tbody></table></div></div></div>
+<details class="example-details"><summary>Token request örneği</summary><div class="example-body"><pre><code class="language-json">{
+  "Email": "entegrasyon@example.com",
+  "Password": "********",
+  "FirmId": 42,
+  "ChannelCode": "ERP"
+}</code></pre></div></details>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/Account/LogOut</span></div><div class="endpoint-body"><p class="endpoint-description">Geçerli API oturumunu sonlandırır.</p><div class="table-wrapper"><table><tbody><tr><td><b>Header</b></td><td><code>VbtAuthorization</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr><tr><td><b>Kullanım</b></td><td>Oturum kapatıldığında saklanan token temizlenir.</td></tr></tbody></table></div></div></div>
+
+<h2 id="h-alan-zorunluluk-matrisi">Alan Zorunluluk Matrisi</h2>
+<p><code>SmmRequestModel</code> oluşturma, güncelleme ve önizleme için ortak modeldir. Zorunluluk, işlem ve senaryoya göre aşağıdaki biçimde yorumlanmalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>Oluşturma</th><th>Güncelleme</th><th>Kural</th></tr></thead><tbody>
+<tr><td><code>Id</code></td><td>int</td><td>—</td><td><span class="badge-required">Z</span></td><td>Mevcut kayıt kimliği</td></tr>
+<tr><td><code>UUId</code></td><td>string</td><td>—</td><td><span class="badge-required">Z</span></td><td>Mevcut belge UUID/ETTN değeri</td></tr>
+<tr><td><code>SmmExternalId</code></td><td>string</td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>Firma altında dış sistem referansı</td></tr>
+<tr><td><code>IssueDate</code></td><td>DateTime</td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>ISO 8601 tarih-zaman</td></tr>
+<tr><td><code>DocumentCurrencyCode</code></td><td>string</td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>ISO 4217 para birimi</td></tr>
+<tr><td><code>CalculationRate</code></td><td>decimal</td><td><span class="badge-conditional">Ş</span></td><td><span class="badge-conditional">Ş</span></td><td>TRY dışındaki belgede sıfırdan büyük; TRY için <code>1</code></td></tr>
+<tr><td><code>GonderimSekli</code></td><td>string</td><td><span class="badge-optional">İ</span></td><td><span class="badge-optional">İ</span></td><td><code>Kagit</code> veya <code>Elektronik</code>; teslim davranışının açık olması için gönderilmesi önerilir.</td></tr>
+<tr><td><code>Alici</code></td><td>object</td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>Kimlik tipine uygun kişi/kurum ve adres bilgileri</td></tr>
+<tr><td><code>MalHizmetler</code></td><td>array</td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>En az bir hizmet satırı</td></tr>
+<tr><td>Belge toplamları</td><td>decimal</td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>Satır toplamlarıyla uyumlu</td></tr>
+<tr><td><code>EArchiveMailTo</code></td><td>string</td><td><span class="badge-conditional">Ş</span></td><td><span class="badge-conditional">Ş</span></td><td>Elektronik teslimde kullanılacak adresler; çoklu değerler <code>;</code> ile ayrılır.</td></tr>
+<tr><td><code>QrCode</code>, <code>FirmLogo</code></td><td>string</td><td>Opsiyonel</td><td>Opsiyonel</td><td>Belge görünümüne yönelik içerik</td></tr>
+<tr><td><code>ChannelCode</code></td><td>string</td><td>Önerilir</td><td>Önerilir</td><td>Belgenin geldiği kanal; token bağlamıyla uyumlu olmalıdır.</td></tr>
+</tbody></table></div>
+
+<h2 id="h-ekleme">Ekleme</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/AddOutgoingSmm</span></div><div class="endpoint-body"><p class="endpoint-description">Yeni e-SMM oluşturur; belge PDF’i aynı işlem sırasında üretilip imzalanır.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Ön koşul</b></td><td>Geçerli token, benzersiz <code>SmmExternalId</code>, tam alıcı/adres, en az bir hizmet satırı ve tutarlı toplamlar</td></tr>
+<tr><td><b>Request</b></td><td><code>SmmRequestModel</code></td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingAddSmmReponseModel&gt;</code> — <code>Data.{ HasError, Errors, SmmNumber, UUId }</code></td></tr>
+<tr><td><b>Başarı kararı</b></td><td><code>Data.HasError = false</code>; belge numarası ve UUID saklanır.</td></tr>
+</tbody></table></div></div></div>
+<div class="callout callout-warning"><b>Zaman aşımı:</b> Yanıt alınamadıysa aynı ekonomik işlemi yeni dış referansla tekrar göndermeyin. Önce <code>GetOutgoingSmmList</code> üzerinden <code>SmmExternalId</code> ile uzlaştırın.</div>
+
+<h2 id="h-guncelleme">Güncelleme</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/UpdateOutgoingSmm</span></div><div class="endpoint-body"><p class="endpoint-description">Mevcut e-SMM’yi tam güncel modelle değiştirir ve imzalı PDF çıktısını yeniden üretir.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Ön koşul</b></td><td>Belge önce detay endpointinden okunmalı; request içinde mevcut <code>Id</code> ve <code>UUId</code> bulunmalıdır.</td></tr>
+<tr><td><b>Request</b></td><td><code>SmmRequestModel</code>; yalnız değişen alanlar değil tam belge modeli</td></tr>
+<tr><td><b>Response</b></td><td><code>Data.{ HasError, Errors, SmmNumber, UUId }</code></td></tr>
+<tr><td><b>Başarı kararı</b></td><td><code>Data.HasError = false</code>; yeni çıktı istenirse PDF endpointinden alınır.</td></tr>
+</tbody></table></div></div></div>
+
+<h2 id="h-iptal">İptal</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/CancelOutgoingSmm</span></div><div class="endpoint-body"><p class="endpoint-description">UUID ile belirtilen e-SMM’yi iptal eder.</p><div class="table-wrapper"><table><tbody>
+<tr><td><b>Request</b></td><td><code>SmmCancelRequestModel</code> — <code>{ "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470" }</code></td></tr>
+<tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr>
+<tr><td><b>Başarı kararı</b></td><td><code>Data = true</code></td></tr>
+<tr><td><b>Sonraki adım</b></td><td>ERP kaydı iptal durumuna alınır; yeniden düzenleme yeni dış referansla yapılır.</td></tr>
+</tbody></table></div></div></div>
+<pre><code class="language-json">{
+  "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
+}</code></pre>
+
+<h2 id="h-sorgulama-goruntuleme">Sorgulama ve Görüntüleme</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/Smm/GetOutgoingSmm?id={uuid}</span></div><div class="endpoint-body"><p class="endpoint-description">UUID ile tek belgenin başlık, taraf, hizmet, vergi ve toplam detayını getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Parametre</b></td><td><code>id</code> — belge UUID/ETTN değeri</td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingSmmReponseModel&gt;</code></td></tr><tr><td><b>Kullanım</b></td><td>Güncelleme öncesi güncel modeli okuma ve sonuç uzlaştırma</td></tr></tbody></table></div></div></div>
+
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmList</span></div><div class="endpoint-body"><p class="endpoint-description">Entegrasyon sorguları için sayfalı e-SMM özet listesini getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SearchRequestModel&lt;OutgoingSmmGetUiRequestModel&gt;</code> — <code>Query</code>, <code>Skip</code>, <code>Take</code>, <code>OrderByName</code>, <code>OrderByType</code></td></tr><tr><td><b>Filtreler</b></td><td><code>UUId</code>, <code>VknTckn</code>, <code>Unvan</code>, <code>IssueDate</code>, <code>SmmNumber</code>, <code>SmmExternalId</code>, durum ve e-posta alanları</td></tr><tr><td><b>Response</b></td><td><code>SearchResponseModel&lt;OutgoingSmmSummaryResponseModel&gt;</code></td></tr><tr><td><b>Sayfalama</b></td><td><code>Take</code> 0–100 aralığında olmalıdır.</td></tr></tbody></table></div></div></div>
+<details class="example-details"><summary>Dış referansla liste sorgusu</summary><div class="example-body"><pre><code class="language-json">{
+  "Query": {
+    "SmmExternalId": "ERP-SMM-2026-00001"
+  },
+  "Skip": 0,
+  "Take": 20,
+  "OrderByName": "IssueDate",
+  "OrderByType": "DESC"
+}</code></pre></div></details>
+
+<h2 id="h-pdf-ve-belge-paketi">PDF ve Belge Paketi</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmPdf</span></div><div class="endpoint-body"><p class="endpoint-description">Bir veya daha fazla e-SMM’nin PDF çıktısını getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SmmPdfRequestModel</code> — <code>Ettns[]</code>, opsiyonel <code>DisplayPdf</code> ve <code>FirmId</code></td></tr><tr><td><b>Response</b></td><td><code>OutgoingSmmPdfResponseModel.SmmPdfFileBytes</code> — JSON içinde base64 olarak taşınır.</td></tr><tr><td><b>Kullanım</b></td><td>Arşivleme, kullanıcıya gösterim veya dosyaya yazma</td></tr></tbody></table></div></div></div>
+<pre><code class="language-json">{
+  "Ettns": ["6b60c576-7ed9-4bf1-9f90-3c97747b7470"],
+  "DisplayPdf": true
+}</code></pre>
+
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmDocumentPackage</span></div><div class="endpoint-body"><p class="endpoint-description">Seçilen belge için Portal görüntüleme/indirme senaryosunda kullanılan belge paketini döner.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>GlobalDocumentPreviewRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>DocumentPreviewResponseModel</code>; dosya içeriği ve görüntüleme bilgileri</td></tr><tr><td><b>Tercih</b></td><td>ERP yalnız PDF byte dizisine ihtiyaç duyuyorsa <code>GetOutgoingSmmPdf</code> daha doğrudan sözleşmedir.</td></tr></tbody></table></div></div></div>
+
+<h2 id="h-ana-model">SmmRequestModel</h2>
+<p>Model, belge başlığı ve toplamlarını taşır; alıcı, hizmet, vergi ve kur alt modelleri aşağıdaki bölümlerde ayrıştırılmıştır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>İş anlamı</th><th>Not</th></tr></thead><tbody>
+<tr><td><code>LocationCode</code></td><td>string</td><td>Belgenin düzenlendiği lokasyon</td><td>ERP şube/lokasyon koduyla eşleştirilebilir.</td></tr>
+<tr><td><code>IssueDate</code></td><td>DateTime</td><td>Düzenleme tarih-zamanı</td><td>ISO 8601 gönderilmesi önerilir.</td></tr>
+<tr><td><code>BelgeZamanSpecified</code></td><td>bool</td><td>Zaman bilgisinin ayrıca belirtildiğini gösterir.</td><td>Tarih-zaman kullanan entegrasyonlarda tutarlı gönderilir.</td></tr>
+<tr><td><code>UUId</code></td><td>string</td><td>Belge UUID/ETTN</td><td>Güncellemede kullanılır; oluşturmada VBT üretir.</td></tr>
+<tr><td><code>SmmNumber</code></td><td>string</td><td>16 karakterli belge numarası</td><td>Oluşturmada VBT üretir.</td></tr>
+<tr><td><code>FileName</code></td><td>string</td><td>Belge dosya adı</td><td>VBT tarafından çıktı kaydında üretilir; oluşturma girdisi olarak kullanılmaz.</td></tr>
+<tr><td><code>DocumentCurrencyCode</code></td><td>string</td><td>Belge para birimi</td><td>ISO 4217</td></tr>
+<tr><td><code>CalculationRate</code></td><td>decimal</td><td>TRY karşılığı kur</td><td>TRY dışındaki belgede zorunlu</td></tr>
+<tr><td><code>Alici</code></td><td>object</td><td>Hizmeti alan kişi/kurum</td><td>Kimlik ve adres</td></tr>
+<tr><td><code>Gonderen</code></td><td>object</td><td>Serbest meslek erbabı</td><td>VBT firma kaydından tamamlanır.</td></tr>
+<tr><td><code>MalHizmetler</code></td><td>array</td><td>Hizmet satırları</td><td>Satır toplamları üst toplamla eşleşir.</td></tr>
+<tr><td><code>BaslikVergi</code></td><td>object</td><td>Belge düzeyi vergi/tevkifat grubu</td><td>Vergi ve tevkifat listeleri</td></tr>
+<tr><td><code>Aciklamalar</code></td><td>string[]</td><td>Belge notları</td><td>Birden fazla açıklama gönderilebilir.</td></tr>
+<tr><td><code>TotalAmount</code></td><td>decimal</td><td>Brüt hizmet toplamı</td><td>Satır brüt toplamı</td></tr>
+<tr><td><code>HesaplananKdv</code></td><td>decimal</td><td>Hesaplanan KDV</td><td>KDV satır toplamı</td></tr>
+<tr><td><code>StopajOran</code></td><td>int</td><td>Belge stopaj oranı</td><td>0–100</td></tr>
+<tr><td><code>TaxStopajTotalAmount</code></td><td>decimal</td><td>Toplam stopaj</td><td>Brüt üzerinden hesaplanır.</td></tr>
+<tr><td><code>TevkifatOran</code></td><td>int</td><td>Belge tevkifat oranı</td><td>0–100</td></tr>
+<tr><td><code>TevkifatKodu</code></td><td>int</td><td>Belge tevkifat kodu</td><td>Senaryoya uygun kod</td></tr>
+<tr><td><code>WithholdingTaxTotalAmount</code></td><td>decimal</td><td>Toplam KDV tevkifatı</td><td>Hesaplanan KDV üzerinden</td></tr>
+<tr><td><code>TaxKdvTotalAmount</code></td><td>decimal</td><td>Tevkifat sonrası KDV</td><td>Ödenecek KDV</td></tr>
+<tr><td><code>NetUcret</code></td><td>decimal</td><td>Stopaj sonrası net ücret</td><td>Brüt − stopaj</td></tr>
+<tr><td><code>PayableAmount</code></td><td>decimal</td><td>Nihai tahsilat/ödeme</td><td>Net ücret + ödenecek KDV</td></tr>
+<tr><td><code>ToplamVergi</code></td><td>decimal</td><td>Belge vergi toplamı</td><td>Vergi modeliyle uyumlu</td></tr>
+<tr><td><code>EArchiveMailTo</code></td><td>string</td><td>Elektronik teslim adresi</td><td>Çoklu adresler <code>;</code> ile ayrılır.</td></tr>
+<tr><td><code>YaziIle</code></td><td>string</td><td>Toplamın yazıyla gösterimi</td><td>Belge görünümünde kullanılır.</td></tr>
+<tr><td><code>SmmExternalId</code></td><td>string</td><td>ERP dış referansı</td><td>Yeni oluşturma için benzersiz</td></tr>
+<tr><td><code>ChannelCode</code></td><td>string</td><td>Kaynak kanal</td><td>Örn. <code>ERP</code></td></tr>
+<tr><td><code>Kur</code></td><td>object</td><td>TRY karşılığı toplamlar</td><td>Dövizli senaryolarda kullanılır.</td></tr>
+</tbody></table></div>
+
+<h2 id="h-alt-modeller">Alt Modeller</h2>
+<h3 id="h-alici-modeli">Alici</h3>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>VKN alıcı</th><th>TCKN alıcı</th></tr></thead><tbody>
+<tr><td><code>VknTckn</code></td><td>string</td><td>10 hane</td><td>11 hane</td></tr>
+<tr><td><code>Unvan</code></td><td>string</td><td>Zorunlu</td><td>Kullanılmaz</td></tr>
+<tr><td><code>Ad</code>, <code>Soyad</code></td><td>string</td><td>Kullanılmaz</td><td>İkisi de zorunlu</td></tr>
+<tr><td><code>VergiDaire</code></td><td>string</td><td>Zorunlu</td><td>Kullanılmaz</td></tr>
+<tr><td><code>Adres</code></td><td>object</td><td>Zorunlu</td><td>Zorunlu</td></tr>
+</tbody></table></div>
+
+<h3 id="h-adres-modeli">AliciAdres</h3>
+<div class="table-wrapper"><table><thead><tr><th>Alan grubu</th><th>Alanlar</th><th>Kural</th></tr></thead><tbody>
+<tr><td>Zorunlu çekirdek</td><td><code>Ulke</code>, <code>Semt</code>, <code>Sehir</code></td><td>Ülke, ilçe/semt ve şehir doldurulur.</td></tr>
+<tr><td>Açık adres</td><td><code>Mahalle</code>, <code>CaddeSokak</code>, <code>BinaAd</code>, <code>BinaNo</code>, <code>KapiNo</code>, <code>KasabaKoy</code>, <code>PostaKod</code></td><td>Alıcıyı tanımlayacak yeterlilikte gönderilir.</td></tr>
+<tr><td>İletişim</td><td><code>Telefon</code>, <code>Telefax</code></td><td>Varsa gönderilir.</td></tr>
+</tbody></table></div>
+
+<h3 id="h-hizmet-modeli">MalHizmet</h3>
+<div class="table-wrapper"><table><thead><tr><th>Alan grubu</th><th>Alanlar</th><th>İş anlamı</th></tr></thead><tbody>
+<tr><td>Kimlik</td><td><code>LineId</code>, <code>Id</code>, <code>MalHizmetAd</code></td><td>Satır sırası, dış/satır referansı ve hizmet açıklaması</td></tr>
+<tr><td>Brüt ve KDV</td><td><code>TotalAmount</code>, <code>KdvOran</code>, <code>HesaplananKdv</code></td><td>Satır hizmet bedeli ve hesaplanan KDV</td></tr>
+<tr><td>Stopaj</td><td><code>StopajOran</code>, <code>TaxStopajTotalAmount</code>, <code>NetUcret</code></td><td>Brüt üzerinden gelir vergisi kesintisi</td></tr>
+<tr><td>Tevkifat</td><td><code>TevkifatOran</code>, <code>TevkifatKodu</code>, <code>WithholdingTaxTotalAmount</code>, <code>TaxKdvTotalAmount</code></td><td>KDV üzerinden tevkifat ve kalan KDV</td></tr>
+<tr><td>Sonuç</td><td><code>PayableAmount</code>, <code>ToplamVergi</code>, <code>KalemVergi</code></td><td>Satır nihai tutarı ve vergi ayrıntısı</td></tr>
+</tbody></table></div>
+
+<h3 id="h-vergi-grubu">VergiGrup, Vergi ve Tevkifat</h3>
+<div class="table-wrapper"><table><thead><tr><th>Model</th><th>Alanlar</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>VergiGrup</code></td><td><code>Vergiler[]</code>, <code>Tevkifatlar[]</code>, <code>ToplamVergi</code></td><td>Kalem veya belge düzeyinde vergi/kesinti ayrıntıları</td></tr>
+<tr><td><code>Vergi</code></td><td><code>Matrah</code>, <code>VergiTutar</code>, <code>VergiOran</code>, <code>VergiOranVarMi</code>, <code>VergiKodu</code></td><td>Vergi matrahı, oranı, tutarı ve kodu</td></tr>
+<tr><td><code>Tevkifat</code></td><td><code>TevkifatKodu</code>, <code>TevkifatTutar</code>, <code>TevkifatOran</code></td><td>Tevkifat kodu, oranı ve tutarı</td></tr>
+</tbody></table></div>
+
+<h3 id="h-kur-modeli">Kur</h3>
+<p>Dövizli belgede toplamların TRY karşılığını taşır: <code>TotalAmount</code>, <code>NetUcret</code>, <code>HesaplananKdv</code>, <code>TaxStopajTotalAmount</code>, <code>WithholdingTaxTotalAmount</code>, <code>TaxKdvTotalAmount</code> ve <code>PayableAmount</code>.</p>
+
+<h2 id="h-response-modelleri">Response Modelleri</h2>
+<div class="table-wrapper"><table><thead><tr><th>Endpoint</th><th><code>Data</code> modeli</th><th>Kritik alanlar</th></tr></thead><tbody>
+<tr><td>Oluşturma</td><td><code>OutgoingAddSmmReponseModel</code></td><td><code>HasError</code>, <code>Errors[]</code>, <code>SmmNumber</code>, <code>UUId</code></td></tr>
+<tr><td>Güncelleme</td><td><code>OutgoingUpdateSmmResponseModel</code></td><td>Aynı iş sonucu ve belge kimlikleri</td></tr>
+<tr><td>Detay</td><td><code>OutgoingSmmReponseModel</code></td><td>Başlık, taraf, satır, vergi ve toplam modeli</td></tr>
+<tr><td>Liste</td><td><code>SearchResponseModel&lt;OutgoingSmmSummaryResponseModel&gt;</code></td><td>UUID, alıcı, tarih, tutarlar, e-posta, belge/rapor/iptal durumları</td></tr>
+<tr><td>PDF</td><td><code>OutgoingSmmPdfResponseModel</code></td><td><code>SmmPdfFileBytes</code></td></tr>
+</tbody></table></div>
+
+<h2 id="h-yanit-ornekleri">Yanıt Örnekleri</h2>
+<h3 id="h-basarili-yanit">Başarılı oluşturma yanıtı</h3>
+<pre><code class="language-json">{
+  "RefreshToken": "",
+  "Data": {
+    "HasError": false,
+    "Errors": [],
+    "SmmNumber": "SMM2026000000001",
+    "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
+  }
+}</code></pre>
+<div class="callout callout-info"><b>Başarı kararı:</b> <code>Data.HasError = false</code> olmalı; numara ve UUID aynı <code>Data</code> nesnesinden alınmalıdır.</div>
+<h3 id="h-basarisiz-yanit">İçerik doğrulama yanıtı</h3>
+<pre><code class="language-json">{
+  "RefreshToken": "",
+  "Data": {
+    "HasError": true,
+    "Errors": [
+      {
+        "ErrorCode": "SMM010",
+        "ErrorMessage": "Para Birimi TRY olmadığı durumda döviz kuru zorunludur."
+      }
+    ],
+    "SmmNumber": null,
+    "UUId": null
+  }
+}</code></pre>
+<div class="callout callout-warning"><b>Başarısız kabul:</b> <code>HasError = true</code> iken belge oluşturulmuş kabul edilmez. Hata listesi tamamı okunmalı, veri düzeltilmeli ve mükerrerlik kontrolünden sonra tekrar gönderilmelidir.</div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="platform-sorumluluklari.html"><span>Önceki</span><strong>Platform Sorumlulukları</strong></a>
+<a class="docs-page-link docs-page-next" href="portal-api-endpoint-referansi.html"><span>Sonraki</span><strong>Portal API Endpoint Referansı</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="e-SMM, endpoint, stopaj, tevkifat, PDF..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Serbest Meslek Makbuzu Nedir?","text":"e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.","keywords":"e-SMM serbest meslek makbuzu e-Arşiv","url":"esmm-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.","keywords":"GİB e-Arşiv PAdES karekod","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.","keywords":"senaryolar stopaj tevkifat iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.","keywords":"entegratör sorumluluklar doğrulama","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.","keywords":"VBT Portal PDF GİB raporu","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.","keywords":"Portal önizleme Excel e-posta","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.","keywords":"JSON request TRY döviz","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → Belge → GİB Raporu Mapping","text":"Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.","keywords":"mapping belge GİB raporu XML","url":"request-belge-gib-raporu-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-SMM süreçlerinde müşterilerin ve entegratörlerin sık karşılaştığı sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

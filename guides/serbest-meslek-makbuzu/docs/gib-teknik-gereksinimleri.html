@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GİB Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/gib-teknik-gereksinimleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="GİB Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/docs/gib-teknik-gereksinimleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GİB Referansı — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Serbest Meslek Makbuzu</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="esmm-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="esmm-nedir.html">e-Serbest Meslek Makbuzu Nedir?</a>
+<a class="docs-nav-link active" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-belge-gib-raporu-mapping.html">Request → Belge → GİB Raporu Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Teknik Temel</p><h1>GİB Referansı</h1><p class="docs-lead">GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="gib-teknik-gereksinimleri">
+<h3 id="h-gib-paketi">GİB Paketi</h3>
+<p>e-SMM, e-Arşiv uygulaması kapsamında elektronik olarak düzenlenen serbest meslek makbuzudur. Tekil makbuzun oluşturulması ve alıcıya teslimi ile belgelerin GİB’e dönemsel olarak raporlanması birbirini tamamlayan iki ayrı süreçtir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kapsam</th><th>Tekil makbuz</th><th>GİB raporu</th></tr></thead><tbody>
+<tr><td>Amaç</td><td>Hizmet ve tahsilatın alıcıya verilen belgesi</td><td>Düzenlenen ve iptal edilen belgelerin dönemsel bildirimi</td></tr>
+<tr><td>Temel içerik</td><td>Taraflar, hizmet kalemleri, vergi/kesinti ve toplamlar</td><td>Belge kimlikleri, taraf kimliği, tarih, para birimi, tutarlar ve durum</td></tr>
+<tr><td>İşlem zamanı</td><td>Oluşturma veya güncelleme çağrısı sırasında</td><td>VBT’nin raporlama takviminde</td></tr>
+<tr><td>Entegratör erişimi</td><td>Detay, PDF ve belge paketi uçları</td><td>Rapor işlemleri entegratöre açılmaz; VBT tarafından yönetilir.</td></tr>
+</tbody></table></div>
+
+<h3 id="h-kullanim-yontemi">Kullanım Yöntemi</h3>
+<p>Entegratör makbuzun iş verisini JSON request ile iletir. VBT, doğrulanan veriden tekil belgeyi ve imzalı PDF’i üretir. Kabul edilen belgeler daha sonra VBT tarafından mevzuata uygun GİB raporlama sürecine alınır.</p>
+<div class="diagram-wrapper"><svg viewBox="0 0 760 145" xmlns="http://www.w3.org/2000/svg"><style>.gb{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.4;rx:8}.gr{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.4;rx:8}.gg{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.4;rx:8}.gt{fill:var(--svg-text);font:600 10px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}.gs{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.gl{stroke:var(--svg-line);stroke-width:1.2;fill:none;stroke-dasharray:5 3}</style><defs><marker id="gib-use" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs><rect class="gb" x="15" y="35" width="125" height="44"/><text class="gt" x="77" y="51">İş verisi</text><text class="gs" x="77" y="68">entegratör request’i</text><path class="gl" d="M140,57 L175,57" marker-end="url(#gib-use)"/><rect class="gr" x="180" y="35" width="130" height="44"/><text class="gt" x="245" y="51">Tekil e-SMM</text><text class="gs" x="245" y="68">PDF + imza</text><path class="gl" d="M310,57 L345,57" marker-end="url(#gib-use)"/><rect class="gg" x="350" y="35" width="130" height="44"/><text class="gt" x="415" y="51" style="fill:var(--svg-ok-s)">Alıcıya teslim</text><text class="gs" x="415" y="68">elektronik / kâğıt</text><path class="gl" d="M415,79 L415,112" marker-end="url(#gib-use)"/><rect class="gb" x="345" y="114" width="140" height="28"/><text class="gt" x="415" y="128">VBT raporlama</text><path class="gl" d="M485,128 L535,128" marker-end="url(#gib-use)"/><rect class="gr" x="540" y="109" width="200" height="38"/><text class="gt" x="640" y="123">GİB raporu ve durum takibi</text><text class="gs" x="640" y="139">VBT sorumluluğu</text></svg></div>
+
+<h3 id="h-teknik-gereksinimler">Teknik Gereksinimler</h3>
+<p>Makbuzun iş verisi, belge üzerindeki görünüm ve GİB raporundaki karşılık aynı ekonomik işlemi anlatmalıdır. Entegratör özellikle aşağıdaki bütünlük kurallarını sağlamalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>Gereksinim</th><th>İlgili request alanları</th></tr></thead><tbody>
+<tr><td>Belge kimliği</td><td>Her yeni belge ERP tarafında benzersiz bir dış referansla gönderilmelidir.</td><td><code>SmmExternalId</code></td></tr>
+<tr><td>Düzenleme zamanı</td><td>Belge tarihi gerçek işlem zamanını göstermeli ve geçerli tarih biçiminde olmalıdır.</td><td><code>IssueDate</code>, <code>BelgeZamanSpecified</code></td></tr>
+<tr><td>Taraf kimliği</td><td>VKN 10, TCKN 11 haneli ve sayısal olmalıdır; kişi/kurum alanları kimlik tipine uygun tamamlanmalıdır.</td><td><code>Alici.VknTckn</code>, <code>Unvan</code>, <code>Ad</code>, <code>Soyad</code></td></tr>
+<tr><td>Adres</td><td>Ülke, ilçe/semt ve şehir başta olmak üzere alıcı adresi belgeyi tanımlayacak yeterlilikte olmalıdır.</td><td><code>Alici.Adres</code></td></tr>
+<tr><td>Para birimi</td><td>ISO 4217 kodu kullanılmalı; TRY dışındaki belgede kur sıfırdan büyük olmalıdır.</td><td><code>DocumentCurrencyCode</code>, <code>CalculationRate</code></td></tr>
+<tr><td>Vergi ve kesinti</td><td>KDV, stopaj ve tevkifat oran/tutarları hem satır hem belge toplamlarıyla uyumlu olmalıdır.</td><td><code>MalHizmetler[]</code>, üst toplam alanları</td></tr>
+<tr><td>Teslim</td><td>Elektronik veya kâğıt teslim seçimi doğru gönderilmeli; elektronik teslimde e-posta adresi doğrulanmalıdır.</td><td><code>GonderimSekli</code>, <code>EArchiveMailTo</code></td></tr>
+<tr><td>Karekod</td><td>Belge üzerindeki karekod, yürürlükteki GİB karekod standardındaki zorunlu bilgileri taşımalıdır.</td><td><code>QrCode</code> veya VBT tarafından oluşturulan belge verisi</td></tr>
+</tbody></table></div>
+
+<h3 id="h-taraf-kimlikleri">Taraf Kimlikleri</h3>
+<div class="table-wrapper"><table><thead><tr><th>Alıcı türü</th><th>Kimlik</th><th>Zorunlu ad alanları</th><th>Ek bilgi</th></tr></thead><tbody>
+<tr><td>Tüzel kişi</td><td>10 haneli VKN</td><td><code>Unvan</code></td><td><code>VergiDaire</code> ve adres tamamlanır.</td></tr>
+<tr><td>Gerçek kişi</td><td>11 haneli TCKN</td><td><code>Ad</code> ve <code>Soyad</code></td><td>Adres tamamlanır; unvan/vergi dairesi kullanılmaz.</td></tr>
+</tbody></table></div>
+<div class="callout callout-warning"><b>Kimlik-ad uyumu:</b> VKN gönderip yalnız ad-soyad, TCKN gönderip yalnız unvan kullanmak doğru taraf tanımı oluşturmaz. Kimlik uzunluğuna göre ilgili alan grubu gönderilmelidir.</div>
+
+<h3 id="h-vergi-kesinti-yapisi">Vergi ve Kesinti Yapısı</h3>
+<p>e-SMM’de brüt hizmet bedelinden gelir vergisi stopajı düşülebilir; hesaplanan KDV’ye ayrıca tevkifat uygulanabilir. Bu iki kesinti farklı matrah ve amaçlara sahiptir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Unsurlar</th><th>Matrah</th><th>Request alanları</th><th>Toplama etkisi</th></tr></thead><tbody>
+<tr><td>KDV</td><td>Brüt hizmet bedeli</td><td><code>KdvOran</code>, <code>HesaplananKdv</code></td><td>Hesaplanan KDV’yi oluşturur.</td></tr>
+<tr><td>Gelir vergisi stopajı</td><td>Brüt hizmet bedeli</td><td><code>StopajOran</code>, <code>TaxStopajTotalAmount</code></td><td><code>NetUcret</code> hesabında brüt ücretten düşülür.</td></tr>
+<tr><td>KDV tevkifatı</td><td>Hesaplanan KDV</td><td><code>TevkifatOran</code>, <code>TevkifatKodu</code>, <code>WithholdingTaxTotalAmount</code></td><td><code>TaxKdvTotalAmount</code> hesabında KDV’den düşülür.</td></tr>
+<tr><td>Ödenecek tutar</td><td>Net ücret + ödenecek KDV</td><td><code>PayableAmount</code></td><td>Makbuzdaki tahsil edilen/ödenecek nihai tutardır.</td></tr>
+</tbody></table></div>
+
+<h3 id="h-belge-toplamlari">Belge Toplamları</h3>
+<p>Hesaplama sırası, örnek bir kalem için aşağıdaki zihinsel modelle kurulabilir. Yuvarlama politikası ERP ile VBT arasında aynı hassasiyetle uygulanmalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Adım</th><th>Formül</th><th>Örnek: brüt 1.000, KDV %20, stopaj %20, tevkifat %50</th></tr></thead><tbody>
+<tr><td>Hesaplanan KDV</td><td>Brüt × KDV oranı</td><td>200</td></tr>
+<tr><td>Stopaj</td><td>Brüt × stopaj oranı</td><td>200</td></tr>
+<tr><td>Tevkifat</td><td>Hesaplanan KDV × tevkifat oranı</td><td>100</td></tr>
+<tr><td>Net ücret</td><td>Brüt − stopaj</td><td>800</td></tr>
+<tr><td>Ödenecek KDV</td><td>Hesaplanan KDV − tevkifat</td><td>100</td></tr>
+<tr><td>Ödenecek tutar</td><td>Net ücret + ödenecek KDV</td><td>900</td></tr>
+</tbody></table></div>
+
+<h3 id="h-doviz-kuru">Para Birimi ve Kur</h3>
+<div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th><code>DocumentCurrencyCode</code></th><th><code>CalculationRate</code></th><th><code>Kur</code> modeli</th></tr></thead><tbody>
+<tr><td>TRY belge</td><td><code>TRY</code></td><td><code>1</code></td><td>Yabancı para karşılıkları gerekmiyorsa boş bırakılabilir.</td></tr>
+<tr><td>Dövizli belge</td><td>Geçerli ISO 4217 kodu, ör. <code>USD</code> veya <code>EUR</code></td><td>İşlem tarihindeki kullanılan kur; sıfır olamaz.</td><td>Belge toplamlarının TRY karşılıklarını taşır.</td></tr>
+</tbody></table></div>
+
+<h3 id="h-gib-rapor-alanlari">GİB Rapor Alanları</h3>
+<p>Raporlama sırasında tekil belge kaydından GİB’in beklediği iş alanları oluşturulur. Entegratörün görevi request verisini doğru sağlamaktır; rapor şemasını veya gönderim paketini üretmez.</p>
+<div class="table-wrapper"><table><thead><tr><th>İş alanı</th><th>Kaynak request bilgisi</th><th>Rapor anlamı</th></tr></thead><tbody>
+<tr><td>Belge numarası ve UUID</td><td>Oluşturma sonucu üretilen <code>SmmNumber</code>, <code>UUId</code></td><td>Raporlanan makbuzun tekil kimliği</td></tr>
+<tr><td>Düzenleme tarihi</td><td><code>IssueDate</code></td><td>Makbuz tarihi</td></tr>
+<tr><td>Gönderici ve alıcı</td><td>Firma kaydı, <code>Alici</code></td><td>VKN/TCKN ve taraf adı</td></tr>
+<tr><td>Para birimi ve kur</td><td><code>DocumentCurrencyCode</code>, <code>CalculationRate</code></td><td>Belgenin döviz bilgisi</td></tr>
+<tr><td>Brüt, vergi, kesinti ve net</td><td>Belge toplam alanları</td><td>Makbuzun ekonomik özeti</td></tr>
+<tr><td>İptal</td><td>Belgenin iptal kaydı ve tarihi</td><td>İptal raporunda ilgili belge referansı</td></tr>
+</tbody></table></div>
+
+<h3 id="h-iptal-raporu">İptal Bildirimi</h3>
+<p>Entegratör iptal talebini belge UUID’siyle iletir. İptal edilen belgenin GİB’e bildirilmesi, belgenin raporlama durumuna göre VBT tarafından uygun rapor döneminde yönetilir.</p>
+<div class="callout callout-info"><b>Entegratör kontrolü:</b> İptal çağrısındaki <code>Data = true</code> sonucunu saklayın ve belgeyi yeniden düzenlenecekse yeni bir <code>SmmExternalId</code> kullanın. GİB rapor uçlarını ayrıca çağırmayın.</div>
+
+<h3 id="h-resmi-kaynaklar">Resmi Kaynaklar</h3>
+<ul>
+<li><a href="https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/e-Arsiv_Teknik_Kilavuzu_V.1.18.pdf" target="_blank" rel="noopener">e-Arşiv Teknik Kılavuzu V1.18</a> — rapor paketleri, belge türleri ve teknik bildirim çerçevesi.</li>
+<li><a href="https://cdn.gib.gov.tr/api/gibportal-file/file/getFile?objectKey=MEVZUAT_TEBLIGLER%2FUNIVERSAL%2F2026%2FMEVZUAT_TEBLIGLER_2026_VukTeb509_Guncel.pdf" target="_blank" rel="noopener">509 Sıra No.lu VUK Genel Tebliği — güncel metin</a> — e-Belge uygulamalarının yasal kapsamı.</li>
+<li><a href="https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/Karekod_veya_Barkod_Standardi_Kilavuzu_V.1.0.pdf" target="_blank" rel="noopener">Karekod veya Barkod Standardı Kılavuzu V1.0</a> — belge üzerindeki karekod içeriği.</li>
+</ul>
+<div class="callout callout-warning"><b>Güncellik:</b> Mevzuat ve teknik kılavuzlar değişebilir. Canlıya geçiş ve sürüm yükseltmelerinde bağlantılı resmi kaynakların güncel sürümleri kontrol edilmelidir.</div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="esmm-nedir.html"><span>Önceki</span><strong>e-Serbest Meslek Makbuzu Nedir?</strong></a>
+<a class="docs-page-link docs-page-next" href="kullanim-senaryolari.html"><span>Sonraki</span><strong>Kullanım Senaryoları</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="e-SMM, endpoint, stopaj, tevkifat, PDF..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Serbest Meslek Makbuzu Nedir?","text":"e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.","keywords":"e-SMM serbest meslek makbuzu e-Arşiv","url":"esmm-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.","keywords":"GİB e-Arşiv PAdES karekod","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.","keywords":"senaryolar stopaj tevkifat iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.","keywords":"entegratör sorumluluklar doğrulama","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.","keywords":"VBT Portal PDF GİB raporu","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.","keywords":"Portal önizleme Excel e-posta","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.","keywords":"JSON request TRY döviz","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → Belge → GİB Raporu Mapping","text":"Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.","keywords":"mapping belge GİB raporu XML","url":"request-belge-gib-raporu-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-SMM süreçlerinde müşterilerin ve entegratörlerin sık karşılaştığı sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>
