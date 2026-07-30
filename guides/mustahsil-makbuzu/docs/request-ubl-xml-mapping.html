@@ -102,12 +102,12 @@
 <tr><td><code>TaxTotal[].TaxAmount</code></td><td><code>cbc:TaxAmount[@currencyID]</code></td><td>Vergi/kesinti toplam tutarı</td></tr>
 <tr><td><code>TaxTotal[].TaxSubtotal.TaxableAmount</code></td><td><code>cac:TaxSubtotal/cbc:TaxableAmount</code></td><td>Matrah</td></tr>
 <tr><td><code>TaxTotal[].TaxSubtotal.Percent</code></td><td><code>cbc:Percent</code></td><td>KDV oranı (%)</td></tr>
-<tr><td><code>TaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Vergi/kesinti kodu: <code>0015</code>, <code>0003</code>, <code>8001</code>, <code>SGK_PRIM</code>, <code>9040</code></td></tr>
-<tr><td><code>TaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.Name</code></td><td><code>cac:TaxScheme/cbc:Name</code></td><td>Kesinti adı: <code>GV STOPAJI</code>, <code>BORSA TES.ÜC.</code>, <code>SGK PRIM KESINTISI</code>, <code>MERA FONU</code></td></tr>
+<tr><td><code>TaxTotal[].TaxSubtotal.<wbr>TaxCategory.<wbr>TaxScheme.<wbr>TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Vergi/kesinti kodu: <code>0015</code>, <code>0003</code>, <code>8001</code>, <code>SGK_PRIM</code>, <code>9040</code></td></tr>
+<tr><td><code>TaxTotal[].TaxSubtotal.<wbr>TaxCategory.<wbr>TaxScheme.<wbr>Name</code></td><td><code>cac:TaxScheme/cbc:Name</code></td><td>Kesinti adı: <code>GV STOPAJI</code>, <code>BORSA TES.ÜC.</code>, <code>SGK PRIM KESINTISI</code>, <code>MERA FONU</code></td></tr>
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">WithholdingTaxTotal[] → cac:WithholdingTaxTotal</td></tr>
 <tr><td><code>WithholdingTaxTotal[].TaxAmount</code></td><td><code>cbc:TaxAmount[@currencyID]</code></td><td>Tevkifat tutarı</td></tr>
-<tr><td><code>WithholdingTaxTotal[].TaxSubtotal.Percent</code></td><td><code>cbc:Percent</code></td><td>Tevkifat oranı (%)</td></tr>
-<tr><td><code>WithholdingTaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Tevkifat kodu; GV stopajı için <code>0003</code></td></tr>
+<tr><td><code>WithholdingTaxTotal[].TaxSubtotal.<wbr>Percent</code></td><td><code>cbc:Percent</code></td><td>Tevkifat oranı (%)</td></tr>
+<tr><td><code>WithholdingTaxTotal[].TaxSubtotal.<wbr>TaxCategory.<wbr>TaxScheme.<wbr>TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Tevkifat kodu; GV stopajı için <code>0003</code></td></tr>
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">CreditNoteLine[] → cac:CreditNoteLine</td></tr>
 <tr><td><code>CreditNoteLine[].Id</code></td><td><code>cbc:ID</code></td><td>Satır no (1'den başlar)</td></tr>
 <tr><td><code>CreditNoteLine[].CreditedQuantity / UnitCode</code></td><td><code>cbc:CreditedQuantity[@unitCode]</code></td><td>Miktar + birim</td></tr>

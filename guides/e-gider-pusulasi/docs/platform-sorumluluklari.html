@@ -85,9 +85,9 @@
 <ol>
     <li>Alıcı ve varsa vekil <a href="portal-api-endpoint-referansi.html#h-portal-person-party-endpoints">PersonParty endpointleriyle</a> aranır. Kayıt bulunursa response içindeki cari <code>Id</code> ile <code>Update</code>, bulunamazsa <code>Add</code> çağrılır.</li>
     <li>Kullanıcının seçtiği tek TCKN veya PASAPORTNO belge request'ine yazılır. Alıcı cari Id'si <code>AccountingCustomerParty.Party.Id</code>, vekil cari Id'si <code>DelegateReceiver.PartyId</code> alanında taşınır.</li>
-    <li>Belge, mevcut <code>AddOutgoingExpenseVoucher</code> veya <code>UpdateOutgoingExpenseVoucher</code> endpointiyle kaydedilir. Portal kanalında doğrulama alanları bu ilk requestte boş bırakılabilir.</li>
-    <li>Dönen <code>OutgoingExpenseVoucherStatusForUser</code> değerlendirilir. <code>WaitingForVerification</code> ise senaryoya göre SMS veya iade kodu ekranı açılır.</li>
-    <li>SMS için Send ve Complete; iade kodu için Submit endpointi çağrılır. Başarılı yanıttan sonra belge detayı yeniden sorgulanır.</li>
+    <li>Belge, <code>AddOutgoingExpenseVoucher</code> veya <code>UpdateOutgoingExpenseVoucher</code> ile kaydedilir. Portal yalnız SMS senaryosunda iki doğrulama modelini tamamen boş bırakabilir; İADEKODU seçildiyse <code>VerificationProvider</code> ve <code>VerificationInfo</code> aynı requestte eksiksiz gönderilir.</li>
+    <li>Boş SMS verisiyle kabul edilen unsigned belgede <code>WaitingForVerification</code> döner ve SMS ekranı açılır. Geçerli İADEKODU verisi bekleme state'ine girmeden belgeyi imza kuyruğuna taşır.</li>
+    <li>SMS için Send ve Complete çağrılır. İADEKODU için ayrı Submit endpointi yoktur. Başarılı yanıttan sonra belge detayı yeniden sorgulanır.</li>
     <li><code>ExpenseVoucherAndXmlCreated</code> veya <code>Signed</code> durumunda doğrulama ekranı kapatılır; hata kodu varsa kullanıcıya düzeltilebilir alan gösterilir.</li>
 </ol>
 <div class="callout callout-warning"><b>Belge request'i ile cari kartı ayrıdır:</b> PersonParty seçimi request'i hazırlar; belgeyi kendiliğinden oluşturmaz. Belge oluşturma veya güncelleme anında seçilen kişi bilgileri belgeye kaydedilir.</div>
@@ -102,7 +102,7 @@
                     <tbody>
                         <tr><td>1</td><td>Cari Yönetimi</td><td>Alıcı/vekil gerçek kişi cari arama, oluşturma veya güncelleme</td></tr>
                         <tr><td>2</td><td>Validasyon</td><td>Alan zorunluluk, format, kombinasyon kontrolleri</td></tr>
-                        <tr><td>3</td><td>Doğrulama</td><td>SMS veya iade kodu ile tamamlanır (senaryoya göre); tamamlanmadan sonraki adımlara geçilmez</td></tr>
+                        <tr><td>3</td><td>Doğrulama</td><td>SMS, Portal Send/Complete adımlarıyla; İADEKODU, Add/Update içindeki tam modelle doğrulanır</td></tr>
                         <tr><td>4</td><td>UBL XML Üretimi</td><td>UBL 2.1 CreditNote standardında XML</td></tr>
                         <tr><td>5</td><td>e-İmzalama</td><td>Belge kesinleştirme</td></tr>
                         <tr><td>6</td><td>Numara/UUID Atama</td><td>Entegratör göndermezse otomatik</td></tr>
@@ -141,7 +141,7 @@
                     </thead>
                     <tbody>
                         <tr><td>VerificationProvider ve yöntem uyumu</td><td>EGP0044 / EGP0045 / EGP0078</td><td>SMS_PROVIDER veya IADE_PROVIDER; sağlayıcı adı ve 10 haneli VKN</td></tr>
-                        <tr><td>VerificationInfo biçimi</td><td>EGP0037 / EGP0039 / EGP0077</td><td>SMS veya IADEKODU; geçerli kod ve telefon</td></tr>
+                        <tr><td>VerificationInfo biçimi</td><td>EGP0037 / EGP0039 / EGP0072</td><td>SMS veya IADEKODU; geçerli kod ve telefon</td></tr>
                         <tr><td>IADE → ReturnedDocumentReference</td><td>EGP0038 / EGP0047 / EGP0048 / EGP0051</td><td>İade edilen belgenin türü ve tarihi; belge varsa numarası</td></tr>
                         <tr><td>BELGESIZ → gerçek kişi kimliği</td><td>EGP0050 / EGP0085</td><td>T.C. vatandaşı için TCKN, yabancı uyruklu kişi için PASAPORTNO</td></tr>
                         <tr><td>Kargo → iade kodu ve kargo eşleşmesi</td><td>EGP0049 / EGP0087</td><td>IADEKODU ve aktif kargo şirketi kaydı</td></tr>
@@ -164,64 +164,64 @@
             }</code></pre>
 
             <h3 id="h-portal-dogrulama">Portal Doğrulama Akışı</h3>
-            <p>Portal, belge senaryosuna göre doğrulama adımını hazır sunar. SMS kendiliğinden gönderilmez; kullanıcı telefon numarasını kontrol ederek gönderimi başlatır.</p>
+            <p>Portal, SMS senaryosunda gönderim ve kod doğrulama adımlarını hazır sunar. İADEKODU seçildiğinde kod, telefon ve sağlayıcı alanları belge Add/Update isteğinin parçasıdır.</p>
             <div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Portal davranışı</th><th>Sonuç</th></tr></thead><tbody>
                 <tr><td><code>SATIS</code></td><td>SMS gönderme ve kod giriş ekranı gösterilir.</td><td>Kod doğrulandığında belge imza akışına alınır.</td></tr>
-                <tr><td>Yüz yüze <code>IADE</code></td><td>SMS veya iade kodu yöntemi seçilir.</td><td>Seçilen yöntem tamamlandığında belge imza akışına alınır.</td></tr>
-                <tr><td>Kargolu <code>IADE</code></td><td>İade kodu, telefon ve sağlayıcı bilgileri istenir.</td><td>Belgede daha önce kaydedilmiş kargo ve iade edilen belge bilgileriyle birlikte doğrulama tamamlanır.</td></tr>
+                <tr><td>Yüz yüze <code>IADE</code></td><td>SMS veya iade kodu yöntemi seçilir. SMS seçilirse belge boş doğrulama verisiyle kaydedilir; İADEKODU seçilirse tam model aynı Add/Update isteğine eklenir.</td><td>SMS Complete veya başarılı direct Add/Update sonrasında belge imza akışına alınır.</td></tr>
+                <tr><td>Kargolu <code>IADE</code></td><td>İade kodu, telefon ve sağlayıcı bilgileri belge kaydedilmeden önce istenir.</td><td>Kargo ve tam İADEKODU verisi aynı Add/Update isteğinde doğrulanır; SMS bekleme akışına girilmez.</td></tr>
                 <tr><td>Vekaletli <code>IADE</code></td><td>Asıl alıcı korunur; vekil aynı gerçek kişi cari kaynağından seçilir.</td><td>Doğrulama bilgisi vekille ilişkilendirilir.</td></tr>
             </tbody></table></div>
 
             <h3 id="h-portal-durumlari">Portal Durumları</h3>
             <div class="table-wrapper"><table><thead><tr><th>Teknik değer</th><th>Portal açıklaması</th><th>Kullanıcı aksiyonu</th></tr></thead><tbody>
-                <tr><td><code>WaitingForVerification</code></td><td>Doğrulama bekleniyor.</td><td>Senaryoya göre SMS gönderilir veya iade kodu girilir.</td></tr>
+                <tr><td><code>WaitingForVerification</code></td><td>SMS gönderimi bekleniyor.</td><td>Telefon kontrol edilerek SMS gönderilir.</td></tr>
                 <tr><td><code>WaitingForSmsCode</code></td><td>SMS onayı bekleniyor.</td><td>Telefona gelen kod girilir; gerekirse telefon düzeltilerek yeniden gönderim yapılır.</td></tr>
                 <tr><td><code>ExpenseVoucherAndXmlCreated</code></td><td>e-Gider Pusulası oluşturuldu.</td><td>Belge durumu takip edilir.</td></tr>
                 <tr><td><code>Signed</code></td><td>GİB'e gönderime hazır.</td><td>Ek doğrulama işlemi yapılmaz.</td></tr>
             </tbody></table></div>
-            <div class="callout callout-info"><b>Güncelleme:</b> Doğrulama bekleyen Portal belgesi güncellendiğinde önceki doğrulama bilgisi otomatik olarak geçerli kabul edilmez. Senaryoyu etkileyen değişiklikten sonra belge yeniden <code>WaitingForVerification</code> durumunda gösterilir ve doğrulama yeniden tamamlanır.</div>
+            <div class="callout callout-info"><b>Güncelleme:</b> SMS doğrulaması bekleyen belge iki doğrulama modeli boş olarak güncellenirse <code>WaitingForVerification</code> durumunda kalır ve önceki kod geçersizleştirilir. Tam SMS veya İADEKODU modeliyle başarılı Update belgeyi imza kuyruğuna taşır.</div>
 
-            <h3 id="h-statusforuser-akisi">SMS ve İade Kodu Durum Akışı</h3>
-            <p><code>OutgoingExpenseVoucherStatusForUser</code>'ın SMS ve harici iade kodu yollarında nasıl ilerlediği aşağıda görselleştirilmiştir. Ana belge durumu (<code>OutgoingExpenseVoucherStatus</code>) bu akıştan ayrıdır ve değişmez.</p>
-            <div class="diagram-wrapper"><svg viewBox="0 0 920 330" role="img" aria-labelledby="svf-title svf-desc">
-                <title id="svf-title">SMS ve İade Kodu doğrulama durum akışı</title>
-                <desc id="svf-desc">Portalın boş doğrulama verisiyle oluşturduğu belgenin SMS veya harici iade kodu yoluyla WaitingForVerification'dan Signed durumuna ilerleyişini; ERP/UBL'in tam doğrulama verisiyle doğrudan imza kuyruğuna girişini gösterir.</desc>
-                <style>.svb{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.svq{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.svo{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.svt{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle}.svs{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.svl{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#svfa)}</style>
-                <defs><marker id="svfa" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs>
-
-                <rect class="svb" x="20" y="150" width="150" height="60" rx="8"/><text class="svt" x="95" y="175">Portal Add/Update</text><text class="svs" x="95" y="193">boş doğrulama verisi</text>
-
-                <path class="svl" d="M170 180 L208 180"/>
-                <rect class="svq" x="210" y="150" width="170" height="60" rx="8"/><text class="svt" x="295" y="175">WaitingForVerification</text><text class="svs" x="295" y="193">yöntem seçimi bekleniyor</text>
-
-                <path class="svl" d="M380 163 L462 78"/>
-                <text class="svs" x="365" y="105">SMS</text><text class="svs" x="365" y="117">gönderildi</text>
-                <rect class="svb" x="470" y="40" width="180" height="60" rx="8"/><text class="svt" x="560" y="65">WaitingForSmsCode</text><text class="svs" x="560" y="83">kod girişi bekleniyor</text>
-
-                <path class="svl" d="M650 88 L682 155"/>
-                <text class="svs" x="700" y="105">Kod</text><text class="svs" x="700" y="117">doğrulandı</text>
-
-                <path class="svl" d="M380 200 L682 178"/>
-                <text class="svs" x="500" y="212">Harici İADEKODU</text><text class="svs" x="500" y="224">kaydedildi</text>
-
-                <rect class="svb" x="210" y="262" width="230" height="50" rx="8"/><text class="svt" x="325" y="290">ERP / UBL — tam doğrulama verisi</text>
-
-                <path class="svl" d="M440 265 L682 202"/>
-
-                <rect class="svo" x="690" y="150" width="215" height="60" rx="8"/><text class="svt" x="797" y="175">ExpenseVoucherAndXmlCreated</text><text class="svs" x="797" y="193">imza kuyruğunda</text>
-
-                <path class="svl" d="M797 210 L797 248"/>
-                <text class="svs" x="850" y="226">ExpenseVoucher-</text><text class="svs" x="850" y="238">SignJob</text>
-                <rect class="svo" x="722" y="252" width="150" height="50" rx="8"/><text class="svt" x="797" y="280">Signed</text>
+            <h3 id="h-sms-dogrulama-akisi">SMS Doğrulama Akışı</h3>
+            <p><code>OutgoingExpenseVoucherStatusForUser</code>, SMS gönderme ve kod doğrulama fazlarını gösterir. SMS; <code>SATIS</code>, yüz yüze <code>IADE</code> ve kargosuz vekâletli <code>IADE</code> senaryolarında kullanılabilir. Kargolu <code>IADE</code>, vekâletli olsa da SMS akışına alınmaz.</p>
+            <div class="diagram-wrapper"><svg viewBox="0 0 1040 300" role="img" aria-labelledby="sms-flow-title sms-flow-desc">
+                <title id="sms-flow-title">SMS doğrulama durum akışı</title>
+                <desc id="sms-flow-desc">SMS kullanılabilen satış, yüz yüze iade ve kargosuz vekâletli iade senaryolarının bekleme durumlarından imza kuyruğuna ve Signed durumuna geçişini gösterir.</desc>
+                <style>.sms-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.sms-wait{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.sms-ok{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.sms-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle}.sms-sub{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.sms-line{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#sms-arrow)}</style>
+                <defs><marker id="sms-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs>
+                <rect class="sms-box" x="20" y="30" width="190" height="64" rx="8"/><text class="sms-text" x="115" y="54">SMS kullanılabilen senaryolar</text><text class="sms-sub" x="115" y="73">SATIS · yüz yüze IADE</text><text class="sms-sub" x="115" y="87">kargosuz vekâletli IADE</text>
+                <path class="sms-line" d="M210 62 L245 62"/><rect class="sms-wait" x="245" y="30" width="180" height="64" rx="8"/><text class="sms-text" x="335" y="55">WaitingForVerification</text><text class="sms-sub" x="335" y="76">SMS gönderimi bekleniyor</text>
+                <path class="sms-line" d="M425 62 L460 62"/><rect class="sms-box" x="460" y="30" width="180" height="64" rx="8"/><text class="sms-text" x="550" y="55">WaitingForSmsCode</text><text class="sms-sub" x="550" y="76">kod girişi bekleniyor</text>
+                <path class="sms-line" d="M640 62 L720 135"/><text class="sms-sub" x="687" y="86">Complete</text>
+                <rect class="sms-box" x="245" y="170" width="240" height="64" rx="8"/><text class="sms-text" x="365" y="195">Add / Update</text><text class="sms-sub" x="365" y="216">tam SMS verisi</text><path class="sms-line" d="M485 202 L715 170"/>
+                <rect class="sms-ok" x="720" y="135" width="230" height="64" rx="8"/><text class="sms-text" x="835" y="160">ExpenseVoucherAndXmlCreated</text><text class="sms-sub" x="835" y="181">imza kuyruğunda</text>
+                <path class="sms-line" d="M835 199 L835 238"/><text class="sms-sub" x="880" y="220">SignJob</text><rect class="sms-ok" x="760" y="238" width="150" height="48" rx="8"/><text class="sms-text" x="835" y="267">Signed</text>
             </svg></div>
-            <div class="table-wrapper"><table><thead><tr><th>Durum</th><th>Anlamı</th></tr></thead><tbody>
-                <tr><td><code>WaitingForVerification</code></td><td>Doğrulama bekleniyor; senaryoya göre SMS gönderilir veya iade kodu girilir.</td></tr>
-                <tr><td><code>WaitingForSmsCode</code></td><td>SMS gönderildi, kod girişi bekleniyor.</td></tr>
-                <tr><td><code>ExpenseVoucherAndXmlCreated</code></td><td>Doğrulama tamamlandı; belge imza kuyruğunda.</td></tr>
-                <tr><td><code>Signed</code></td><td>İmza tamamlandı; GİB'e gönderime hazır.</td></tr>
-            </tbody></table></div>
-            <p>SMS ve İADEKODU aynı <code>WaitingForVerification</code> başlangıç durumundan çıkar; yalnızca SMS yolu ayrıca <code>WaitingForSmsCode</code> ara durumuna girer. ERP/UBL entegrasyonu doğrulama verisini eksiksiz gönderdiğinde bu bekleme adımlarının hiçbirine girmeden doğrudan <code>ExpenseVoucherAndXmlCreated</code> durumuyla imza kuyruğuna alınır.</p>
+            <div class="callout callout-warning"><b>SMS sınırı:</b> Kargolu <code>IADE</code> ve kargolu vekâletli <code>IADE</code> SMS ile doğrulanamaz; bu senaryolarda İADEKODU zorunludur.</div>
 
+            <h3 id="h-iadekodu-dogrulama-akisi">İADEKODU Doğrulama Akışı</h3>
+            <p>İADEKODU yalnız <code>IADE</code> belgelerinde kullanılır. Yüz yüze, kargolu ve vekâletli iade senaryolarında <code>VerificationProvider</code> ile <code>VerificationInfo</code>, tam belge modeliyle aynı Add/Update isteğinde gönderilir.</p>
+            <div class="diagram-wrapper"><svg viewBox="0 0 1040 210" role="img" aria-labelledby="return-flow-title return-flow-desc">
+                <title id="return-flow-title">İADEKODU doğrulama durum akışı</title>
+                <desc id="return-flow-desc">Yüz yüze, kargolu ve vekâletli iade senaryolarında sağlayıcı ve doğrulama bilgisinin Add veya Update isteğiyle imza kuyruğuna ve Signed durumuna geçişini gösterir.</desc>
+                <style>.return-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.return-data{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.return-ok{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.return-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle}.return-sub{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.return-line{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#return-arrow)}</style>
+                <defs><marker id="return-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs>
+                <rect class="return-box" x="20" y="65" width="190" height="64" rx="8"/><text class="return-text" x="115" y="90">IADE senaryoları</text><text class="return-sub" x="115" y="111">yüz yüze · kargolu · vekâletli</text>
+                <path class="return-line" d="M210 97 L250 97"/><rect class="return-data" x="250" y="65" width="210" height="64" rx="8"/><text class="return-text" x="355" y="89">VerificationProvider +</text><text class="return-text" x="355" y="105">VerificationInfo</text><text class="return-sub" x="355" y="121">tam ve senaryoyla uyumlu</text>
+                <path class="return-line" d="M460 97 L500 97"/><rect class="return-box" x="500" y="65" width="140" height="64" rx="8"/><text class="return-text" x="570" y="101">Add / Update</text>
+                <path class="return-line" d="M640 97 L680 97"/><rect class="return-ok" x="680" y="65" width="230" height="64" rx="8"/><text class="return-text" x="795" y="90">ExpenseVoucherAndXmlCreated</text><text class="return-sub" x="795" y="111">imza kuyruğunda</text>
+                <path class="return-line" d="M910 97 L940 97"/><rect class="return-ok" x="940" y="73" width="90" height="48" rx="8"/><text class="return-text" x="985" y="102">Signed</text>
+            </svg></div>
+            <div class="callout callout-info"><b>İADEKODU sınırı:</b> Ayrı bir bekleme durumu, SMS Send/Complete çağrısı veya Submit endpointi yoktur. <code>SATIS</code> için İADEKODU geçersizdir.</div>
+
+            <h3 id="h-dogrulama-yontemi-matrisi">Doğrulama Yöntemi Senaryo Matrisi</h3>
+            <div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>SMS</th><th>İADEKODU</th></tr></thead><tbody>
+                <tr><td><code>SATIS</code></td><td>Kullanılabilir</td><td>Geçersiz</td></tr>
+                <tr><td>Yüz yüze <code>IADE</code></td><td>Kullanılabilir</td><td>Kullanılabilir</td></tr>
+                <tr><td>Kargolu <code>IADE</code></td><td>Kullanılamaz</td><td>Zorunlu</td></tr>
+                <tr><td>Kargosuz vekâletli <code>IADE</code></td><td>Kullanılabilir</td><td>Kullanılabilir</td></tr>
+                <tr><td>Kargolu vekâletli <code>IADE</code></td><td>Kullanılamaz</td><td>Zorunlu</td></tr>
+            </tbody></table></div>
+            <p>SMS ve İADEKODU validasyonları birbirinden ayrıdır. SMS'in boş başlayabilmesi yalnız unsigned Portal akışına aittir. İADEKODU feature flag'den bağımsız olarak tam model ister; signed UBL ise sonradan SMS tamamlayamayacağı için boş doğrulama verisiyle kabul edilmez.</p>
             <h3 id="h-excel-iptal">Excel ve İptal Davranışı</h3>
             <p>Excel ile oluşturulan belgelerde doğrulama her belge için ayrı tamamlanır; tek kodla toplu doğrulama yapılmaz. <code>WaitingForVerification</code> ve <code>WaitingForSmsCode</code> durumundaki belgeler iptal edilebilir. Portal iptal işlemini başlattığında belge iptal edilir. SMS gönderilmişse kayıtlı telefona bildirim gönderilmeye çalışılır; bildirim hatası iptal işlemini geri almaz.</p>
 

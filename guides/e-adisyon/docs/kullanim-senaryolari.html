@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kullanım Senaryoları — e-Adisyon Entegrasyon Rehberi</title>
+<meta name="description" content="Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-adisyon/docs/kullanim-senaryolari.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Kullanım Senaryoları — e-Adisyon Entegrasyon Rehberi">
+<meta property="og:description" content="Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-adisyon/docs/kullanim-senaryolari.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kullanım Senaryoları — e-Adisyon Entegrasyon Rehberi">
+<meta name="twitter:description" content="Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+</style>
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Adisyon</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="eadisyon-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="eadisyon-nedir.html">e-Adisyon Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link active" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Senaryolar</p><h1>Kullanım Senaryoları</h1><p class="docs-lead">Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.</p></header>
+<!-- vbt:article-header:end -->
+<section id="kullanim-senaryolari">
+<h3 id="h-genel-bakis">Genel Bakış</h3>
+<p>e-Adisyon tek bir oluşturma akışı etrafında şekillenir: entegratör, alıcı bilgileriyle birlikte kalemleri, vergi toplamlarını ve toplam tutarları içeren bir JSON gönderir. Bu modülde karar noktaları alıcının kimlik tipi (gerçek/tüzel kişi), kalem sayısı ve iptal uygunluğu üzerinden ilerler. Doğrudan entegrasyonlarda SMS/iade kodu gibi bir doğrulama adımı yoktur.</p>
+
+<h3 id="h-karar-agaci">Karar Ağacı</h3>
+<p>e-Adisyon akışı, alıcı kimlik tipinin ve kalem sayısının belge yapısına etkisini iptal uygunluğu kararıyla birlikte ele alır.</p>
+<div class="diagram-wrapper">
+<svg viewBox="0 0 660 190" xmlns="http://www.w3.org/2000/svg">
+<style>
+.kb{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:8}
+.kq{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:2;rx:8}
+.kr{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:8}
+.kt{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+.ks{fill:var(--svg-muted);font:9.5px Inter,system-ui,sans-serif;text-anchor:middle}
+.kl{stroke:var(--svg-line);stroke-width:1.2;fill:none;stroke-dasharray:5 3;animation:dash .9s linear infinite}
+</style>
+<defs><marker id="ads-a3" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs>
+<rect class="kq" x="225" y="10" width="210" height="38"/>
+<text class="kt" x="330" y="29">Alıcı kimlik tipi?</text>
+<path class="kl" d="M260,48 L145,92" marker-end="url(#ads-a3)"/>
+<text class="ks" x="200" y="72">Tüzel kişi</text>
+<rect class="kr" x="20" y="88" width="250" height="44"/>
+<text class="kt" x="145" y="106" style="fill:var(--svg-ok-s)">PartyIdentifications.SchemeId=VKN</text>
+<text class="ks" x="145" y="122">10 haneli VKN</text>
+<path class="kl" d="M400,48 L535,92" marker-end="url(#ads-a3)"/>
+<text class="ks" x="474" y="72">Gerçek kişi</text>
+<rect class="kr" x="410" y="88" width="240" height="44"/>
+<text class="kt" x="530" y="106" style="fill:var(--svg-ok-s)">PartyIdentifications.SchemeId=TCKN</text>
+<text class="ks" x="530" y="122">11 haneli TCKN</text>
+<rect class="kb" x="95" y="150" width="470" height="32" style="stroke-dasharray:5 3"/>
+<text class="kt" x="330" y="167">Kalem sayısından bağımsız olarak <code>LegalMonetaryTotal</code> satır toplamlarıyla uyumlu olmalıdır</text>
+</svg>
+</div>
+
+<h3 id="h-alan-zorunluluk-matrisi">Alan Zorunluluk Matrisi</h3>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunlu mu?</th><th>Not</th></tr></thead><tbody>
+<tr><td><code>DocumentExternalId</code></td><td>Evet</td><td>Boşsa <code>BLL0020</code> hatası; aynı firma için tekrar kullanılamaz (<code>BLL0028</code>)</td></tr>
+<tr><td><code>ProfileId</code></td><td>Evet</td><td><code>EARSIVBELGE</code> olmalı</td></tr>
+<tr><td><code>BillTypeCode</code></td><td>Evet</td><td><code>ADISYON</code> olmalı</td></tr>
+<tr><td><code>UUId</code></td><td>Hayır</td><td>Gönderilmezse VBT üretir; gönderilirse geçerli GUID ve tekil olmalı</td></tr>
+<tr><td><code>AccountingSupplierParty</code></td><td>Göndermeyin</td><td>VBT firma profilinden otomatik doldurur</td></tr>
+<tr><td><code>AccountingCustomerParty</code></td><td>Evet</td><td>VKN veya TCKN kimliği zorunlu</td></tr>
+<tr><td><code>BillLine[]</code></td><td>Evet</td><td>En az bir kalem</td></tr>
+</tbody></table></div>
+
+<h3 id="h-senaryo-gruplari">Ana Senaryo Grupları</h3>
+<p>Senaryo grupları, adisyonun hangi iş durumunda hangi request alanlarıyla ayrıştığını konumlandırır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Grup</th><th>Ne Zaman Kullanılır?</th><th>Ayırt Edici Alan</th></tr></thead><tbody>
+<tr><td>Tüzel kişi alıcı</td><td>Alıcı bir firma ise</td><td><code>PartyIdentifications.SchemeId=VKN</code></td></tr>
+<tr><td>Gerçek kişi alıcı</td><td>Alıcı bir birey ise</td><td><code>PartyIdentifications.SchemeId=TCKN</code></td></tr>
+<tr><td>Çok kalemli adisyon</td><td>Aynı adisyonda birden fazla ürün/hizmet varsa</td><td><code>BillLine[]</code></td></tr>
+<tr><td>İptal</td><td>Belge <code>Signed</code> durumundayken iptal edilecekse</td><td><code>BillCancelRequestModel</code></td></tr>
+</tbody></table></div>
+
+<h3 id="h-olusturma-senaryolari">Oluşturma Senaryoları</h3>
+<div class="scenario-card">
+<h4 id="h-senaryo-tuzel">Tüzel Kişi Alıcı</h4>
+<p class="scenario-description">Alıcı bir firma; kimlik VKN (10 hane) ile taşınır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody>
+<tr><td><code>PartyIdentifications[0].SchemeId</code></td><td><code>VKN</code></td></tr>
+<tr><td><code>PartyIdentifications[0].Value</code></td><td>10 haneli VKN</td></tr>
+</tbody></table></div>
+</div>
+
+<div class="scenario-card">
+<h4 id="h-senaryo-gercek">Gerçek Kişi Alıcı</h4>
+<p class="scenario-description">Alıcı bir birey; kimlik TCKN (11 hane) ile taşınır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody>
+<tr><td><code>PartyIdentifications[0].SchemeId</code></td><td><code>TCKN</code></td></tr>
+<tr><td><code>PartyIdentifications[0].Value</code></td><td>11 haneli TCKN</td></tr>
+</tbody></table></div>
+</div>
+
+<div class="scenario-card">
+<h4 id="h-senaryo-cok-kalemli">Çok Kalemli Adisyon</h4>
+<p class="scenario-description"><code>BillLine[]</code> birden fazla kalem taşıyabilir; her kalemin kendi KDV/tevkifat bilgisi olabilir. Kalem toplamları üst toplamlarla (<code>LegalMonetaryTotal</code>) tutarlı olmalıdır.</p>
+</div>
+
+<h3 id="h-iptal-senaryosu">İptal Senaryosu</h3>
+<p>Bir belge yalnızca <strong><code>Signed</code></strong> durumundaysa iptal edilebilir; akış şeması için <a href="eadisyon-nedir.html#h-iptal-akisi">e-Adisyon Nedir? — İptal Akışı</a> bölümüne bakın. İptal isteği <code>POST /api/BillApi/CancelOutgoingBill</code> endpointine <code>BillCancelRequestModel</code> ile gönderilir (bkz. <a href="request-ornekleri.html">Request Örnekleri</a>). Güncelleme öncesi de aynı şekilde belge önce detay endpointinden (<code>GetOutgoingBill</code>) okunmalı; <code>Id</code> ve <code>UUId</code> dahil güncel <code>OutgoingBillRequestModel</code> tam olarak gönderilmelidir.</p>
+
+<h3 id="h-edge-case">Edge-Case Tablosu</h3>
+<div class="table-wrapper"><table><thead><tr><th>Durum</th><th>Beklenen davranış</th></tr></thead><tbody>
+<tr><td>Aynı <code>DocumentExternalId</code> ile tekrar çağrı (zaman aşımı sonrası retry)</td><td>Önce <code>GetOutgoingBillList</code> ile kayıt sorgulanmalı; bulunamadan yeni externalId ile tekrar göndermek mükerrer belge riski oluşturur.</td></tr>
+<tr><td>Gönderilen <code>UUId</code> geçerli GUID formatında değil</td><td><code>COM0017</code> hatası döner.</td></tr>
+<tr><td>İmzalanmamış belge iptali</td><td><code>BLL0024</code> — iptal reddedilir.</td></tr>
+</tbody></table></div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="gib-teknik-gereksinimleri.html"><span>Önceki</span><strong>GİB Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="entegrator-sorumluluklari.html"><span>Sonraki</span><strong>Entegratör Sorumlulukları</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Adisyon, KDV, kalem, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Adisyon Nedir?","text":"e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.","keywords":"Başlangıç e-Adisyon CreditNote","url":"eadisyon-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.","keywords":"Senaryolar KDV iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, hesaplama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon, PDF/önizleme ve GİB raporlama sorumlulukları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, mail ve GİB mükellef sorgulama işlemleri.","keywords":"API Portal mükellef","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL CreditNote XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Adisyon entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Adisyon hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

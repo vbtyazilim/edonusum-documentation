@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teknik Referans — e-Adisyon Entegrasyon Rehberi</title>
+<meta name="description" content="Enum değerleri, hata/mesaj kodları ve validasyon referansları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-adisyon/docs/teknik-referans.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Teknik Referans — e-Adisyon Entegrasyon Rehberi">
+<meta property="og:description" content="Enum değerleri, hata/mesaj kodları ve validasyon referansları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-adisyon/docs/teknik-referans.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Teknik Referans — e-Adisyon Entegrasyon Rehberi">
+<meta name="twitter:description" content="Enum değerleri, hata/mesaj kodları ve validasyon referansları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Adisyon</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="eadisyon-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="eadisyon-nedir.html">e-Adisyon Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link active" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Teknik Referans</h1><p class="docs-lead">Enum değerleri, hata/mesaj kodları ve validasyon referansları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="teknik-referans">
+<h3 id="h-enumlar">Enumlar</h3>
+<p>e-Adisyon request modeli, belge tipini ve durumunu sabit kod listeleriyle ayrıştırır. Aşağıdaki değerler entity ve enum tanımları üzerinden doğrulanmıştır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th><th>Kullanım Bağlamı</th></tr></thead><tbody>
+<tr><td rowspan="2"><code>OutgoingBillStatus</code></td><td><code>BillAndXmlCreated</code></td><td>Belge ve UBL XML oluşturuldu, imza kuyruğunda</td></tr>
+<tr><td><code>Signed</code></td><td>İmzalandı; GİB gönderimine ve iptale hazır</td></tr>
+<tr><td><code>ProfileId</code></td><td><code>EARSIVBELGE</code></td><td>GİB e-Arşiv belge profili</td></tr>
+<tr><td><code>BillTypeCode</code></td><td><code>ADISYON</code></td><td>e-Adisyon belge tipi</td></tr>
+<tr><td><code>EArchiveStatus</code></td><td>1: Valid, 2: Cancelled</td><td>Belgenin e-Arşiv geçerlilik/iptal durumu</td></tr>
+<tr><td><code>EArchiveMailStatus</code></td><td>int</td><td>E-posta teslim durumu; GİB raporlama durumundan bağımsız</td></tr>
+<tr><td><code>EArchiveReportStatus</code></td><td>int</td><td>Normal GİB raporu sonucu</td></tr>
+<tr><td><code>EArchiveCancelReportStatus</code></td><td>int</td><td>GİB iptal raporu sonucu</td></tr>
+</tbody></table></div>
+
+<h3 id="h-hata-kodlari">Hata ve Mesaj Kodları</h3>
+<p>İşlem kodları <code>BLL</code> önekiyle, ortak servis hataları <code>COM</code> önekiyle döner. Tek bir kod ailesi vardır; ayrı bir alan-doğrulama kod ailesi yoktur.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kod</th><th>Anlamı</th></tr></thead><tbody>
+<tr><td><code>BLL0001</code></td><td>Request modeli boş</td></tr>
+<tr><td><code>BLL0005</code></td><td>ProfileId hatalı</td></tr>
+<tr><td><code>BLL0006</code></td><td>BillTypeCode hatalı</td></tr>
+<tr><td><code>BLL0009</code></td><td>Belge no sıra/format kontrolü başarısız</td></tr>
+<tr><td><code>BLL0010</code></td><td>UBL XML dönüşüm hatası</td></tr>
+<tr><td><code>BLL0011</code></td><td>Kayıt ekleme hatası</td></tr>
+<tr><td><code>BLL0012</code></td><td>Belge oluşturuldu</td></tr>
+<tr><td><code>BLL0013</code></td><td>Belge bulunamadı</td></tr>
+<tr><td><code>BLL0014</code></td><td>Güncelleme parametre hatası</td></tr>
+<tr><td><code>BLL0015</code></td><td>Güncelleme hatası</td></tr>
+<tr><td><code>BLL0016</code></td><td>Belge güncellendi</td></tr>
+<tr><td><code>BLL0017</code></td><td>Durum güncelleme hatası</td></tr>
+<tr><td><code>BLL0019</code></td><td>PDF oluşturuldu</td></tr>
+<tr><td><code>BLL0020</code></td><td>ExternalId zorunlu</td></tr>
+<tr><td><code>BLL0021</code></td><td>UBL ayrıştırma hatası</td></tr>
+<tr><td><code>BLL0022</code></td><td>UBL'den oluşturuldu</td></tr>
+<tr><td><code>BLL0023</code></td><td>Arandı</td></tr>
+<tr><td><code>BLL0024</code></td><td>İmzasız belge iptal edilemez</td></tr>
+<tr><td><code>BLL0025</code></td><td>Belge zaten iptal edilmiş</td></tr>
+<tr><td><code>BLL0026</code></td><td>Belge iptal edildi</td></tr>
+<tr><td><code>BLL0027</code></td><td>UBL'den güncellendi</td></tr>
+<tr><td><code>BLL0028</code></td><td>ExternalId zaten mevcut</td></tr>
+<tr><td><code>BLL0029</code></td><td>Belge görüntülendi</td></tr>
+<tr><td><code>BLL0030</code></td><td>Zip/arşiv kaydı bulunamadı</td></tr>
+<tr><td><code>BLL0031</code></td><td>E-posta gönderildi</td></tr>
+<tr><td><code>BLL0033</code></td><td>UBL XML zip üretimi</td></tr>
+<tr><td><code>BLL0034</code></td><td>Zip güncelleme hatası</td></tr>
+<tr><td><code>BLL0035</code></td><td>UUId zaten mevcut</td></tr>
+<tr><td><code>COM0008</code></td><td>İmza firmasıyla ilgili ortak hata</td></tr>
+<tr><td><code>COM0014</code></td><td>Firma bulunamadı</td></tr>
+<tr><td><code>COM0016</code></td><td>Belge no sağlayıcısı çözümlenemedi</td></tr>
+<tr><td><code>COM0017</code></td><td>UUId geçerli GUID değil</td></tr>
+</tbody></table></div>
+<div class="callout callout-info"><b>Not:</b> Numaralandırma seyrektir (BLL0002-0004, 0007-0008, 0018, 0032 kullanılmaz); entegratör karşılaştırmayı tam kod dizesi üzerinden yapmalıdır.</div>
+
+<h3 id="h-validasyon-referanslari">Validasyon Referansları</h3>
+<div class="table-wrapper"><table><thead><tr><th>Referans</th><th>Kapsam</th><th>Not</th></tr></thead><tbody>
+<tr><td><code>ErrorModel.ErrorCode</code></td><td>Response hata listesi</td><td>İşlem mesaj kodu bu alanda taşınır</td></tr>
+<tr><td><code>HasError</code> / <code>Errors[]</code></td><td>Oluşturma/güncelleme/iptal response modeli</td><td>İşlem sonucu response gövdesinde birlikte değerlendirilir</td></tr>
+<tr><td><code>BillPdfFileBytes</code></td><td>PDF ve önizleme yanıtı</td><td>Base64 çözülüp <code>application/pdf</code> olarak kullanılır; kalıcı PDF endpoint'inde C# property adı <code>FileBytes</code>, tel adı <code>BillPdfFileBytes</code>'tır</td></tr>
+<tr><td>Senaryo referansları</td><td>Kullanım senaryoları karar tabloları</td><td>Rehberdeki test matrisini işaretler; response mesaj kodu olarak kullanılmaz</td></tr>
+</tbody></table></div>
+
+<h3 id="h-kaynak-bolumler">Kaynak Bölümler</h3>
+<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>Kaynak</th><th>Ne Zaman Bakılır?</th></tr></thead><tbody>
+<tr><td>Alan ve endpoint ayrıntıları</td><td><a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a></td><td>Request modeli hazırlanırken</td></tr>
+<tr><td>Portal işlemleri</td><td><a href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a></td><td>Portal akışları incelenirken</td></tr>
+<tr><td>Tam JSON örnekleri</td><td><a href="request-ornekleri.html">Request Örnekleri</a></td><td>Senaryo uyarlanırken</td></tr>
+<tr><td>UBL XML eşlemesi</td><td><a href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a></td><td>JSON alanının XML çıktısı doğrulanırken</td></tr>
+<tr><td>Mevzuat ve teknik çerçeve</td><td><a href="gib-teknik-gereksinimleri.html">GİB Referansı</a></td><td>Resmi kaynak gerektiğinde</td></tr>
+</tbody></table></div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="request-ubl-xml-mapping.html"><span>Önceki</span><strong>Request → UBL XML Mapping</strong></a>
+<a class="docs-page-link docs-page-next" href="changelog.html"><span>Sonraki</span><strong>Changelog</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Adisyon, KDV, kalem, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Adisyon Nedir?","text":"e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.","keywords":"Başlangıç e-Adisyon CreditNote","url":"eadisyon-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.","keywords":"Senaryolar KDV iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, hesaplama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon, PDF/önizleme ve GİB raporlama sorumlulukları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, mail ve GİB mükellef sorgulama işlemleri.","keywords":"API Portal mükellef","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL CreditNote XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Adisyon entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Adisyon hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

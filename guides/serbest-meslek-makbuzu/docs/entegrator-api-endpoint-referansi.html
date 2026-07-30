@@ -73,17 +73,15 @@
 <section id="entegrator-api-endpoint-referansi">
 <div class="callout callout-info"><b>Kimlik doğrulama:</b> <code>/api/Account/Token</code> dışındaki tüm entegratör çağrılarında <code>VbtAuthorization</code> header’ı gönderilmelidir. Yanıttaki <code>RefreshToken</code> doluysa bir sonraki çağrıdan önce saklanmalıdır.</div>
 
-<h2 id="h-kimlik-dogrulama">Kimlik Doğrulama</h2>
+<h2 id="h-kimlik">Kimlik Doğrulama</h2>
 <div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Account/Token</span></div><div class="endpoint-body"><p class="endpoint-description">Kullanıcı, firma ve kanal bağlamı için API oturum tokenı üretir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>TokenRequestModel</code> — <code>Email</code>, <code>Password</code>, <code>FirmId</code>, <code>ChannelCode</code></td></tr><tr><td><b>Response</b></td><td><code>TokenResponseModel</code>; sonraki çağrılarda kullanılacak token</td></tr><tr><td><b>Başarı kararı</b></td><td>Token alanı boş değilse oturum kullanılabilir.</td></tr></tbody></table></div></div></div>
 <details class="example-details"><summary>Token request örneği</summary><div class="example-body"><pre><code class="language-json">{
   "Email": "entegrasyon@example.com",
-  "Password": "********",
-  "FirmId": 42,
-  "ChannelCode": "ERP"
+  "Password": "********"
 }</code></pre></div></details>
 <div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/Account/LogOut</span></div><div class="endpoint-body"><p class="endpoint-description">Geçerli API oturumunu sonlandırır.</p><div class="table-wrapper"><table><tbody><tr><td><b>Header</b></td><td><code>VbtAuthorization</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr><tr><td><b>Kullanım</b></td><td>Oturum kapatıldığında saklanan token temizlenir.</td></tr></tbody></table></div></div></div>
 
-<h2 id="h-alan-zorunluluk-matrisi">Alan Zorunluluk Matrisi</h2>
+<h2 id="h-alan-matris">Alan Zorunluluk Matrisi</h2>
 <p><code>SmmRequestModel</code> oluşturma, güncelleme ve önizleme için ortak modeldir. Zorunluluk, işlem ve senaryoya göre aşağıdaki biçimde yorumlanmalıdır.</p>
 <div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>Oluşturma</th><th>Güncelleme</th><th>Kural</th></tr></thead><tbody>
 <tr><td><code>Id</code></td><td>int</td><td>—</td><td><span class="badge-required">Z</span></td><td>Mevcut kayıt kimliği</td></tr>
@@ -109,6 +107,7 @@
 <tr><td><b>Başarı kararı</b></td><td><code>Data.HasError = false</code>; belge numarası ve UUID saklanır.</td></tr>
 </tbody></table></div></div></div>
 <div class="callout callout-warning"><b>Zaman aşımı:</b> Yanıt alınamadıysa aynı ekonomik işlemi yeni dış referansla tekrar göndermeyin. Önce <code>GetOutgoingSmmList</code> üzerinden <code>SmmExternalId</code> ile uzlaştırın.</div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/PreviewOutgoingSmm</span></div><div class="endpoint-body"><p class="endpoint-description">Belgeyi kaydetmeden taslak PDF önizlemesi üretir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SmmRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>OutgoingSmmPreviewResponseModel.SmmPdfFileBytes</code> ve iş sonucu</td></tr><tr><td><b>Not</b></td><td>Önizleme belge numarası veya kalıcı kayıt oluştuğu anlamına gelmez.</td></tr></tbody></table></div></div></div>
 
 <h2 id="h-guncelleme">Güncelleme</h2>
 <div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/UpdateOutgoingSmm</span></div><div class="endpoint-body"><p class="endpoint-description">Mevcut e-SMM’yi tam güncel modelle değiştirir ve imzalı PDF çıktısını yeniden üretir.</p><div class="table-wrapper"><table><tbody>
@@ -129,7 +128,7 @@
   "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
 }</code></pre>
 
-<h2 id="h-sorgulama-goruntuleme">Sorgulama ve Görüntüleme</h2>
+<h2 id="h-sorgulama">Sorgulama &amp; Görüntüleme</h2>
 <div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/Smm/GetOutgoingSmm?id={uuid}</span></div><div class="endpoint-body"><p class="endpoint-description">UUID ile tek belgenin başlık, taraf, hizmet, vergi ve toplam detayını getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Parametre</b></td><td><code>id</code> — belge UUID/ETTN değeri</td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingSmmReponseModel&gt;</code></td></tr><tr><td><b>Kullanım</b></td><td>Güncelleme öncesi güncel modeli okuma ve sonuç uzlaştırma</td></tr></tbody></table></div></div></div>
 
 <div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmList</span></div><div class="endpoint-body"><p class="endpoint-description">Entegrasyon sorguları için sayfalı e-SMM özet listesini getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SearchRequestModel&lt;OutgoingSmmGetUiRequestModel&gt;</code> — <code>Query</code>, <code>Skip</code>, <code>Take</code>, <code>OrderByName</code>, <code>OrderByType</code></td></tr><tr><td><b>Filtreler</b></td><td><code>UUId</code>, <code>VknTckn</code>, <code>Unvan</code>, <code>IssueDate</code>, <code>SmmNumber</code>, <code>SmmExternalId</code>, durum ve e-posta alanları</td></tr><tr><td><b>Response</b></td><td><code>SearchResponseModel&lt;OutgoingSmmSummaryResponseModel&gt;</code></td></tr><tr><td><b>Sayfalama</b></td><td><code>Take</code> 0–100 aralığında olmalıdır.</td></tr></tbody></table></div></div></div>
@@ -142,8 +141,6 @@
   "OrderByName": "IssueDate",
   "OrderByType": "DESC"
 }</code></pre></div></details>
-
-<h2 id="h-pdf-ve-belge-paketi">PDF ve Belge Paketi</h2>
 <div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmPdf</span></div><div class="endpoint-body"><p class="endpoint-description">Bir veya daha fazla e-SMM’nin PDF çıktısını getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SmmPdfRequestModel</code> — <code>Ettns[]</code>, opsiyonel <code>DisplayPdf</code> ve <code>FirmId</code></td></tr><tr><td><b>Response</b></td><td><code>OutgoingSmmPdfResponseModel.SmmPdfFileBytes</code> — JSON içinde base64 olarak taşınır.</td></tr><tr><td><b>Kullanım</b></td><td>Arşivleme, kullanıcıya gösterim veya dosyaya yazma</td></tr></tbody></table></div></div></div>
 <pre><code class="language-json">{
   "Ettns": ["6b60c576-7ed9-4bf1-9f90-3c97747b7470"],
@@ -152,7 +149,8 @@
 
 <div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Smm/GetOutgoingSmmDocumentPackage</span></div><div class="endpoint-body"><p class="endpoint-description">Seçilen belge için Portal görüntüleme/indirme senaryosunda kullanılan belge paketini döner.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>GlobalDocumentPreviewRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>DocumentPreviewResponseModel</code>; dosya içeriği ve görüntüleme bilgileri</td></tr><tr><td><b>Tercih</b></td><td>ERP yalnız PDF byte dizisine ihtiyaç duyuyorsa <code>GetOutgoingSmmPdf</code> daha doğrudan sözleşmedir.</td></tr></tbody></table></div></div></div>
 
-<h2 id="h-ana-model">SmmRequestModel</h2>
+<h2 id="h-alt-modeller">Alt Modeller</h2>
+<h3 id="h-ana-model">SmmRequestModel</h3>
 <p>Model, belge başlığı ve toplamlarını taşır; alıcı, hizmet, vergi ve kur alt modelleri aşağıdaki bölümlerde ayrıştırılmıştır.</p>
 <div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>İş anlamı</th><th>Not</th></tr></thead><tbody>
 <tr><td><code>LocationCode</code></td><td>string</td><td>Belgenin düzenlendiği lokasyon</td><td>ERP şube/lokasyon koduyla eşleştirilebilir.</td></tr>
@@ -186,7 +184,6 @@
 <tr><td><code>Kur</code></td><td>object</td><td>TRY karşılığı toplamlar</td><td>Dövizli senaryolarda kullanılır.</td></tr>
 </tbody></table></div>
 
-<h2 id="h-alt-modeller">Alt Modeller</h2>
 <h3 id="h-alici-modeli">Alici</h3>
 <div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>VKN alıcı</th><th>TCKN alıcı</th></tr></thead><tbody>
 <tr><td><code>VknTckn</code></td><td>string</td><td>10 hane</td><td>11 hane</td></tr>
@@ -222,7 +219,14 @@
 <h3 id="h-kur-modeli">Kur</h3>
 <p>Dövizli belgede toplamların TRY karşılığını taşır: <code>TotalAmount</code>, <code>NetUcret</code>, <code>HesaplananKdv</code>, <code>TaxStopajTotalAmount</code>, <code>WithholdingTaxTotalAmount</code>, <code>TaxKdvTotalAmount</code> ve <code>PayableAmount</code>.</p>
 
-<h2 id="h-response-modelleri">Response Modelleri</h2>
+<h2 id="h-enum">Enum Değerleri</h2>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th><th>Anlam</th></tr></thead><tbody>
+<tr><td rowspan="2"><code>OutgoingSmmStatus</code></td><td><code>PdfCreated</code></td><td>Belge ve PDF çıktısı oluşturuldu</td></tr>
+<tr><td><code>Signed</code></td><td>Belge imzalı duruma ulaştı</td></tr>
+<tr><td><code>GonderimSekli</code></td><td><code>Kagit</code> / <code>Elektronik</code></td><td>Teslim şekli</td></tr>
+</tbody></table></div>
+
+<h2 id="h-response">Response — Belge Detay</h2>
 <div class="table-wrapper"><table><thead><tr><th>Endpoint</th><th><code>Data</code> modeli</th><th>Kritik alanlar</th></tr></thead><tbody>
 <tr><td>Oluşturma</td><td><code>OutgoingAddSmmReponseModel</code></td><td><code>HasError</code>, <code>Errors[]</code>, <code>SmmNumber</code>, <code>UUId</code></td></tr>
 <tr><td>Güncelleme</td><td><code>OutgoingUpdateSmmResponseModel</code></td><td>Aynı iş sonucu ve belge kimlikleri</td></tr>
@@ -230,8 +234,6 @@
 <tr><td>Liste</td><td><code>SearchResponseModel&lt;OutgoingSmmSummaryResponseModel&gt;</code></td><td>UUID, alıcı, tarih, tutarlar, e-posta, belge/rapor/iptal durumları</td></tr>
 <tr><td>PDF</td><td><code>OutgoingSmmPdfResponseModel</code></td><td><code>SmmPdfFileBytes</code></td></tr>
 </tbody></table></div>
-
-<h2 id="h-yanit-ornekleri">Yanıt Örnekleri</h2>
 <h3 id="h-basarili-yanit">Başarılı oluşturma yanıtı</h3>
 <pre><code class="language-json">{
   "RefreshToken": "",
