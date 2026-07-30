@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Örnekleri — e-Adisyon Entegrasyon Rehberi</title>
+<meta name="description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-adisyon/docs/request-ornekleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Request Örnekleri — e-Adisyon Entegrasyon Rehberi">
+<meta property="og:description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-adisyon/docs/request-ornekleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Request Örnekleri — e-Adisyon Entegrasyon Rehberi">
+<meta name="twitter:description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+</style>
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Adisyon</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="eadisyon-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="eadisyon-nedir.html">e-Adisyon Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link active" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="request-ornekleri">
+<h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>Senaryo</th></tr></thead><tbody>
+<tr><td>1</td><td>Tüzel Kişi Alıcı — TRY, tek kalem</td></tr>
+<tr><td>2</td><td>Gerçek Kişi Alıcı — TRY</td></tr>
+<tr><td>3</td><td>Çok Kalemli Adisyon</td></tr>
+<tr><td>4</td><td>Güncelleme</td></tr>
+<tr><td>5</td><td>İptal</td></tr>
+<tr><td>6</td><td>Liste Sorgusu ve PDF Alma</td></tr>
+</tbody></table></div>
+
+<h3 id="h-ornek-1">Örnek 1: Tüzel Kişi Alıcı — TRY, Tek Kalem</h3>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+  "DocumentExternalId": "ERP-2026-ADS-0001",
+  "ProfileId": "EARSIVBELGE",
+  "BillTypeCode": "ADISYON",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-07-29T19:30:00+03:00",
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1234567890" }],
+      "PartyName": "Örnek Restoran Ltd. Şti.",
+      "PostalAddress": { "CityName": "İstanbul", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 500.00,
+    "TaxExclusiveAmount": 500.00,
+    "TaxInclusiveAmount": 600.00,
+    "PayableAmount": 600.00
+  },
+  "TaxTotal": [{
+    "TaxAmount": 100.00,
+    "TaxSubtotal": [{ "TaxableAmount": 500.00, "TaxAmount": 100.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }]
+  }],
+  "BillLine": [{
+    "Id": "1",
+    "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+    "LineExtensionAmount": 500.00,
+    "Item": { "Name": "Akşam yemeği menüsü" },
+    "Price": 500.00,
+    "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 500.00, "TaxAmount": 100.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 100.00 }
+  }]
+}</code></pre></div></details>
+
+<h3 id="h-ornek-2">Örnek 2: Gerçek Kişi Alıcı — TRY</h3>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+  "DocumentExternalId": "ERP-2026-ADS-0002",
+  "ProfileId": "EARSIVBELGE",
+  "BillTypeCode": "ADISYON",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-07-29T20:10:00+03:00",
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "TCKN", "Value": "12345678901" }],
+      "PartyName": "Ahmet Yılmaz",
+      "PostalAddress": { "CityName": "Ankara", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "LegalMonetaryTotal": { "LineExtensionAmount": 250.00, "TaxExclusiveAmount": 250.00, "TaxInclusiveAmount": 300.00, "PayableAmount": 300.00 },
+  "TaxTotal": [{ "TaxAmount": 50.00, "TaxSubtotal": [{ "TaxableAmount": 250.00, "TaxAmount": 50.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }] }],
+  "BillLine": [{
+    "Id": "1",
+    "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
+    "LineExtensionAmount": 250.00,
+    "Item": { "Name": "Kahvaltı menüsü" },
+    "Price": 250.00,
+    "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 250.00, "TaxAmount": 50.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 50.00 }
+  }]
+}</code></pre></div></details>
+
+<h3 id="h-ornek-3">Örnek 3: Çok Kalemli Adisyon</h3>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+  "DocumentExternalId": "ERP-2026-ADS-0003",
+  "ProfileId": "EARSIVBELGE",
+  "BillTypeCode": "ADISYON",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-07-29T21:00:00+03:00",
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "TCKN", "Value": "98765432109" }],
+      "PartyName": "Zeynep Kaya",
+      "PostalAddress": { "CityName": "İzmir", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "LegalMonetaryTotal": { "LineExtensionAmount": 700.00, "TaxExclusiveAmount": 700.00, "TaxInclusiveAmount": 840.00, "PayableAmount": 840.00 },
+  "TaxTotal": [{ "TaxAmount": 140.00, "TaxSubtotal": [{ "TaxableAmount": 700.00, "TaxAmount": 140.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }] }],
+  "BillLine": [
+    {
+      "Id": "1", "CreditedQuantity": { "UnitCode": "C62", "Value": 2 }, "LineExtensionAmount": 400.00,
+      "Item": { "Name": "Ana yemek" }, "Price": 200.00,
+      "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 400.00, "TaxAmount": 80.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 80.00 }
+    },
+    {
+      "Id": "2", "CreditedQuantity": { "UnitCode": "C62", "Value": 1 }, "LineExtensionAmount": 300.00,
+      "Item": { "Name": "Tatlı ve içecek" }, "Price": 300.00,
+      "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 300.00, "TaxAmount": 60.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 60.00 }
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ornek-4">Örnek 4: Güncelleme</h3>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Güncelleme öncesi belge <code>GetOutgoingBill</code> ile okunur; dönen model üzerinde yalnızca değişen alanlar düzenlenip <code>Id</code> ve <code>UUId</code> ile birlikte tam olarak gönderilir.</p>
+<pre><code class="language-json">{
+  "Id": 1042,
+  "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
+  "DocumentExternalId": "ERP-2026-ADS-0001",
+  "ProfileId": "EARSIVBELGE",
+  "BillTypeCode": "ADISYON",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-07-29T19:30:00+03:00"
+}</code></pre></div></details>
+
+<h3 id="h-ornek-5">Örnek 5: İptal</h3>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Yalnızca <code>Signed</code> durumundaki belgeler iptal edilebilir.</p>
+<pre><code class="language-json">{
+  "Ettn": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
+  "EArchiveStatus": 2,
+  "EArchiveCancelDescription": "Müşteri talebiyle iptal edildi."
+}</code></pre>
+<div class="callout callout-warning"><b>Yanıt:</b> Belge zaten iptal edilmişse <code>BLL0025</code>, imzalanmamışsa <code>BLL0024</code> hatası döner. İptal e-postası gönderilmez.</div></div></details>
+
+<h3 id="h-ornek-6">Örnek 6: Liste Sorgusu ve PDF Alma</h3>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+  "DocumentExternalId": "ERP-2026-ADS-0001"
+}</code></pre>
+<p>Sorgu sonucunda dönen <code>Ettn</code> ile PDF talebi:</p>
+<pre><code class="language-json">{
+  "BillEttns": ["6b60c576-7ed9-4bf1-9f90-3c97747b7470"]
+}</code></pre></div></details>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="portal-api-endpoint-referansi.html"><span>Önceki</span><strong>Portal API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="request-ubl-xml-mapping.html"><span>Sonraki</span><strong>Request → UBL XML Mapping</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Adisyon, KDV, kalem, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Adisyon Nedir?","text":"e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.","keywords":"Başlangıç e-Adisyon CreditNote","url":"eadisyon-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.","keywords":"Senaryolar KDV iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, hesaplama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon, PDF/önizleme ve GİB raporlama sorumlulukları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, mail ve GİB mükellef sorgulama işlemleri.","keywords":"API Portal mükellef","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL CreditNote XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Adisyon entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Adisyon hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

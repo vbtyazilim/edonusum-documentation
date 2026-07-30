@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-Adisyon Nedir? — e-Adisyon Entegrasyon Rehberi</title>
+<meta name="description" content="e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-adisyon/docs/eadisyon-nedir.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="e-Adisyon Nedir? — e-Adisyon Entegrasyon Rehberi">
+<meta property="og:description" content="e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-adisyon/docs/eadisyon-nedir.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="e-Adisyon Nedir? — e-Adisyon Entegrasyon Rehberi">
+<meta name="twitter:description" content="e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+<style>
+.docs-article > section { margin-bottom: 3.5rem; }
+.docs-article svg { display: block; max-width: min(100%, 820px); height: auto; }
+.docs-article .scenario-card h4 { margin-top: -1.4rem; }
+.docs-article script.code-block { display: none; }
+.docs-article .badge-required,
+.docs-article .badge-optional,
+.docs-article .badge-conditional { white-space: nowrap; }
+</style>
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Adisyon</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="eadisyon-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link active" href="eadisyon-nedir.html">e-Adisyon Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Başlangıç</p><h1>e-Adisyon Nedir?</h1><p class="docs-lead">e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.</p></header>
+<!-- vbt:article-header:end -->
+<section id="eadisyon-nedir">
+<h3 id="h-temel-kavram">Temel Kavram</h3>
+<p><strong>e-Adisyon</strong>, restoran, kafe ve benzeri işletmelerin düzenlediği adisyon/hesap fişinin GİB e-Arşiv standardında elektronik formudur. Belge; sipariş kalemleri, KDV ve varsa tevkifat bilgileriyle birlikte oluşturulur, e-imza ile kesinleştirilir ve GİB'e günlük rapor olarak bildirilir.</p>
+<p>GİB kategorisinde <strong>e-Arşiv Belgesi</strong> (<code>EARSIVBELGE</code>) olarak sınıflandırılır; UBL-TR standardında, teknik olarak UBL <strong>CreditNote</strong> belge tipiyle üretilir ve GİB'e raporlanır.</p>
+<div class="callout callout-info"><b>💡 Örnek:</b> Bir restoran, müşterinin masasındaki siparişi kapatırken adisyonu e-Adisyon olarak düzenler; alıcı gerçek kişi (TCKN) veya tüzel kişi (VKN) olabilir.</div>
+
+<h3 id="h-belge-tipi">Belge Tipi</h3>
+<p>Belge tipi, adisyonun GİB ve UBL tarafındaki kimliğini belirler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Tip</th><th>İş Anlamı</th></tr></thead><tbody>
+<tr><td><code>ADISYON</code></td><td>Restoran/adisyon belgesi için kullanılan tek belge tipi</td></tr>
+</tbody></table></div>
+
+<h3 id="h-iki-ayri-xml">İki Ayrı XML</h3>
+<p>Belge XML'i ve rapor XML'i aynı sürecin farklı çıktılarıdır; biri belgeyi temsil eder, diğeri dönemsel bildirimi taşır.</p>
+<div class="table-wrapper"><table><thead><tr><th>XML</th><th>Amaç</th><th>Standart</th><th>Üretim</th></tr></thead><tbody>
+<tr><td><strong>UBL XML</strong></td><td>Her belge için — imzalanır, saklanır</td><td>UBL 2.1 CreditNote</td><td>Anlık</td></tr>
+<tr><td><strong>GİB Rapor XML</strong></td><td>Dönemdeki tüm belgelerin toplu GİB bildirimi</td><td>e-Arşiv XSD</td><td>Günlük job</td></tr>
+</tbody></table></div>
+
+<h3 id="h-teknik-kimlik">Teknik Kimlik</h3>
+<p>Aşağıdaki iki alan GİB standardı gereği sabit değerler taşır:</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Sabit Değer</th></tr></thead><tbody>
+<tr><td><code>ProfileId</code></td><td><code>EARSIVBELGE</code></td></tr>
+<tr><td><code>BillTypeCode</code> (UBL karşılığı <code>CreditNoteTypeCode</code>)</td><td><code>ADISYON</code></td></tr>
+</tbody></table></div>
+
+<h3 id="h-yasam-dongusu">Belge Yaşam Döngüsü</h3>
+<p>e-Adisyon, diğer e-Arşiv modülleriyle (e-Gider Pusulası, e-Müstahsil Makbuzu) aynı 4 fazlı akışı izler: oluşturma → imza kuyruğu → günlük GİB raporu → GİB sonucu.</p>
+<div class="diagram-wrapper">
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+<style>
+.diagram-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:10}
+.diagram-brand-box{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.5;rx:10}
+.diagram-success-box{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:10}
+.diagram-error-box{fill:var(--svg-err-bg);stroke:var(--svg-err-s);stroke-width:1.5;rx:10}
+.diagram-main-text{fill:var(--svg-text);font:600 11px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+.diagram-muted-text{fill:var(--svg-muted);font:10px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+.diagram-connector{stroke:var(--svg-line);stroke-width:1.4;fill:none;stroke-dasharray:6 4;animation:dash .8s linear infinite}
+.diagram-arrow-head{fill:var(--svg-line)}
+</style>
+<defs><marker id="lifecycle-arrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" class="diagram-arrow-head"/></marker></defs>
+<rect class="diagram-box" x="5" y="25" width="120" height="44"/>
+<text class="diagram-main-text" x="65" y="42">API Request</text>
+<text class="diagram-muted-text" x="65" y="58">(JSON)</text>
+<path class="diagram-connector" d="M125,47 L158,47" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-box" x="163" y="25" width="130" height="44"/>
+<text class="diagram-main-text" x="228" y="40">Validasyon</text>
+<text class="diagram-muted-text" x="228" y="57">Alan/format kontrolü</text>
+<path class="diagram-connector" d="M293,47 L326,47" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-brand-box" x="331" y="25" width="130" height="44"/>
+<text class="diagram-main-text" x="396" y="40">UBL CreditNote</text>
+<text class="diagram-muted-text" x="396" y="57">Üret + imza kuyruğu</text>
+<path class="diagram-connector" d="M461,47 L494,47" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-success-box" x="499" y="25" width="100" height="44"/>
+<text class="diagram-main-text" x="549" y="42" style="fill:var(--svg-ok-s)">DB Kayıt ✓</text>
+<path class="diagram-connector" d="M599,47 L632,47" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-success-box" x="637" y="25" width="155" height="44"/>
+<text class="diagram-main-text" x="714" y="40" style="fill:var(--svg-ok-s)">Yanıt Dön</text>
+<text class="diagram-muted-text" x="714" y="57">DocumentNumber + UUId</text>
+<path class="diagram-connector" d="M549,69 L549,105" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-box" x="460" y="110" width="180" height="44"/>
+<text class="diagram-main-text" x="550" y="127">BillSignJob (1 dk.)</text>
+<text class="diagram-muted-text" x="550" y="143">BillAndXmlCreated → Signed</text>
+<path class="diagram-connector" d="M460,132 L403,132" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-brand-box" x="275" y="110" width="123" height="44"/>
+<text class="diagram-main-text" x="336" y="132">Günlük GİB Raporu</text>
+<path class="diagram-connector" d="M275,132 L218,132" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-box" x="100" y="110" width="113" height="44"/>
+<text class="diagram-main-text" x="156" y="132">GİB'e Gönder</text>
+<path class="diagram-connector" d="M135,154 L110,192" marker-end="url(#lifecycle-arrow)"/>
+<path class="diagram-connector" d="M178,154 L203,192" marker-end="url(#lifecycle-arrow)"/>
+<rect class="diagram-success-box" x="60" y="197" width="90" height="36"/>
+<text class="diagram-main-text" x="105" y="215" style="fill:var(--svg-ok-s)">✓ Reported</text>
+<rect class="diagram-error-box" x="165" y="197" width="90" height="36"/>
+<text class="diagram-main-text" x="210" y="215" style="fill:var(--svg-err-s)">✗ Failed</text>
+<text class="diagram-muted-text" x="210" y="248">Yeniden rapor döngüsü</text>
+<text class="diagram-muted-text" x="65" y="16" style="font-style:italic">Entegratör tetikler</text>
+<text class="diagram-muted-text" x="550" y="100" style="font-style:italic">Platform otomatik yönetir</text>
+</svg>
+</div>
+<div class="callout callout-info"><b>💡 Not:</b> Doğrudan entegrasyonlarda SMS veya iade kodu gibi bir doğrulama adımı yoktur; belge tek istekte imza kuyruğuna alınır.</div>
+
+
+<h3 id="h-iptal-akisi">İptal Akışı</h3>
+<p>İptal, yalnızca belge <strong>imzalanmış (<code>Signed</code>)</strong> durumdaysa kabul edilir.</p>
+<div class="diagram-wrapper">
+<svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg">
+<style>
+.cancel-flow-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:8}
+.cancel-flow-question{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.5;rx:6}
+.cancel-flow-success{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:8}
+.cancel-flow-error{fill:var(--svg-err-bg);stroke:var(--svg-err-s);stroke-width:1.5;rx:8}
+.cancel-flow-main-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
+.cancel-flow-muted-text{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}
+.cancel-flow-connector{stroke:var(--svg-line);stroke-width:1.2;fill:none;stroke-dasharray:5 3;animation:dash 1s linear infinite}
+</style>
+<defs><marker id="cancel-flow-arrow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs>
+<rect class="cancel-flow-box" x="5" y="50" width="100" height="36"/>
+<text class="cancel-flow-main-text" x="55" y="68">İptal Talebi</text>
+<path class="cancel-flow-connector" d="M105,68 L145,68" marker-end="url(#cancel-flow-arrow)"/>
+<rect class="cancel-flow-question" x="150" y="45" width="120" height="45"/>
+<text class="cancel-flow-main-text" x="210" y="68">Belge Durumu?</text>
+<path class="cancel-flow-connector" d="M210,90 L210,125" marker-end="url(#cancel-flow-arrow)"/>
+<text class="cancel-flow-muted-text" x="255" y="110">BillAndXmlCreated</text>
+<rect class="cancel-flow-error" x="155" y="130" width="110" height="30"/>
+<text class="cancel-flow-main-text" x="210" y="145" style="fill:var(--svg-err-s)">İptal edilemez</text>
+<path class="cancel-flow-connector" d="M270,68 L355,68" marker-end="url(#cancel-flow-arrow)"/>
+<text class="cancel-flow-muted-text" x="320" y="58">Signed, zaten iptal değil</text>
+<rect class="cancel-flow-success" x="360" y="50" width="150" height="36"/>
+<text class="cancel-flow-main-text" x="435" y="63">İptal Kabul ✓</text>
+<text class="cancel-flow-muted-text" x="435" y="79">E-posta gönderilmez</text>
+<path class="cancel-flow-connector" d="M510,68 L545,68" marker-end="url(#cancel-flow-arrow)"/>
+<rect class="cancel-flow-box" x="550" y="50" width="120" height="36"/>
+<text class="cancel-flow-main-text" x="610" y="63">İptal Raporu</text>
+<text class="cancel-flow-muted-text" x="610" y="79">GİB günlük döngüsü</text>
+</svg>
+</div>
+<div class="callout callout-warning"><b>İptal e-postası:</b> İptal işlemi herhangi bir bildirim e-postası göndermez; yalnızca durum alanlarını günceller ve GİB iptal raporu döngüsüne dahil eder.</div>
+
+<h3 id="h-olusturma-yontemi">Oluşturma Yöntemi</h3>
+<p>Bir adisyon, tam alan listesini içeren bir JSON gövdesiyle <code>AddOutgoingBill</code> endpointine gönderilerek oluşturulur; entegratör kendi ürettiği UBL XML'i göndermek isterse <code>AddOutgoingBillByUbl</code> kullanılabilir. Bu rehberin geri kalanı JSON akışına odaklanır; diğer oluşturma yolları için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> sayfasına bakabilirsiniz.</p>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<span></span>
+<a class="docs-page-link docs-page-next" href="gib-teknik-gereksinimleri.html"><span>Sonraki</span><strong>GİB Referansı</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Adisyon, KDV, kalem, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Adisyon Nedir?","text":"e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.","keywords":"Başlangıç e-Adisyon CreditNote","url":"eadisyon-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.","keywords":"Senaryolar KDV iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, hesaplama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon, PDF/önizleme ve GİB raporlama sorumlulukları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, mail ve GİB mükellef sorgulama işlemleri.","keywords":"API Portal mükellef","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL CreditNote XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Adisyon entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Adisyon hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

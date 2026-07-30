@@ -83,12 +83,12 @@
 <div class="callout callout-info"><b>Entegratör mü arıyorsunuz?</b> Bu sayfa yalnızca VBT Portal uygulamasının kendi kullanımı içindir. Doğrudan ERP/API entegrasyonu için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> sayfasına bakın.</div>
 
 <h2 id="h-portal-belge-endpointleri">Belge Oluşturma ve Güncelleme</h2>
-<p>Portal UI, entegratörlerle aynı <code>AddOutgoingExpenseVoucher</code> ve <code>UpdateOutgoingExpenseVoucher</code> endpointlerini kullanır; ancak kullanıcı doğrulaması belge kaydından sonra Portal endpointleriyle tamamlanır.</p>
+<p>Portal UI, entegratörlerle aynı <code>AddOutgoingExpenseVoucher</code> ve <code>UpdateOutgoingExpenseVoucher</code> endpointlerini kullanır. SMS sonradan Portal endpointleriyle tamamlanabilir; İADEKODU ise belge Add/Update modeli içinde gönderilir.</p>
 <div class="table-wrapper"><table><thead><tr><th>Adım</th><th>Portal UI davranışı</th></tr></thead><tbody>
 <tr><td>1. Cari seçimi</td><td>Alıcı ve varsa vekil <a href="#h-portal-person-party-endpoints">PersonParty endpointleriyle</a> aranır veya kaydedilir.</td></tr>
 <tr><td>2. Belge kaydı</td><td>Seçilen alıcı <code>AccountingCustomerParty.Party.Id</code>, varsa vekil <code>DelegateReceiver.PartyId</code> ile Add/Update request'ine taşınır. Kullanıcının seçtiği tek TCKN veya PASAPORTNO belge kimliği olarak gönderilir.</td></tr>
-<tr><td>3. İlk yanıt</td><td>Portalın ilk Add/Update çağrısında <code>VerificationInfo</code> ve <code>VerificationProvider</code> boş olabilir. UI, response içindeki <code>OutgoingExpenseVoucherStatusForUser</code> değerini esas alır.</td></tr>
-<tr><td>4. Doğrulama</td><td><code>WaitingForVerification</code> için yöntem seçilir; SMS veya iade kodu ilgili Portal endpointiyle tamamlanır.</td></tr>
+<tr><td>3. İlk yanıt</td><td>Yalnız unsigned SMS akışında <code>VerificationInfo</code> ve <code>VerificationProvider</code> tamamen boş olabilir. İADEKODU seçildiyse iki model ilk Add/Update isteğinde tamdır. UI, response içindeki <code>OutgoingExpenseVoucherStatusForUser</code> değerini esas alır.</td></tr>
+<tr><td>4. Doğrulama</td><td><code>WaitingForVerification</code> yalnız SMS gönderiminin beklendiğini gösterir; Send ve Complete çağrıları kullanılır. İADEKODU için ayrı Portal endpointi yoktur.</td></tr>
 <tr><td>5. Güncel durum</td><td>Başarılı işlemden sonra belge yeniden sorgulanır; imzaya hazır veya bekleyen güncel durum gösterilir.</td></tr>
 </tbody></table></div>
 <details class="example-details"><summary>Portal Add/Update alan özeti</summary><div class="example-body"><pre><code class="language-json">{
@@ -109,7 +109,7 @@
 
 <h2 id="h-portal-dogrulama-endpointleri">Doğrulama Endpointleri</h2>
 <p>Portal kullanıcısına hazır sunulan doğrulama ekranları, aşağıdaki endpoint sözleşmeleri üzerinden ilerler. Bu endpointler VBT Portal uygulamasının kullanımı içindir; dış entegratörlerin belge oluşturma ve güncelleme sözleşmelerinin yerini almaz.</p>
-<div class="callout callout-info"><b>Görünürlük:</b> UI, doğrulama kontrollerini belgenin dönen durumu ve senaryosuna göre gösterir. <code>WaitingForVerification</code> yöntem seçimini, <code>WaitingForSmsCode</code> SMS kodu girişini açar.</div>
+<div class="callout callout-info"><b>Görünürlük:</b> UI, doğrulama kontrollerini belgenin dönen durumu ve senaryosuna göre gösterir. <code>WaitingForVerification</code> SMS gönderme ekranını, <code>WaitingForSmsCode</code> SMS kodu girişini açar.</div>
 <div class="endpoint-card">
 <div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/ExpenseVoucherApi/SendExpenseVoucherSmsCode</span></div>
 <div class="endpoint-body"><p class="endpoint-description">Satış veya SMS seçilmiş yüz yüze iade senaryosunda doğrulama kodunu gönderir.</p>
@@ -128,15 +128,7 @@
 <tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr>
 <tr><td><b>UI davranışı</b></td><td>Başarılı sonuçta belge yeniden okunur ve güncel state gösterilir; hata halinde doğrulanmış görünümü verilmez.</td></tr>
 </tbody></table></div></div></div>
-<div class="endpoint-card">
-<div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/ExpenseVoucherApi/SubmitExpenseVoucherIadeKodu</span></div>
-<div class="endpoint-body"><p class="endpoint-description">Bütün IADE senaryolarında harici sistemde üretilen iade kodunu kaydeder.</p>
-<div class="table-wrapper"><table><tbody>
-<tr><td><b>Çağrı koşulu</b></td><td>Belge <code>WaitingForVerification</code> durumundadır ve <code>ExpenseVoucherTypeCode=IADE</code> değerini taşır. Yüz yüze, kargolu, vekaletli ve bütün iade edilen belge türlerinde kullanılabilir.</td></tr>
-<tr><td><b>Request</b></td><td><code>SubmitExpenseVoucherIadeKoduRequestModel</code> — belge kimliği, <code>Code</code>, <code>PhoneNumber</code> ve <code>VerificationProvider</code></td></tr>
-<tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr>
-<tr><td><b>UI davranışı</b></td><td>Başarılı sonuçta belge yeniden okunur; hata halinde girilen bilgiler düzeltilebilmesi için mevcut doğrulama adımı korunur.</td></tr>
-</tbody></table></div></div></div>
+<div class="callout callout-info"><b>İADEKODU akışı:</b> Ayrı bir Portal submit endpointi yoktur. UI, <code>VerificationProvider</code> ve <code>VerificationInfo</code> alanlarını tam belge modeliyle birlikte <code>AddOutgoingExpenseVoucher</code> veya <code>UpdateOutgoingExpenseVoucher</code> çağrısında gönderir. Geçerli İADEKODU verisi belgeyi SMS adımlarına sokmadan imza kuyruğuna taşır; kargolu IADE bu alanlar olmadan kaydedilemez.</div>
 <div class="callout callout-warning"><b>İstemci davranışı:</b> Devam eden çağrı sırasında aynı aksiyon yeniden tetiklenmez. İş kuralı hatasında API'nin kullanıcıya dönük mesajı gösterilir ve belge başarılı yanıt alınmadan bir sonraki state'e geçirilmez. Güncel durum için işlem sonrasında belge yeniden sorgulanır.</div>
 
 <h2 id="h-portal-person-party-endpoints">Gerçek Kişi Cari Endpointleri</h2>
