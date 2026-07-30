@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://vbtyazilim.github.io/</loc></url>
+  <url><loc>https://vbtyazilim.github.io/iletisim.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/egider-pusulasi-nedir.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/gib-teknik-gereksinimleri.html</loc></url>
@@ -19,7 +21,7 @@
   <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/kullanim-senaryolari.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/entegrator-sorumluluklari.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/platform-sorumluluklari.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/api-endpoint-referansi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/entegrator-api-endpoint-referansi.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/request-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/request-ubl-xml-mapping.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/mustahsil-makbuzu/docs/teknik-referans.html</loc></url>
