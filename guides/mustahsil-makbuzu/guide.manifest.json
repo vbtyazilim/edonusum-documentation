@@ -83,8 +83,8 @@
       "label": "API",
       "pages": [
         {
-          "slug": "api-endpoint-referansi",
-          "title": "API Endpoint Referansı",
+          "slug": "entegrator-api-endpoint-referansi",
+          "title": "Entegratör API Endpoint Referansı",
           "description": "Kimlik doğrulama, belge işlemleri, sorgulama, alt modeller ve response alanları.",
           "eyebrow": "API",
           "keywords": ["API", "endpoint", "request", "response"],
