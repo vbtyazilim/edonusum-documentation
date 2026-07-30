@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://vbtyazilim.github.io/</loc></url>
   <url><loc>https://vbtyazilim.github.io/iletisim.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/earsiv-fatura-nedir.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/gib-teknik-gereksinimleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/kullanim-senaryolari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/iptal-itiraz-durum-takibi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/entegrator-sorumluluklari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/platform-sorumluluklari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/entegrator-api-endpoint-referansi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/portal-api-endpoint-referansi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/request-ornekleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/request-ubl-xml-mapping.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/teknik-referans.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/changelog.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/sss.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/egider-pusulasi-nedir.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/guides/e-gider-pusulasi/docs/gib-teknik-gereksinimleri.html</loc></url>
