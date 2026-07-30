@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entegratör API Endpoint Referansı — e-Arşiv Fatura Entegrasyon Rehberi</title>
+<meta name="description" content="Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/entegrator-api-endpoint-referansi.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Entegratör API Endpoint Referansı — e-Arşiv Fatura Entegrasyon Rehberi">
+<meta property="og:description" content="Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/entegrator-api-endpoint-referansi.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Entegratör API Endpoint Referansı — e-Arşiv Fatura Entegrasyon Rehberi">
+<meta name="twitter:description" content="Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Arşiv Fatura</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="earsiv-fatura-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="earsiv-fatura-nedir.html">e-Arşiv Fatura Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="iptal-itiraz-durum-takibi.html">İptal ve İtiraz Durum Takibi</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link active" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Entegratör API Endpoint Referansı</h1><p class="docs-lead">Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="entegrator-api-endpoint-referansi">
+<h2 id="h-kimlik">Kimlik Doğrulama</h2>
+<p>API çağrıları, firmanın yetki bağlamı ve oturum token'ı üzerinden ilerler.</p><div class="callout callout-info"><b>💡</b> Tüm istekler <code>VbtAuthorization</code> header'ı gerektirir. Token almak için <code>POST /api/Account/Token</code> kullanın.</div><div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Account/Token</span></div><div class="endpoint-body"><p class="endpoint-description">Oturum token'ı alır. Tüm diğer endpointler bu token'ı <code>VbtAuthorization</code> header'ında bekler.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>TokenRequestModel</code> — <code>{ Email, Password }</code></td></tr><tr><td><b>Response</b></td><td><code>TokenResponseModel</code> — <code>{ Token }</code></td></tr></tbody></table></div></div></div>
+<h2 id="h-alan-matris">Alan Zorunluluk Matrisi</h2>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Not</th></tr></thead><tbody>
+<tr><td><code>ProfileId</code></td><td><span class="badge-required">Z</span></td><td>e-Arşiv Fatura için <code>EARSIVFATURA</code></td></tr>
+<tr><td><code>IssueDate</code></td><td><span class="badge-required">Z</span></td><td>Gelecek tarih olamaz</td></tr>
+<tr><td><code>AccountingSupplierParty</code></td><td><span class="badge-required">Z</span></td><td>Satıcı VKN'si</td></tr>
+<tr><td><code>AccountingCustomerParty</code></td><td><span class="badge-required">Z</span></td><td>Alıcı VKN (tüzel) veya TCKN (gerçek kişi)</td></tr>
+<tr><td><code>InvoiceLine</code></td><td><span class="badge-required">Z</span></td><td>En az 1 kalem</td></tr>
+<tr><td><code>LegalMonetaryTotal</code></td><td><span class="badge-required">Z</span></td><td>Satır toplamı, KDV hariç/dahil ve ödenecek tutar</td></tr>
+<tr><td><code>WithholdingTaxTotal</code></td><td><span class="badge-optional">O</span></td><td>Tevkifat varsa doldurulur</td></tr>
+<tr><td><code>BillingReference</code></td><td><span class="badge-optional">O</span></td><td>Mükerrer/iade veya ÖKC referansı varsa doldurulur</td></tr>
+<tr><td><code>EArchiveMailTo</code></td><td><span class="badge-optional">O</span></td><td>Birden fazla adres <code>;</code> ile ayrılır</td></tr>
+</tbody></table></div>
+<p><span class="badge-required">Z</span> Zorunlu · <span class="badge-optional">O</span> Opsiyonel</p>
+<h2 id="h-ekleme">Ekleme</h2>
+<p>Yeni fatura oluşturma çağrıları, belge içeriğini ve taraf bilgilerini platforma teslim eder; farklı giriş yöntemleri aynı belge yaşam döngüsüne bağlanır.</p>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/AddOutgoingInvoice</span></div><div class="endpoint-body"><p class="endpoint-description">Yeni bir e-Arşiv Fatura oluşturur ve sisteme kaydeder.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>OutgoingInvoiceRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingInvoiceAddResponseModel&gt;</code> — <code>{ InvoiceNumber, Ettn, PdfUrl, XmlUrl }</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/AddOutgoingInvoiceByUbl</span></div><div class="endpoint-body"><p class="endpoint-description">Hazır UBL Invoice XML'i ile fatura oluşturur.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>InvoiceUblRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingInvoiceAddResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/AddOutgoingInvoiceByXml</span></div><div class="endpoint-body"><p class="endpoint-description">Hazır XML gövdesiyle fatura oluşturur (Ubl dışı XML akışı).</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>XmlRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;XmlResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/AddOutgoingInvoiceByExcel</span></div><div class="endpoint-body"><p class="endpoint-description">Excel dosyasındaki birden fazla satırı toplu olarak işler.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>ExcelFileRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;List&lt;OutgoingInvoiceAddExcelResponseModel&gt;&gt;</code> — satır başına ayrı sonuç</td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/AddOutgoingReturnedInvoice</span></div><div class="endpoint-body"><p class="endpoint-description">Mükerrer/iade referanslı fatura ekler.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>OutgoingInvoiceRequestModel</code> (<code>BillingReference.InvoiceDocumentReference</code> ile)</td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingInvoiceAddResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/OutgoingInvoicePreview</span></div><div class="endpoint-body"><p class="endpoint-description">Faturayı kaydetmeden önce önizleme yapar.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>OutgoingInvoiceRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingInvoicePreviewResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<h2 id="h-guncelleme">Güncelleme</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/UpdateOutgoingInvoice</span></div><div class="endpoint-body"><p class="endpoint-description">Mevcut bir faturayı JSON model ile günceller.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>OutgoingInvoiceRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingInvoiceUpdateResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/UpdateOutgoingInvoiceByUbl</span></div><div class="endpoint-body"><p class="endpoint-description">Mevcut bir faturayı UBL Invoice XML ile günceller.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>InvoiceUblRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingInvoiceUpdateResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<h2 id="h-iptal">İptal ve İtiraz</h2>
+<div class="callout callout-info"><b>Ayrıntılı durum modeli:</b> Bu iki endpointin durum akışı, GİB Portal senkronizasyonu ve yasal süreler için <a href="iptal-itiraz-durum-takibi.html">İptal ve İtiraz Durum Takibi</a> sayfasına bakın.</div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/CancelOutgoingEArchiveInvoice</span></div><div class="endpoint-body"><p class="endpoint-description">e-Arşiv Fatura'yı iptal eder.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>EArchiveCancelRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/CancelOutgoingEArchiveInvoiceByXml</span></div><div class="endpoint-body"><p class="endpoint-description">XML gövdesiyle e-Arşiv Fatura iptali.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>XmlRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/ObjectOutgoingEArchiveInvoice</span></div><div class="endpoint-body"><p class="endpoint-description">Alıcının TTK md. 18/3 kapsamında yaptığı itirazı kayda geçirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>DocumentObjectionRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;bool&gt;</code></td></tr></tbody></table></div></div></div>
+<h2 id="h-sorgulama">Sorgulama &amp; Görüntüleme</h2>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-get">GET</span><span class="endpoint-path">/api/VbtApi/GetOutgoingInvoice?id={ETTN}</span></div><div class="endpoint-body"><p class="endpoint-description">ETTN ile tek bir faturanın detayını getirir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>id</code> — string, ETTN/GUID</td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;OutgoingInvoiceResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/GetOutgoingInvoiceList</span></div><div class="endpoint-body"><p class="endpoint-description">Fatura özet listesini döner.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>SearchRequestModel&lt;OutgoingInvoiceGetRequestModel&gt;</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;SearchResponseModel&lt;OutgoingInvoiceSummaryResponseModel&gt;&gt;</code></td></tr></tbody></table></div></div></div>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/VbtApi/GetOutgoingInvoiceView</span></div><div class="endpoint-body"><p class="endpoint-description">Belgenin HTML görüntüsünü döner.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>InvoiceViewRequestModel</code></td></tr><tr><td><b>Response</b></td><td><code>ResponseModel&lt;InvoiceViewResponseModel&gt;</code></td></tr></tbody></table></div></div></div>
+<h2 id="h-alt-modeller">Alt Modeller</h2>
+<h3 id="h-alt-model-billing">BillingReference</h3><p>Mükerrer/iade ve ÖKC referansı bu model üzerinden taşınır (<code>BillingReferenceRequestModel</code>).</p><div class="table-wrapper"><table style="table-layout:fixed;word-break:break-word"><colgroup><col style="width:26%"><col style="width:14%"><col style="width:60%"></colgroup><thead><tr><th>Alan</th><th>Tip</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td><code>InvoiceDocumentReference</code></td><td>object</td><td>Mükerrer/iade — <code>InvoiceTypeCode</code> IADE/TEVKIFATIADE/YTBIADE/YTBTEVKIFATIADE ise zorunlu; <code>DocumentTypeCode=IADE</code>, <code>Id</code> tam 16 karakter olmalı, aynı istekte tekrarlanan <code>Id</code> mükerrer sayılır</td></tr>
+<tr><td><code>AdditionalDocumentReference</code></td><td>object</td><td>ÖKC fiş bilgisi — <code>DocumentTypeCode=OKCBF</code> ile tetiklenir; bu durumda <code>DocumentType=OKCBilgiFisi</code>, <code>Id</code>, <code>IssueDate</code>, <code>DocumentDescription[]</code>, <code>Attachment.ExternalReference</code> (string), <code>IssuerParty.EndpointId</code> ve <code>ValidityPeriod.StartDate</code> (=<code>IssueDate</code> ile aynı gün) hepsi zorunlu</td></tr>
+</tbody></table></div>
+<h3 id="h-alt-model-internetpayment">InternetPayment</h3><p>İnternet satışı bilgisi (<code>InternetPaymentRequestModel</code>) — yalnızca JSON (<code>AddOutgoingInvoice</code>) veya platformun düz XML modeli (<code>AddOutgoingInvoiceByXml</code>) ile gönderilebilir; gerçek UBL <code>Invoice</code> belgesinde (<code>AddOutgoingInvoiceByUbl</code>) karşılığı yoktur (bkz. <a href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>).</p><div class="table-wrapper"><table style="table-layout:fixed;word-break:break-word"><colgroup><col style="width:28%"><col style="width:12%"><col style="width:60%"></colgroup><thead><tr><th>Alan</th><th>Tip</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td><code>WebAdresi</code></td><td>string</td><td>Zorunlu, en az 2 karakter (<code>INV0043</code>/<code>INV0263</code>)</td></tr>
+<tr><td><code>OdemeSekli</code></td><td>string</td><td>GİB kod listesinde tanımlı olmalı (<code>INV0168</code>); <code>ODEMEARACISI</code> ise <code>OdemeAracisiAdi</code>, <code>DIGER</code> ise <code>OdemeSekliAciklama</code> ek zorunlu olur</td></tr>
+<tr><td><code>OdemeTarihi</code></td><td>DateTime</td><td>Zorunlu (<code>INV0038</code>)</td></tr>
+<tr><td><code>GonderiTasiyanVknTckn</code> / <code>GonderiTasiyanUnvan</code></td><td>string</td><td>İkisi de zorunlu (<code>INV0041</code>/<code>INV0040</code>)</td></tr>
+<tr><td><code>GonderimTarihi</code></td><td>DateTime</td><td>Zorunlu (<code>INV0039</code>)</td></tr>
+<tr><td><code>Gonderilen</code></td><td>string</td><td>Opsiyonel</td></tr>
+</tbody></table></div>
+<h3 id="h-alt-model-withholding">WithholdingTaxTotal</h3><p><strong>Tevkifat bilgisi</strong> — belge seviyesinde doldurulabilen bir dizidir; yalnızca <code>InvoiceTypeCode</code> TEVKIFAT/YTBTEVKIFAT/IADE/YTBIADE/SGK/SARJ/SARJANLIK olduğunda kabul edilir.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>TaxAmount</code></td><td>decimal</td><td>Toplam tevkifat tutarı</td></tr><tr><td><code>TaxSubtotal[].TaxableAmount</code></td><td>decimal</td><td>Tevkifata tabi matrah</td></tr><tr><td><code>TaxSubtotal[].Percent</code></td><td>decimal</td><td>Tevkifat oranı (%) — platformun tanımlı kod/oran eşleşmelerinden biri olmalı, aksi hâlde "Uyumsuz vergi tipi yüzdesi" hatası döner</td></tr><tr><td><code>TaxSubtotal[].TaxCategory.TaxScheme.TaxTypeCode</code></td><td>string</td><td>Tevkifat kodu (örn. <code>0003</code> GV STOPAJI)</td></tr></tbody></table></div>
+<h3 id="h-alt-model-teknolojidestek">TEKNOLOJIDESTEK</h3><p>Yalnızca <code>ProfileId=EARSIVFATURA</code> ile birlikte geçerlidir. Alıcı <code>PartyIdentifications</code> içinde <code>SchemeId=TCKN</code> ile gönderilmeli; her <code>InvoiceLine.Item.AdditionalItemIdentification</code>, <code>SchemeId</code>'si <code>TELEFON</code> veya <code>TABLET_PC</code> olan en az bir kayıt içermelidir.</p>
+<h2 id="h-enum">Enum Değerleri</h2>
+<p>API modellerinde kullanılan sabit değerler burada kısa bağlamıyla yer alır; ayrıntılı liste <a href="teknik-referans.html">Teknik Referans</a> sayfasındadır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Enum</th><th>Bu rehberde geçerli değer</th></tr></thead><tbody><tr><td><code>InvoiceProfile</code></td><td><code>EARSIVFATURA</code></td></tr><tr><td><code>DocumentObjectionType</code></td><td><code>KEP</code>, <code>NOTER</code>, <code>TELGRAF</code>, <code>TAAHHUTLU_MEKTUP</code></td></tr><tr><td><code>EArchiveMailStatus</code></td><td><code>1</code>=Mail Gönderilmedi, <code>2</code>=Mail Gönderildi</td></tr></tbody></table></div>
+<h2 id="h-response">Response — Belge Detay</h2>
+<p><code>GetOutgoingInvoice</code> yanıtındaki (<code>OutgoingInvoiceResponseModel</code>) başlıca alanlar:</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tip</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td><code>Ettn</code></td><td>string</td><td>Belge ETTN'i</td></tr>
+<tr><td><code>InvoiceNumber</code></td><td>string</td><td>Belge no</td></tr>
+<tr><td><code>ProfileId</code></td><td>string</td><td><code>EARSIVFATURA</code></td></tr>
+<tr><td><code>EArchiveMailTo</code></td><td>string</td><td>e-Posta bildirim adresi (varsa)</td></tr>
+<tr><td><code>PayableAmount</code></td><td>decimal</td><td>Ödenecek tutar</td></tr>
+</tbody></table></div>
+<div class="callout callout-info"><b>Başarı kararı:</b> Ekleme/güncelleme yanıtlarında başarı <code>ResponseModel.Data.HasError=false</code> üzerinden değerlendirilmelidir; HTTP çağrısının tamamlanmış olması yeterli değildir.</div>
+<h3 id="h-basarili-yanit">Başarılı oluşturma yanıtı</h3>
+<pre><code class="language-json">{
+  "RefreshToken": "",
+  "Data": {
+    "HasError": false,
+    "Errors": [],
+    "InvoiceNumber": "FGH2026000000001",
+    "Ettn": "7dc52246-5750-496e-8bf2-bd27bc0764dc",
+    "PdfUrl": "https://.../FGH2026000000001.pdf",
+    "XmlUrl": "https://.../FGH2026000000001.xml"
+  }
+}</code></pre>
+<h3 id="h-basarisiz-yanit">Alıcı uygunluk hatası yanıtı</h3>
+<pre><code class="language-json">{
+  "RefreshToken": "",
+  "Data": {
+    "HasError": true,
+    "Errors": [
+      { "ErrorCode": "INV0221", "ErrorMessage": "Alıcı bilgisindeki VKN GİB e-Fatura mükelleflerinde kayıtlı olduğundan e-Arşiv Fatura kesilemez." }
+    ],
+    "InvoiceNumber": null,
+    "Ettn": null,
+    "PdfUrl": null,
+    "XmlUrl": null
+  }
+}</code></pre>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="platform-sorumluluklari.html"><span>Önceki</span><strong>Platform Sorumlulukları</strong></a>
+<a class="docs-page-link docs-page-next" href="portal-api-endpoint-referansi.html"><span>Sonraki</span><strong>Portal API Endpoint Referansı</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Ara..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Arşiv Fatura Nedir?","text":"e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.","keywords":"Başlangıç e-Arşiv Fatura EARSIVFATURA","url":"earsiv-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR VUK 509","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal satış, internet satışı, ÖKC, tevkifat ve mükerrer/iade akışları için karar ağacı.","keywords":"Senaryolar internet satışı ÖKC tevkifat","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"İptal ve İtiraz Durum Takibi","text":"GİB Portal ile senkronize iptal/itiraz durum modeli, yasal süreler ve entegratör sorumlulukları.","keywords":"İptal İtiraz GİB Portal durum takibi","url":"iptal-itiraz-durum-takibi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın e-Arşiv Fatura grid, e-posta ve iptal/itiraz tamamlama akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal e-posta iptal itiraz","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL Invoice XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Arşiv Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

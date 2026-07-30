@@ -181,37 +181,40 @@
             </tbody></table></div>
             <div class="callout callout-info"><b>Güncelleme:</b> SMS doğrulaması bekleyen belge iki doğrulama modeli boş olarak güncellenirse <code>WaitingForVerification</code> durumunda kalır ve önceki kod geçersizleştirilir. Tam SMS veya İADEKODU modeliyle başarılı Update belgeyi imza kuyruğuna taşır.</div>
 
-            <h3 id="h-sms-dogrulama-akisi">SMS Doğrulama Akışı</h3>
-            <p><code>OutgoingExpenseVoucherStatusForUser</code>, SMS gönderme ve kod doğrulama fazlarını gösterir. SMS; <code>SATIS</code>, yüz yüze <code>IADE</code> ve kargosuz vekâletli <code>IADE</code> senaryolarında kullanılabilir. Kargolu <code>IADE</code>, vekâletli olsa da SMS akışına alınmaz.</p>
-            <div class="diagram-wrapper"><svg viewBox="0 0 1040 300" role="img" aria-labelledby="sms-flow-title sms-flow-desc">
-                <title id="sms-flow-title">SMS doğrulama durum akışı</title>
-                <desc id="sms-flow-desc">SMS kullanılabilen satış, yüz yüze iade ve kargosuz vekâletli iade senaryolarının bekleme durumlarından imza kuyruğuna ve Signed durumuna geçişini gösterir.</desc>
-                <style>.sms-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.sms-wait{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.sms-ok{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.sms-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle}.sms-sub{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.sms-line{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#sms-arrow)}</style>
-                <defs><marker id="sms-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs>
-                <rect class="sms-box" x="20" y="30" width="190" height="64" rx="8"/><text class="sms-text" x="115" y="54">SMS kullanılabilen senaryolar</text><text class="sms-sub" x="115" y="73">SATIS · yüz yüze IADE</text><text class="sms-sub" x="115" y="87">kargosuz vekâletli IADE</text>
-                <path class="sms-line" d="M210 62 L245 62"/><rect class="sms-wait" x="245" y="30" width="180" height="64" rx="8"/><text class="sms-text" x="335" y="55">WaitingForVerification</text><text class="sms-sub" x="335" y="76">SMS gönderimi bekleniyor</text>
-                <path class="sms-line" d="M425 62 L460 62"/><rect class="sms-box" x="460" y="30" width="180" height="64" rx="8"/><text class="sms-text" x="550" y="55">WaitingForSmsCode</text><text class="sms-sub" x="550" y="76">kod girişi bekleniyor</text>
-                <path class="sms-line" d="M640 62 L720 135"/><text class="sms-sub" x="687" y="86">Complete</text>
-                <rect class="sms-box" x="245" y="170" width="240" height="64" rx="8"/><text class="sms-text" x="365" y="195">Add / Update</text><text class="sms-sub" x="365" y="216">tam SMS verisi</text><path class="sms-line" d="M485 202 L715 170"/>
-                <rect class="sms-ok" x="720" y="135" width="230" height="64" rx="8"/><text class="sms-text" x="835" y="160">ExpenseVoucherAndXmlCreated</text><text class="sms-sub" x="835" y="181">imza kuyruğunda</text>
-                <path class="sms-line" d="M835 199 L835 238"/><text class="sms-sub" x="880" y="220">SignJob</text><rect class="sms-ok" x="760" y="238" width="150" height="48" rx="8"/><text class="sms-text" x="835" y="267">Signed</text>
-            </svg></div>
-            <div class="callout callout-warning"><b>SMS sınırı:</b> Kargolu <code>IADE</code> ve kargolu vekâletli <code>IADE</code> SMS ile doğrulanamaz; bu senaryolarda İADEKODU zorunludur.</div>
+            <h3 id="h-dogrulama-imza-durum-makinesi">Doğrulama ve İmza Durum Makinesi</h3>
+            <p><code>OutgoingExpenseVoucherStatusForUser</code> tek bir durum makinesidir; SMS ve İADEKODU iki ayrı sistem değil, aynı makinenin Add/Update anında seçilen iki farklı giriş koludur. Belge (ve ön-XML) <b>her senaryoda Add/Update isteği içinde hemen oluşturulur</b> — doğrulama bekleyen bir belge de veritabanında ve XML olarak zaten vardır, sadece imza kuyruğuna henüz girmemiştir. Doğrulama verisi (SMS'in 4 alanı ya da İADEKODU'nun <code>VerificationProvider</code>+<code>VerificationInfo</code>'su) o istekte tam geldiyse — veya SMS zorunluluğu kapalıysa — belge aynı anda kuyruğa girer ve bekleme durumlarına hiç girmez. Tam gelmediyse (yalnızca SMS'in boş-başlangıç senaryolarında) belge önce <code>WaitingForVerification</code>/<code>WaitingForSmsCode</code> bekleme fazlarından geçer; doğrulama tamamlandığında XML doğrulama bilgisiyle yeniden oluşturulur ve ancak o an kuyruğa girer. Her iki kol da aynı <code>ExpenseVoucherAndXmlCreated</code> durumunda birleşir.</p>
+            <div class="diagram-wrapper"><svg viewBox="0 0 1080 340" role="img" aria-labelledby="state-flow-title state-flow-desc">
+                <title id="state-flow-title">Gider Pusulası doğrulama ve imza durum makinesi</title>
+                <desc id="state-flow-desc">Add/Update isteğinde belge her zaman oluşturulur; doğrulama verisi tamsa doğrudan, değilse SMS bekleme fazlarından geçerek ExpenseVoucherAndXmlCreated durumuna ulaşır ve SignJob ile Signed olur.</desc>
+                <style>.state-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.state-wait{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.state-ok{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.state-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle}.state-sub{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.state-cond{fill:var(--svg-muted);font:italic 9px Inter,system-ui,sans-serif;text-anchor:middle}.state-line{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#state-arrow)}</style>
+                <defs><marker id="state-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs>
 
-            <h3 id="h-iadekodu-dogrulama-akisi">İADEKODU Doğrulama Akışı</h3>
-            <p>İADEKODU yalnız <code>IADE</code> belgelerinde kullanılır. Yüz yüze, kargolu ve vekâletli iade senaryolarında <code>VerificationProvider</code> ile <code>VerificationInfo</code>, tam belge modeliyle aynı Add/Update isteğinde gönderilir.</p>
-            <div class="diagram-wrapper"><svg viewBox="0 0 1040 210" role="img" aria-labelledby="return-flow-title return-flow-desc">
-                <title id="return-flow-title">İADEKODU doğrulama durum akışı</title>
-                <desc id="return-flow-desc">Yüz yüze, kargolu ve vekâletli iade senaryolarında sağlayıcı ve doğrulama bilgisinin Add veya Update isteğiyle imza kuyruğuna ve Signed durumuna geçişini gösterir.</desc>
-                <style>.return-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.return-data{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.return-ok{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.return-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle}.return-sub{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.return-line{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#return-arrow)}</style>
-                <defs><marker id="return-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs>
-                <rect class="return-box" x="20" y="65" width="190" height="64" rx="8"/><text class="return-text" x="115" y="90">IADE senaryoları</text><text class="return-sub" x="115" y="111">yüz yüze · kargolu · vekâletli</text>
-                <path class="return-line" d="M210 97 L250 97"/><rect class="return-data" x="250" y="65" width="210" height="64" rx="8"/><text class="return-text" x="355" y="89">VerificationProvider +</text><text class="return-text" x="355" y="105">VerificationInfo</text><text class="return-sub" x="355" y="121">tam ve senaryoyla uyumlu</text>
-                <path class="return-line" d="M460 97 L500 97"/><rect class="return-box" x="500" y="65" width="140" height="64" rx="8"/><text class="return-text" x="570" y="101">Add / Update</text>
-                <path class="return-line" d="M640 97 L680 97"/><rect class="return-ok" x="680" y="65" width="230" height="64" rx="8"/><text class="return-text" x="795" y="90">ExpenseVoucherAndXmlCreated</text><text class="return-sub" x="795" y="111">imza kuyruğunda</text>
-                <path class="return-line" d="M910 97 L940 97"/><rect class="return-ok" x="940" y="73" width="90" height="48" rx="8"/><text class="return-text" x="985" y="102">Signed</text>
+                <rect class="state-box" x="20" y="140" width="170" height="64" rx="8"/><text class="state-text" x="105" y="165">Add / Update</text><text class="state-sub" x="105" y="186">belge + ön-XML her zaman burada oluşur</text>
+
+                <path class="state-line" d="M190 156 L680 156"/>
+                <text class="state-sub" x="435" y="130">Doğrulama verisi tam (SMS 4 alan / İADEKODU) — ya da SMS zorunlu değil</text>
+                <text class="state-cond" x="435" y="145">SATIS · IADE (İADEKODU ile) · kargolu IADE (zorunlu)</text>
+
+                <path class="state-line" d="M190 190 L230 273"/>
+                <text class="state-sub" x="205" y="222">SMS boş başlangıç (Portal)</text>
+                <text class="state-cond" x="205" y="236">SATIS · yüz yüze IADE · kargosuz vekâletli IADE</text>
+
+                <rect class="state-wait" x="230" y="250" width="180" height="64" rx="8"/><text class="state-text" x="320" y="275">WaitingForVerification</text><text class="state-sub" x="320" y="296">SMS gönderimi bekleniyor</text>
+
+                <path class="state-line" d="M410 282 L460 282"/><text class="state-sub" x="435" y="272">Send SMS</text>
+                <rect class="state-box" x="460" y="250" width="180" height="64" rx="8"/><text class="state-text" x="550" y="275">WaitingForSmsCode</text><text class="state-sub" x="550" y="296">kod girişi bekleniyor</text>
+
+                <path class="state-line" d="M640 282 L680 195"/>
+                <text class="state-sub" x="700" y="240">Complete (kod doğrulandı)</text>
+                <text class="state-cond" x="700" y="254">XML doğrulama bilgisiyle yeniden oluşturulur</text>
+
+                <rect class="state-ok" x="680" y="130" width="230" height="64" rx="8"/><text class="state-text" x="795" y="155">ExpenseVoucherAndXmlCreated</text><text class="state-sub" x="795" y="176">imza kuyruğunda</text>
+
+                <path class="state-line" d="M910 162 L950 162"/><text class="state-sub" x="930" y="148">SignJob</text>
+                <rect class="state-ok" x="950" y="130" width="110" height="64" rx="8"/><text class="state-text" x="1005" y="158">Signed</text><text class="state-sub" x="1005" y="177">GİB'e gönderime hazır</text>
             </svg></div>
-            <div class="callout callout-info"><b>İADEKODU sınırı:</b> Ayrı bir bekleme durumu, SMS Send/Complete çağrısı veya Submit endpointi yoktur. <code>SATIS</code> için İADEKODU geçersizdir.</div>
+            <div class="callout callout-warning"><b>SMS sınırı:</b> Kargolu <code>IADE</code> ve kargolu vekâletli <code>IADE</code> SMS ile doğrulanamaz; bu senaryolarda İADEKODU zorunludur, dolayısıyla her zaman üst (doğrudan) koldan geçer.</div>
+            <div class="callout callout-info"><b>İADEKODU sınırı:</b> Ayrı bir bekleme durumu, SMS Send/Complete çağrısı veya Submit endpointi yoktur — İADEKODU her zaman üst (doğrudan) koldan geçer. <code>SATIS</code> için İADEKODU geçersizdir.</div>
 
             <h3 id="h-dogrulama-yontemi-matrisi">Doğrulama Yöntemi Senaryo Matrisi</h3>
             <div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>SMS</th><th>İADEKODU</th></tr></thead><tbody>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-Arşiv Fatura Nedir? — e-Arşiv Fatura Entegrasyon Rehberi</title>
+<meta name="description" content="e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/earsiv-fatura-nedir.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="e-Arşiv Fatura Nedir? — e-Arşiv Fatura Entegrasyon Rehberi">
+<meta property="og:description" content="e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-arsiv-fatura/docs/earsiv-fatura-nedir.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="e-Arşiv Fatura Nedir? — e-Arşiv Fatura Entegrasyon Rehberi">
+<meta name="twitter:description" content="e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Arşiv Fatura</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="earsiv-fatura-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link active" href="earsiv-fatura-nedir.html">e-Arşiv Fatura Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Uygulama</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="iptal-itiraz-durum-takibi.html">İptal ve İtiraz Durum Takibi</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Portal API Endpoint Referansı</a>
+<a class="docs-nav-link" href="request-ornekleri.html">Request Örnekleri</a>
+<a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Başlangıç</p><h1>e-Arşiv Fatura Nedir?</h1><p class="docs-lead">e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.</p></header>
+<!-- vbt:article-header:end -->
+<section id="earsiv-fatura-nedir">
+<h3 id="h-temel-kavram">Temel Kavram</h3><p>e-Arşiv Fatura, <strong>e-Fatura uygulamasına kayıtlı olmayan alıcılara</strong> (vergi mükellefi veya vergi mükellefi olmayan gerçek/tüzel kişilere) düzenlenen faturaların elektronik ortamda oluşturulması, iletilmesi, muhafazası ve GİB'e raporlanmasını kapsar. Alıcı: e-Fatura sistemine kayıtlı olmayan herkes — nihai tüketiciler, e-Fatura'ya kayıtlı olmayan diğer vergi mükellefleri.</p><p>VUK Genel Tebliği (Sıra No: 509, madde IV.2.1) uyarınca <strong>e-Arşiv Fatura yeni bir belge türü değildir</strong>; kağıt ortamdaki "Fatura" belgesiyle aynı hukuki niteliklere sahiptir. Teknik olarak UBL 2.1 <strong>Invoice</strong> belge tipiyle üretilir; e-Fatura ile aynı belge tipini paylaşır, ayrım <code>ProfileId</code> alanındadır.</p><div class="callout callout-info"><b>💡 Örnek:</b> Bir e-ticaret firması, e-Fatura sistemine kayıtlı olmayan bir bireysel müşteriye online satış yapıyor. Müşteri e-Fatura mükellefi olmadığı için firma faturayı <code>ProfileId=EARSIVFATURA</code> ile e-Arşiv Fatura olarak düzenler.</div>
+<h3 id="h-belge-tipi">Belge Tipi</h3>
+<p>Belge tipi, faturanın GİB ve UBL tarafındaki kimliğini belirler; <code>ProfileId</code> alanı e-Fatura ile e-Arşiv Fatura arasındaki tek teknik ayrım noktasıdır.</p><div class="table-wrapper"><table><thead><tr><th>ProfileId</th><th>İş Anlamı</th></tr></thead><tbody><tr><td><code>EARSIVFATURA</code></td><td>e-Fatura uygulamasına kayıtlı olmayan alıcılara düzenlenen e-Arşiv Fatura</td></tr><tr><td><code>TICARIFATURA</code> / <code>TEMELFATURA</code></td><td>Diğer e-Fatura mükelleflerine düzenlenen fatura (bu rehberin kapsamı dışında)</td></tr></tbody></table></div>
+<h3 id="h-iki-ayri-xml">İki Ayrı XML</h3>
+<p>Belge XML'i ve rapor XML'i aynı sürecin farklı çıktılarıdır; biri belgeyi temsil eder, diğeri GİB'e yapılan günlük toplu bildirimi taşır.</p><div class="table-wrapper"><table><thead><tr><th>XML</th><th>Amaç</th><th>Standart</th><th>Üretim</th></tr></thead><tbody><tr><td><strong>UBL XML</strong></td><td>Her fatura için — imzalanır, saklanır, GİB'e SOAP ile gönderilir</td><td>UBL 2.1 Invoice</td><td>Anlık</td></tr><tr><td><strong>eArşiv Rapor XML</strong></td><td>Günün geçerli/iptal/itiraz faturalarının toplu GİB bildirimi (<code>eArsivRaporu</code>)</td><td>e-Arşiv XSD</td><td>Günlük job</td></tr></tbody></table></div>
+<h3 id="h-teknik-kimlik">Teknik Kimlik</h3><p><code>ProfileId</code> alanı GİB standardı gereği sabit bir değer taşır; entegratörün literal olarak göndermesi gereken değer aşağıdadır (<code>InvoiceProfile.EarsivFatura</code> enum karşılığı).</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Sabit Değer</th></tr></thead><tbody><tr><td><code>ProfileId</code></td><td><code>EARSIVFATURA</code></td></tr></tbody></table></div><div class="callout callout-warning"><b>Alıcı uygunluk kontrolü — üç olası hata:</b> Alıcının VKN/TCKN'si GİB e-Fatura mükellefleri arasında kayıtlıysa ve fatura tarihi bu kayıt tarihinden sonraysa, <code>EARSIVFATURA</code> ile fatura kesilemez; platform bu isteği <code>INV0221</code> hata koduyla reddeder ("Alıcı bilgisindeki VKN GİB e-Fatura mükelleflerinde kayıtlı olduğundan e-Arşiv Fatura kesilemez."). Alıcı GİB e-Fatura mükellefi değilken <code>TICARIFATURA</code>/<code>TEMELFATURA</code> gönderilirse <code>INV0220</code> hatası döner. Üçüncü bir durum da vardır: alıcı GİB e-Fatura mükellefiyken fatura tarihinden <strong>sonra</strong> bu kaydı almışsa (yani fatura tarihinde henüz mükellef değilken <code>TICARIFATURA</code> gönderilmişse) <code>INV0229</code> hatası döner ("Alıcı fatura tarihinden sonraki saatlerde/günlerde e-fatura mükellefi olmuştur!"). Bkz. <a href="kullanim-senaryolari.html">Kullanım Senaryoları</a>.</div>
+<h3 id="h-yasam-dongusu">Belge Yaşam Döngüsü</h3>
+<p>Fatura yaşam döngüsü, entegratörün gönderdiği verinin platformda XML üretimi, imza ve günlük rapor hazırlığına nasıl ilerlediğini gösterir.</p><div class="diagram-wrapper"><svg viewBox="0 0 890 170" xmlns="http://www.w3.org/2000/svg"><style>.diagram-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:10}.diagram-brand-box{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.5;rx:10}.diagram-success-box{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:10}.diagram-main-text{fill:var(--svg-text);font:600 11px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}.diagram-muted-text{fill:var(--svg-muted);font:10px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}.diagram-connector{stroke:var(--svg-line);stroke-width:1.4;fill:none;stroke-dasharray:6 4;animation:dash .8s linear infinite}.diagram-arrow-head{fill:var(--svg-line)}</style><defs><marker id="ea-lifecycle-arrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" class="diagram-arrow-head"/></marker></defs><rect class="diagram-box" x="5" y="25" width="115" height="44"/><text class="diagram-main-text" x="62" y="42">API Request</text><text class="diagram-muted-text" x="62" y="58">(JSON)</text><path class="diagram-connector" d="M120,47 L153,47" marker-end="url(#ea-lifecycle-arrow)"/><rect class="diagram-box" x="158" y="25" width="140" height="44"/><text class="diagram-main-text" x="228" y="40">Alıcı Uygunluk</text><text class="diagram-muted-text" x="228" y="57">GİB kullanıcı kontrolü</text><path class="diagram-connector" d="M298,47 L331,47" marker-end="url(#ea-lifecycle-arrow)"/><rect class="diagram-brand-box" x="336" y="25" width="140" height="44"/><text class="diagram-main-text" x="406" y="47">UBL XML Üret</text><path class="diagram-connector" d="M476,47 L509,47" marker-end="url(#ea-lifecycle-arrow)"/><rect class="diagram-box" x="514" y="25" width="130" height="44"/><text class="diagram-main-text" x="579" y="47">İmza Kuyruğu</text><path class="diagram-connector" d="M644,47 L677,47" marker-end="url(#ea-lifecycle-arrow)"/><rect class="diagram-success-box" x="682" y="25" width="128" height="44"/><text class="diagram-main-text" x="746" y="40" style="fill:var(--svg-ok-s)">Signed ✓</text><text class="diagram-muted-text" x="746" y="57">GİB'e SOAP ile gönderim</text><path class="diagram-connector" d="M746,69 L746,105" marker-end="url(#ea-lifecycle-arrow)"/><rect class="diagram-box" x="631" y="110" width="230" height="44"/><text class="diagram-main-text" x="746" y="127">eArşiv Rapor XML</text><text class="diagram-muted-text" x="746" y="143">Günlük job (geçerli/iptal/itiraz)</text><text class="diagram-muted-text" x="62" y="16" style="font-style:italic">Entegratör tetikler</text><text class="diagram-muted-text" x="746" y="100" style="font-style:italic">Platform otomatik yönetir</text></svg></div>
+<h3 id="h-iptal-akisi">İptal Akışı</h3>
+<p>İptal akışı, belgenin durum modeline (<code>EArchiveDocumentGIBStatusType</code>) göre ilerler; süre bazlı bir kısıt değildir. İtiraz için de aynı durum modeli kullanılır. Ayrıntılar için <a href="iptal-itiraz-durum-takibi.html">İptal ve İtiraz Durum Takibi</a> sayfasına bakın.</p><div class="diagram-wrapper"><svg viewBox="0 0 850 110" xmlns="http://www.w3.org/2000/svg"><style>.cancel-flow-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5;rx:8}.cancel-flow-brand{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.5;rx:8}.cancel-flow-success{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.5;rx:8}.cancel-flow-main-text{fill:var(--svg-text);font:600 11px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}.cancel-flow-muted-text{fill:var(--svg-muted);font:8.5px Inter,system-ui,sans-serif;text-anchor:middle}.cancel-flow-connector{stroke:var(--svg-line);stroke-width:1.2;fill:none;stroke-dasharray:5 3;animation:dash 1s linear infinite}</style><defs><marker id="ea-cancel-flow-arrow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs><rect class="cancel-flow-box" x="5" y="25" width="190" height="52" rx="8"/><text class="cancel-flow-main-text" x="100" y="45">İptal Talebi</text><text class="cancel-flow-muted-text" x="100" y="63">CancelOutgoingEArchiveInvoice</text><path class="cancel-flow-connector" d="M195,51 L220,51" marker-end="url(#ea-cancel-flow-arrow)"/><rect class="cancel-flow-brand" x="225" y="25" width="200" height="52" rx="8"/><text class="cancel-flow-main-text" x="325" y="45">Talep Alındı</text><text class="cancel-flow-muted-text" x="325" y="63">CancellingObjectingRequested (1)</text><path class="cancel-flow-connector" d="M425,51 L450,51" marker-end="url(#ea-cancel-flow-arrow)"/><rect class="cancel-flow-brand" x="455" y="25" width="220" height="52" rx="8"/><text class="cancel-flow-main-text" x="565" y="45">Yanıt Bekleniyor</text><text class="cancel-flow-muted-text" x="565" y="63">WaitingResponseFromReceiver (3)</text><path class="cancel-flow-connector" d="M675,51 L700,51" marker-end="url(#ea-cancel-flow-arrow)"/><rect class="cancel-flow-success" x="705" y="25" width="140" height="52" rx="8"/><text class="cancel-flow-main-text" x="775" y="45" style="fill:var(--svg-ok-s)">Tamamlandı ✓</text><text class="cancel-flow-muted-text" x="775" y="63">Successful (5)</text></svg></div>
+<h3 id="h-olusturma-yontemi">Oluşturma Yöntemi</h3><p>Bir e-Arşiv Fatura, tam alan listesini içeren bir JSON gövdesiyle <code>AddOutgoingInvoice</code> endpointine <code>ProfileId=EARSIVFATURA</code> ile gönderilerek oluşturulur. Bu rehberin geri kalanı bu JSON akışına odaklanır; UBL/Excel ile oluşturma dahil diğer yollar için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> sayfasına bakabilirsiniz.</p>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<span></span>
+<a class="docs-page-link docs-page-next" href="gib-teknik-gereksinimleri.html"><span>Sonraki</span><strong>GİB Referansı</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Ara..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Arşiv Fatura Nedir?","text":"e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.","keywords":"Başlangıç e-Arşiv Fatura EARSIVFATURA","url":"earsiv-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR VUK 509","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal satış, internet satışı, ÖKC, tevkifat ve mükerrer/iade akışları için karar ağacı.","keywords":"Senaryolar internet satışı ÖKC tevkifat","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"İptal ve İtiraz Durum Takibi","text":"GİB Portal ile senkronize iptal/itiraz durum modeli, yasal süreler ve entegratör sorumlulukları.","keywords":"İptal İtiraz GİB Portal durum takibi","url":"iptal-itiraz-durum-takibi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın e-Arşiv Fatura grid, e-posta ve iptal/itiraz tamamlama akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal e-posta iptal itiraz","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL Invoice XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Arşiv Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>
