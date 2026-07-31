@@ -6,7 +6,7 @@
   "shortTitle": "e-Gider Pusulası",
   "description": "e-Gider Pusulası süreçlerinin mevzuata ve GİB teknik standartlarına uygun biçimde yürütülmesine yönelik entegrasyon, API ve uygulama referansı.",
   "eyebrow": "GİB UBL-TR Standardı V1.0",
-  "canonicalBase": "https://vbtyazilim.github.io/guides/e-gider-pusulasi/",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/",
   "templateVersion": "local-2026-07-08",
   "searchPlaceholder": "SATIS, IADE, kargo, vekalet, endpoint...",
   "searchMaxResults": 60,

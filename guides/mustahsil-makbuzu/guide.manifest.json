@@ -6,7 +6,7 @@
   "shortTitle": "e-Müstahsil Makbuzu",
   "description": "Tarımsal ürün alımlarında KDV mükellefi olmayan çiftçilerden yapılan alışlar için GİB standardında e-Müstahsil Makbuzu düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
   "eyebrow": "GİB e-Arşiv Belgesi (UBL CreditNote)",
-  "canonicalBase": "https://vbtyazilim.github.io/guides/mustahsil-makbuzu/",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/",
   "templateVersion": "local-2026-07-08",
   "searchPlaceholder": "Ara...",
   "searchMaxResults": 60,

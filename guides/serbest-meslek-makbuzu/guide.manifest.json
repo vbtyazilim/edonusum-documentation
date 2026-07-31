@@ -6,7 +6,7 @@
   "shortTitle": "e-Serbest Meslek Makbuzu",
   "description": "e-Serbest Meslek Makbuzu süreçleri için entegrasyon, API, belge teslimi ve GİB raporlama sorumluluklarını açıklayan uygulama rehberi.",
   "eyebrow": "GİB e-Arşiv",
-  "canonicalBase": "https://vbtyazilim.github.io/guides/serbest-meslek-makbuzu/",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/",
   "templateVersion": "local-2026-07-08",
   "searchPlaceholder": "e-SMM, endpoint, stopaj, tevkifat, PDF...",
   "searchMaxResults": 60,
