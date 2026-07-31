@@ -6,7 +6,7 @@
   "shortTitle": "e-Arşiv Fatura",
   "description": "e-Arşiv Fatura süreçlerinin VUK Genel Tebliği (Sıra No: 509) ve GİB e-Arşiv Teknik Kılavuzu'na uygun biçimde yürütülmesine yönelik entegrasyon, API ve uygulama referansı.",
   "eyebrow": "GİB e-Arşiv Teknik Kılavuzu V1.18",
-  "canonicalBase": "https://vbtyazilim.github.io/guides/e-arsiv-fatura/",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/",
   "templateVersion": "local-2026-07-08",
   "searchPlaceholder": "EARSIVFATURA, internet satışı, ÖKC, iptal, itiraz, endpoint...",
   "searchMaxResults": 60,

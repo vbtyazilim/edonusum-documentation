@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vbtyazilim.github.io/sitemap.xml
+Sitemap: https://vbtyazilim.github.io/edonusum-documentation/sitemap.xml

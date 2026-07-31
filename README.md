@@ -47,4 +47,4 @@ Entegrasyon sürecinde bir hata, eksik bilgi veya belirsizlikle karşılaşırsa
 
 Bu dokümantasyon müşteri erişimine açık statik dokümantasyon olarak yayınlanır:
 
-[https://vbtyazilim.github.io/](https://vbtyazilim.github.io/)
+[https://vbtyazilim.github.io/edonusum-documentation/](https://vbtyazilim.github.io/edonusum-documentation/)

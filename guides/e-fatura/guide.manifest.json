@@ -6,7 +6,7 @@
   "shortTitle": "e-Fatura",
   "description": "Temel Fatura, Ticari Fatura, İhracat, Yolcu Beraberinde Eşya, Kamu, Yatırım Teşvik, Hal Kayıt Sistemi, Enerji, İlaç/Tıbbi Cihaz ve İDİS profilleri için GİB standardında e-Fatura düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
   "eyebrow": "GİB e-Fatura Belgesi (UBL Invoice)",
-  "canonicalBase": "https://vbtyazilim.github.io/guides/e-fatura/",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/",
   "templateVersion": "local-2026-07-08",
   "searchPlaceholder": "TEMELFATURA, TICARIFATURA, İhracat, teşvik, endpoint...",
   "searchMaxResults": 60,
