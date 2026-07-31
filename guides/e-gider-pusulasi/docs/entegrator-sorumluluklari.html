@@ -119,11 +119,11 @@
 
             <h3 id="h-senaryo-hazirlik">Senaryo Bazlı Hazırlık Matrisi</h3>
             <p>Belge gönderilmeden önce doğrulama yöntemi ile senaryoya özgü alanlar birlikte hazırlanmalıdır.</p>
-            <div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Doğrulama</th><th>Ek bilgiler</th></tr></thead><tbody>
-                <tr><td><code>SATIS</code></td><td><code>SMS_PROVIDER</code> + <code>SMS</code></td><td><code>VerificationProvider</code> ve <code>VerificationInfo</code> eksiksiz gönderilmelidir.</td></tr>
-                <tr><td>Yüz yüze <code>IADE</code></td><td><code>SMS_PROVIDER</code> + <code>SMS</code> veya <code>IADE_PROVIDER</code> + <code>IADEKODU</code></td><td><code>ReturnedDocumentReference</code> gönderilmelidir.</td></tr>
-                <tr><td>Kargolu <code>IADE</code></td><td><code>IADE_PROVIDER</code> + <code>IADEKODU</code></td><td><code>ReturnedDocumentReference</code> ve <code>CargoCompanyCode</code> gönderilmelidir.</td></tr>
-                <tr><td>Vekaletli <code>IADE</code></td><td>Teslim biçiminin izin verdiği doğrulama yöntemi</td><td>Asıl alıcı korunmalı; <code>DelegateReceiver</code> kimlik tipi, kimlik değeri ve ad ile gönderilmelidir.</td></tr>
+            <div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Senaryo</th><th>Doğrulama</th><th>Ek bilgiler</th></tr></thead><tbody>
+                <tr><td data-label="Senaryo"><code>SATIS</code></td><td data-label="Doğrulama"><code>SMS_PROVIDER</code> + <code>SMS</code></td><td data-label="Ek bilgiler"><code>VerificationProvider</code> ve <code>VerificationInfo</code> eksiksiz gönderilmelidir.</td></tr>
+                <tr><td data-label="Senaryo">Yüz yüze <code>IADE</code></td><td data-label="Doğrulama"><code>SMS_PROVIDER</code> + <code>SMS</code> veya <code>IADE_PROVIDER</code> + <code>IADEKODU</code></td><td data-label="Ek bilgiler"><code>ReturnedDocumentReference</code> gönderilmelidir.</td></tr>
+                <tr><td data-label="Senaryo">Kargolu <code>IADE</code></td><td data-label="Doğrulama"><code>IADE_PROVIDER</code> + <code>IADEKODU</code></td><td data-label="Ek bilgiler"><code>ReturnedDocumentReference</code> ve <code>CargoCompanyCode</code> gönderilmelidir.</td></tr>
+                <tr><td data-label="Senaryo">Vekaletli <code>IADE</code></td><td data-label="Doğrulama">Teslim biçiminin izin verdiği doğrulama yöntemi</td><td data-label="Ek bilgiler">Asıl alıcı korunmalı; <code>DelegateReceiver</code> kimlik tipi, kimlik değeri ve ad ile gönderilmelidir.</td></tr>
             </tbody></table></div>
 
             <h3 id="h-metot-bazli-kurallar">Metot Bazlı Özel Kurallar</h3>
@@ -319,7 +319,7 @@
                 .ss{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}
                 .sl{stroke:var(--svg-line);stroke-width:1.1;fill:none;stroke-dasharray:4 3;animation:dash .9s linear infinite}
                 </style>
-                <defs><marker id="a4" markerWidth="5" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0,5 2,0 4" fill="var(--svg-line)"/></marker></defs>
+                <defs><marker id="a4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="var(--svg-line)"/></marker></defs>
                 <!-- SATIS lane -->
                 <text class="st" x="120" y="12" style="fill:var(--svg-brand-s)">SATIS</text>
                 <rect class="sb" x="30" y="20" width="180" height="26"/>

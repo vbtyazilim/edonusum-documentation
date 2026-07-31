@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sıkça Sorulan Sorular — e-Fatura Entegrasyon Rehberi</title>
+<meta name="description" content="Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-fatura/docs/sss.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Sıkça Sorulan Sorular — e-Fatura Entegrasyon Rehberi">
+<meta property="og:description" content="Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-fatura/docs/sss.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sıkça Sorulan Sorular — e-Fatura Entegrasyon Rehberi">
+<meta name="twitter:description" content="Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Fatura</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-fatura-nedir.html">Rehber</a><a href="api-temelleri.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-fatura-nedir.html">e-Fatura Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API Temelleri</div>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Giden Fatura</div>
+<a class="docs-nav-link" href="giden-fatura-senaryolari.html">Giden Fatura Senaryoları</a>
+<a class="docs-nav-link" href="giden-fatura-akisi.html">Giden Fatura Akışı</a>
+<a class="docs-nav-link" href="giden-fatura-sorumluluklari.html">Giden Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="giden-fatura-entegrator-api.html">Giden Fatura Entegratör API</a>
+<a class="docs-nav-link" href="giden-fatura-portal-api.html">Giden Fatura Portal API</a>
+<a class="docs-nav-link" href="giden-fatura-request-ornekleri.html">Giden Fatura Request Örnekleri</a>
+<a class="docs-nav-link" href="giden-fatura-json-ubl-mapping.html">Giden Fatura JSON → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Gelen Fatura</div>
+<a class="docs-nav-link" href="gelen-fatura-senaryolari.html">Gelen Fatura Senaryoları</a>
+<a class="docs-nav-link" href="gelen-fatura-akisi.html">Gelen Fatura Akışı</a>
+<a class="docs-nav-link" href="gelen-fatura-sorumluluklari.html">Gelen Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="gelen-fatura-entegrator-api.html">Gelen Fatura Entegratör API</a>
+<a class="docs-nav-link" href="gelen-fatura-portal-api.html">Gelen Fatura Portal API</a>
+<a class="docs-nav-link" href="gelen-fatura-islem-ornekleri.html">Gelen Fatura İşlem Örnekleri</a>
+<a class="docs-nav-link" href="gelen-fatura-ubl-api-mapping.html">Gelen Fatura UBL → API/ERP Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link active" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Sıkça Sorulan Sorular</h1><p class="docs-lead">Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="sss">
+<p>Bu sayfa hızlı karar vermek içindir. Profil ve alan kuralları için <a href="giden-fatura-senaryolari.html">Giden Fatura Senaryoları</a>, alınan belge kararları için <a href="gelen-fatura-senaryolari.html">Gelen Fatura Senaryoları</a>, ortak çağrı sözleşmesi için <a href="api-temelleri.html">API Temelleri</a>, endpointler için <a href="giden-fatura-entegrator-api.html">giden</a> ve <a href="gelen-fatura-entegrator-api.html">gelen Entegratör API</a>, hata ve durum değerleri için <a href="teknik-referans.html">Teknik Referans</a> esas alınmalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>İlk bakılacak bölüm</th></tr></thead><tbody>
+<tr><td>Profil veya fatura tipi seçimi</td><td><a href="giden-fatura-senaryolari.html#h-karar-agaci">Giden Fatura Karar Ağacı</a></td></tr>
+<tr><td>Eksik alan veya hata kodu</td><td><a href="teknik-referans.html#h-hata-kodlari">Hata ve Mesaj Kodları</a></td></tr>
+<tr><td>Giden belgenin bekleyen, onaylanan veya reddedilen durumu</td><td><a href="giden-fatura-akisi.html">Giden Fatura Akışı</a></td></tr>
+<tr><td>Gelen belge, ERP aktarımı veya kabul/red yanıtı</td><td><a href="gelen-fatura-akisi.html">Gelen Fatura Akışı</a></td></tr>
+<tr><td>Giden JSON alanının UBL karşılığı</td><td><a href="giden-fatura-json-ubl-mapping.html">Giden Fatura JSON → UBL Mapping</a></td></tr>
+<tr><td>Gelen UBL alanının API/ERP karşılığı</td><td><a href="gelen-fatura-ubl-api-mapping.html">Gelen Fatura UBL → API/ERP Mapping</a></td></tr>
+<tr><td>Giden faturada timeout, tekrar veya canlıya geçiş</td><td><a href="giden-fatura-sorumluluklari.html#h-giden-guvenli-gonderim">Güvenli Gönderim</a></td></tr>
+<tr><td>Gelen faturada tekilleştirme, yanıt veya ERP mutabakatı</td><td><a href="gelen-fatura-sorumluluklari.html#h-gelen-alma-tekillestirme">Belge Alma ve Tekilleştirme</a></td></tr>
+</tbody></table></div>
+
+<h2 id="sss-musteri">Müşteri SSS</h2>
+<p>Belgenin türü, sonucu ve günlük kullanımına ilişkin sorular.</p>
+
+<details class="example-details"><summary>e-Fatura ile e-Arşiv Fatura arasındaki fark nedir?</summary><div class="example-body"><p>İkisi de UBL Invoice belgesini kullanır. e-Fatura, GİB e-Fatura sistemine kayıtlı alıcıya GİB üzerinden iletilir; alıcı kayıtlı değilse e-Arşiv Fatura süreci değerlendirilir. Bu rehber e-Arşiv dışındaki 10 e-Fatura profilini kapsar. Ayrım için <a href="e-fatura-nedir.html#h-temel-kavram">Temel Kavram</a> bölümüne bakın.</p></div></details>
+
+<details class="example-details"><summary>Alıcının e-Fatura mükellefi olup olmadığını nasıl anlarım?</summary><div class="example-body"><p>Alıcının VKN/TCKN bilgisi GİB e-Fatura kullanıcı kaydıyla ve fatura tarihiyle birlikte kontrol edilir. Kayıt bulunamazsa veya mükellefiyet başlangıcı fatura tarihinden sonraysa e-Fatura oluşturulamaz. Entegratör bunu belgeyi göndermeden önce mükellef sorgusuyla doğrulamalıdır.</p></div></details>
+
+<details class="example-details"><summary>Hangi e-Fatura profilini seçmeliyim?</summary><div class="example-body"><p>Profil; işlemin ticari niteliğine ve alıcıya göre seçilir. Genel tek taraflı akışta <code>TEMELFATURA</code>, alıcı kabul/red yanıtı beklenen ticari akışta <code>TICARIFATURA</code>; ihracat, kamu, enerji, HKS, İDİS ve diğer özel işlemlerde kendi profilleri kullanılır. Kesin seçim için <a href="giden-fatura-senaryolari.html#h-karar-agaci">giden fatura profil karar ağacını</a> izleyin.</p></div></details>
+
+<details class="example-details"><summary>TEMELFATURA ile TICARIFATURA arasındaki temel fark nedir?</summary><div class="example-body"><p><code>TEMELFATURA</code> tek taraflı teslim akışıdır; alıcının uygulama yanıtı beklenmez. <code>TICARIFATURA</code> iki taraflıdır ve alıcı kabul veya red kararı verir. Belge alanları benzer olsa da sonuç akışı aynı değildir.</p></div></details>
+
+<details class="example-details"><summary>TEMELFATURA olarak düzenlenen kamu faturasında ek kural uygulanır mı?</summary><div class="example-body"><p>Evet. Alıcı kamu mükellefiyse geçerli Türkiye IBAN'ı, hesap para birimi ve gerekli taraf bilgileri kontrol edilir. Bu nedenle yalnızca profil adına bakarak kamu alanları boş bırakılamaz. Ayrıntı için <a href="giden-fatura-senaryolari.html#h-kamu">Kamu senaryosuna</a> bakın.</p></div></details>
+
+<details class="example-details"><summary>Fatura neden oluşturulduğu anda nihai görünmüyor?</summary><div class="example-body"><p>Belge oluşturma, imzalama, GİB'e iletim, alıcıya teslim ve gerekiyorsa kabul/red birbirini izleyen ayrı aşamalardır. İlk başarılı cevap yalnızca belgenin platform tarafından kabul edildiğini gösterebilir; nihai sonuç ETTN ile durum sorgulanarak izlenir. Geçiş sırası <a href="giden-fatura-akisi.html">Giden Fatura Akışı</a>, enumların tek tek anlamı <a href="teknik-referans.html#h-durum-kodlari">Belge Durum Kodları</a> bölümündedir.</p></div></details>
+
+<details class="example-details"><summary>Gelen her e-Faturayı kabul veya reddetmem gerekir mi?</summary><div class="example-body"><p>Hayır. <code>TICARIFATURA</code>, <code>YOLCUBERABERFATURA</code> ve <code>IHRACAT</code> iki taraflı yanıt akışına girer. Diğer profiller teslim sonucuna göre otomatik ilerler; gereksiz kabul/red yanıtı gönderilmemelidir.</p></div></details>
+
+<details class="example-details"><summary>Red, iptal ve itiraz aynı işlem midir?</summary><div class="example-body"><p>Hayır. Red, yanıt bekleyen gelen faturaya verilen uygulama yanıtıdır. İptal, desteklenen profil ve durumdaki bir belgenin GİB Portal'daki iptal sonucunun platforma yansıtılmasıdır. İtiraz ise ayrı bir belge/tarih/açıklama ilişkisiyle kaydedilen itiraz sürecidir. Kullanılacak yol belgenin yönüne, profiline ve mevcut durumuna göre belirlenir.</p></div></details>
+
+<details class="example-details"><summary>Kesilmiş bir e-Faturayı doğrudan iptal edebilir miyim?</summary><div class="example-body"><p>Doğrudan iptal işaretleme yalnızca <code>TemelFatura</code> ve <code>IlacTibbiCihaz</code> profillerinde desteklenir. Diğer profillerde red veya itiraz gibi uygulanabilir iş akışı değerlendirilmelidir. Yön bazlı ön koşullar için <a href="giden-fatura-sorumluluklari.html#h-giden-iptal-itiraz">Giden Fatura İptal ve İtiraz Sorumluluğu</a> bölümüne bakın.</p></div></details>
+
+<details class="example-details"><summary>Gönderilmiş faturadaki bir alanı sonradan değiştirebilir miyim?</summary><div class="example-body"><p>Güncelleme, belge kesinleşmeden önceki düzeltmeler içindir. GİB'e gönderilmiş veya nihai duruma ulaşmış belge üzerinde alan değişikliği yapılmaz; mevcut duruma uygun red, iptal, itiraz veya yeni belge süreci değerlendirilir.</p></div></details>
+
+<details class="example-details"><summary>UBL XML ile PDF arasındaki fark nedir?</summary><div class="example-body"><p>UBL XML faturanın yapılandırılmış elektronik belgesidir. PDF veya HTML görünüm, bu belgenin insan tarafından okunabilen sunumudur. Arşivleme sürecinde yalnızca PDF'e dayanılmamalı; UBL/XML de ETTN ve fatura numarasıyla ilişkilendirilmelidir.</p></div></details>
+
+<details class="example-details"><summary>ETTN ile fatura numarası aynı şey midir?</summary><div class="example-body"><p>Hayır. ETTN/UUID belgenin sistemler arası tekil teknik kimliğidir; fatura numarası ise ticari belge numarasıdır. Entegrasyon ve durum takibinde ETTN, muhasebe ve kullanıcı gösteriminde çoğunlukla fatura numarası kullanılır; ikisi birlikte saklanmalıdır.</p></div></details>
+
+<details class="example-details"><summary>Faturanın PDF, HTML veya XML çıktısını tekrar alabilir miyim?</summary><div class="example-body"><p>Evet. Giden ve gelen faturalar için ayrı PDF, HTML ve XML/UBL çıktı endpointleri vardır. Giden belge seçenekleri <a href="giden-fatura-entegrator-api.html#h-giden-sorgu-cikti">Sorgulama ve Belge Çıktıları</a>, gelen belge seçenekleri <a href="gelen-fatura-entegrator-api.html#h-gelen-ciktilar">XML, PDF, HTML ve Belge Paketi</a> bölümlerinde açıklanır.</p></div></details>
+
+<h2 id="sss-entegrator">Entegratör SSS</h2>
+<p>API çağrı sırası, veri sözleşmesi, durum yönetimi ve üretim işletimine ilişkin sorular.</p>
+
+<details class="example-details"><summary>e-Fatura entegrasyonuna hangi sırayla başlamalıyım?</summary><div class="example-body"><p>Önerilen sıra: token alma, alıcı mükellefiyetini ve etiketini doğrulama, profile uygun request hazırlama, önizleme, oluşturma, ETTN'yi saklama, durum takibi, gelen faturaları alma ve ERP mutabakatı. Tam akış <a href="e-fatura-nedir.html#h-entegrasyon-yol-haritasi">Uçtan Uca Entegrasyon Yol Haritası</a> bölümündedir.</p></div></details>
+
+<details class="example-details"><summary>API isteklerinde hangi kimlik doğrulama bilgisi kullanılır?</summary><div class="example-body"><p><code>POST /api/Account/Token</code> çağrısından alınan token, sonraki isteklerin <code>VbtAuthorization</code> header'ında gönderilir. Token veya parola loglara, hata mesajlarına ve örnek payload'lara yazılmamalıdır.</p></div></details>
+
+<details class="example-details"><summary>Alıcı VKN/TCKN ve etiketini ne zaman doğrulamalıyım?</summary><div class="example-body"><p>Fatura oluşturulmadan önce doğrulanmalıdır. Mükellefiyet yalnızca VKN/TCKN varlığı değildir; fatura tarihi mükellefiyet başlangıcıyla uyumlu olmalı, gönderilen <code>ReceiverIdentifier</code> ilgili mükellefin kayıtlı etiketlerinden biri olmalıdır.</p></div></details>
+
+<details class="example-details"><summary>ProfileId ve InvoiceTypeCode neden birlikte değerlendirilir?</summary><div class="example-body"><p><code>ProfileId</code> iş senaryosunu, <code>InvoiceTypeCode</code> belgenin satış, iade, istisna, tevkifat gibi türünü belirler. Her profil bütün türleri kabul etmez. Geçerli kombinasyonlar ve profile özgü zorunlu alanlar <a href="giden-fatura-senaryolari.html#h-alan-zorunluluk-matrisi">Alan Zorunluluk Matrisi</a> içinde yer alır.</p></div></details>
+
+<details class="example-details"><summary>JSON, düz XML ve hazır UBL yollarından hangisini seçmeliyim?</summary><div class="example-body"><p>Platformun modeli UBL'ye dönüştürmesini istiyorsanız <code>AddOutgoingInvoice</code>; düz XML sözleşmesini kullanıyorsanız <code>AddOutgoingInvoiceByXml</code>; kendi ürettiğiniz geçerli UBL Invoice belgesini gönderecekseniz <code>AddOutgoingInvoiceByUbl</code> kullanılır. Aynı belge için bu yollar birlikte kullanılmaz.</p></div></details>
+
+<details class="example-details"><summary>OutgoingInvoicePreview ne zaman kullanılmalıdır?</summary><div class="example-body"><p>Belge kaydedilmeden önce, gerçek request gövdesinin doğrulama ve görsel sonucunu kontrol etmek için kullanılmalıdır. Preview başarısı oluşturma çağrısının yerini almaz; yalnızca aynı verinin üretime gitmeden önce sorunlarını yakalamaya yardımcı olur.</p></div></details>
+
+<details class="example-details"><summary>HTTP 200 cevabı fatura işleminin başarılı olduğu anlamına gelir mi?</summary><div class="example-body"><p>Tek başına başarılı olduğu anlamına gelmez. Response gövdesindeki <code>HasError</code>, <code>Errors[]</code>, ETTN ve işlem verileri birlikte değerlendirilmelidir. Ayrıca oluşturma başarısı nihai GİB/alıcı sonucu değildir; belge durumu sonradan sorgulanır.</p></div></details>
+
+<details class="example-details"><summary>Oluşturma çağrısı timeout olursa aynı faturayı tekrar gönderebilir miyim?</summary><div class="example-body"><p>Önce sonucu belirsiz kabul edin. <code>InvoiceExternalId</code> ve varsa ETTN ile mevcut kaydı sorgulamadan yeni ETTN üreterek tekrar göndermek mükerrer belge riski yaratır. Güvenli tekrar yaklaşımı <a href="giden-fatura-sorumluluklari.html#h-giden-guvenli-gonderim">Güvenli Gönderim ve Tekilleştirme</a> bölümündedir.</p></div></details>
+
+<details class="example-details"><summary>InvoiceExternalId ve ETTN'yi neden birlikte saklamalıyım?</summary><div class="example-body"><p><code>InvoiceExternalId</code> yerel ERP kaydıyla korelasyon sağlar; ETTN platform, GİB ve alıcı arasındaki teknik belge kimliğidir. Timeout, tekrar, destek ve mutabakat işlemlerinde iki kimliğin eşleştirilmiş olması belgenin güvenle bulunmasını sağlar.</p></div></details>
+
+<details class="example-details"><summary>SendOutgoingInvoiceToGib her oluşturma sonrasında çağrılmalı mı?</summary><div class="example-body"><p>Hayır. Otomatik gönderim kullanılan sözleşmelerde oluşturma sonrasındaki imzalama ve gönderim platform tarafından ilerler. Bu endpoint yalnızca ayrıca kararlaştırılmış manuel gönderim akışında kullanılmalıdır; aynı ETTN için kör biçimde tekrarlanmamalıdır.</p></div></details>
+
+<details class="example-details"><summary>Giden faturaların durumunu toplu nasıl izlerim?</summary><div class="example-body"><p><code>GetOutgoingInvoicesStatus</code> çağrısına <code>EttnList</code> gönderilir. Her satır bağımsız değerlendirilir; bir belgenin başarılı olması listedeki diğerlerinin de başarılı olduğu anlamına gelmez. Durumların sırası ve güvenli tekrar davranışı <a href="giden-fatura-akisi.html">Giden Fatura Akışı</a> sayfasında yer alır.</p></div></details>
+
+<details class="example-details"><summary>Teknik durum ile kullanıcı durumu arasındaki fark nedir?</summary><div class="example-body"><p>Teknik durum imzalama, gönderim, GİB ve alıcı aşamalarını ayrıntılı gösterir. <code>*StatusForUser</code> ise ekranda ve iş akışında kullanılacak özet anlamı verir. Otomasyon teknik alanla, kullanıcı mesajı özet alanla yürütülmelidir.</p></div></details>
+
+<details class="example-details"><summary>Gelen faturaları ERP'ye artımlı nasıl alırım?</summary><div class="example-body"><p><code>GetIncomingInvoiceList</code> veya ayrıntı gerekiyorsa <code>GetDetailedIncomingInvoiceList</code> filtreli ve sayfalanmış biçimde kullanılır. Her ETTN yerel sistemde tekilleştirilir; aynı fatura sonraki sorguda yeniden geldiğinde ikinci bir muhasebe kaydı oluşturulmaz.</p></div></details>
+
+<details class="example-details"><summary>ERP işleme durumu ne zaman true yapılmalıdır?</summary><div class="example-body"><p><code>IsErpProcessed=true</code> yalnızca yerel ERP kaydı ve ona bağlı işlemler başarıyla tamamlandıktan sonra gönderilmelidir. Yerel transaction yarıda kaldıysa işlenmiş işareti verilmemeli; aksi halde belge sonraki aktarım denemelerinden düşebilir.</p></div></details>
+
+<details class="example-details"><summary>Gelen faturayı kabul veya reddetmek için hangi değerler gönderilir?</summary><div class="example-body"><p><code>ApproveOrRejectIncomingInvoice</code> request'inde <code>ForwardForApproveOrReject</code> alanı kabul için <code>ForwardForApprove</code>, red için <code>ForwardForReject</code> olur. <code>Ettn</code> zorunludur; açıklama gerektiğinde <code>ApplicationResponseNote</code> kullanılır. Çağrı sonrasında sonuç durum endpointinden izlenir.</p></div></details>
+
+<details class="example-details"><summary>Hangi profiller ApplicationResponse bekler?</summary><div class="example-body"><p><code>TICARIFATURA</code>, <code>YOLCUBERABERFATURA</code> ve <code>IHRACAT</code> iki taraflı yanıta gider. <code>TEMELFATURA</code>, <code>KAMU</code>, <code>HKS</code>, <code>ENERJI</code>, <code>ILAC_TIBBICIHAZ</code>, <code>YATIRIMTESVIK</code> ve <code>IDIS</code> için gereksiz uygulama yanıtı üretilmez.</p></div></details>
+
+<details class="example-details"><summary>PDF mi, HTML view mı, UBL XML mi saklamalıyım?</summary><div class="example-body"><p>ERP alanları için JSON detay modeli, kullanıcı gösterimi için HTML/PDF, elektronik belgenin aslı için UBL/XML kullanılır. Yasal ve teknik iz açısından UBL/XML ETTN ile saklanmalı; PDF tek başına asıl elektronik belge kabul edilmemelidir.</p></div></details>
+
+<details class="example-details"><summary>PricingCurrencyCode, TaxCurrencyCode ve PaymentAlternativeCurrencyCode UBL'de var mı?</summary><div class="example-body"><p>Evet; üç alanın da UBL Invoice içinde ayrı opsiyonel elemanı vardır. Ancak <code>AddOutgoingInvoice</code> JSON isteğinden platformun ürettiği UBL'ye şu anda aktarılmazlar. Hazır UBL gönderiminde kullanılabilirler. Ayrıntı <a href="giden-fatura-json-ubl-mapping.html#h-referans-tablo">giden fatura mapping tablosunda</a> ayrı satırlarda gösterilir.</p></div></details>
+
+<details class="example-details"><summary>Satır, vergi ve genel toplamları nasıl doğrulamalıyım?</summary><div class="example-body"><p>Miktar × birim fiyat, satır tutarıyla; satırların toplamı <code>LegalMonetaryTotal.LineExtensionAmount</code> ile; vergi hariç tutar + vergi toplamı, vergi dahil tutarla uyumlu olmalıdır. İskonto, artırım ve tevkifat varsa kendi matrah ve oranları da aynı para biriminde dengelenmelidir.</p></div></details>
+
+<details class="example-details"><summary>Neden farklı kurallar aynı SCHEME hata kodunu döndürüyor?</summary><div class="example-body"><p>Bazı profil, alan ve GİB şema kontrolleri ortak <code>SCHEME</code> kodunu kullanır. Bu nedenle yalnızca koda göre switch/case yapmak yeterli değildir; <code>ErrorMessage</code> ve mümkünse ilgili alan bağlamı birlikte değerlendirilmelidir. Hata katmanları <a href="teknik-referans.html#h-hata-kodlari">Teknik Referans</a> sayfasında ayrılmıştır.</p></div></details>
+
+<details class="example-details"><summary>İhracat faturasında hangi teslimat ve gümrük alanları zorunludur?</summary><div class="example-body"><p><code>IHRACAT</code> profilinde teslimat adresi, <code>INCOTERMS</code> bilgisi ve her ilgili kalemde 12 haneli sayısal GTİP kodu gerekir. Ayrıca ihracat alıcısı ve taraf kimlikleri profile uygun düzenlenmelidir. Tam liste <a href="giden-fatura-senaryolari.html#h-ihracat">İhracat senaryosundadır</a>.</p></div></details>
+
+<details class="example-details"><summary>HKS, İDİS ve Yatırım Teşvik profillerinde en sık unutulan alanlar nelerdir?</summary><div class="example-body"><p>HKS'de her kalemde 19 karakterli <code>KUNYENO</code>; İDİS'te <code>SE-</code> + 7 rakam biçiminde sevkiyat no ve kalemlerde <code>ETIKETNO</code>; Yatırım Teşvikte <code>YTBNO</code> şemalı 6 haneli belge numarası, belge tarihi ve uygun sınıflandırma kodu beklenir.</p></div></details>
+
+<details class="example-details"><summary>Bir faturayı Update ile mi yoksa yeni belgeyle mi düzeltmeliyim?</summary><div class="example-body"><p>Belge kesinleşmemiş ve güncellenebilir durumdaysa <code>UpdateOutgoingInvoice</code> veya karşılık gelen UBL/XML güncelleme yolu kullanılır. GİB'e iletilmiş ya da nihai sonuçlanmış belge doğrudan değiştirilmez; iş durumuna uygun yeni belge, red, iptal veya itiraz süreci seçilir.</p></div></details>
+
+<details class="example-details"><summary>İptal ve itiraz endpointlerinde belge nasıl bulunur?</summary><div class="example-body"><p>İptal request'i dış sistem referansı, ETTN veya fatura numarasıyla belgeyi tanımlar; itiraz request'i ETTN/UUID ile itiraz belgesi tarihi, numarası, türü ve açıklamasını taşır. Belge bulunamazsa işlem reddedilir; yön ve profil kısıtları ayrıca uygulanır.</p></div></details>
+
+<details class="example-details"><summary>Canlıya geçmeden önce hangi akışlar kanıtlanmalıdır?</summary><div class="example-body"><p>Kullanılan her profil için başarılı ve hatalı request; mükellef/etiket kontrolü; timeout sonrası mükerrerlik koruması ve giden durum takibi <a href="giden-fatura-sorumluluklari.html#h-giden-canliya-gecis">Giden Fatura Canlıya Geçiş Kontrolü</a> ile; gelen fatura tekilleştirme, kabul/red, XML/PDF arşivleme ve ERP mutabakatı ise <a href="gelen-fatura-sorumluluklari.html#h-gelen-canliya-gecis">Gelen Fatura Canlıya Geçiş Kontrolü</a> ile doğrulanmalıdır.</p></div></details>
+
+<details class="example-details"><summary>Loglarda hangi bilgiler tutulmalı, hangileri maskelenmelidir?</summary><div class="example-body"><p>Endpoint, zaman, süre, HTTP sonucu, ETTN, fatura numarası, dış referans ve hata kodu izlenebilir olmalıdır. Token, parola, kişisel kimlik bilgileri, banka bilgileri ve tam belge içeriği gereksiz yere loglanmamalı; ihtiyaç varsa maskeleme ve erişim kontrolü uygulanmalıdır.</p></div></details>
+
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="changelog.html"><span>Önceki</span><strong>Changelog</strong></a>
+<span></span>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="TEMELFATURA, TICARIFATURA, İhracat, teşvik, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Fatura Nedir?","text":"e-Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-Fatura Invoice ProfileID","url":"e-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura Senaryoları","text":"On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.","keywords":"Giden Fatura Senaryolar TEMELFATURA TICARIFATURA İhracat teşvik","url":"giden-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Akışı","text":"Giden e-Faturanın oluşturulmasından imzalama, GİB ve alıcı sonucuna; hata geri dönüşlerinden iptal ve itiraza kadar durum makinesi.","keywords":"Giden Fatura state machine durum GİB alıcı yanıtı","url":"giden-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Giden Fatura Sorumlulukları","text":"Giden fatura hazırlama, güvenli gönderim, durum takibi, mutabakat ve iptal/itiraz sorumlulukları.","keywords":"Giden Fatura Sorumluluklar entegratör platform mutabakat","url":"giden-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Entegratör API","text":"Giden faturayı doğrulama, oluşturma, güncelleme, gönderme, sorgulama ve durum takibi endpoint sözleşmeleri.","keywords":"Giden Fatura Entegratör API endpoint durum","url":"giden-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Portal API","text":"Portal giden fatura listesi, görüntüleme, e-posta, belge numarası ve mükellef sorgu endpointleri.","keywords":"Giden Fatura Portal API grid e-posta","url":"giden-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Request Örnekleri","text":"On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.","keywords":"Giden Fatura JSON request","url":"giden-fatura-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura JSON → UBL Mapping","text":"Giden fatura JSON alanlarının üretilen UBL Invoice XML içindeki karşılıkları.","keywords":"Giden Fatura JSON UBL XML mapping","url":"giden-fatura-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Senaryoları","text":"Gelen faturada otomatik sonuç, kabul/red uygulama yanıtı, ERP aktarımı, iptal ve itiraz senaryoları.","keywords":"Gelen Fatura Senaryolar ApplicationResponse kabul red ERP","url":"gelen-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Akışı","text":"Gelen e-Faturanın alınması, ERP'ye aktarılması, profile göre otomatik sonuç veya kabul/red uygulama yanıtı ve durum makinesi.","keywords":"Gelen Fatura state machine ApplicationResponse kabul red ERP","url":"gelen-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Sorumlulukları","text":"Gelen faturayı tekilleştirme, ERP'ye alma, uygulama yanıtı, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen Fatura Sorumluluklar tekilleştirme ERP uygulama yanıtı","url":"gelen-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Entegratör API","text":"Gelen faturayı listeleme, ayrıntılandırma, yanıtlama, durum sorgulama, ERP işleme ve çıktı alma endpointleri.","keywords":"Gelen Fatura Entegratör API endpoint ApplicationResponse","url":"gelen-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Portal API","text":"Portal gelen fatura listesi, görüntüleme, okundu bilgisi, e-posta, kabul/red ve itiraz endpointleri.","keywords":"Gelen Fatura Portal API kabul red itiraz","url":"gelen-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura İşlem Örnekleri","text":"Listeleme, durum, kabul/red, ERP işleme ve belge çıktısı için tam ve kopyalanabilir JSON örnekleri.","keywords":"Gelen Fatura JSON işlem","url":"gelen-fatura-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen Fatura UBL → API/ERP Mapping","text":"Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen Fatura UBL API ERP mapping","url":"gelen-fatura-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, alan kuralları ve sözleşme bakım notları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.","keywords":"SSS sorular durum timeout UBL iptal itiraz","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

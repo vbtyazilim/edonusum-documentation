@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "id": "e-fatura",
+  "dir": "e-fatura",
+  "title": "e-Fatura Entegrasyon Rehberi",
+  "shortTitle": "e-Fatura",
+  "description": "Temel Fatura, Ticari Fatura, İhracat, Yolcu Beraberinde Eşya, Kamu, Yatırım Teşvik, Hal Kayıt Sistemi, Enerji, İlaç/Tıbbi Cihaz ve İDİS profilleri için GİB standardında e-Fatura düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
+  "eyebrow": "GİB e-Fatura Belgesi (UBL Invoice)",
+  "canonicalBase": "https://vbtyazilim.github.io/guides/e-fatura/",
+  "templateVersion": "local-2026-07-08",
+  "searchPlaceholder": "TEMELFATURA, TICARIFATURA, İhracat, teşvik, endpoint...",
+  "searchMaxResults": 60,
+  "home": {
+    "title": "e-Fatura Entegrasyon Rehberi",
+    "description": "Temel Fatura, Ticari Fatura, İhracat, Yolcu Beraberinde Eşya, Kamu, Yatırım Teşvik, Hal Kayıt Sistemi, Enerji, İlaç/Tıbbi Cihaz ve İDİS profilleri için GİB standardında e-Fatura düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
+    "primaryAction": {
+      "target": "e-fatura-nedir",
+      "label": "Dokümanı inceleyin"
+    },
+    "announcement": {
+      "enabled": false
+    }
+  },
+  "sections": [
+    {
+      "label": "Başlangıç",
+      "pages": [
+        {
+          "slug": "e-fatura-nedir",
+          "title": "e-Fatura Nedir?",
+          "description": "e-Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.",
+          "eyebrow": "Başlangıç",
+          "keywords": ["Başlangıç", "e-Fatura", "Invoice", "ProfileID"],
+          "roles": ["guide-start"],
+          "homeCard": { "label": "Başlangıç" }
+        },
+        {
+          "slug": "gib-teknik-gereksinimleri",
+          "title": "GİB Referansı",
+          "description": "GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.",
+          "eyebrow": "Teknik Temel",
+          "keywords": ["Teknik Temel", "GİB", "UBL-TR"],
+          "homeCard": { "label": "Teknik Temel" }
+        }
+      ]
+    },
+    {
+      "label": "API Temelleri",
+      "pages": [
+        {
+          "slug": "api-temelleri",
+          "title": "API Temelleri",
+          "description": "Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.",
+          "eyebrow": "API Temelleri",
+          "keywords": ["API", "token", "VbtAuthorization", "ResponseModel", "ETTN"],
+          "roles": ["api"],
+          "homeCard": { "label": "API", "description": "Tüm giden ve gelen fatura çağrılarının ortak sözleşmesi." }
+        }
+      ]
+    },
+    {
+      "label": "Giden Fatura",
+      "pages": [
+        {
+          "slug": "giden-fatura-senaryolari",
+          "title": "Giden Fatura Senaryoları",
+          "description": "On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.",
+          "eyebrow": "Giden Fatura",
+          "keywords": ["Giden Fatura", "Senaryolar", "TEMELFATURA", "TICARIFATURA", "İhracat", "teşvik"],
+          "homeCard": { "label": "Giden Fatura", "description": "Profil seçimi, zorunlu alanlar ve oluşturma senaryoları." }
+        },
+        {
+          "slug": "giden-fatura-akisi",
+          "title": "Giden Fatura Akışı",
+          "description": "Giden e-Faturanın oluşturulmasından imzalama, GİB ve alıcı sonucuna; hata geri dönüşlerinden iptal ve itiraza kadar durum makinesi.",
+          "eyebrow": "Giden Fatura",
+          "keywords": ["Giden Fatura", "state machine", "durum", "GİB", "alıcı yanıtı"],
+          "homeCard": { "label": "Giden Fatura", "description": "Giden e-Fatura yaşam döngüsü ve durum geçişleri." }
+        },
+        {
+          "slug": "giden-fatura-sorumluluklari",
+          "title": "Giden Fatura Sorumlulukları",
+          "description": "Giden fatura hazırlama, güvenli gönderim, durum takibi, mutabakat ve iptal/itiraz sorumlulukları.",
+          "eyebrow": "Giden Fatura",
+          "keywords": ["Giden Fatura", "Sorumluluklar", "entegratör", "platform", "mutabakat"],
+          "homeCard": { "label": "Giden Fatura", "description": "Entegratör ve platform sorumluluklarının sınırları." }
+        },
+        {
+          "slug": "giden-fatura-entegrator-api",
+          "title": "Giden Fatura Entegratör API",
+          "description": "Giden faturayı doğrulama, oluşturma, güncelleme, gönderme, sorgulama ve durum takibi endpoint sözleşmeleri.",
+          "eyebrow": "Giden Fatura",
+          "keywords": ["Giden Fatura", "Entegratör API", "endpoint", "durum"],
+          "homeCard": { "label": "Giden Fatura", "description": "Giden fatura entegratör endpoint sözleşmeleri." }
+        },
+        {
+          "slug": "giden-fatura-portal-api",
+          "title": "Giden Fatura Portal API",
+          "description": "Portal giden fatura listesi, görüntüleme, e-posta, belge numarası ve mükellef sorgu endpointleri.",
+          "eyebrow": "Giden Fatura",
+          "keywords": ["Giden Fatura", "Portal API", "grid", "e-posta"],
+          "homeCard": { "label": "Giden Fatura", "description": "Portalın giden fatura işlemlerinde kullandığı endpointler." }
+        },
+        {
+          "slug": "giden-fatura-request-ornekleri",
+          "title": "Giden Fatura Request Örnekleri",
+          "description": "On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.",
+          "eyebrow": "Giden Fatura",
+          "keywords": ["Giden Fatura", "JSON", "request"],
+          "homeCard": { "label": "Giden Fatura", "description": "Kopyalanabilir giden fatura request örnekleri." }
+        },
+        {
+          "slug": "giden-fatura-json-ubl-mapping",
+          "title": "Giden Fatura JSON → UBL Mapping",
+          "description": "Giden fatura JSON alanlarının üretilen UBL Invoice XML içindeki karşılıkları.",
+          "eyebrow": "Giden Fatura",
+          "keywords": ["Giden Fatura", "JSON", "UBL", "XML", "mapping"],
+          "homeCard": { "label": "Giden Fatura", "description": "Giden fatura JSON alanlarının UBL karşılıkları." }
+        }
+      ]
+    },
+    {
+      "label": "Gelen Fatura",
+      "pages": [
+        {
+          "slug": "gelen-fatura-senaryolari",
+          "title": "Gelen Fatura Senaryoları",
+          "description": "Gelen faturada otomatik sonuç, kabul/red uygulama yanıtı, ERP aktarımı, iptal ve itiraz senaryoları.",
+          "eyebrow": "Gelen Fatura",
+          "keywords": ["Gelen Fatura", "Senaryolar", "ApplicationResponse", "kabul", "red", "ERP"],
+          "homeCard": { "label": "Gelen Fatura", "description": "Profil davranışları, kabul/red ve ERP senaryoları." }
+        },
+        {
+          "slug": "gelen-fatura-akisi",
+          "title": "Gelen Fatura Akışı",
+          "description": "Gelen e-Faturanın alınması, ERP'ye aktarılması, profile göre otomatik sonuç veya kabul/red uygulama yanıtı ve durum makinesi.",
+          "eyebrow": "Gelen Fatura",
+          "keywords": ["Gelen Fatura", "state machine", "ApplicationResponse", "kabul", "red", "ERP"],
+          "homeCard": { "label": "Gelen Fatura", "description": "Gelen e-Fatura, ERP ve kabul/red yaşam döngüsü." }
+        },
+        {
+          "slug": "gelen-fatura-sorumluluklari",
+          "title": "Gelen Fatura Sorumlulukları",
+          "description": "Gelen faturayı tekilleştirme, ERP'ye alma, uygulama yanıtı, güvenli tekrar ve mutabakat sorumlulukları.",
+          "eyebrow": "Gelen Fatura",
+          "keywords": ["Gelen Fatura", "Sorumluluklar", "tekilleştirme", "ERP", "uygulama yanıtı"],
+          "homeCard": { "label": "Gelen Fatura", "description": "Belge alma, karar verme ve ERP mutabakatı sorumlulukları." }
+        },
+        {
+          "slug": "gelen-fatura-entegrator-api",
+          "title": "Gelen Fatura Entegratör API",
+          "description": "Gelen faturayı listeleme, ayrıntılandırma, yanıtlama, durum sorgulama, ERP işleme ve çıktı alma endpointleri.",
+          "eyebrow": "Gelen Fatura",
+          "keywords": ["Gelen Fatura", "Entegratör API", "endpoint", "ApplicationResponse"],
+          "homeCard": { "label": "Gelen Fatura", "description": "Gelen fatura entegratör endpoint sözleşmeleri." }
+        },
+        {
+          "slug": "gelen-fatura-portal-api",
+          "title": "Gelen Fatura Portal API",
+          "description": "Portal gelen fatura listesi, görüntüleme, okundu bilgisi, e-posta, kabul/red ve itiraz endpointleri.",
+          "eyebrow": "Gelen Fatura",
+          "keywords": ["Gelen Fatura", "Portal API", "kabul", "red", "itiraz"],
+          "homeCard": { "label": "Gelen Fatura", "description": "Portalın gelen fatura işlemlerinde kullandığı endpointler." }
+        },
+        {
+          "slug": "gelen-fatura-islem-ornekleri",
+          "title": "Gelen Fatura İşlem Örnekleri",
+          "description": "Listeleme, durum, kabul/red, ERP işleme ve belge çıktısı için tam ve kopyalanabilir JSON örnekleri.",
+          "eyebrow": "Gelen Fatura",
+          "keywords": ["Gelen Fatura", "JSON", "işlem"],
+          "homeCard": { "label": "Gelen Fatura", "description": "Kopyalanabilir gelen fatura işlem örnekleri." }
+        },
+        {
+          "slug": "gelen-fatura-ubl-api-mapping",
+          "title": "Gelen Fatura UBL → API/ERP Mapping",
+          "description": "Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.",
+          "eyebrow": "Gelen Fatura",
+          "keywords": ["Gelen Fatura", "UBL", "API", "ERP", "mapping"],
+          "homeCard": { "label": "Gelen Fatura", "description": "Alınan UBL alanlarının API ve ERP karşılıkları." }
+        }
+      ]
+    },
+    {
+      "label": "Referans",
+      "pages": [
+        {
+          "slug": "teknik-referans",
+          "title": "Teknik Referans",
+          "description": "Enum değerleri, hata/mesaj kodları, alan kuralları ve sözleşme bakım notları.",
+          "eyebrow": "Referans",
+          "keywords": ["Referans", "enum", "hata kodları", "validasyon"],
+          "homeCard": { "label": "Referans" }
+        },
+        {
+          "slug": "changelog",
+          "title": "Changelog",
+          "description": "e-Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.",
+          "eyebrow": "Referans",
+          "keywords": ["Referans", "changelog", "değişiklik"],
+          "homeCard": { "label": "Referans" }
+        },
+        {
+          "slug": "sss",
+          "title": "Sıkça Sorulan Sorular",
+          "description": "Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.",
+          "eyebrow": "Referans",
+          "keywords": ["SSS", "sorular", "durum", "timeout", "UBL", "iptal", "itiraz"],
+          "roles": ["faq"],
+          "homeCard": { "label": "SSS" }
+        }
+      ]
+    }
+  ]
+}

@@ -5,10 +5,10 @@
 
 :root {
     --docs-topbar-height: 64px;
-    --docs-sidebar-width: 240px;
-    --docs-toc-width: 190px;
-    --docs-content-width: 740px;
-    --docs-shell-gap: clamp(2rem, 4vw, 4.5rem);
+    --docs-sidebar-width: 220px;
+    --docs-toc-width: 200px;
+    --docs-content-width: 1120px;
+    --docs-shell-gap: clamp(1.5rem, 2vw, 3rem);
 }
 
 .docs-page,
@@ -33,7 +33,7 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    width: min(calc(100% - 2rem), 1440px);
+    width: min(calc(100% - 2rem), 1840px);
     height: 100%;
     margin: 0 auto;
 }
@@ -108,10 +108,10 @@
 /* Three-column shell */
 .docs-shell {
     display: grid;
-    grid-template-columns: var(--docs-sidebar-width) minmax(0, var(--docs-content-width)) var(--docs-toc-width);
-    justify-content: center;
+    grid-template-columns: var(--docs-sidebar-width) minmax(0, 1fr) var(--docs-toc-width);
+    justify-content: stretch;
     gap: var(--docs-shell-gap);
-    width: min(calc(100% - 3rem), 1440px);
+    width: min(calc(100% - 2rem), 1840px);
     margin: 0 auto;
 }
 
@@ -253,6 +253,35 @@
 
 .docs-article > section > .callout {
     box-shadow: none;
+}
+
+/* Uzun teknik değerler hücreleri ezmek yerine tablo içinde yatay kaydırılır. */
+.docs-article .reference-table-wide {
+    min-width: 720px;
+    table-layout: auto;
+}
+
+.docs-article .reference-table-wide th:first-child,
+.docs-article .reference-table-wide td:first-child {
+    min-width: 9rem;
+}
+
+.docs-article .reference-table-wide code {
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+/* Akış diyagramları mobilde kırpılmak veya okunamayacak kadar küçülmek yerine kayar. */
+.docs-article .diagram-wrapper svg {
+    min-width: 640px;
+}
+
+.docs-article .diagram-wrapper svg :is(.diagram-connector, .cancel-flow-connector, .el) {
+    animation: none !important;
+    stroke-dasharray: none !important;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8 !important;
 }
 
 .docs-article .demo-output {
@@ -654,7 +683,7 @@
     transition: opacity .2s;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1500px) {
     .docs-shell {
         grid-template-columns: minmax(190px, 220px) minmax(0, 1fr);
         gap: clamp(1.5rem, 3vw, 3rem);

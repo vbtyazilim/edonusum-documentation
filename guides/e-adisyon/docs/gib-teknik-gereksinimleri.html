@@ -150,7 +150,8 @@
 </script>
 
 <h3 id="h-gib-rapor">GİB Rapor Alanları</h3>
-<p>Belge imzalandıktan sonra, diğer e-Arşiv modüllerinde olduğu gibi <code>BillGibReportCreateJob</code>/<code>SenderJob</code>/<code>ResponseJob</code> döngüsü belgeyi günlük GİB e-Arşiv raporuna dahil eder. Rapor alanlarının kesin XML şeması, GİB'in resmi e-Arşiv teknik kılavuzunda tanımlıdır (bkz. Resmi Kaynaklar).</p>
+<!-- vbt-source: Applications/API/VbtBill/VbtBill.Job/BillGibReportCreateJob.cs; Applications/API/VbtBill/VbtBill.Job/BillGibReportSenderJob.cs; Applications/API/VbtBill/VbtBill.Job/BillGibReportResponseJob.cs -->
+<p>Belge imzalandıktan sonra dönemsel GİB e-Arşiv raporuna dahil edilir. Raporun hazırlanması, iletilmesi ve sonucunun platforma yansıtılması VBT tarafından yönetilir. Rapor alanlarının kesin XML şeması GİB'in resmi e-Arşiv teknik kılavuzunda tanımlıdır (bkz. Resmi Kaynaklar).</p>
 
 <h3 id="h-iptal-rapor">İptal Raporu</h3>
 <p>İptal edilen bir belge, ayrı bir GİB iptal raporu döngüsüyle (<code>EArchiveCancelReportStatus</code>) bildirilir; bu döngü normal rapor döngüsünden bağımsız izlenir.</p>

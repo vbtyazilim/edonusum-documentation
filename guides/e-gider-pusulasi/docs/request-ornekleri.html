@@ -112,7 +112,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S1</span></summary>
                 <div class="example-body">
                     <p>KDV mükellefi olmayan gerçek kişiden hizmet alımı. <code>SMS_PROVIDER</code> + <code>SMS</code>.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-001",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "SATIS",
@@ -188,7 +188,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S3</span></summary>
                 <div class="example-body">
                     <p>Yabancı uyruklu kişiden hizmet alımı. <code>SchemeId = PASAPORTNO</code>.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-002",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "SATIS",
@@ -264,7 +264,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I1</span></summary>
                 <div class="example-body">
                     <p>Müşteri kasada, iade kodu doğrulanmış. <code>IADE_PROVIDER</code> + <code>IADEKODU</code>.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-041",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -345,7 +345,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I2</span></summary>
                 <div class="example-body">
                     <p>Satış fişine karşılık yüz yüze iade. Örnek 3 ile aynı, sadece <code>ReturnedDocumentReference</code> farklı.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-044",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -427,7 +427,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I3</span></summary>
                 <div class="example-body">
                     <p>Karşılığında belge yoktur. <code>DocumentNumber</code> boş bırakılır; T.C. vatandaşı için gerçek TCKN, yabancı uyruklu kişi için gerçek PASAPORTNO gönderilmelidir.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-045",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -508,7 +508,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I4</span></summary>
                 <div class="example-body">
                     <p>Yabancı uyruklu müşteri yüz yüze iade yapıyor. <code>SchemeId = PASAPORTNO</code>.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-046",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -590,7 +590,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I5</span></summary>
                 <div class="example-body">
                     <p>Kargo ile iade, vekil yok. <code>IADE_PROVIDER</code> + <code>IADEKODU</code> + <code>CargoCompanyCode</code>.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-043",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -673,7 +673,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I6</span></summary>
                 <div class="example-body">
                     <p>Kargo ile iade, alıcı yabancı. Kargo kuralları uyruğa bakılmaksızın geçerli.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-047",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -756,7 +756,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I8</span></summary>
                 <div class="example-body">
                     <p>Yüz yüze vekalet ile iade. <code>DelegateReceiver</code> dolu, <code>CargoCompanyCode</code> yok.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-039",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -843,7 +843,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I9</span></summary>
                 <div class="example-body">
                     <p>Orijinal alıcı TC vatandaşı, vekil yabancı uyruklu. Yüz yüze.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-048",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -930,7 +930,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10</span></summary>
                 <div class="example-body">
                     <p>En karmaşık kombinasyon: kargo + vekil + e-arşiv fatura.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-042",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -1018,7 +1018,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
                 <div class="example-body">
                     <p>Kargo + vekil + belgesiz iade. <code>DocumentNumber</code> boş bırakılır; alıcı için vatandaşlığa uygun gerçek TCKN veya PASAPORTNO gönderilmelidir.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-043",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -1104,7 +1104,7 @@
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
                 <div class="example-body">
                     <p>Kargo + vekil + satış fişi referansı ile iade.</p>
-                    <pre><code>{
+                    <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-033",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",

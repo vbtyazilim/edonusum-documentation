@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head><!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gelen Fatura UBL → API/ERP Mapping — e-Fatura Entegrasyon Rehberi</title>
+<meta name="description" content="Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-fatura/docs/gelen-fatura-ubl-api-mapping.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Gelen Fatura UBL → API/ERP Mapping — e-Fatura Entegrasyon Rehberi">
+<meta property="og:description" content="Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-fatura/docs/gelen-fatura-ubl-api-mapping.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gelen Fatura UBL → API/ERP Mapping — e-Fatura Entegrasyon Rehberi">
+<meta name="twitter:description" content="Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end --></head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Fatura</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-fatura-nedir.html">Rehber</a><a href="api-temelleri.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-fatura-nedir.html">e-Fatura Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API Temelleri</div>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Giden Fatura</div>
+<a class="docs-nav-link" href="giden-fatura-senaryolari.html">Giden Fatura Senaryoları</a>
+<a class="docs-nav-link" href="giden-fatura-akisi.html">Giden Fatura Akışı</a>
+<a class="docs-nav-link" href="giden-fatura-sorumluluklari.html">Giden Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="giden-fatura-entegrator-api.html">Giden Fatura Entegratör API</a>
+<a class="docs-nav-link" href="giden-fatura-portal-api.html">Giden Fatura Portal API</a>
+<a class="docs-nav-link" href="giden-fatura-request-ornekleri.html">Giden Fatura Request Örnekleri</a>
+<a class="docs-nav-link" href="giden-fatura-json-ubl-mapping.html">Giden Fatura JSON → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Gelen Fatura</div>
+<a class="docs-nav-link" href="gelen-fatura-senaryolari.html">Gelen Fatura Senaryoları</a>
+<a class="docs-nav-link" href="gelen-fatura-akisi.html">Gelen Fatura Akışı</a>
+<a class="docs-nav-link" href="gelen-fatura-sorumluluklari.html">Gelen Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="gelen-fatura-entegrator-api.html">Gelen Fatura Entegratör API</a>
+<a class="docs-nav-link" href="gelen-fatura-portal-api.html">Gelen Fatura Portal API</a>
+<a class="docs-nav-link" href="gelen-fatura-islem-ornekleri.html">Gelen Fatura İşlem Örnekleri</a>
+<a class="docs-nav-link active" href="gelen-fatura-ubl-api-mapping.html">Gelen Fatura UBL → API/ERP Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Gelen Fatura</p><h1>Gelen Fatura UBL → API/ERP Mapping</h1><p class="docs-lead">Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="gelen-fatura-ubl-api-mapping">
+<div class="callout callout-info"><b>Okuma yönü:</b> GİB'den alınan UBL <code>Invoice</code> ayrıştırılır ve gelen fatura ayrıntı response'una dönüştürülür. Operasyonel durum alanları UBL'den değil, platformdaki belge kaydından gelir.</div>
+
+<h2 id="h-gelen-mapping-kapsam">Mapping Kapsamı</h2>
+<div class="table-wrapper"><table><thead><tr><th>Veri kaynağı</th><th>API/ERP hedefi</th><th>Ne zaman kullanılır?</th></tr></thead><tbody><tr><td>UBL <code>Invoice</code></td><td>Belge, taraf, vergi, toplam ve kalem alanları</td><td>ERP fişi ve belge ayrıntısı oluşturulurken</td></tr><tr><td>Platform belge kaydı</td><td>Teknik/kullanıcı durumu, geliş tarihi, okundu ve ERP işleme bilgileri</td><td>Yaşam döngüsü, iş kuyruğu ve mutabakat yönetilirken</td></tr></tbody></table></div>
+
+<h2 id="h-gelen-belge-mapping">Belge Kimliği ve Temel Alanlar</h2>
+<div class="table-wrapper"><table class="mapping-table reference-table-wide"><thead><tr><th>UBL Invoice yolu</th><th>API response alanı</th><th>ERP kullanımı</th></tr></thead><tbody>
+<tr><td><code class="mapping-path"><span>cbc:ID</span></code></td><td><code>InvoiceNumber</code></td><td>Fatura numarası</td><!-- vbt-source: UblToResponseModelMapper.cs:190 --></tr>
+<tr><td><code class="mapping-path"><span>cbc:ProfileID</span></code></td><td><code>ProfileId</code></td><td>Senaryo ve uygulama yanıtı gereksinimi</td><!-- vbt-source: UblToResponseModelMapper.cs:191 --></tr>
+<tr><td><code class="mapping-path"><span>cbc:UUID</span></code></td><td><code>UUId</code></td><td>ETTN; tekilleştirme ve uçtan uca korelasyon</td><!-- vbt-source: UblToResponseModelMapper.cs:192 --></tr>
+<tr><td><code class="mapping-path"><span>cbc:IssueDate</span> + <wbr><span>cbc:IssueTime</span></code></td><td><code>IssueDate</code></td><td>Belge düzenleme tarihi ve saati</td><!-- vbt-source: UblToResponseModelMapper.cs:194 --></tr>
+<tr><td><code class="mapping-path"><span>cbc:InvoiceTypeCode</span></code></td><td><code>InvoiceTypeCode</code></td><td>Satış, iade, istisna ve diğer belge tipi ayrımı</td><!-- vbt-source: UblToResponseModelMapper.cs:195 --></tr>
+<tr><td><code class="mapping-path"><span>cbc:DocumentCurrencyCode</span></code></td><td><code>DocumentCurrencyCode</code></td><td>Belge ve muhasebe para birimi</td><!-- vbt-source: UblToResponseModelMapper.cs:196 --></tr>
+<tr><td><code class="mapping-path"><span>cbc:LineCountNumeric</span></code></td><td><code>LineCountNumeric</code></td><td>Beklenen kalem sayısı kontrolü</td><!-- vbt-source: UblToResponseModelMapper.cs:197 --></tr>
+<tr><td><code class="mapping-path"><span>cbc:Note[]</span></code></td><td><code>Note[]</code></td><td>Fatura notları</td><!-- vbt-source: UblToResponseModelMapper.cs:205 --></tr>
+</tbody></table></div>
+
+<h2 id="h-gelen-taraf-referans-mapping">Taraflar, Referanslar ve Teslimat</h2>
+<div class="table-wrapper"><table class="mapping-table reference-table-wide"><thead><tr><th>UBL Invoice yolu</th><th>API response alanı</th><th>İçerik</th></tr></thead><tbody>
+<tr><td><code class="mapping-path"><span>cac:AccountingSupplierParty</span></code></td><td><code>AccountingSupplierParty</code></td><td>Göndericinin kimlik, unvan, adres ve vergi bilgileri</td><!-- vbt-source: UblToResponseModelMapper.cs:198 --></tr>
+<tr><td><code class="mapping-path"><span>cac:AccountingCustomerParty</span></code></td><td><code>AccountingCustomerParty</code></td><td>Alıcının kimlik, unvan, adres ve vergi bilgileri</td><!-- vbt-source: UblToResponseModelMapper.cs:199 --></tr>
+<tr><td><code class="mapping-path"><span>cac:BuyerCustomerParty</span></code></td><td><code>BuyerCustomerParty</code></td><td>Alıcı tarafın profile özgü ek bilgileri</td><!-- vbt-source: UblToResponseModelMapper.cs:214 --></tr>
+<tr><td><code class="mapping-path"><span>cac:BillingReference[]</span></code></td><td><code>BillingReference[]</code></td><td>İlişkili fatura ve iade referansları</td><!-- vbt-source: UblToResponseModelMapper.cs:208 --></tr>
+<tr><td><code class="mapping-path"><span>cac:OrderReference</span></code></td><td><code>OrderReference</code></td><td>Sipariş numarası ve tarihi</td><!-- vbt-source: UblToResponseModelMapper.cs:209 --></tr>
+<tr><td><code class="mapping-path"><span>cac:AdditionalDocumentReference[]</span></code></td><td><code>AdditionalDocumentReference[]</code></td><td>Profile özgü veya destekleyici belge referansları</td><!-- vbt-source: UblToResponseModelMapper.cs:210 --></tr>
+<tr><td><code class="mapping-path"><span>cac:ContractDocumentReference[]</span></code></td><td><code>ContractDocumentReference[]</code></td><td>Sözleşme ve teşvik belgesi referansları</td><!-- vbt-source: UblToResponseModelMapper.cs:211 --></tr>
+<tr><td><code class="mapping-path"><span>cac:DespatchDocumentReference[]</span></code></td><td><code>DespatchDocumentReference[]</code></td><td>İrsaliye referansları</td><!-- vbt-source: UblToResponseModelMapper.cs:212 --></tr>
+<tr><td><code class="mapping-path"><span>cac:Delivery[]</span></code></td><td><code>Delivery[]</code></td><td>Teslim tarihi, adresi, taşıma ve teslim koşulları</td><!-- vbt-source: UblToResponseModelMapper.cs:227 --></tr>
+</tbody></table></div>
+
+<h2 id="h-gelen-tutar-mapping">Vergi, Toplam, Ödeme ve Kalemler</h2>
+<div class="table-wrapper"><table class="mapping-table reference-table-wide"><thead><tr><th>UBL Invoice yolu</th><th>API response alanı</th><th>ERP kontrolü</th></tr></thead><tbody>
+<tr><td><code class="mapping-path"><span>cac:AllowanceCharge[]</span></code></td><td><code>AllowanceCharge[]</code></td><td>Belge seviyesindeki indirim ve artırımlar</td><!-- vbt-source: UblToResponseModelMapper.cs:200 --></tr>
+<tr><td><code class="mapping-path"><span>cac:TaxTotal[]</span></code></td><td><code>TaxTotal[]</code></td><td>Vergi toplamı ve vergi alt kırılımları</td><!-- vbt-source: UblToResponseModelMapper.cs:202 --></tr>
+<tr><td><code class="mapping-path"><span>cac:WithholdingTaxTotal[]</span></code></td><td><code>WithholdingTaxTotal[]</code></td><td>Tevkifat toplamları</td><!-- vbt-source: UblToResponseModelMapper.cs:203 --></tr>
+<tr><td><code class="mapping-path"><span>cac:LegalMonetaryTotal</span></code></td><td><code>LegalMonetaryTotal</code></td><td>Vergi hariç/dahil, iskonto ve ödenecek toplam mutabakatı</td><!-- vbt-source: UblToResponseModelMapper.cs:201 --></tr>
+<tr><td><code class="mapping-path"><span>cac:PaymentMeans[]</span></code></td><td><code>PaymentMeans[]</code></td><td>Ödeme yöntemi, vade ve hesap bilgileri</td><!-- vbt-source: UblToResponseModelMapper.cs:225 --></tr>
+<tr><td><code class="mapping-path"><span>cac:PaymentTerms[]</span></code></td><td><code>PaymentTerms[]</code></td><td>Ödeme koşulları</td><!-- vbt-source: UblToResponseModelMapper.cs:226 --></tr>
+<tr><td><code class="mapping-path"><span>cac:InvoiceLine[]</span></code></td><td><code>InvoiceLine[]</code></td><td>Kalem kimliği, miktar, fiyat, vergi, ürün ve teslimat bilgileri</td><!-- vbt-source: UblToResponseModelMapper.cs:204 --></tr>
+</tbody></table></div>
+
+<h2 id="h-gelen-doviz-mapping">Döviz Alanları</h2>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>UBL alanı</th><th>API response alanı</th></tr></thead><tbody><tr><td><code>cbc:PricingCurrencyCode</code></td><td><code>PricingCurrencyCode</code></td><!-- vbt-source: UblToResponseModelMapper.cs:217 --></tr><tr><td><code>cbc:PaymentCurrencyCode</code></td><td><code>PaymentCurrencyCode</code></td><!-- vbt-source: UblToResponseModelMapper.cs:218 --></tr><tr><td><code>cbc:TaxCurrencyCode</code></td><td><code>TaxCurrencyCode</code></td><!-- vbt-source: UblToResponseModelMapper.cs:219 --></tr><tr><td><code>cbc:PaymentAlternativeCurrencyCode</code></td><td><code>PaymentAlternativeCurrencyCode</code></td><!-- vbt-source: UblToResponseModelMapper.cs:220 --></tr><tr><td><code>cac:PricingExchangeRate</code></td><td><code>PricingExchangeRate</code></td><!-- vbt-source: UblToResponseModelMapper.cs:222 --></tr><tr><td><code>cac:PaymentExchangeRate</code></td><td><code>PaymentExchangeRate</code></td><!-- vbt-source: UblToResponseModelMapper.cs:223 --></tr><tr><td><code>cac:TaxExchangeRate</code></td><td><code>TaxExchangeRate</code></td><!-- vbt-source: UblToResponseModelMapper.cs:224 --></tr></tbody></table></div>
+
+<h2 id="h-gelen-operasyonel-alanlar">UBL Dışındaki Operasyonel Alanlar</h2>
+<p>Aşağıdaki alanlar faturanın XML içeriğinden türetilmez. Entegratör bu değerleri yaşam döngüsü ve ERP mutabakatı için ayrı olarak değerlendirmelidir.</p>
+<div class="table-wrapper"><table class="mapping-rule-table reference-table-wide"><thead><tr><th>API alanı</th><th>Kaynak</th><th>Kullanım</th></tr></thead><tbody><tr><td><code>IncomingInvoiceStatus</code></td><td>Platform belge durumu</td><td>Teknik ilerleme ve hata takibi</td></tr><tr><td><code>IncomingInvoiceStatusForUser</code></td><td>Platform kullanıcı durumu</td><td>Portal/ERP karar metni</td></tr><tr><td><code>IncomingDate</code></td><td>Belgenin platforma geliş zamanı</td><td>Yeni belge pencere sorguları ve SLA takibi</td></tr><tr><td><code>EnvelopeId</code></td><td>GİB zarf kimliği</td><td>Zarf düzeyinde destek ve mutabakat</td></tr><tr><td><code>IsErpProcessed</code></td><td>Entegratör güncellemesi</td><td>ERP'ye alınmış belgeyi yeniden işleme riskini azaltma</td></tr><tr><td><code>ErpProcessBranch</code></td><td>Entegratör güncellemesi</td><td>İşlemi yapan şube/kaynak kaydı</td></tr><tr><td><code>IsRead</code>, <code>IsReadDate</code></td><td>Portal görüntüleme bilgisi</td><td>Okundu durumu</td></tr></tbody></table></div><!-- vbt-source: UblToResponseModelMapper.cs:229-249; IncomingInvoiceResponseModel.cs -->
+
+<h2 id="h-gelen-erp-kabul">ERP Kabul Kontrolü</h2>
+<div class="table-wrapper"><table class="mapping-rule-table"><thead><tr><th>Kontrol</th><th>Kabul koşulu</th><th>Başarısızsa</th></tr></thead><tbody><tr><td>Tekilleştirme</td><td><code>UUId</code>/ETTN daha önce işlenmemiştir.</td><td>Yeni kayıt açmadan mevcut kayıtla mutabakat yapılır.</td></tr><tr><td>Kalem-toplam dengesi</td><td>Kalem, vergi ve parasal toplamlar ERP hesaplamasıyla uzlaşır.</td><td>Belge manuel incelemeye alınır.</td></tr><tr><td>Taraf eşleştirme</td><td>Satıcı VKN/TCKN yerel cari hesapla eşleşir.</td><td>ERP işleme bayrağı güncellenmez.</td></tr><tr><td>Belge aslı</td><td>UBL XML ve API ayrıntısı aynı ETTN'yi taşır.</td><td>Aktarım durdurulur ve tekrar sorgulanır.</td></tr></tbody></table></div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="gelen-fatura-islem-ornekleri.html"><span>Önceki</span><strong>Gelen Fatura İşlem Örnekleri</strong></a>
+<a class="docs-page-link docs-page-next" href="teknik-referans.html"><span>Sonraki</span><strong>Teknik Referans</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="TEMELFATURA, TICARIFATURA, İhracat, teşvik, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Fatura Nedir?","text":"e-Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-Fatura Invoice ProfileID","url":"e-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura Senaryoları","text":"On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.","keywords":"Giden Fatura Senaryolar TEMELFATURA TICARIFATURA İhracat teşvik","url":"giden-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Akışı","text":"Giden e-Faturanın oluşturulmasından imzalama, GİB ve alıcı sonucuna; hata geri dönüşlerinden iptal ve itiraza kadar durum makinesi.","keywords":"Giden Fatura state machine durum GİB alıcı yanıtı","url":"giden-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Giden Fatura Sorumlulukları","text":"Giden fatura hazırlama, güvenli gönderim, durum takibi, mutabakat ve iptal/itiraz sorumlulukları.","keywords":"Giden Fatura Sorumluluklar entegratör platform mutabakat","url":"giden-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Entegratör API","text":"Giden faturayı doğrulama, oluşturma, güncelleme, gönderme, sorgulama ve durum takibi endpoint sözleşmeleri.","keywords":"Giden Fatura Entegratör API endpoint durum","url":"giden-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Portal API","text":"Portal giden fatura listesi, görüntüleme, e-posta, belge numarası ve mükellef sorgu endpointleri.","keywords":"Giden Fatura Portal API grid e-posta","url":"giden-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Request Örnekleri","text":"On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.","keywords":"Giden Fatura JSON request","url":"giden-fatura-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura JSON → UBL Mapping","text":"Giden fatura JSON alanlarının üretilen UBL Invoice XML içindeki karşılıkları.","keywords":"Giden Fatura JSON UBL XML mapping","url":"giden-fatura-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Senaryoları","text":"Gelen faturada otomatik sonuç, kabul/red uygulama yanıtı, ERP aktarımı, iptal ve itiraz senaryoları.","keywords":"Gelen Fatura Senaryolar ApplicationResponse kabul red ERP","url":"gelen-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Akışı","text":"Gelen e-Faturanın alınması, ERP'ye aktarılması, profile göre otomatik sonuç veya kabul/red uygulama yanıtı ve durum makinesi.","keywords":"Gelen Fatura state machine ApplicationResponse kabul red ERP","url":"gelen-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Sorumlulukları","text":"Gelen faturayı tekilleştirme, ERP'ye alma, uygulama yanıtı, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen Fatura Sorumluluklar tekilleştirme ERP uygulama yanıtı","url":"gelen-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Entegratör API","text":"Gelen faturayı listeleme, ayrıntılandırma, yanıtlama, durum sorgulama, ERP işleme ve çıktı alma endpointleri.","keywords":"Gelen Fatura Entegratör API endpoint ApplicationResponse","url":"gelen-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Portal API","text":"Portal gelen fatura listesi, görüntüleme, okundu bilgisi, e-posta, kabul/red ve itiraz endpointleri.","keywords":"Gelen Fatura Portal API kabul red itiraz","url":"gelen-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura İşlem Örnekleri","text":"Listeleme, durum, kabul/red, ERP işleme ve belge çıktısı için tam ve kopyalanabilir JSON örnekleri.","keywords":"Gelen Fatura JSON işlem","url":"gelen-fatura-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen Fatura UBL → API/ERP Mapping","text":"Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen Fatura UBL API ERP mapping","url":"gelen-fatura-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, alan kuralları ve sözleşme bakım notları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.","keywords":"SSS sorular durum timeout UBL iptal itiraz","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

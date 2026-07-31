@@ -71,7 +71,8 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Sıkça Sorulan Sorular</h1><p class="docs-lead">e-Adisyon hakkında müşteri ve entegratör tarafından en sık sorulan sorular.</p></header>
 <!-- vbt:article-header:end -->
 <section id="sss">
-<h2 id="sss-musteri">Portal Kullanıcısı SSS</h2>
+<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>Ayrıntılı kaynak</th></tr></thead><tbody><tr><td>Belge kapsamı</td><td><a href="eadisyon-nedir.html">İlgili sayfayı açın</a></td></tr><tr><td>Senaryolar</td><td><a href="kullanim-senaryolari.html">İlgili sayfayı açın</a></td></tr><tr><td>API işlemleri</td><td><a href="entegrator-api-endpoint-referansi.html">İlgili sayfayı açın</a></td></tr><tr><td>Alan eşleştirmeleri</td><td><a href="request-ubl-xml-mapping.html">İlgili sayfayı açın</a></td></tr></tbody></table></div>
+<h2 id="sss-musteri">Müşteri SSS</h2>
 <details class="example-details">
     <summary>e-Adisyon ne zaman düzenlenir?</summary>
     <div class="example-body">
@@ -87,7 +88,7 @@
 <details class="example-details">
     <summary>Bir adisyonu ne zaman iptal edebilirim?</summary>
     <div class="example-body">
-        <p>Yalnızca <code>Signed</code> (imzalanmış) durumdaki adisyonlar iptal edilebilir. İmza kuyruğunda bekleyen bir adisyon iptal edilmeye çalışılırsa <code>BLL0024</code> hatası döner; zaten iptal edilmiş bir adisyon tekrar iptal edilemez (<code>BLL0025</code>). İptal işlemi bildirim e-postası göndermez.</p>
+        <p>Yalnızca <code>Signed</code> (imzalanmış) durumdaki adisyonlar iptal edilebilir. İmzalama bekleyen bir adisyon iptal edilmeye çalışılırsa <code>BLL0024</code> hatası döner; zaten iptal edilmiş bir adisyon tekrar iptal edilemez (<code>BLL0025</code>). İptal işlemi bildirim e-postası göndermez.</p>
     </div>
 </details>
 <details class="example-details">
@@ -97,6 +98,9 @@
     </div>
 </details>
 
+
+<details class="example-details"><summary>Adisyon oluşturulduktan sonra neden hemen nihai sayılmamalıdır?</summary><div class="example-body"><p>Oluşturma cevabı kaydın alındığını gösterir. İmza ve GİB raporlama sonucu belge kimliğiyle ayrıca izlenmelidir.</p></div></details>
+<details class="example-details"><summary>Belgenin PDF veya görüntü çıktısını nereden alabilirim?</summary><div class="example-body"><p>Çıktı ve tekil belge işlemleri <a href="entegrator-api-endpoint-referansi.html#h-sorgulama">API sorgulama bölümünde</a> listelenir.</p></div></details>
 <h2 id="sss-entegrator">Entegratör SSS</h2>
 <details class="example-details">
     <summary>API'ye nasıl bağlanırım, kimlik doğrulama nasıl çalışır?</summary>
@@ -140,6 +144,13 @@
         <p>Test/Swagger adresi ve GİB kaynak bağlantıları için <a href="gib-teknik-gereksinimleri.html">GİB Referansı</a> sayfasına bakın.</p>
     </div>
 </details>
+
+
+<details class="example-details"><summary>Timeout sonrasında oluşturma isteği yeniden gönderilebilir mi?</summary><div class="example-body"><p>Önce <code>DocumentExternalId</code> ve varsa UUID ile mevcut kayıt sorgulanmalıdır. Kayıt yokluğu doğrulanmadan yeni kimlikle tekrar gönderim yapılmamalıdır.</p></div></details>
+<details class="example-details"><summary>Hangi kimlikleri ERP’de saklamalıyım?</summary><div class="example-body"><p>Dış referans, UUID, belge numarası ve son gözlenen durum birlikte saklanmalıdır.</p></div></details>
+<details class="example-details"><summary>Kalem toplamlarıyla belge toplamları farklıysa ne olur?</summary><div class="example-body"><p>Her <code>BillLine</code> miktar ve tutarı; vergi toplamları ve <code>LegalMonetaryTotal</code> ile aritmetik olarak uyumlu gönderilmelidir.</p></div></details>
+<details class="example-details"><summary>İptal isteğini ne zaman tekrar etmemeliyim?</summary><div class="example-body"><p>Belge zaten iptal edilmişse veya ilk istek işleme alınmışsa güncel durum okunmadan ikinci istek gönderilmemelidir.</p></div></details>
+<details class="example-details"><summary>Canlıya geçmeden önce hangi kontroller yapılmalı?</summary><div class="example-body"><p>Tek ve çok kalemli oluşturma, KDV hesapları, önizleme, çıktı alma, timeout mutabakatı, durum sorgusu ve iptal akışı birlikte doğrulanmalıdır.</p></div></details>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">

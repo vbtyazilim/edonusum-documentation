@@ -77,44 +77,142 @@
 <div class="callout callout-warning"><b>Alan tipi uyarısı:</b> <code>InvoicedQuantity</code> ve <code>LegalMonetaryTotal</code> içindeki tutarlar dışında, miktar alanı ham bir sayı değil <strong><code>{ "UnitCode": "...", "Value": ... }</code></strong> şeklinde bir nesnedir (<code>QuantityRequestModel</code>). Bu, ilk sürümde hatalı gösterilmişti; aşağıdaki örnekler düzeltilmiş halidir.</div>
 <h3 id="h-ex1">Örnek 1 — Normal Satış</h3>
 <p>Ek alan gerektirmeyen temel e-Arşiv Fatura akışı; alıcı GİB e-Fatura mükellefi değildir.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Tek kalemli, KDV'li standart bir satış.</p><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Tek kalemli, KDV'li standart bir satış.</p><pre><code class="language-json" data-request-kind="invoice">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000145",
   "IssueDate": "2026-03-15T14:30:00",
   "DocumentCurrencyCode": "TRY",
   "AccountingSupplierParty": {
     "Party": {
-      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1234567890" }],
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
       "PartyName": "Satıcı Ticaret A.Ş."
     }
   },
   "AccountingCustomerParty": {
     "Party": {
-      "PartyIdentifications": [{ "SchemeId": "TCKN", "Value": "12345678901" }],
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "12345678901"
+        }
+      ],
       "PartyName": "Alıcı Adı Soyadı"
     }
   },
   "InvoiceLine": [
     {
       "Id": "1",
-      "InvoicedQuantity": { "UnitCode": "C62", "Value": 2 },
-      "Price": 50.00,
-      "LineExtensionAmount": 100.00,
-      "Item": { "Name": "Kırtasiye Malzemesi" }
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 2
+      },
+      "Price": 50,
+      "LineExtensionAmount": 100,
+      "Item": {
+        "Name": "Kırtasiye Malzemesi"
+      }
     }
   ],
   "TaxTotal": [
-    { "TaxAmount": 18.00, "TaxSubtotal": [{ "TaxableAmount": 100.00, "TaxAmount": 18.00, "Percent": 18, "TaxCategory": { "TaxScheme": { "Name": "KDV", "TaxTypeCode": "0015" } } }] }
+    {
+      "TaxAmount": 18,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 100,
+          "TaxAmount": 18,
+          "Percent": 18,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
   ],
-  "LegalMonetaryTotal": { "LineExtensionAmount": 100.00, "TaxExclusiveAmount": 100.00, "TaxInclusiveAmount": 118.00, "PayableAmount": 118.00 }
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 100,
+    "TaxExclusiveAmount": 100,
+    "TaxInclusiveAmount": 118,
+    "PayableAmount": 118
+  }
 }</code></pre></div></details>
 <h3 id="h-ex2">Örnek 2 — İnternet Satışı</h3>
 <p>Ortak alanlara (taraflar, satırlar, toplamlar — Örnek 1'deki gibi) ek olarak <code>InternetPayment</code> ve zorunlu <code>Note</code> ibaresi eklenir.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Mal ve hizmetlerin sipariş/satın alma sürecinin tamamı internet üzerinden yapıldığı satış.</p><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Mal ve hizmetlerin sipariş/satın alma sürecinin tamamı internet üzerinden yapıldığı satış.</p><pre><code class="language-json" data-request-kind="invoice">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000146",
   "IssueDate": "2026-03-15T10:00:00",
-  "Note": ["Bu satış internet üzerinden yapılmıştır."],
+  "DocumentCurrencyCode": "TRY",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Satıcı Ticaret A.Ş."
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "12345678901"
+        }
+      ],
+      "PartyName": "Alıcı Adı Soyadı"
+    }
+  },
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 2
+      },
+      "Price": 50,
+      "LineExtensionAmount": 100,
+      "Item": {
+        "Name": "Kırtasiye Malzemesi"
+      }
+    }
+  ],
+  "TaxTotal": [
+    {
+      "TaxAmount": 18,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 100,
+          "TaxAmount": 18,
+          "Percent": 18,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 100,
+    "TaxExclusiveAmount": 100,
+    "TaxInclusiveAmount": 118,
+    "PayableAmount": 118
+  },
+  "Note": [
+    "Bu satış internet üzerinden yapılmıştır."
+  ],
   "InternetPayment": {
     "WebAdresi": "https://magaza.example.com",
     "OdemeSekli": "KREDIKARTI",
@@ -128,10 +226,71 @@
 <div class="callout callout-info"><b>Koşullu alanlar:</b> <code>OdemeSekli=ODEMEARACISI</code> ise <code>OdemeAracisiAdi</code>, <code>OdemeSekli=DIGER</code> ise <code>OdemeSekliAciklama</code> ayrıca zorunlu hâle gelir (<code>INV0036</code>/<code>INV0037</code>). <code>OdemeSekli</code> değeri GİB kod listesinde tanımlı olmalıdır (<code>INV0168</code>).</div>
 <h3 id="h-ex3">Örnek 3 — ÖKC ile Birlikte</h3>
 <p>ÖKC doğrulaması <code>DocumentTypeCode=OKCBF</code> ile tetiklenir; bu durumda aşağıdaki tüm alt alanlar zorunludur (bkz. <a href="teknik-referans.html#h-validasyon-referanslari">Teknik Referans — Validasyon Referansları</a>).</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Yeni nesil ÖKC'den düzenlenen fiş bilgisinin fatura ile birlikte gönderilmesi.</p><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Yeni nesil ÖKC'den düzenlenen fiş bilgisinin fatura ile birlikte gönderilmesi.</p><pre><code class="language-json" data-request-kind="invoice">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000147",
   "IssueDate": "2026-03-15T00:00:00",
+  "DocumentCurrencyCode": "TRY",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Satıcı Ticaret A.Ş."
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "12345678901"
+        }
+      ],
+      "PartyName": "Alıcı Adı Soyadı"
+    }
+  },
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 2
+      },
+      "Price": 50,
+      "LineExtensionAmount": 100,
+      "Item": {
+        "Name": "Kırtasiye Malzemesi"
+      }
+    }
+  ],
+  "TaxTotal": [
+    {
+      "TaxAmount": 18,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 100,
+          "TaxAmount": 18,
+          "Percent": 18,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 100,
+    "TaxExclusiveAmount": 100,
+    "TaxInclusiveAmount": 118,
+    "PayableAmount": 118
+  },
   "BillingReference": [
     {
       "AdditionalDocumentReference": {
@@ -139,10 +298,18 @@
         "DocumentTypeCode": "OKCBF",
         "DocumentType": "OKCBilgiFisi",
         "IssueDate": "2026-03-15T00:00:00",
-        "DocumentDescription": ["Yeni nesil ÖKC fiş bilgisi"],
-        "Attachment": { "ExternalReference": "https://okc.example.com/fis/OKC0000123" },
-        "IssuerParty": { "EndpointId": "1234567890" },
-        "ValidityPeriod": { "StartDate": "2026-03-15T00:00:00" }
+        "DocumentDescription": [
+          "Yeni nesil ÖKC fiş bilgisi"
+        ],
+        "Attachment": {
+          "ExternalReference": "https://okc.example.com/fis/OKC0000123"
+        },
+        "IssuerParty": {
+          "EndpointId": "1234567890"
+        },
+        "ValidityPeriod": {
+          "StartDate": "2026-03-15T00:00:00"
+        }
       }
     }
   ]
@@ -150,16 +317,87 @@
 <div class="callout callout-warning"><b>Sık hata:</b> <code>DocumentType</code> alanı literal olarak <code>OKCBilgiFisi</code> olmalıdır; ayrıca <code>ValidityPeriod.StartDate</code>, <code>IssueDate</code> ile aynı takvim gününde olmalıdır — aksi hâlde <code>"SCHEME"</code> koduyla reddedilir (bkz. <a href="teknik-referans.html#h-hata-katman-a">Teknik Referans — Katman A</a>).</div>
 <h3 id="h-ex4">Örnek 4 — Tevkifatlı</h3>
 <p><code>WithholdingTaxTotal</code> yalnızca <code>InvoiceTypeCode</code> TEVKIFAT/YTBTEVKIFAT/IADE/YTBIADE/SGK/SARJ/SARJANLIK olduğunda kabul edilir.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>GV stopajı tevkifatı içeren bir fatura.</p><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>GV stopajı tevkifatı içeren bir fatura.</p><pre><code class="language-json" data-request-kind="invoice">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000148",
-  "InvoiceTypeCode": "TEVKIFAT",
   "IssueDate": "2026-03-15T00:00:00",
+  "DocumentCurrencyCode": "TRY",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Satıcı Ticaret A.Ş."
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "12345678901"
+        }
+      ],
+      "PartyName": "Alıcı Adı Soyadı"
+    }
+  },
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 2
+      },
+      "Price": 50,
+      "LineExtensionAmount": 100,
+      "Item": {
+        "Name": "Kırtasiye Malzemesi"
+      }
+    }
+  ],
+  "TaxTotal": [
+    {
+      "TaxAmount": 18,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 100,
+          "TaxAmount": 18,
+          "Percent": 18,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 100,
+    "TaxExclusiveAmount": 100,
+    "TaxInclusiveAmount": 118,
+    "PayableAmount": 118
+  },
+  "InvoiceTypeCode": "TEVKIFAT",
   "WithholdingTaxTotal": [
     {
-      "TaxAmount": 20.00,
+      "TaxAmount": 20,
       "TaxSubtotal": [
-        { "TaxableAmount": 200.00, "TaxAmount": 20.00, "Percent": 10, "TaxCategory": { "TaxScheme": { "Name": "GV STOPAJI", "TaxTypeCode": "0003" } } }
+        {
+          "TaxableAmount": 200,
+          "TaxAmount": 20,
+          "Percent": 10,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "GV STOPAJI",
+              "TaxTypeCode": "0003"
+            }
+          }
+        }
       ]
     }
   ]
@@ -167,11 +405,72 @@
 <div class="callout callout-warning"><b>Sık hata:</b> <code>TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode</code> ve <code>Percent</code> ikilisi platformun (parametre tablosundan gelen) tanımlı tevkifat kod/oran eşleşmelerinden biri olmalıdır; eşleşmeyen bir kombinasyon "Uyumsuz vergi tipi yüzdesi" mesajıyla reddedilir.</div>
 <h3 id="h-ex5">Örnek 5 — Mükerrer/İade Referanslı</h3>
 <p><code>InvoiceTypeCode=IADE</code> olduğunda referans verilen orijinal faturanın numarası tam 16 karakter olmalıdır.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Önceki bir faturaya iade referansı veren belge.</p><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Önceki bir faturaya iade referansı veren belge.</p><pre><code class="language-json" data-request-kind="invoice">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000149",
-  "InvoiceTypeCode": "IADE",
   "IssueDate": "2026-03-20T00:00:00",
+  "DocumentCurrencyCode": "TRY",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Satıcı Ticaret A.Ş."
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "12345678901"
+        }
+      ],
+      "PartyName": "Alıcı Adı Soyadı"
+    }
+  },
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 2
+      },
+      "Price": 50,
+      "LineExtensionAmount": 100,
+      "Item": {
+        "Name": "Kırtasiye Malzemesi"
+      }
+    }
+  ],
+  "TaxTotal": [
+    {
+      "TaxAmount": 18,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 100,
+          "TaxAmount": 18,
+          "Percent": 18,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 100,
+    "TaxExclusiveAmount": 100,
+    "TaxInclusiveAmount": 118,
+    "PayableAmount": 118
+  },
+  "InvoiceTypeCode": "IADE",
   "BillingReference": [
     {
       "InvoiceDocumentReference": {
@@ -185,7 +484,7 @@
 <div class="callout callout-warning"><b>Sık hata:</b> <code>Id</code> alanı tam olarak 16 karakter olmalıdır (örn. <code>FGH2026000000001</code>); aksi hâlde "16 haneli olmalıdır" mesajıyla reddedilir. Aynı istekte birden fazla satır aynı <code>Id</code>'yi referans veriyorsa "mükerrer" hatası döner.</div>
 <h3 id="h-ex6">Örnek 6 — İptal</h3>
 <p><code>CancelOutgoingEArchiveInvoice</code> (<code>EArchiveCancelRequestModel</code>) gövdesi.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Mükerrer belge nedeniyle iptal.</p><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Mükerrer belge nedeniyle iptal.</p><pre><code class="language-json" data-request-kind="cancel">{
   "Ettn": "7DC52246-5750-496E-8BF2-BD27BC0764DC",
   "InvoiceNumber": "FGH2026000000001",
   "EArchiveStatus": 2,
@@ -193,7 +492,7 @@
 }</code></pre></div></details>
 <h3 id="h-ex7">Örnek 7 — İtiraz Bildirimi</h3>
 <p><code>ObjectOutgoingEArchiveInvoice</code> (<code>DocumentObjectionRequestModel</code>) gövdesi — alıcının TTK md. 18/3 kapsamında zaten yaptığı itirazın kayda geçirilmesi.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>KEP yoluyla yapılan itirazın bildirimi.</p><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>KEP yoluyla yapılan itirazın bildirimi.</p><pre><code class="language-json" data-request-kind="objection">{
   "UUId": "7DC52246-5750-496E-8BF2-BD27BC0764DC",
   "ObjectingType": "KEP",
   "ObjectingDocumentNumber": "itirazBelgeNo0",
@@ -214,9 +513,9 @@
 </div>
 <!-- vbt:toc:end -->
 <!-- vbt:page-tools:start -->
-<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Ara..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="EARSIVFATURA, internet satışı, ÖKC, iptal, itiraz, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Arşiv Fatura Nedir?","text":"e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.","keywords":"Başlangıç e-Arşiv Fatura EARSIVFATURA","url":"earsiv-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR VUK 509","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal satış, internet satışı, ÖKC, tevkifat ve mükerrer/iade akışları için karar ağacı.","keywords":"Senaryolar internet satışı ÖKC tevkifat","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"İptal ve İtiraz Durum Takibi","text":"GİB Portal ile senkronize iptal/itiraz durum modeli, yasal süreler ve entegratör sorumlulukları.","keywords":"İptal İtiraz GİB Portal durum takibi","url":"iptal-itiraz-durum-takibi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın e-Arşiv Fatura grid, e-posta ve iptal/itiraz tamamlama akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal e-posta iptal itiraz","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL Invoice XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Arşiv Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Arşiv Fatura Nedir?","text":"e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.","keywords":"Başlangıç e-Arşiv Fatura EARSIVFATURA","url":"earsiv-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR VUK 509","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal satış, internet satışı, ÖKC, tevkifat ve mükerrer/iade akışları için karar ağacı.","keywords":"Senaryolar internet satışı ÖKC tevkifat","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"İptal ve İtiraz Durum Takibi","text":"GİB Portal ile senkronize iptal/itiraz durum modeli, yasal süreler ve entegratör sorumlulukları.","keywords":"İptal İtiraz GİB Portal durum takibi","url":"iptal-itiraz-durum-takibi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın e-Arşiv Fatura grid, e-posta ve iptal/itiraz tamamlama akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal e-posta iptal itiraz","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL Invoice XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Arşiv Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Arşiv Fatura hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>
