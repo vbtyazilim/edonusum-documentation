@@ -82,8 +82,9 @@
 <tr><td>1</td><td>Validasyon</td><td>Alan zorunluluk, format, kombinasyon kontrolleri</td></tr>
 <tr><td>2</td><td>UBL XML Üretimi</td><td>UBL 2.1 CreditNote standardında XML</td></tr>
 <tr><td>3</td><td>Numara/UUID Atama</td><td>Entegratör göndermezse otomatik</td></tr>
-<tr><td>4</td><td>İmza Kuyruğuna Alma</td><td><code>CreditNoteAndXmlCreated</code> durumuna kaydedilir</td></tr>
-<tr><td>5</td><td>e-İmzalama</td><td><code>CreditNoteSignJob</code> her 1 dakikada işler, durum <code>Signed</code>'e geçer</td></tr>
+<tr><td>4</td><td>İmzalamaya Hazırlama</td><td><code>CreditNoteAndXmlCreated</code> durumuna kaydedilir</td></tr>
+<!-- vbt-source: Applications/API/VbtMM/VbtMm.Job/CreditNoteSignJob.cs -->
+<tr><td>5</td><td>e-İmzalama</td><td>Belge imzalama akışına alınır; işlem tamamlandığında durum <code>Signed</code>'e geçer.</td></tr>
 <tr><td>6</td><td>DB Kayıt</td><td>Kalıcı saklama</td></tr>
 <tr><td>7</td><td>GİB Rapor</td><td>Periyodik toplu XML</td></tr>
 <tr><td>8</td><td>GİB Gönderim</td><td>Rapor iletimi + yanıt işleme</td></tr>

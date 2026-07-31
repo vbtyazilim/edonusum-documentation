@@ -6,6 +6,8 @@ Bu repo, VBT e-Dönüşüm ürünleri için hazırlanan müşteri ve entegratör
 
 ## Mevcut rehberler
 
+- [e-Fatura Entegrasyon Rehberi](guides/e-fatura/index.html)
+- [e-Arşiv Fatura Entegrasyon Rehberi](guides/e-arsiv-fatura/index.html)
 - [e-Gider Pusulası Entegrasyon Rehberi](guides/e-gider-pusulasi/index.html)
 - [e-Müstahsil Makbuzu Entegrasyon Rehberi](guides/mustahsil-makbuzu/index.html)
 - [e-Serbest Meslek Makbuzu Entegrasyon Rehberi](guides/serbest-meslek-makbuzu/index.html)

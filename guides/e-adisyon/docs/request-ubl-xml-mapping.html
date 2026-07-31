@@ -75,11 +75,13 @@
 <!-- vbt:article-header:end -->
 <section id="request-ubl-xml-mapping">
 <h3 id="h-mapping-kapsami">Mapping Kapsamı</h3>
-<p><code>OutgoingBillRequestModel</code>, <code>RequestModelToUblMapper.ToUblType</code> ile UBL 2.1 <strong><code>CreditNoteType</code></strong>'a eşlenir (<code>InvoiceType</code> değil). <code>CreditNoteTypeCode</code> değeri her zaman request'teki <code>BillTypeCode</code> (<code>ADISYON</code>) ile aynıdır.</p>
+<!-- vbt-source: Applications/API/VbtBill/VbtBill.Service/MapperExtension/RequestModelToUblMapper.cs -->
+<p><code>OutgoingBillRequestModel</code> alanları UBL 2.1 <strong><code>CreditNoteType</code></strong> belgesine aktarılır. <code>CreditNoteTypeCode</code> değeri request'teki <code>BillTypeCode</code> (<code>ADISYON</code>) ile aynıdır.</p>
 <div class="callout callout-info"><b>Kısa kural:</b> Entegratör kalem ve taraf bilgilerini request alanlarıyla gönderir; <code>AccountingSupplierParty</code> platform tarafından doldurulur ve XML'e de VBT firma profilinden yazılır.</div>
 
 <h3 id="h-referans-tablo">Request Alanı → UBL XML Path</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request Alanı</th><th>UBL XML Path</th><th>Açıklama</th></tr></thead><tbody>
+<!-- vbt-source: Applications/API/VbtBill/VbtBill.Service/MapperExtension/RequestModelToUblMapper.cs; Applications/API/VbtBill/VbtBill.Service/MapperExtension/UblToRequestModelMapper.cs -->
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Request Alanı</th><th>UBL XML Path</th><th>Açıklama</th></tr></thead><tbody>
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">Root Alanlar</td></tr>
 <tr><td><code>UUId</code></td><td><code>cbc:UUID</code></td><td>Evrensel tekil belge kimliği</td></tr>
 <tr><td><code>DocumentNumber</code></td><td><code>cbc:ID</code></td><td>Belge numarası</td></tr>
@@ -91,25 +93,25 @@
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">AccountingSupplierParty → cac:AccountingSupplierParty/cac:Party</td></tr>
 <tr><td><code>AccountingSupplierParty</code></td><td><code>cac:AccountingSupplierParty</code></td><td>VBT firma profilinden doldurulur; entegratör göndermez</td></tr>
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">AccountingCustomerParty → cac:AccountingCustomerParty/cac:Party</td></tr>
-<tr><td><code>AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>Value</code></td><td><code>cac:PartyIdentification/cbc:ID</code></td><td>VKN (10 hane) veya TCKN (11 hane)</td></tr>
-<tr><td><code>AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>SchemeId</code></td><td><code>cbc:ID/@schemeID</code></td><td>VKN / TCKN</td></tr>
-<tr><td><code>AccountingCustomerParty.<wbr>Party.<wbr>PartyName</code></td><td><code>cac:PartyName/cbc:Name</code></td><td>Alıcı adı/unvanı</td></tr>
-<tr><td><code>AccountingCustomerParty.<wbr>Party.<wbr>PostalAddress</code></td><td><code>cac:PostalAddress</code></td><td>Şehir, ülke vb.</td></tr>
+<tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>Value</code></td><td><code>cac:PartyIdentification/cbc:ID</code></td><td>VKN (10 hane) veya TCKN (11 hane)</td></tr>
+<tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>SchemeId</code></td><td><code>cbc:ID/@schemeID</code></td><td>VKN / TCKN</td></tr>
+<tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyName</code></td><td><code>cac:PartyName/cbc:Name</code></td><td>Alıcı adı/unvanı</td></tr>
+<tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PostalAddress</code></td><td><code>cac:PostalAddress</code></td><td>Şehir, ülke vb.</td></tr>
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">Vergi ve Toplamlar</td></tr>
 <tr><td><code>TaxTotal[]</code></td><td><code>cac:TaxTotal</code></td><td>Belge seviyesi vergi toplamı</td></tr>
 <tr><td><code>WithholdingTaxTotal[]</code></td><td><code>cac:WithholdingTaxTotal</code></td><td>Tevkifat bilgisi (varsa)</td></tr>
 <tr><td><code>LegalMonetaryTotal</code></td><td><code>cac:LegalMonetaryTotal</code></td><td>Kalem toplamları, KDV dahil/hariç tutar, ödenecek tutar</td></tr>
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">BillLine[] → cac:CreditNoteLine</td></tr>
-<tr><td><code>BillLine[].Id</code></td><td><code>cbc:ID</code></td><td>Kalem sıra no</td></tr>
-<tr><td><code>BillLine[].CreditedQuantity</code></td><td><code>cbc:CreditedQuantity</code></td><td>Miktar + birim kodu</td></tr>
-<tr><td><code>BillLine[].LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount</code></td><td>Kalem tutarı</td></tr>
-<tr><td><code>BillLine[].Item</code></td><td><code>cac:Item/cbc:Name</code></td><td>Mal/hizmet adı</td></tr>
-<tr><td><code>BillLine[].TaxTotal</code></td><td><code>cac:TaxTotal</code> (satır seviyesi)</td><td>Kalem KDV bilgisi</td></tr>
+<tr><td><code class="mapping-path">BillLine[].<wbr>Id</code></td><td><code>cbc:ID</code></td><td>Kalem sıra no</td></tr>
+<tr><td><code class="mapping-path">BillLine[].<wbr>CreditedQuantity</code></td><td><code>cbc:CreditedQuantity</code></td><td>Miktar + birim kodu</td></tr>
+<tr><td><code class="mapping-path">BillLine[].<wbr>LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount</code></td><td>Kalem tutarı</td></tr>
+<tr><td><code class="mapping-path">BillLine[].<wbr>Item</code></td><td><code>cac:Item/cbc:Name</code></td><td>Mal/hizmet adı</td></tr>
+<tr><td><code class="mapping-path">BillLine[].<wbr>TaxTotal</code></td><td><code>cac:TaxTotal</code> (satır seviyesi)</td><td>Kalem KDV bilgisi</td></tr>
 </tbody></table></div>
 
 <h3 id="h-uygulama-notlari">Uygulama Notları</h3>
 <p>Mapping notları, platformun otomatik tamamladığı alanlar ile entegratörün göndermesi gereken alanlar arasındaki sınırı netleştirir.</p>
-<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>Kontrol</th><th>Sonuç</th></tr></thead><tbody>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Konu</th><th>Kontrol</th><th>Sonuç</th></tr></thead><tbody>
 <tr><td>Düzenleyen taraf</td><td><code>AccountingSupplierParty</code> gönderilmez, VBT firma profilinden doldurur</td><td>UBL'deki <code>cac:AccountingSupplierParty</code> platform tarafından yazılır</td></tr>
 <tr><td>Alıcı kimliği</td><td>Tüzel kişi <code>VKN</code>, gerçek kişi <code>TCKN</code> ile gönderilir</td><td>UBL taraf rolleri ve GİB raporu aynı kimliği kullanır</td></tr>
 <tr><td>Satır kalemleri</td><td>Her ürün/hizmet ayrı <code>BillLine</code> olarak yazılır</td><td>Çok kalemli adisyonlarda her kalem kendi miktar/fiyat bilgisini taşır</td></tr>

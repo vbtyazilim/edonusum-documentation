@@ -89,11 +89,11 @@
 
 <h3 id="h-senaryo-bazli-hazirlik">Senaryo Bazlı Hazırlık Matrisi</h3>
 <p>Ortak belge alanları hazırlandıktan sonra entegratörün asıl ayrımı, alıcı kimlik tipini doğru şema koduyla göndermesidir.</p>
-<div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Entegratörün Hesaplayacağı Alanlar</th><th>Zorunlu Kod/Alan</th><th>Gönderim Öncesi Kontrol</th></tr></thead><tbody>
-<tr><td>Tüzel kişi alıcı</td><td>Taraf, kalemler, belge toplamları</td><td><code>PartyIdentifications.SchemeId=VKN</code></td><td>VKN 10 hane</td></tr>
-<tr><td>Gerçek kişi alıcı</td><td>Taraf, kalemler, belge toplamları</td><td><code>PartyIdentifications.SchemeId=TCKN</code></td><td>TCKN 11 hane</td></tr>
-<tr><td>Çok kalemli adisyon</td><td>Her kalem için ayrı tutar/KDV</td><td><code>BillLine[]</code></td><td><code>LegalMonetaryTotal</code> satır toplamlarıyla eşleşmeli</td></tr>
-<tr><td>İptal</td><td>İptal edilecek belgenin kimliği ve durum bilgisi</td><td><code>BillCancelRequestModel</code></td><td>Belge <code>Signed</code> durumda olmalı</td></tr>
+<div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Senaryo</th><th>Entegratörün Hesaplayacağı Alanlar</th><th>Zorunlu Kod/Alan</th><th>Gönderim Öncesi Kontrol</th></tr></thead><tbody>
+<tr><td data-label="Senaryo">Tüzel kişi alıcı</td><td data-label="Entegratörün Hesaplayacağı Alanlar">Taraf, kalemler, belge toplamları</td><td data-label="Zorunlu Kod/Alan"><code>PartyIdentifications.SchemeId=VKN</code></td><td data-label="Gönderim Öncesi Kontrol">VKN 10 hane</td></tr>
+<tr><td data-label="Senaryo">Gerçek kişi alıcı</td><td data-label="Entegratörün Hesaplayacağı Alanlar">Taraf, kalemler, belge toplamları</td><td data-label="Zorunlu Kod/Alan"><code>PartyIdentifications.SchemeId=TCKN</code></td><td data-label="Gönderim Öncesi Kontrol">TCKN 11 hane</td></tr>
+<tr><td data-label="Senaryo">Çok kalemli adisyon</td><td data-label="Entegratörün Hesaplayacağı Alanlar">Her kalem için ayrı tutar/KDV</td><td data-label="Zorunlu Kod/Alan"><code>BillLine[]</code></td><td data-label="Gönderim Öncesi Kontrol"><code>LegalMonetaryTotal</code> satır toplamlarıyla eşleşmeli</td></tr>
+<tr><td data-label="Senaryo">İptal</td><td data-label="Entegratörün Hesaplayacağı Alanlar">İptal edilecek belgenin kimliği ve durum bilgisi</td><td data-label="Zorunlu Kod/Alan"><code>BillCancelRequestModel</code></td><td data-label="Gönderim Öncesi Kontrol">Belge <code>Signed</code> durumda olmalı</td></tr>
 </tbody></table></div>
 
 <h3 id="h-adim-sureci">Adım Süreci</h3>
@@ -106,7 +106,7 @@
 .st{fill:var(--svg-text);font:600 10px Inter,system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle}
 .sl{stroke:var(--svg-line);stroke-width:1.1;fill:none;stroke-dasharray:4 3;animation:dash .9s linear infinite}
 </style>
-<defs><marker id="ads-step-arrow" markerWidth="5" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0,5 2,0 4" fill="var(--svg-line)"/></marker></defs>
+<defs><marker id="ads-step-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="var(--svg-line)"/></marker></defs>
 <rect class="sb" x="5" y="15" width="115" height="40"/>
 <text class="st" x="62" y="35">Alıcı bilgisini hazırla</text>
 <path class="sl" d="M120,35 L145,35" marker-end="url(#ads-step-arrow)"/>

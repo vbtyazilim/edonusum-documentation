@@ -95,7 +95,7 @@
 <p>Belge XML'i ve rapor XML'i aynı sürecin farklı çıktılarıdır; biri belgeyi temsil eder, diğeri dönemsel bildirimi taşır.</p>
 <div class="table-wrapper"><table><thead><tr><th>XML</th><th>Amaç</th><th>Standart</th><th>Üretim</th></tr></thead><tbody>
 <tr><td><strong>UBL XML</strong></td><td>Her belge için — imzalanır, saklanır</td><td>UBL 2.1 CreditNote</td><td>Anlık</td></tr>
-<tr><td><strong>GİB Rapor XML</strong></td><td>Dönemdeki tüm belgelerin toplu GİB bildirimi</td><td>e-Arşiv XSD</td><td>Günlük job</td></tr>
+<tr><td><strong>GİB Rapor XML</strong></td><td>Dönemdeki tüm belgelerin toplu GİB bildirimi</td><td>e-Arşiv XSD</td><td>Periyodik</td></tr>
 </tbody></table></div>
 
 <h3 id="h-teknik-kimlik">Teknik Kimlik</h3>
@@ -119,7 +119,7 @@
 .diagram-connector{stroke:var(--svg-line);stroke-width:1.4;fill:none;stroke-dasharray:6 4;animation:dash .8s linear infinite}
 .diagram-arrow-head{fill:var(--svg-line)}
 </style>
-<defs><marker id="lifecycle-arrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" class="diagram-arrow-head"/></marker></defs>
+<defs><marker id="lifecycle-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" class="diagram-arrow-head"/></marker></defs>
 <rect class="diagram-box" x="5" y="25" width="120" height="44"/>
 <text class="diagram-main-text" x="65" y="42">API Request</text>
 <text class="diagram-muted-text" x="65" y="58">(JSON)</text>
@@ -140,7 +140,7 @@
 <text class="diagram-muted-text" x="714" y="57">DocumentNumber + UUId</text>
 <path class="diagram-connector" d="M549,69 L549,105" marker-end="url(#lifecycle-arrow)"/>
 <rect class="diagram-box" x="460" y="110" width="180" height="44"/>
-<text class="diagram-main-text" x="550" y="127">BillSignJob (1 dk.)</text>
+<text class="diagram-main-text" x="550" y="127">Otomatik imzalama</text>
 <text class="diagram-muted-text" x="550" y="143">BillAndXmlCreated → Signed</text>
 <path class="diagram-connector" d="M460,132 L403,132" marker-end="url(#lifecycle-arrow)"/>
 <rect class="diagram-brand-box" x="275" y="110" width="123" height="44"/>
@@ -175,7 +175,7 @@
 .cancel-flow-muted-text{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}
 .cancel-flow-connector{stroke:var(--svg-line);stroke-width:1.2;fill:none;stroke-dasharray:5 3;animation:dash 1s linear infinite}
 </style>
-<defs><marker id="cancel-flow-arrow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0 0,6 2,0 4" fill="var(--svg-line)"/></marker></defs>
+<defs><marker id="cancel-flow-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="var(--svg-line)"/></marker></defs>
 <rect class="cancel-flow-box" x="5" y="50" width="100" height="36"/>
 <text class="cancel-flow-main-text" x="55" y="68">İptal Talebi</text>
 <path class="cancel-flow-connector" d="M105,68 L145,68" marker-end="url(#cancel-flow-arrow)"/>

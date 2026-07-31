@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giden Fatura Senaryoları — e-Fatura Entegrasyon Rehberi</title>
+<meta name="description" content="On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-fatura/docs/giden-fatura-senaryolari.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Giden Fatura Senaryoları — e-Fatura Entegrasyon Rehberi">
+<meta property="og:description" content="On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-fatura/docs/giden-fatura-senaryolari.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Giden Fatura Senaryoları — e-Fatura Entegrasyon Rehberi">
+<meta name="twitter:description" content="On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Fatura</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-fatura-nedir.html">Rehber</a><a href="api-temelleri.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-fatura-nedir.html">e-Fatura Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API Temelleri</div>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Giden Fatura</div>
+<a class="docs-nav-link active" href="giden-fatura-senaryolari.html">Giden Fatura Senaryoları</a>
+<a class="docs-nav-link" href="giden-fatura-akisi.html">Giden Fatura Akışı</a>
+<a class="docs-nav-link" href="giden-fatura-sorumluluklari.html">Giden Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="giden-fatura-entegrator-api.html">Giden Fatura Entegratör API</a>
+<a class="docs-nav-link" href="giden-fatura-portal-api.html">Giden Fatura Portal API</a>
+<a class="docs-nav-link" href="giden-fatura-request-ornekleri.html">Giden Fatura Request Örnekleri</a>
+<a class="docs-nav-link" href="giden-fatura-json-ubl-mapping.html">Giden Fatura JSON → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Gelen Fatura</div>
+<a class="docs-nav-link" href="gelen-fatura-senaryolari.html">Gelen Fatura Senaryoları</a>
+<a class="docs-nav-link" href="gelen-fatura-akisi.html">Gelen Fatura Akışı</a>
+<a class="docs-nav-link" href="gelen-fatura-sorumluluklari.html">Gelen Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="gelen-fatura-entegrator-api.html">Gelen Fatura Entegratör API</a>
+<a class="docs-nav-link" href="gelen-fatura-portal-api.html">Gelen Fatura Portal API</a>
+<a class="docs-nav-link" href="gelen-fatura-islem-ornekleri.html">Gelen Fatura İşlem Örnekleri</a>
+<a class="docs-nav-link" href="gelen-fatura-ubl-api-mapping.html">Gelen Fatura UBL → API/ERP Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Giden Fatura</p><h1>Giden Fatura Senaryoları</h1><p class="docs-lead">On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="giden-fatura-senaryolari">
+<h2 id="h-genel-bakis">Genel Bakış</h2><p>Giden e-Fatura, tek bir <code>OutgoingInvoiceRequestModel</code> gövdesi üzerinden 10 farklı <code>ProfileId</code> değerini kapsar (e-Arşiv Fatura ayrı bir rehberde ele alınır). Karar noktası, <code>ProfileId</code> ile <code>InvoiceTypeCode</code> alanlarının birlikte belirlediği kombinasyondur: her profil, belge tipini belirli bir alt kümeyle sınırlar ve profile özgü ek alanlar zorunlu kılar. Bu sayfa giden belgenin profil, alan ve oluşturma kararlarını açıklar; belge oluşturulduktan sonraki geçişler <a href="giden-fatura-akisi.html">Giden Fatura Akışı</a>, tarafların görev sınırları <a href="giden-fatura-sorumluluklari.html">Giden Fatura Sorumlulukları</a> sayfasındadır. <!-- vbt-source: InvoiceValidation.cs:113-214; ValidateGibSchematronRules --></p>
+
+<h2 id="h-karar-agaci">Karar Ağacı</h2>
+<p>İlk düğüm <code>ProfileId</code> seçimidir; bu seçim hem izin verilen <code>InvoiceTypeCode</code> alt kümesini hem de profile özgü zorunlu alanları belirler.</p>
+<div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Profil kümesi</th><th>Temel davranış</th><th>Ek sözleşme</th></tr></thead><tbody>
+<tr><td data-label="Profil kümesi"><code>TEMELFATURA</code></td><td data-label="Temel davranış">Alıcı uygulama yanıtı beklenmeden temel teslim akışı izlenir.</td><td data-label="Ek sözleşme">Kamuya özgü kurallar seçilen tipe göre ayrıca uygulanır.</td></tr>
+<tr><td data-label="Profil kümesi"><code>TICARIFATURA</code></td><td data-label="Temel davranış">Alıcının kabul, red veya itiraz yanıtı izlenir.</td><td data-label="Ek sözleşme">Yanıt bekleme ve terminal durumlar giden fatura akışında takip edilir.</td></tr>
+<tr><td data-label="Profil kümesi"><code>KAMU</code></td><td data-label="Temel davranış">Kamu faturası kuralları uygulanır.</td><td data-label="Ek sözleşme">Geçerli TR IBAN ve kamuya özgü zorunlu alanlar gönderilir.</td></tr>
+<tr><td data-label="Profil kümesi"><code>IHRACAT</code> / <code>YOLCUBERABERFATURA</code></td><td data-label="Temel davranış">İhracat veya yolcu beraberi satış sözleşmesi uygulanır.</td><td data-label="Ek sözleşme">Gümrük ve taraf alanları seçilen profile göre tamamlanır.</td></tr>
+<tr><td data-label="Profil kümesi"><code>HKS</code> / <code>ENERJI</code> / <code>ILAC_TIBBICIHAZ</code></td><td data-label="Temel davranış">Sektörel kimlik ve satır alanları doğrulanır.</td><td data-label="Ek sözleşme">İlgili şema değerleri her fatura kaleminde taşınır.</td></tr>
+<tr><td data-label="Profil kümesi"><code>YATIRIMTESVIK</code> / <code>IDIS</code></td><td data-label="Temel davranış">Teşvik veya sevkiyat sözleşmesi uygulanır.</td><td data-label="Ek sözleşme"><code>YTBNO</code>, <code>IdisSevkiyatNo</code> ve <code>ETIKETNO</code> gibi profile özgü alanlar doldurulur.</td></tr>
+</tbody></table></div>
+
+<h2 id="h-alan-zorunluluk-matrisi">Alan Zorunluluk Matrisi</h2>
+<p>Ortak belge alanları her profilde aynı kalır; profile özgü alanlar yalnızca ilgili <code>ProfileId</code> gönderildiğinde devreye girer.</p>
+<div class="table-wrapper"><table><thead><tr><th>Profil (ProfileId)</th><th>İzin Verilen InvoiceTypeCode</th><th>Profile Özgü Zorunlu Alan</th></tr></thead><tbody>
+<tr><td><code>TEMELFATURA</code></td><td>Profile özgü ek kısıt yok</td><td>—</td><!-- vbt-source: InvoiceValidation.cs; ValidateInvoiceTypeCode --></tr>
+<tr><td><code>TICARIFATURA</code></td><td>Profile özgü ek kısıt yok</td><td>Alıcı etiketi (<code>ReceiverIdentifier</code>) gönderildiyse GİB kullanıcı listesinde doğrulanır</td><!-- vbt-source: InvoiceValidation.cs:836-848; ValidateReceiverAlias --></tr>
+<tr><td><code>YOLCUBERABERFATURA</code></td><td>Yalnızca <code>ISTISNA</code></td><td><code>BuyerCustomerParty</code>'de <code>PARTYTYPE=TAXFREE</code> kimliği, <code>Person.NationalityID</code>, <code>Person.IdentityDocumentReference.ID</code>, <code>TaxRepresentativeParty</code> altında <code>ARACIKURUMVKN</code>/<code>ARACIKURUMETIKET</code></td><!-- vbt-source: InvoiceValidation.cs:1141-1148, 978-991, 1865-1889, 1621-1650, 1891-1953 --></tr>
+<tr><td><code>IHRACAT</code></td><td>Yalnızca <code>ISTISNA</code></td><td><code>BuyerCustomerParty</code>'de <code>PARTYTYPE=EXPORT</code> kimliği, <code>PartyLegalEntity.RegistrationName</code>, <code>AccountingSupplierParty.PartyTaxScheme.TaxScheme.Name</code>, satırda GTİP (<code>Delivery.Shipment.GoodsItem.RequiredCustomsID</code>), Incoterm, teslimat adresi, taşıma modu, <code>InvoicedQuantity</code>/<code>Price</code> &gt; 0</td><!-- vbt-source: InvoiceValidation.cs:1132-1139, 993-1006, 1502-1527, 1603-1619, 1327-1500, 1529-1558, 1661-1701 --></tr>
+<tr><td><code>KAMU</code></td><td>Profile özgü ek kısıt yok</td><td><code>PaymentMeans.PayeeFinancialAccount.ID</code> geçerli TR IBAN, <code>PayeeFinancialAccount.CurrencyCode</code> dolu, <code>BuyerCustomerParty</code> zorunlu</td><!-- vbt-source: InvoiceValidation.cs:1213-1262; ValidateKamuFatura --></tr>
+<tr><td><code>HKS</code></td><td>Profile özgü ek kısıt yok</td><td>Her <code>InvoiceLine.Item.AdditionalItemIdentification</code> içinde <code>SchemeId=KUNYENO</code>, değer tam 19 karakter</td><!-- vbt-source: InvoiceValidation.cs:916-950; ValidateHKSInvoice --></tr>
+<tr><td><code>ENERJI</code></td><td>Yalnızca <code>SARJ</code> veya <code>SARJANLIK</code></td><td>—</td><!-- vbt-source: InvoiceValidation.cs:1150-1162 --></tr>
+<tr><td><code>ILAC_TIBBICIHAZ</code></td><td><code>SATIS</code>, <code>ISTISNA</code>, <code>TEVKIFAT</code>, <code>TEVKIFATIADE</code>, <code>IADE</code>, <code>IHRACKAYITLI</code></td><td>Her <code>InvoiceLine.Item.AdditionalItemIdentification</code> içinde <code>SchemeId</code> değeri <code>TIBBICIHAZ</code>, <code>ILAC</code> veya <code>DIGER</code></td><!-- vbt-source: InvoiceValidation.cs:1177-1193, 216-247 --></tr>
+<tr><td><code>YATIRIMTESVIK</code></td><td><code>SATIS</code>, <code>ISTISNA</code>, <code>IADE</code></td><td><code>ContractDocumentReference</code> içinde <code>SchemeId=YTBNO</code>, 6 haneli değer ve dolu <code>IssueDate</code>; güncel GİB kılavuzundaki üçlü tip kümesi esas alınır</td><!-- vbt-source: InvoiceValidation.cs:1196-1210, 287-407; GİB Yatırım Teşvik Teknik Kılavuzu V1.0 --></tr>
+<tr><td><code>IDIS</code></td><td><code>SATIS</code>, <code>ISTISNA</code>, <code>IADE</code>, <code>TEVKIFAT</code>, <code>TEVKIFATIADE</code>, <code>IHRACKAYITLI</code></td><td><code>IdisSevkiyatNo</code> <!-- vbt-source: RegExConstants.IdisSevkiyatPattern --> ile eşleşmeli; her <code>InvoiceLine.Item.AdditionalItemIdentification</code> içinde <code>SchemeId=ETIKETNO</code>, değer <!-- vbt-source: RegExConstants.IdisEtiketNoPattern --> ile eşleşmeli</td><!-- vbt-source: InvoiceValidation.cs:1102-1118, 409-451 --></tr>
+</tbody></table></div>
+<div class="callout callout-info"><b>IADE ailesi:</b> Fatura tipi <code>IADE</code>, <code>TEVKIFATIADE</code>, <code>YTBIADE</code> veya <code>YTBTEVKIFATIADE</code> ise yalnızca <code>TEMELFATURA</code>, <code>EARSIVFATURA</code>, <code>ILAC_TIBBICIHAZ</code>, <code>YATIRIMTESVIK</code> veya <code>IDIS</code> profilleri kabul edilir; ayrıca <code>BillingReference/InvoiceDocumentReference</code> altında <code>DocumentTypeCode=IADE</code> ve 16 haneli <code>ID</code> zorunludur <!-- vbt-source: InvoiceValidation.cs:1086-1100, 1264-1325 -->.</div>
+
+<h2 id="h-senaryo-gruplari">Ana Senaryo Grupları</h2>
+<p>Senaryo grupları, faturanın hangi profil altında hangi ek alanlarla ayrıştığını konumlandırır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Grup</th><th>Ne Zaman Kullanılır?</th><th>Ayırt Edici Alan</th></tr></thead><tbody>
+<tr><td>Temel Fatura</td><td>Alıcı GİB mükellefi ve özel bir profil gerekmiyorsa</td><td>Ek alan yok</td></tr>
+<tr><td>Ticari Fatura</td><td>Alıcının <code>ApplicationResponse</code> ile kabul/red bildirmesi beklenecekse</td><td>Kabul/red uygulama yanıtı beklenir</td></tr>
+<tr><td>Yolcu Beraberinde Eşya</td><td>Yurt dışında yerleşik yolcuya (Tax-Free) satış yapılıyorsa</td><td><code>PARTYTYPE=TAXFREE</code>, <code>TaxRepresentativeParty</code></td></tr>
+<tr><td>İhracat</td><td>Gümrük Ticaret Bakanlığı ihracat listesine (<code>PARTYTYPE=EXPORT</code>) fatura kesiliyorsa</td><td>GTİP, Incoterm, teslimat alanları</td></tr>
+<tr><td>Kamu</td><td>Alıcı kamu tüzel kişiliğiyse (veya TEMELFATURA olarak gönderilip alıcı kamu mükellefiyse)</td><td><code>PaymentMeans.PayeeFinancialAccount.ID</code> (TR IBAN)</td></tr>
+<tr><td>Hal Kayıt Sistemi</td><td>Sebze/meyve toptan satışında HKS künyesi izlenecekse</td><td><code>AdditionalItemIdentification.SchemeId=KUNYENO</code></td></tr>
+<tr><td>Enerji</td><td>Şarj hizmeti faturası kesiliyorsa</td><td><code>InvoiceTypeCode=SARJ/SARJANLIK</code></td></tr>
+<tr><td>İlaç/Tıbbi Cihaz</td><td>İlaç veya tıbbi cihaz teslimlerinde GİB izlenebilirliği gerekiyorsa</td><td><code>AdditionalItemIdentification.SchemeId=ILAC/TIBBICIHAZ/DIGER</code></td></tr>
+<tr><td>Yatırım Teşvik</td><td>YTB kapsamındaki mal/hizmet teslimlerinde teşvik numarası izlenecekse</td><td><code>ContractDocumentReference.SchemeId=YTBNO</code></td></tr>
+<tr><td>İDİS</td><td>İhracatta dahilde işleme rejimi sevkiyatı izlenecekse</td><td><code>IdisSevkiyatNo</code>, <code>AdditionalItemIdentification.SchemeId=ETIKETNO</code></td></tr>
+</tbody></table></div>
+
+<h2 id="h-olusturma-senaryolari">Oluşturma Senaryoları</h2>
+<p>Aşağıdaki kartlar her profil için entegratörün göndermesi gereken alanları ve işlem sonucunu gösterir.</p>
+
+<div class="scenario-card"><h3 id="h-temel-fatura">Temel Fatura (TEMELFATURA)</h3>
+<p class="scenario-description">Varsayılan profildir; özel bir senaryo gerekmiyorsa kullanılır. Profile özgü ek bir <code>InvoiceTypeCode</code> sınırlaması yoktur; genel e-Fatura kuralları uygulanır. <!-- vbt-source: ValidateInvoiceTypeCode --></p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>ProfileId</td><td><code>TEMELFATURA</code></td></tr><tr><td>Alıcı yanıtı</td><td>Kabul/red uygulama yanıtı beklenmez; belge otomatik sonuçlandırılır</td></tr></tbody></table></div><div class="callout callout-info"><b>Dikkat:</b> Alıcı GİB nezdinde kamu tüzel kişisiyse KAMU profiline ait IBAN ve taraf kuralları da uygulanır. Ayrıntı için aşağıdaki Kamu senaryosuna ve edge-case tablosuna bakın.</div></div>
+
+<div class="scenario-card"><h3 id="h-ticari-fatura">Ticari Fatura (TICARIFATURA)</h3>
+<p class="scenario-description">Alıcının faturayı <code>ApplicationResponse</code> ile kabul veya red etmesi beklenen iki taraflı akışta kullanılır. Profile özgü ek zorunlu alan yoktur; ayırt edici unsur iki taraflı onay akışıdır.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>ProfileId</td><td><code>TICARIFATURA</code></td></tr><tr><td>Alıcı yanıtı</td><td><code>WaitingForApproveOrReject</code> durumunda kabul veya red uygulama yanıtı beklenir</td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-yolcu-beraber">Yolcu Beraberinde Eşya (YOLCUBERABERFATURA)</h3>
+<p class="scenario-description">Tax-Free satışlarında kullanılır; fatura tipi yalnızca <code>ISTISNA</code> olabilir, alıcı tarafı <code>PARTYTYPE=TAXFREE</code> kimliği taşımalı ve aracı kurum bilgisi <code>TaxRepresentativeParty</code> altında doldurulmalıdır.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>InvoiceTypeCode</td><td><code>ISTISNA</code> (zorunlu, tek seçenek)</td></tr><tr><td>BuyerCustomerParty.PartyIdentifications</td><td><code>SchemeId=PARTYTYPE</code>, <code>Value=TAXFREE</code></td></tr><tr><td>BuyerCustomerParty.Party.Person.NationalityID</td><td>Dolu olmalı</td></tr><tr><td>BuyerCustomerParty.Party.Person.IdentityDocumentReference.ID</td><td>Dolu olmalı (pasaport no)</td></tr><tr><td>TaxRepresentativeParty.PartyIdentifications</td><td><code>ARACIKURUMVKN</code> (10/11 haneli), <code>ARACIKURUMETIKET</code> — her biri tam bir adet</td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-ihracat">İhracat (IHRACAT)</h3>
+<p class="scenario-description">Fatura tipi yalnızca <code>ISTISNA</code> olabilir; alıcı <code>PARTYTYPE=EXPORT</code> kimliği taşımalı ve satır/teslimat alanları gümrük izlenebilirliği için doldurulmalıdır.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>InvoiceTypeCode</td><td><code>ISTISNA</code> (zorunlu, tek seçenek)</td></tr><tr><td>BuyerCustomerParty.PartyIdentifications</td><td><code>SchemeId=PARTYTYPE</code>, <code>Value=EXPORT</code></td></tr><tr><td>BuyerCustomerParty.Party.PartyLegalEntity.RegistrationName</td><td>Dolu olmalı</td></tr><tr><td>AccountingSupplierParty.Party.PartyTaxScheme.TaxScheme.Name</td><td>Dolu olmalı</td></tr><tr><td>InvoiceLine.Delivery.Shipment.GoodsItem.RequiredCustomsID</td><td>12 haneli GTİP <!-- vbt-source: RegExConstants.GtipPattern -->)</td></tr><tr><td>Delivery.DeliveryTerms (satır veya belge seviyesi)</td><td><code>SchemeId=INCOTERMS</code> içeren en az bir ID</td></tr><tr><td>Delivery.DeliveryAddress (satır veya belge seviyesi)</td><td>En az bir tanesinde dolu olmalı</td></tr><tr><td>Delivery.Shipment.ShipmentStage.TransportModeCode (satır veya belge seviyesi)</td><td>En az bir tanesinde dolu olmalı</td></tr><tr><td>InvoiceLine.InvoicedQuantity / Price</td><td>&gt; 0</td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-kamu">Kamu (KAMU)</h3>
+<p class="scenario-description">Alıcı kamu tüzel kişiliğiyse kullanılır; ödeme aracının Türkiye IBAN'ı olması zorunludur.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>PaymentMeans.PayeeFinancialAccount.ID</td><td><!-- vbt-source: RegExConstants.PublicCorporationIbanRegexPattern --> ile eşleşen TR IBAN</td></tr><tr><td>PaymentMeans.PayeeFinancialAccount.CurrencyCode</td><td>Dolu olmalı</td></tr><tr><td>BuyerCustomerParty</td><td>VBT e-Fatura API sözleşmesinde zorunludur</td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-hks">Hal Kayıt Sistemi (HKS)</h3>
+<p class="scenario-description">Sebze/meyve toptan satışında her satırın HKS künye numarasını taşıması gerekir.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>InvoiceLine.Item.AdditionalItemIdentification.SchemeId</td><td><code>KUNYENO</code></td></tr><tr><td>AdditionalItemIdentification.Value uzunluğu</td><td>Tam 19 karakter</td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-enerji">Enerji (ENERJI)</h3>
+<p class="scenario-description">Şarj hizmeti faturalarında kullanılır; fatura tipi iki değerle sınırlıdır.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>InvoiceTypeCode</td><td><code>SARJ</code> veya <code>SARJANLIK</code></td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-ilac-tibbi-cihaz">İlaç/Tıbbi Cihaz (ILAC_TIBBICIHAZ)</h3>
+<p class="scenario-description">İlaç veya tıbbi cihaz teslimlerinde her satırın GİB izlenebilirlik kodunu taşıması gerekir.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>InvoiceTypeCode</td><td><code>SATIS</code>, <code>ISTISNA</code>, <code>TEVKIFAT</code>, <code>TEVKIFATIADE</code>, <code>IADE</code> veya <code>IHRACKAYITLI</code></td></tr><tr><td>InvoiceLine.Item.AdditionalItemIdentification.SchemeId</td><td><code>TIBBICIHAZ</code>, <code>ILAC</code> veya <code>DIGER</code> (en az biri her satırda)</td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-yatirim-tesvik">Yatırım Teşvik (YATIRIMTESVIK)</h3>
+<p class="scenario-description">YTB kapsamındaki teslimlerde teşvik belge numarası ve harcama tipi kodu birlikte doğrulanır. Geçerli tip kümesi ve vergi koşulları için güncel GİB e-Fatura kılavuzu esas alınır.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>InvoiceTypeCode</td><td><code>SATIS</code>, <code>ISTISNA</code> veya <code>IADE</code></td></tr><tr><td>ContractDocumentReference.SchemeId</td><td><code>YTBNO</code>, değer tam 6 hane</td></tr><tr><td>ContractDocumentReference.IssueDate</td><td>Dolu olmalı</td></tr><tr><td>InvoiceLine.Item.CommodityClassification.ItemClassificationCode</td><td><code>01</code>/<code>02</code>/<code>03</code>/<code>04</code>; seçilen kod için güncel GİB kılavuzundaki vergi koşulları uygulanır</td></tr></tbody></table></div></div>
+
+<div class="scenario-card"><h3 id="h-idis">İDİS (IDIS)</h3>
+<p class="scenario-description">Dahilde işleme rejimi sevkiyatlarında sevkiyat numarası ve satır etiket numarası zorunludur.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Değer</th></tr></thead><tbody><tr><td>InvoiceTypeCode</td><td><code>SATIS</code>, <code>ISTISNA</code>, <code>IADE</code>, <code>TEVKIFAT</code>, <code>TEVKIFATIADE</code> veya <code>IHRACKAYITLI</code></td></tr><tr><td>IdisSevkiyatNo</td><td><!-- vbt-source: RegExConstants.IdisSevkiyatPattern --> ile eşleşmeli (yorum: "SE-" ön eki + 7 haneli sayı)</td></tr><tr><td>InvoiceLine.Item.AdditionalItemIdentification.SchemeId</td><td><code>ETIKETNO</code>, değer <!-- vbt-source: RegExConstants.IdisEtiketNoPattern --> ile eşleşmeli (yorum: 2 harf + 7 rakam)</td></tr></tbody></table></div></div>
+
+<h2 id="h-iptal-senaryosu">İptal ve İtiraz Senaryosu</h2>
+<p>Giden faturada iptal yalnızca <code>TEMELFATURA</code> ve <code>ILAC_TIBBICIHAZ</code> profillerinde desteklenir. İtiraz ise belge kimliğiyle birlikte itiraz belgesi, tarihi, numarası, türü ve açıklaması gönderilerek kaydedilir. <!-- vbt-source: OutgoingInvoiceService.cs:3373-3439 --></p>
+<div class="table-wrapper"><table><thead><tr><th>İşlem</th><th>Ön koşul</th><th>Endpoint</th></tr></thead><tbody><tr><td>İptal</td><td>Profil <code>TEMELFATURA</code> veya <code>ILAC_TIBBICIHAZ</code></td><td><code>CancelOutgoingInvoice</code></td></tr><tr><td>İtiraz</td><td>İtiraz belgesi bilgileri eksiksiz</td><td><code>ObjectOutgoingInvoice</code></td></tr></tbody></table></div>
+<div class="callout callout-warning"><b>İtiraz ve iptal kapsamı farklıdır:</b> <code>ObjectOutgoingInvoice</code> işlemi <code>ProfileId</code> değerine göre sınırlandırılmaz. <code>CancelOutgoingInvoice</code> ise yalnızca yukarıda belirtilen profilleri kabul eder. <!-- vbt-source: OutgoingInvoiceService.cs:3373-3393 --></div>
+
+<h2 id="h-edge-case">Sınır Durumları</h2>
+<p>Sınır durumlar, profil seçiminin veya doğrulamanın beklenmeyen kombinasyonlarda nasıl davrandığını önceden görmek için ayrı ele alınır.</p>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>Durum</th><th>Sonuç</th><th>Neden</th></tr></thead><tbody>
+<tr><td>E1</td><td><code>ProfileId=TEMELFATURA</code> gönderilir ve alıcı GİB nezdinde kamu tüzel kişisi olarak bulunursa</td><td>⚠️</td><td>KAMU profiline özgü IBAN ve <code>BuyerCustomerParty</code> kontrolleri uygulanır. <!-- vbt-source: InvoiceValidation.cs:1221-1232; ValidateKamuFatura --></td></tr>
+<tr><td>E2</td><td>InvoiceTypeCode=IADE/TEVKIFATIADE/YTBIADE/YTBTEVKIFATIADE iken ProfileId TICARIFATURA, IHRACAT, YOLCUBERABERFATURA, KAMU, HKS, ENERJI gibi izin verilmeyen bir profil ise</td><td>❌</td><td>SCHEME hatası — sadece TEMELFATURA, EARSIVFATURA, ILAC_TIBBICIHAZ, YATIRIMTESVIK veya IDIS kabul edilir <!-- vbt-source: InvoiceValidation.cs:1086-1100 --></td></tr>
+<tr><td>E3</td><td>InvoiceTypeCode=SGK iken ProfileId TEMELFATURA dışında bir değerse</td><td>❌</td><td>SCHEME hatası <!-- vbt-source: InvoiceValidation.cs:1120-1130 --></td></tr>
+<tr><td>E4</td><td>InvoiceTypeCode=TEKNOLOJIDESTEK iken ProfileId EARSIVFATURA dışında bir değerse</td><td>❌</td><td>SCHEME hatası <!-- vbt-source: InvoiceValidation.cs:1164-1175 --> — bu tip zaten e-Fatura kapsamı dışına düşer</td></tr>
+<tr><td>E5</td><td>ReceiverIdentifier = <code>urn:mail:yolcuberaberpk@gtb.gov.tr</code> iken ProfileId YOLCUBERABERFATURA değilse</td><td>❌</td><td>SCHEME hatası <!-- vbt-source: InvoiceValidation.cs:956-963 --></td></tr>
+<tr><td>E6</td><td>ReceiverIdentifier = <code>urn:mail:ihracatpk@gtb.gov.tr</code> iken ProfileId IHRACAT değilse</td><td>❌</td><td>SCHEME hatası <!-- vbt-source: InvoiceValidation.cs:966-976 --></td></tr>
+<tr><td>E7</td><td><code>WithholdingTaxTotal</code> dolu iken <code>InvoiceTypeCode</code> izin verilen kümenin dışındaysa</td><td>❌</td><td><code>SCHEME</code> hatası. İzin verilen tipler: <code>TEVKIFAT</code>, <code>YTBTEVKIFAT</code>, <code>IADE</code>, <code>YTBIADE</code>, <code>SGK</code>, <code>SARJ</code>, <code>SARJANLIK</code>. <!-- vbt-source: InvoiceValidation.cs:869-889; ValidateGeneralWithholdingTaxTotal --></td></tr>
+<tr><td>E8</td><td>TaxTypeCode=4171 (Petrol/Doğalgaz ÖTV Tevkifatı) kullanılırken InvoiceTypeCode TEVKIFAT/IADE/YTBIADE/SGK dışındaysa</td><td>❌</td><td>SCHEME hatası <!-- vbt-source: InvoiceValidation.cs:891-913 --></td></tr>
+</tbody></table></div>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="api-temelleri.html"><span>Önceki</span><strong>API Temelleri</strong></a>
+<a class="docs-page-link docs-page-next" href="giden-fatura-akisi.html"><span>Sonraki</span><strong>Giden Fatura Akışı</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="TEMELFATURA, TICARIFATURA, İhracat, teşvik, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Fatura Nedir?","text":"e-Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-Fatura Invoice ProfileID","url":"e-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura Senaryoları","text":"On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.","keywords":"Giden Fatura Senaryolar TEMELFATURA TICARIFATURA İhracat teşvik","url":"giden-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Akışı","text":"Giden e-Faturanın oluşturulmasından imzalama, GİB ve alıcı sonucuna; hata geri dönüşlerinden iptal ve itiraza kadar durum makinesi.","keywords":"Giden Fatura state machine durum GİB alıcı yanıtı","url":"giden-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Giden Fatura Sorumlulukları","text":"Giden fatura hazırlama, güvenli gönderim, durum takibi, mutabakat ve iptal/itiraz sorumlulukları.","keywords":"Giden Fatura Sorumluluklar entegratör platform mutabakat","url":"giden-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Entegratör API","text":"Giden faturayı doğrulama, oluşturma, güncelleme, gönderme, sorgulama ve durum takibi endpoint sözleşmeleri.","keywords":"Giden Fatura Entegratör API endpoint durum","url":"giden-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Portal API","text":"Portal giden fatura listesi, görüntüleme, e-posta, belge numarası ve mükellef sorgu endpointleri.","keywords":"Giden Fatura Portal API grid e-posta","url":"giden-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Request Örnekleri","text":"On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.","keywords":"Giden Fatura JSON request","url":"giden-fatura-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura JSON → UBL Mapping","text":"Giden fatura JSON alanlarının üretilen UBL Invoice XML içindeki karşılıkları.","keywords":"Giden Fatura JSON UBL XML mapping","url":"giden-fatura-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Senaryoları","text":"Gelen faturada otomatik sonuç, kabul/red uygulama yanıtı, ERP aktarımı, iptal ve itiraz senaryoları.","keywords":"Gelen Fatura Senaryolar ApplicationResponse kabul red ERP","url":"gelen-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Akışı","text":"Gelen e-Faturanın alınması, ERP'ye aktarılması, profile göre otomatik sonuç veya kabul/red uygulama yanıtı ve durum makinesi.","keywords":"Gelen Fatura state machine ApplicationResponse kabul red ERP","url":"gelen-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Sorumlulukları","text":"Gelen faturayı tekilleştirme, ERP'ye alma, uygulama yanıtı, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen Fatura Sorumluluklar tekilleştirme ERP uygulama yanıtı","url":"gelen-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Entegratör API","text":"Gelen faturayı listeleme, ayrıntılandırma, yanıtlama, durum sorgulama, ERP işleme ve çıktı alma endpointleri.","keywords":"Gelen Fatura Entegratör API endpoint ApplicationResponse","url":"gelen-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Portal API","text":"Portal gelen fatura listesi, görüntüleme, okundu bilgisi, e-posta, kabul/red ve itiraz endpointleri.","keywords":"Gelen Fatura Portal API kabul red itiraz","url":"gelen-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura İşlem Örnekleri","text":"Listeleme, durum, kabul/red, ERP işleme ve belge çıktısı için tam ve kopyalanabilir JSON örnekleri.","keywords":"Gelen Fatura JSON işlem","url":"gelen-fatura-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen Fatura UBL → API/ERP Mapping","text":"Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen Fatura UBL API ERP mapping","url":"gelen-fatura-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, alan kuralları ve sözleşme bakım notları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.","keywords":"SSS sorular durum timeout UBL iptal itiraz","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

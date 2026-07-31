@@ -76,6 +76,7 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Sıkça Sorulan Sorular</h1><p class="docs-lead">Müşteri ve entegratör tarafından en sık sorulan sorular.</p></header>
 <!-- vbt:article-header:end -->
 <section id="sss">
+<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>Ayrıntılı kaynak</th></tr></thead><tbody><tr><td>Belge kapsamı</td><td><a href="mustahsil-makbuzu-nedir.html">İlgili sayfayı açın</a></td></tr><tr><td>Kesinti senaryoları</td><td><a href="kullanim-senaryolari.html">İlgili sayfayı açın</a></td></tr><tr><td>API işlemleri</td><td><a href="entegrator-api-endpoint-referansi.html">İlgili sayfayı açın</a></td></tr><tr><td>Gelecek SMS değişikliği</td><td><a href="sms-dogrulamali-gonderim.html">İlgili sayfayı açın</a></td></tr></tbody></table></div>
 <h2 id="sss-musteri">Müşteri SSS</h2>
 
 <details class="example-details"><summary>e-Müstahsil Makbuzu ne zaman düzenlenir?</summary>
@@ -96,6 +97,9 @@
     </div>
 </details>
 
+
+<details class="example-details"><summary>SMS doğrulamalı gönderim şu anda zorunlu mu?</summary><div class="example-body"><p>Hayır. SMS doğrulamalı gönderim sayfaları gelecek davranışı açıklar ve <strong>henüz aktif değildir</strong>.</p></div></details>
+<details class="example-details"><summary>Makbuzun XML veya PDF çıktısına nasıl ulaşırım?</summary><div class="example-body"><p>Belge kimliğiyle kullanılabilen çıktı işlemleri <a href="entegrator-api-endpoint-referansi.html#h-sorgulama">API sorgulama bölümünde</a> yer alır.</p></div></details>
 <h2 id="sss-entegrator">Entegratör SSS</h2>
 
 <details class="example-details"><summary>Aynı makbuzda birden fazla ürün kalemi olabilir mi?</summary>
@@ -106,7 +110,7 @@
 
 <details class="example-details"><summary>Bir makbuzu ne zaman iptal edebilirim?</summary>
     <div class="example-body">
-        <p>Yalnızca <code>Signed</code> durumundaki makbuzlar iptal edilebilir. İmza kuyruğunda bekleyen (<code>CreditNoteAndXmlCreated</code>) bir makbuz iptal edilmeye çalışılırsa <code>EMM0024</code> hatası döner; zaten iptal edilmiş bir makbuz tekrar iptal edilemez (<code>EMM0025</code>).</p>
+        <p>Yalnızca <code>Signed</code> durumundaki makbuzlar iptal edilebilir. İmzalama bekleyen (<code>CreditNoteAndXmlCreated</code>) bir makbuz iptal edilmeye çalışılırsa <code>EMM0024</code> hatası döner; zaten iptal edilmiş bir makbuz tekrar iptal edilemez (<code>EMM0025</code>).</p>
     </div>
 </details>
 
@@ -145,6 +149,13 @@
         <p>Oluşturma/güncelleme yanıtları <code>HasError</code> ve <code>Errors[]</code> alanlarını taşır; <code>HasError = true</code> ise <code>Errors</code> dizisindeki her öğe bir hata kodu ve açıklaması içerir (örn. <code>EMM0020</code>, <code>EMM0028</code>). Hata kodlarının rehberde geçen listesi için <a href="teknik-referans.html">Teknik Referans</a> sayfasına bakın.</p>
     </div>
 </details>
+
+
+<details class="example-details"><summary>Timeout sonrasında aynı makbuz yeniden oluşturulmalı mı?</summary><div class="example-body"><p>Önce <code>CreditNoteExternalId</code> ve varsa UUID ile mevcut kayıt sorgulanmalıdır. Kayıt yokluğu doğrulanmadan yeni dış referansla tekrar gönderim yapılmamalıdır.</p></div></details>
+<details class="example-details"><summary>ERP’de hangi kimlikler birlikte saklanmalıdır?</summary><div class="example-body"><p>Dış referans, UUID, makbuz numarası ve son gözlenen durum birlikte saklanmalıdır.</p></div></details>
+<details class="example-details"><summary>Birden fazla kesinti nasıl gönderilir?</summary><div class="example-body"><p>Her kesinti ayrı <code>TaxSubtotal</code> satırı olarak gönderilir; üst vergi toplamı ve ödenecek tutar bu satırların toplamıyla uyumlu olmalıdır.</p></div></details>
+<details class="example-details"><summary>İptal isteği hangi kontrolden sonra gönderilmelidir?</summary><div class="example-body"><p>Önce güncel belge durumu sorgulanmalı; yalnızca API’nin iptale izin verdiği durumda iptal çağrısı yapılmalıdır.</p></div></details>
+<details class="example-details"><summary>Canlıya geçmeden önce hangi senaryolar test edilmelidir?</summary><div class="example-body"><p>Normal alım, stopaj, borsa tescil, SGK primi, mera fonu, çoklu kesinti, çok kalemli makbuz, çıktı alma, timeout mutabakatı ve iptal ayrı ayrı doğrulanmalıdır.</p></div></details>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">

@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giden Fatura Request Örnekleri — e-Fatura Entegrasyon Rehberi</title>
+<meta name="description" content="On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/guides/e-fatura/docs/giden-fatura-request-ornekleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Giden Fatura Request Örnekleri — e-Fatura Entegrasyon Rehberi">
+<meta property="og:description" content="On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/guides/e-fatura/docs/giden-fatura-request-ornekleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Giden Fatura Request Örnekleri — e-Fatura Entegrasyon Rehberi">
+<meta name="twitter:description" content="On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Fatura</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-fatura-nedir.html">Rehber</a><a href="api-temelleri.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-fatura-nedir.html">e-Fatura Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API Temelleri</div>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Giden Fatura</div>
+<a class="docs-nav-link" href="giden-fatura-senaryolari.html">Giden Fatura Senaryoları</a>
+<a class="docs-nav-link" href="giden-fatura-akisi.html">Giden Fatura Akışı</a>
+<a class="docs-nav-link" href="giden-fatura-sorumluluklari.html">Giden Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="giden-fatura-entegrator-api.html">Giden Fatura Entegratör API</a>
+<a class="docs-nav-link" href="giden-fatura-portal-api.html">Giden Fatura Portal API</a>
+<a class="docs-nav-link active" href="giden-fatura-request-ornekleri.html">Giden Fatura Request Örnekleri</a>
+<a class="docs-nav-link" href="giden-fatura-json-ubl-mapping.html">Giden Fatura JSON → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Gelen Fatura</div>
+<a class="docs-nav-link" href="gelen-fatura-senaryolari.html">Gelen Fatura Senaryoları</a>
+<a class="docs-nav-link" href="gelen-fatura-akisi.html">Gelen Fatura Akışı</a>
+<a class="docs-nav-link" href="gelen-fatura-sorumluluklari.html">Gelen Fatura Sorumlulukları</a>
+<a class="docs-nav-link" href="gelen-fatura-entegrator-api.html">Gelen Fatura Entegratör API</a>
+<a class="docs-nav-link" href="gelen-fatura-portal-api.html">Gelen Fatura Portal API</a>
+<a class="docs-nav-link" href="gelen-fatura-islem-ornekleri.html">Gelen Fatura İşlem Örnekleri</a>
+<a class="docs-nav-link" href="gelen-fatura-ubl-api-mapping.html">Gelen Fatura UBL → API/ERP Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Giden Fatura</p><h1>Giden Fatura Request Örnekleri</h1><p class="docs-lead">On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="request-ornekleri">
+<h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
+<p>Miktar alanları ham sayı yerine <code>{ "UnitCode", "Value" }</code> biçiminde nesne olarak gönderilir. Aşağıdaki her örnek, ilgili endpoint'e doğrudan gönderilebilen tam bir request gövdesidir. <!-- vbt-source: VbtTicari.Model/RequestModel/Invoice/Outgoing/OutgoingInvoiceRequestModel.cs; Vbt.Core.Ubl/DocumentRequestModel/InvoiceRequestModel.cs; QuantityRequestModel.cs:8-21 --></p>
+<p>Desteklenen 10 <code>ProfileId</code> değerinin her biri için tam, bağımsız ve doğrudan kopyalanabilir JSON request gövdesi verilmiştir. Her örnek ortak zorunlu alanlarla birlikte profile özgü alanları da içerir. <code>EARSIVFATURA</code> bu rehberin kapsamı dışındadır.</p>
+<div class="callout callout-info"><b>Kullanım:</b> Her JSON bloğu ilgili endpoint'in gerçek request modeliyle uyumlu, bağımsız ve doğrudan kopyalanabilir tam bir gövdedir. Her gönderimde benzersiz bir <code>InvoiceExternalId</code> kullanın.</div>
+<div class="table-wrapper"><table><thead><tr><th>Örnek</th><th>Profil</th><th>Ayırt Edici Nokta</th></tr></thead><tbody>
+<tr><td>1</td><td>TemelFatura (temsilci — Grup 1)</td><td>Tam gövde; tek kalem, KDV, ek koşul yok</td></tr>
+<tr><td>2</td><td>Kamu</td><td><code>BuyerCustomerParty</code> zorunlu, <code>PaymentMeans.PayeeFinancialAccount</code> IBAN + para birimi</td></tr>
+<tr><td>3</td><td>HKS (Hal Kayıt Sistemi)</td><td><code>InvoiceLine.Item.AdditionalItemIdentification</code> içinde 19 haneli <code>KUNYENO</code></td></tr>
+<tr><td>4</td><td>Enerji</td><td><code>InvoiceTypeCode</code> yalnızca <code>SARJ</code>/<code>SARJANLIK</code> olabilir</td></tr>
+<tr><td>5</td><td>İlaç/Tıbbi Cihaz</td><td><code>AdditionalItemIdentification.SchemeId</code> = <code>ILAC</code>/<code>TIBBICIHAZ</code>/<code>DIGER</code></td></tr>
+<tr><td>6</td><td>Yatırım Teşvik</td><td><code>ContractDocumentReference</code> içinde 6 haneli <code>YTBNO</code>, <code>Item.CommodityClassification</code></td></tr>
+<tr><td>7</td><td>İDİS</td><td><code>IdisSevkiyatNo</code> ("SE-" + 7 hane) ve kalem bazlı <code>ETIKETNO</code></td></tr>
+<tr><td>8</td><td>TicariFatura (temsilci — Grup 2)</td><td>Tam gövde; <code>ReceiverIdentifier</code> ile alıcı etiketi doğrulaması</td></tr>
+<tr><td>9</td><td>İhracat</td><td><code>Delivery.DeliveryTerms</code> (INCOTERMS), <code>ShipmentStage.TransportModeCode</code>, <code>GoodsItem.RequiredCustomsId</code> (GTİP), <code>DeliveryAddress</code>, alıcı <code>PARTYTYPE</code>=<code>EXPORT</code></td></tr>
+<tr><td>10</td><td>Yolcu Beraberinde Eşya</td><td>Alıcı <code>PARTYTYPE</code>=<code>TAXFREE</code>, <code>Person.IdentityDocumentReference</code> (pasaport no)</td></tr>
+</tbody></table></div>
+<p>Her örnek ilgili profile referans verir.</p>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>Profil</th><th>Grup</th></tr></thead><tbody>
+<tr><td><a href="#h-ex1">1</a></td><td>TemelFatura</td><td>1 — Tek başına gönderilebilen</td></tr>
+<tr><td><a href="#h-ex2">2</a></td><td>Kamu</td><td>1</td></tr>
+<tr><td><a href="#h-ex3">3</a></td><td>HKS</td><td>1</td></tr>
+<tr><td><a href="#h-ex4">4</a></td><td>Enerji</td><td>1</td></tr>
+<tr><td><a href="#h-ex5">5</a></td><td>İlaç/Tıbbi Cihaz</td><td>1</td></tr>
+<tr><td><a href="#h-ex6">6</a></td><td>Yatırım Teşvik</td><td>1</td></tr>
+<tr><td><a href="#h-ex7">7</a></td><td>İDİS</td><td>1</td></tr>
+<tr><td><a href="#h-ex8">8</a></td><td>TicariFatura</td><td>2 — Taraflar arası ek bilgi taşıyan</td></tr>
+<tr><td><a href="#h-ex9">9</a></td><td>İhracat</td><td>2</td></tr>
+<tr><td><a href="#h-ex10">10</a></td><td>Yolcu Beraberinde Eşya</td><td>2</td></tr>
+</tbody></table></div>
+
+<h3 id="h-ex1">Örnek 1: TemelFatura (temsilci örnek)</h3>
+<p>Grup 1'in temsilci örneği. Diğer tek-başına-gönderilebilen profiller (Kamu, HKS, Enerji, İlaç/Tıbbi Cihaz, Yatırım Teşvik, İDİS) bu gövdeyi temel alır; tam ve bağımsız request gövdeleri sonraki örneklerde gösterilir.</p><details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Tek kalemli, KDV'li (<code>TaxTypeCode=0015</code>) bir SATIS tipi TemelFatura. <!-- vbt-source: Vbt.Core.Model/Enum/TaxType.cs:16-17 --></p><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-001",
+  "ProfileId": "TEMELFATURA",
+  "InvoiceTypeCode": "SATIS",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 10
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Danışmanlık Hizmeti"
+      },
+      "Price": 100,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ex2">Örnek 2: Kamu</h3>
+<p><code>ProfileId</code> değeri <code>KAMU</code> iken (veya alıcı bir kamu tüzel kişiliğiyse ve fatura <code>TEMELFATURA</code> gönderilse dahi) <code>BuyerCustomerParty</code> zorunlu hale gelir ve <code>PaymentMeans.PayeeFinancialAccount</code> geçerli bir Türkiye IBAN'ı ile para birimi içermelidir <!-- vbt-source: InvoiceValidation.cs:1213-1261 -->).</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><p>Bu örnek ortak alanların tamamını taşır; profile özgü ekler <code>BuyerCustomerParty</code> ve <code>PaymentMeans</code> alanlarının eklenmesidir.</p><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>ProfileId</code></td><td><span class="badge-required">Z</span></td><td><code>KAMU</code> (veya kamu alıcılı <code>TEMELFATURA</code>)</td></tr>
+<tr><td><code>BuyerCustomerParty</code></td><td><span class="badge-required">Z</span></td><td>VBT e-Fatura API sözleşmesinde zorunludur</td></tr>
+<tr><td><code>PaymentMeans[].PayeeFinancialAccount.Id</code></td><td><span class="badge-required">Z</span></td><td>Geçerli Türkiye IBAN'ı (regex ile doğrulanır)</td></tr>
+<tr><td><code>PaymentMeans[].PayeeFinancialAccount.CurrencyCode</code></td><td><span class="badge-required">Z</span></td><td>Boş bırakılamaz</td></tr>
+</tbody></table></div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-002",
+  "ProfileId": "KAMU",
+  "InvoiceTypeCode": "SATIS",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 10
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Danışmanlık Hizmeti"
+      },
+      "Price": 100,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "BuyerCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Kamu Kurumu"
+    }
+  },
+  "PaymentMeans": [
+    {
+      "PayeeFinancialAccount": {
+        "Id": "TR330006100519786457841326",
+        "CurrencyCode": "TRY"
+      }
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ex3">Örnek 3: HKS (Hal Kayıt Sistemi)</h3>
+<p><code>ProfileId</code> değeri <code>HKS</code> iken her <code>InvoiceLine</code>, <code>SchemeId</code> değeri <code>KUNYENO</code> olan ve değeri 19 karakter uzunluğunda bir <code>AdditionalItemIdentification</code> içermelidir (<!-- vbt-source: InvoiceValidation.cs:916-950 -->).</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[].SchemeId</code></td><td><span class="badge-required">Z</span></td><td><code>KUNYENO</code></td></tr>
+<tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[].Value</code></td><td><span class="badge-required">Z</span></td><td>Tam olarak 19 karakter</td></tr>
+</tbody></table></div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-003",
+  "ProfileId": "HKS",
+  "InvoiceTypeCode": "HKSSATIS",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "KGM",
+        "Value": 500
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Domates",
+        "AdditionalItemIdentification": [
+          {
+            "SchemeId": "KUNYENO",
+            "Value": "1234567890123456789"
+          }
+        ]
+      },
+      "Price": 2,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ex4">Örnek 4: Enerji</h3>
+<p><code>ProfileId</code> değeri <code>ENERJI</code> iken <code>InvoiceTypeCode</code> yalnızca <code>SARJ</code> veya <code>SARJANLIK</code> olabilir (<!-- vbt-source: InvoiceValidation.cs:1150-1162 -->.</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>ProfileId</code></td><td><span class="badge-required">Z</span></td><td><code>ENERJI</code></td></tr>
+<tr><td><code>InvoiceTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>SARJ</code> veya <code>SARJANLIK</code></td></tr>
+</tbody></table></div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-004",
+  "ProfileId": "ENERJI",
+  "InvoiceTypeCode": "SARJ",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 10
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Danışmanlık Hizmeti"
+      },
+      "Price": 100,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ex5">Örnek 5: İlaç/Tıbbi Cihaz</h3>
+<p><code>ProfileId</code> değeri <code>ILAC_TIBBICIHAZ</code> iken her <code>InvoiceLine</code>, <code>SchemeId</code> değeri <code>ILAC</code>, <code>TIBBICIHAZ</code> veya <code>DIGER</code> olan en az bir <code>AdditionalItemIdentification</code> içermelidir; ayrıca <code>InvoiceTypeCode</code> yalnızca <code>SATIS</code>, <code>ISTISNA</code>, <code>TEVKIFAT</code>, <code>TEVKIFATIADE</code>, <code>IADE</code> veya <code>IHRACKAYITLI</code> olabilir (<!-- vbt-source: InvoiceValidation.cs:216-247 --> ve <code>1177-1193</code>).</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[].SchemeId</code></td><td><span class="badge-required">Z</span></td><td><code>ILAC</code> / <code>TIBBICIHAZ</code> / <code>DIGER</code></td></tr>
+<tr><td><code>InvoiceTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>SATIS</code>, <code>ISTISNA</code>, <code>TEVKIFAT</code>, <code>TEVKIFATIADE</code>, <code>IADE</code>, <code>IHRACKAYITLI</code></td></tr>
+</tbody></table></div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-005",
+  "ProfileId": "ILAC_TIBBICIHAZ",
+  "InvoiceTypeCode": "SATIS",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 100
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Steril Enjektör",
+        "AdditionalItemIdentification": [
+          {
+            "SchemeId": "TIBBICIHAZ",
+            "Value": "TC-UTS-000123"
+          }
+        ]
+      },
+      "Price": 10,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ex6">Örnek 6: Yatırım Teşvik</h3>
+<p><code>ProfileId</code> değeri <code>YATIRIMTESVIK</code> iken <code>ContractDocumentReference</code> içinde <code>SchemeId=YTBNO</code> olan, 6 haneli değer ve dolu <code>IssueDate</code> içeren kayıt zorunludur. Güncel GİB kılavuzuna göre <code>InvoiceTypeCode</code> yalnızca <code>SATIS</code>, <code>ISTISNA</code> veya <code>IADE</code> olmalıdır.</p><!-- vbt-source: InvoiceValidation.cs:287-407,1195-1210; GİB Yatırım Teşvik Teknik Kılavuzu V1.0 --><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>ContractDocumentReference[].SchemeId</code></td><td><span class="badge-required">Z</span></td><td><code>YTBNO</code></td></tr>
+<tr><td><code>ContractDocumentReference[].Id</code></td><td><span class="badge-required">Z</span></td><td>6 haneli YTB numarası</td></tr>
+<tr><td><code>ContractDocumentReference[].IssueDate</code></td><td><span class="badge-required">Z</span></td><td>Boş bırakılamaz</td></tr>
+<tr><td><code>InvoiceLine[].Item.CommodityClassification[].Value</code></td><td><span class="badge-conditional">Ş</span></td><td><code>01</code>/<code>02</code>/<code>03</code>/<code>04</code> — kod ile <code>InvoiceTypeCode</code> uyumu ayrıca kontrol edilir</td></tr>
+</tbody></table></div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-006",
+  "ProfileId": "YATIRIMTESVIK",
+  "InvoiceTypeCode": "SATIS",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 1
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "CNC Torna Tezgahı",
+        "CommodityClassification": [
+          {
+            "Value": "01"
+          }
+        ]
+      },
+      "Price": 1000,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "ContractDocumentReference": [
+    {
+      "SchemeId": "YTBNO",
+      "Id": "123456",
+      "IssueDate": "2026-01-15T00:00:00"
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ex7">Örnek 7: İDİS</h3>
+<p><code>ProfileId</code> değeri <code>IDIS</code> iken <code>IdisSevkiyatNo</code> alanı "SE-" ön eki ve ardından 7 haneli sayı formatında olmalı; her <code>InvoiceLine</code>, <code>SchemeId</code> değeri <code>ETIKETNO</code> olan ve düzeni doğrulanan bir <code>AdditionalItemIdentification</code> içermelidir (<!-- vbt-source: InvoiceValidation.cs:409-451 -->).</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>IdisSevkiyatNo</code></td><td><span class="badge-required">Z</span></td><td><code>SE-</code> + 7 haneli sayı <!-- vbt-source: RegExConstants.IdisSevkiyatPattern --></td></tr>
+<tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[].SchemeId</code></td><td><span class="badge-required">Z</span></td><td><code>ETIKETNO</code></td></tr>
+<tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[].Value</code></td><td><span class="badge-required">Z</span></td><td>İlk 2 karakter harf, sonraki 7 karakter rakam <!-- vbt-source: RegExConstants.IdisEtiketNoPattern --></td></tr>
+</tbody></table></div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-007",
+  "ProfileId": "IDIS",
+  "InvoiceTypeCode": "SATIS",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 10
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Karkas Et",
+        "AdditionalItemIdentification": [
+          {
+            "SchemeId": "ETIKETNO",
+            "Value": "AB1234567"
+          }
+        ]
+      },
+      "Price": 100,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "IdisSevkiyatNo": "SE-1234567"
+}</code></pre></div></details>
+
+<h3 id="h-ex8">Örnek 8: TicariFatura (temsilci örnek)</h3>
+<p>Grup 2'nin temsilci örneği. Request ortak alanların tamamını taşır; <code>ProfileId</code> değeri <code>TICARIFATURA</code> olduğunda ve <code>ReceiverIdentifier</code> (alıcı GİB etiketi) doldurulduğunda VBT bu etiketin ilgili mükellef için geçerli olup olmadığını GİB kullanıcı listesinden doğrular (<!-- vbt-source: InvoiceValidation.cs:829-849 --> — <code>TemelFatura</code>, <code>TicariFatura</code> ve <code>Kamu</code> profilleri için geçerlidir).</p><details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><div class="callout callout-info"><b>Fark:</b> Örnek 1'e göre tek değişiklik <code>ProfileId</code> değeri ve isteğe bağlı <code>ReceiverIdentifier</code> alanının eklenmesidir; kalem/vergi yapısı aynıdır.</div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-008",
+  "ProfileId": "TICARIFATURA",
+  "InvoiceTypeCode": "SATIS",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-11T10:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 10
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Danışmanlık Hizmeti"
+      },
+      "Price": 100,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "ReceiverIdentifier": "urn:mail:ornekfirma@vbt.com.tr"
+}</code></pre></div></details>
+
+<h3 id="h-ex9">Örnek 9: İhracat</h3>
+<p><code>ProfileId</code> değeri <code>IHRACAT</code> iken <code>InvoiceTypeCode</code> yalnızca <code>ISTISNA</code> olabilir; <code>BuyerCustomerParty.Party.PartyIdentifications</code> içinde <code>SchemeId</code>=<code>PARTYTYPE</code>, <code>Value</code>=<code>EXPORT</code> olan bir kayıt, <code>PartyLegalEntity.RegistrationName</code>, tedarikçi tarafında <code>PartyTaxScheme.TaxScheme.Name</code>, kalemlerde pozitif <code>InvoicedQuantity</code>, teslimat bilgilerinde (fatura ya da kalem seviyesinde) <code>DeliveryTerms</code> altında <code>SchemeId</code>=<code>INCOTERMS</code> olan bir <code>Id</code> ile <code>Shipment.ShipmentStage.TransportModeCode</code>, fatura veya kalem seviyesinde en az bir <code>Delivery.DeliveryAddress</code>, ve her kalemde <code>Delivery.Shipment.GoodsItem.RequiredCustomsId</code> (GTİP, 12 haneli numerik) zorunludur (<!-- vbt-source: InvoiceValidation.cs:952-1007 -->, <code>1327-1500</code>, <code>1502-1527</code>, <code>1529-1558</code>, <code>1603-1619</code>).</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>InvoiceTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>ISTISNA</code></td></tr>
+<tr><td><code>BuyerCustomerParty.Party.PartyIdentifications[]</code></td><td><span class="badge-required">Z</span></td><td><code>SchemeId</code>=<code>PARTYTYPE</code>, <code>Value</code>=<code>EXPORT</code></td></tr>
+<tr><td><code>BuyerCustomerParty.Party.PartyLegalEntity[].RegistrationName</code></td><td><span class="badge-required">Z</span></td><td>Boş bırakılamaz</td></tr>
+<tr><td><code>AccountingSupplierParty.Party.PartyTaxScheme.TaxScheme.Name</code></td><td><span class="badge-required">Z</span></td><td>Boş bırakılamaz</td></tr>
+<tr><td><code>InvoiceLine[].InvoicedQuantity</code></td><td><span class="badge-required">Z</span></td><td>Dolu ve &gt; 0</td></tr>
+<tr><td><code>Delivery[].DeliveryTerms[].Id</code></td><td><span class="badge-required">Z</span></td><td><code>SchemeId</code>=<code>INCOTERMS</code> — fatura veya kalem seviyesinde en az bir tanesinde</td></tr>
+<tr><td><code>Delivery[].Shipment.ShipmentStage[].TransportModeCode</code></td><td><span class="badge-required">Z</span></td><td>Fatura veya kalem seviyesinde en az bir tanesinde dolu olmalı</td></tr>
+<tr><td><code>Delivery[].DeliveryAddress</code></td><td><span class="badge-required">Z</span></td><td>Fatura veya kalem seviyesinde en az bir tanesinde dolu olmalı</td></tr>
+<tr><td><code>InvoiceLine[].Delivery[].Shipment.GoodsItem[].RequiredCustomsId</code></td><td><span class="badge-required">Z</span></td><td>GTİP kodu — 12 haneli, yalnızca rakam <!-- vbt-source: RegExConstants.GtipPattern --></td></tr>
+</tbody></table></div><div class="callout callout-info"><b>Fark:</b> Örnek 8'e göre <code>InvoiceTypeCode</code> <code>ISTISNA</code>'ya sabitlenir; <code>BuyerCustomerParty</code>, <code>PartyLegalEntity</code>, <code>PartyTaxScheme</code> ve <code>Delivery</code> (adres, INCOTERMS, taşıma şekli, GTİP) alanları eklenir.</div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-009",
+  "ProfileId": "IHRACAT",
+  "InvoiceTypeCode": "ISTISNA",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek İhracat A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      },
+      "PartyTaxScheme": {
+        "TaxScheme": {
+          "Name": "Kadıköy Vergi Dairesi"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "KGM",
+        "Value": 1000
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Tekstil Ürünü"
+      },
+      "Price": 1,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      },
+      "Delivery": [
+        {
+          "Shipment": {
+            "GoodsItem": [
+              {
+                "RequiredCustomsId": "610910000000"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "ReceiverIdentifier": "urn:mail:ihracatpk@gtb.gov.tr",
+  "BuyerCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "PARTYTYPE",
+          "Value": "EXPORT"
+        }
+      ],
+      "PartyName": "Foreign Buyer GmbH",
+      "PartyLegalEntity": [
+        {
+          "RegistrationName": "Foreign Buyer GmbH"
+        }
+      ]
+    }
+  },
+  "Delivery": [
+    {
+      "DeliveryAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      },
+      "DeliveryTerms": [
+        {
+          "Id": {
+            "SchemeId": "INCOTERMS",
+            "Value": "FOB"
+          }
+        }
+      ],
+      "Shipment": {
+        "ShipmentStage": [
+          {
+            "TransportModeCode": "1"
+          }
+        ]
+      }
+    }
+  ]
+}</code></pre></div></details>
+
+<h3 id="h-ex10">Örnek 10: Yolcu Beraberinde Eşya</h3>
+<p><code>ProfileId</code> değeri <code>YOLCUBERABERFATURA</code> iken <code>InvoiceTypeCode</code> yalnızca <code>ISTISNA</code> olabilir; <code>BuyerCustomerParty.Party.PartyIdentifications</code> içinde <code>SchemeId</code>=<code>PARTYTYPE</code>, <code>Value</code>=<code>TAXFREE</code> olan bir kayıt bulunmalı ve aynı tarafın <code>Person.IdentityDocumentReference.Id</code> alanı (pasaport numarası) boş bırakılmamalıdır (<!-- vbt-source: InvoiceValidation.cs:952-991 -->, <code>1621-1650</code>).</p><details class="example-details"><summary>Zorunlu alanları ve JSON örneğini görüntüle</summary><div class="example-body"><div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Zorunluluk</th><th>Değer/Kural</th></tr></thead><tbody>
+<tr><td><code>InvoiceTypeCode</code></td><td><span class="badge-required">Z</span></td><td><code>ISTISNA</code></td></tr>
+<tr><td><code>BuyerCustomerParty.Party.PartyIdentifications[]</code></td><td><span class="badge-required">Z</span></td><td><code>SchemeId</code>=<code>PARTYTYPE</code>, <code>Value</code>=<code>TAXFREE</code></td></tr>
+<tr><td><code>BuyerCustomerParty.Party.Person.IdentityDocumentReference.Id</code></td><td><span class="badge-required">Z</span></td><td>Pasaport numarası; boş bırakılamaz</td></tr>
+</tbody></table></div><div class="callout callout-info"><b>Fark:</b> Örnek 9'daki <code>EXPORT</code>/İhracat alanları yerine <code>TAXFREE</code> kimliği ve pasaport referansı kullanılır. Bu profil için zorunlu alanlar yukarıdaki tabloda verilen alıcı kimliği ve pasaport referansıdır.</div><pre><code class="language-json">{
+  "InvoiceExternalId": "ERP-EF-2026-010",
+  "ProfileId": "YOLCUBERABERFATURA",
+  "InvoiceTypeCode": "ISTISNA",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-06-10T09:00:00",
+  "LineCountNumeric": 1,
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 2
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "El Yapımı Halı"
+      },
+      "Price": 500,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "ReceiverIdentifier": "urn:mail:yolcuberaberpk@gtb.gov.tr",
+  "BuyerCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "PARTYTYPE",
+          "Value": "TAXFREE"
+        }
+      ],
+      "PartyName": "John Traveler",
+      "Person": {
+        "FirstName": "John",
+        "FamilyName": "Traveler",
+        "NationalityId": "DE",
+        "IdentityDocumentReference": {
+          "Id": "P1234567"
+        }
+      }
+    }
+  }
+}</code></pre></div></details>
+<h3 id="h-ex11">Örnek 11: Giden Fatura İptali</h3>
+<p>İptal isteği yalnızca iptali desteklenen profiller için kullanılmalıdır. ETTN değeri, oluşturma yanıtından saklanan belge kimliğidir.</p>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body">
+<pre><code class="language-json operation-json" data-request-kind="cancel">{
+  "Ettn": "7f8c9726-5e6f-4dc4-a984-f3da76e2a912"
+}</code></pre>
+</div></details><!-- vbt-source: InvoiceCancelRequestModel.cs; InvoiceController.CancelOutgoingInvoice -->
+<h3 id="h-ex12">Örnek 12: Giden Fatura İtirazı</h3>
+<p>İtiraz belgesinin tarihi, numarası, yöntemi ve açıklaması ETTN ile birlikte gönderilir.</p>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body">
+<pre><code class="language-json operation-json" data-request-kind="objection">{
+  "UUId": "7f8c9726-5e6f-4dc4-a984-f3da76e2a912",
+  "ObjectingDocumentDate": "2026-07-31T10:30:00",
+  "ObjectingDocumentNumber": "KEP-2026-000184",
+  "ObjectingType": "KEP",
+  "ObjectingDescription": "İtiraz bildirimi KEP üzerinden iletilmiştir."
+}</code></pre>
+</div></details><!-- vbt-source: DocumentObjectionRequestModel.cs; InvoiceController.ObjectOutgoingInvoice -->
+<h3 id="h-ex13">Örnek 13: Giden Fatura Sorgulama</h3>
+<p>Liste sorgusu sayfalama bilgisiyle birlikte bir <code>Query</code> nesnesi taşır. Aşağıdaki örnek tarih aralığı ve profil filtresi uygular.</p>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body">
+<pre><code class="language-json operation-json" data-request-kind="search">{
+  "Skip": 0,
+  "Take": 20,
+  "OrderByName": "IssueDate",
+  "OrderByType": "Descending",
+  "Query": {
+    "IssueDate": {
+      "StartDate": "2026-07-01T00:00:00",
+      "EndDate": "2026-07-31T23:59:59"
+    },
+    "ProfileId": "TICARIFATURA"
+  }
+}</code></pre>
+</div></details><!-- vbt-source: SearchRequestModel.cs; OutgoingInvoiceGetRequestModel.cs; VbtApiController.GetOutgoingInvoiceList -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="giden-fatura-portal-api.html"><span>Önceki</span><strong>Giden Fatura Portal API</strong></a>
+<a class="docs-page-link docs-page-next" href="giden-fatura-json-ubl-mapping.html"><span>Sonraki</span><strong>Giden Fatura JSON → UBL Mapping</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="TEMELFATURA, TICARIFATURA, İhracat, teşvik, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Fatura Nedir?","text":"e-Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-Fatura Invoice ProfileID","url":"e-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura Senaryoları","text":"On e-Fatura profili için ProfileId, InvoiceTypeCode, zorunlu alan, oluşturma, iptal ve itiraz senaryoları.","keywords":"Giden Fatura Senaryolar TEMELFATURA TICARIFATURA İhracat teşvik","url":"giden-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Akışı","text":"Giden e-Faturanın oluşturulmasından imzalama, GİB ve alıcı sonucuna; hata geri dönüşlerinden iptal ve itiraza kadar durum makinesi.","keywords":"Giden Fatura state machine durum GİB alıcı yanıtı","url":"giden-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Giden Fatura Sorumlulukları","text":"Giden fatura hazırlama, güvenli gönderim, durum takibi, mutabakat ve iptal/itiraz sorumlulukları.","keywords":"Giden Fatura Sorumluluklar entegratör platform mutabakat","url":"giden-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden Fatura Entegratör API","text":"Giden faturayı doğrulama, oluşturma, güncelleme, gönderme, sorgulama ve durum takibi endpoint sözleşmeleri.","keywords":"Giden Fatura Entegratör API endpoint durum","url":"giden-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Portal API","text":"Portal giden fatura listesi, görüntüleme, e-posta, belge numarası ve mükellef sorgu endpointleri.","keywords":"Giden Fatura Portal API grid e-posta","url":"giden-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Giden Fatura Request Örnekleri","text":"On profil ile iptal, itiraz ve sorgulama işlemleri için tam ve kopyalanabilir JSON örnekleri.","keywords":"Giden Fatura JSON request","url":"giden-fatura-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden Fatura JSON → UBL Mapping","text":"Giden fatura JSON alanlarının üretilen UBL Invoice XML içindeki karşılıkları.","keywords":"Giden Fatura JSON UBL XML mapping","url":"giden-fatura-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Senaryoları","text":"Gelen faturada otomatik sonuç, kabul/red uygulama yanıtı, ERP aktarımı, iptal ve itiraz senaryoları.","keywords":"Gelen Fatura Senaryolar ApplicationResponse kabul red ERP","url":"gelen-fatura-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Akışı","text":"Gelen e-Faturanın alınması, ERP'ye aktarılması, profile göre otomatik sonuç veya kabul/red uygulama yanıtı ve durum makinesi.","keywords":"Gelen Fatura state machine ApplicationResponse kabul red ERP","url":"gelen-fatura-akisi.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Sorumlulukları","text":"Gelen faturayı tekilleştirme, ERP'ye alma, uygulama yanıtı, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen Fatura Sorumluluklar tekilleştirme ERP uygulama yanıtı","url":"gelen-fatura-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Entegratör API","text":"Gelen faturayı listeleme, ayrıntılandırma, yanıtlama, durum sorgulama, ERP işleme ve çıktı alma endpointleri.","keywords":"Gelen Fatura Entegratör API endpoint ApplicationResponse","url":"gelen-fatura-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura Portal API","text":"Portal gelen fatura listesi, görüntüleme, okundu bilgisi, e-posta, kabul/red ve itiraz endpointleri.","keywords":"Gelen Fatura Portal API kabul red itiraz","url":"gelen-fatura-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen Fatura İşlem Örnekleri","text":"Listeleme, durum, kabul/red, ERP işleme ve belge çıktısı için tam ve kopyalanabilir JSON örnekleri.","keywords":"Gelen Fatura JSON işlem","url":"gelen-fatura-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen Fatura UBL → API/ERP Mapping","text":"Alınan UBL Invoice alanlarının gelen fatura API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen Fatura UBL API ERP mapping","url":"gelen-fatura-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, alan kuralları ve sözleşme bakım notları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.","keywords":"SSS sorular durum timeout UBL iptal itiraz","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

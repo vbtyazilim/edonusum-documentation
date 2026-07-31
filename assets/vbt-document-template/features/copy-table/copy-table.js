@@ -15,9 +15,9 @@
 (function () {
     'use strict';
 
-    var DEFAULT_LABEL = 'Copy';
-    var DEFAULT_SUCCESS_LABEL = 'Copied';
-    var DEFAULT_ERROR_LABEL = 'Error';
+    var DEFAULT_LABEL = 'Kopyala';
+    var DEFAULT_SUCCESS_LABEL = 'Kopyalandı';
+    var DEFAULT_ERROR_LABEL = 'Kopyalanamadı';
     var RESET_MS = 1500;
 
     function copyWithFallback(text) {
@@ -68,7 +68,7 @@
         button.className = 'copy-table-button';
         button.type = 'button';
         button.textContent = source.dataset.copyLabel || table.dataset.copyLabel || DEFAULT_LABEL;
-        button.setAttribute('aria-label', source.dataset.copyAriaLabel || table.dataset.copyAriaLabel || 'Copy value');
+        button.setAttribute('aria-label', source.dataset.copyAriaLabel || table.dataset.copyAriaLabel || 'Değeri kopyala');
 
         button.addEventListener('click', function () {
             var text = getText(source);

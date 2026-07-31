@@ -74,9 +74,10 @@
 <h3 id="h-mapping-kapsami">Mapping Kapsamı</h3>
 <p>Bu sayfa, entegratör request alanının makbuz üzerindeki iş anlamını ve dönemsel GİB raporundaki karşılığını gösterir. İç model, servis veya serileştirme sınıfları sözleşmenin parçası değildir.</p>
 <div class="callout callout-info"><b>Okuma biçimi:</b> “Belge karşılığı” alıcının gördüğü tekil e-SMM’yi, “GİB raporu karşılığı” ise VBT’nin dönemsel bildirimde kullandığı iş bilgisini ifade eder.</div>
+<!-- vbt-source: Applications/API/VbtSMM/VbtSmm.Model/Common/SmmActionModel.cs; Applications/API/VbtSMM/VbtSmm.Service/SmmGibReportService.cs -->
 
 <h3 id="h-kimlik-tarih-kanal">Kimlik, Tarih ve Kanal</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Entegrasyon notu</th></tr></thead><tbody>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Entegrasyon notu</th></tr></thead><tbody>
 <tr><td><code>SmmExternalId</code></td><td>ERP ile belge arasındaki dış referans</td><td>VBT içindeki belge eşleştirmesini destekler; yasal belge numarasının yerine geçmez.</td><td>Yeni belge için firma bazında benzersiz tutulur.</td></tr>
 <tr><td><code>IssueDate</code></td><td>Düzenleme tarih-zamanı</td><td>Makbuz tarihi</td><td>İşlemin gerçek düzenleme zamanı gönderilir.</td></tr>
 <tr><td><code>UUId</code></td><td>UUID/ETTN</td><td>Raporlanan belgenin tekil elektronik kimliği</td><td>Oluşturmada VBT üretir; güncelleme, sorgu, çıktı ve iptalde kullanılır.</td></tr>
@@ -86,7 +87,7 @@
 </tbody></table></div>
 
 <h3 id="h-teslim-ve-iletisim">Teslim ve İletişim</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Entegrasyon notu</th></tr></thead><tbody>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Entegrasyon notu</th></tr></thead><tbody>
 <tr><td><code>GonderimSekli</code></td><td>Elektronik veya kâğıt teslim tercihi</td><td>Belgenin teslim/bildirim biçimi</td><td><code>Kagit</code> veya <code>Elektronik</code></td></tr>
 <tr><td><code>EArchiveMailTo</code></td><td>Elektronik teslim adresi</td><td>Belgenin elektronik teslim kaydıyla ilişkilidir.</td><td>Birden fazla adres <code>;</code> ile ayrılır.</td></tr>
 <tr><td><code>QrCode</code></td><td>Belge üzerindeki karekod içeriği</td><td>Rapor alanından ziyade tekil belge görünümünün mevzuat uyumunu destekler.</td><td>GİB karekod standardıyla uyumlu olmalıdır.</td></tr>
@@ -96,27 +97,27 @@
 
 <h3 id="h-duzenleyen-taraf">Düzenleyen Taraf</h3>
 <p>Düzenleyen serbest meslek erbabının bilgileri token ile seçilen VBT firma kaydından tamamlanır. Entegratör, bu bilgileri alıcı modeli içinde tekrar etmez.</p>
-<div class="table-wrapper"><table><thead><tr><th>Firma bilgisi</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th></tr></thead><tbody>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Firma bilgisi</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th></tr></thead><tbody>
 <tr><td>VKN/TCKN</td><td>Makbuzu düzenleyen kimliği</td><td>Gönderici kimliği</td></tr>
 <tr><td>Unvan veya ad-soyad</td><td>Serbest meslek erbabı adı</td><td>Gönderici taraf adı</td></tr>
 <tr><td>Vergi dairesi ve adres</td><td>Düzenleyen iletişim/vergi bilgisi</td><td>Raporlamadaki gönderici tanımı</td></tr>
 </tbody></table></div>
 
 <h3 id="h-alici-taraf">Alıcı Taraf</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Kural</th></tr></thead><tbody>
-<tr><td><code>Alici.VknTckn</code></td><td>Alıcı VKN veya TCKN</td><td>Alıcı kimlik numarası</td><td>10 hane VKN, 11 hane TCKN</td></tr>
-<tr><td><code>Alici.Unvan</code></td><td>Tüzel kişi unvanı</td><td>VKN alıcının adı</td><td>VKN senaryosunda zorunlu</td></tr>
-<tr><td><code>Alici.Ad</code>, <code>Soyad</code></td><td>Gerçek kişi adı</td><td>TCKN alıcının ad-soyadı</td><td>TCKN senaryosunda ikisi de zorunlu</td></tr>
-<tr><td><code>Alici.VergiDaire</code></td><td>Tüzel kişinin vergi dairesi</td><td>Alıcı vergi dairesi bilgisi</td><td>VKN senaryosunda tamamlanır.</td></tr>
-<tr><td><code>Alici.Adres.Ulke</code></td><td>Ülke</td><td>Alıcı adresi ülke bilgisi</td><td>Zorunlu çekirdek adres alanı</td></tr>
-<tr><td><code>Alici.Adres.Semt</code></td><td>İlçe/semt</td><td>Alıcı adresi alt idari bölümü</td><td>Zorunlu çekirdek adres alanı</td></tr>
-<tr><td><code>Alici.Adres.Sehir</code></td><td>Şehir</td><td>Alıcı adresi şehir bilgisi</td><td>Zorunlu çekirdek adres alanı</td></tr>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Kural</th></tr></thead><tbody>
+<tr><td><code class="mapping-path">Alici.<wbr>VknTckn</code></td><td>Alıcı VKN veya TCKN</td><td>Alıcı kimlik numarası</td><td>10 hane VKN, 11 hane TCKN</td></tr>
+<tr><td><code class="mapping-path">Alici.<wbr>Unvan</code></td><td>Tüzel kişi unvanı</td><td>VKN alıcının adı</td><td>VKN senaryosunda zorunlu</td></tr>
+<tr><td><code class="mapping-path">Alici.<wbr>Ad</code>, <code>Soyad</code></td><td>Gerçek kişi adı</td><td>TCKN alıcının ad-soyadı</td><td>TCKN senaryosunda ikisi de zorunlu</td></tr>
+<tr><td><code class="mapping-path">Alici.<wbr>VergiDaire</code></td><td>Tüzel kişinin vergi dairesi</td><td>Alıcı vergi dairesi bilgisi</td><td>VKN senaryosunda tamamlanır.</td></tr>
+<tr><td><code class="mapping-path">Alici.<wbr>Adres.<wbr>Ulke</code></td><td>Ülke</td><td>Alıcı adresi ülke bilgisi</td><td>Zorunlu çekirdek adres alanı</td></tr>
+<tr><td><code class="mapping-path">Alici.<wbr>Adres.<wbr>Semt</code></td><td>İlçe/semt</td><td>Alıcı adresi alt idari bölümü</td><td>Zorunlu çekirdek adres alanı</td></tr>
+<tr><td><code class="mapping-path">Alici.<wbr>Adres.<wbr>Sehir</code></td><td>Şehir</td><td>Alıcı adresi şehir bilgisi</td><td>Zorunlu çekirdek adres alanı</td></tr>
 <tr><td>Diğer adres alanları</td><td>Açık adres ve iletişim</td><td>Alıcı adresinin ayrıntıları</td><td>Belgeyi tanımlayacak yeterlilikte gönderilir.</td></tr>
 </tbody></table></div>
 
 <h3 id="h-hizmet-satirlari">Hizmet Satırları</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Kontrol</th></tr></thead><tbody>
-<tr><td><code>MalHizmetler[].LineId</code></td><td>Satır sıra numarası</td><td>Belge kaleminin sırası</td><td>Belge içinde benzersiz</td></tr>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Kontrol</th></tr></thead><tbody>
+<tr><td><code class="mapping-path">MalHizmetler[].<wbr>LineId</code></td><td>Satır sıra numarası</td><td>Belge kaleminin sırası</td><td>Belge içinde benzersiz</td></tr>
 <tr><td><code>Id</code></td><td>ERP/satır referansı</td><td>Kalem eşleştirmesini destekler.</td><td>İstemci tarafından kararlı tutulur.</td></tr>
 <tr><td><code>MalHizmetAd</code></td><td>Sunulan hizmet açıklaması</td><td>Belge kaleminin iş tanımı</td><td>Gerçek hizmeti açıklar.</td></tr>
 <tr><td><code>TotalAmount</code></td><td>Satır brüt hizmet bedeli</td><td>Rapor toplamlarının kaynağı</td><td>Üst brüt toplama dahil edilir.</td></tr>
@@ -129,7 +130,7 @@
 </tbody></table></div>
 
 <h3 id="h-belge-toplamlari">Belge Toplamları</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>Makbuz üzerindeki anlam</th><th>GİB raporundaki anlam</th><th>Satırlarla ilişki</th></tr></thead><tbody>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Request alanı</th><th>Makbuz üzerindeki anlam</th><th>GİB raporundaki anlam</th><th>Satırlarla ilişki</th></tr></thead><tbody>
 <tr><td><code>TotalAmount</code></td><td>Brüt hizmet toplamı</td><td>Brüt ücret</td><td>Satır brütlerinin toplamı</td></tr>
 <tr><td><code>HesaplananKdv</code></td><td>Toplam hesaplanan KDV</td><td>KDV tutarı</td><td>Satır KDV toplamı</td></tr>
 <tr><td><code>TaxStopajTotalAmount</code></td><td>Toplam gelir vergisi stopajı</td><td>Stopaj/kesinti tutarı</td><td>Satır stopaj toplamı</td></tr>
@@ -141,16 +142,16 @@
 </tbody></table></div>
 
 <h3 id="h-para-birimi-kur">Para Birimi ve Kur</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Kural</th></tr></thead><tbody>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Request alanı</th><th>Belge karşılığı</th><th>GİB raporu karşılığı</th><th>Kural</th></tr></thead><tbody>
 <tr><td><code>DocumentCurrencyCode</code></td><td>Belge para birimi</td><td>Para birimi kodu</td><td>ISO 4217</td></tr>
 <tr><td><code>CalculationRate</code></td><td>TRY karşılığı işlem kuru</td><td>Döviz kuru</td><td>TRY’de 1; dövizde sıfırdan büyük</td></tr>
-<tr><td><code>Kur.TotalAmount</code></td><td>Brüt tutarın TRY karşılığı</td><td>Raporlamadaki yerel para karşılığını destekler.</td><td>Brüt × kur</td></tr>
-<tr><td><code>Kur.NetUcret</code></td><td>Net ücretin TRY karşılığı</td><td>Net tutarın yerel para karşılığı</td><td>Net × kur</td></tr>
+<tr><td><code class="mapping-path">Kur.<wbr>TotalAmount</code></td><td>Brüt tutarın TRY karşılığı</td><td>Raporlamadaki yerel para karşılığını destekler.</td><td>Brüt × kur</td></tr>
+<tr><td><code class="mapping-path">Kur.<wbr>NetUcret</code></td><td>Net ücretin TRY karşılığı</td><td>Net tutarın yerel para karşılığı</td><td>Net × kur</td></tr>
 <tr><td>Diğer <code>Kur</code> alanları</td><td>KDV, stopaj, tevkifat ve nihai tutarın TRY karşılıkları</td><td>Raporlamadaki döviz/kur bütünlüğü</td><td>İlgili belge tutarı × kur</td></tr>
 </tbody></table></div>
 
 <h3 id="h-durum-ve-iptal">Durum ve İptal</h3>
-<div class="table-wrapper"><table><thead><tr><th>API işlemi/response alanı</th><th>Belge anlamı</th><th>GİB raporlama anlamı</th></tr></thead><tbody>
+<div class="table-wrapper"><table class="mapping-table"><thead><tr><th>API işlemi/response alanı</th><th>Belge anlamı</th><th>GİB raporlama anlamı</th></tr></thead><tbody>
 <tr><td><code>OutgoingSmmStatus = PdfCreated</code></td><td>Belge ve PDF çıktısı oluşturulmuştur.</td><td>Belge VBT raporlama sürecine alınabilir.</td></tr>
 <tr><td><code>OutgoingSmmStatus = Signed</code></td><td>Belge imzalı çıktı durumundadır.</td><td>Raporlama için tamamlanmış tekil belge kaydıdır.</td></tr>
 <tr><td><code>EArchiveReportStatus</code></td><td>Portal/liste görünümündeki normal rapor durumu</td><td>Belgenin GİB rapor sürecindeki sonucu</td></tr>

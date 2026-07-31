@@ -13,13 +13,23 @@
       "skip-link accessibility",
       "optional section dividers",
       "slogan banner",
-      "content figures"
+      "content figures",
+      "responsive integration journeys",
+      "responsive state flows",
+      "responsive decision tables"
     ],
     "html": [
       ".skip-link",
       ".section-dividers",
       ".slogan-banner",
-      ".content-figure"
+      ".content-figure",
+      ".integration-journey",
+      ".integration-step",
+      ".state-flow",
+      ".state-node",
+      ".state-connector",
+      ".decision-table-wrapper",
+      ".decision-table"
     ]
   },
   "author-link": {

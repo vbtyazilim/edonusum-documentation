@@ -13,8 +13,8 @@
 (function () {
     'use strict';
 
-    var COPY_LABEL   = 'Copy';
-    var COPIED_LABEL = '✓ Copied';
+    var COPY_LABEL   = 'Kopyala';
+    var COPIED_LABEL = '✓ Kopyalandı';
     var RESET_MS     = 1500;
 
     function attachCopyButtons() {
@@ -29,6 +29,7 @@
             copyButton.className = 'code-copy-button';
             copyButton.type      = 'button';
             copyButton.textContent = COPY_LABEL;
+            copyButton.setAttribute('aria-label', 'Kod örneğini kopyala');
 
             copyButton.addEventListener('click', function () {
                 var text = code.textContent || '';

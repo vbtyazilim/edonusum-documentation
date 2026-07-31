@@ -84,9 +84,10 @@
             <p>Request modeli, UBL 2.1 <code>CreditNote</code> XML'e doğrulama sağlayıcısı, alıcı/vekil bilgileri, iade referansı, kargo ve belge satırları üzerinden yansır.</p>
             <div class="callout callout-info"><b>Kısa kural:</b> Entegratör iş kararlarını request alanlarıyla gönderir; platform bu alanları UBL XML node'larına ve GİB rapor alanlarına dönüştürür. Kargo şirketi bilgilerinin tamamlanacağı akışlarda entegratör yalnızca kargo şirketi kodunu gönderir.</div>
             <h3 id="h-referans-tablo">Request Alanı → UBL XML Path</h3>
+<!-- vbt-source: Applications/API/VbtGP/VbtGp.Domain/Mapper/RequestModelToUblMapper.cs; Applications/API/VbtGP/VbtGp.Domain/Mapper/UblToRequestModelMapper.cs -->
 <p>Mapping tablosu, request modelindeki iş kararlarının UBL XML'de hangi node'lara taşındığını izlenebilir hale getirir.</p>
             <div class="table-wrapper">
-                <table>
+                <table class="mapping-table">
                     <thead>
                         <tr><th>Request Alanı</th><th>UBL XML Path</th><th>Açıklama</th></tr>
                     </thead>
@@ -100,51 +101,51 @@
                         <tr><td><code>IssueDate</code></td><td><code>cbc:IssueDate</code> + <code>cbc:IssueTime</code></td><td>Tarih ve saat ayrı olarak yazılır</td></tr>
                         <tr><td><code>Note[]</code></td><td><code>cbc:Note</code> (tekrarlanabilir)</td><td>Genel açıklamalar</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">VerificationProvider → AccountingSupplierParty/Party/Contact/OtherCommunication</td></tr>
-                        <tr><td><code>VerificationProvider.ChannelCodeName</code></td><td><code>cbc:ChannelCode[@name]</code></td><td>SMS_PROVIDER / IADE_PROVIDER</td></tr>
-                        <tr><td><code>VerificationProvider.ApplicationName</code></td><td><code>cbc:ChannelCode[text()]</code></td><td>Sağlayıcı uygulama adı</td></tr>
-                        <tr><td><code>VerificationProvider.Vkn</code></td><td><code>cbc:Value</code></td><td>Sağlayıcı VKN (10 hane)</td></tr>
+                        <tr><td><code class="mapping-path">VerificationProvider.<wbr>ChannelCodeName</code></td><td><code>cbc:ChannelCode[@name]</code></td><td>SMS_PROVIDER / IADE_PROVIDER</td></tr>
+                        <tr><td><code class="mapping-path">VerificationProvider.<wbr>ApplicationName</code></td><td><code>cbc:ChannelCode[text()]</code></td><td>Sağlayıcı uygulama adı</td></tr>
+                        <tr><td><code class="mapping-path">VerificationProvider.<wbr>Vkn</code></td><td><code>cbc:Value</code></td><td>Sağlayıcı VKN (10 hane)</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">AccountingCustomerParty → cac:AccountingCustomerParty/cac:Party</td></tr>
-                        <tr><td><code>AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>Value</code></td><td><code>cac:PartyIdentification/cbc:ID</code></td><td>Kimlik no (TCKN/Pasaport değeri)</td></tr>
-                        <tr><td><code>AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>SchemeId</code></td><td><code>cbc:ID/@schemeID</code></td><td>TCKN / PASAPORTNO</td></tr>
-                        <tr><td><code>AccountingCustomerParty.<wbr>Party.<wbr>PartyName</code></td><td><code>cac:PartyName/cbc:Name</code></td><td>Alıcı adı soyadı</td></tr>
+                        <tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>Value</code></td><td><code>cac:PartyIdentification/cbc:ID</code></td><td>Kimlik no (TCKN/Pasaport değeri)</td></tr>
+                        <tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>SchemeId</code></td><td><code>cbc:ID/@schemeID</code></td><td>TCKN / PASAPORTNO</td></tr>
+                        <tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyName</code></td><td><code>cac:PartyName/cbc:Name</code></td><td>Alıcı adı soyadı</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">VerificationInfo → ilgili tarafın Party/Contact alanı <span style="font-weight:normal;font-size:.78rem">(normal işlemde AccountingCustomerParty; vekâleten iadede BuyerCustomerParty)</span></td></tr>
-                        <tr><td><code>VerificationInfo.Code</code></td><td><code>cbc:ID</code></td><td>SMS veya iade kodu</td></tr>
-                        <tr><td><code>VerificationInfo.Type</code></td><td><code>cbc:Name</code></td><td>SMS / IADEKODU</td></tr>
-                        <tr><td><code>VerificationInfo.PhoneNumber</code></td><td><code>cbc:Telephone</code></td><td>0XXXXXXXXXX format</td></tr>
+                        <tr><td><code class="mapping-path">VerificationInfo.<wbr>Code</code></td><td><code>cbc:ID</code></td><td>SMS veya iade kodu</td></tr>
+                        <tr><td><code class="mapping-path">VerificationInfo.<wbr>Type</code></td><td><code>cbc:Name</code></td><td>SMS / IADEKODU</td></tr>
+                        <tr><td><code class="mapping-path">VerificationInfo.<wbr>PhoneNumber</code></td><td><code>cbc:Telephone</code></td><td>0XXXXXXXXXX format</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">DelegateReceiver → cac:BuyerCustomerParty/cac:Party</td></tr>
-                        <tr><td><code>DelegateReceiver.Identification</code></td><td><code>cac:PartyIdentification/cbc:ID[value]</code></td><td rowspan="3" style="vertical-align:middle"><code>DelegateReceiver</code> yalnız IADE'de kullanılabilir; SATIS'te reddedilir. Nesne gönderildiğinde <code>Identification</code>, <code>IdentificationType</code> (TCKN/PASAPORTNO) ve <code>Name</code> alanlarının üçü de zorunludur — kısmi doldurma kabul edilmez.</td></tr>
-                        <tr><td><code>DelegateReceiver.IdentificationType</code></td><td><code>cbc:ID/@schemeID</code></td></tr>
-                        <tr><td><code>DelegateReceiver.Name</code></td><td><code>cac:Person/cbc:FirstName</code></td></tr>
+                        <tr><td><code class="mapping-path">DelegateReceiver.<wbr>Identification</code></td><td><code>cac:PartyIdentification/cbc:ID[value]</code></td><td rowspan="3" style="vertical-align:middle"><code>DelegateReceiver</code> yalnız IADE'de kullanılabilir; SATIS'te reddedilir. Nesne gönderildiğinde <code>Identification</code>, <code>IdentificationType</code> (TCKN/PASAPORTNO) ve <code>Name</code> alanlarının üçü de zorunludur — kısmi doldurma kabul edilmez.</td></tr>
+                        <tr><td><code class="mapping-path">DelegateReceiver.<wbr>IdentificationType</code></td><td><code>cbc:ID/@schemeID</code></td></tr>
+                        <tr><td><code class="mapping-path">DelegateReceiver.<wbr>Name</code></td><td><code>cac:Person/cbc:FirstName</code></td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">ReturnedDocumentReference → cac:BillingReference/cac:InvoiceDocumentReference</td></tr>
-                        <tr><td><code>ReturnedDocumentReference.DocumentType</code></td><td><code>cbc:ID/@schemeID</code></td><td>EARSIV_FATURA / SATIS_FISI / BELGESIZ</td></tr>
-                        <tr><td><code>ReturnedDocumentReference.DocumentNumber</code></td><td><code>cbc:ID[value]</code></td><td>Belge numarası</td></tr>
-                        <tr><td><code>ReturnedDocumentReference.IssueDate</code></td><td><code>cbc:IssueDate</code></td><td>yyyy-MM-dd</td></tr>
+                        <tr><td><code class="mapping-path">ReturnedDocumentReference.<wbr>DocumentType</code></td><td><code>cbc:ID/@schemeID</code></td><td>EARSIV_FATURA / SATIS_FISI / BELGESIZ</td></tr>
+                        <tr><td><code class="mapping-path">ReturnedDocumentReference.<wbr>DocumentNumber</code></td><td><code>cbc:ID[value]</code></td><td>Belge numarası</td></tr>
+                        <tr><td><code class="mapping-path">ReturnedDocumentReference.<wbr>IssueDate</code></td><td><code>cbc:IssueDate</code></td><td>yyyy-MM-dd</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">Kargo şirketi → cac:Delivery/cac:DeliveryParty</td></tr>
-                        <tr><td><code>CargoCompanyCode</code></td><td><code>cac:DeliveryParty/cac:PartyIdentification/cbc:ID[@schemeID="VKN"]</code></td><td rowspan="5" style="vertical-align:middle"><b>JSON endpointleri:</b> Entegratör yalnız <code>CargoCompanyCode</code> gönderir; platform kendi ürettiği UBL'de kargo şirketi bilgilerini tamamlar.<br><br><b>Hazır UBL endpointleri:</b> Entegratör önce <code>CargoCompanies/GetAll</code> kaydını almalı; VKN, unvan, yetki belge numarası, şehir, ilçe ve ülke değerlerini değiştirmeden <code>DeliveryParty</code> içine yazmalıdır. Platform UBL'yi tamamlamaz veya değiştirmez; uyumsuz içeriği <code>EGP0087</code> ile reddeder.</td></tr>
+                        <tr><td><code>CargoCompanyCode</code></td><td><code>cac:DeliveryParty/cac:PartyIdentification/cbc:ID[@schemeID="VKN"]</code></td><td rowspan="5" style="vertical-align:middle"><b>JSON endpointleri:</b> Entegratör yalnız <code>CargoCompanyCode</code> gönderir; platform kendi ürettiği UBL'de kargo şirketi bilgilerini tamamlar.<br><br><b>Hazır UBL endpointleri:</b> Entegratör önce <code class="mapping-path">CargoCompanies/<wbr>GetAll</code> kaydını almalı; VKN, unvan, yetki belge numarası, şehir, ilçe ve ülke değerlerini değiştirmeden <code>DeliveryParty</code> içine yazmalıdır. Platform UBL'yi tamamlamaz veya değiştirmez; uyumsuz içeriği <code>EGP0087</code> ile reddeder.</td></tr>
                         <tr><td><i>(DB: VKN)</i></td><td><code>cbc:ID[value]</code></td></tr>
                         <tr><td><i>(DB: Title)</i></td><td><code>cac:PartyName/cbc:Name</code></td></tr>
                         <tr><td><i>(DB: ClassificationCode)</i></td><td><code>cbc:IndustryClassificationCode</code></td></tr>
                         <tr><td><i>(DB: CityName / CitySubdivisionName / CountryName)</i></td><td><code>cac:PostalAddress/...</code></td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">LegalMonetaryTotal → cac:LegalMonetaryTotal</td></tr>
-                        <tr><td><code>LegalMonetaryTotal.PayableAmount</code></td><td><code>cbc:PayableAmount[@currencyID]</code></td><td>Ödenecek tutar</td></tr>
-                        <tr><td><code>LegalMonetaryTotal.TaxExclusiveAmount</code></td><td><code>cbc:TaxExclusiveAmount[@currencyID]</code></td><td>Vergisiz toplam</td></tr>
-                        <tr><td><code>LegalMonetaryTotal.TaxInclusiveAmount</code></td><td><code>cbc:TaxInclusiveAmount[@currencyID]</code></td><td>Vergili toplam</td></tr>
-                        <tr><td><code>LegalMonetaryTotal.LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount[@currencyID]</code></td><td>Satır toplamı</td></tr>
+                        <tr><td><code class="mapping-path">LegalMonetaryTotal.<wbr>PayableAmount</code></td><td><code>cbc:PayableAmount[@currencyID]</code></td><td>Ödenecek tutar</td></tr>
+                        <tr><td><code class="mapping-path">LegalMonetaryTotal.<wbr>TaxExclusiveAmount</code></td><td><code>cbc:TaxExclusiveAmount[@currencyID]</code></td><td>Vergisiz toplam</td></tr>
+                        <tr><td><code class="mapping-path">LegalMonetaryTotal.<wbr>TaxInclusiveAmount</code></td><td><code>cbc:TaxInclusiveAmount[@currencyID]</code></td><td>Vergili toplam</td></tr>
+                        <tr><td><code class="mapping-path">LegalMonetaryTotal.<wbr>LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount[@currencyID]</code></td><td>Satır toplamı</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">TaxTotal[] → cac:TaxTotal</td></tr>
-                        <tr><td><code>TaxTotal[].TaxAmount</code></td><td><code>cbc:TaxAmount[@currencyID]</code></td><td>Vergi tutarı</td></tr>
-                        <tr><td><code>TaxTotal[].TaxSubtotal.TaxableAmount</code></td><td><code>cac:TaxSubtotal/cbc:TaxableAmount</code></td><td>Matrah</td></tr>
-                        <tr><td><code>TaxTotal[].TaxSubtotal.CalculationSequenceNumeric</code></td><td><code>cbc:CalculationSequenceNumeric</code></td><td>Hesaplama sırası (birden fazla vergi kalemi olduğunda)</td></tr>
-                        <tr><td><code>TaxTotal[].TaxSubtotal.TransactionCurrencyTaxAmount</code></td><td><code>cbc:TransactionCurrencyTaxAmount</code></td><td>İşlem para birimindeki vergi tutarı</td></tr>
-                        <tr><td><code>TaxTotal[].TaxSubtotal.PerUnitAmount</code></td><td><code>cbc:PerUnitAmount</code></td><td>Birim başına vergi tutarı</td></tr>
-                        <tr><td><code>TaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Vergi kodu (0015 KDV, 0003 GV Stopajı vb.)</td></tr>
-                        <tr><td><code>TaxTotal[].TaxSubtotal.TaxCategory.TaxScheme.Name</code></td><td><code>cac:TaxScheme/cbc:Name</code></td><td>Vergi adı (örn. "KDV GERCEK", "GV STOPAJI")</td></tr>
-                        <tr><td><code>TaxTotal[].TaxSubtotal.Percent</code></td><td><code>cbc:Percent</code></td><td>Vergi oranı (%)</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxAmount</code></td><td><code>cbc:TaxAmount[@currencyID]</code></td><td>Vergi tutarı</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxSubtotal.<wbr>TaxableAmount</code></td><td><code>cac:TaxSubtotal/cbc:TaxableAmount</code></td><td>Matrah</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxSubtotal.<wbr>CalculationSequenceNumeric</code></td><td><code>cbc:CalculationSequenceNumeric</code></td><td>Hesaplama sırası (birden fazla vergi kalemi olduğunda)</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxSubtotal.<wbr>TransactionCurrencyTaxAmount</code></td><td><code>cbc:TransactionCurrencyTaxAmount</code></td><td>İşlem para birimindeki vergi tutarı</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxSubtotal.<wbr>PerUnitAmount</code></td><td><code>cbc:PerUnitAmount</code></td><td>Birim başına vergi tutarı</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxSubtotal.<wbr>TaxCategory.<wbr>TaxScheme.<wbr>TaxTypeCode</code></td><td><code>cac:TaxScheme/cbc:TaxTypeCode</code></td><td>Vergi kodu (0015 KDV, 0003 GV Stopajı vb.)</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxSubtotal.<wbr>TaxCategory.<wbr>TaxScheme.<wbr>Name</code></td><td><code>cac:TaxScheme/cbc:Name</code></td><td>Vergi adı (örn. "KDV GERCEK", "GV STOPAJI")</td></tr>
+                        <tr><td><code class="mapping-path">TaxTotal[].<wbr>TaxSubtotal.<wbr>Percent</code></td><td><code>cbc:Percent</code></td><td>Vergi oranı (%)</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">ExpenseVoucherLine[] → cac:CreditNoteLine</td></tr>
-                        <tr><td><code>ExpenseVoucherLine[].LineId</code></td><td><code>cbc:ID</code></td><td>Satır no (1'den başlar)</td></tr>
+                        <tr><td><code class="mapping-path">ExpenseVoucherLine[].<wbr>LineId</code></td><td><code>cbc:ID</code></td><td>Satır no (1'den başlar)</td></tr>
                         <tr><td><code>ExpenseVoucherLine[].Quantity / UnitCode</code></td><td><code>cbc:CreditedQuantity[@unitCode]</code></td><td>Miktar + birim</td></tr>
-                        <tr><td><code>ExpenseVoucherLine[].LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount[@currencyID]</code></td><td>Satır toplamı</td></tr>
-                        <tr><td><code>ExpenseVoucherLine[].Item.Name</code></td><td><code>cac:Item/cbc:Name</code></td><td>Ürün/hizmet adı</td></tr>
-                        <tr><td><code>ExpenseVoucherLine[].Price.PriceAmount</code></td><td><code>cac:Price/cbc:PriceAmount[@currencyID]</code></td><td>Birim fiyat</td></tr>
+                        <tr><td><code class="mapping-path">ExpenseVoucherLine[].<wbr>LineExtensionAmount</code></td><td><code>cbc:LineExtensionAmount[@currencyID]</code></td><td>Satır toplamı</td></tr>
+                        <tr><td><code class="mapping-path">ExpenseVoucherLine[].<wbr>Item.<wbr>Name</code></td><td><code>cac:Item/cbc:Name</code></td><td>Ürün/hizmet adı</td></tr>
+                        <tr><td><code class="mapping-path">ExpenseVoucherLine[].<wbr>Price.<wbr>PriceAmount</code></td><td><code>cac:Price/cbc:PriceAmount[@currencyID]</code></td><td>Birim fiyat</td></tr>
                     </tbody>
                 </table>
             </div>

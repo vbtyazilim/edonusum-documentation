@@ -86,7 +86,7 @@
 </tbody></table></div>
 
 <h3 id="h-ornek-1">Örnek 1: Tüzel Kişi — TRY, KDV ve Stopaj</h3>
-<details class="example-details" open><summary>Tam oluşturma request’i</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details" open><summary>Tam oluşturma request’i</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T10:30:00+03:00",
   "BelgeZamanSpecified": true,
@@ -143,12 +143,14 @@
   "PayableAmount": 1000,
   "ToplamVergi": 400,
   "YaziIle": "BİN TÜRK LİRASI",
-  "Aciklamalar": ["Temmuz 2026 danışmanlık hizmet bedeli"]
+  "Aciklamalar": [
+    "Temmuz 2026 danışmanlık hizmet bedeli"
+  ]
 }</code></pre></div></details>
 <div class="callout callout-info"><b>Toplam kontrolü:</b> 1.000 brüt − 200 stopaj = 800 net ücret; 200 KDV ile ödenecek tutar 1.000’dir.</div>
 
 <h3 id="h-ornek-2">Örnek 2: Gerçek Kişi Alıcı — TRY</h3>
-<details class="example-details"><summary>Gerçek kişi alanlarıyla tam request</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>Gerçek kişi alanlarıyla tam request</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
   "LocationCode": "ANKARA",
   "IssueDate": "2026-07-27T11:00:00+03:00",
   "GonderimSekli": "Elektronik",
@@ -170,22 +172,24 @@
       "Ulke": "Türkiye"
     }
   },
-  "MalHizmetler": [{
-    "LineId": 1,
-    "Id": "ERP-LINE-1",
-    "MalHizmetAd": "Hukuki danışmanlık hizmeti",
-    "TotalAmount": 500,
-    "KdvOran": 20,
-    "HesaplananKdv": 100,
-    "StopajOran": 0,
-    "TaxStopajTotalAmount": 0,
-    "TevkifatOran": 0,
-    "WithholdingTaxTotalAmount": 0,
-    "TaxKdvTotalAmount": 100,
-    "NetUcret": 500,
-    "PayableAmount": 600,
-    "ToplamVergi": 100
-  }],
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "ERP-LINE-1",
+      "MalHizmetAd": "Hukuki danışmanlık hizmeti",
+      "TotalAmount": 500,
+      "KdvOran": 20,
+      "HesaplananKdv": 100,
+      "StopajOran": 0,
+      "TaxStopajTotalAmount": 0,
+      "TevkifatOran": 0,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 100,
+      "NetUcret": 500,
+      "PayableAmount": 600,
+      "ToplamVergi": 100
+    }
+  ],
   "TotalAmount": 500,
   "HesaplananKdv": 100,
   "StopajOran": 0,
@@ -196,17 +200,19 @@
   "NetUcret": 500,
   "PayableAmount": 600,
   "ToplamVergi": 100,
-  "Aciklamalar": ["Bireysel danışmanlık"]
+  "Aciklamalar": [
+    "Bireysel danışmanlık"
+  ]
 }</code></pre></div></details>
 <div class="callout callout-warning"><b>Alıcı farkı:</b> TCKN senaryosunda <code>Ad</code> ve <code>Soyad</code> birlikte gönderilir; <code>Unvan</code> ve <code>VergiDaire</code> kurum alanları kullanılmaz.</div>
 
 <h3 id="h-ornek-3">Örnek 3: USD Belge ve TRY Karşılıkları</h3>
-<details class="example-details"><summary>Dövizli request</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>Dövizli request</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T12:00:00+03:00",
   "GonderimSekli": "Elektronik",
   "DocumentCurrencyCode": "USD",
-  "CalculationRate": 32.50,
+  "CalculationRate": 32.5,
   "SmmExternalId": "ERP-SMM-2026-00003",
   "ChannelCode": "ERP",
   "EArchiveMailTo": "finance@example.com",
@@ -214,24 +220,30 @@
     "Unvan": "Global Örnek Ltd. Şti.",
     "VknTckn": "1234567890",
     "VergiDaire": "Boğaziçi Kurumlar",
-    "Adres": { "Semt": "Beşiktaş", "Sehir": "İstanbul", "Ulke": "Türkiye" }
+    "Adres": {
+      "Semt": "Beşiktaş",
+      "Sehir": "İstanbul",
+      "Ulke": "Türkiye"
+    }
   },
-  "MalHizmetler": [{
-    "LineId": 1,
-    "Id": "USD-1",
-    "MalHizmetAd": "Uluslararası danışmanlık hizmeti",
-    "TotalAmount": 100,
-    "KdvOran": 20,
-    "HesaplananKdv": 20,
-    "StopajOran": 20,
-    "TaxStopajTotalAmount": 20,
-    "TevkifatOran": 0,
-    "WithholdingTaxTotalAmount": 0,
-    "TaxKdvTotalAmount": 20,
-    "NetUcret": 80,
-    "PayableAmount": 100,
-    "ToplamVergi": 40
-  }],
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "USD-1",
+      "MalHizmetAd": "Uluslararası danışmanlık hizmeti",
+      "TotalAmount": 100,
+      "KdvOran": 20,
+      "HesaplananKdv": 20,
+      "StopajOran": 20,
+      "TaxStopajTotalAmount": 20,
+      "TevkifatOran": 0,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 20,
+      "NetUcret": 80,
+      "PayableAmount": 100,
+      "ToplamVergi": 40
+    }
+  ],
   "TotalAmount": 100,
   "HesaplananKdv": 20,
   "StopajOran": 20,
@@ -255,7 +267,50 @@
 <div class="callout callout-info"><b>Kur kontrolü:</b> Belge tutarları USD, <code>Kur</code> içindeki karşılıklar TRY’dir. <code>CalculationRate</code> sıfır olamaz.</div>
 
 <h3 id="h-ornek-4">Örnek 4: Yalnız KDV — Kesintisiz İşlem</h3>
-<details class="example-details"><summary>Vergi/kesinti alanları</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>Vergi/kesinti alanları</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T10:30:00+03:00",
+  "BelgeZamanSpecified": true,
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00001",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "muhasebe@example.com",
+  "Alici": {
+    "Unvan": "Örnek Danışmanlık A.Ş.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Zincirlikuyu",
+    "Adres": {
+      "Mahalle": "Esentepe",
+      "CaddeSokak": "Büyükdere Caddesi",
+      "BinaNo": "10",
+      "KapiNo": "5",
+      "Semt": "Şişli",
+      "Sehir": "İstanbul",
+      "PostaKod": "34394",
+      "Ulke": "Türkiye",
+      "Telefon": "02120000000"
+    }
+  },
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "KDV-1",
+      "MalHizmetAd": "Proje danışmanlığı",
+      "TotalAmount": 1000,
+      "KdvOran": 20,
+      "HesaplananKdv": 200,
+      "StopajOran": 0,
+      "TaxStopajTotalAmount": 0,
+      "TevkifatOran": 0,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 200,
+      "NetUcret": 1000,
+      "PayableAmount": 1200,
+      "ToplamVergi": 200
+    }
+  ],
   "TotalAmount": 1000,
   "HesaplananKdv": 200,
   "StopajOran": 0,
@@ -267,42 +322,123 @@
   "NetUcret": 1000,
   "PayableAmount": 1200,
   "ToplamVergi": 200,
-  "MalHizmetler": [{
-    "LineId": 1,
-    "Id": "KDV-1",
-    "MalHizmetAd": "Proje danışmanlığı",
-    "TotalAmount": 1000,
-    "KdvOran": 20,
-    "HesaplananKdv": 200,
-    "StopajOran": 0,
-    "TaxStopajTotalAmount": 0,
-    "TevkifatOran": 0,
-    "WithholdingTaxTotalAmount": 0,
-    "TaxKdvTotalAmount": 200,
-    "NetUcret": 1000,
-    "PayableAmount": 1200,
-    "ToplamVergi": 200
-  }]
+  "YaziIle": "BİN TÜRK LİRASI",
+  "Aciklamalar": [
+    "Temmuz 2026 danışmanlık hizmet bedeli"
+  ]
 }</code></pre></div></details>
 <p>Bu blok, Örnek 1’deki kimlik, tarih, teslim, alıcı ve dış referans alanlarıyla birlikte kullanılır.</p>
 
 <h3 id="h-ornek-5">Örnek 5: Gelir Vergisi Stopajı</h3>
-<details class="example-details"><summary>Stopajlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>Stopajlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T10:30:00+03:00",
+  "BelgeZamanSpecified": true,
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00001",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "muhasebe@example.com",
+  "Alici": {
+    "Unvan": "Örnek Danışmanlık A.Ş.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Zincirlikuyu",
+    "Adres": {
+      "Mahalle": "Esentepe",
+      "CaddeSokak": "Büyükdere Caddesi",
+      "BinaNo": "10",
+      "KapiNo": "5",
+      "Semt": "Şişli",
+      "Sehir": "İstanbul",
+      "PostaKod": "34394",
+      "Ulke": "Türkiye",
+      "Telefon": "02120000000"
+    }
+  },
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "ERP-LINE-1",
+      "MalHizmetAd": "Temmuz ayı danışmanlık hizmeti",
+      "TotalAmount": 1000,
+      "KdvOran": 20,
+      "HesaplananKdv": 200,
+      "StopajOran": 20,
+      "TaxStopajTotalAmount": 200,
+      "TevkifatOran": 0,
+      "TevkifatKodu": null,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 200,
+      "NetUcret": 800,
+      "PayableAmount": 1000,
+      "ToplamVergi": 400
+    }
+  ],
   "TotalAmount": 2500,
   "HesaplananKdv": 500,
   "StopajOran": 20,
   "TaxStopajTotalAmount": 500,
   "TevkifatOran": 0,
+  "TevkifatKodu": 0,
   "WithholdingTaxTotalAmount": 0,
   "TaxKdvTotalAmount": 500,
   "NetUcret": 2000,
   "PayableAmount": 2500,
-  "ToplamVergi": 1000
+  "ToplamVergi": 1000,
+  "YaziIle": "BİN TÜRK LİRASI",
+  "Aciklamalar": [
+    "Temmuz 2026 danışmanlık hizmet bedeli"
+  ]
 }</code></pre></div></details>
 <p>Aynı değerler ilgili <code>MalHizmet</code> satırında da kendi satır tutarı üzerinden gönderilir.</p>
 
 <h3 id="h-ornek-6">Örnek 6: KDV Tevkifatı</h3>
-<details class="example-details"><summary>Tevkifatlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>Tevkifatlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T10:30:00+03:00",
+  "BelgeZamanSpecified": true,
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00001",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "muhasebe@example.com",
+  "Alici": {
+    "Unvan": "Örnek Danışmanlık A.Ş.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Zincirlikuyu",
+    "Adres": {
+      "Mahalle": "Esentepe",
+      "CaddeSokak": "Büyükdere Caddesi",
+      "BinaNo": "10",
+      "KapiNo": "5",
+      "Semt": "Şişli",
+      "Sehir": "İstanbul",
+      "PostaKod": "34394",
+      "Ulke": "Türkiye",
+      "Telefon": "02120000000"
+    }
+  },
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "TEV-1",
+      "MalHizmetAd": "Tevkifat kapsamındaki danışmanlık",
+      "TotalAmount": 1000,
+      "KdvOran": 20,
+      "HesaplananKdv": 200,
+      "StopajOran": 0,
+      "TaxStopajTotalAmount": 0,
+      "TevkifatOran": 50,
+      "TevkifatKodu": "601",
+      "WithholdingTaxTotalAmount": 100,
+      "TaxKdvTotalAmount": 100,
+      "NetUcret": 1000,
+      "PayableAmount": 1100,
+      "ToplamVergi": 200
+    }
+  ],
   "TotalAmount": 1000,
   "HesaplananKdv": 200,
   "StopajOran": 0,
@@ -314,28 +450,59 @@
   "NetUcret": 1000,
   "PayableAmount": 1100,
   "ToplamVergi": 200,
-  "MalHizmetler": [{
-    "LineId": 1,
-    "Id": "TEV-1",
-    "MalHizmetAd": "Tevkifat kapsamındaki danışmanlık",
-    "TotalAmount": 1000,
-    "KdvOran": 20,
-    "HesaplananKdv": 200,
-    "StopajOran": 0,
-    "TaxStopajTotalAmount": 0,
-    "TevkifatOran": 50,
-    "TevkifatKodu": "601",
-    "WithholdingTaxTotalAmount": 100,
-    "TaxKdvTotalAmount": 100,
-    "NetUcret": 1000,
-    "PayableAmount": 1100,
-    "ToplamVergi": 200
-  }]
+  "YaziIle": "BİN TÜRK LİRASI",
+  "Aciklamalar": [
+    "Temmuz 2026 danışmanlık hizmet bedeli"
+  ]
 }</code></pre></div></details>
 <div class="callout callout-warning"><b>Kod seçimi:</b> <code>601</code> yalnız örnek değerdir. Gerçek işlemde yürürlükteki mevzuata ve hizmet türüne uygun tevkifat kodu kullanılmalıdır.</div>
 
 <h3 id="h-ornek-7">Örnek 7: Stopaj ve Tevkifat Birlikte</h3>
-<details class="example-details"><summary>İki kesintinin ayrı hesaplandığı blok</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>İki kesintinin ayrı hesaplandığı blok</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T10:30:00+03:00",
+  "BelgeZamanSpecified": true,
+  "GonderimSekli": "Elektronik",
+  "DocumentCurrencyCode": "TRY",
+  "CalculationRate": 1,
+  "SmmExternalId": "ERP-SMM-2026-00001",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "muhasebe@example.com",
+  "Alici": {
+    "Unvan": "Örnek Danışmanlık A.Ş.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Zincirlikuyu",
+    "Adres": {
+      "Mahalle": "Esentepe",
+      "CaddeSokak": "Büyükdere Caddesi",
+      "BinaNo": "10",
+      "KapiNo": "5",
+      "Semt": "Şişli",
+      "Sehir": "İstanbul",
+      "PostaKod": "34394",
+      "Ulke": "Türkiye",
+      "Telefon": "02120000000"
+    }
+  },
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "ERP-LINE-1",
+      "MalHizmetAd": "Temmuz ayı danışmanlık hizmeti",
+      "TotalAmount": 1000,
+      "KdvOran": 20,
+      "HesaplananKdv": 200,
+      "StopajOran": 20,
+      "TaxStopajTotalAmount": 200,
+      "TevkifatOran": 0,
+      "TevkifatKodu": null,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 200,
+      "NetUcret": 800,
+      "PayableAmount": 1000,
+      "ToplamVergi": 400
+    }
+  ],
   "TotalAmount": 1000,
   "HesaplananKdv": 200,
   "StopajOran": 20,
@@ -346,16 +513,41 @@
   "TaxKdvTotalAmount": 100,
   "NetUcret": 800,
   "PayableAmount": 900,
-  "ToplamVergi": 400
+  "ToplamVergi": 400,
+  "YaziIle": "BİN TÜRK LİRASI",
+  "Aciklamalar": [
+    "Temmuz 2026 danışmanlık hizmet bedeli"
+  ]
 }</code></pre></div></details>
 <p>Stopaj brüt bedelden, tevkifat hesaplanan KDV’den düşülür. Nihai tutar <code>800 + 100 = 900</code> olur.</p>
 
 <h3 id="h-ornek-8">Örnek 8: Çok Kalemli ve Kâğıt Teslim</h3>
-<details class="example-details"><summary>İki hizmet satırı</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>İki hizmet satırı</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+  "LocationCode": "MERKEZ",
+  "IssueDate": "2026-07-27T10:30:00+03:00",
+  "BelgeZamanSpecified": true,
   "GonderimSekli": "Kagit",
   "DocumentCurrencyCode": "TRY",
   "CalculationRate": 1,
   "SmmExternalId": "ERP-SMM-2026-00008",
+  "ChannelCode": "ERP",
+  "EArchiveMailTo": "muhasebe@example.com",
+  "Alici": {
+    "Unvan": "Örnek Danışmanlık A.Ş.",
+    "VknTckn": "1234567890",
+    "VergiDaire": "Zincirlikuyu",
+    "Adres": {
+      "Mahalle": "Esentepe",
+      "CaddeSokak": "Büyükdere Caddesi",
+      "BinaNo": "10",
+      "KapiNo": "5",
+      "Semt": "Şişli",
+      "Sehir": "İstanbul",
+      "PostaKod": "34394",
+      "Ulke": "Türkiye",
+      "Telefon": "02120000000"
+    }
+  },
   "MalHizmetler": [
     {
       "LineId": 1,
@@ -395,16 +587,21 @@
   "StopajOran": 20,
   "TaxStopajTotalAmount": 200,
   "TevkifatOran": 0,
+  "TevkifatKodu": 0,
   "WithholdingTaxTotalAmount": 0,
   "TaxKdvTotalAmount": 200,
   "NetUcret": 800,
   "PayableAmount": 1000,
-  "ToplamVergi": 400
+  "ToplamVergi": 400,
+  "YaziIle": "BİN TÜRK LİRASI",
+  "Aciklamalar": [
+    "Temmuz 2026 danışmanlık hizmet bedeli"
+  ]
 }</code></pre></div></details>
 <p>Alıcı, tarih, kanal ve açıklama alanları Örnek 1’deki gibi eklenir. Kâğıt teslimde <code>EArchiveMailTo</code> zorunlu değildir.</p>
 
 <h3 id="h-ornek-9">Örnek 9: Güncelleme</h3>
-<details class="example-details"><summary>Mevcut kimliklerle tam güncelleme request’i</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>Mevcut kimliklerle tam güncelleme request’i</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
   "Id": 1842,
   "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
   "SmmNumber": "SMM2026000000001",
@@ -432,23 +629,25 @@
       "Ulke": "Türkiye"
     }
   },
-  "MalHizmetler": [{
-    "LineId": 1,
-    "Id": "ERP-LINE-1",
-    "MalHizmetAd": "Temmuz ayı güncel danışmanlık hizmeti",
-    "TotalAmount": 1000,
-    "KdvOran": 20,
-    "HesaplananKdv": 200,
-    "StopajOran": 20,
-    "TaxStopajTotalAmount": 200,
-    "TevkifatOran": 0,
-    "TevkifatKodu": null,
-    "WithholdingTaxTotalAmount": 0,
-    "TaxKdvTotalAmount": 200,
-    "NetUcret": 800,
-    "PayableAmount": 1000,
-    "ToplamVergi": 400
-  }],
+  "MalHizmetler": [
+    {
+      "LineId": 1,
+      "Id": "ERP-LINE-1",
+      "MalHizmetAd": "Temmuz ayı güncel danışmanlık hizmeti",
+      "TotalAmount": 1000,
+      "KdvOran": 20,
+      "HesaplananKdv": 200,
+      "StopajOran": 20,
+      "TaxStopajTotalAmount": 200,
+      "TevkifatOran": 0,
+      "TevkifatKodu": null,
+      "WithholdingTaxTotalAmount": 0,
+      "TaxKdvTotalAmount": 200,
+      "NetUcret": 800,
+      "PayableAmount": 1000,
+      "ToplamVergi": 400
+    }
+  ],
   "TotalAmount": 1000,
   "HesaplananKdv": 200,
   "StopajOran": 20,
@@ -461,25 +660,19 @@
   "PayableAmount": 1000,
   "ToplamVergi": 400,
   "YaziIle": "BİN TÜRK LİRASI",
-  "Aciklamalar": ["Güncellenmiş e-posta ve hizmet açıklaması"]
+  "Aciklamalar": [
+    "Güncellenmiş e-posta ve hizmet açıklaması"
+  ]
 }</code></pre></div></details>
 <div class="callout callout-info"><b>Güncelleme kuralı:</b> Mevcut belge önce <code>GetOutgoingSmm</code> ile okunur; değiştirilen alanlarla birlikte tam model, mevcut <code>Id</code> ve <code>UUId</code> kullanılarak gönderilir.</div>
 
 <h3 id="h-ornek-10">Örnek 10: İptal</h3>
-<details class="example-details"><summary>İptal request ve response</summary><div class="example-body"><pre><code class="language-json">// POST /api/Smm/CancelOutgoingSmm
-{
+<details class="example-details"><summary>İptal request ve response</summary><div class="example-body"><pre><code class="language-json" data-request-kind="cancel">{
   "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
-}
-
-// Başarılı response
-{
-  "RefreshToken": "",
-  "Data": true
 }</code></pre></div></details>
 
 <h3 id="h-ornek-11">Örnek 11: Liste Sorgusu ve PDF Alma</h3>
-<details class="example-details"><summary>Dış referansla sorgulama</summary><div class="example-body"><pre><code class="language-json">// POST /api/Smm/GetOutgoingSmmList
-{
+<details class="example-details"><summary>Dış referansla sorgulama</summary><div class="example-body"><pre><code class="language-json" data-request-kind="search">{
   "Query": {
     "SmmExternalId": "ERP-SMM-2026-00001",
     "IssueDate": {
@@ -492,8 +685,7 @@
   "OrderByName": "IssueDate",
   "OrderByType": "DESC"
 }</code></pre></div></details>
-<details class="example-details"><summary>UUID listesiyle PDF</summary><div class="example-body"><pre><code class="language-json">// POST /api/Smm/GetOutgoingSmmPdf
-{
+<details class="example-details"><summary>UUID listesiyle PDF</summary><div class="example-body"><pre><code class="language-json" data-request-kind="search">{
   "Ettns": [
     "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
     "941d56fd-d928-4554-880d-6c79a5413ad4"

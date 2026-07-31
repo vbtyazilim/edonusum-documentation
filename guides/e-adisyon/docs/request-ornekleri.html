@@ -86,7 +86,7 @@
 </tbody></table></div>
 
 <h3 id="h-ornek-1">Örnek 1: Tüzel Kişi Alıcı — TRY, Tek Kalem</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
   "DocumentExternalId": "ERP-2026-ADS-0001",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
@@ -94,33 +94,77 @@
   "IssueDate": "2026-07-29T19:30:00+03:00",
   "AccountingCustomerParty": {
     "Party": {
-      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1234567890" }],
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
       "PartyName": "Örnek Restoran Ltd. Şti.",
-      "PostalAddress": { "CityName": "İstanbul", "Country": { "Name": "Türkiye" } }
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
     }
   },
   "LegalMonetaryTotal": {
-    "LineExtensionAmount": 500.00,
-    "TaxExclusiveAmount": 500.00,
-    "TaxInclusiveAmount": 600.00,
-    "PayableAmount": 600.00
+    "LineExtensionAmount": 500,
+    "TaxExclusiveAmount": 500,
+    "TaxInclusiveAmount": 600,
+    "PayableAmount": 600
   },
-  "TaxTotal": [{
-    "TaxAmount": 100.00,
-    "TaxSubtotal": [{ "TaxableAmount": 500.00, "TaxAmount": 100.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }]
-  }],
-  "BillLine": [{
-    "Id": "1",
-    "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
-    "LineExtensionAmount": 500.00,
-    "Item": { "Name": "Akşam yemeği menüsü" },
-    "Price": 500.00,
-    "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 500.00, "TaxAmount": 100.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 100.00 }
-  }]
+  "TaxTotal": [
+    {
+      "TaxAmount": 100,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 500,
+          "TaxAmount": 100,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "BillLine": [
+    {
+      "Id": "1",
+      "CreditedQuantity": {
+        "UnitCode": "C62",
+        "Value": 1
+      },
+      "LineExtensionAmount": 500,
+      "Item": {
+        "Name": "Akşam yemeği menüsü"
+      },
+      "Price": 500,
+      "TaxTotal": {
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 500,
+            "TaxAmount": 100,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ],
+        "TaxAmount": 100
+      }
+    }
+  ]
 }</code></pre></div></details>
 
 <h3 id="h-ornek-2">Örnek 2: Gerçek Kişi Alıcı — TRY</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
   "DocumentExternalId": "ERP-2026-ADS-0002",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
@@ -128,25 +172,77 @@
   "IssueDate": "2026-07-29T20:10:00+03:00",
   "AccountingCustomerParty": {
     "Party": {
-      "PartyIdentifications": [{ "SchemeId": "TCKN", "Value": "12345678901" }],
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "12345678901"
+        }
+      ],
       "PartyName": "Ahmet Yılmaz",
-      "PostalAddress": { "CityName": "Ankara", "Country": { "Name": "Türkiye" } }
+      "PostalAddress": {
+        "CityName": "Ankara",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
     }
   },
-  "LegalMonetaryTotal": { "LineExtensionAmount": 250.00, "TaxExclusiveAmount": 250.00, "TaxInclusiveAmount": 300.00, "PayableAmount": 300.00 },
-  "TaxTotal": [{ "TaxAmount": 50.00, "TaxSubtotal": [{ "TaxableAmount": 250.00, "TaxAmount": 50.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }] }],
-  "BillLine": [{
-    "Id": "1",
-    "CreditedQuantity": { "UnitCode": "C62", "Value": 1 },
-    "LineExtensionAmount": 250.00,
-    "Item": { "Name": "Kahvaltı menüsü" },
-    "Price": 250.00,
-    "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 250.00, "TaxAmount": 50.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 50.00 }
-  }]
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 250,
+    "TaxExclusiveAmount": 250,
+    "TaxInclusiveAmount": 300,
+    "PayableAmount": 300
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 50,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 250,
+          "TaxAmount": 50,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "BillLine": [
+    {
+      "Id": "1",
+      "CreditedQuantity": {
+        "UnitCode": "C62",
+        "Value": 1
+      },
+      "LineExtensionAmount": 250,
+      "Item": {
+        "Name": "Kahvaltı menüsü"
+      },
+      "Price": 250,
+      "TaxTotal": {
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 250,
+            "TaxAmount": 50,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ],
+        "TaxAmount": 50
+      }
+    }
+  ]
 }</code></pre></div></details>
 
 <h3 id="h-ornek-3">Örnek 3: Çok Kalemli Adisyon</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
   "DocumentExternalId": "ERP-2026-ADS-0003",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
@@ -154,42 +250,186 @@
   "IssueDate": "2026-07-29T21:00:00+03:00",
   "AccountingCustomerParty": {
     "Party": {
-      "PartyIdentifications": [{ "SchemeId": "TCKN", "Value": "98765432109" }],
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "98765432109"
+        }
+      ],
       "PartyName": "Zeynep Kaya",
-      "PostalAddress": { "CityName": "İzmir", "Country": { "Name": "Türkiye" } }
+      "PostalAddress": {
+        "CityName": "İzmir",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
     }
   },
-  "LegalMonetaryTotal": { "LineExtensionAmount": 700.00, "TaxExclusiveAmount": 700.00, "TaxInclusiveAmount": 840.00, "PayableAmount": 840.00 },
-  "TaxTotal": [{ "TaxAmount": 140.00, "TaxSubtotal": [{ "TaxableAmount": 700.00, "TaxAmount": 140.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }] }],
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 700,
+    "TaxExclusiveAmount": 700,
+    "TaxInclusiveAmount": 840,
+    "PayableAmount": 840
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 140,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 700,
+          "TaxAmount": 140,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
   "BillLine": [
     {
-      "Id": "1", "CreditedQuantity": { "UnitCode": "C62", "Value": 2 }, "LineExtensionAmount": 400.00,
-      "Item": { "Name": "Ana yemek" }, "Price": 200.00,
-      "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 400.00, "TaxAmount": 80.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 80.00 }
+      "Id": "1",
+      "CreditedQuantity": {
+        "UnitCode": "C62",
+        "Value": 2
+      },
+      "LineExtensionAmount": 400,
+      "Item": {
+        "Name": "Ana yemek"
+      },
+      "Price": 200,
+      "TaxTotal": {
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 400,
+            "TaxAmount": 80,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ],
+        "TaxAmount": 80
+      }
     },
     {
-      "Id": "2", "CreditedQuantity": { "UnitCode": "C62", "Value": 1 }, "LineExtensionAmount": 300.00,
-      "Item": { "Name": "Tatlı ve içecek" }, "Price": 300.00,
-      "TaxTotal": { "TaxSubtotal": [{ "TaxableAmount": 300.00, "TaxAmount": 60.00, "Percent": 20.0, "TaxCategory": { "TaxScheme": { "TaxTypeCode": "0015" } } }], "TaxAmount": 60.00 }
+      "Id": "2",
+      "CreditedQuantity": {
+        "UnitCode": "C62",
+        "Value": 1
+      },
+      "LineExtensionAmount": 300,
+      "Item": {
+        "Name": "Tatlı ve içecek"
+      },
+      "Price": 300,
+      "TaxTotal": {
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 300,
+            "TaxAmount": 60,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ],
+        "TaxAmount": 60
+      }
     }
   ]
 }</code></pre></div></details>
 
 <h3 id="h-ornek-4">Örnek 4: Güncelleme</h3>
 <details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Güncelleme öncesi belge <code>GetOutgoingBill</code> ile okunur; dönen model üzerinde yalnızca değişen alanlar düzenlenip <code>Id</code> ve <code>UUId</code> ile birlikte tam olarak gönderilir.</p>
-<pre><code class="language-json">{
-  "Id": 1042,
-  "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
+<pre><code class="language-json" data-request-kind="invoice">{
   "DocumentExternalId": "ERP-2026-ADS-0001",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
   "DocumentCurrencyCode": "TRY",
-  "IssueDate": "2026-07-29T19:30:00+03:00"
+  "IssueDate": "2026-07-29T19:30:00+03:00",
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Restoran Ltd. Şti.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 500,
+    "TaxExclusiveAmount": 500,
+    "TaxInclusiveAmount": 600,
+    "PayableAmount": 600
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 100,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 500,
+          "TaxAmount": 100,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "BillLine": [
+    {
+      "Id": "1",
+      "CreditedQuantity": {
+        "UnitCode": "C62",
+        "Value": 1
+      },
+      "LineExtensionAmount": 500,
+      "Item": {
+        "Name": "Akşam yemeği menüsü"
+      },
+      "Price": 500,
+      "TaxTotal": {
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 500,
+            "TaxAmount": 100,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ],
+        "TaxAmount": 100
+      }
+    }
+  ],
+  "Id": 1042,
+  "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
 }</code></pre></div></details>
 
 <h3 id="h-ornek-5">Örnek 5: İptal</h3>
 <details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Yalnızca <code>Signed</code> durumundaki belgeler iptal edilebilir.</p>
-<pre><code class="language-json">{
+<pre><code class="language-json" data-request-kind="cancel">{
   "Ettn": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
   "EArchiveStatus": 2,
   "EArchiveCancelDescription": "Müşteri talebiyle iptal edildi."
@@ -197,12 +437,14 @@
 <div class="callout callout-warning"><b>Yanıt:</b> Belge zaten iptal edilmişse <code>BLL0025</code>, imzalanmamışsa <code>BLL0024</code> hatası döner. İptal e-postası gönderilmez.</div></div></details>
 
 <h3 id="h-ornek-6">Örnek 6: Liste Sorgusu ve PDF Alma</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="search">{
   "DocumentExternalId": "ERP-2026-ADS-0001"
 }</code></pre>
 <p>Sorgu sonucunda dönen <code>Ettn</code> ile PDF talebi:</p>
-<pre><code class="language-json">{
-  "BillEttns": ["6b60c576-7ed9-4bf1-9f90-3c97747b7470"]
+<pre><code class="language-json" data-request-kind="search">{
+  "BillEttns": [
+    "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
+  ]
 }</code></pre></div></details>
 </section>
 <!-- vbt:pagination:start -->
