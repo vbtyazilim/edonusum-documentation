@@ -82,10 +82,8 @@
 <tr><td><code>WaitingForSmsCode</code></td><td>SMS gönderilmiştir; kod girişi beklenir</td></tr>
 <tr><td><code>ExpenseVoucherAndXmlCreated</code></td><td>Belge ve UBL XML oluşturulmuştur</td></tr>
 <tr><td><code>Signed</code></td><td>Belge imzalanmıştır</td></tr>
-<tr><td rowspan="2"><code>VerificationProvider.ChannelCodeName</code></td><td><code>SMS_PROVIDER</code></td><td>SMS doğrulama sağlayıcısı</td></tr>
-<tr><td><code>IADE_PROVIDER</code></td><td>İade kodu doğrulama sağlayıcısı</td></tr>
-<tr><td rowspan="2"><code>VerificationInfo.Type</code></td><td><code>SMS</code></td><td>SMS kodu ile doğrulama</td></tr>
-<tr><td><code>IADEKODU</code></td><td>İade kodu ile doğrulama</td></tr>
+<tr><td rowspan="2"><code>VerificationMethod</code></td><td><code>SMS</code></td><td>Backend UBL'de <code>SMS</code> ve <code>SMS_PROVIDER</code> üretir</td></tr>
+<tr><td><code>IADEKODU</code></td><td>Backend UBL'de <code>IADEKODU</code> ve <code>IADE_PROVIDER</code> üretir</td></tr>
 <tr><td rowspan="3"><code>ReturnedDocumentReference.DocumentType</code></td><td><code>EARSIV_FATURA</code></td><td>İadenin dayandığı e-Arşiv fatura</td></tr>
 <tr><td><code>SATIS_FISI</code></td><td>İadenin dayandığı satış fişi</td></tr>
 <tr><td><code>BELGESIZ</code></td><td>Belgesiz iade; alıcı kimlik kontrolü öne çıkar</td></tr>
@@ -125,16 +123,14 @@
 <tr><td><code>EGP0033</code></td><td><code>ExpenseVoucherUblXmlZip</code></td><td>UBL XML ZIP çıktısı üretimi</td></tr>
 <tr><td><code>EGP0034</code></td><td><code>ExpenseVoucherZipUpdateError</code></td><td>ZIP paket güncelleme işlemi başarısızdır</td></tr>
 <tr><td><code>EGP0035</code></td><td><code>ExpenseVoucherUUIdExistsError</code></td><td><code>UUId</code> daha önce kullanılmıştır</td></tr>
-<tr><td><code>EGP0037</code></td><td><code>InvalidVerificationType</code></td><td><code>VerificationInfo.Type</code> değeri <code>SMS</code> veya <code>IADEKODU</code> değildir</td></tr>
+<tr><td><code>EGP0037</code></td><td><code>InvalidVerificationMethod</code></td><td><code>VerificationMethod</code> değeri <code>SMS</code> veya <code>IADEKODU</code> değildir</td></tr>
 <tr><td><code>EGP0038</code></td><td><code>ReturnedDocumentReferenceRequiredForIade</code></td><td><code>IADE</code> senaryosunda iade belge referansı zorunludur</td></tr>
 <tr><td><code>EGP0039</code></td><td><code>InvalidTelephoneFormat</code></td><td>Telefon formatı geçersizdir</td></tr>
 <tr><td><code>EGP0040</code></td><td><code>ExpenseVoucherCancelFindError</code></td><td>İptal edilecek belge bulunamadı</td></tr>
 <tr><td><code>EGP0041</code></td><td><code>ExpenseVoucherNotSignedCancelError</code></td><td>İmzalanmamış belge iptal edilmeye çalışılmıştır</td></tr>
 <tr><td><code>EGP0042</code></td><td><code>ExpenseVoucherAlreadyCancelled</code></td><td>Belge daha önce iptal edilmiştir</td></tr>
 <tr><td><code>EGP0043</code></td><td><code>ExpenseVoucherCancelled</code></td><td>Belge iptali başarılı mesajı</td></tr>
-<tr><td><code>EGP0044</code></td><td><code>InvalidChannelCodeName</code></td><td><code>ChannelCodeName</code> değeri geçersizdir</td></tr>
-<tr><td><code>EGP0045</code></td><td><code>ChannelCodeVerificationTypeMismatch</code></td><td>Doğrulama sağlayıcısı ile doğrulama tipi uyumsuzdur</td></tr>
-<tr><td><code>EGP0046</code></td><td><code>SatisCannotUseIadeProvider</code></td><td><code>SATIS</code> senaryosunda <code>IADE_PROVIDER</code> kullanılamaz</td></tr>
+<tr><td><code>EGP0046</code></td><td><code>SatisRequiresSmsVerification</code></td><td><code>SATIS</code> senaryosunda <code>VerificationMethod</code> yalnızca <code>SMS</code> olabilir</td></tr>
 <tr><td><code>EGP0047</code></td><td><code>DocumentTypeRequiredForIade</code></td><td><code>IADE</code> senaryosunda iade belge tipi zorunludur</td></tr>
 <tr><td><code>EGP0048</code></td><td><code>InvalidDocumentType</code></td><td><code>DocumentType</code> geçerli değerlerden biri değildir</td></tr>
 <tr><td><code>EGP0049</code></td><td><code>CargoRequiresIadeKodu</code></td><td>Kargo üzerinden iade akışında <code>IADEKODU</code> zorunludur</td></tr>

@@ -100,8 +100,9 @@
                         <tr><td><code>DocumentCurrencyCode</code></td><td><code>cbc:DocumentCurrencyCode</code></td><td>ISO 4217 para birimi</td></tr>
                         <tr><td><code>IssueDate</code></td><td><code>cbc:IssueDate</code> + <code>cbc:IssueTime</code></td><td>Tarih ve saat ayrı olarak yazılır</td></tr>
                         <tr><td><code>Note[]</code></td><td><code>cbc:Note</code> (tekrarlanabilir)</td><td>Genel açıklamalar</td></tr>
+                        <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">VerificationMethod → GİB doğrulama alanları</td></tr>
+                        <tr><td><code class="mapping-path">VerificationMethod</code></td><td><code>Contact/Name</code> ve <code>cbc:ChannelCode[@name]</code></td><td><code>SMS</code> → SMS/SMS_PROVIDER; <code>IADEKODU</code> → IADEKODU/IADE_PROVIDER</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">VerificationProvider → AccountingSupplierParty/Party/Contact/OtherCommunication</td></tr>
-                        <tr><td><code class="mapping-path">VerificationProvider.<wbr>ChannelCodeName</code></td><td><code>cbc:ChannelCode[@name]</code></td><td>SMS_PROVIDER / IADE_PROVIDER</td></tr>
                         <tr><td><code class="mapping-path">VerificationProvider.<wbr>ApplicationName</code></td><td><code>cbc:ChannelCode[text()]</code></td><td>Sağlayıcı uygulama adı</td></tr>
                         <tr><td><code class="mapping-path">VerificationProvider.<wbr>Vkn</code></td><td><code>cbc:Value</code></td><td>Sağlayıcı VKN (10 hane)</td></tr>
                         <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">AccountingCustomerParty → cac:AccountingCustomerParty/cac:Party</td></tr>

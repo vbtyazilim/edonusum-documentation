@@ -90,8 +90,8 @@
     <p class="endpoint-description">Yeni e-müstahsil makbuzunu JSON modeliyle oluşturur.</p>
     <div class="table-wrapper"><table><tbody>
       <tr><td><b>Değişen model</b></td><td><code>OutgoingCreditNoteRequestModel</code></td></tr>
-      <tr><td><b>Yeni alanlar</b></td><td><code>VerificationInfo</code> ve <code>VerificationProvider</code></td></tr>
-      <tr><td><b>Aktivasyon sonrası</b></td><td>Dört doğrulama alt alanı eksiksiz gönderilmelidir.</td></tr>
+      <tr><td><b>Yeni alanlar</b></td><td><code>VerificationMethod</code>, <code>VerificationInfo</code> ve <code>VerificationProvider</code></td></tr>
+      <tr><td><b>Aktivasyon sonrası</b></td><td><code>VerificationMethod = SMS</code> ile dört doğrulama alt alanı birlikte gönderilmelidir.</td></tr>
     </tbody></table></div>
   </div>
 </div>
@@ -102,8 +102,8 @@
     <p class="endpoint-description">Mevcut e-müstahsil makbuzunu JSON modeliyle günceller.</p>
     <div class="table-wrapper"><table><tbody>
       <tr><td><b>Değişen model</b></td><td><code>OutgoingCreditNoteRequestModel</code></td></tr>
-      <tr><td><b>Yeni alanlar</b></td><td><code>VerificationInfo</code> ve <code>VerificationProvider</code></td></tr>
-      <tr><td><b>Aktivasyon sonrası</b></td><td>Güncel ve eksiksiz doğrulama bilgisi request içinde yeniden gönderilmelidir.</td></tr>
+      <tr><td><b>Yeni alanlar</b></td><td><code>VerificationMethod</code>, <code>VerificationInfo</code> ve <code>VerificationProvider</code></td></tr>
+      <tr><td><b>Aktivasyon sonrası</b></td><td>Yöntem ve güncel doğrulama bilgileri request içinde yeniden gönderilmelidir.</td></tr>
     </tbody></table></div>
   </div>
 </div>
@@ -116,7 +116,7 @@
     <div class="table-wrapper"><table><tbody>
       <tr><td><b>Değişen içerik</b></td><td><code>CreditNoteUblRequestModel</code> içindeki UBL XML</td></tr>
       <tr><td><b>Yeni alanlar</b></td><td>Doğrulama bilgileri ilgili tarafların <code>Contact</code> düğümlerinde taşınmalıdır.</td></tr>
-      <tr><td><b>Aktivasyon sonrası</b></td><td>UBL, dört doğrulama değeriyle tamamlanmış olarak gönderilmelidir.</td></tr>
+      <tr><td><b>Aktivasyon sonrası</b></td><td>UBL, yöntem sabitleri ve dört doğrulama değeriyle tamamlanmış olarak gönderilmelidir.</td></tr>
     </tbody></table></div>
   </div>
 </div>
@@ -134,23 +134,109 @@
 </div>
 
 <h4 id="sorgulama-response-degisikligi">Sorgulama response değişikliği</h4>
-<div class="callout callout-info"><b>Yeni response alanı:</b> Belge detay ve grid response modellerine <code>OutgoingCreditNoteStatusForUser</code> eklenecektir. Mevcut <code>OutgoingCreditNoteStatus</code> korunacaktır. Entegrasyonun yeni alanı opsiyonel okuyabilmesi ve bilinmeyen değerlerde hata vermemesi önerilir.</div>
+<div class="callout callout-info"><b>Yeni response alanları:</b> Kullanıcıya yönelik süreç durumu <code>OutgoingCreditNoteStatusForUser</code> ile izlenir. Doğrulama yöntemi ise belge detay ve geçmiş response modellerinde <code>VerificationMethod</code> olarak döner; grid response içinde yer almaz. Mevcut <code>OutgoingCreditNoteStatus</code> korunur.</div>
 
 <h3 id="veri-sorumluluk-tablosu">Veri Sorumluluk Tablosu</h3>
 <p>Aktivasyon sonrasında doğrudan entegrasyon kullanan sistemlerin API çağrısından önce sağlaması gereken doğrulama verileri aşağıdaki sorumluluk sınırına göre hazırlanmalıdır.</p>
-<div class="table-wrapper"><table><thead><tr><th>Veri</th><th>Kim üretir?</th><th>Entegratör ne yapmalı?</th><th>Platform ne yapar?</th></tr></thead><tbody><tr><td><code>VerificationInfo.Code</code></td><td>SMS doğrulama hizmeti</td><td>Üreticinin doğruladığı kod değiştirilmeden gönderilmelidir.</td><td>Kodun diğer doğrulama alanlarıyla birlikte dolu olduğunu denetler.</td></tr><tr><td><code>VerificationInfo.PhoneNumber</code></td><td>Entegratörün SMS doğrulama süreci</td><td>Kodun gerçekten gönderildiği telefon numarası gönderilmelidir.</td><td>Telefon bilgisini doğrulama kaydı ve UBL eşlemesiyle birlikte işler.</td></tr><tr><td><code>VerificationProvider.ApplicationName</code></td><td>SMS sağlayıcısı</td><td>SMS doğrulama hizmetini sağlayan firmanın veya servisin adı gönderilmelidir.</td><td>Değeri UBL sağlayıcı alanına taşır.</td></tr><tr><td><code>VerificationProvider.Vkn</code></td><td>SMS sağlayıcısı</td><td>SMS sağlayıcısının VKN'si gönderilmelidir.</td><td>VKN'yi UBL sağlayıcı alanına taşır.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Veri</th><th>Kim üretir?</th><th>Entegratör ne yapmalı?</th><th>Platform ne yapar?</th></tr></thead><tbody><tr><td><code>VerificationMethod</code></td><td>Entegratör</td><td>MM için desteklenen <code>SMS</code> değeri gönderilmelidir.</td><td>Değeri doğrular; model requestinde GİB UBL yöntem sabitlerini üretir.</td></tr><tr><td><code>VerificationInfo.Code</code></td><td>SMS doğrulama hizmeti</td><td>Üreticinin doğruladığı kod değiştirilmeden gönderilmelidir.</td><td>Kodun diğer doğrulama alanlarıyla birlikte dolu olduğunu denetler.</td></tr><tr><td><code>VerificationInfo.PhoneNumber</code></td><td>Entegratörün SMS doğrulama süreci</td><td>Kodun gerçekten gönderildiği telefon numarası gönderilmelidir.</td><td>Telefon bilgisini doğrulama kaydı ve UBL eşlemesiyle birlikte işler.</td></tr><tr><td><code>VerificationProvider.ApplicationName</code></td><td>SMS sağlayıcısı</td><td>SMS doğrulama hizmetini sağlayan firmanın veya servisin adı gönderilmelidir.</td><td>Değeri UBL sağlayıcı alanına taşır.</td></tr><tr><td><code>VerificationProvider.Vkn</code></td><td>SMS sağlayıcısı</td><td>SMS sağlayıcısının VKN'si gönderilmelidir.</td><td>VKN'yi UBL sağlayıcı alanına taşır.</td></tr></tbody></table></div>
 
 <h3 id="senaryo-bazli-hazirlik-matrisi">Senaryo Bazlı Hazırlık Matrisi</h3>
-<div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Senaryo</th><th>Aktivasyon sonrası veri</th><th>Beklenen sonuç</th><th>Gönderim öncesi kontrol</th></tr></thead><tbody><tr><td data-label="Senaryo">JSON ile oluşturma</td><td data-label="Aktivasyon sonrası veri">Dört doğrulama alanı eksiksiz</td><td data-label="Beklenen sonuç">Belge doğrulanmış veriyle normal işleme alınır.</td><td data-label="Gönderim öncesi kontrol">Kod, telefon, sağlayıcı adı ve VKN aynı doğrulama kaydına ait olmalıdır.</td></tr><tr><td data-label="Senaryo">JSON ile güncelleme</td><td data-label="Aktivasyon sonrası veri">Güncel dört doğrulama alanı</td><td data-label="Beklenen sonuç">Belge yeni request ve doğrulama verisiyle yeniden değerlendirilir.</td><td data-label="Gönderim öncesi kontrol">Önceki doğrulama bilgisinin otomatik korunacağı varsayılmamalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile oluşturma</td><td data-label="Aktivasyon sonrası veri">İki tarafın <code>Contact</code> alanlarında tam doğrulama verisi</td><td data-label="Beklenen sonuç">UBL doğrulama verisiyle birlikte kabul edilir.</td><td data-label="Gönderim öncesi kontrol">Mevcut taraf, adres ve kimlik alanları korunmalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile güncelleme</td><td data-label="Aktivasyon sonrası veri">Güncel UBL içinde tam doğrulama verisi</td><td data-label="Beklenen sonuç">Belge UBL'deki yeni doğrulama verisiyle güncellenir.</td><td data-label="Gönderim öncesi kontrol">Eski ve yeni <code>Contact</code> değerlerinin çelişmediği doğrulanmalıdır.</td></tr><tr><td data-label="Senaryo">Önizleme</td><td data-label="Aktivasyon sonrası veri">Doğrulama bilgisi aranmaz</td><td data-label="Beklenen sonuç">Belge kaydedilmeden önizleme üretilir.</td><td data-label="Gönderim öncesi kontrol">Önizleme başarısı gerçek gönderim kabulü olarak yorumlanmamalıdır.</td></tr><tr><td data-label="Senaryo">Kısmi doğrulama verisi</td><td data-label="Aktivasyon sonrası veri">Dört alandan biri veya daha fazlası eksik</td><td data-label="Beklenen sonuç">Request validasyon hatasıyla reddedilir.</td><td data-label="Gönderim öncesi kontrol">İki model ve dört alt alan birlikte gönderilmelidir.</td></tr></tbody></table></div>
+<div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Senaryo</th><th>Aktivasyon sonrası veri</th><th>Beklenen sonuç</th><th>Gönderim öncesi kontrol</th></tr></thead><tbody><tr><td data-label="Senaryo">JSON ile oluşturma</td><td data-label="Aktivasyon sonrası veri"><code>VerificationMethod = SMS</code> ve dört alt alan</td><td data-label="Beklenen sonuç">Belge doğrulanmış veriyle normal işleme alınır.</td><td data-label="Gönderim öncesi kontrol">Kod, telefon, sağlayıcı adı ve VKN aynı doğrulama kaydına ait olmalıdır.</td></tr><tr><td data-label="Senaryo">JSON ile güncelleme</td><td data-label="Aktivasyon sonrası veri">Yöntem ve güncel doğrulama bilgileri</td><td data-label="Beklenen sonuç">Belge yeni request ve doğrulama verisiyle yeniden değerlendirilir.</td><td data-label="Gönderim öncesi kontrol">Güncel request tam gönderilmeli; önceki doğrulama bilgisine dayanılmamalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile oluşturma</td><td data-label="Aktivasyon sonrası veri"><code>SMS</code>/<code>SMS_PROVIDER</code> sabitleri ve iki tarafın <code>Contact</code> verileri</td><td data-label="Beklenen sonuç">UBL doğrulama verisiyle birlikte kabul edilir.</td><td data-label="Gönderim öncesi kontrol">Mevcut taraf, adres ve kimlik alanları korunmalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile güncelleme</td><td data-label="Aktivasyon sonrası veri">Güncel UBL içinde tam yöntem ve doğrulama verisi</td><td data-label="Beklenen sonuç">Belge UBL'deki yeni doğrulama verisiyle güncellenir.</td><td data-label="Gönderim öncesi kontrol">Eski ve yeni <code>Contact</code> değerlerinin çelişmediği doğrulanmalıdır.</td></tr><tr><td data-label="Senaryo">Önizleme</td><td data-label="Aktivasyon sonrası veri">Doğrulama bilgisi aranmaz</td><td data-label="Beklenen sonuç">Belge kaydedilmeden önizleme üretilir.</td><td data-label="Gönderim öncesi kontrol">Önizleme başarısı gerçek gönderim kabulü olarak yorumlanmamalıdır.</td></tr><tr><td data-label="Senaryo">Eksik veya geçersiz yöntem</td><td data-label="Aktivasyon sonrası veri"><code>VerificationMethod</code> yok ya da <code>SMS</code> dışında</td><td data-label="Beklenen sonuç">Request zorunlu alan veya <code>EMM0060</code> hatasıyla reddedilir.</td><td data-label="Gönderim öncesi kontrol">MM için yalnızca <code>SMS</code> gönderilmelidir.</td></tr><tr><td data-label="Senaryo">Kısmi doğrulama verisi</td><td data-label="Aktivasyon sonrası veri">Dört alt alandan biri veya daha fazlası eksik</td><td data-label="Beklenen sonuç">Request validasyon hatasıyla reddedilir.</td><td data-label="Gönderim öncesi kontrol">Yöntem, iki model ve dört alt alan birlikte gönderilmelidir.</td></tr></tbody></table></div>
 
 <h3 id="request-model-degisiklikleri">Request model değişiklikleri</h3>
-<p><code>OutgoingCreditNoteRequestModel</code> içine aşağıdaki iki nesne eklenecektir. Aktivasyon sonrasında bu nesnelerden biri tek başına veya alt alanları eksik gönderilmemelidir.</p>
-<div class="table-wrapper"><table><thead><tr><th>Yeni alan</th><th>Alt alan</th><th>Anlamı</th></tr></thead><tbody><tr><td rowspan="2"><code>VerificationInfo</code></td><td><code>Code</code></td><td>Üreticinin doğruladığı SMS kodu.</td></tr><tr><td><code>PhoneNumber</code></td><td>Doğrulama kodunun gönderildiği telefon numarası.</td></tr><tr><td rowspan="2"><code>VerificationProvider</code></td><td><code>ApplicationName</code></td><td>SMS doğrulama hizmetini sağlayan firmanın veya servisin adı.</td></tr><tr><td><code>Vkn</code></td><td>SMS doğrulama hizmeti sağlayıcısının VKN'si.</td></tr></tbody></table></div>
-<div class="callout callout-warning"><b>Birlikte gönderim kuralı:</b> <code>Code</code>, <code>PhoneNumber</code>, <code>ApplicationName</code> ve <code>Vkn</code> tek bir doğrulama kaydıdır. Aktivasyon sonrasında doğrudan entegrasyonlarda dört alanın tamamı gönderilmelidir; kısmi veri validasyon hatası üretecektir.</div>
+<p><code>OutgoingCreditNoteRequestModel</code>, üst seviyedeki yöntem alanı ve iki doğrulama nesnesiyle genişletilecektir. Aktivasyon sonrasında yöntem veya alt alanlar eksik gönderilmemelidir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Yeni alan</th><th>Alt alan / değer</th><th>Anlamı</th></tr></thead><tbody><tr><td><code>VerificationMethod</code></td><td><code>SMS</code></td><td>MM için desteklenen doğrulama yöntemidir. <code>ChannelCode</code> veya <code>Type</code> gönderilmez.</td></tr><tr><td rowspan="2"><code>VerificationInfo</code></td><td><code>Code</code></td><td>Üreticinin doğruladığı SMS kodu.</td></tr><tr><td><code>PhoneNumber</code></td><td>Doğrulama kodunun gönderildiği telefon numarası.</td></tr><tr><td rowspan="2"><code>VerificationProvider</code></td><td><code>ApplicationName</code></td><td>SMS doğrulama hizmetini sağlayan firmanın veya servisin adı.</td></tr><tr><td><code>Vkn</code></td><td>SMS doğrulama hizmeti sağlayıcısının VKN'si.</td></tr></tbody></table></div>
+<div class="callout callout-warning"><b>Tek sözleşme:</b> <code>VerificationMethod</code>, <code>Code</code>, <code>PhoneNumber</code>, <code>ApplicationName</code> ve <code>Vkn</code> tek doğrulama kaydıdır. Bu özellik canlıya çıkmadığı için eski <code>ChannelCode</code>/<code>Type</code> biçimi desteklenmeyecektir.</div>
 
 <h4 id="json-model-ornegi">Planlanan JSON model örneği</h4>
-<pre><code class="language-json">{
-  "CreditNoteExternalId": "ERP-2026-000145",
+<p>Örnek, normal bir e-Müstahsil Makbuzu için gereken belge alanlarıyla doğrulama alanlarını birlikte içerir ve JSON olarak doğrudan kopyalanabilir.</p>
+<pre><code class="language-json" data-request-kind="invoice">{
+  "CreditNoteExternalId": "ERP-MM-2026-001",
+  "ProfileId": "EARSIVBELGE",
+  "CreditNoteTypeCode": "MUSTAHSILMAKBUZ",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-08-01T09:00:00",
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "TCKN",
+          "Value": "12345678901"
+        }
+      ],
+      "PartyName": "Ahmet Çiftçi",
+      "PostalAddress": {
+        "CityName": "Denizli",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Tarım Ürünleri A.Ş."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 5000,
+    "TaxExclusiveAmount": 5000,
+    "TaxInclusiveAmount": 5000,
+    "PayableAmount": 5000
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 0,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 5000,
+          "TaxAmount": 0,
+          "Percent": 0,
+          "TaxCategory": {
+            "TaxScheme": {
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "CreditNoteLine": [
+    {
+      "Id": "1",
+      "CreditedQuantity": {
+        "UnitCode": "KGM",
+        "Value": 1000
+      },
+      "LineExtensionAmount": 5000,
+      "Item": {
+        "Name": "Yaş Sebze"
+      },
+      "Price": 5,
+      "TaxTotal": {
+        "TaxAmount": 0,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 5000,
+            "TaxAmount": 0,
+            "Percent": 0,
+            "TaxCategory": {
+              "TaxScheme": {
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "VerificationMethod": "SMS",
   "VerificationInfo": {
     "Code": "482193",
     "PhoneNumber": "905551112233"
@@ -160,10 +246,10 @@
     "Vkn": "1234567890"
   }
 }</code></pre>
-<p>Örnek yalnızca yeni alanların yerleşimini gösterir; mevcut zorunlu e-müstahsil makbuzu alanları aynı request içinde gönderilmeye devam etmelidir.</p>
 
 <h3 id="ubl-model-degisiklikleri">UBL model değişiklikleri</h3>
-<div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>UBL karşılığı</th></tr></thead><tbody><tr><td><code>VerificationInfo.Code</code></td><td><code>AccountingCustomerParty/Party/Contact/ID</code></td></tr><tr><td><code>VerificationInfo.PhoneNumber</code></td><td><code>AccountingCustomerParty/Party/Contact/Telephone</code></td></tr><tr><td><code>VerificationProvider.ApplicationName</code></td><td><code>AccountingSupplierParty/Party/Contact/OtherCommunication/ChannelCode[@name=&quot;SMS_PROVIDER&quot;]</code></td></tr><tr><td><code>VerificationProvider.Vkn</code></td><td><code>AccountingSupplierParty/Party/Contact/OtherCommunication/Value</code></td></tr></tbody></table></div>
+<div class="callout callout-info"><b>JSON ve hazır UBL farkı:</b> JSON modelinde yalnızca <code>VerificationMethod = SMS</code> gönderilir; platform <code>SMS</code> ve <code>SMS_PROVIDER</code> UBL sabitlerini üretir. Hazır UBL gönderildiğinde bu sabitler XML içinde entegratör tarafından sağlanmalıdır.</div>
+<div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>JSON alanı / sabit</th><th>UBL karşılığı</th><th>Hazır UBL değeri</th></tr></thead><tbody><tr><td data-label="JSON alanı / sabit"><code>VerificationMethod</code></td><td data-label="UBL karşılığı"><code>AccountingCustomerParty/Party/Contact/Name</code></td><td data-label="Hazır UBL değeri"><code>SMS</code></td></tr><tr><td data-label="JSON alanı / sabit"><code>VerificationInfo.Code</code></td><td data-label="UBL karşılığı"><code>AccountingCustomerParty/Party/Contact/ID</code></td><td data-label="Hazır UBL değeri">Doğrulanan kod</td></tr><tr><td data-label="JSON alanı / sabit"><code>VerificationInfo.PhoneNumber</code></td><td data-label="UBL karşılığı"><code>AccountingCustomerParty/Party/Contact/Telephone</code></td><td data-label="Hazır UBL değeri">Kodun gönderildiği telefon</td></tr><tr><td data-label="JSON alanı / sabit"><code>VerificationMethod</code></td><td data-label="UBL karşılığı"><code>AccountingSupplierParty/Party/Contact</code><wbr><code>/OtherCommunication/ChannelCode/@name</code></td><td data-label="Hazır UBL değeri"><code>SMS_PROVIDER</code></td></tr><tr><td data-label="JSON alanı / sabit"><code>VerificationProvider.ApplicationName</code></td><td data-label="UBL karşılığı"><code>AccountingSupplierParty/Party/Contact</code><wbr><code>/OtherCommunication/ChannelCode</code></td><td data-label="Hazır UBL değeri">Sağlayıcı adı</td></tr><tr><td data-label="JSON alanı / sabit"><code>VerificationProvider.Vkn</code></td><td data-label="UBL karşılığı"><code>AccountingSupplierParty/Party/Contact</code><wbr><code>/OtherCommunication/Value</code></td><td data-label="Hazır UBL değeri">Sağlayıcı VKN</td></tr></tbody></table></div>
 
 <h4 id="ubl-kullanim-ornegi">Planlanan UBL kullanım örneği</h4>
 <p>Aşağıdaki parçalar mevcut <code>AccountingCustomerParty</code> ve <code>AccountingSupplierParty</code> taraflarının <code>Party</code> düğümlerine eklenmelidir. Örnekte gösterilmeyen kimlik, unvan, adres ve vergi bilgileri mevcut UBL yapısında korunmalıdır.</p>
@@ -173,6 +259,7 @@
     &lt;!-- Mevcut PartyIdentification, PartyName ve PostalAddress alanları --&gt;
     &lt;cac:Contact&gt;
       &lt;cbc:ID&gt;482193&lt;/cbc:ID&gt;
+      &lt;cbc:Name&gt;SMS&lt;/cbc:Name&gt;
       &lt;cbc:Telephone&gt;905551112233&lt;/cbc:Telephone&gt;
     &lt;/cac:Contact&gt;
   &lt;/cac:Party&gt;
@@ -193,7 +280,7 @@
 <div class="callout callout-warning"><b>Tek Contact yapısı korunmalıdır:</b> İlgili <code>Party</code> altında zaten bir <code>Contact</code> düğümü varsa doğrulama alanları bu düğümle birleştirilmelidir; aynı taraf için çelişen telefon veya sağlayıcı bilgileri üretilmemelidir.</div>
 
 <h3 id="response-model-degisiklikleri">Response model değişiklikleri</h3>
-<p><code>OutgoingCreditNoteResponseModel</code> ve <code>OutgoingCreditNoteGridResponseModel</code> modellerine <code>OutgoingCreditNoteStatusForUser</code> alanı eklenecektir. Mevcut <code>OutgoingCreditNoteStatus</code> alanı kaldırılmaz.</p>
+<p><code>OutgoingCreditNoteResponseModel</code> belge detayında, <code>OutgoingCreditNoteHistoryResponseModel</code> ise geçmiş kaydında <code>VerificationMethod</code> değerini taşır. <code>OutgoingCreditNoteStatusForUser</code> kullanıcıya gösterilecek SMS sürecini, mevcut <code>OutgoingCreditNoteStatus</code> ise ana belge durumunu taşımaya devam eder. <code>VerificationMethod</code> grid response modelinde bulunmaz.</p>
 <div class="table-wrapper"><table><thead><tr><th>Değer</th><th>Entegratör açısından anlamı</th></tr></thead><tbody><tr><td><code>CreditNoteAndXmlCreated</code></td><td>Doğrulama verisi kabul edilmiş ve belge işleme alınmıştır.</td></tr><tr><td><code>Signed</code></td><td>Belge imzalanmış ve gönderime hazır duruma gelmiştir.</td></tr><tr><td><code>WaitingForVerification</code> / <code>WaitingForSmsCode</code></td><td>Portalın etkileşimli doğrulama adımlarıdır; doğrudan entegrasyonun normal başarılı gönderim sonucu değildir.</td></tr></tbody></table></div>
 
 <h3 id="yanit-ornekleri">Başarılı ve başarısız yanıt örnekleri</h3>
@@ -250,19 +337,19 @@
 <div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Portal davranışı</th></tr></thead><tbody><tr><td><code>Type</code></td><td>Hatanın uygulama kategorisini belirtir. SMS doğrulama iş kuralı hatalarında <code>2</code> değeri döner.</td></tr><tr><td><code>Type_Desc</code></td><td><code>Type</code> değerinin açıklamasıdır; iş kararı için zorunlu kabul edilmemelidir.</td></tr><tr><td><code>ErrorCode</code></td><td>Programatik hata ayrımında bu alan kullanılır.</td></tr><tr><td><code>Message</code></td><td>Kullanıcıya açıklayıcı bilgi olarak gösterilir; karar mantığı mesaj metnine bağlanmaz.</td></tr><tr><td><code>Detail</code></td><td>Teknik hata türünü taşıyabilir; Portalın iş kararı bu alana bağlanmaz.</td></tr><tr><td><code>Data</code></td><td>Yalnızca veri taşıyan özel hata tiplerinde bulunabilir; her hata yanıtında geleceği varsayılmaz.</td></tr></tbody></table></div>
 
 <h3 id="edge-case-tablosu">Edge-Case Tablosu</h3>
-<div class="table-wrapper"><table><thead><tr><th>Durum</th><th>Sonuç</th><th>Entegratör davranışı</th></tr></thead><tbody><tr><td><code>VerificationInfo</code> dolu, <code>VerificationProvider</code> boş</td><td>Reddedilir.</td><td>SMS sağlayıcısının adı ve VKN'siyle birlikte yeniden gönderilmelidir.</td></tr><tr><td>Sağlayıcı dolu, kod veya telefon eksik</td><td>Reddedilir.</td><td>Eksik üretici doğrulama bilgisi tamamlanmalıdır.</td></tr><tr><td>JSON requestinde dört alan tam</td><td>Normal belge akışına alınır.</td><td>Response ve belge durumu mevcut yöntemle takip edilmelidir.</td></tr><tr><td>UBL içinde ikinci ve çelişen <code>Contact</code> üretilmiş</td><td>Belge anlamı belirsizleşir veya validasyon hatası oluşur.</td><td>Doğrulama alanları tarafın mevcut <code>Contact</code> yapısıyla birleştirilmelidir.</td></tr><tr><td>Preview başarılı, gerçek gönderimde doğrulama alanı eksik</td><td>Gerçek gönderim reddedilir.</td><td>Preview ile gönderim validasyonunun aynı olmadığı dikkate alınmalıdır.</td></tr><tr><td>Response parser yeni durum alanını tanımıyor</td><td>Entegrasyon teknik olarak başarılı olsa da durum gösterimi eksik kalabilir.</td><td>Bilinmeyen veya boş alanları tolere eden geriye uyumlu eşleme kullanılmalıdır.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Durum</th><th>Sonuç</th><th>Entegratör davranışı</th></tr></thead><tbody><tr><td><code>VerificationMethod</code> boş, doğrulama nesneleri dolu</td><td>Zorunlu alan hatasıyla reddedilir.</td><td><code>VerificationMethod = SMS</code> eklenmelidir.</td></tr><tr><td><code>VerificationMethod</code> değeri <code>SMS</code> dışında</td><td><code>EMM0060</code> ile reddedilir.</td><td>MM için yalnızca <code>SMS</code> kullanılmalıdır.</td></tr><tr><td><code>VerificationInfo</code> dolu, <code>VerificationProvider</code> boş</td><td>Reddedilir.</td><td>SMS sağlayıcısının adı ve VKN'siyle birlikte yeniden gönderilmelidir.</td></tr><tr><td>Sağlayıcı dolu, kod veya telefon eksik</td><td>Reddedilir.</td><td>Eksik üretici doğrulama bilgisi tamamlanmalıdır.</td></tr><tr><td>JSON requestinde yöntem ve dört alt alan tam</td><td>Normal belge akışına alınır.</td><td>Response ve belge durumu mevcut yöntemle takip edilmelidir.</td></tr><tr><td>Hazır UBL'de <code>Contact/Name</code> veya <code>ChannelCode/@name</code> yanlış</td><td>Yöntem çözümlenemez ve request reddedilir.</td><td><code>SMS</code> ve <code>SMS_PROVIDER</code> sabitleri düzeltilmelidir.</td></tr><tr><td>UBL içinde ikinci ve çelişen <code>Contact</code> üretilmiş</td><td>Belge anlamı belirsizleşir veya validasyon hatası oluşur.</td><td>Doğrulama alanları tarafın mevcut <code>Contact</code> yapısıyla birleştirilmelidir.</td></tr><tr><td>Preview başarılı, gerçek gönderimde doğrulama alanı eksik</td><td>Gerçek gönderim reddedilir.</td><td>Preview ile gönderim validasyonunun aynı olmadığı dikkate alınmalıdır.</td></tr></tbody></table></div>
 
 <h3 id="entegrator-gecis-listesi">Entegratör geçiş kontrol listesi</h3>
-<ul class="checklist"><li>VBT aktivasyon duyurusu ve yürürlük tarihi alındı.</li><li>Kullanılan oluşturma ve güncelleme endpointleri belirlendi.</li><li>İki yeni request modeli ve dört alt alan eşlendi.</li><li>Response parser, <code>OutgoingCreditNoteStatusForUser</code> alanını opsiyonel okuyacak şekilde güncellendi.</li><li>Eksiksiz JSON, kısmi JSON, eksiksiz UBL ve kısmi UBL senaryoları test edildi.</li><li>Üretim değişikliği yalnızca duyurulan aktivasyon tarihinde açıldı.</li></ul>
+<ul class="checklist"><li>VBT aktivasyon duyurusu ve yürürlük tarihi alındı.</li><li>Kullanılan oluşturma ve güncelleme endpointleri belirlendi.</li><li><code>VerificationMethod = SMS</code>, iki doğrulama nesnesi ve dört alt alan eşlendi.</li><li>Hazır UBL üreten sistemlerde <code>SMS</code> ve <code>SMS_PROVIDER</code> sabitleri eklendi.</li><li>Detay ve geçmiş response parser'ları <code>VerificationMethod</code> alanını okuyacak şekilde güncellendi.</li><li><code>OutgoingCreditNoteStatusForUser</code> durumları desteklendi.</li><li>Eksiksiz JSON, eksik yöntem, geçersiz yöntem, kısmi JSON, eksiksiz UBL ve kısmi UBL senaryoları test edildi.</li><li>Üretim değişikliği yalnızca duyurulan aktivasyon tarihinde açıldı.</li></ul>
 
 <h3 id="entegrator-state-machine">Entegratör durum akışı</h3>
-<p>Doğrudan entegrasyonda Portalın etkileşimli SMS adımları bulunmaz. Request, doğrulama alanlarının bütünlüğüne göre mevcut belge işleme akışına alınır veya reddedilir.</p>
+<p>Doğrudan entegrasyonda Portalın etkileşimli SMS adımları bulunmaz. Request, doğrulama yöntemi ve doğrulama alanlarının bütünlüğüne göre mevcut belge işleme akışına alınır veya reddedilir.</p>
 <h4 id="entegrator-state-akisi">Entegratör state akışı</h4>
-<p>Doğrudan JSON veya UBL entegrasyonunda etkileşimli SMS adımları bulunmaz. Request, doğrulama alanları eksiksizse mevcut belge işleme akışına alınır; kısmi veri doğrudan reddedilir.</p>
+<p>Doğrudan JSON veya UBL entegrasyonunda etkileşimli SMS adımları bulunmaz. Request, yöntem ve doğrulama alanları eksiksizse mevcut belge işleme akışına alınır; eksik veya geçersiz yöntem ile kısmi veri doğrudan reddedilir.</p>
 <div class="diagram-wrapper">
 <svg viewBox="0 0 900 340" role="img" aria-labelledby="integrator-state-title integrator-state-desc">
   <title id="integrator-state-title">Entegratör SMS doğrulama state akışı</title>
-  <desc id="integrator-state-desc">JSON veya UBL requestinin dört doğrulama alanı açısından denetlenmesi, eksik verinin reddedilmesi ve tam verinin belge işleme ile imzaya ilerlemesi.</desc>
+  <desc id="integrator-state-desc">JSON veya UBL requestinin doğrulama yöntemi ve dört doğrulama alanı açısından denetlenmesi, eksik veya geçersiz verinin reddedilmesi ve tam verinin belge işleme ile imzaya ilerlemesi.</desc>
   <style>
     .int-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}
     .int-question{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}
@@ -284,9 +371,9 @@
   <text class="int-sub" x="112" y="103">Oluşturma veya güncelleme</text>
 
   <rect class="int-question" x="255" y="45" width="185" height="86" rx="10"/>
-  <text class="int-text" x="347" y="75">Dört alan eksiksiz mi?</text>
-  <text class="int-sub" x="347" y="99">Kod · telefon · sağlayıcı adı</text>
-  <text class="int-sub" x="347" y="116">ve sağlayıcı VKN</text>
+  <text class="int-text" x="347" y="75">Yöntem ve alanlar tam mı?</text>
+  <text class="int-sub" x="347" y="99">SMS · kod · telefon</text>
+  <text class="int-sub" x="347" y="116">sağlayıcı adı · VKN</text>
 
   <rect class="int-ok" x="495" y="45" width="175" height="86" rx="10"/>
   <text class="int-text" x="582" y="75">Belge kabul edildi</text>
@@ -304,8 +391,8 @@
   <rect class="int-err" x="225" y="195" width="245" height="105" rx="10"/>
   <text class="int-code" x="347" y="223">VALIDASYON HATASI</text>
   <text class="int-text" x="347" y="250">Request reddedildi</text>
-  <text class="int-sub" x="347" y="273">Eksik alanlar tamamlanmalıdır;</text>
-  <text class="int-sub" x="347" y="290">dört alan birlikte yeniden gönderilmelidir.</text>
+  <text class="int-sub" x="347" y="273">Yöntem ve eksik alanlar</text>
+  <text class="int-sub" x="347" y="290">tamamlanarak yeniden gönderilmelidir.</text>
 
   <text class="int-sub" x="582" y="165">Tam veri mevcut belge işleme ve imza akışına devam eder.</text>
 </svg>
@@ -328,6 +415,8 @@
 <tr><td><code>EMM0056</code></td><td>Doğrulama kodu 6 haneli ve yalnızca rakamlardan oluşmalıdır.</td><td>Kod alanı beklenen OTP biçiminde değildir.</td><td>Üreticinin ilettiği 6 haneli kod girilmelidir.</td></tr>
 <tr><td><code>EMM0057</code></td><td>SMS doğrulama kodu gönderme ve doğrulama işlemleri yalnızca Portal (UI) kullanıcıları için kullanılabilir.</td><td>Portal SMS endpointlerinden biri UI dışındaki bir kanaldan çağrılmıştır.</td><td>Doğrudan entegrasyonda bu endpointler çağrılmamalı; doğrulama bilgileri oluşturma veya güncelleme requestinde eksiksiz gönderilmelidir.</td></tr>
 <tr><td><code>EMM0058</code></td><td>Doğrulama sağlayıcısının VKN bilgisi 10 haneli ve yalnızca rakamlardan oluşmalıdır.</td><td>Oluşturma veya güncelleme requestindeki sağlayıcı VKN bilgisi geçersizdir.</td><td>Doğrulama sağlayıcısının geçerli VKN bilgisi gönderilmelidir.</td></tr>
+<tr><td><code>EMM0059</code></td><td>e-Müstahsil Makbuzunun doğrulama işlemi henüz tamamlanmadığı için imzalama işlemi başlatılamadı.</td><td>Belge doğrulama beklerken imza aşamasına ulaşmıştır.</td><td>Belge doğrulanmış kabul edilmemeli; doğrulama tamamlandıktan sonra güncel durum yeniden sorgulanmalıdır.</td></tr>
+<tr><td><code>EMM0060</code></td><td>VerificationMethod alanı geçersiz. e-Müstahsil Makbuzu için geçerli değer: SMS</td><td>Requestte desteklenmeyen bir doğrulama yöntemi gönderilmiştir.</td><td><code>VerificationMethod</code> alanı <code>SMS</code> olarak gönderilmelidir.</td></tr>
 </tbody></table></div>
 <div class="callout callout-info"><b>API hatası olmayan kodlar:</b> <code>EMM0042–EMM0049</code> aralığındaki kayıtlar başarılı SMS gönderimi, doğrulama, telefon değişikliği ve iptal bildirimi gibi platform olaylarında kullanılan mesaj ve bildirim kayıtlarıdır. Entegratör hata yönetimi bu kodlara dayandırılmamalıdır.</div>
 
@@ -339,12 +428,12 @@
 </details>
 <details class="example-details"><summary>SMS gönderme ve kod doğrulama endpointlerini entegratör mü çağıracak?</summary>
     <div class="example-body">
-        <p>Hayır. Bu işlemler VBT Portalın hazır kullanıcı akışıdır. Doğrudan entegratörlerin kendi doğrulama süreçlerinde elde ettikleri dört alan mevcut oluşturma veya güncelleme endpointlerinde gönderilmelidir.</p>
+        <p>Hayır. Bu işlemler VBT Portalın hazır kullanıcı akışıdır. Doğrudan entegratörler mevcut oluşturma veya güncelleme endpointlerinde <code>VerificationMethod = SMS</code> ile kendi süreçlerinde elde ettikleri dört doğrulama alt alanını gönderir.</p>
     </div>
 </details>
 <details class="example-details"><summary>Doğrulama alanlarından yalnızca telefon numarasını gönderebilir miyiz?</summary>
     <div class="example-body">
-        <p>Hayır. Aktivasyon sonrasında kod, telefon, SMS sağlayıcısının adı ve sağlayıcı VKN'si birlikte gönderilmelidir.</p>
+        <p>Hayır. Aktivasyon sonrasında <code>VerificationMethod = SMS</code>, kod, telefon, SMS sağlayıcısının adı ve sağlayıcı VKN'si birlikte gönderilmelidir.</p>
     </div>
 </details>
 <details class="example-details"><summary>Update işleminde eski doğrulama bilgisi korunur mu?</summary>

@@ -78,6 +78,7 @@
 <section id="portal-kullanicilari-icin">
 <div class="callout callout-warning"><b>Henüz aktif değildir.</b> Portal ekranları VBT aktivasyon duyurusuna kadar mevcut davranışı korur. Ortak yürürlük bilgisi için <a href="sms-dogrulamali-gonderim.html">SMS Doğrulamalı Gönderim</a> sayfasını inceleyin.</div>
 <p>VBT Portal, doğrulama zorunluluğu aktive edildiğinde SMS gönderme ve kod doğrulama adımlarını e-müstahsil makbuzu ekranında hazır olarak sunacaktır. Portal kullanan firmaların yeni endpoint veya request modeli geliştirmesi gerekmez.</p>
+<div class="callout callout-info"><b>Yöntem seçimi gerekmez:</b> MM için planlanan yöntem <code>SMS</code>'tir. Portal bu değeri ve GİB'in beklediği UBL yöntem bilgilerini kullanıcıdan ek alan istemeden belgeye uygular.</div>
 
 <h3 id="portal-hazir-akis">Portalda hazır sunulacak akış</h3>
 <ol><li>Portal kullanıcısı e-müstahsil makbuzunu mevcut belge ekranından oluşturur.</li><li>Belge ekranı üreticinin telefon numarasına SMS gönderme adımını sunar.</li><li>Üreticinin ilettiği kod aynı ekran üzerinden doğrulanır.</li><li>Başarılı doğrulama sonrasında belge normal imzalama ve gönderim sürecine otomatik olarak devam eder.</li></ol>

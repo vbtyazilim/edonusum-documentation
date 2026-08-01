@@ -144,6 +144,12 @@
     </div>
 </details>
 
+<details class="example-details"><summary>Planlanan SMS doğrulamasında yöntem ve UBL alanları nasıl gönderilecek?</summary>
+    <div class="example-body">
+        <p>Bu değişiklik henüz aktif değildir. Aktivasyon sonrasında JSON requestinde <code>VerificationMethod = SMS</code> gönderilir; <code>VerificationInfo</code> ve <code>VerificationProvider</code> içinde ayrıca <code>ChannelCode</code> veya <code>Type</code> bulunmaz. Platform, model requesti için GİB'in istediği <code>SMS</code> ve <code>SMS_PROVIDER</code> UBL değerlerini üretir. Hazır UBL gönderen entegratör ise bu standart değerleri XML içinde kendisi sağlamalıdır. Tam örnek için <a href="sms-dogrulamali-gonderim-entegratorler.html#json-model-ornegi">entegratör SMS rehberine</a> bakın.</p>
+    </div>
+</details>
+
 <details class="example-details"><summary>Bir istek başarısız olursa nasıl anlarım?</summary>
     <div class="example-body">
         <p>Oluşturma/güncelleme yanıtları <code>HasError</code> ve <code>Errors[]</code> alanlarını taşır; <code>HasError = true</code> ise <code>Errors</code> dizisindeki her öğe bir hata kodu ve açıklaması içerir (örn. <code>EMM0020</code>, <code>EMM0028</code>). Hata kodlarının rehberde geçen listesi için <a href="teknik-referans.html">Teknik Referans</a> sayfasına bakın.</p>
