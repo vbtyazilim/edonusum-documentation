@@ -140,12 +140,12 @@
                         <tr><th>Kontrol</th><th>Kod</th><th>Açıklama</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>VerificationProvider ve yöntem uyumu</td><td>EGP0044 / EGP0045 / EGP0078</td><td>SMS_PROVIDER veya IADE_PROVIDER; sağlayıcı adı ve 10 haneli VKN</td></tr>
-                        <tr><td>VerificationInfo biçimi</td><td>EGP0037 / EGP0039 / EGP0072</td><td>SMS veya IADEKODU; geçerli kod ve telefon</td></tr>
+                        <tr><td>VerificationMethod ve sağlayıcı bilgisi</td><td>EGP0037 / EGP0078</td><td>SMS veya IADEKODU; sağlayıcı adı ve 10 haneli VKN</td></tr>
+                        <tr><td>VerificationInfo biçimi</td><td>EGP0039 / EGP0072</td><td>Geçerli kod ve telefon</td></tr>
                         <tr><td>IADE → ReturnedDocumentReference</td><td>EGP0038 / EGP0047 / EGP0048 / EGP0051</td><td>İade edilen belgenin türü ve tarihi; belge varsa numarası</td></tr>
                         <tr><td>BELGESIZ → gerçek kişi kimliği</td><td>EGP0050 / EGP0085</td><td>T.C. vatandaşı için TCKN, yabancı uyruklu kişi için PASAPORTNO</td></tr>
                         <tr><td>Kargo → iade kodu ve kargo eşleşmesi</td><td>EGP0049 / EGP0087</td><td>IADEKODU ve aktif kargo şirketi kaydı</td></tr>
-                        <tr><td>SATIS → SMS_PROVIDER</td><td>EGP0046</td><td>Satışta iade sağlayıcısı kullanılamaz</td></tr>
+                        <tr><td>SATIS → VerificationMethod=SMS</td><td>EGP0046</td><td>Satışta yalnız SMS doğrulaması kullanılabilir</td></tr>
                         <tr><td>SATIS → DelegateReceiver yok</td><td>EGP0053</td><td>Vekalet kullanılamaz</td></tr>
                         <tr><td>DelegateReceiver → kimlik tipi, kimlik değeri ve ad</td><td>EGP0054 / EGP0084</td><td>Doluysa üç iş alanı zorunlu ve geçerli olmalıdır</td></tr>
                         <tr><td>Alıcı tam olarak bir TCKN/PASAPORTNO taşır</td><td>EGP0080 / EGP0081 / EGP0085</td><td>VKN ve tüzel kişi reddedilir</td></tr>

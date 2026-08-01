@@ -141,7 +141,7 @@
 
 <details class="example-details"><summary>IADE belgesinde SMS yerine iade kodu gönderebilir miyiz?</summary>
     <div class="example-body">
-        <p>Yüz yüze IADE senaryosunda SMS veya iade kodu kullanılabilir. Kargo aracılığıyla yapılan IADE işleminde <code>VerificationInfo.Type</code> değeri <code>IADEKODU</code>, sağlayıcı yöntemi de <code>IADE_PROVIDER</code> olmalıdır.</p>
+        <p>Yüz yüze IADE senaryosunda <code>VerificationMethod</code> için <code>SMS</code> veya <code>IADEKODU</code> kullanılabilir. Kargo aracılığıyla yapılan IADE işleminde değer yalnızca <code>IADEKODU</code> olabilir. GİB'in beklediği <code>IADE_PROVIDER</code> ve <code>IADEKODU</code> alanlarını platform üretir.</p>
     </div>
 </details>
 

@@ -147,13 +147,13 @@
 </tbody></table></div>
 <h3 id="h-planlanan-dogrulama">Planlanan: SMS Doğrulama Hata Kodları ve Durumlar</h3>
 <div class="callout callout-info"><b>Henüz aktif değildir.</b> Aşağıdaki kod ve enum değerleri GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacaktır; bugünkü entegrasyon davranışını değiştirmez. Detay için <a href="sms-dogrulamali-gonderim-entegratorler.html">SMS Doğrulamalı Gönderim — Entegratörler İçin</a> sayfasına bakın.</div>
-<p>Response modeline eklenecek <code>OutgoingCreditNoteStatusForUser</code> alanı, mevcut <code>OutgoingCreditNoteStatus</code> alanının yanında SMS doğrulama bekleme adımlarını taşıyacaktır:</p>
+<p>Requestteki <code>VerificationMethod</code> alanı için desteklenen tek değer <code>SMS</code>'tir. Belge detay ve geçmiş response modelleri aynı alanı döndürür; grid response modeli bu alanı içermez. <code>OutgoingCreditNoteStatusForUser</code> ise mevcut <code>OutgoingCreditNoteStatus</code> alanının yanında SMS doğrulama bekleme adımlarını taşır:</p>
 <div class="table-wrapper"><table><thead><tr><th>Değer</th><th>Entegratör açısından anlamı</th></tr></thead><tbody>
 <tr><td><code>CreditNoteAndXmlCreated</code></td><td>Doğrulama verisi kabul edilmiş ve belge işleme alınmıştır.</td></tr>
 <tr><td><code>Signed</code></td><td>Belge imzalanmış ve gönderime hazır duruma gelmiştir.</td></tr>
 <tr><td><code>WaitingForVerification</code> / <code>WaitingForSmsCode</code></td><td>Portalın etkileşimli doğrulama adımlarıdır; doğrudan entegrasyonun normal başarılı gönderim sonucu değildir.</td></tr>
 </tbody></table></div>
-<p>Planlanan SMS doğrulama hata kodları (<code>EMM0036</code>–<code>EMM0058</code>):</p>
+<p>Planlanan SMS doğrulama hata kodları (<code>EMM0036</code>–<code>EMM0060</code>):</p>
 <div class="table-wrapper"><table><thead><tr><th>Kod</th><th>Anlamı</th></tr></thead><tbody>
 <tr><td><code>EMM0036</code></td><td>Makbuzun mevcut durumu SMS doğrulama işlemi için uygun değildir.</td></tr>
 <tr><td><code>EMM0037</code></td><td>Bu makbuz için SMS doğrulama işlemi devam etmektedir.</td></tr>
@@ -169,6 +169,8 @@
 <tr><td><code>EMM0056</code></td><td>Doğrulama kodu 6 haneli ve yalnızca rakamlardan oluşmalıdır.</td></tr>
 <tr><td><code>EMM0057</code></td><td>SMS doğrulama kodu gönderme ve doğrulama işlemleri yalnızca Portal (UI) kullanıcıları için kullanılabilir.</td></tr>
 <tr><td><code>EMM0058</code></td><td>Doğrulama sağlayıcısının VKN bilgisi 10 haneli ve yalnızca rakamlardan oluşmalıdır.</td></tr>
+<tr><td><code>EMM0059</code></td><td>Doğrulama tamamlanmamış bir makbuz için imzalama işlemi başlatılamaz.</td></tr>
+<tr><td><code>EMM0060</code></td><td><code>VerificationMethod</code> geçersizdir; e-Müstahsil Makbuzu için geçerli değer <code>SMS</code>'tir.</td></tr>
 </tbody></table></div>
 <div class="callout callout-warning"><b>API hatası olmayan kodlar:</b> <code>EMM0042–EMM0049</code> aralığındaki kayıtlar başarılı SMS gönderimi, doğrulama, telefon değişikliği ve iptal bildirimi gibi platform olaylarında kullanılan mesaj ve bildirim kayıtlarıdır; entegratör hata yönetimi bu kodlara dayandırılmamalıdır.</div>
 </section>

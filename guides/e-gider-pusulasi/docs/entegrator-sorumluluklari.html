@@ -109,7 +109,7 @@
                         <tr><td>3</td><td><b>İade belgesi bilgisi</b></td><td>Kendi sistemi</td><td>Orijinal belge no/tarih/tür bul</td><td>Validasyon hatası</td></tr>
                         <tr><td>4</td><td><b>Kargo şirketi referansı</b></td><td>Platform (<code>CargoCompanies/GetAll</code>)</td><td>JSON çağrısında kaydın <code>Code</code> değerini gönder; hazır UBL çağrısında aynı kaydın VKN, unvan, yetki belge no ve adres alanlarıyla <code>DeliveryParty</code> bölümünü hazırla</td><td>JSON'da geçersiz <code>CargoCompanyCode</code> genel zorunlu alan hatası döner; hazır UBL'de <code>DeliveryParty</code> uyumsuzluğu <code>EGP0087</code> ile reddedilir</td></tr>
                         <tr><td>5</td><td><b>Gerçek kimlik</b></td><td>Müşteri</td><td>BELGESIZ iadede doğrula</td><td>GİB reddi</td></tr>
-                        <tr><td>6</td><td><b>ChannelCodeName</b></td><td>Doğrulama yöntemi</td><td><code>SMS</code> için <code>SMS_PROVIDER</code>, <code>IADEKODU</code> için <code>IADE_PROVIDER</code> seç</td><td>Yöntem uyumsuzluğu reddedilir</td></tr>
+                        <tr><td>6</td><td><b>VerificationMethod</b></td><td>Doğrulama yöntemi</td><td><code>SMS</code> veya <code>IADEKODU</code> seç; GİB provider değerini platform üretir</td><td>Senaryoya uygun olmayan yöntem reddedilir</td></tr>
                         <tr><td>7</td><td><b>Telefon</b></td><td>Doğrulama işlemi</td><td>Kodun gerçekten ilişkilendirildiği telefonu aynı doğrulama kaydıyla gönder</td><td>Eksik telefon reddedilir</td></tr>
                         <tr><td>8</td><td><b>Vekil bilgisi</b></td><td>Entegratör</td><td>Kimlik tipi, kimlik değeri ve adı birlikte gönder</td><td>EGP0054 / EGP0055 / EGP0084</td></tr>
                     </tbody>
@@ -120,9 +120,9 @@
             <h3 id="h-senaryo-hazirlik">Senaryo Bazlı Hazırlık Matrisi</h3>
             <p>Belge gönderilmeden önce doğrulama yöntemi ile senaryoya özgü alanlar birlikte hazırlanmalıdır.</p>
             <div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Senaryo</th><th>Doğrulama</th><th>Ek bilgiler</th></tr></thead><tbody>
-                <tr><td data-label="Senaryo"><code>SATIS</code></td><td data-label="Doğrulama"><code>SMS_PROVIDER</code> + <code>SMS</code></td><td data-label="Ek bilgiler"><code>VerificationProvider</code> ve <code>VerificationInfo</code> eksiksiz gönderilmelidir.</td></tr>
-                <tr><td data-label="Senaryo">Yüz yüze <code>IADE</code></td><td data-label="Doğrulama"><code>SMS_PROVIDER</code> + <code>SMS</code> veya <code>IADE_PROVIDER</code> + <code>IADEKODU</code></td><td data-label="Ek bilgiler"><code>ReturnedDocumentReference</code> gönderilmelidir.</td></tr>
-                <tr><td data-label="Senaryo">Kargolu <code>IADE</code></td><td data-label="Doğrulama"><code>IADE_PROVIDER</code> + <code>IADEKODU</code></td><td data-label="Ek bilgiler"><code>ReturnedDocumentReference</code> ve <code>CargoCompanyCode</code> gönderilmelidir.</td></tr>
+                <tr><td data-label="Senaryo"><code>SATIS</code></td><td data-label="Doğrulama"><code>VerificationMethod=SMS</code></td><td data-label="Ek bilgiler"><code>VerificationProvider</code> ve <code>VerificationInfo</code> eksiksiz gönderilmelidir.</td></tr>
+                <tr><td data-label="Senaryo">Yüz yüze <code>IADE</code></td><td data-label="Doğrulama"><code>VerificationMethod=SMS</code> veya <code>VerificationMethod=IADEKODU</code></td><td data-label="Ek bilgiler"><code>ReturnedDocumentReference</code> gönderilmelidir.</td></tr>
+                <tr><td data-label="Senaryo">Kargolu <code>IADE</code></td><td data-label="Doğrulama"><code>VerificationMethod=IADEKODU</code></td><td data-label="Ek bilgiler"><code>ReturnedDocumentReference</code> ve <code>CargoCompanyCode</code> gönderilmelidir.</td></tr>
                 <tr><td data-label="Senaryo">Vekaletli <code>IADE</code></td><td data-label="Doğrulama">Teslim biçiminin izin verdiği doğrulama yöntemi</td><td data-label="Ek bilgiler">Asıl alıcı korunmalı; <code>DelegateReceiver</code> kimlik tipi, kimlik değeri ve ad ile gönderilmelidir.</td></tr>
             </tbody></table></div>
 
@@ -254,7 +254,7 @@
     &lt;/cac:PostalAddress&gt;
   &lt;/cac:DeliveryParty&gt;
 &lt;/cac:Delivery&gt;</code></pre>
-                <p>Kargolu iadede SMS yöntemi kullanılamaz. <code>IADE_PROVIDER</code> ve <code>IADEKODU</code> birlikte gönderilmelidir. <code>DeliveryParty</code>; <code>CargoCompanies/GetAll</code> kaydındaki VKN, unvan, yetki belge numarası, şehir, ilçe ve ülke değerleriyle hazırlanmalıdır. Platform bu alanları değiştirmez; kayıtla uyuşmayan UBL'yi <code>EGP0087</code> ile reddeder. <code>IsSigned=true</code> belgelerde bütün alanlar imzadan önce UBL'ye eklenmiş olmalıdır.</p></div>
+                <p>Kargolu iadede SMS yöntemi kullanılamaz. JSON request'te <code>VerificationMethod=IADEKODU</code> gönderilmelidir. <code>DeliveryParty</code>; <code>CargoCompanies/GetAll</code> kaydındaki VKN, unvan, yetki belge numarası, şehir, ilçe ve ülke değerleriyle hazırlanmalıdır. Platform bu alanları değiştirmez; kayıtla uyuşmayan UBL'yi <code>EGP0087</code> ile reddeder. <code>IsSigned=true</code> belgelerde bütün alanlar imzadan önce UBL'ye eklenmiş olmalıdır.</p></div>
             </details>
 
             <details class="example-details">
@@ -294,9 +294,9 @@
                 <p><code>VerificationProvider.Vkn</code> karşılığı bulunmadığı için UBL reddedilir. <code>ChannelCode/@name</code>, sağlayıcı adı ve sağlayıcı VKN'si birlikte gönderilmelidir.</p></div>
             </details>
 
-            <div class="callout callout-info"><b>Kimlik ve yöntem seçimi:</b> SATIS için <code>SMS_PROVIDER</code> + <code>SMS</code>; yüz yüze IADE için <code>SMS_PROVIDER</code> + <code>SMS</code> veya <code>IADE_PROVIDER</code> + <code>IADEKODU</code>; kargolu IADE için yalnız <code>IADE_PROVIDER</code> + <code>IADEKODU</code> kullanılmalıdır. Gerçek kişi alıcı ve vekil kimliği T.C. vatandaşı için <code>TCKN</code>, yabancı uyruklu kişi için <code>PASAPORTNO</code> olmalıdır; bu ayrım <code>BELGESIZ</code> iadede de geçerlidir.</div>
+            <div class="callout callout-info"><b>Kimlik ve yöntem seçimi:</b> SATIS için <code>VerificationMethod=SMS</code>; yüz yüze IADE için <code>SMS</code> veya <code>IADEKODU</code>; kargolu IADE için yalnız <code>VerificationMethod=IADEKODU</code> kullanılmalıdır. Gerçek kişi alıcı ve vekil kimliği T.C. vatandaşı için <code>TCKN</code>, yabancı uyruklu kişi için <code>PASAPORTNO</code> olmalıdır; bu ayrım <code>BELGESIZ</code> iadede de geçerlidir.</div>
 
-            <div class="callout callout-warning"><b>Tek Contact yapısı korunmalıdır:</b> İlgili <code>Party</code> altında bir <code>Contact</code> düğümü zaten varsa doğrulama alanları bu düğümle birleştirilmelidir. Aynı taraf altında ikinci ve çelişen bir <code>Contact</code> oluşturulmamalıdır. IADE kodu kullanıldığında yöntem değerleri <code>IADEKODU</code> ve <code>IADE_PROVIDER</code> olarak birlikte değiştirilmelidir.</div>
+            <div class="callout callout-warning"><b>Tek Contact yapısı korunmalıdır:</b> Hazır UBL'de ilgili <code>Party</code> altında bir <code>Contact</code> düğümü zaten varsa doğrulama alanları bu düğümle birleştirilmelidir. Aynı taraf altında ikinci ve çelişen bir <code>Contact</code> oluşturulmamalıdır. JSON request'te ise yalnız <code>VerificationMethod</code> seçilir; GİB alanlarını platform üretir.</div>
 
             <h3 id="h-gonderim-kontrol-listesi">Gönderim Kontrol Listesi</h3>
             <ul>

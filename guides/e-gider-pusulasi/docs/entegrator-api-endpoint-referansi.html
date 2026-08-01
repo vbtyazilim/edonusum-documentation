@@ -112,6 +112,7 @@
         <tbody>
             <tr><td><code>ExpenseVoucherExternalId</code></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>Tekil kimlik</td></tr>
             <tr><td><code>ExpenseVoucherTypeCode</code></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>SATIS/IADE</td></tr>
+            <tr><td><code>VerificationMethod</code></td><td><code>SMS</code></td><td><code>SMS</code> / <code>IADEKODU</code></td><td><code>IADEKODU</code></td><td>GİB yöntem alanlarını platform üretir</td></tr>
             <tr><td><code>ProfileId</code></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>GIDERPUSULASI</td></tr>
             <tr><td><code>DocumentCurrencyCode</code></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>ISO 4217</td></tr>
             <tr><td><code>IssueDate</code></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td><span class="badge-required">Z</span></td><td>—</td></tr>
@@ -352,6 +353,7 @@ Entegratör kargo iadesi yaparken:<br>
 
 <h2 id="h-alt-modeller">Alt Modeller</h2>
 <p>Ekleme ve güncelleme çağrılarında geçen doğrulama, vekalet, iade ve kargo alt modelleri burada tek başlık altında toplanır.</p>
+<div class="callout callout-info"><b>Doğrulama yöntemi üst modeldedir:</b> <code>VerificationMethod</code> alanı <code>SMS</code> veya <code>IADEKODU</code> alır. GİB'in UBL ve raporda beklediği <code>SMS_PROVIDER</code>/<code>IADE_PROVIDER</code> karşılıklarını platform üretir.</div>
 
 <h3 id="h-verification-provider">VerificationProvider</h3>
 <p>SMS veya iade kodu gönderimi için kullanılan <strong>üçüncü parti doğrulama sağlayıcısının</strong> bilgileri. Entegratörün adı değil, doğrulama hizmetini sağlayan uygulamanın adı ve VKN'si yazılır. UBL'de <code>AccountingSupplierParty/Party/Contact/OtherCommunication</code> altına, GİB raporunda <code>operatorUygulamaBilgi</code> alanına taşınır. Doğrudan entegrasyonlarda eksiksiz gönderilmelidir.</p>
@@ -361,7 +363,6 @@ Entegratör kargo iadesi yaparken:<br>
             <tr><th>Alan</th><th>Tip</th><th>Geçerli Değerler</th></tr>
         </thead>
         <tbody>
-            <tr><td><code>ChannelCodeName</code></td><td>string</td><td><code>SMS_PROVIDER</code>, <code>IADE_PROVIDER</code></td></tr>
             <tr><td><code>ApplicationName</code></td><td>string</td><td>Serbest</td></tr>
             <tr><td><code>Vkn</code></td><td>string</td><td>10 hane rakam</td></tr>
         </tbody>
@@ -369,7 +370,7 @@ Entegratör kargo iadesi yaparken:<br>
 </div>
 
 <h3 id="h-verification-info">VerificationInfo</h3>
-<p><strong>Muhataba iletilen doğrulama bilgisi</strong> — SMS kodu veya iade kodu, bu kodun ilişkilendirildiği telefon ve doğrulama tipi. Doğrudan entegrasyonlarda <code>VerificationProvider</code> ile birlikte eksiksiz gönderilmelidir. UBL'de <code>AccountingCustomerParty/Party/Contact</code> altına yazılır (vekalet varsa <code>BuyerCustomerParty/Party/Contact</code>); GİB raporunda <code>aliciBilgileri/bilgiDetay</code> alanına yansır.</p>
+<p><strong>Muhataba iletilen doğrulama bilgisi</strong> — SMS kodu veya iade kodu ile bu kodun ilişkilendirildiği telefon. Doğrudan entegrasyonlarda <code>VerificationProvider</code> ile birlikte eksiksiz gönderilmelidir. UBL'de <code>AccountingCustomerParty/Party/Contact</code> altına yazılır (vekalet varsa <code>BuyerCustomerParty/Party/Contact</code>); GİB raporunda <code>aliciBilgileri/bilgiDetay</code> alanına yansır.</p>
 <div class="table-wrapper">
     <table>
         <thead>
@@ -378,7 +379,6 @@ Entegratör kargo iadesi yaparken:<br>
         <tbody>
             <tr><td><code>Code</code></td><td>string</td><td>Serbest</td></tr>
             <tr><td><code>PhoneNumber</code></td><td>string</td><td><code>0XXXXXXXXXX</code></td></tr>
-            <tr><td><code>Type</code></td><td>string</td><td><code>SMS</code>, <code>IADEKODU</code></td></tr>
         </tbody>
     </table>
 </div>
@@ -446,6 +446,7 @@ Entegratör kargo iadesi yaparken:<br>
             <tr><td><code>ExpenseVoucherExternalId</code></td><td>string</td><td>Tekil kimlik</td></tr>
             <tr><td><code>ExpenseVoucherNumber</code></td><td>string</td><td>Belge no</td></tr>
             <tr><td><code>ExpenseVoucherTypeCode</code></td><td>string</td><td>SATIS/IADE</td></tr>
+            <tr><td><code>VerificationMethod</code></td><td>string</td><td>SMS/IADEKODU</td></tr>
             <tr><td><code>DocumentCurrencyCode</code></td><td>string</td><td>Para birimi</td></tr>
             <tr><td><code>IssueDate</code></td><td>DateTime</td><td>Düzenleme tarihi</td></tr>
             <tr><td><code>OutgoingExpenseVoucherStatus</code></td><td>string</td><td>Belge durumu</td></tr>

@@ -101,7 +101,7 @@
                 <path class="kl" d="M350,48 L160,80" marker-end="url(#a3)"/>
                 <text class="ks" x="240" y="60">SATIS</text>
                 <rect class="kr" x="50" y="75" width="220" height="48"/>
-                <text class="kt" x="160" y="93" style="fill:var(--svg-ok-s)">SMS_PROVIDER + SMS</text>
+                <text class="kt" x="160" y="93" style="fill:var(--svg-ok-s)">VerificationMethod: SMS</text>
                 <text class="ks" x="160" y="112">Tek seçenek — başka yok</text>
                 <!-- IADE -->
                 <path class="kl" d="M450,48 L600,80" marker-end="url(#a3)"/>
@@ -117,20 +117,20 @@
                 <path class="kl" d="M300,181 L170,215" marker-end="url(#a3)"/>
                 <text class="ks" x="220" y="198">SMS</text>
                 <rect class="kr" x="50" y="210" width="230" height="42"/>
-                <text class="kt" x="165" y="226" style="fill:var(--svg-ok-s)">SMS_PROVIDER + SMS</text>
+                <text class="kt" x="165" y="226" style="fill:var(--svg-ok-s)">VerificationMethod: SMS</text>
                 <text class="ks" x="165" y="243">Kasada, müşteri hazır</text>
                 <!-- İade kodu -->
                 <path class="kl" d="M430,181 L520,215" marker-end="url(#a3)"/>
                 <text class="ks" x="488" y="198">İade kodu</text>
                 <rect class="kr" x="420" y="210" width="230" height="42"/>
-                <text class="kt" x="535" y="226" style="fill:var(--svg-ok-s)">IADE_PROVIDER + IADEKODU</text>
+                <text class="kt" x="535" y="226" style="fill:var(--svg-ok-s)">VerificationMethod: IADEKODU</text>
                 <text class="ks" x="535" y="243">Kasada, iade kodu onaylı</text>
                 <!-- Kargo -->
                 <path class="kl" d="M645,113 L700,148" marker-end="url(#a3)"/>
                 <text class="ks" x="685" y="128">Kargo</text>
                 <rect class="kw" x="615" y="143" width="175" height="55"/>
                 <text class="kt" x="702" y="160" style="fill:var(--svg-warn-s)">❗ ZORUNLU</text>
-                <text class="kt" x="702" y="176">IADE_PROVIDER + IADEKODU</text>
+                <text class="kt" x="702" y="176">VerificationMethod: IADEKODU</text>
                 <text class="ks" x="702" y="192">+ Kargo bilgileri</text>
                 <!-- İade edilen belge -->
                 <path class="kl" d="M165,252 L330,292" marker-end="url(#a3)"/>
@@ -146,7 +146,7 @@
                 <text class="kt" x="400" y="398">İadeyi farklı kişi mi yapıyor? (Opsiyonel)</text>
                 <text class="ks" x="400" y="417">DelegateReceiver → kimlik tipi, kimlik ve ad zorunlu</text>
                 <text class="ks" x="400" y="436">Asıl alıcı korunur; doğrulama vekille ilişkilendirilir</text>
-                <text class="ks" x="400" y="452" style="fill:var(--svg-warn-s)">Kargo + Vekalet → VerificationInfo.Type = IADEKODU</text>
+                <text class="ks" x="400" y="452" style="fill:var(--svg-warn-s)">Kargo + Vekalet → VerificationMethod = IADEKODU</text>
                 </svg>
             </div>
 
@@ -163,7 +163,7 @@
                         </thead>
                         <tbody>
                             <tr><td>ExpenseVoucherTypeCode</td><td><code>SATIS</code></td></tr>
-                            <tr><td>ChannelCodeName / Type</td><td><code>SMS_PROVIDER</code> / <code>SMS</code></td></tr>
+                            <tr><td>VerificationMethod</td><td><code>SMS</code></td></tr>
                             <tr><td>SchemeId</td><td><code>TCKN</code></td></tr>
                         </tbody>
                     </table>
@@ -181,7 +181,7 @@
                         </thead>
                         <tbody>
                             <tr><td>ExpenseVoucherTypeCode</td><td><code>SATIS</code></td></tr>
-                            <tr><td>ChannelCodeName / Type</td><td><code>SMS_PROVIDER</code> / <code>SMS</code></td></tr>
+                            <tr><td>VerificationMethod</td><td><code>SMS</code></td></tr>
                             <tr><td>SchemeId</td><td><code>TCKN</code></td></tr>
                         </tbody>
                     </table>
@@ -199,7 +199,7 @@
                         </thead>
                         <tbody>
                             <tr><td>ExpenseVoucherTypeCode</td><td><code>SATIS</code></td></tr>
-                            <tr><td>ChannelCodeName / Type</td><td><code>SMS_PROVIDER</code> / <code>SMS</code></td></tr>
+                            <tr><td>VerificationMethod</td><td><code>SMS</code></td></tr>
                             <tr><td>SchemeId</td><td><code>PASAPORTNO</code></td></tr>
                         </tbody>
                     </table>
@@ -233,12 +233,12 @@
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr><th>İade Yöntemi</th><th>Doğrulama Yöntemi</th><th>Doğrulama Sağlayıcı</th><th>Doğrulama Tipi</th></tr>
+                            <tr><th>İade Yöntemi</th><th>VerificationMethod</th><th>Backend GİB çıktısı</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Yüz Yüze</td><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
-                            <tr><td>Yüz Yüze</td><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
-                            <tr><td>Kargo</td><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>Yüz Yüze</td><td><code>SMS</code></td><td><code>SMS</code> + <code>SMS_PROVIDER</code></td></tr>
+                            <tr><td>Yüz Yüze</td><td><code>IADEKODU</code></td><td><code>IADEKODU</code> + <code>IADE_PROVIDER</code></td></tr>
+                            <tr><td>Kargo</td><td><code>IADEKODU</code></td><td><code>IADEKODU</code> + <code>IADE_PROVIDER</code></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -280,15 +280,15 @@
                     </table>
                 </div>
 
-                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <p class="scenario-description">Request'te yalnız <code>VerificationMethod</code> seçilir; GİB doğrulama tipi ve sağlayıcı kodunu platform üretir.</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                            <tr><th>VerificationMethod</th><th>Backend GİB çıktısı</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
-                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                            <tr><td><code>SMS</code></td><td><code>SMS</code> + <code>SMS_PROVIDER</code></td></tr>
+                            <tr><td><code>IADEKODU</code></td><td><code>IADEKODU</code> + <code>IADE_PROVIDER</code></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -310,15 +310,15 @@
                     </table>
                 </div>
 
-                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <p class="scenario-description">Request'te yalnız <code>VerificationMethod</code> seçilir; GİB doğrulama tipi ve sağlayıcı kodunu platform üretir.</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                            <tr><th>VerificationMethod</th><th>Backend GİB çıktısı</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
-                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                            <tr><td><code>SMS</code></td><td><code>SMS</code> + <code>SMS_PROVIDER</code></td></tr>
+                            <tr><td><code>IADEKODU</code></td><td><code>IADEKODU</code> + <code>IADE_PROVIDER</code></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -355,15 +355,15 @@
                     </table>
                 </div>
 
-                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <p class="scenario-description">Request'te yalnız <code>VerificationMethod</code> seçilir; GİB doğrulama tipi ve sağlayıcı kodunu platform üretir.</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                            <tr><th>VerificationMethod</th><th>Backend GİB çıktısı</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
-                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                            <tr><td><code>SMS</code></td><td><code>SMS</code> + <code>SMS_PROVIDER</code></td></tr>
+                            <tr><td><code>IADEKODU</code></td><td><code>IADEKODU</code> + <code>IADE_PROVIDER</code></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -385,15 +385,15 @@
                     </table>
                 </div>
 
-                <p class="scenario-description">Müşteriye uygulanan doğrulama yöntemine SMS ve ya IADE için doğrulama kanalı ve kodu belirtilmelidir.</p>
+                <p class="scenario-description">Request'te yalnız <code>VerificationMethod</code> seçilir; GİB doğrulama tipi ve sağlayıcı kodunu platform üretir.</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
-                            <tr><th>Doğrulama Yöntemi</th><th>ChannelCodeName</th><th>VerificationInfo.Type</th></tr>
+                            <tr><th>VerificationMethod</th><th>Backend GİB çıktısı</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>SMS</td><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td></tr>
-                            <tr><td>Iade Kodu</td><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td></tr>
+                            <tr><td><code>SMS</code></td><td><code>SMS</code> + <code>SMS_PROVIDER</code></td></tr>
+                            <tr><td><code>IADEKODU</code></td><td><code>IADEKODU</code> + <code>IADE_PROVIDER</code></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -418,7 +418,7 @@
             <div class="scenario-card">
                 <h4 id="h-i5">I5: Kargo İade — TC Vatandaşı</h4>
 
-                <p class="scenario-description">Kargo iadelerde <code>IADE_PROVIDER</code> + <code>IADEKODU</code> + kargo bilgileri zorunlu.</p>
+                <p class="scenario-description">Kargo iadelerinde <code>VerificationMethod=IADEKODU</code> ve kargo bilgileri zorunludur; GİB sağlayıcı alanını platform üretir.</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -427,8 +427,7 @@
                         <tbody>
                             <tr><td>TypeCode</td><td><code>IADE</code></td><td></td></tr>
                             <tr><td>SchemeId</td><td><code><strong>TCKN</strong></code></td><td></td></tr>
-                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td rowspan="3">Kargo → zorunlu</td></tr>
-                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>VerificationMethod</td><td><code>IADEKODU</code></td><td rowspan="2">Kargo → zorunlu</td></tr>
                             <tr><td>CargoCompanyCode</td><td>Dolu</td></tr>
                         </tbody>
                     </table>
@@ -461,8 +460,7 @@
                         <tbody>
                             <tr><td>TypeCode</td><td><code>IADE</code></td><td></td></tr>
                             <tr><td>SchemeId</td><td><code><strong>PASAPORTNO</strong></code></td><td></td></tr>
-                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td rowspan="3">Kargo → zorunlu</td></tr>
-                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>VerificationMethod</td><td><code>IADEKODU</code></td><td rowspan="2">Kargo → zorunlu</td></tr>
                             <tr><td>CargoCompanyCode</td><td>Dolu</td></tr>
                         </tbody>
                     </table>
@@ -486,7 +484,7 @@
             <div class="scenario-card">
                 <h4 id="h-i7">I7: Kargo + Belgesiz + Yabancı Uyruklu</h4>
 
-                <p class="scenario-description">İki kural birlikte: BELGESIZ → gerçek PASAPORTNO zorunlu; Kargo → IADE_PROVIDER + IADEKODU + kargo bilgileri zorunlu.</p>
+                <p class="scenario-description">İki kural birlikte: BELGESIZ → gerçek PASAPORTNO zorunlu; Kargo → <code>VerificationMethod=IADEKODU</code> + kargo bilgileri zorunlu.</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -495,8 +493,7 @@
                         <tbody>
                             <tr><td>TypeCode</td><td><code>IADE</code></td><td></td></tr>
                             <tr><td>SchemeId</td><td><code><strong>PASAPORTNO</strong></code></td><td></td></tr>
-                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td rowspan="3">Kargo → zorunlu</td></tr>
-                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td></tr>
+                            <tr><td>VerificationMethod</td><td><code>IADEKODU</code></td><td rowspan="2">Kargo → zorunlu</td></tr>
                             <tr><td>CargoCompanyCode</td><td>Dolu</td></tr>
                             <tr><td>DocumentType / DocumentNumber / IssueDate</td><td><code><strong>BELGESIZ</strong></code> / - / işlem tarihi</td><td>Belgesiz → zorunlu</td></tr>
                         </tbody>
@@ -589,8 +586,7 @@
                         </thead>
                         <tbody>
                             <tr><td>AccountingCustomerParty.SchemeId</td><td><code>TCKN</code></td><td>Orijinal alıcı</td></tr>
-                            <tr><td>ChannelCodeName</td><td><code>IADE_PROVIDER</code></td><td>Kargo kuralı</td></tr>
-                            <tr><td>VerificationInfo.Type</td><td><code>IADEKODU</code></td><td>Kargo kuralı</td></tr>
+                            <tr><td>VerificationMethod</td><td><code>IADEKODU</code></td><td>Kargo kuralı</td></tr>
                             <tr><td>CargoCompany</td><td>Tüm alanlar dolu</td><td>Kargo kuralı</td></tr>
                         </tbody>
                     </table>
@@ -619,21 +615,21 @@
                         <tr><th>#</th><th>Durum</th><th>Sonuç</th><th>Neden</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>E1</td><td>SATIS + IADE_PROVIDER</td><td>❌</td><td>SATIS'te yalnızca SMS_PROVIDER</td></tr>
+                        <tr><td>E1</td><td>SATIS + VerificationMethod=IADEKODU</td><td>❌</td><td>SATIS'te yalnızca <code>SMS</code> kullanılabilir</td></tr>
                         <tr><td>E2</td><td>IADE + ReturnedDocRef yok</td><td>❌</td><td>IADE'de zorunlu</td></tr>
                         <tr><td>E3</td><td>BELGESIZ + kimlik yok</td><td>❌</td><td>Kimlik zorunlu</td></tr>
-                        <tr><td>E4</td><td>Kargo + SMS_PROVIDER veya Type=SMS</td><td>❌</td><td>Kargo → sadece IADE_PROVIDER + IADEKODU</td></tr>
+                        <tr><td>E4</td><td>Kargo + VerificationMethod=SMS</td><td>❌</td><td>Kargoda yalnızca <code>IADEKODU</code> kullanılabilir</td></tr>
                         <tr><td>E5</td><td>EARSIV_FATURA + DocumentNumber boş</td><td>❌</td><td>Belgeli iadede no zorunlu</td></tr>
                         <tr><td>E6</td><td>Aynı ExternalId tekrar</td><td>❌</td><td>Tekil zorunlu</td></tr>
                         <tr><td>E7</td><td>DelegateReceiver dolu + alan eksik</td><td>❌</td><td>Tüm 3 alan zorunlu</td></tr>
                         <tr><td>E8</td><td>SATIS + DelegateReceiver</td><td>❌</td><td>Vekalet yalnızca IADE</td></tr>
                         <tr><td>E9</td><td>SchemeId = VKN</td><td>❌</td><td>Tüzel kişi olamaz</td></tr>
-                        <tr><td>E10</td><td>Kargo + DelegateReceiver + VerificationInfo.Type=SMS</td><td>❌</td><td>Kargo → IADEKODU zorunlu</td></tr>
+                        <tr><td>E10</td><td>Kargo + DelegateReceiver + VerificationMethod=SMS</td><td>❌</td><td>Kargo → IADEKODU zorunlu</td></tr>
                         <tr><td>E11</td><td>SATIS + ReturnedDocRef dolu</td><td>✅</td><td>Doğrulanmaz, ancak alan yine de belgeye ve UBL'ye yazılır — SATIS'te bu alan gönderilmemelidir</td></tr>
                         <tr><td>E12</td><td>Kargo + PASAPORTNO + bilgiler tam</td><td>✅</td><td>Yabancı kargo iade geçerli</td></tr>
                         <tr><td>E13</td><td>BELGESIZ + PASAPORTNO</td><td>✅</td><td>Yabancı belgesiz geçerli</td></tr>
-                        <tr><td>E14</td><td>Kargo + DelegateReceiver(PASAPORTNO) + IADEKODU</td><td>✅</td><td>Kargo + yabancı vekil geçerli</td></tr>
-                        <tr><td>E15</td><td>Yüz yüze + PASAPORTNO + SMS_PROVIDER</td><td>✅</td><td>Yabancı, Türk GSM hattı var</td></tr>
+                        <tr><td>E14</td><td>Kargo + DelegateReceiver(PASAPORTNO) + VerificationMethod=IADEKODU</td><td>✅</td><td>Kargo + yabancı vekil geçerli</td></tr>
+                        <tr><td>E15</td><td>Yüz yüze + PASAPORTNO + VerificationMethod=SMS</td><td>✅</td><td>Yabancı, Türk GSM hattı var</td></tr>
                     </tbody>
                 </table>
             </div>

@@ -111,15 +111,15 @@
 <p>Request gövdesi, SATIS — Normal Satın Alma, SMS ile akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S1</span></summary>
                 <div class="example-body">
-                    <p>KDV mükellefi olmayan gerçek kişiden hizmet alımı. <code>SMS_PROVIDER</code> + <code>SMS</code>.</p>
+                    <p>KDV mükellefi olmayan gerçek kişiden hizmet alımı. <code>VerificationMethod=SMS</code>.</p>
                     <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-001",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "SATIS",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T12:00:00.000Z",
+                        "VerificationMethod": "SMS",
                         "VerificationProvider": {
-                            "ChannelCodeName": "SMS_PROVIDER",
                             "ApplicationName": "NetGSM",
                             "Vkn": "1234567890"
                         },
@@ -137,8 +137,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "123456",
-                            "PhoneNumber": "05321234567",
-                            "Type": "SMS"
+                            "PhoneNumber": "05321234567"
                         },
                         "LegalMonetaryTotal": {
                             "LineExtensionAmount": 1000.00,
@@ -194,8 +193,8 @@
                         "ExpenseVoucherTypeCode": "SATIS",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T14:00:00",
+                        "VerificationMethod": "SMS",
                         "VerificationProvider": {
-                            "ChannelCodeName": "SMS_PROVIDER",
                             "ApplicationName": "NetGSM",
                             "Vkn": "1234567890"
                         },
@@ -213,8 +212,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "789012",
-                            "PhoneNumber": "05551234567",
-                            "Type": "SMS"
+                            "PhoneNumber": "05551234567"
                         },
                         "LegalMonetaryTotal": {
                             "LineExtensionAmount": 800.00,
@@ -263,15 +261,15 @@
 <p>Request gövdesi, IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I1</span></summary>
                 <div class="example-body">
-                    <p>Müşteri kasada, iade kodu doğrulanmış. <code>IADE_PROVIDER</code> + <code>IADEKODU</code>.</p>
+                    <p>Müşteri kasada, iade kodu doğrulanmış. <code>VerificationMethod=IADEKODU</code>.</p>
                     <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-041",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T15:00:00",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -289,8 +287,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "ABC123",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "EARSIV_FATURA",
@@ -351,8 +348,8 @@
                         "ExpenseVoucherTypeCode": "IADE",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T15:30:00",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -370,8 +367,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "DEF456",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "SATIS_FISI",
@@ -433,8 +429,8 @@
                         "ExpenseVoucherTypeCode": "IADE",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T16:00:00",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -452,8 +448,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "GHI789",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "BELGESIZ",
@@ -514,8 +509,8 @@
                         "ExpenseVoucherTypeCode": "IADE",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-26T10:00:00",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -533,8 +528,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "XYZ999",
-                            "PhoneNumber": "05331112233",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05331112233"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "EARSIV_FATURA",
@@ -589,7 +583,7 @@
 <p>Request gövdesi, IADE — Kargo, Vekalet Yok akışını ayırt eden alanları öne çıkarır.</p>
             <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I5</span></summary>
                 <div class="example-body">
-                    <p>Kargo ile iade, vekil yok. <code>IADE_PROVIDER</code> + <code>IADEKODU</code> + <code>CargoCompanyCode</code>.</p>
+                    <p>Kargo ile iade, vekil yok. <code>VerificationMethod=IADEKODU</code> + <code>CargoCompanyCode</code>.</p>
                     <pre><code class="language-json" data-request-kind="invoice">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-043",
                         "ProfileId": "GIDERPUSULASI",
@@ -597,8 +591,8 @@
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T15:00:00",
                         "CargoCompanyCode": "YURTICI",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -616,8 +610,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "ABC123",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "EARSIV_FATURA",
@@ -663,7 +656,7 @@
                             }
                         ]
                     }</code></pre>
-                    <div class="callout callout-info"><b>💡 Fark:</b> <code>CargoCompanyCode</code> dolu, <code>DelegateReceiver</code> yok. Kargo kuralları geçerli: IADE_PROVIDER + IADEKODU zorunlu.</div>
+                    <div class="callout callout-info"><b>💡 Fark:</b> <code>CargoCompanyCode</code> dolu, <code>DelegateReceiver</code> yok. Kargo kuralları geçerli: <code>VerificationMethod=IADEKODU</code> zorunlu.</div>
                 </div>
             </details>
 
@@ -680,8 +673,8 @@
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-26T11:00:00",
                         "CargoCompanyCode": "YURTICI",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -699,8 +692,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "RET001",
-                            "PhoneNumber": "05421119988",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05421119988"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "EARSIV_FATURA",
@@ -762,8 +754,8 @@
                         "ExpenseVoucherTypeCode": "IADE",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T15:00:00",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -786,8 +778,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "ABC123",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "EARSIV_FATURA",
@@ -849,8 +840,8 @@
                         "ExpenseVoucherTypeCode": "IADE",
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-26T14:00:00",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -873,8 +864,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "VKL999",
-                            "PhoneNumber": "05559876543",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05559876543"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "EARSIV_FATURA",
@@ -937,8 +927,8 @@
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T15:00:00",
                         "CargoCompanyCode": "YURTICI",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -961,8 +951,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "ABC123",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "EARSIV_FATURA",
@@ -1008,7 +997,7 @@
                             }
                         ]
                     }</code></pre>
-                    <div class="callout callout-warning"><b>⚠️</b> Kargo + vekalet birlikte: <code>VerificationInfo.Type</code> = <code>IADEKODU</code> zorunludur. <code>DelegateReceiver</code> doğrulama tipi taşımaz; yalnız vekilin kimlik ve ad belge oluşturma anında kaydedilen bilgisini taşır.</div>
+                    <div class="callout callout-warning"><b>⚠️</b> Kargo + vekalet birlikte: <code>VerificationMethod=IADEKODU</code> zorunludur. <code>DelegateReceiver</code> doğrulama yöntemi taşımaz; yalnız vekilin kimlik ve ad belge oluşturma anında kaydedilen bilgisini taşır.</div>
                 </div>
             </details>
 
@@ -1025,8 +1014,8 @@
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T15:00:00",
                         "CargoCompanyCode": "YURTICI",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -1049,8 +1038,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "ABC123",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "BELGESIZ",
@@ -1111,8 +1099,8 @@
                         "DocumentCurrencyCode": "TRY",
                         "IssueDate": "2026-05-25T15:00:00",
                         "CargoCompanyCode": "YURTICI",
+                        "VerificationMethod": "IADEKODU",
                         "VerificationProvider": {
-                            "ChannelCodeName": "IADE_PROVIDER",
                             "ApplicationName": "İade360",
                             "Vkn": "9876543210"
                         },
@@ -1135,8 +1123,7 @@
                         },
                         "VerificationInfo": {
                             "Code": "ABC123",
-                            "PhoneNumber": "05441234567",
-                            "Type": "IADEKODU"
+                            "PhoneNumber": "05441234567"
                         },
                         "ReturnedDocumentReference": {
                             "DocumentType": "SATIS_FISI",

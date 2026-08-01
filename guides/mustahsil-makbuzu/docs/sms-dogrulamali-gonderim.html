@@ -82,6 +82,10 @@
 <p>SMS doğrulaması, e-müstahsil makbuzunun üretici tarafından doğrulandığını belgelemek amacıyla hazırlanmıştır. Aktivasyon duyurusuna kadar mevcut oluşturma, güncelleme, UBL gönderimi, Excel ve iptal akışları aynı şekilde kullanılmaya devam eder.</p>
 <div class="table-wrapper"><table><thead><tr><th>Dönem</th><th>Entegratörler</th><th>Portal kullanıcıları</th></tr></thead><tbody><tr><td>Aktivasyon öncesi</td><td>Mevcut endpoint ve modeller kullanılmaya devam eder.</td><td>Mevcut belge ekranları aynı şekilde kullanılır.</td></tr><tr><td>Geçiş duyurusu</td><td>Yeni model alanları test ortamında doğrulanmalıdır.</td><td>Yeni SMS doğrulama ekranları VBT tarafından kullanıma açılır.</td></tr><tr><td>Aktivasyon sonrası</td><td>Doğrulama bilgileri aşağıdaki sözleşmeye göre gönderilmelidir.</td><td>Hazır Portal akışı üzerinden doğrulama tamamlanır.</td></tr></tbody></table></div>
 
+<h2 id="planlanan-sozlesme">Planlanan sözleşme özeti</h2>
+<p>JSON entegrasyonunda doğrulama yöntemi üst seviyedeki <code>VerificationMethod</code> alanında <code>SMS</code> olarak gönderilir. Kod ve telefon <code>VerificationInfo</code>, sağlayıcı adı ve VKN ise <code>VerificationProvider</code> içinde taşınır. Bu iki nesnede ayrıca <code>ChannelCode</code> veya <code>Type</code> alanı bulunmaz.</p>
+<div class="table-wrapper"><table><thead><tr><th>Gönderim biçimi</th><th>Yöntem bilgisi</th><th>Sorumluluk</th></tr></thead><tbody><tr><td>JSON model</td><td><code>VerificationMethod = SMS</code></td><td>GİB'in UBL yöntem sabitlerini platform üretir.</td></tr><tr><td>Hazır UBL</td><td><code>Contact/Name = SMS</code> ve <code>ChannelCode/@name = SMS_PROVIDER</code></td><td>Standart değerleri entegratör XML içinde sağlar.</td></tr><tr><td>VBT Portal</td><td>Kullanıcıdan ayrıca istenmez.</td><td>Yöntem ve SMS doğrulama adımları Portal akışı içinde yönetilir.</td></tr></tbody></table></div>
+
 
 <h2 id="kullanim-amaciniza-gore-ilerleyin">Kullanım amacınıza göre ilerleyin</h2>
 <p>Doğrudan API veya UBL entegrasyonu geliştiriyorsanız entegratör gereksinimlerini; işlemleri VBT Portal üzerinden yürütecekseniz hazır Portal akışını inceleyin.</p>

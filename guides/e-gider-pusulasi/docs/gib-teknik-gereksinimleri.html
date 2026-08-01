@@ -159,11 +159,11 @@
             <div class="table-wrapper">
                 <table>
                     <thead>
-                        <tr><th>ChannelCodeName</th><th>VerificationInfo.Type</th><th>Belge Tipi</th></tr>
+                        <tr><th>API VerificationMethod</th><th>Backend'in ürettiği GİB değerleri</th><th>Belge Tipi</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>SMS_PROVIDER</code></td><td><code>SMS</code></td><td>SATIS veya IADE</td></tr>
-                        <tr><td><code>IADE_PROVIDER</code></td><td><code>IADEKODU</code></td><td>Sadece IADE</td></tr>
+                        <tr><td><code>SMS</code></td><td><code>SMS</code> + <code>SMS_PROVIDER</code></td><td>SATIS veya yüz yüze IADE</td></tr>
+                        <tr><td><code>IADEKODU</code></td><td><code>IADEKODU</code> + <code>IADE_PROVIDER</code></td><td>Yüz yüze veya kargolu IADE</td></tr>
                     </tbody>
                 </table>
             </div>
