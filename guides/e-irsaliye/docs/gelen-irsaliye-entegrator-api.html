@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head><!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gelen İrsaliye Entegratör API — e-İrsaliye Entegrasyon Rehberi</title>
+<meta name="description" content="Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gelen-irsaliye-entegrator-api.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Gelen İrsaliye Entegratör API — e-İrsaliye Entegrasyon Rehberi">
+<meta property="og:description" content="Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gelen-irsaliye-entegrator-api.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gelen İrsaliye Entegratör API — e-İrsaliye Entegrasyon Rehberi">
+<meta name="twitter:description" content="Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end --></head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-İrsaliye</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-irsaliye-nedir.html">Rehber</a><a href="api-temelleri.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-irsaliye-nedir.html">e-İrsaliye Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API Temelleri</div>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Giden İrsaliye</div>
+<a class="docs-nav-link" href="giden-irsaliye-senaryolari.html">Giden İrsaliye Senaryoları</a>
+<a class="docs-nav-link" href="giden-irsaliye-akisi.html">Giden İrsaliye Akışı</a>
+<a class="docs-nav-link" href="giden-irsaliye-sorumluluklari.html">Giden İrsaliye Sorumlulukları</a>
+<a class="docs-nav-link" href="giden-irsaliye-entegrator-api.html">Giden İrsaliye Entegratör API</a>
+<a class="docs-nav-link" href="giden-irsaliye-portal-api.html">Giden İrsaliye Portal API</a>
+<a class="docs-nav-link" href="giden-irsaliye-request-ornekleri.html">Giden İrsaliye Request Örnekleri</a>
+<a class="docs-nav-link" href="giden-irsaliye-json-ubl-mapping.html">Giden İrsaliye JSON → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Gelen İrsaliye</div>
+<a class="docs-nav-link" href="gelen-irsaliye-senaryolari.html">Gelen İrsaliye Senaryoları</a>
+<a class="docs-nav-link" href="gelen-irsaliye-akisi.html">Gelen İrsaliye Akışı</a>
+<a class="docs-nav-link" href="gelen-irsaliye-sorumluluklari.html">Gelen İrsaliye Sorumlulukları</a>
+<a class="docs-nav-link active" href="gelen-irsaliye-entegrator-api.html">Gelen İrsaliye Entegratör API</a>
+<a class="docs-nav-link" href="gelen-irsaliye-portal-api.html">Gelen İrsaliye Portal API</a>
+<a class="docs-nav-link" href="gelen-irsaliye-islem-ornekleri.html">Gelen İrsaliye İşlem Örnekleri</a>
+<a class="docs-nav-link" href="gelen-irsaliye-ubl-api-mapping.html">Gelen İrsaliye UBL → API/ERP Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Gelen İrsaliye</p><h1>Gelen İrsaliye Entegratör API</h1><p class="docs-lead">Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="gelen-irsaliye-entegrator-api">
+<h2 id="h-gelen-endpointler">Gelen Belge Endpointleri</h2>
+<p>Entegratör yüzeyi <code>/api/VbtApi</code> altındadır. Aşağıdaki tablo JSON sözleşmesini gösterir; <code>ByXml</code> varyantları aynı işlevin XML biçimidir.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Amaç</th><th>Method ve endpoint</th><th>Request</th><th>Ana çıktı</th></tr></thead><tbody>
+<tr><td>Listeleme</td><td><code>POST /api/VbtApi/GetIncomingDespatchAdviceList</code></td><td><code>SearchRequestModel&lt;IncomingDespatchAdviceGetRequestModel&gt;</code></td><td>Sayfalı gelen irsaliye listesi</td></tr>
+<tr><td>Detay</td><td><code>GET /api/VbtApi/GetIncomingDespatchAdvice?id={id}</code></td><td>Query: <code>id</code></td><td>Gelen irsaliye modeli</td></tr>
+<tr><td>Görsel</td><td><code>POST /api/VbtApi/GetIncomingDespatchAdviceView</code></td><td><code>Ettn</code>, <code>IsRead</code></td><td>HTML/görsel çıktı</td></tr>
+<tr><td>PDF</td><td><code>POST /api/VbtApi/GetIncomingDespatchAdvicePdf</code></td><td><code>DespatchAdviceEttns[]</code></td><td>PDF içerikleri</td></tr>
+<tr><td>UBL XML</td><td><code>POST /api/VbtApi/GetIncomingDespatchAdviceXmlList</code></td><td><code>DespatchAdviceEttns[]</code></td><td>UBL XML içerikleri</td></tr>
+<tr><td>İndirme bağlantısı</td><td><code>POST /api/VbtApi/GetIncomingDespatchAdviceDownloadUrl</code></td><td>Belge seçim modeli</td><td>İndirme URL'si</td></tr>
+<tr><td>ERP işleme</td><td><code>POST /api/VbtApi/UpdateIncomingDespatchAdviceErpProcessStatus</code></td><td><code>Ettn</code>, <code>ErpProcessBranch</code>, <code>IsErpProcessed</code></td><td>Güncelleme sonucu</td></tr>
+</tbody></table></div><!-- vbt-source: VbtApiController.cs; IncomingDespatchAdviceGetRequestModel.cs -->
+
+<h2 id="h-yanit-endpointleri">İrsaliye Yanıtı Endpointleri</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Amaç</th><th>Endpoint</th><th>Request / çıktı</th></tr></thead><tbody>
+<tr><td>JSON ile yanıt oluşturma</td><td><code>POST /api/VbtApi/AddOutgoingReceiptAdvice</code></td><td><code>ReceiptAdviceRequestModel</code>; ETTN, yanıt numarası ve hata listesi</td></tr>
+<tr><td>Hazır UBL ile yanıt oluşturma</td><td><code>POST /api/VbtApi/AddOutgoingReceiptAdviceByUbl</code></td><td><code>ReceiptAdviceUblRequestModel</code></td></tr>
+<tr><td>Yanıt görseli</td><td><code>POST GetOutgoingReceiptAdviceView</code></td><td><code>ReceiptAdviceViewRequestModel</code></td></tr>
+<tr><td>Yanıt PDF'si</td><td><code>POST GetOutgoingReceiptAdvicePdf</code></td><td><code>ReceiptAdvicePdfRequestModel</code></td></tr>
+<tr><td>Yanıt UBL'si</td><td><code>POST GetOutgoingReceiptAdviceXml</code></td><td><code>ReceiptAdviceXmlRequestModel</code></td></tr>
+<tr><td>İndirme bağlantısı</td><td><code>POST GetOutgoingReceiptAdviceDownloadUrl</code></td><td>Yanıt seçimi</td></tr>
+</tbody></table></div><!-- vbt-source: VbtApiController.cs; ReceiptAdviceRequestModel.cs -->
+
+<h2 id="h-filtreler">Gelen Liste Filtreleri</h2>
+<p><code>Query</code> içinde düzenleme ve zarf tarihi aralıkları, zarf kimliği, ETTN, belge numarası, taraf adı, VKN/TCKN, kullanıcı durumu ve <code>IsErpProcessed</code> bulunur. Dış sarmalda <code>Skip</code> ve en fazla 100 olacak şekilde <code>Take</code> kullanılır.</p><!-- vbt-source: IncomingDespatchAdviceGetRequestModel.cs; SearchRequestModel.cs -->
+
+<h2 id="h-yanit-kurali">Yanıt Üretme Kuralı</h2>
+<p><code>DespatchDocumentReference.Id</code> yanıt verilecek gelen irsaliyeyi seçer. Platform profil ve belge tipini <code>TEMELIRSALIYE</code>/<code>SEVK</code> olarak uygular, eksik gönderici/alıcı tarafını mevcut irsaliye ve firma verisinden tamamlayabilir. Entegratör teslim miktarlarını, satır referanslarını ve red gerekçelerini gerçek iş sonucundan üretmelidir.</p><!-- vbt-source: OutgoingReceiptAdviceService.AddOutgoingReceiptAdvice -->
+
+<h2 id="h-gelen-kritik-islemler">Kritik İşlem Sözleşmeleri</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>İşlem</th><th>Önkoşul</th><th>Başarılı sonuç</th><th>Sonraki kontrol</th></tr></thead><tbody>
+<tr><td><code>GetIncomingDespatchAdviceList</code></td><td>Tarih/durum filtresi ve en fazla 100 kayıtlık sayfalama hazırlanır.</td><td>ETTN bazlı gelen belge listesi döner.</td><td>Sayfaları kayıpsız ilerletin; ETTN'yi tekilleştirin.</td></tr>
+<tr><td><code>UpdateIncomingDespatchAdviceErpProcessStatus</code></td><td>ETTN mevcut olmalı; yerel ERP işlemi kalıcı biçimde tamamlanmış olmalıdır.</td><td><code>IsErpProcessed</code> ve işlem dalı güncellenir.</td><td>Bu sonuç kabul/red değildir; yanıt durumunu ayrıca yönetin.</td></tr>
+<tr><td><code>AddOutgoingReceiptAdvice</code></td><td>Gelen belge yanıt bekleyen veya aynı kararın yeniden denenebilir hata durumunda olmalı; fiili sevkten başlayan yedi günlük süre dolmamış olmalıdır.</td><td>Yanıt ETTN'si, belge numarası ve hata listesi döner.</td><td>Yeni yanıt üretmeden mevcut kararın durum ve çıktısını izleyin.</td></tr>
+<tr><td>Görsel/PDF/UBL çıktıları</td><td>Belge veya yanıt ETTN'si doğru yöndeki endpointte gönderilir.</td><td>İstenen sunum ya da resmi UBL içeriği döner.</td><td>ERP ve arşiv eşleşmesini ETTN + belge numarasıyla kurun.</td></tr>
+</tbody></table></div><!-- vbt-source: IncomingDespatchAdviceService.cs:571-616; OutgoingReceiptAdviceService.cs:126-208,375-396; ServiceConstants.cs -->
+<div class="callout callout-warning"><b>Yedi günlük süre:</b> Tam teslimde yanıt zorunlu değildir ve süre sonunda tam kabul varsayımı oluşur. Eksik teslim veya red varsa irsaliye yanıtını süre dolmadan gönderin; süresi geçen yeni yanıt kabul edilmez.</div>
+
+<h2 id="h-tam-envanter">Tam Endpoint Envanteri</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>İşlem ailesi</th><th>JSON / UBL endpointleri</th><th>XML varyantları</th></tr></thead><tbody>
+<tr><td>Gelen liste</td><td><code>GetIncomingDespatchAdviceList</code></td><td><code>GetIncomingDespatchAdviceListByXml</code></td></tr>
+<tr><td>Gelen detay</td><td><code>GetIncomingDespatchAdvice</code></td><td><code>GetIncomingDespatchAdviceByXml</code></td></tr>
+<tr><td>Gelen görsel</td><td><code>GetIncomingDespatchAdviceView</code></td><td><code>GetIncomingDespatchAdviceViewByXml</code></td></tr>
+<tr><td>Gelen PDF</td><td><code>GetIncomingDespatchAdvicePdf</code></td><td><code>GetIncomingDespatchAdvicePdfByXml</code></td></tr>
+<tr><td>Gelen UBL</td><td><code>GetIncomingDespatchAdviceXmlList</code></td><td><code>GetIncomingDespatchAdviceXmlListByXml</code></td></tr>
+<tr><td>İndirme</td><td><code>GetIncomingDespatchAdviceDownloadUrl</code></td><td>—</td></tr>
+<tr><td>ERP işleme</td><td><code>UpdateIncomingDespatchAdviceErpProcessStatus</code></td><td><code>UpdateIncomingDespatchAdviceErpProcessStatusByXml</code></td></tr>
+<tr><td>Yanıt oluşturma</td><td><code>AddOutgoingReceiptAdvice</code>, <code>AddOutgoingReceiptAdviceByUbl</code></td><td><code>AddOutgoingReceiptAdviceByXml</code></td></tr>
+<tr><td>Yanıt görseli</td><td><code>GetOutgoingReceiptAdviceView</code></td><td><code>GetOutgoingReceiptAdviceViewByXml</code></td></tr>
+<tr><td>Yanıt PDF</td><td><code>GetOutgoingReceiptAdvicePdf</code></td><td><code>GetOutgoingReceiptAdvicePdfByXml</code></td></tr>
+<tr><td>Yanıt UBL</td><td><code>GetOutgoingReceiptAdviceXml</code></td><td><code>GetOutgoingReceiptAdviceXmlByXml</code></td></tr>
+<tr><td>Yanıt indirme</td><td><code>GetOutgoingReceiptAdviceDownloadUrl</code></td><td>—</td></tr>
+</tbody></table></div><!-- vbt-source: VbtApiController.cs: gelen irsaliye ve giden irsaliye yanıtı endpointleri -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="gelen-irsaliye-sorumluluklari.html"><span>Önceki</span><strong>Gelen İrsaliye Sorumlulukları</strong></a>
+<a class="docs-page-link docs-page-next" href="gelen-irsaliye-portal-api.html"><span>Sonraki</span><strong>Gelen İrsaliye Portal API</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="TEMELIRSALIYE, MATBUDAN, IDISIRSALIYE, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-İrsaliye Nedir?","text":"e-İrsaliye'nin kapsamı, belge türleri, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-İrsaliye DespatchAdvice ReceiptAdvice","url":"e-irsaliye-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB e-İrsaliye paketi, UBL-TR belge yapıları, resmi kılavuzlar ve teknik gereksinimler.","keywords":"Teknik Temel GİB UBL-TR DespatchAdvice ReceiptAdvice","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Senaryoları","text":"TEMELIRSALIYE, MATBUDAN ve IDISIRSALIYE profilleri için profil, belge tipi ve zorunlu alan kararları.","keywords":"Giden İrsaliye TEMELIRSALIYE MATBUDAN IDISIRSALIYE","url":"giden-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Akışı","text":"Giden e-İrsaliye'nin oluşturulması, imzalanması, GİB ve alıcıya iletilmesi ile kabul, kısmi kabul ve red durumları.","keywords":"Giden İrsaliye durum GİB irsaliye yanıtı","url":"giden-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Sorumlulukları","text":"Belge hazırlama, güvenli gönderim, fiili sevk, durum takibi ve mutabakat sorumlulukları.","keywords":"Giden İrsaliye sorumluluk fiili sevk mutabakat","url":"giden-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Entegratör API","text":"Giden irsaliye oluşturma, güncelleme, gönderme, sorgulama, çıktı ve durum endpointleri.","keywords":"Giden İrsaliye Entegratör API endpoint durum","url":"giden-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Portal API","text":"Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.","keywords":"Giden İrsaliye Portal API grid geçmiş","url":"giden-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Request Örnekleri","text":"Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.","keywords":"Giden İrsaliye JSON request","url":"giden-irsaliye-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye JSON → UBL Mapping","text":"Giden irsaliye JSON alanlarının üretilen UBL DespatchAdvice XML içindeki karşılıkları.","keywords":"Giden İrsaliye JSON UBL XML mapping","url":"giden-irsaliye-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Senaryoları","text":"Gelen irsaliyeyi alma, ERP'ye aktarma ve kabul, kısmi kabul veya red irsaliye yanıtı üretme senaryoları.","keywords":"Gelen İrsaliye ReceiptAdvice kabul kısmi kabul red ERP","url":"gelen-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Akışı","text":"Gelen e-İrsaliye'nin alınması, ERP'ye aktarılması ve irsaliye yanıtının teknik durum makinesi.","keywords":"Gelen İrsaliye durum ReceiptAdvice ERP","url":"gelen-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Sorumlulukları","text":"Gelen belgeyi tekilleştirme, ERP'ye alma, karar üretme, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen İrsaliye sorumluluk ERP irsaliye yanıtı","url":"gelen-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Entegratör API","text":"Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.","keywords":"Gelen İrsaliye Entegratör API endpoint ReceiptAdvice","url":"gelen-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Portal API","text":"Portal gelen irsaliye listesi, görüntüleme, okundu, geçmiş, arşiv ve yanıt işlemleri.","keywords":"Gelen İrsaliye Portal API kabul red kısmi kabul","url":"gelen-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye İşlem Örnekleri","text":"Listeleme, ERP işleme, çıktı alma ve irsaliye yanıtı için tam ve kopyalanabilir JSON örnekleri.","keywords":"Gelen İrsaliye JSON ReceiptAdvice","url":"gelen-irsaliye-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye UBL → API/ERP Mapping","text":"Alınan UBL DespatchAdvice alanlarının gelen irsaliye API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen İrsaliye UBL API ERP mapping","url":"gelen-irsaliye-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-İrsaliye rehberinin yayınlanan içerik sürümleri.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında müşteri ve entegratör soruları.","keywords":"SSS durum ReceiptAdvice UBL ERP","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>
