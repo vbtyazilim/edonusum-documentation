@@ -198,6 +198,7 @@
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     line-height: 1.08;
     letter-spacing: -.035em;
+    overflow-wrap: anywhere;
 }
 
 .docs-lead {
@@ -443,6 +444,7 @@
     font-size: clamp(3rem, 8vw, 6.4rem);
     line-height: .98;
     letter-spacing: -.06em;
+    overflow-wrap: anywhere;
 }
 
 .docs-home-hero > p:not(.docs-eyebrow) {
@@ -492,6 +494,11 @@
         flex-direction: column-reverse;
         align-items: flex-start;
         gap: 1.5rem;
+    }
+    .docs-home-hero-with-mark .docs-home-hero-text {
+        align-self: stretch;
+        width: 100%;
+        max-width: 100%;
     }
     .docs-home-hero-with-mark .docs-home-hero-mark {
         width: 84px;
@@ -738,6 +745,10 @@
     .docs-page-next { text-align: left; }
     .guide-grid { grid-template-columns: 1fr; }
     .docs-feature-groups > div { grid-template-columns: 1fr; gap: .35rem; }
+}
+
+@media (max-width: 320px) {
+    .docs-article-header h1 { font-size: min(2.2rem, 12.5vw); }
 }
 
 @media print {

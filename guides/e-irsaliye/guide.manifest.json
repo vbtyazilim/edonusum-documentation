@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "e-irsaliye",
+  "dir": "e-irsaliye",
+  "title": "e-İrsaliye Entegrasyon Rehberi",
+  "shortTitle": "e-İrsaliye",
+  "description": "Giden e-İrsaliye ile gelen e-İrsaliye ve irsaliye yanıtı süreçleri için doğrulanmış entegrasyon, API, durum, JSON ve UBL referansı.",
+  "eyebrow": "GİB e-İrsaliye Belgesi (UBL DespatchAdvice / ReceiptAdvice)",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/",
+  "templateVersion": "local-2026-07-08",
+  "searchPlaceholder": "TEMELIRSALIYE, MATBUDAN, IDISIRSALIYE, endpoint...",
+  "searchMaxResults": 60,
+  "home": {
+    "title": "e-İrsaliye Entegrasyon Rehberi",
+    "description": "Giden e-İrsaliye ile gelen e-İrsaliye ve irsaliye yanıtı süreçleri için doğrulanmış entegrasyon, API, durum, JSON ve UBL referansı.",
+    "primaryAction": { "target": "e-irsaliye-nedir", "label": "Dokümanı inceleyin" },
+    "announcement": { "enabled": false }
+  },
+  "sections": [
+    {
+      "label": "Başlangıç",
+      "pages": [
+        { "slug": "e-irsaliye-nedir", "title": "e-İrsaliye Nedir?", "description": "e-İrsaliye'nin kapsamı, belge türleri, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.", "eyebrow": "Başlangıç", "keywords": ["Başlangıç", "e-İrsaliye", "DespatchAdvice", "ReceiptAdvice"], "roles": ["guide-start"], "homeCard": { "label": "Başlangıç" } },
+        { "slug": "gib-teknik-gereksinimleri", "title": "GİB Referansı", "description": "GİB e-İrsaliye paketi, UBL-TR belge yapıları, resmi kılavuzlar ve teknik gereksinimler.", "eyebrow": "Teknik Temel", "keywords": ["Teknik Temel", "GİB", "UBL-TR", "DespatchAdvice", "ReceiptAdvice"], "homeCard": { "label": "Teknik Temel" } }
+      ]
+    },
+    {
+      "label": "API Temelleri",
+      "pages": [
+        { "slug": "api-temelleri", "title": "API Temelleri", "description": "Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.", "eyebrow": "API Temelleri", "keywords": ["API", "token", "VbtAuthorization", "ResponseModel", "ETTN"], "roles": ["api"], "homeCard": { "label": "API", "description": "Tüm giden ve gelen irsaliye çağrılarının ortak sözleşmesi." } }
+      ]
+    },
+    {
+      "label": "Giden İrsaliye",
+      "pages": [
+        { "slug": "giden-irsaliye-senaryolari", "title": "Giden İrsaliye Senaryoları", "description": "TEMELIRSALIYE, MATBUDAN ve IDISIRSALIYE profilleri için profil, belge tipi ve zorunlu alan kararları.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "TEMELIRSALIYE", "MATBUDAN", "IDISIRSALIYE"], "homeCard": { "label": "Giden İrsaliye", "description": "Profil seçimi, zorunlu alanlar ve oluşturma senaryoları." } },
+        { "slug": "giden-irsaliye-akisi", "title": "Giden İrsaliye Akışı", "description": "Giden e-İrsaliye'nin oluşturulması, imzalanması, GİB ve alıcıya iletilmesi ile kabul, kısmi kabul ve red durumları.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "durum", "GİB", "irsaliye yanıtı"], "homeCard": { "label": "Giden İrsaliye", "description": "Giden e-İrsaliye yaşam döngüsü ve dallanan sonuçlar." } },
+        { "slug": "giden-irsaliye-sorumluluklari", "title": "Giden İrsaliye Sorumlulukları", "description": "Belge hazırlama, güvenli gönderim, fiili sevk, durum takibi ve mutabakat sorumlulukları.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "sorumluluk", "fiili sevk", "mutabakat"], "homeCard": { "label": "Giden İrsaliye", "description": "Entegratör ve platform sorumluluklarının sınırları." } },
+        { "slug": "giden-irsaliye-entegrator-api", "title": "Giden İrsaliye Entegratör API", "description": "Giden irsaliye oluşturma, güncelleme, gönderme, sorgulama, çıktı ve durum endpointleri.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "Entegratör API", "endpoint", "durum"], "homeCard": { "label": "Giden İrsaliye", "description": "Giden irsaliye entegratör endpoint sözleşmeleri." } },
+        { "slug": "giden-irsaliye-portal-api", "title": "Giden İrsaliye Portal API", "description": "Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "Portal API", "grid", "geçmiş"], "homeCard": { "label": "Giden İrsaliye", "description": "Portalın giden irsaliye işlemlerinde kullandığı endpointler." } },
+        { "slug": "giden-irsaliye-request-ornekleri", "title": "Giden İrsaliye Request Örnekleri", "description": "Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "JSON", "request"], "homeCard": { "label": "Giden İrsaliye", "description": "Kopyalanabilir giden irsaliye request örnekleri." } },
+        { "slug": "giden-irsaliye-json-ubl-mapping", "title": "Giden İrsaliye JSON → UBL Mapping", "description": "Giden irsaliye JSON alanlarının üretilen UBL DespatchAdvice XML içindeki karşılıkları.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "JSON", "UBL", "XML", "mapping"], "homeCard": { "label": "Giden İrsaliye", "description": "Giden irsaliye JSON alanlarının UBL karşılıkları." } }
+      ]
+    },
+    {
+      "label": "Gelen İrsaliye",
+      "pages": [
+        { "slug": "gelen-irsaliye-senaryolari", "title": "Gelen İrsaliye Senaryoları", "description": "Gelen irsaliyeyi alma, ERP'ye aktarma ve kabul, kısmi kabul veya red irsaliye yanıtı üretme senaryoları.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "ReceiptAdvice", "kabul", "kısmi kabul", "red", "ERP"], "homeCard": { "label": "Gelen İrsaliye", "description": "Belge alma, karar verme ve ERP senaryoları." } },
+        { "slug": "gelen-irsaliye-akisi", "title": "Gelen İrsaliye Akışı", "description": "Gelen e-İrsaliye'nin alınması, ERP'ye aktarılması ve irsaliye yanıtının teknik durum makinesi.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "durum", "ReceiptAdvice", "ERP"], "homeCard": { "label": "Gelen İrsaliye", "description": "Gelen belge ve irsaliye yanıtı yaşam döngüsü." } },
+        { "slug": "gelen-irsaliye-sorumluluklari", "title": "Gelen İrsaliye Sorumlulukları", "description": "Gelen belgeyi tekilleştirme, ERP'ye alma, karar üretme, güvenli tekrar ve mutabakat sorumlulukları.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "sorumluluk", "ERP", "irsaliye yanıtı"], "homeCard": { "label": "Gelen İrsaliye", "description": "Belge alma, yanıt ve ERP mutabakatı sorumlulukları." } },
+        { "slug": "gelen-irsaliye-entegrator-api", "title": "Gelen İrsaliye Entegratör API", "description": "Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "Entegratör API", "endpoint", "ReceiptAdvice"], "homeCard": { "label": "Gelen İrsaliye", "description": "Gelen irsaliye entegratör endpoint sözleşmeleri." } },
+        { "slug": "gelen-irsaliye-portal-api", "title": "Gelen İrsaliye Portal API", "description": "Portal gelen irsaliye listesi, görüntüleme, okundu, geçmiş, arşiv ve yanıt işlemleri.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "Portal API", "kabul", "red", "kısmi kabul"], "homeCard": { "label": "Gelen İrsaliye", "description": "Portalın gelen irsaliye işlemlerinde kullandığı endpointler." } },
+        { "slug": "gelen-irsaliye-islem-ornekleri", "title": "Gelen İrsaliye İşlem Örnekleri", "description": "Listeleme, ERP işleme, çıktı alma ve irsaliye yanıtı için tam ve kopyalanabilir JSON örnekleri.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "JSON", "ReceiptAdvice"], "homeCard": { "label": "Gelen İrsaliye", "description": "Kopyalanabilir gelen irsaliye işlem örnekleri." } },
+        { "slug": "gelen-irsaliye-ubl-api-mapping", "title": "Gelen İrsaliye UBL → API/ERP Mapping", "description": "Alınan UBL DespatchAdvice alanlarının gelen irsaliye API yanıtı ve ERP modelindeki karşılıkları.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "UBL", "API", "ERP", "mapping"], "homeCard": { "label": "Gelen İrsaliye", "description": "Alınan UBL alanlarının API ve ERP karşılıkları." } }
+      ]
+    },
+    {
+      "label": "Referans",
+      "pages": [
+        { "slug": "teknik-referans", "title": "Teknik Referans", "description": "Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.", "eyebrow": "Referans", "keywords": ["Referans", "enum", "hata kodları", "validasyon"], "homeCard": { "label": "Referans" } },
+        { "slug": "changelog", "title": "Changelog", "description": "e-İrsaliye rehberinin yayınlanan içerik sürümleri.", "eyebrow": "Referans", "keywords": ["Referans", "changelog", "değişiklik"], "homeCard": { "label": "Referans" } },
+        { "slug": "sss", "title": "Sıkça Sorulan Sorular", "description": "Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında müşteri ve entegratör soruları.", "eyebrow": "Referans", "keywords": ["SSS", "durum", "ReceiptAdvice", "UBL", "ERP"], "roles": ["faq"], "homeCard": { "label": "SSS" } }
+      ]
+    }
+  ]
+}

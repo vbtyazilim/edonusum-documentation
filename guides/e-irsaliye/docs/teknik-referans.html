@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teknik Referans — e-İrsaliye Entegrasyon Rehberi</title>
+<meta name="description" content="Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/teknik-referans.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Teknik Referans — e-İrsaliye Entegrasyon Rehberi">
+<meta property="og:description" content="Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/teknik-referans.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Teknik Referans — e-İrsaliye Entegrasyon Rehberi">
+<meta name="twitter:description" content="Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-İrsaliye</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-irsaliye-nedir.html">Rehber</a><a href="api-temelleri.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-irsaliye-nedir.html">e-İrsaliye Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API Temelleri</div>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Giden İrsaliye</div>
+<a class="docs-nav-link" href="giden-irsaliye-senaryolari.html">Giden İrsaliye Senaryoları</a>
+<a class="docs-nav-link" href="giden-irsaliye-akisi.html">Giden İrsaliye Akışı</a>
+<a class="docs-nav-link" href="giden-irsaliye-sorumluluklari.html">Giden İrsaliye Sorumlulukları</a>
+<a class="docs-nav-link" href="giden-irsaliye-entegrator-api.html">Giden İrsaliye Entegratör API</a>
+<a class="docs-nav-link" href="giden-irsaliye-portal-api.html">Giden İrsaliye Portal API</a>
+<a class="docs-nav-link" href="giden-irsaliye-request-ornekleri.html">Giden İrsaliye Request Örnekleri</a>
+<a class="docs-nav-link" href="giden-irsaliye-json-ubl-mapping.html">Giden İrsaliye JSON → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Gelen İrsaliye</div>
+<a class="docs-nav-link" href="gelen-irsaliye-senaryolari.html">Gelen İrsaliye Senaryoları</a>
+<a class="docs-nav-link" href="gelen-irsaliye-akisi.html">Gelen İrsaliye Akışı</a>
+<a class="docs-nav-link" href="gelen-irsaliye-sorumluluklari.html">Gelen İrsaliye Sorumlulukları</a>
+<a class="docs-nav-link" href="gelen-irsaliye-entegrator-api.html">Gelen İrsaliye Entegratör API</a>
+<a class="docs-nav-link" href="gelen-irsaliye-portal-api.html">Gelen İrsaliye Portal API</a>
+<a class="docs-nav-link" href="gelen-irsaliye-islem-ornekleri.html">Gelen İrsaliye İşlem Örnekleri</a>
+<a class="docs-nav-link" href="gelen-irsaliye-ubl-api-mapping.html">Gelen İrsaliye UBL → API/ERP Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link active" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Teknik Referans</h1><p class="docs-lead">Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="teknik-referans">
+<h2 id="h-profiller">Profil ve Belge Tipleri</h2>
+<div class="table-wrapper"><table><thead><tr><th>Profil</th><th>Sayısal değer</th><th>İzin verilen belge tipi</th><th>Ek kural</th></tr></thead><tbody>
+<tr><td><code>TEMELIRSALIYE</code></td><td>1</td><td><code>SEVK</code></td><td>Standart sevk sözleşmesi.</td></tr>
+<tr><td><code>MATBUDAN</code></td><td>2</td><td><code>MATBUDAN</code></td><td>Dayanak belge referansı zorunlu.</td></tr>
+<tr><td><code>IDISIRSALIYE</code></td><td>3</td><td><code>SEVK</code></td><td><code>SEVKIYATNO</code> ve kalem bazında <code>ETIKETNO</code>.</td></tr>
+</tbody></table></div><!-- vbt-source: DespatchAdviceProfile.cs; DespatchAdviceTypeCode.cs -->
+
+<h2 id="h-giden-durum">Giden Kullanıcı Durumları</h2>
+<div class="table-wrapper"><table><thead><tr><th>Değer</th><th>Kod</th><th>Anlam</th><th>Terminal mi?</th></tr></thead><tbody>
+<tr><td><code>WaitingToSend</code></td><td>1</td><td>Gönderim bekliyor.</td><td>Hayır</td></tr>
+<tr><td><code>Sending</code></td><td>2</td><td>Gönderim sürüyor.</td><td>Hayır</td></tr>
+<tr><td><code>Sent</code></td><td>3</td><td>Gönderildi; yanıt beklenebilir.</td><td>Hayır</td></tr>
+<tr><td><code>SendingFailed</code></td><td>4</td><td>Gönderim tamamlanamadı.</td><td>Hayır; kontrollü tekrar gerekir</td></tr>
+<tr><td><code>WaitingForApproval</code></td><td>5</td><td>Alıcı kararı bekleniyor.</td><td>Hayır</td></tr>
+<tr><td><code>Rejected</code></td><td>6</td><td>Reddedildi.</td><td>Evet</td></tr>
+<tr><td><code>Approved</code></td><td>7</td><td>Kabul edildi.</td><td>Evet</td></tr>
+<tr><td><code>PartiallyApproved</code></td><td>8</td><td>Kısmi kabul edildi.</td><td>Evet</td></tr>
+</tbody></table></div><!-- vbt-source: OutgoingDespatchAdviceStatusForUser.cs -->
+
+<h2 id="h-gelen-durum">Gelen Yanıt Durumları</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Değer</th><th>Kod</th><th>Anlam</th></tr></thead><tbody>
+<tr><td><code>ReceiptNotStarted</code></td><td>3</td><td>Yanıt süreci başlamadı.</td></tr>
+<tr><td><code>WaitingForReceipt</code></td><td>5</td><td>Karar/yanıt bekliyor.</td></tr>
+<tr><td><code>Approving</code></td><td>6</td><td>Kabul yanıtı gönderiliyor.</td></tr>
+<tr><td><code>PartiallyApproving</code></td><td>7</td><td>Kısmi kabul yanıtı gönderiliyor.</td></tr>
+<tr><td><code>Rejecting</code></td><td>8</td><td>Red yanıtı gönderiliyor.</td></tr>
+<tr><td><code>ReceiptSentForApproveWithError</code></td><td>11</td><td>Kabul yanıtı gönderiminde hata var.</td></tr>
+<tr><td><code>ReceiptSentForPartiallyApproveWithError</code></td><td>12</td><td>Kısmi kabul yanıtı gönderiminde hata var.</td></tr>
+<tr><td><code>ReceiptSentForRejectWithError</code></td><td>13</td><td>Red yanıtı gönderiminde hata var.</td></tr>
+<tr><td><code>Approved</code></td><td>14</td><td>Kabul yanıtı tamamlandı.</td></tr>
+<tr><td><code>Rejected</code></td><td>15</td><td>Red yanıtı tamamlandı.</td></tr>
+<tr><td><code>PartiallyApproved</code></td><td>16</td><td>Kısmi kabul yanıtı tamamlandı.</td></tr>
+</tbody></table></div><!-- vbt-source: IncomingDespatchAdviceStatusForUser.cs -->
+
+<h2 id="h-alan-kurallari">Önemli Alan Kuralları</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Alan</th><th>Kural</th><th>Gözlenebilir hata kodu</th></tr></thead><tbody>
+<tr><td><code>DespatchAdviceExternalId</code></td><td>Zorunlu ve ERP iş olayı için tekil.</td><td><code>DSP0012</code>, <code>DSP0061</code></td></tr>
+<tr><td><code>ProfileId</code></td><td>Desteklenen üç değerden biri.</td><td>Eksikse <code>SCM0002</code>, geçersizse <code>SCM0001</code></td></tr>
+<tr><td><code>DespatchAdviceTypeCode</code></td><td>Zorunlu ve izin verilen değerlerden biri.</td><td>Eksikse <code>SCM0002</code>, geçersizse <code>SCM0001</code></td></tr>
+<tr><td><code>Shipment.Id</code></td><td>Gönderi kimliği zorunludur.</td><td><code>SCM0002</code></td></tr>
+<tr><td><code>Shipment.Delivery.Despatch</code></td><td>Fiili sevk tarihi ve saati iş olayını yansıtmalıdır.</td><td>Eksik zorunlu alan için <code>SCM0002</code></td></tr>
+<tr><td><code>ReceiverIdentifier</code></td><td>Alıcının VKN/TCKN değeriyle eşleşen güncel GİB posta kutusu etiketi olmalıdır.</td><td><code>COM0030</code></td></tr>
+<tr><td>Taşıyıcı/sürücü</td><td>Taşıyıcı taraf veya sürücü listesinden en az biri; sürücüde ad, soyad ve TCKN.</td><td>Alan yolunu içeren doğrulama mesajı; kod alanı boş olabilir</td></tr>
+<tr><td><code>DespatchLine[].Id</code></td><td>Sayısal ve belge içinde tekil.</td><td><code>SCM0004</code>, <code>SCM0011</code></td></tr>
+<tr><td><code>DeliveredQuantity</code></td><td>Değer ve geçerli birim kodu.</td><td><code>SCM0002</code> veya <code>SCM0001</code></td></tr>
+<tr><td><code>MATBUDAN</code> referansı</td><td><code>Id</code> ve <code>IssueDate</code> içeren en az bir kayıt.</td><td>Kuralı açıklayan doğrulama mesajı; kod alanı boş olabilir</td></tr>
+<tr><td><code>IDISIRSALIYE</code> alanları</td><td><code>IdisSevkiyatNo</code> ile her kalemde <code>ETIKETNO</code> bulunmalıdır.</td><td><code>SCHEME</code></td></tr>
+<tr><td>İrsaliye yanıtı süresi</td><td>Eksik teslim veya red yanıtı fiili sevkten başlayan yedi günlük pencere içinde, izin verilen kullanıcı durumunda üretilir.</td><td><code>DSP0115</code> veya <code>DSP0116</code></td></tr>
+</tbody></table></div><!-- vbt-source: DespatchAdviceValidation.cs; ReceiptAdviceValidation.cs; TicariMessages.cs -->
+
+<h2 id="h-hata-katmanlari">Hata Kodunu Okuma</h2>
+<div class="table-wrapper"><table><thead><tr><th>Kod biçimi</th><th>Kapsam</th><th>Entegratör davranışı</th></tr></thead><tbody>
+<tr><td><code>DSPxxxx</code></td><td>e-İrsaliye kayıt, gönderim, durum ve yanıt işlemleri.</td><td>Kodu aşağıdaki işlem tablosuyla eşleştirin.</td></tr>
+<tr><td><code>RCPxxxx</code></td><td>İrsaliye yanıtı görsel, PDF ve UBL çıktıları.</td><td>İstenen çıktı türünü ve belge kimliğini kontrol edin.</td></tr>
+<tr><td><code>COMxxxx</code></td><td>Belge türleri arasında ortak kullanılan mükellef ve posta kutusu kontrolleri.</td><td><code>COM0030</code> için alıcı VKN/TCKN ile posta kutusu etiketini birlikte doğrulayın.</td></tr>
+<tr><td><code>SCMxxxx</code></td><td>UBL alan zorunluluğu, değer kümesi ve biçim denetimleri.</td><td><code>ErrorMessage</code> içindeki alan yolunu düzelterek isteği yenileyin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>İDİS gibi profile özgü içerik kuralları.</td><td>Mesajdaki profil alanını ve değer desenini düzeltin.</td></tr>
+<tr><td>Boş kod</td><td>Bazı GİB iş kuralları alan yolunu yalnız mesajda bildirir.</td><td>Kod boş olsa da <code>ErrorMessage</code> değerini hata olarak işleyin.</td></tr>
+</tbody></table></div><!-- vbt-source: DespatchAdviceValidation.cs; UblCardinalityValidation.cs -->
+
+<h2 id="h-hata-kodlari">DSP Hata ve Sonuç Kodları</h2>
+<p>Aktif e-İrsaliye akışında gözlenebilen ve entegratörün doğrudan aksiyon alabileceği kodlar işlem ailesine göre gruplanmıştır.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Kod</th><th>Anlam</th><th>Entegratör aksiyonu</th></tr></thead><tbody>
+<tr><td><code>DSP0001</code></td><td>İrsaliyenin UBL/XML dönüşümü tamamlanamadı.</td><td>İstek alanlarını ve üretilen UBL içeriğini kontrol edin.</td></tr>
+<tr><td><code>DSP0007</code> / <code>DSP0064</code></td><td>İrsaliye bulunamadı.</td><td>ETTN, dış referans veya kayıt kimliğini doğrulayın.</td></tr>
+<tr><td><code>DSP0009</code> / <code>DSP0010</code></td><td>Silme veya güncelleme başarısız.</td><td>Belgenin güncel durumunu alın; işlem uygunluğunu kontrol edin.</td></tr>
+<tr><td><code>DSP0012</code></td><td>Dış referans eksik.</td><td><code>DespatchAdviceExternalId</code> değerini ERP iş olayı için tekil olarak gönderin.</td></tr>
+<tr><td><code>DSP0020</code></td><td>Entegratörün sağlaması gereken belge numarası eksik.</td><td>Numara üretim seçimini ve <code>DespatchAdviceNumber</code> değerini birlikte kontrol edin.</td></tr>
+<tr><td><code>DSP0024</code> / <code>DSP0087</code></td><td>Belge durumu istenen işlem için uygun değil.</td><td>Güncel durumu sorgulayın; izin verilen sonraki işlemi seçin.</td></tr>
+<tr><td><code>COM0017</code></td><td>Belge gönderim işlemi sürerken silme veya yeniden gönderme istendi.</td><td>Yeni işlem üretmeden güncel durumu sorgulayın; aktif gönderim sonuçlanınca karar verin.</td></tr>
+<tr><td><code>DSP0036</code></td><td>Giden irsaliye kaydı oluşturulamadı.</td><td>Aynı dış referansla sorgulama yapmadan yeni kayıt üretmeyin.</td></tr>
+<tr><td><code>DSP0060</code> / <code>DSP0061</code></td><td>Belge numarası veya dış referans daha önce kullanılmış.</td><td>Mevcut belgeyi sorgulayın; tekrar oluşturmaktan kaçının.</td></tr>
+<tr><td><code>DSP0063</code></td><td>Belge numarası sıra kuralına uymuyor.</td><td>Numara üretim kaynağını ve seri/yıl sırasını düzeltin.</td></tr>
+<tr><td><code>DSP0094</code></td><td>ETTN listesi boş.</td><td>PDF/XML/durum işlemine en az bir ETTN gönderin.</td></tr>
+<tr><td><code>DSP0101</code></td><td>İmzalanmamış belge GİB'e gönderilemez.</td><td>Durum gönderime hazır olana kadar bekleyin.</td></tr>
+<tr><td><code>DSP0108</code></td><td>Hazır UBL ayrıştırılamadı.</td><td>XML encoding, namespace ve UBL kök yapısını doğrulayın.</td></tr>
+<tr><td><code>DSP0112</code></td><td>İrsaliye arşiv paketi güncellenemedi.</td><td>Belge durumunu değiştirmeden çıktı işlemini yeniden deneyin.</td></tr>
+<tr><td><code>DSP0115</code> / <code>DSP0116</code></td><td>İrsaliye yanıtı için izin verilen süre aşılmış.</td><td>Yeni yanıt üretmeyin; operasyon sürecini hata sonucuyla kapatın.</td></tr>
+</tbody></table></div><!-- vbt-source: TicariMessages.DespatchAdvice; active usages in OutgoingDespatchAdviceService.cs, DespatchAdviceService.cs, OutgoingReceiptAdviceService.cs -->
+
+<h2 id="h-rcp">İrsaliye Yanıtı Çıktı Kodları</h2>
+<div class="table-wrapper"><table><thead><tr><th>Kod</th><th>Anlam</th></tr></thead><tbody>
+<tr><td><code>RCP0001</code></td><td>Yanıt UBL/XML arşiv çıktısı hazırlandı.</td></tr>
+<tr><td><code>RCP0003</code></td><td>Yanıt PDF çıktısı üretildi.</td></tr>
+<tr><td><code>RCP0005</code></td><td>Yanıt görseli alındı.</td></tr>
+<tr><td><code>RCP0006</code></td><td>Yanıt XML dönüşümü başarısız.</td></tr>
+<tr><td><code>RCP0007</code></td><td>Yanıt arşiv dosyası güncellenemedi.</td></tr>
+<tr><td><code>RCP0008</code></td><td>İrsaliye yanıtı bulunamadı.</td></tr>
+<tr><td><code>RCP0009</code></td><td>Yanıt UBL içeriği ayrıştırılamadı.</td></tr>
+</tbody></table></div><!-- vbt-source: TicariMessages.ReceiptAdvice; active usages in ReceiptAdviceService.cs and output services -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="gelen-irsaliye-ubl-api-mapping.html"><span>Önceki</span><strong>Gelen İrsaliye UBL → API/ERP Mapping</strong></a>
+<a class="docs-page-link docs-page-next" href="changelog.html"><span>Sonraki</span><strong>Changelog</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="TEMELIRSALIYE, MATBUDAN, IDISIRSALIYE, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-İrsaliye Nedir?","text":"e-İrsaliye'nin kapsamı, belge türleri, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-İrsaliye DespatchAdvice ReceiptAdvice","url":"e-irsaliye-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB e-İrsaliye paketi, UBL-TR belge yapıları, resmi kılavuzlar ve teknik gereksinimler.","keywords":"Teknik Temel GİB UBL-TR DespatchAdvice ReceiptAdvice","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Senaryoları","text":"TEMELIRSALIYE, MATBUDAN ve IDISIRSALIYE profilleri için profil, belge tipi ve zorunlu alan kararları.","keywords":"Giden İrsaliye TEMELIRSALIYE MATBUDAN IDISIRSALIYE","url":"giden-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Akışı","text":"Giden e-İrsaliye'nin oluşturulması, imzalanması, GİB ve alıcıya iletilmesi ile kabul, kısmi kabul ve red durumları.","keywords":"Giden İrsaliye durum GİB irsaliye yanıtı","url":"giden-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Sorumlulukları","text":"Belge hazırlama, güvenli gönderim, fiili sevk, durum takibi ve mutabakat sorumlulukları.","keywords":"Giden İrsaliye sorumluluk fiili sevk mutabakat","url":"giden-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Entegratör API","text":"Giden irsaliye oluşturma, güncelleme, gönderme, sorgulama, çıktı ve durum endpointleri.","keywords":"Giden İrsaliye Entegratör API endpoint durum","url":"giden-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Portal API","text":"Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.","keywords":"Giden İrsaliye Portal API grid geçmiş","url":"giden-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Request Örnekleri","text":"Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.","keywords":"Giden İrsaliye JSON request","url":"giden-irsaliye-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye JSON → UBL Mapping","text":"Giden irsaliye JSON alanlarının üretilen UBL DespatchAdvice XML içindeki karşılıkları.","keywords":"Giden İrsaliye JSON UBL XML mapping","url":"giden-irsaliye-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Senaryoları","text":"Gelen irsaliyeyi alma, ERP'ye aktarma ve kabul, kısmi kabul veya red irsaliye yanıtı üretme senaryoları.","keywords":"Gelen İrsaliye ReceiptAdvice kabul kısmi kabul red ERP","url":"gelen-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Akışı","text":"Gelen e-İrsaliye'nin alınması, ERP'ye aktarılması ve irsaliye yanıtının teknik durum makinesi.","keywords":"Gelen İrsaliye durum ReceiptAdvice ERP","url":"gelen-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Sorumlulukları","text":"Gelen belgeyi tekilleştirme, ERP'ye alma, karar üretme, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen İrsaliye sorumluluk ERP irsaliye yanıtı","url":"gelen-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Entegratör API","text":"Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.","keywords":"Gelen İrsaliye Entegratör API endpoint ReceiptAdvice","url":"gelen-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Portal API","text":"Portal gelen irsaliye listesi, görüntüleme, okundu, geçmiş, arşiv ve yanıt işlemleri.","keywords":"Gelen İrsaliye Portal API kabul red kısmi kabul","url":"gelen-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye İşlem Örnekleri","text":"Listeleme, ERP işleme, çıktı alma ve irsaliye yanıtı için tam ve kopyalanabilir JSON örnekleri.","keywords":"Gelen İrsaliye JSON ReceiptAdvice","url":"gelen-irsaliye-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye UBL → API/ERP Mapping","text":"Alınan UBL DespatchAdvice alanlarının gelen irsaliye API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen İrsaliye UBL API ERP mapping","url":"gelen-irsaliye-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-İrsaliye rehberinin yayınlanan içerik sürümleri.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında müşteri ve entegratör soruları.","keywords":"SSS durum ReceiptAdvice UBL ERP","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>
