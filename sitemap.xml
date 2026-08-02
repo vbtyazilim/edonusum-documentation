@@ -112,4 +112,44 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/sss.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/e-bilet-nedir.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/destek-kapsami.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/gib-teknik-gereksinimleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/api-temelleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/hata-ve-tekrar-guvenligi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/portal-islemleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/legacy-soap-servisi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/karayolu-senaryolari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/karayolu-alan-kurallari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/karayolu-akisi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/karayolu-entegrator-api.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/karayolu-request-ornekleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/karayolu-json-rapor-mapping.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/yolcu-listesi-senaryolari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/yolcu-listesi-alan-kurallari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/yolcu-listesi-akisi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/yolcu-listesi-entegrator-api.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/yolcu-listesi-request-ornekleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/yolcu-listesi-json-rapor-mapping.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/etkinlik-senaryolari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/etkinlik-alan-kurallari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/etkinlik-akisi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/etkinlik-entegrator-api.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/etkinlik-request-ornekleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/etkinlik-json-rapor-mapping.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-senaryolari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-alan-kurallari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-akisi.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-entegrator-api.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-request-ornekleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-json-rapor-mapping.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/pdf-imza-ve-teslim.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/gib-rapor-paketleri.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/gib-rapor-durumlari.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/iptal-ve-mutabakat.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/teknik-referans.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/sorun-giderme.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/changelog.html</loc></url>
+  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/sss.html</loc></url>
 </urlset>

@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 1,
+  "id": "e-bilet",
+  "dir": "e-bilet",
+  "title": "e-Bilet Entegrasyon Rehberi",
+  "shortTitle": "e-Bilet",
+  "description": "Karayolu, e-Yolcu Listesi, etkinlik ve havayolu belgeleri için API, PDF, durum takibi ve GİB raporlama sözleşmelerini açıklayan e-Bilet entegrasyon rehberi.",
+  "eyebrow": "GİB e-Bilet ve e-Yolcu Listesi",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/",
+  "templateVersion": "local-2026-07-08",
+  "searchPlaceholder": "Karayolu, yolcu listesi, etkinlik, havayolu, endpoint...",
+  "searchMaxResults": 80,
+  "home": {
+    "title": "e-Bilet Entegrasyon Rehberi",
+    "description": "Karayolu, e-Yolcu Listesi, etkinlik ve havayolu belgeleri için API, PDF, durum takibi ve GİB raporlama sözleşmelerini açıklayan e-Bilet entegrasyon rehberi.",
+    "primaryAction": {
+      "target": "e-bilet-nedir",
+      "label": "Dokümanı inceleyin"
+    },
+    "announcement": {
+      "enabled": false
+    }
+  },
+  "sections": [
+    {
+      "label": "Başlangıç",
+      "pages": [
+        {
+          "slug": "e-bilet-nedir",
+          "title": "e-Bilet Nedir?",
+          "description": "e-Bilet belge aileleri, teknik kimlikleri, entegrasyon kanalları ve uçtan uca yaşam döngüsüne giriş.",
+          "eyebrow": "Başlangıç",
+          "keywords": [
+            "e-Bilet",
+            "karayolu",
+            "etkinlik",
+            "havayolu",
+            "e-Yolcu Listesi"
+          ],
+          "roles": [
+            "guide-start"
+          ],
+          "homeCard": {
+            "label": "Başlangıç"
+          }
+        },
+        {
+          "slug": "destek-kapsami",
+          "title": "Destek Kapsamı",
+          "description": "Belge ailesi, işlem, API kanalı, PDF ve GİB raporlama desteğinin sınırları.",
+          "eyebrow": "Başlangıç",
+          "keywords": [
+            "destek",
+            "kapsam",
+            "REST",
+            "SOAP",
+            "Portal"
+          ],
+          "homeCard": {
+            "label": "Başlangıç",
+            "description": "Desteklenen işlemler ve kanal sınırları."
+          }
+        },
+        {
+          "slug": "gib-teknik-gereksinimleri",
+          "title": "GİB Referansı",
+          "description": "e-Bilet paketleri, kullanım yöntemi, teknik gereksinimler, rapor türleri ve resmî kaynaklar.",
+          "eyebrow": "Teknik Temel",
+          "keywords": [
+            "GİB",
+            "e-Bilet",
+            "rapor",
+            "paket",
+            "webservice"
+          ],
+          "homeCard": {
+            "label": "Teknik Temel"
+          }
+        }
+      ]
+    },
+    {
+      "label": "API Temelleri",
+      "pages": [
+        {
+          "slug": "api-temelleri",
+          "title": "API Temelleri",
+          "description": "Kimlik doğrulama, ortak header, response, belge kimliği ve çağrı sözleşmeleri.",
+          "eyebrow": "API Temelleri",
+          "keywords": [
+            "API",
+            "token",
+            "VbtAuthorization",
+            "ResponseModel",
+            "UUID"
+          ],
+          "roles": [
+            "api"
+          ],
+          "homeCard": {
+            "label": "API",
+            "description": "Bütün e-Bilet çağrılarının ortak sözleşmesi."
+          }
+        },
+        {
+          "slug": "hata-ve-tekrar-guvenligi",
+          "title": "Entegrasyon Sorumlulukları",
+          "description": "Entegratör ve platform sorumlulukları; validasyon, kimlik, timeout, durum sorgulama ve güvenli yeniden deneme sınırları.",
+          "eyebrow": "API Temelleri",
+          "keywords": [
+            "sorumluluk",
+            "hata",
+            "timeout",
+            "idempotency",
+            "mükerrer",
+            "retry"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "portal-islemleri",
+          "title": "Portal İşlemleri",
+          "description": "VBT portalında sunulan listeleme, PDF, e-posta, rapor, log ve okundu işlemleri.",
+          "eyebrow": "API Temelleri",
+          "keywords": [
+            "Portal",
+            "PDF",
+            "e-posta",
+            "log",
+            "rapor"
+          ],
+          "homeCard": {
+            "label": "Portal"
+          }
+        },
+        {
+          "slug": "legacy-soap-servisi",
+          "title": "Legacy SOAP Servisi",
+          "description": "Karayolu bileti ve e-Yolcu Listesi için eski SOAP kanalının işlem ve geçiş sınırları.",
+          "eyebrow": "API Temelleri",
+          "keywords": [
+            "SOAP",
+            "legacy",
+            "KyTicket",
+            "yolcu listesi"
+          ],
+          "homeCard": false
+        }
+      ]
+    },
+    {
+      "label": "Karayolu e-Bileti",
+      "pages": [
+        {
+          "slug": "karayolu-senaryolari",
+          "title": "Karayolu Senaryoları",
+          "description": "Karayolu biletinde oluşturma, numara üretme, gider gösterme, yabancı yolcu ve iptal senaryoları.",
+          "eyebrow": "Karayolu e-Bileti",
+          "keywords": [
+            "karayolu",
+            "senaryo",
+            "yolcu",
+            "iptal"
+          ],
+          "homeCard": {
+            "label": "Karayolu"
+          }
+        },
+        {
+          "slug": "karayolu-alan-kurallari",
+          "title": "Karayolu Alan Kuralları",
+          "description": "Karayolu request alanları, koşullu zorunluluklar, numara ve tekillik kuralları.",
+          "eyebrow": "Karayolu e-Bileti",
+          "keywords": [
+            "karayolu",
+            "alan",
+            "zorunluluk",
+            "numara"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "karayolu-akisi",
+          "title": "Karayolu Bileti Akışı",
+          "description": "Bilet kaydından imzalı PDF, iptal, rapor paketine alınma ve GİB sonucuna uzanan yaşam döngüsü.",
+          "eyebrow": "Karayolu e-Bileti",
+          "keywords": [
+            "karayolu",
+            "akış",
+            "durum",
+            "PDF",
+            "GİB"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "karayolu-entegrator-api",
+          "title": "Karayolu Entegratör API",
+          "description": "Karayolu bileti oluşturma, iptal, durum ve harici numara sorgulama endpoint sözleşmeleri.",
+          "eyebrow": "Karayolu e-Bileti",
+          "keywords": [
+            "karayolu",
+            "API",
+            "endpoint",
+            "status"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "karayolu-request-ornekleri",
+          "title": "Karayolu Request Örnekleri",
+          "description": "Karayolu bileti oluşturma ve işlem çağrıları için tam ve kopyalanabilir örnekler.",
+          "eyebrow": "Karayolu e-Bileti",
+          "keywords": [
+            "karayolu",
+            "JSON",
+            "request",
+            "örnek"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "karayolu-json-rapor-mapping",
+          "title": "Karayolu JSON → Rapor Mapping",
+          "description": "Karayolu request alanlarının bilet kaydı, PDF ve GİB raporundaki karşılıkları.",
+          "eyebrow": "Karayolu e-Bileti",
+          "keywords": [
+            "karayolu",
+            "JSON",
+            "rapor",
+            "mapping"
+          ],
+          "homeCard": false
+        }
+      ]
+    },
+    {
+      "label": "e-Yolcu Listesi",
+      "pages": [
+        {
+          "slug": "yolcu-listesi-senaryolari",
+          "title": "e-Yolcu Listesi Senaryoları",
+          "description": "Sefer, araç işleten, bilet-koltuk ilişkisi ve yolcu listesi oluşturma senaryoları.",
+          "eyebrow": "e-Yolcu Listesi",
+          "keywords": [
+            "yolcu listesi",
+            "sefer",
+            "koltuk",
+            "araç işleten"
+          ],
+          "homeCard": {
+            "label": "e-Yolcu Listesi"
+          }
+        },
+        {
+          "slug": "yolcu-listesi-alan-kurallari",
+          "title": "e-Yolcu Listesi Alan Kuralları",
+          "description": "Başlık, koltuk, yolcu kimliği, liste numarası ve ilişkili bilet zorunlulukları.",
+          "eyebrow": "e-Yolcu Listesi",
+          "keywords": [
+            "yolcu listesi",
+            "alan",
+            "zorunluluk",
+            "bilet"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "yolcu-listesi-akisi",
+          "title": "e-Yolcu Listesi Akışı",
+          "description": "Liste kaydı, doğrulama, PDF üretimi, rapor paketine alınma ve GİB sonucu yaşam döngüsü.",
+          "eyebrow": "e-Yolcu Listesi",
+          "keywords": [
+            "yolcu listesi",
+            "akış",
+            "durum",
+            "PDF",
+            "GİB"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "yolcu-listesi-entegrator-api",
+          "title": "e-Yolcu Listesi Entegratör API",
+          "description": "Yolcu listesi oluşturma ve durum sorgulama endpoint sözleşmeleri.",
+          "eyebrow": "e-Yolcu Listesi",
+          "keywords": [
+            "yolcu listesi",
+            "API",
+            "endpoint",
+            "status"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "yolcu-listesi-request-ornekleri",
+          "title": "e-Yolcu Listesi Request Örnekleri",
+          "description": "Yolcu listesi oluşturma ve durum işlemleri için tam ve kopyalanabilir örnekler.",
+          "eyebrow": "e-Yolcu Listesi",
+          "keywords": [
+            "yolcu listesi",
+            "JSON",
+            "request",
+            "örnek"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "yolcu-listesi-json-rapor-mapping",
+          "title": "e-Yolcu Listesi JSON → Rapor Mapping",
+          "description": "Yolcu listesi request alanlarının kayıt, PDF ve GİB raporundaki karşılıkları.",
+          "eyebrow": "e-Yolcu Listesi",
+          "keywords": [
+            "yolcu listesi",
+            "JSON",
+            "rapor",
+            "mapping"
+          ],
+          "homeCard": false
+        }
+      ]
+    },
+    {
+      "label": "Etkinlik e-Bileti",
+      "pages": [
+        {
+          "slug": "etkinlik-senaryolari",
+          "title": "Etkinlik Bileti Senaryoları",
+          "description": "Yerli/yabancı etkinlik, ödeme, gider gösterme ve iptal senaryoları.",
+          "eyebrow": "Etkinlik e-Bileti",
+          "keywords": [
+            "etkinlik",
+            "senaryo",
+            "bilet",
+            "iptal"
+          ],
+          "homeCard": {
+            "label": "Etkinlik"
+          }
+        },
+        {
+          "slug": "etkinlik-alan-kurallari",
+          "title": "Etkinlik Alan Kuralları",
+          "description": "Etkinlik, alıcı, organizatör, ödeme, tutar ve bilet numarası alan kuralları.",
+          "eyebrow": "Etkinlik e-Bileti",
+          "keywords": [
+            "etkinlik",
+            "alan",
+            "zorunluluk",
+            "tutar"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "etkinlik-akisi",
+          "title": "Etkinlik Bileti Akışı",
+          "description": "Etkinlik bileti kaydı, PDF, iptal, durum sorgusu ve mevcut raporlama kapsamı.",
+          "eyebrow": "Etkinlik e-Bileti",
+          "keywords": [
+            "etkinlik",
+            "akış",
+            "durum",
+            "PDF",
+            "iptal"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "etkinlik-entegrator-api",
+          "title": "Etkinlik Entegratör API",
+          "description": "Etkinlik bileti oluşturma, iptal, durum ve tarih aralığı endpoint sözleşmeleri.",
+          "eyebrow": "Etkinlik e-Bileti",
+          "keywords": [
+            "etkinlik",
+            "API",
+            "endpoint",
+            "date range"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "etkinlik-request-ornekleri",
+          "title": "Etkinlik Request Örnekleri",
+          "description": "Etkinlik bileti oluşturma ve işlem çağrıları için tam ve kopyalanabilir örnekler.",
+          "eyebrow": "Etkinlik e-Bileti",
+          "keywords": [
+            "etkinlik",
+            "JSON",
+            "request",
+            "örnek"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "etkinlik-json-rapor-mapping",
+          "title": "Etkinlik JSON → Rapor Mapping",
+          "description": "Etkinlik request alanlarının bilet kaydı, PDF ve rapor üretimindeki karşılıkları ile destek kapsamı.",
+          "eyebrow": "Etkinlik e-Bileti",
+          "keywords": [
+            "etkinlik",
+            "JSON",
+            "rapor",
+            "mapping"
+          ],
+          "homeCard": false
+        }
+      ]
+    },
+    {
+      "label": "Havayolu e-Bileti",
+      "pages": [
+        {
+          "slug": "havayolu-senaryolari",
+          "title": "Havayolu Bileti Senaryoları",
+          "description": "Satış, iade, yabancı para, gider gösterme ve referans bilet senaryoları.",
+          "eyebrow": "Havayolu e-Bileti",
+          "keywords": [
+            "havayolu",
+            "SATIS",
+            "IADE",
+            "referans",
+            "döviz"
+          ],
+          "homeCard": {
+            "label": "Havayolu"
+          }
+        },
+        {
+          "slug": "havayolu-alan-kurallari",
+          "title": "Havayolu Alan Kuralları",
+          "description": "Yolcu, uçuş, para birimi, ödeme, belge tipi ve referans alan kuralları.",
+          "eyebrow": "Havayolu e-Bileti",
+          "keywords": [
+            "havayolu",
+            "alan",
+            "zorunluluk",
+            "DocumentType"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "havayolu-akisi",
+          "title": "Havayolu Bileti Akışı",
+          "description": "Havayolu bileti kaydı, PDF, satış/iade kararı, durum sorgusu ve mevcut raporlama kapsamı.",
+          "eyebrow": "Havayolu e-Bileti",
+          "keywords": [
+            "havayolu",
+            "akış",
+            "durum",
+            "SATIS",
+            "IADE"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "havayolu-entegrator-api",
+          "title": "Havayolu Entegratör API",
+          "description": "Havayolu bileti oluşturma ve durum sorgulama endpoint sözleşmeleri.",
+          "eyebrow": "Havayolu e-Bileti",
+          "keywords": [
+            "havayolu",
+            "API",
+            "endpoint",
+            "status"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "havayolu-request-ornekleri",
+          "title": "Havayolu Request Örnekleri",
+          "description": "Havayolu satış ve iade işlemleri için tam ve kopyalanabilir örnekler.",
+          "eyebrow": "Havayolu e-Bileti",
+          "keywords": [
+            "havayolu",
+            "JSON",
+            "request",
+            "örnek"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "havayolu-json-rapor-mapping",
+          "title": "Havayolu JSON → Rapor Mapping",
+          "description": "Havayolu request alanlarının kayıt, PDF ve rapor üretimindeki karşılıkları ile uyum sınırları.",
+          "eyebrow": "Havayolu e-Bileti",
+          "keywords": [
+            "havayolu",
+            "JSON",
+            "rapor",
+            "mapping",
+            "referans"
+          ],
+          "homeCard": false
+        }
+      ]
+    },
+    {
+      "label": "Raporlama ve Çıktılar",
+      "pages": [
+        {
+          "slug": "pdf-imza-ve-teslim",
+          "title": "PDF, İmza ve Teslim",
+          "description": "İmzalı PDF'in hazırlanması, sorgulanması, portal/FTP teslimi ve arşiv davranışı.",
+          "eyebrow": "Raporlama ve Çıktılar",
+          "keywords": [
+            "PDF",
+            "imza",
+            "FTP",
+            "arşiv",
+            "teslim"
+          ],
+          "homeCard": {
+            "label": "Çıktılar"
+          }
+        },
+        {
+          "slug": "gib-rapor-paketleri",
+          "title": "GİB Rapor Paketleri",
+          "description": "Bilet ve e-Yolcu Listesi rapor paketlerinin kapsamı, adlandırılması ve gönderim sözleşmesi.",
+          "eyebrow": "Raporlama ve Çıktılar",
+          "keywords": [
+            "GİB",
+            "rapor",
+            "ZIP",
+            "paket",
+            "sendDocumentFile"
+          ],
+          "homeCard": {
+            "label": "GİB Raporlama"
+          }
+        },
+        {
+          "slug": "gib-rapor-durumlari",
+          "title": "GİB Rapor Durumları",
+          "description": "Rapor paketine alınma, GİB işleme sonucu, hata ve tekrar sorgulama durumları.",
+          "eyebrow": "Raporlama ve Çıktılar",
+          "keywords": [
+            "GİB",
+            "rapor",
+            "durum",
+            "getBatchStatus",
+            "hata"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "iptal-ve-mutabakat",
+          "title": "İptal ve Mutabakat",
+          "description": "Belge iptali, iptal raporu, kaynak sistem durumu ve güvenli operasyon mutabakatı.",
+          "eyebrow": "Raporlama ve Çıktılar",
+          "keywords": [
+            "iptal",
+            "mutabakat",
+            "durum",
+            "ERP",
+            "rapor"
+          ],
+          "homeCard": false
+        }
+      ]
+    },
+    {
+      "label": "Referans",
+      "pages": [
+        {
+          "slug": "teknik-referans",
+          "title": "Teknik Referans",
+          "description": "Enum değerleri, hata kodları, validasyon aileleri ve dış sözleşme bakım notları.",
+          "eyebrow": "Referans",
+          "keywords": [
+            "enum",
+            "hata kodu",
+            "validasyon",
+            "referans"
+          ],
+          "homeCard": {
+            "label": "Referans"
+          }
+        },
+        {
+          "slug": "sorun-giderme",
+          "title": "Sorun Giderme",
+          "description": "Kayıt, PDF, durum, iptal ve GİB raporlamasında gözlenebilir sorunların teşhis yolları.",
+          "eyebrow": "Referans",
+          "keywords": [
+            "sorun giderme",
+            "PDF",
+            "durum",
+            "GİB",
+            "hata"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "changelog",
+          "title": "Changelog",
+          "description": "e-Bilet rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.",
+          "eyebrow": "Referans",
+          "keywords": [
+            "changelog",
+            "değişiklik",
+            "yayın"
+          ],
+          "homeCard": false
+        },
+        {
+          "slug": "sss",
+          "title": "Sıkça Sorulan Sorular",
+          "description": "Belge ailesi seçimi, API, PDF, iptal, durum, raporlama ve canlı kullanım hakkında müşteri ve entegratör soruları.",
+          "eyebrow": "Referans",
+          "keywords": [
+            "SSS",
+            "sorular",
+            "API",
+            "PDF",
+            "GİB"
+          ],
+          "roles": [
+            "faq"
+          ],
+          "homeCard": {
+            "label": "SSS"
+          }
+        }
+      ]
+    }
+  ]
+}

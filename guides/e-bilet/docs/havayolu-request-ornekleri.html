@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Havayolu Request Örnekleri — e-Bilet Entegrasyon Rehberi</title>
+<meta name="description" content="Havayolu satış ve iade işlemleri için tam ve kopyalanabilir örnekler.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-request-ornekleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Havayolu Request Örnekleri — e-Bilet Entegrasyon Rehberi">
+<meta property="og:description" content="Havayolu satış ve iade işlemleri için tam ve kopyalanabilir örnekler.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-bilet/docs/havayolu-request-ornekleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Havayolu Request Örnekleri — e-Bilet Entegrasyon Rehberi">
+<meta name="twitter:description" content="Havayolu satış ve iade işlemleri için tam ve kopyalanabilir örnekler.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Bilet</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-bilet-nedir.html">Rehber</a><a href="api-temelleri.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-bilet-nedir.html">e-Bilet Nedir?</a>
+<a class="docs-nav-link" href="destek-kapsami.html">Destek Kapsamı</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Referansı</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API Temelleri</div>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+<a class="docs-nav-link" href="hata-ve-tekrar-guvenligi.html">Entegrasyon Sorumlulukları</a>
+<a class="docs-nav-link" href="portal-islemleri.html">Portal İşlemleri</a>
+<a class="docs-nav-link" href="legacy-soap-servisi.html">Legacy SOAP Servisi</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Karayolu e-Bileti</div>
+<a class="docs-nav-link" href="karayolu-senaryolari.html">Karayolu Senaryoları</a>
+<a class="docs-nav-link" href="karayolu-alan-kurallari.html">Karayolu Alan Kuralları</a>
+<a class="docs-nav-link" href="karayolu-akisi.html">Karayolu Bileti Akışı</a>
+<a class="docs-nav-link" href="karayolu-entegrator-api.html">Karayolu Entegratör API</a>
+<a class="docs-nav-link" href="karayolu-request-ornekleri.html">Karayolu Request Örnekleri</a>
+<a class="docs-nav-link" href="karayolu-json-rapor-mapping.html">Karayolu JSON → Rapor Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">e-Yolcu Listesi</div>
+<a class="docs-nav-link" href="yolcu-listesi-senaryolari.html">e-Yolcu Listesi Senaryoları</a>
+<a class="docs-nav-link" href="yolcu-listesi-alan-kurallari.html">e-Yolcu Listesi Alan Kuralları</a>
+<a class="docs-nav-link" href="yolcu-listesi-akisi.html">e-Yolcu Listesi Akışı</a>
+<a class="docs-nav-link" href="yolcu-listesi-entegrator-api.html">e-Yolcu Listesi Entegratör API</a>
+<a class="docs-nav-link" href="yolcu-listesi-request-ornekleri.html">e-Yolcu Listesi Request Örnekleri</a>
+<a class="docs-nav-link" href="yolcu-listesi-json-rapor-mapping.html">e-Yolcu Listesi JSON → Rapor Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Etkinlik e-Bileti</div>
+<a class="docs-nav-link" href="etkinlik-senaryolari.html">Etkinlik Bileti Senaryoları</a>
+<a class="docs-nav-link" href="etkinlik-alan-kurallari.html">Etkinlik Alan Kuralları</a>
+<a class="docs-nav-link" href="etkinlik-akisi.html">Etkinlik Bileti Akışı</a>
+<a class="docs-nav-link" href="etkinlik-entegrator-api.html">Etkinlik Entegratör API</a>
+<a class="docs-nav-link" href="etkinlik-request-ornekleri.html">Etkinlik Request Örnekleri</a>
+<a class="docs-nav-link" href="etkinlik-json-rapor-mapping.html">Etkinlik JSON → Rapor Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Havayolu e-Bileti</div>
+<a class="docs-nav-link" href="havayolu-senaryolari.html">Havayolu Bileti Senaryoları</a>
+<a class="docs-nav-link" href="havayolu-alan-kurallari.html">Havayolu Alan Kuralları</a>
+<a class="docs-nav-link" href="havayolu-akisi.html">Havayolu Bileti Akışı</a>
+<a class="docs-nav-link" href="havayolu-entegrator-api.html">Havayolu Entegratör API</a>
+<a class="docs-nav-link active" href="havayolu-request-ornekleri.html">Havayolu Request Örnekleri</a>
+<a class="docs-nav-link" href="havayolu-json-rapor-mapping.html">Havayolu JSON → Rapor Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Raporlama ve Çıktılar</div>
+<a class="docs-nav-link" href="pdf-imza-ve-teslim.html">PDF, İmza ve Teslim</a>
+<a class="docs-nav-link" href="gib-rapor-paketleri.html">GİB Rapor Paketleri</a>
+<a class="docs-nav-link" href="gib-rapor-durumlari.html">GİB Rapor Durumları</a>
+<a class="docs-nav-link" href="iptal-ve-mutabakat.html">İptal ve Mutabakat</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="sorun-giderme.html">Sorun Giderme</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Havayolu e-Bileti</p><h1>Havayolu Request Örnekleri</h1><p class="docs-lead">Havayolu satış ve iade işlemleri için tam ve kopyalanabilir örnekler.</p></header>
+<!-- vbt:article-header:end -->
+<section id="havayolu-request-ornekleri">
+<h2 id="h-satis-request">Tam Satış Örneği</h2>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Türk lirası üzerinden düzenlenen eksiksiz havayolu satış bileti isteği.</p><pre><code class="language-json" data-request-kind="document">{
+  "UUId": null,
+  "TicketNumber": "ABC1234567890",
+  "TicketPnrNo": "AIRPNR01",
+  "TicketExternalNumber": "ERP-AW-20260802-0001",
+  "TicketReferenceNumber": null,
+  "BranchCode": "IST01",
+  "BranchName": "İstanbul Şubesi",
+  "ServiceType": "SEYAHAT",
+  "PaymentType": "KREDIKARTI",
+  "ServiceTypeDescription": null,
+  "TicketModDate": "2026-08-02T14:30:00+03:00",
+  "XsltFileName": null,
+  "SeatNumber": "12A",
+  "IsCustomer": false,
+  "CustomerIdentityOrTaxNumber": null,
+  "CustomerTitle": null,
+  "CustomerTaxOffice": null,
+  "PassengerName": "Örnek",
+  "PassengerLastName": "Yolcu",
+  "PassengerIdentityOrTaxNumber": "11111111111",
+  "VatAmount": 100.00,
+  "VatAmountTRY": 100.00,
+  "TaxIncludedAmount": 1100.00,
+  "TaxIncludedAmountTRY": 1100.00,
+  "TaxExcludedAmount": 1000.00,
+  "TaxExcludedAmountTRY": 1000.00,
+  "TotalTicketAmount": 1150.00,
+  "TotalTicketAmountTRY": 1150.00,
+  "DocumentCurrencyCode": "TRY",
+  "From": "IST",
+  "To": "ESB",
+  "DepartureDate": "2026-08-15T09:30:00+03:00",
+  "ArrivalDate": "2026-08-15T10:35:00+03:00",
+  "FlightNumber": "VB123",
+  "CalculationRate": 1.00,
+  "MailTo": "ornek@example.com",
+  "FieldTaxAmount": 50.00,
+  "FieldTaxAmountTRY": 50.00,
+  "DocumentType": "SATIS"
+}</code></pre></div></details><!-- vbt-source: AirwayTicketRequestModel.cs; ValidationContext.cs -->
+<h2 id="h-iade-farki">Tam İade Örneği</h2>
+<p>İade için yeni ve tekil bir bilet/harici numara kullanın; kaynak satış biletini <code>TicketReferenceNumber</code> alanında koruyun. Aşağıdaki gövde bağımsız olarak kopyalanabilecek tam request'tir.</p>
+<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Kaynak satış biletine referans veren eksiksiz havayolu iade bileti isteği.</p><pre><code class="language-json" data-request-kind="operation">{
+  "UUId": null,
+  "TicketNumber": "ABC1234567891",
+  "TicketPnrNo": "AIRPNR01",
+  "TicketExternalNumber": "ERP-AW-IADE-20260802-0001",
+  "TicketReferenceNumber": "ABC1234567890",
+  "BranchCode": "IST01",
+  "BranchName": "İstanbul Şubesi",
+  "ServiceType": "SEYAHAT",
+  "PaymentType": "KREDIKARTI",
+  "ServiceTypeDescription": null,
+  "TicketModDate": "2026-08-02T15:00:00+03:00",
+  "XsltFileName": null,
+  "SeatNumber": "12A",
+  "IsCustomer": false,
+  "CustomerIdentityOrTaxNumber": null,
+  "CustomerTitle": null,
+  "CustomerTaxOffice": null,
+  "PassengerName": "Örnek",
+  "PassengerLastName": "Yolcu",
+  "PassengerIdentityOrTaxNumber": "11111111111",
+  "VatAmount": 100.00,
+  "VatAmountTRY": 100.00,
+  "TaxIncludedAmount": 1100.00,
+  "TaxIncludedAmountTRY": 1100.00,
+  "TaxExcludedAmount": 1000.00,
+  "TaxExcludedAmountTRY": 1000.00,
+  "TotalTicketAmount": 1150.00,
+  "TotalTicketAmountTRY": 1150.00,
+  "DocumentCurrencyCode": "TRY",
+  "From": "IST",
+  "To": "ESB",
+  "DepartureDate": "2026-08-15T09:30:00+03:00",
+  "ArrivalDate": "2026-08-15T10:35:00+03:00",
+  "FlightNumber": "VB123",
+  "CalculationRate": 1.00,
+  "MailTo": "ornek@example.com",
+  "FieldTaxAmount": 50.00,
+  "FieldTaxAmountTRY": 50.00,
+  "DocumentType": "IADE"
+}</code></pre></div></details>
+<h2 id="h-status">Body İçermeyen Durum Sorgusu</h2>
+<pre><code class="language-http">POST /api/AirwayTicket/GetAirwayTicketStatus?ticketNumber=ABC1234567890</code></pre>
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="havayolu-entegrator-api.html"><span>Önceki</span><strong>Havayolu Entegratör API</strong></a>
+<a class="docs-page-link docs-page-next" href="havayolu-json-rapor-mapping.html"><span>Sonraki</span><strong>Havayolu JSON → Rapor Mapping</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Karayolu, yolcu listesi, etkinlik, havayolu, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":80,"externalItems":[{"title":"e-Bilet Nedir?","text":"e-Bilet belge aileleri, teknik kimlikleri, entegrasyon kanalları ve uçtan uca yaşam döngüsüne giriş.","keywords":"e-Bilet karayolu etkinlik havayolu e-Yolcu Listesi","url":"e-bilet-nedir.html","sectionType":"Sayfa"},{"title":"Destek Kapsamı","text":"Belge ailesi, işlem, API kanalı, PDF ve GİB raporlama desteğinin sınırları.","keywords":"destek kapsam REST SOAP Portal","url":"destek-kapsami.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"e-Bilet paketleri, kullanım yöntemi, teknik gereksinimler, rapor türleri ve resmî kaynaklar.","keywords":"GİB e-Bilet rapor paket webservice","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, belge kimliği ve çağrı sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel UUID","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Entegrasyon Sorumlulukları","text":"Entegratör ve platform sorumlulukları; validasyon, kimlik, timeout, durum sorgulama ve güvenli yeniden deneme sınırları.","keywords":"sorumluluk hata timeout idempotency mükerrer retry","url":"hata-ve-tekrar-guvenligi.html","sectionType":"Sayfa"},{"title":"Portal İşlemleri","text":"VBT portalında sunulan listeleme, PDF, e-posta, rapor, log ve okundu işlemleri.","keywords":"Portal PDF e-posta log rapor","url":"portal-islemleri.html","sectionType":"Sayfa"},{"title":"Legacy SOAP Servisi","text":"Karayolu bileti ve e-Yolcu Listesi için eski SOAP kanalının işlem ve geçiş sınırları.","keywords":"SOAP legacy KyTicket yolcu listesi","url":"legacy-soap-servisi.html","sectionType":"Sayfa"},{"title":"Karayolu Senaryoları","text":"Karayolu biletinde oluşturma, numara üretme, gider gösterme, yabancı yolcu ve iptal senaryoları.","keywords":"karayolu senaryo yolcu iptal","url":"karayolu-senaryolari.html","sectionType":"Sayfa"},{"title":"Karayolu Alan Kuralları","text":"Karayolu request alanları, koşullu zorunluluklar, numara ve tekillik kuralları.","keywords":"karayolu alan zorunluluk numara","url":"karayolu-alan-kurallari.html","sectionType":"Sayfa"},{"title":"Karayolu Bileti Akışı","text":"Bilet kaydından imzalı PDF, iptal, rapor paketine alınma ve GİB sonucuna uzanan yaşam döngüsü.","keywords":"karayolu akış durum PDF GİB","url":"karayolu-akisi.html","sectionType":"Sayfa"},{"title":"Karayolu Entegratör API","text":"Karayolu bileti oluşturma, iptal, durum ve harici numara sorgulama endpoint sözleşmeleri.","keywords":"karayolu API endpoint status","url":"karayolu-entegrator-api.html","sectionType":"Sayfa"},{"title":"Karayolu Request Örnekleri","text":"Karayolu bileti oluşturma ve işlem çağrıları için tam ve kopyalanabilir örnekler.","keywords":"karayolu JSON request örnek","url":"karayolu-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Karayolu JSON → Rapor Mapping","text":"Karayolu request alanlarının bilet kaydı, PDF ve GİB raporundaki karşılıkları.","keywords":"karayolu JSON rapor mapping","url":"karayolu-json-rapor-mapping.html","sectionType":"Sayfa"},{"title":"e-Yolcu Listesi Senaryoları","text":"Sefer, araç işleten, bilet-koltuk ilişkisi ve yolcu listesi oluşturma senaryoları.","keywords":"yolcu listesi sefer koltuk araç işleten","url":"yolcu-listesi-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Yolcu Listesi Alan Kuralları","text":"Başlık, koltuk, yolcu kimliği, liste numarası ve ilişkili bilet zorunlulukları.","keywords":"yolcu listesi alan zorunluluk bilet","url":"yolcu-listesi-alan-kurallari.html","sectionType":"Sayfa"},{"title":"e-Yolcu Listesi Akışı","text":"Liste kaydı, doğrulama, PDF üretimi, rapor paketine alınma ve GİB sonucu yaşam döngüsü.","keywords":"yolcu listesi akış durum PDF GİB","url":"yolcu-listesi-akisi.html","sectionType":"Sayfa"},{"title":"e-Yolcu Listesi Entegratör API","text":"Yolcu listesi oluşturma ve durum sorgulama endpoint sözleşmeleri.","keywords":"yolcu listesi API endpoint status","url":"yolcu-listesi-entegrator-api.html","sectionType":"Sayfa"},{"title":"e-Yolcu Listesi Request Örnekleri","text":"Yolcu listesi oluşturma ve durum işlemleri için tam ve kopyalanabilir örnekler.","keywords":"yolcu listesi JSON request örnek","url":"yolcu-listesi-request-ornekleri.html","sectionType":"Sayfa"},{"title":"e-Yolcu Listesi JSON → Rapor Mapping","text":"Yolcu listesi request alanlarının kayıt, PDF ve GİB raporundaki karşılıkları.","keywords":"yolcu listesi JSON rapor mapping","url":"yolcu-listesi-json-rapor-mapping.html","sectionType":"Sayfa"},{"title":"Etkinlik Bileti Senaryoları","text":"Yerli/yabancı etkinlik, ödeme, gider gösterme ve iptal senaryoları.","keywords":"etkinlik senaryo bilet iptal","url":"etkinlik-senaryolari.html","sectionType":"Sayfa"},{"title":"Etkinlik Alan Kuralları","text":"Etkinlik, alıcı, organizatör, ödeme, tutar ve bilet numarası alan kuralları.","keywords":"etkinlik alan zorunluluk tutar","url":"etkinlik-alan-kurallari.html","sectionType":"Sayfa"},{"title":"Etkinlik Bileti Akışı","text":"Etkinlik bileti kaydı, PDF, iptal, durum sorgusu ve mevcut raporlama kapsamı.","keywords":"etkinlik akış durum PDF iptal","url":"etkinlik-akisi.html","sectionType":"Sayfa"},{"title":"Etkinlik Entegratör API","text":"Etkinlik bileti oluşturma, iptal, durum ve tarih aralığı endpoint sözleşmeleri.","keywords":"etkinlik API endpoint date range","url":"etkinlik-entegrator-api.html","sectionType":"Sayfa"},{"title":"Etkinlik Request Örnekleri","text":"Etkinlik bileti oluşturma ve işlem çağrıları için tam ve kopyalanabilir örnekler.","keywords":"etkinlik JSON request örnek","url":"etkinlik-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Etkinlik JSON → Rapor Mapping","text":"Etkinlik request alanlarının bilet kaydı, PDF ve rapor üretimindeki karşılıkları ile destek kapsamı.","keywords":"etkinlik JSON rapor mapping","url":"etkinlik-json-rapor-mapping.html","sectionType":"Sayfa"},{"title":"Havayolu Bileti Senaryoları","text":"Satış, iade, yabancı para, gider gösterme ve referans bilet senaryoları.","keywords":"havayolu SATIS IADE referans döviz","url":"havayolu-senaryolari.html","sectionType":"Sayfa"},{"title":"Havayolu Alan Kuralları","text":"Yolcu, uçuş, para birimi, ödeme, belge tipi ve referans alan kuralları.","keywords":"havayolu alan zorunluluk DocumentType","url":"havayolu-alan-kurallari.html","sectionType":"Sayfa"},{"title":"Havayolu Bileti Akışı","text":"Havayolu bileti kaydı, PDF, satış/iade kararı, durum sorgusu ve mevcut raporlama kapsamı.","keywords":"havayolu akış durum SATIS IADE","url":"havayolu-akisi.html","sectionType":"Sayfa"},{"title":"Havayolu Entegratör API","text":"Havayolu bileti oluşturma ve durum sorgulama endpoint sözleşmeleri.","keywords":"havayolu API endpoint status","url":"havayolu-entegrator-api.html","sectionType":"Sayfa"},{"title":"Havayolu Request Örnekleri","text":"Havayolu satış ve iade işlemleri için tam ve kopyalanabilir örnekler.","keywords":"havayolu JSON request örnek","url":"havayolu-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Havayolu JSON → Rapor Mapping","text":"Havayolu request alanlarının kayıt, PDF ve rapor üretimindeki karşılıkları ile uyum sınırları.","keywords":"havayolu JSON rapor mapping referans","url":"havayolu-json-rapor-mapping.html","sectionType":"Sayfa"},{"title":"PDF, İmza ve Teslim","text":"İmzalı PDF'in hazırlanması, sorgulanması, portal/FTP teslimi ve arşiv davranışı.","keywords":"PDF imza FTP arşiv teslim","url":"pdf-imza-ve-teslim.html","sectionType":"Sayfa"},{"title":"GİB Rapor Paketleri","text":"Bilet ve e-Yolcu Listesi rapor paketlerinin kapsamı, adlandırılması ve gönderim sözleşmesi.","keywords":"GİB rapor ZIP paket sendDocumentFile","url":"gib-rapor-paketleri.html","sectionType":"Sayfa"},{"title":"GİB Rapor Durumları","text":"Rapor paketine alınma, GİB işleme sonucu, hata ve tekrar sorgulama durumları.","keywords":"GİB rapor durum getBatchStatus hata","url":"gib-rapor-durumlari.html","sectionType":"Sayfa"},{"title":"İptal ve Mutabakat","text":"Belge iptali, iptal raporu, kaynak sistem durumu ve güvenli operasyon mutabakatı.","keywords":"iptal mutabakat durum ERP rapor","url":"iptal-ve-mutabakat.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata kodları, validasyon aileleri ve dış sözleşme bakım notları.","keywords":"enum hata kodu validasyon referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Sorun Giderme","text":"Kayıt, PDF, durum, iptal ve GİB raporlamasında gözlenebilir sorunların teşhis yolları.","keywords":"sorun giderme PDF durum GİB hata","url":"sorun-giderme.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Bilet rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik yayın","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge ailesi seçimi, API, PDF, iptal, durum, raporlama ve canlı kullanım hakkında müşteri ve entegratör soruları.","keywords":"SSS sorular API PDF GİB","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>
