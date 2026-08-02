@@ -37,55 +37,74 @@
         </div>
     </div>
 </header>
-<main class="docs-home" id="main-content" tabindex="-1">
-    <section class="docs-home-hero docs-home-hero-with-mark">
-        <div class="docs-home-hero-text">
-            <p class="docs-eyebrow">VBT Ürün Entegrasyonları</p>
-            <h1>Entegrasyon rehberlerine<br>tek yerden ulaşın.</h1>
-            <p>VBT ürünlerinin müşteri ve entegratör dokümantasyonu; API referansları, kullanım senaryoları ve teknik gereksinimler burada yayınlanır.</p>
+<main class="docs-onboarding" id="main-content" tabindex="-1">
+    <section class="docs-onboarding-intro" aria-labelledby="onboarding-title">
+        <div>
+            <h1 id="onboarding-title">İşlem akışınıza uygun rehberi seçin.</h1>
+            <p class="docs-onboarding-lead">API sözleşmelerinden uçtan uca iş akışlarına kadar entegrasyon için gereken tüm teknik içerik, ürünlere göre tek yerde düzenlenir.</p>
         </div>
-        <div class="docs-home-hero-mark" aria-hidden="true">
-            <img src="assets/vbt-document-template/assets/vbt-mark.svg" alt="">
-        </div>
+        <section class="docs-onboarding-scope" aria-labelledby="onboarding-scope-title">
+            <h2 id="onboarding-scope-title">Rehberlerde neler bulacaksınız?</h2>
+            <div class="docs-onboarding-scope-grid">
+                <article>
+                    <h3>API sözleşmeleri</h3>
+                    <p>Endpoint, kimlik doğrulama ve yanıt yapıları</p>
+                </article>
+                <article>
+                    <h3>İş akışları</h3>
+                    <p>Belge yaşam döngüleri ve sorumluluk sınırları</p>
+                </article>
+                <article>
+                    <h3>Çalıştırılabilir örnekler</h3>
+                    <p>Kopyalanabilir ve eksiksiz JSON istekleri</p>
+                </article>
+                <article>
+                    <h3>Teknik eşlemeler</h3>
+                    <p>JSON–UBL alanları, durumlar ve hata referansları</p>
+                </article>
+            </div>
+        </section>
     </section>
-    <section class="docs-home-section" aria-labelledby="guides-title">
-        <div class="docs-home-section-heading"><p class="docs-eyebrow">Rehberler</p><h2 id="guides-title">Ürüne göre başlayın</h2></div>
-        <div class="docs-home-grid">
-<a class="docs-home-card" href="guides/e-fatura/index.html">
-    <span class="docs-home-card-label">GİB e-Fatura</span>
-    <strong>e-Fatura</strong>
-    <span>Giden ve gelen fatura akışları, API sözleşmeleri, tam JSON örnekleri ve UBL eşlemeleri.</span>
-</a>
-<a class="docs-home-card" href="guides/e-irsaliye/index.html">
-    <span class="docs-home-card-label">GİB e-İrsaliye</span>
-    <strong>e-İrsaliye</strong>
-    <span>Giden ve gelen irsaliye akışları, irsaliye yanıtı, tam JSON örnekleri ve UBL eşlemeleri.</span>
-</a>
-<a class="docs-home-card" href="guides/e-arsiv-fatura/index.html">
-    <span class="docs-home-card-label">GİB e-Arşiv</span>
-    <strong>e-Arşiv Fatura</strong>
-    <span>Entegrasyon rehberi, API endpoint referansı, kullanım senaryoları ve request örnekleri.</span>
-</a>
-<a class="docs-home-card" href="guides/e-gider-pusulasi/index.html">
-    <span class="docs-home-card-label">GİB e-Arşiv</span>
-    <strong>e-Gider Pusulası</strong>
-    <span>Entegrasyon rehberi, API endpoint referansı, kullanım senaryoları ve request örnekleri.</span>
-</a>
-<a class="docs-home-card" href="guides/mustahsil-makbuzu/index.html">
-    <span class="docs-home-card-label">GİB e-Arşiv</span>
-    <strong>e-Müstahsil Makbuzu</strong>
-    <span>Tarımsal ürün alımları için entegrasyon rehberi, API endpoint referansı ve request örnekleri.</span>
-</a>
-<a class="docs-home-card" href="guides/serbest-meslek-makbuzu/index.html">
-    <span class="docs-home-card-label">GİB e-Arşiv</span>
-    <strong>e-Serbest Meslek Makbuzu</strong>
-    <span>Serbest meslek hizmetleri için entegrasyon rehberi, API endpoint referansı ve request örnekleri.</span>
-</a>
-<a class="docs-home-card" href="guides/e-adisyon/index.html">
-    <span class="docs-home-card-label">GİB e-Arşiv</span>
-    <strong>e-Adisyon</strong>
-    <span>Restoran/adisyon belgeleri için entegrasyon rehberi, API endpoint referansı ve request örnekleri.</span>
-</a></div>
+
+    <section class="docs-product-directory" aria-label="Ürün rehberleri">
+        <div class="docs-product-family-grid">
+            <div class="docs-product-family-stack">
+                <section class="docs-product-family" aria-labelledby="bidirectional-guides-title">
+                    <header>
+                        <span>01</span>
+                        <div><h2 id="bidirectional-guides-title">Giden ve gelen belgeler</h2><p>Gönderim ve alım yaşam döngüleri</p></div>
+                    </header>
+                    <div class="docs-product-list">
+                        <a class="docs-product-link" href="guides/e-fatura/index.html"><span><strong>e-Fatura</strong><small>Giden ve gelen fatura, UBL ve yanıt akışları</small></span><b aria-hidden="true">→</b></a>
+                        <a class="docs-product-link" href="guides/e-irsaliye/index.html"><span><strong>e-İrsaliye</strong><small>Sevk, irsaliye yanıtı ve UBL akışları</small></span><b aria-hidden="true">→</b></a>
+                    </div>
+                </section>
+
+                <section class="docs-product-family" aria-labelledby="ticket-guides-title">
+                    <header>
+                        <span>02</span>
+                        <div><h2 id="ticket-guides-title">Bilet ve yolcu belgeleri</h2><p>Bilet, yolcu listesi, PDF ve GİB raporlaması</p></div>
+                    </header>
+                    <div class="docs-product-list">
+                        <a class="docs-product-link" href="guides/e-bilet/index.html"><span><strong>e-Bilet</strong><small>Karayolu, etkinlik, havayolu ve yolcu listesi</small></span><b aria-hidden="true">→</b></a>
+                    </div>
+                </section>
+            </div>
+
+            <section class="docs-product-family docs-product-family-archive" aria-labelledby="archive-guides-title">
+                <header>
+                    <span>03</span>
+                    <div><h2 id="archive-guides-title">e-Arşiv belgeleri</h2><p>Oluşturma, raporlama, iptal ve teslim süreçleri</p></div>
+                </header>
+                <div class="docs-product-list">
+                    <a class="docs-product-link" href="guides/e-arsiv-fatura/index.html"><span><strong>e-Arşiv Fatura</strong><small>Fatura oluşturma, teslim ve raporlama</small></span><b aria-hidden="true">→</b></a>
+                    <a class="docs-product-link" href="guides/e-gider-pusulasi/index.html"><span><strong>e-Gider Pusulası</strong><small>Gider belgesi ve doğrulama akışları</small></span><b aria-hidden="true">→</b></a>
+                    <a class="docs-product-link" href="guides/mustahsil-makbuzu/index.html"><span><strong>e-Müstahsil Makbuzu</strong><small>Tarımsal alım, kesinti ve makbuz işlemleri</small></span><b aria-hidden="true">→</b></a>
+                    <a class="docs-product-link" href="guides/serbest-meslek-makbuzu/index.html"><span><strong>e-Serbest Meslek Makbuzu</strong><small>Hizmet, vergi, kesinti ve teslim süreçleri</small></span><b aria-hidden="true">→</b></a>
+                    <a class="docs-product-link" href="guides/e-adisyon/index.html"><span><strong>e-Adisyon</strong><small>Adisyon oluşturma, güncelleme ve raporlama</small></span><b aria-hidden="true">→</b></a>
+                </div>
+            </section>
+        </div>
     </section>
 </main>
 <script src="assets/vbt-document-template/feature-packages/core.js"></script>

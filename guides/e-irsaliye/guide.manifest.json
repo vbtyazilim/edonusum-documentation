@@ -58,7 +58,7 @@
       "label": "Referans",
       "pages": [
         { "slug": "teknik-referans", "title": "Teknik Referans", "description": "Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.", "eyebrow": "Referans", "keywords": ["Referans", "enum", "hata kodları", "validasyon"], "homeCard": { "label": "Referans" } },
-        { "slug": "changelog", "title": "Changelog", "description": "e-İrsaliye rehberinin yayınlanan içerik sürümleri.", "eyebrow": "Referans", "keywords": ["Referans", "changelog", "değişiklik"], "homeCard": { "label": "Referans" } },
+        { "slug": "changelog", "title": "Changelog", "description": "e-İrsaliye rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.", "eyebrow": "Referans", "keywords": ["Referans", "changelog", "değişiklik"], "homeCard": { "label": "Referans" } },
         { "slug": "sss", "title": "Sıkça Sorulan Sorular", "description": "Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında müşteri ve entegratör soruları.", "eyebrow": "Referans", "keywords": ["SSS", "durum", "ReceiptAdvice", "UBL", "ERP"], "roles": ["faq"], "homeCard": { "label": "SSS" } }
       ]
     }

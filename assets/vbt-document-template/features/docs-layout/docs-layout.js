@@ -60,8 +60,34 @@
         var current = window.location.pathname.split('/').pop() || 'index.html';
         document.querySelectorAll('.docs-nav-link').forEach(function (link) {
             var target = link.getAttribute('href').split('#')[0].split('/').pop();
-            if (target === current) link.classList.add('active');
+            var isCurrent = target === current;
+            link.classList.toggle('active', isCurrent);
+            if (isCurrent) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
         });
+    }
+
+    function revealCurrentPage() {
+        var activeLink = document.querySelector('.docs-nav-link.active');
+        var scrollContainer = activeLink && activeLink.closest('.docs-sidebar-inner');
+        if (!activeLink || !scrollContainer || scrollContainer.clientHeight === 0) return;
+
+        var activeRect = activeLink.getBoundingClientRect();
+        var containerRect = scrollContainer.getBoundingClientRect();
+        var safeGap = Math.min(48, scrollContainer.clientHeight * .15);
+        var isComfortablyVisible = activeRect.top >= containerRect.top + safeGap
+            && activeRect.bottom <= containerRect.bottom - safeGap;
+        if (isComfortablyVisible) return;
+
+        var centeredTop = scrollContainer.scrollTop
+            + activeRect.top
+            - containerRect.top
+            - (scrollContainer.clientHeight - activeRect.height) / 2;
+        var maximumTop = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        scrollContainer.scrollTop = Math.max(0, Math.min(maximumTop, centeredTop));
     }
 
     function init() {
@@ -83,6 +109,7 @@
         });
 
         markCurrentPage();
+        requestAnimationFrame(revealCurrentPage);
         buildToc();
         setActiveToc();
         window.addEventListener('scroll', setActiveToc, { passive: true });
