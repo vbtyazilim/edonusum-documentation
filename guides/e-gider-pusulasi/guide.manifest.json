@@ -13,14 +13,18 @@
   "home": {
     "title": "e-Gider Pusulası Entegrasyon Rehberi",
     "description": "e-Gider Pusulası süreçlerinin mevzuata ve GİB teknik standartlarına uygun biçimde yürütülmesine yönelik entegrasyon, API ve uygulama referansı.",
+    "layout": "integration",
+    "showEyebrow": false,
     "primaryAction": {
       "target": "egider-pusulasi-nedir",
-      "label": "Dokümanı inceleyin"
+      "label": "Rehbere başlayın"
     }
   },
   "sections": [
     {
       "label": "Başlangıç",
+      "description": "Ürün kapsamı, teknik kimlik ve GİB gereksinimleri",
+      "icon": "start",
       "pages": [
         {
           "slug": "egider-pusulasi-nedir",
@@ -57,6 +61,8 @@
     },
     {
       "label": "Uygulama",
+      "description": "Senaryolar, yaşam döngüsü ve sorumluluk sınırları",
+      "icon": "workflow",
       "pages": [
         {
           "slug": "kullanim-senaryolari",
@@ -105,6 +111,8 @@
     },
     {
       "label": "API",
+      "description": "Entegratör ve Portal endpoint sözleşmeleri ile örnekler",
+      "icon": "api",
       "pages": [
         {
           "slug": "entegrator-api-endpoint-referansi",
@@ -177,6 +185,8 @@
     },
     {
       "label": "Referans",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
+      "icon": "reference",
       "pages": [
         {
           "slug": "teknik-referans",
@@ -210,7 +220,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.",
+          "description": "Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": [
             "SSS",

@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rehberler — e-Dönüşüm Dokümantasyon</title>
-<meta name="description" content="VBT ürünleri için müşteri ve entegratör entegrasyon rehberleri.">
+<title>VBT e-Dönüşüm Entegrasyon Merkezi</title>
+<meta name="description" content="VBT e-Dönüşüm ürünleri için API sözleşmeleri, giden ve gelen belge akışları, tam JSON örnekleri, durum makineleri ve UBL eşlemeleri.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
-<meta property="og:title" content="Rehberler — e-Dönüşüm Dokümantasyon">
-<meta property="og:description" content="VBT ürünleri için müşteri ve entegratör entegrasyon rehberleri.">
+<meta property="og:title" content="VBT e-Dönüşüm Entegrasyon Merkezi">
+<meta property="og:description" content="API sözleşmeleri, belge akışları, tam JSON örnekleri, durum makineleri ve UBL eşlemeleri.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Rehberler — e-Dönüşüm Dokümantasyon">
-<meta name="twitter:description" content="VBT ürünleri için müşteri ve entegratör entegrasyon rehberleri.">
+<meta name="twitter:title" content="VBT e-Dönüşüm Entegrasyon Merkezi">
+<meta name="twitter:description" content="API sözleşmeleri, belge akışları, tam JSON örnekleri, durum makineleri ve UBL eşlemeleri.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="assets/vbt-document-template/assets/vbt-mark.svg">
@@ -25,99 +25,123 @@
 <link rel="apple-touch-icon" href="assets/vbt-document-template/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/vbt-document-template/feature-packages/core.css">
 </head>
-<body class="docs-home-page">
+<body class="docs-home-page docs-portal-page">
 <a class="skip-link" href="#main-content">İçeriğe atla</a>
 <header class="docs-topbar">
     <div class="docs-topbar-inner">
-        <a class="docs-brand" href="index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Dönüşüm Dokümantasyon</span></a>
-        <nav class="docs-top-links" aria-label="Üst navigasyon"><a href="iletisim.html">Çözüm Merkezi</a></nav>
+        <a class="docs-brand" href="index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Dönüşüm Entegrasyon Merkezi</span></a>
+        <nav class="docs-top-links" aria-label="Üst navigasyon"><a class="docs-portal-local-link" href="#urun-rehberleri">Ürünler</a><a class="docs-portal-local-link" href="#teknik-arama">Teknik arama</a><a href="iletisim.html">Çözüm Merkezi</a></nav>
         <div class="docs-top-actions">
+            <button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Teknik dokümanlarda ara">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg>
+                <span>Ara</span><kbd>Ctrl+K</kbd>
+            </button>
             <a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a>
             <button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-label">Koyu tema</span></button>
         </div>
     </div>
 </header>
-<main class="docs-onboarding" id="main-content" tabindex="-1">
-    <section class="docs-onboarding-intro" aria-labelledby="onboarding-title">
-        <div>
-            <h1 id="onboarding-title">İşlem akışınıza uygun rehberi seçin.</h1>
-            <p class="docs-onboarding-lead">API sözleşmelerinden uçtan uca iş akışlarına kadar entegrasyon için gereken tüm teknik içerik, ürünlere göre tek yerde düzenlenir.</p>
-        </div>
-        <section class="docs-onboarding-scope" aria-labelledby="onboarding-scope-title">
-            <h2 id="onboarding-scope-title">Rehberlerde neler bulacaksınız?</h2>
-            <div class="docs-onboarding-scope-grid">
-                <article>
-                    <h3>API sözleşmeleri</h3>
-                    <p>Endpoint, kimlik doğrulama ve yanıt yapıları</p>
-                </article>
-                <article>
-                    <h3>İş akışları</h3>
-                    <p>Belge yaşam döngüleri ve sorumluluk sınırları</p>
-                </article>
-                <article>
-                    <h3>Çalıştırılabilir örnekler</h3>
-                    <p>Kopyalanabilir ve eksiksiz JSON istekleri</p>
-                </article>
-                <article>
-                    <h3>Teknik eşlemeler</h3>
-                    <p>JSON–UBL alanları, durumlar ve hata referansları</p>
-                </article>
+<main class="docs-portal" id="main-content" tabindex="-1">
+    <div class="docs-portal-grid">
+        <section class="docs-portal-hero" aria-labelledby="portal-title">
+            <div class="docs-portal-hero-copy">
+                <h1 id="portal-title">E-Dönüşüm Entegrasyon Merkezi</h1>
+                <p class="docs-portal-hero-lead">Giden ve gelen belge akışları, doğrulanmış API sözleşmeleri, tam JSON örnekleri, durum makineleri ve UBL eşlemeleri tek bir teknik kaynakta.</p>
+
+                <button class="docs-portal-search" id="teknik-arama" type="button" onclick="search.openSearch()" aria-label="Ürün, API, hata kodu veya UBL konusu ara">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg>
+                    <span>Ürün, API, hata kodu veya UBL ara</span>
+                    <kbd>Ctrl+K</kbd>
+                </button>
+                <div class="docs-portal-lenses" aria-label="Teknik konu kısayolları">
+                    <button class="docs-portal-lens" type="button" onclick="search.openSearch('API endpoint')">API sözleşmeleri</button>
+                    <button class="docs-portal-lens" type="button" onclick="search.openSearch('JSON request')">Tam JSON örnekleri</button>
+                    <button class="docs-portal-lens" type="button" onclick="search.openSearch('akış durum')">Akış ve durumlar</button>
+                    <button class="docs-portal-lens" type="button" onclick="search.openSearch('UBL mapping')">UBL eşlemeleri</button>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="docs-portal-catalog" id="urun-rehberleri" aria-labelledby="product-catalog-title">
+            <header class="docs-portal-catalog-heading">
+                <h2 id="product-catalog-title">Ürün rehberleri</h2>
+                <p>Belge yönüne ve iş modeline göre doğru entegrasyon yüzeyini seçin.</p>
+            </header>
+
+            <div class="docs-portal-family-grid">
+                <div class="docs-portal-family-stack">
+                    <section class="docs-portal-family docs-entry-card" aria-labelledby="bidirectional-guides-title">
+                        <header>
+                            <span class="docs-entry-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h13m0 0-3-3m3 3-3 3M20 17H7m0 0 3 3m-3-3 3-3"></path></svg></span>
+                            <div><h3 id="bidirectional-guides-title">Giden ve gelen belgeler</h3><p>Gönderim, alım ve yanıt yaşam döngüleri</p></div>
+                        </header>
+                        <div class="docs-portal-products">
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-fatura/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Fatura</strong><b aria-hidden="true"></b></span><small>Giden/gelen fatura, UBL ve uygulama yanıtı</small></span></a>
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-irsaliye/index.html"><span><span class="docs-entry-card-link-title"><strong>e-İrsaliye</strong><b aria-hidden="true"></b></span><small>Sevk, irsaliye yanıtı ve UBL akışları</small></span></a>
+                        </div>
+                    </section>
+
+                    <section class="docs-portal-family docs-entry-card" aria-labelledby="ledger-guides-title">
+                        <header>
+                            <span class="docs-entry-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5h11.5A2.5 2.5 0 0 1 19 7v12.5H7.5A2.5 2.5 0 0 1 5 17V4.5Z"></path><path d="M5 17a2.5 2.5 0 0 1 2.5-2.5H19M9 8h6"></path></svg></span>
+                            <div><h3 id="ledger-guides-title">Defter ve kayıt belgeleri</h3><p>Dönem, berat, kayıt ve GİB onay süreçleri</p></div>
+                        </header>
+                        <div class="docs-portal-products">
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-defter/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Defter</strong><b aria-hidden="true"></b></span><small>Yevmiye, kebir, berat ve aylık dönemler</small></span></a>
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-envanter-defteri/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Envanter Defteri</strong><b aria-hidden="true"></b></span><small>Açılış, kapanış, envanter ve berat</small></span></a>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="docs-portal-family-stack">
+                    <section class="docs-portal-family docs-entry-card" aria-labelledby="archive-guides-title">
+                        <header>
+                            <span class="docs-entry-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5h16v12H4zM3 4.5h18v3H3zM9 11h6"></path></svg></span>
+                            <div><h3 id="archive-guides-title">e-Arşiv belgeleri</h3><p>Oluşturma, raporlama, iptal ve teslim</p></div>
+                        </header>
+                        <div class="docs-portal-products">
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-arsiv-fatura/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Arşiv Fatura</strong><b aria-hidden="true"></b></span><small>Fatura oluşturma, teslim ve raporlama</small></span></a>
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-gider-pusulasi/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Gider Pusulası</strong><b aria-hidden="true"></b></span><small>Gider belgesi ve doğrulama akışları</small></span></a>
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/mustahsil-makbuzu/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Müstahsil Makbuzu</strong><b aria-hidden="true"></b></span><small>Tarımsal alım, kesinti ve makbuz</small></span></a>
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/serbest-meslek-makbuzu/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Serbest Meslek Makbuzu</strong><b aria-hidden="true"></b></span><small>Hizmet, vergi, kesinti ve teslim</small></span></a>
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-adisyon/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Adisyon</strong><b aria-hidden="true"></b></span><small>Oluşturma, güncelleme ve raporlama</small></span></a>
+                        </div>
+                    </section>
+
+                    <section class="docs-portal-family docs-entry-card" aria-labelledby="ticket-guides-title">
+                        <header>
+                            <span class="docs-entry-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4V7Z"></path><path d="M9 9.5v5M9 16.5v.5"></path></svg></span>
+                            <div><h3 id="ticket-guides-title">Bilet ve yolcu belgeleri</h3><p>Bilet, yolcu listesi, PDF ve GİB raporlaması</p></div>
+                        </header>
+                        <div class="docs-portal-products">
+                            <a class="docs-portal-product docs-entry-card-link" href="guides/e-bilet/index.html"><span><span class="docs-entry-card-link-title"><strong>e-Bilet</strong><b aria-hidden="true"></b></span><small>Karayolu, etkinlik, havayolu ve yolcu listesi</small></span></a>
+                        </div>
+                    </section>
+                </div>
             </div>
         </section>
-    </section>
-
-    <section class="docs-product-directory" aria-label="Ürün rehberleri">
-        <div class="docs-product-family-grid">
-            <div class="docs-product-family-stack">
-                <section class="docs-product-family" aria-labelledby="bidirectional-guides-title">
-                    <header>
-                        <span>01</span>
-                        <div><h2 id="bidirectional-guides-title">Giden ve gelen belgeler</h2><p>Gönderim ve alım yaşam döngüleri</p></div>
-                    </header>
-                    <div class="docs-product-list">
-                        <a class="docs-product-link" href="guides/e-fatura/index.html"><span><strong>e-Fatura</strong><small>Giden ve gelen fatura, UBL ve yanıt akışları</small></span><b aria-hidden="true">→</b></a>
-                        <a class="docs-product-link" href="guides/e-irsaliye/index.html"><span><strong>e-İrsaliye</strong><small>Sevk, irsaliye yanıtı ve UBL akışları</small></span><b aria-hidden="true">→</b></a>
-                    </div>
-                </section>
-
-                <section class="docs-product-family" aria-labelledby="ticket-guides-title">
-                    <header>
-                        <span>02</span>
-                        <div><h2 id="ticket-guides-title">Bilet ve yolcu belgeleri</h2><p>Bilet, yolcu listesi, PDF ve GİB raporlaması</p></div>
-                    </header>
-                    <div class="docs-product-list">
-                        <a class="docs-product-link" href="guides/e-bilet/index.html"><span><strong>e-Bilet</strong><small>Karayolu, etkinlik, havayolu ve yolcu listesi</small></span><b aria-hidden="true">→</b></a>
-                    </div>
-                </section>
-
-                <section class="docs-product-family" aria-labelledby="ledger-guides-title">
-                    <header>
-                        <span>04</span>
-                        <div><h2 id="ledger-guides-title">Defter ve kayıt belgeleri</h2><p>Mali kayıt, dönem, berat ve GİB onay süreçleri</p></div>
-                    </header>
-                    <div class="docs-product-list">
-                        <a class="docs-product-link" href="guides/e-defter/index.html"><span><strong>e-Defter</strong><small>Yevmiye, kebir, berat ve aylık dönem akışları</small></span><b aria-hidden="true">→</b></a>
-                        <a class="docs-product-link" href="guides/e-envanter-defteri/index.html"><span><strong>e-Envanter Defteri</strong><small>Açılış, kapanış, envanter ve berat akışları</small></span><b aria-hidden="true">→</b></a>
-                    </div>
-                </section>
-            </div>
-
-            <section class="docs-product-family docs-product-family-archive" aria-labelledby="archive-guides-title">
-                <header>
-                    <span>03</span>
-                    <div><h2 id="archive-guides-title">e-Arşiv belgeleri</h2><p>Oluşturma, raporlama, iptal ve teslim süreçleri</p></div>
-                </header>
-                <div class="docs-product-list">
-                    <a class="docs-product-link" href="guides/e-arsiv-fatura/index.html"><span><strong>e-Arşiv Fatura</strong><small>Fatura oluşturma, teslim ve raporlama</small></span><b aria-hidden="true">→</b></a>
-                    <a class="docs-product-link" href="guides/e-gider-pusulasi/index.html"><span><strong>e-Gider Pusulası</strong><small>Gider belgesi ve doğrulama akışları</small></span><b aria-hidden="true">→</b></a>
-                    <a class="docs-product-link" href="guides/mustahsil-makbuzu/index.html"><span><strong>e-Müstahsil Makbuzu</strong><small>Tarımsal alım, kesinti ve makbuz işlemleri</small></span><b aria-hidden="true">→</b></a>
-                    <a class="docs-product-link" href="guides/serbest-meslek-makbuzu/index.html"><span><strong>e-Serbest Meslek Makbuzu</strong><small>Hizmet, vergi, kesinti ve teslim süreçleri</small></span><b aria-hidden="true">→</b></a>
-                    <a class="docs-product-link" href="guides/e-adisyon/index.html"><span><strong>e-Adisyon</strong><small>Adisyon oluşturma, güncelleme ve raporlama</small></span><b aria-hidden="true">→</b></a>
-                </div>
-            </section>
-        </div>
-    </section>
+    </div>
 </main>
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)">
+    <div class="search-modal" role="dialog" aria-modal="true" aria-label="Teknik dokümanlarda ara" onclick="event.stopPropagation()">
+        <div class="search-modal-header">
+            <div class="search-modal-heading">
+                <strong>Teknik arama</strong>
+                <span>Ürün rehberleri ve teknik sözleşmeler arasında arayın.</span>
+            </div>
+            <div class="search-modal-scope" aria-hidden="true"><span>API</span><span>JSON</span><span>UBL</span><span>Hata</span></div>
+        </div>
+        <div class="search-input-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg>
+            <input type="text" class="search-input" id="searchInput" aria-label="Teknik dokümanlarda ara" placeholder="Ürün, API, hata kodu veya UBL konusu ara..." autocomplete="off">
+            <button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button>
+        </div>
+        <div class="search-results" id="searchResults" aria-live="polite"></div>
+    </div>
+</div>
+<script src="assets/site-search-index.js"></script>
+<script>window.SEARCH_CONFIG={contentSelector:'.docs-portal',maxResults:60,debounceMs:80,noResultsText:'Sonuç bulunamadı. Ürün, işlem veya teknik alan adıyla yeniden deneyin.',externalItems:window.SITE_SEARCH_INDEX||[]};</script>
 <script src="assets/vbt-document-template/feature-packages/core.js"></script>
 </body>
 </html>

@@ -13,12 +13,16 @@
   "home": {
     "title": "e-İrsaliye Entegrasyon Rehberi",
     "description": "Giden e-İrsaliye ile gelen e-İrsaliye ve irsaliye yanıtı süreçleri için doğrulanmış entegrasyon, API, durum, JSON ve UBL referansı.",
-    "primaryAction": { "target": "e-irsaliye-nedir", "label": "Dokümanı inceleyin" },
+    "layout": "integration",
+    "showEyebrow": false,
+    "primaryAction": { "target": "e-irsaliye-nedir", "label": "Rehbere başlayın" },
     "announcement": { "enabled": false }
   },
   "sections": [
     {
       "label": "Başlangıç",
+      "description": "Ürün kapsamı, belge türleri ve GİB teknik temeli",
+      "icon": "start",
       "pages": [
         { "slug": "e-irsaliye-nedir", "title": "e-İrsaliye Nedir?", "description": "e-İrsaliye'nin kapsamı, belge türleri, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.", "eyebrow": "Başlangıç", "keywords": ["Başlangıç", "e-İrsaliye", "DespatchAdvice", "ReceiptAdvice"], "roles": ["guide-start"], "homeCard": { "label": "Başlangıç" } },
         { "slug": "gib-teknik-gereksinimleri", "title": "GİB Referansı", "description": "GİB e-İrsaliye paketi, UBL-TR belge yapıları, resmi kılavuzlar ve teknik gereksinimler.", "eyebrow": "Teknik Temel", "keywords": ["Teknik Temel", "GİB", "UBL-TR", "DespatchAdvice", "ReceiptAdvice"], "homeCard": { "label": "Teknik Temel" } }
@@ -26,12 +30,16 @@
     },
     {
       "label": "API Temelleri",
+      "description": "Kimlik doğrulama, ortak istek ve yanıt sözleşmesi",
+      "icon": "api",
       "pages": [
         { "slug": "api-temelleri", "title": "API Temelleri", "description": "Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.", "eyebrow": "API Temelleri", "keywords": ["API", "token", "VbtAuthorization", "ResponseModel", "ETTN"], "roles": ["api"], "homeCard": { "label": "API", "description": "Tüm giden ve gelen irsaliye çağrılarının ortak sözleşmesi." } }
       ]
     },
     {
       "label": "Giden İrsaliye",
+      "description": "Sevk, gönderim, durum takibi ve UBL üretimi",
+      "icon": "outgoing",
       "pages": [
         { "slug": "giden-irsaliye-senaryolari", "title": "Giden İrsaliye Senaryoları", "description": "TEMELIRSALIYE, MATBUDAN ve IDISIRSALIYE profilleri için profil, belge tipi ve zorunlu alan kararları.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "TEMELIRSALIYE", "MATBUDAN", "IDISIRSALIYE"], "homeCard": { "label": "Giden İrsaliye", "description": "Profil seçimi, zorunlu alanlar ve oluşturma senaryoları." } },
         { "slug": "giden-irsaliye-akisi", "title": "Giden İrsaliye Akışı", "description": "Giden e-İrsaliye'nin oluşturulması, imzalanması, GİB ve alıcıya iletilmesi ile kabul, kısmi kabul ve red durumları.", "eyebrow": "Giden İrsaliye", "keywords": ["Giden İrsaliye", "durum", "GİB", "irsaliye yanıtı"], "homeCard": { "label": "Giden İrsaliye", "description": "Giden e-İrsaliye yaşam döngüsü ve dallanan sonuçlar." } },
@@ -44,6 +52,8 @@
     },
     {
       "label": "Gelen İrsaliye",
+      "description": "Belge alımı, ERP aktarımı ve irsaliye yanıtı",
+      "icon": "incoming",
       "pages": [
         { "slug": "gelen-irsaliye-senaryolari", "title": "Gelen İrsaliye Senaryoları", "description": "Gelen irsaliyeyi alma, ERP'ye aktarma ve kabul, kısmi kabul veya red irsaliye yanıtı üretme senaryoları.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "ReceiptAdvice", "kabul", "kısmi kabul", "red", "ERP"], "homeCard": { "label": "Gelen İrsaliye", "description": "Belge alma, karar verme ve ERP senaryoları." } },
         { "slug": "gelen-irsaliye-akisi", "title": "Gelen İrsaliye Akışı", "description": "Gelen e-İrsaliye'nin alınması, ERP'ye aktarılması ve irsaliye yanıtının teknik durum makinesi.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "durum", "ReceiptAdvice", "ERP"], "homeCard": { "label": "Gelen İrsaliye", "description": "Gelen belge ve irsaliye yanıtı yaşam döngüsü." } },
@@ -56,10 +66,12 @@
     },
     {
       "label": "Referans",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
+      "icon": "reference",
       "pages": [
         { "slug": "teknik-referans", "title": "Teknik Referans", "description": "Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.", "eyebrow": "Referans", "keywords": ["Referans", "enum", "hata kodları", "validasyon"], "homeCard": { "label": "Referans" } },
         { "slug": "changelog", "title": "Changelog", "description": "e-İrsaliye rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.", "eyebrow": "Referans", "keywords": ["Referans", "changelog", "değişiklik"], "homeCard": { "label": "Referans" } },
-        { "slug": "sss", "title": "Sıkça Sorulan Sorular", "description": "Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında müşteri ve entegratör soruları.", "eyebrow": "Referans", "keywords": ["SSS", "durum", "ReceiptAdvice", "UBL", "ERP"], "roles": ["faq"], "homeCard": { "label": "SSS" } }
+        { "slug": "sss", "title": "Sıkça Sorulan Sorular", "description": "Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında sık sorulan sorular.", "eyebrow": "Referans", "keywords": ["SSS", "durum", "ReceiptAdvice", "UBL", "ERP"], "roles": ["faq"], "homeCard": { "label": "SSS" } }
       ]
     }
   ]

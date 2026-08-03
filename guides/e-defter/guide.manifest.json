@@ -12,6 +12,8 @@
   "home": {
     "title": "e-Defter Entegrasyon Rehberi",
     "description": "e-Defter ürün kapsamı, aylık operasyon süreçleri, GİB yaşam döngüsü ve entegrasyon sözleşmesi.",
+    "layout": "integration",
+    "showEyebrow": false,
     "primaryAction": {
       "target": "e-defter-nedir",
       "label": "Rehbere başlayın"
@@ -23,6 +25,8 @@
   "sections": [
     {
       "label": "Başlangıç",
+      "description": "Ürün kapsamı, teknik kimlik ve GİB gereksinimleri",
+      "icon": "start",
       "pages": [
         {
           "slug": "e-defter-nedir",
@@ -67,6 +71,8 @@
     },
     {
       "label": "İş Akışı",
+      "description": "Aylık dönem, defter üretimi ve durum geçişleri",
+      "icon": "workflow",
       "pages": [
         {
           "slug": "kullanim-senaryolari",
@@ -114,6 +120,8 @@
     },
     {
       "label": "API",
+      "description": "Entegratör ve Portal endpoint sözleşmeleri ile örnekler",
+      "icon": "api",
       "pages": [
         {
           "slug": "entegrator-api-endpoint-referansi",
@@ -167,6 +175,8 @@
     },
     {
       "label": "Referans",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
+      "icon": "reference",
       "pages": [
         {
           "slug": "teknik-referans",
@@ -191,7 +201,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.",
+          "description": "Dönem, berat, durum, imza, GİB ve arşivleme hakkında sık sorulan sorular.",
           "keywords": [
             "SSS",
             "soru",

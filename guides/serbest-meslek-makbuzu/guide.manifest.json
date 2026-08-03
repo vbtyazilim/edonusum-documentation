@@ -13,14 +13,18 @@
   "home": {
     "title": "e-Serbest Meslek Makbuzu Entegrasyon Rehberi",
     "description": "e-Serbest Meslek Makbuzu süreçleri için entegrasyon, API, belge teslimi ve GİB raporlama sorumluluklarını açıklayan uygulama rehberi.",
+    "layout": "integration",
+    "showEyebrow": false,
     "primaryAction": {
       "target": "esmm-nedir",
-      "label": "Dokümanı inceleyin"
+      "label": "Rehbere başlayın"
     }
   },
   "sections": [
     {
       "label": "Başlangıç",
+      "description": "Ürün kapsamı, teknik kimlik ve GİB gereksinimleri",
+      "icon": "start",
       "pages": [
         {
           "slug": "esmm-nedir",
@@ -58,6 +62,8 @@
     },
     {
       "label": "Uygulama",
+      "description": "Senaryolar, yaşam döngüsü ve sorumluluk sınırları",
+      "icon": "workflow",
       "pages": [
         {
           "slug": "kullanim-senaryolari",
@@ -107,6 +113,8 @@
     },
     {
       "label": "API",
+      "description": "Entegratör ve Portal endpoint sözleşmeleri ile örnekler",
+      "icon": "api",
       "pages": [
         {
           "slug": "entegrator-api-endpoint-referansi",
@@ -177,6 +185,8 @@
     },
     {
       "label": "Referans",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
+      "icon": "reference",
       "pages": [
         {
           "slug": "teknik-referans",
@@ -209,7 +219,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "e-SMM süreçlerinde müşterilerin ve entegratörlerin sık karşılaştığı sorular.",
+          "description": "Belge kullanımı, vergi, teslim, iptal, API ve raporlama hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": [
             "SSS",

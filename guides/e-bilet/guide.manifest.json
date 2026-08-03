@@ -13,9 +13,11 @@
   "home": {
     "title": "e-Bilet Entegrasyon Rehberi",
     "description": "Karayolu, e-Yolcu Listesi, etkinlik ve havayolu belgeleri için API, PDF, durum takibi ve GİB raporlama sözleşmelerini açıklayan e-Bilet entegrasyon rehberi.",
+    "layout": "integration",
+    "showEyebrow": false,
     "primaryAction": {
       "target": "e-bilet-nedir",
-      "label": "Dokümanı inceleyin"
+      "label": "Rehbere başlayın"
     },
     "announcement": {
       "enabled": false
@@ -24,6 +26,8 @@
   "sections": [
     {
       "label": "Başlangıç",
+      "description": "Ürün kapsamı, belge türleri ve GİB teknik temeli",
+      "icon": "start",
       "pages": [
         {
           "slug": "e-bilet-nedir",
@@ -81,6 +85,8 @@
     },
     {
       "label": "API Temelleri",
+      "description": "Kimlik doğrulama, ortak istek ve yanıt sözleşmesi",
+      "icon": "api",
       "pages": [
         {
           "slug": "api-temelleri",
@@ -150,6 +156,8 @@
     },
     {
       "label": "Karayolu e-Bileti",
+      "description": "Karayolu belgesi oluşturma ve işlem sözleşmesi",
+      "icon": "road",
       "pages": [
         {
           "slug": "karayolu-senaryolari",
@@ -236,6 +244,8 @@
     },
     {
       "label": "e-Yolcu Listesi",
+      "description": "Yolcu listesinin oluşturulması ve GİB işlemleri",
+      "icon": "passenger",
       "pages": [
         {
           "slug": "yolcu-listesi-senaryolari",
@@ -322,6 +332,8 @@
     },
     {
       "label": "Etkinlik e-Bileti",
+      "description": "Etkinlik bileti oluşturma ve belge kuralları",
+      "icon": "event",
       "pages": [
         {
           "slug": "etkinlik-senaryolari",
@@ -408,6 +420,8 @@
     },
     {
       "label": "Havayolu e-Bileti",
+      "description": "Havayolu bileti oluşturma ve belge kuralları",
+      "icon": "flight",
       "pages": [
         {
           "slug": "havayolu-senaryolari",
@@ -496,6 +510,8 @@
     },
     {
       "label": "Raporlama ve Çıktılar",
+      "description": "PDF çıktıları, raporlama ve sonuç takibi",
+      "icon": "report",
       "pages": [
         {
           "slug": "pdf-imza-ve-teslim",
@@ -561,6 +577,8 @@
     },
     {
       "label": "Referans",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
+      "icon": "reference",
       "pages": [
         {
           "slug": "teknik-referans",
@@ -606,7 +624,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "Belge ailesi seçimi, API, PDF, iptal, durum, raporlama ve canlı kullanım hakkında müşteri ve entegratör soruları.",
+          "description": "Belge ailesi seçimi, API, PDF, iptal, durum, raporlama ve canlı kullanım hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": [
             "SSS",

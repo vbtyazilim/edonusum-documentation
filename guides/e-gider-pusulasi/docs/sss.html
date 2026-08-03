@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sıkça Sorulan Sorular — e-Gider Pusulası Entegrasyon Rehberi</title>
-<meta name="description" content="e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.">
+<meta name="description" content="Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/sss.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Sıkça Sorulan Sorular — e-Gider Pusulası Entegrasyon Rehberi">
-<meta property="og:description" content="e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.">
+<meta property="og:description" content="Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/sss.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sıkça Sorulan Sorular — e-Gider Pusulası Entegrasyon Rehberi">
-<meta name="twitter:description" content="e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.">
+<meta name="twitter:description" content="Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -77,11 +77,12 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Sıkça Sorulan Sorular</h1><p class="docs-lead">e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Sıkça Sorulan Sorular</h1><p class="docs-lead">Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.</p></header>
 <!-- vbt:article-header:end -->
 <section id="section-sss">
 
-<h2 id="sss-musteri">Müşteri SSS</h2>
+<div class="table-wrapper"><table><thead><tr><th>Konu</th><th>Kaynak bölüm</th></tr></thead><tbody><tr><td>Belge türü ve senaryolar</td><td><a href="kullanim-senaryolari.html">Kullanım Senaryoları</a></td></tr><tr><td>Doğrulama ve sorumluluklar</td><td><a href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a></td></tr><tr><td>API işlemleri</td><td><a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a></td></tr><tr><td>Alan eşleştirmeleri</td><td><a href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a></td></tr></tbody></table></div>
+<h2 id="kullanim-ve-operasyon">Kullanım ve Operasyon</h2>
 
 <details class="example-details"><summary>e-Gider Pusulası nedir, ne zaman düzenlenir?</summary>
     <div class="example-body">
@@ -131,7 +132,7 @@
     <div class="example-body"><p>Geçersiz veya süresi dolmuş kod kabul edilmez. Deneme ve bekleme kuralları uygunsa yeni kod istenir.</p></div>
 </details>
 
-<h2 id="sss-entegrator">Entegratör SSS</h2>
+<h2 id="teknik-entegrasyon">Teknik Entegrasyon</h2>
 
 <details class="example-details"><summary>SMS gönderme ve kod doğrulama endpointlerini entegratör mü çağıracak?</summary>
     <div class="example-body">
@@ -202,7 +203,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal PersonParty doğrulama","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"e-Gider Pusulası hakkında müşteri ve entegratör tarafından en sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal PersonParty doğrulama","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>

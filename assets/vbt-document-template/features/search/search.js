@@ -45,7 +45,7 @@
  *   };
  *
  * Public API:
- *   search.openSearch()
+ *   search.openSearch(query)
  *   search.closeSearch()
  *   search.closeSearchOnOverlay(event)
  *   search.navigateToResult(anchor, sectionId)
@@ -162,7 +162,7 @@
     ══════════════════════════════════════════════════════════ */
     function performSearch(query) {
         if (!query || query.trim().length < 2) {
-            renderResults([]);
+            renderPrompt();
             return;
         }
 
@@ -193,24 +193,63 @@
         return text.replace(highlightPattern, '<mark>$1</mark>');
     }
 
+    function splitResultTitle(title, sectionType) {
+        var separator = ' · ';
+        var separatorIndex = title.indexOf(separator);
+
+        if (separatorIndex === -1) {
+            return {
+                context: sectionType === 'Ürün' ? 'Ürün rehberi' : 'Teknik doküman',
+                title: title
+            };
+        }
+
+        return {
+            context: title.substring(0, separatorIndex),
+            title: title.substring(separatorIndex + separator.length)
+        };
+    }
+
+    function renderPrompt() {
+        if (!searchResults) return;
+        searchResults.innerHTML =
+            '<div class="search-search-hint">' +
+            '<strong>Aramaya başlayın</strong>' +
+            '<span>Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.</span>' +
+            '</div>';
+        selectedIndex = -1;
+    }
+
     /* ── Sonuçları DOM'a yaz ── */
     function renderResults(results) {
         if (!searchResults) return;
 
         if (results.length === 0) {
-            searchResults.innerHTML = '<div class="search-no-results">' + NO_RESULTS_MESSAGE + '</div>';
+            searchResults.innerHTML =
+                '<div class="search-no-results">' +
+                '<strong>Eşleşen kayıt bulunamadı</strong>' +
+                '<span>' + NO_RESULTS_MESSAGE + '</span>' +
+                '</div>';
+            selectedIndex = -1;
             return;
         }
 
         var term = searchInput ? searchInput.value.trim() : '';
-        var resultsHtml = '';
+        var resultsHtml =
+            '<div class="search-results-meta">' +
+            '<span class="search-results-count">' + results.length + ' sonuç</span>' +
+            '<span class="search-results-shortcuts"><kbd>↑</kbd><kbd>↓</kbd> gezin <kbd>Enter</kbd> açın</span>' +
+            '</div>';
 
         results.forEach(function (result, resultIndex) {
-            var highlightedTitle   = result.title;
+            var titleParts = splitResultTitle(result.title || '', result.sectionType);
+            var highlightedContext = titleParts.context;
+            var highlightedTitle   = titleParts.title;
             var highlightedPreview = result.preview;
 
             if (term && term.length >= 2) {
-                highlightedTitle = highlight(result.title, term);
+                highlightedContext = highlight(titleParts.context, term);
+                highlightedTitle = highlight(titleParts.title, term);
                 var textLower  = result.text.toLowerCase();
                 var termLower  = term.toLowerCase();
                 var matchPos   = textLower.indexOf(termLower);
@@ -226,21 +265,27 @@
                 }
             }
 
-            var anchor  = result.id || (result.element ? (result.element.id || '') : '');
-            var badge   = result.sectionType
-                ? '<span class="search-result-section">' + result.sectionType + '</span>'
-                : '';
-
             resultsHtml +=
-                '<div class="search-result-item"' +
-                ' onclick="search.navigateToResult(\'' + anchor + '\',\'' + result.sectionId + '\',\'' + (result.url || '') + '\')">' +
-                badge +
-                '<div class="search-result-title">' + (highlightedTitle || '(Başlıksız)') + '</div>' +
-                '<div class="search-result-content">' + highlightedPreview + '</div>' +
-                '</div>';
+                '<button class="search-result-item" type="button" data-result-index="' + resultIndex + '">' +
+                '<span class="search-result-meta">' +
+                '<span class="search-result-product">' + highlightedContext + '</span>' +
+                (result.sectionType ? '<span class="search-result-section">' + result.sectionType + '</span>' : '') +
+                '</span>' +
+                '<span class="search-result-title">' + (highlightedTitle || '(Başlıksız)') + '</span>' +
+                '<span class="search-result-content">' + highlightedPreview + '</span>' +
+                '<span class="search-result-arrow" aria-hidden="true">→</span>' +
+                '</button>';
         });
 
         searchResults.innerHTML = resultsHtml;
+        searchResults.querySelectorAll('.search-result-item').forEach(function (resultItem) {
+            resultItem.addEventListener('click', function () {
+                var result = results[Number(resultItem.dataset.resultIndex)];
+                if (!result) return;
+                var anchor = result.id || (result.element ? (result.element.id || '') : '');
+                navigateToResult(anchor, result.sectionId, result.url || '');
+            });
+        });
         selectedIndex = -1;
     }
 
@@ -315,11 +360,19 @@
     /* ══════════════════════════════════════════════════════════
        PUBLIC API
     ══════════════════════════════════════════════════════════ */
-    function openSearch() {
+    function openSearch(initialQuery) {
         if (!searchOverlay) return;
         searchOverlay.classList.add('active');
         setTimeout(function () {
-            if (searchInput) { searchInput.focus(); searchInput.select(); }
+            if (!searchInput) return;
+            searchInput.focus();
+            if (typeof initialQuery === 'string' && initialQuery.trim()) {
+                searchInput.value = initialQuery.trim();
+                performSearch(searchInput.value);
+            } else {
+                if (!searchInput.value.trim()) renderPrompt();
+                searchInput.select();
+            }
         }, 100);
         document.addEventListener('keydown', handleKeyboard);
     }
@@ -328,7 +381,8 @@
         if (!searchOverlay) return;
         searchOverlay.classList.remove('active');
         if (searchInput) searchInput.value = '';
-        renderResults([]);
+        if (searchResults) searchResults.innerHTML = '';
+        selectedIndex = -1;
         document.removeEventListener('keydown', handleKeyboard);
     }
 

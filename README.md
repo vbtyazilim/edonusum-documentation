@@ -39,6 +39,18 @@ Rehber içinde özellikle şu bölümleri takip edebilirsiniz:
 
 Sorularınız veya destek talepleriniz için merkezi [Çözüm Merkezi](iletisim.html) sayfasını kullanabilirsiniz.
 
+## Teknik arama indeksi
+
+Ana sayfadaki teknik arama; ürün manifestlerini, yayımlanan sayfa başlıklarını
+ve görünür teknik terimleri tek bir statik indeks içinde birleştirir. Rehber veya
+sayfa içeriği değiştiğinde indeks şu komutla yeniden üretilir:
+
+```powershell
+node tools\build-site-search-index.js
+```
+
+Üretilen `assets/site-search-index.js` dosyası elle düzenlenmez.
+
 ## Destek ve iletişim
 
 Destek e-postası, destek telefonu, destek portalı, test portalı ve kurumsal site bağlantıları [Çözüm Merkezi](iletisim.html) sayfasında yer alır.

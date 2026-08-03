@@ -13,14 +13,18 @@
   "home": {
     "title": "e-Arşiv Fatura Entegrasyon Rehberi",
     "description": "e-Arşiv Fatura süreçlerinin VUK Genel Tebliği (Sıra No: 509) ve GİB e-Arşiv Teknik Kılavuzu'na uygun biçimde yürütülmesine yönelik entegrasyon, API ve uygulama referansı.",
+    "layout": "integration",
+    "showEyebrow": false,
     "primaryAction": {
       "target": "earsiv-fatura-nedir",
-      "label": "Dokümanı inceleyin"
+      "label": "Rehbere başlayın"
     }
   },
   "sections": [
     {
       "label": "Başlangıç",
+      "description": "Ürün kapsamı, teknik kimlik ve GİB gereksinimleri",
+      "icon": "start",
       "pages": [
         {
           "slug": "earsiv-fatura-nedir",
@@ -43,6 +47,8 @@
     },
     {
       "label": "Uygulama",
+      "description": "Senaryolar, yaşam döngüsü ve sorumluluk sınırları",
+      "icon": "workflow",
       "pages": [
         {
           "slug": "kullanim-senaryolari",
@@ -80,6 +86,8 @@
     },
     {
       "label": "API",
+      "description": "Entegratör ve Portal endpoint sözleşmeleri ile örnekler",
+      "icon": "api",
       "pages": [
         {
           "slug": "entegrator-api-endpoint-referansi",
@@ -118,6 +126,8 @@
     },
     {
       "label": "Referans",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
+      "icon": "reference",
       "pages": [
         {
           "slug": "teknik-referans",
@@ -138,7 +148,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "e-Arşiv Fatura hakkında müşteri ve entegratör tarafından en sık sorulan sorular.",
+          "description": "Senaryo seçimi, iptal, itiraz, çıktı, API ve UBL hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": ["SSS", "sorular"],
           "roles": ["faq"],

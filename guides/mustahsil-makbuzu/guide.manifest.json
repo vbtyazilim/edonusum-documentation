@@ -13,9 +13,11 @@
   "home": {
     "title": "e-Müstahsil Makbuzu Entegrasyon Rehberi",
     "description": "Tarımsal ürün alımlarında KDV mükellefi olmayan çiftçilerden yapılan alışlar için GİB standardında e-Müstahsil Makbuzu düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
+    "layout": "integration",
+    "showEyebrow": false,
     "primaryAction": {
       "target": "mustahsil-makbuzu-nedir",
-      "label": "Dokümanı inceleyin"
+      "label": "Rehbere başlayın"
     },
     "announcement": {
       "enabled": true,
@@ -27,6 +29,8 @@
   "sections": [
     {
       "label": "Başlangıç",
+      "description": "Ürün kapsamı, teknik kimlik ve GİB gereksinimleri",
+      "icon": "start",
       "pages": [
         {
           "slug": "mustahsil-makbuzu-nedir",
@@ -49,6 +53,8 @@
     },
     {
       "label": "Uygulama",
+      "description": "Senaryolar, yaşam döngüsü ve sorumluluk sınırları",
+      "icon": "workflow",
       "pages": [
         {
           "slug": "kullanim-senaryolari",
@@ -81,6 +87,8 @@
     },
     {
       "label": "API",
+      "description": "Entegratör ve Portal endpoint sözleşmeleri ile örnekler",
+      "icon": "api",
       "pages": [
         {
           "slug": "entegrator-api-endpoint-referansi",
@@ -114,6 +122,8 @@
     },
     {
       "label": "Gelecek Değişiklikler",
+      "description": "Henüz aktif olmayan doğrulama akışı ve geçiş kapsamı",
+      "icon": "future",
       "pages": [
         {
           "slug": "sms-dogrulamali-gonderim",
@@ -147,6 +157,8 @@
     },
     {
       "label": "Referans",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
+      "icon": "reference",
       "pages": [
         {
           "slug": "teknik-referans",
@@ -167,7 +179,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "Müşteri ve entegratör tarafından en sık sorulan sorular.",
+          "description": "Belge kullanımı, kesintiler, çıktı, API ve planlanan SMS doğrulaması hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": ["SSS", "sorular"],
           "roles": ["faq"],
