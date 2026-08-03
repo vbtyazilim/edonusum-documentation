@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sıkça Sorulan Sorular — e-Defter Entegrasyon Rehberi</title>
+<meta name="description" content="Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/sss.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Sıkça Sorulan Sorular — e-Defter Entegrasyon Rehberi">
+<meta property="og:description" content="Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/sss.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sıkça Sorulan Sorular — e-Defter Entegrasyon Rehberi">
+<meta name="twitter:description" content="Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Defter</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-defter-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-defter-nedir.html">e-Defter Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="e-defter-akisi.html">e-Defter Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link" href="veri-xbrl-ubl-mapping.html">Veri → XBRL/UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link active" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Referans</p><h1>Sıkça Sorulan Sorular</h1><p class="docs-lead">Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="sss">
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Konu</th><th>Önce bakılacak sayfa</th><th>Kapsam</th></tr></thead><tbody>
+<tr><td>Kapsam, dönem ve belge seti</td><td><a href="e-defter-nedir.html">e-Defter Nedir?</a> ve <a href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a></td><td>Yevmiye, kebir, berat, aylık dönem, imza, GİB yüklemesi ve muhafaza zinciri.</td></tr>
+<tr><td>Aylık operasyon ve durumlar</td><td><a href="kullanim-senaryolari.html">Kullanım Senaryoları</a> ve <a href="e-defter-akisi.html">e-Defter Akışı</a></td><td>Client aktarımı, üretim, onay, imza, GİB sonucu, hata ve ikincil kopya adımları.</td></tr>
+<tr><td>Kimlik, endpoint ve JSON</td><td><a href="api-temelleri.html">API Temelleri</a>, <a href="entegrator-api-endpoint-referansi.html">Entegrasyon API Referansı</a> ve <a href="islem-ornekleri.html">İşlem Örnekleri</a></td><td>Header'lar, çağrı sırası, tam request/response gövdeleri ve güvenli tekrar.</td></tr>
+<tr><td>Listeleme, önizleme ve arşiv</td><td><a href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a></td><td>Özet/satır listeleri ile HTML, PDF ve ZIP çıktılarının doğru kullanımı.</td></tr>
+<tr><td>Alan kuralları ve hatalar</td><td><a href="veri-xbrl-ubl-mapping.html">Veri → XBRL/UBL Mapping</a> ve <a href="teknik-referans.html">Teknik Referans</a></td><td>Muhasebe alanları, kod kümeleri, durumlar ve dış hata kodları.</td></tr>
+</tbody></table></div>
+<h2 id="sss-musteri">Müşteri SSS</h2>
+<details class="example-details"><summary>e-Defter ile e-Envanter Defteri aynı belge midir?</summary><div class="example-body"><p>Hayır. e-Defter rehberi aylık yevmiye ve kebir dosyalarını kapsar. e-Envanter Defteri standart takvim yılında açılış ve kapanış günlerine ait ayrı envanter ve berat dosyaları üretir.</p></div></details>
+<details class="example-details"><summary>PDF dosyası yasal defterin yerine geçer mi?</summary><div class="example-body"><p>Hayır. PDF görüntüleme kolaylığı sağlar. İmzalı XML/XBRL defter dosyası ile GİB onaylı berat birlikte muhafaza edilmelidir.</p></div></details>
+<details class="example-details"><summary>Bir ayı atlayıp sonraki aya geçebilir miyim?</summary><div class="example-body"><p>Standart iş akışı ayları sıralı ilerletir. Önceki dönemin tamamlanma ve hata durumu kontrol edilmeden sonraki dönem kapatılmamalıdır.</p></div></details>
+<details class="example-details"><summary>Özel hesap dönemi destekleniyor mu?</summary><div class="example-body"><p>Bu rehberde yayımlanan entegrasyon kapsamı standart Ocak-Aralık takvim yılıdır. Özel hesap dönemi ve parçalı ay senaryoları desteklenen sözleşmeye dahil değildir.</p></div></details>
+<details class="example-details"><summary>Onaydan önce hangi çıktılar kontrol edilmelidir?</summary><div class="example-body"><p>Yevmiye ve kebir önizlemeleri, dönem, firma/şube, parça sayısı, fiş-satır sıraları ve borç-alacak toplamları kaynak sistemle karşılaştırılmalıdır.</p></div></details>
+<details class="example-details"><summary>GİB'e gönderildi durumu yeterli midir?</summary><div class="example-body"><p>Hayır. Gönderilen paketin durum sonucu olumlu olmalı, GİB onaylı berat erişilebilir olmalı ve ilgili imzalı XML/XBRL dosyasıyla eşleştirilmelidir. İkincil kopya yüklemesi ana GİB onay akışından ayrı izlenir ve kendi sonucu tamamlanmadan arşiv mutabakatı kapatılmaz.</p></div></details>
+<details class="example-details"><summary>e-Defter için hangi dosyalar birlikte saklanmalıdır?</summary><div class="example-body"><p>İmzalı yevmiye ve kebir XBRL-GL dosyaları, bunlara ait imzalı mükellef beratları ve GİB onaylı beratlar aynı firma, şube, dönem ve <code>Uuid</code> ile ilişkilendirilmelidir. PDF/HTML yalnız görüntüleme kopyasıdır.</p></div></details>
+<details class="example-details"><summary>İkincil kopya durumu neyi ifade eder?</summary><div class="example-body"><p><code>SentSecondCopy</code>, imzalı e-Defter ve berat dosyalarının ikincil kopya saklama adımının da tamamlandığını gösteren terminal durumdur. <code>SentToGib</code> ana GİB onay akışının sonucudur; ikincil kopya bunun yerine geçmez ve ayrı izlenir.</p></div></details>
+<details class="example-details"><summary>Bir ay birden fazla parçadan oluşabilir mi?</summary><div class="example-body"><p>Evet. Kaynak büyüklüğüne göre ay birden fazla parçaya ayrılabilir. Her parça aynı firma-şube-ay anahtarıyla aktarılır; parça sayısı, ilk/son fiş ve satır numaraları süreç raporunda eksiksiz doğrulanır.</p></div></details>
+<details class="example-details"><summary>Onay verdikten sonra muhasebe verisini değiştirebilir miyim?</summary><div class="example-body"><p>Onay, kontrol edilmiş dosyaları imza aşamasına taşır. Kaynakta değişiklik gerekiyorsa mevcut kaydın durumu ve sonuçları yetkili süreçle değerlendirilmeden aynı dönem için yeni veri gönderilmemelidir.</p></div></details>
+<h2 id="sss-entegrator">Entegratör SSS</h2>
+<details class="example-details"><summary>HTTP 200 neden tek başına başarı değildir?</summary><div class="example-body"><p>İşlem asenkron ilerleyebilir. <code>Messages[]</code>, <code>Data</code> ve özetin <code>CurrentStatus</code> değeri birlikte izlenmelidir.</p></div></details>
+<details class="example-details"><summary>Timeout olursa CreateLedger tekrar çağrılmalı mı?</summary><div class="example-body"><p>Önce aynı firma, şube ve dönem için güncel özet sorgulanmalıdır. Kayıt varsa dönen <code>Uuid</code> üzerinden izlenir; sonucu bilmeden yeni kayıt başlatılmaz.</p></div></details>
+<details class="example-details"><summary>BranchCode boş bırakılabilir mi?</summary><div class="example-body"><p>Hayır. Şubesiz firma için sözleşme değeri <code>0000</code> gönderilir.</p></div></details>
+<details class="example-details"><summary>GetProcessReport ne zaman kontrol edilmelidir?</summary><div class="example-body"><p>Tüm parçalar aktarıldıktan sonra ve <code>CreateLedger</code> öncesinde kontrol edilir. Teşhis mesajları boş, sayısal özet tutarlı ve <code>IsReadyForLedgerCreation=true</code> olmalıdır.</p></div></details>
+<details class="example-details"><summary>Onay endpointine hangi kayıt gönderilir?</summary><div class="example-body"><p><code>GetEntity</code> veya özet sorgusundan alınan güncel <code>LedgerSummaryViewModel</code> kullanılır. Eski bir kopya veya yalnız <code>Uuid</code> içeren eksik model gönderilmemelidir.</p></div></details>
+<details class="example-details"><summary>GİB paket adı üretilebilir mi?</summary><div class="example-body"><p>Hayır. Platformun oluşturduğu ve gönderim cevabında ilişkilendirdiği gerçek dosya adı, <code>GetBatchStatus</code> ve <code>ReceiveFile</code> çağrılarında aynen kullanılmalıdır.</p></div></details>
+<details class="example-details"><summary>Hangi kimlikler loglanmalıdır?</summary><div class="example-body"><p>Endpoint, zaman, süre, firma, şube, dönem, <code>Uuid</code>, paket adı ve hata kodu izlenebilir olmalıdır. Token, parola ve tam defter içeriği maskelenmelidir.</p></div></details>
+<details class="example-details"><summary>Canlıya geçişte hangi akışlar kanıtlanmalıdır?</summary><div class="example-body"><p>Başarılı aylık üretim, hatalı veri teşhisi, timeout sonrası tekilleştirme, onay/imza, GİB sonucu, GİB onaylı berat indirme ve arşiv mutabakatı ayrı testlerle doğrulanmalıdır.</p></div></details>
+<details class="example-details"><summary>Kaynak CSV/XLS/XLSX/XML/XBRL doğrudan API'ye gönderilebilir mi?</summary><div class="example-body"><p>Hayır. Kaynak dosya VBT Client tarafından ayrıştırılır ve analiz edilir. <code>TransferParsedFile</code> endpointi Client'ın ürettiği ad/Base64 parçasını kabul eder; kaynak muhasebe dosyasını veya elle hazırlanmış XBRL'yi doğrudan alma endpointi değildir.</p></div></details>
+<details class="example-details"><summary>ParsedFile.Value alanını kendim üretebilir miyim?</summary><div class="example-body"><p>Hayır. Bu değer VBT Client'ın gerçek parça içeriğinin Base64 serileştirmesidir. Örnek JSON yalnız taşıma biçimini gösterir; Client çıktısı taklit edilmemelidir.</p></div></details>
+<details class="example-details"><summary>GetCurrentLedgerSumary ile GetEntity arasındaki fark nedir?</summary><div class="example-body"><p><code>GetCurrentLedgerSumary</code> firma/şube için güncel dönem özetini bulur. <code>GetEntity</code> ise bilinen <code>Uuid</code> ile tek kaydı getirir. Bir işlem başladıktan sonra en kesin izleme anahtarı saklanan <code>Uuid</code>'dir.</p></div></details>
+<details class="example-details"><summary>Endpoint adındaki Sumary yazımı düzeltilmeli mi?</summary><div class="example-body"><p>Hayır. <code>/api/LedgerSummary/GetCurrentLedgerSumary</code> yayımlanan route sözleşmesidir ve tek <code>m</code> ile çağrılır. İstemci tarafında farklı yazım kullanılmamalıdır.</p></div></details>
+<details class="example-details"><summary>IsReadyForLedgerCreation=true tek başına yeterli mi?</summary><div class="example-body"><p>Hayır. <code>DiagnoseMessages</code> boş olmalı; <code>Descriptive</code> içindeki parça, fiş, satır ve borç-alacak değerleri kaynak ERP ile tutarlı olmalıdır.</p></div></details>
+<details class="example-details"><summary>HTML, PDF ve ZIP response'ları nasıl ayrılır?</summary><div class="example-body"><p>Üçü de <code>ServiceResponse&lt;string&gt;</code> döner. HTML endpointlerinde <code>Data</code> işaretleme metnidir; PDF ve ZIP endpointlerinde <code>Data</code> Base64 dosya içeriğidir. Base64 değer uygun uzantıyla byte dizisine çevrilir.</p></div></details>
+<details class="example-details"><summary>Failed durumunda doğrudan yeniden üretim yapılabilir mi?</summary><div class="example-body"><p>Hayır. Önce <code>PreviousStatus</code>, <code>FailDescription</code> ve <code>Messages[]</code> birlikte değerlendirilir. Kaynak veri hatası düzeltilmeden veya GİB sonucu netleşmeden yeniden üretim mükerrer kayıt riski taşır.</p></div></details>
+<details class="example-details"><summary>Bir sonraki aya ne zaman geçilir?</summary><div class="example-body"><p>Mevcut ayın GİB onaylı beratları alınmış ve arşiv mutabakatı tamamlanmış olmalıdır. Aralık tamamlandığında sonraki yılın Ocak ayına geçilir.</p></div></details>
+<details class="example-details"><summary>Destek talebinde ne paylaşılmalıdır?</summary><div class="example-body"><p>Endpoint, zaman, firma, şube, dönem, <code>Uuid</code>, <code>CurrentStatus</code>, paket adı ve maskelenmiş hata cevabı paylaşılır. Parola, token, imza anahtarı ve tam defter içeriği paylaşılmaz.</p></div></details>
+<!-- vbt-source: LedgerSummaryStates.cs; TempLedgerModel.cs; DocumentSummaryViewModel.cs; LedgerPreviewController.cs; LedgerGibController.cs -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="changelog.html"><span>Önceki</span><strong>Changelog</strong></a>
+<span></span>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Dönem, defter, berat, durum veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Defter Nedir?","text":"e-Defter kapsamı, üretilen belge seti, aylık dönem modeli ve bileşen sorumlulukları.","keywords":"e-Defter yevmiye kebir berat","url":"e-defter-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.","keywords":"GİB XBRL-GL şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Kaynak dosyadan arşive kadar aylık e-Defter işlemini müşteri ve operasyon adımlarıyla uygulayın.","keywords":"senaryo aylık onay imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Defter Akışı","text":"VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.","keywords":"durum akış state GİB","url":"e-defter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, dönem, tekilleştirme, durum takibi, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun üretim, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client, kullanıcı arayüzü ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint LedgerState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → XBRL/UBL Mapping","text":"Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.","keywords":"mapping XBRL UBL XML","url":"veri-xbrl-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, dosya türleri, dönem kuralları ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Defter rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru dönem berat","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

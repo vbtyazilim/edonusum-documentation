@@ -12,6 +12,8 @@ Bu repo, VBT e-Dönüşüm ürünleri için hazırlanan müşteri ve entegratör
 - [e-Müstahsil Makbuzu Entegrasyon Rehberi](guides/mustahsil-makbuzu/index.html)
 - [e-Serbest Meslek Makbuzu Entegrasyon Rehberi](guides/serbest-meslek-makbuzu/index.html)
 - [e-Adisyon Entegrasyon Rehberi](guides/e-adisyon/index.html)
+- [e-Defter Entegrasyon Rehberi](guides/e-defter/index.html)
+- [e-Envanter Defteri Entegrasyon Rehberi](guides/e-envanter-defteri/index.html)
 
 ## Kimler için?
 

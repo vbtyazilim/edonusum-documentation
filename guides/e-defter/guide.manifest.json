@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "id": "e-defter",
+  "dir": "e-defter",
+  "title": "e-Defter Entegrasyon Rehberi",
+  "shortTitle": "e-Defter",
+  "description": "Yevmiye defteri ve defteri kebirin hazırlanması, onaylanması, imzalanması, GİB'e iletilmesi ve sonuçlarının izlenmesi için entegrasyon rehberi.",
+  "eyebrow": "GİB e-Defter",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/",
+  "templateVersion": "local-2026-07-08",
+  "searchPlaceholder": "Dönem, defter, berat, durum veya endpoint arayın...",
+  "home": {
+    "title": "e-Defter Entegrasyon Rehberi",
+    "description": "e-Defter ürün kapsamı, aylık operasyon süreçleri, GİB yaşam döngüsü ve entegrasyon sözleşmesi.",
+    "primaryAction": {
+      "target": "e-defter-nedir",
+      "label": "Rehbere başlayın"
+    },
+    "announcement": {
+      "enabled": false
+    }
+  },
+  "sections": [
+    {
+      "label": "Başlangıç",
+      "pages": [
+        {
+          "slug": "e-defter-nedir",
+          "title": "e-Defter Nedir?",
+          "description": "e-Defter kapsamı, üretilen belge seti, aylık dönem modeli ve bileşen sorumlulukları.",
+          "keywords": [
+            "e-Defter",
+            "yevmiye",
+            "kebir",
+            "berat"
+          ],
+          "roles": [
+            "guide-start"
+          ],
+          "homeCard": {
+            "label": "Başlangıç"
+          }
+        },
+        {
+          "slug": "gib-teknik-gereksinimleri",
+          "title": "GİB Teknik Gereksinimleri",
+          "description": "GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.",
+          "keywords": [
+            "GİB",
+            "XBRL-GL",
+            "şema",
+            "berat"
+          ]
+        },
+        {
+          "slug": "api-temelleri",
+          "title": "API Temelleri",
+          "description": "Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.",
+          "keywords": [
+            "API",
+            "token",
+            "dönem",
+            "ServiceResponse"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "İş Akışı",
+      "pages": [
+        {
+          "slug": "kullanim-senaryolari",
+          "title": "Kullanım Senaryoları",
+          "description": "Kaynak dosyadan arşive kadar aylık e-Defter işlemini müşteri ve operasyon adımlarıyla uygulayın.",
+          "keywords": [
+            "senaryo",
+            "aylık",
+            "onay",
+            "imza"
+          ]
+        },
+        {
+          "slug": "e-defter-akisi",
+          "title": "e-Defter Akışı",
+          "description": "VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.",
+          "keywords": [
+            "durum",
+            "akış",
+            "state",
+            "GİB"
+          ]
+        },
+        {
+          "slug": "entegrator-sorumluluklari",
+          "title": "Entegratör Sorumlulukları",
+          "description": "Kaynak veri, dönem, tekilleştirme, durum takibi, hata yönetimi ve arşivleme sorumlulukları.",
+          "keywords": [
+            "entegratör",
+            "sorumluluk",
+            "kontrol"
+          ]
+        },
+        {
+          "slug": "platform-sorumluluklari",
+          "title": "Platform Sorumlulukları",
+          "description": "VBT platformunun üretim, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.",
+          "keywords": [
+            "platform",
+            "VBT",
+            "sorumluluk"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "API",
+      "pages": [
+        {
+          "slug": "entegrator-api-endpoint-referansi",
+          "title": "Entegrasyon API Endpoint Referansı",
+          "description": "Client, kullanıcı arayüzü ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.",
+          "keywords": [
+            "API",
+            "endpoint",
+            "LedgerState"
+          ],
+          "roles": [
+            "api"
+          ],
+          "homeCard": {
+            "label": "API"
+          }
+        },
+        {
+          "slug": "portal-api-endpoint-referansi",
+          "title": "Listeleme ve Çıktı API Referansı",
+          "description": "Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.",
+          "keywords": [
+            "Portal",
+            "liste",
+            "PDF",
+            "ZIP"
+          ]
+        },
+        {
+          "slug": "islem-ornekleri",
+          "title": "İşlem Örnekleri",
+          "description": "Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.",
+          "keywords": [
+            "JSON",
+            "örnek",
+            "request"
+          ]
+        },
+        {
+          "slug": "veri-xbrl-ubl-mapping",
+          "title": "Veri → XBRL/UBL Mapping",
+          "description": "Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.",
+          "keywords": [
+            "mapping",
+            "XBRL",
+            "UBL",
+            "XML"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Referans",
+      "pages": [
+        {
+          "slug": "teknik-referans",
+          "title": "Teknik Referans",
+          "description": "Durum değerleri, dosya türleri, dönem kuralları ve hata yönetimi referansı.",
+          "keywords": [
+            "enum",
+            "durum",
+            "hata",
+            "referans"
+          ]
+        },
+        {
+          "slug": "changelog",
+          "title": "Changelog",
+          "description": "e-Defter rehberinin yayımlanmış dış sözleşme değişiklikleri.",
+          "keywords": [
+            "changelog",
+            "değişiklik"
+          ]
+        },
+        {
+          "slug": "sss",
+          "title": "Sıkça Sorulan Sorular",
+          "description": "Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.",
+          "keywords": [
+            "SSS",
+            "soru",
+            "dönem",
+            "berat"
+          ],
+          "roles": [
+            "faq"
+          ],
+          "homeCard": {
+            "label": "SSS"
+          }
+        }
+      ]
+    }
+  ]
+}

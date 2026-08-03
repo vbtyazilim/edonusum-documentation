@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listeleme ve Çıktı API Referansı — e-Envanter Defteri Entegrasyon Rehberi</title>
+<meta name="description" content="Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-envanter-defteri/docs/portal-api-endpoint-referansi.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Listeleme ve Çıktı API Referansı — e-Envanter Defteri Entegrasyon Rehberi">
+<meta property="og:description" content="Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-envanter-defteri/docs/portal-api-endpoint-referansi.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Listeleme ve Çıktı API Referansı — e-Envanter Defteri Entegrasyon Rehberi">
+<meta name="twitter:description" content="Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Envanter Defteri</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-envanter-defteri-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-envanter-defteri-nedir.html">e-Envanter Defteri Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="e-envanter-akisi.html">e-Envanter Defteri Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link active" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link" href="veri-ubl-mapping.html">Veri → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Listeleme ve Çıktı API Referansı</h1><p class="docs-lead">Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="portal-api-endpoint-referansi">
+<p>Listeleme endpointleri açılış ve kapanış kayıtlarını operasyon veya ERP mutabakatı için sunar. Önizleme endpointleri aynı kaydın insan tarafından okunabilir görünümünü ya da indirilebilir teknik dosyasını döndürür. Liste sonucu, GİB onaylı beratın arşivlendiğini tek başına kanıtlamaz.</p>
+<h2 id="h-listeleme">Listeleme ve Özet</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Metot</th><th>Endpoint</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td>POST</td><td><code>/api/InventoryList/GetEntityPage</code></td><td>Tarih filtresi ve sayfalama ile envanter dönemlerini listeler.</td></tr>
+<tr><td>POST</td><td><code>/api/InventoryList/GetEntityDetailPage</code></td><td>Seçilen envanterin detay satırlarını listeler.</td></tr>
+<tr><td>POST</td><td><code>/api/InventorySummary/GetEntityPage</code></td><td>Özet kayıtları sayfalı döndürür.</td></tr>
+<tr><td>POST</td><td><code>/api/FirmInventory/GetEntityPage</code></td><td>Firma bazlı envanter dosyalarını listeler.</td></tr>
+</tbody></table></div>
+<h3 id="h-liste-istekleri">Liste İstekleri</h3>
+<p><code>GetEntityPage</code> çağrısı <code>PageQuery&lt;InventoryListRequestModel&gt;</code> gövdesi alır. Sayfa numarası sıfır tabanlıdır; <code>PageSize</code> değeri 250'yi aşmamalıdır.</p>
+<pre><code class="language-json operation-json" data-request-kind="list">{
+  "Filter": {
+    "BeginDate": "2026-01-01T00:00:00",
+    "EndDate": "2026-12-31T00:00:00"
+  },
+  "CurrentPageNumber": 0,
+  "PageSize": 50,
+  "SortExpression": "PeriodStart",
+  "SortDirection": "desc"
+}</code></pre>
+<p>Bir açılış veya kapanış kaydının satırlarını almak için liste cevabındaki gerçek <code>Uuid</code> kullanılır:</p>
+<pre><code class="language-json operation-json" data-request-kind="list-detail">{
+  "Uuid": "33333333-3333-3333-3333-333333333333"
+}</code></pre>
+<h2 id="h-onizleme">Önizleme ve Çıktılar</h2>
+<p>Aşağıdaki endpointler <code>uuid</code> query parametresi alır ve <code>ServiceResponse&lt;string&gt;</code> döndürür. HTML endpointlerinin <code>Data</code> alanı işaretleme metnidir; PDF ve ZIP endpointlerinin <code>Data</code> alanı Base64 dosya içeriğidir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Çıktı</th><th>HTML</th><th>PDF</th><th>ZIP</th></tr></thead><tbody>
+<tr><td>Envanter</td><td><code>GetEnvanterHtml</code></td><td><code>GetEnvanterPdf</code></td><td><code>GetEnvanterZipDownload</code></td></tr>
+<tr><td>Mükellef beratı</td><td><code>GetEnvanterBeratHtml</code></td><td><code>GetEnvanterBeratPdf</code></td><td><code>GetEnvanterBeratZipDownload</code></td></tr>
+<tr><td>GİB onaylı berat</td><td><code>GetGibEnvanterBeratHtml</code></td><td><code>GetGibEnvanterBeratPdf</code></td><td><code>GetGibEnvanterBeratZipDownload</code></td></tr>
+</tbody></table></div>
+<p>Çağrı biçimi <code>GET /api/InventoryPreview/{işlem}?uuid={uuid}</code> şeklindedir. Base64 değer istemcide byte dizisine çevrilerek ilgili PDF veya ZIP dosya uzantısıyla kaydedilir. Firma bazlı toplu ZIP çıktısı yetkili işlem olarak <code>/api/FirmInventory/GetFirmsInventorysZip</code> üzerinden sunulur.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>İhtiyaç</th><th>Tercih edilen çıktı</th><th>Kullanım notu</th></tr></thead><tbody>
+<tr><td>Onay öncesi gözle kontrol</td><td>HTML</td><td><code>Data</code> güvenli bir önizleme alanında gösterilir; dosya değildir.</td></tr>
+<tr><td>Kullanıcıya okunabilir belge sunma</td><td>PDF</td><td>Base64 çözülerek <code>.pdf</code> kaydedilir; yasal XML'in yerine geçmez.</td></tr>
+<tr><td>İmzalı veya GİB onaylı teknik dosyayı saklama</td><td>ZIP</td><td>Base64 çözülerek <code>.zip</code> kaydedilir; dosya türü değiştirilmez.</td></tr>
+</tbody></table></div>
+<div class="callout callout-warning"><b>UUID seçimi:</b> Özet kaydının <code>Uuid</code> değeri ile liste detayındaki belge/parça UUID'leri aynı amaçla kullanılmayabilir. Endpointin döndürdüğü kayıt türüne ait UUID'yi kullanın.</div>
+<!-- vbt-source: InventoryListController.cs; InventoryPreviewController.cs; InventoryPreviewService.cs; InventoryUblService.cs; FirmInventoryController.cs -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="entegrator-api-endpoint-referansi.html"><span>Önceki</span><strong>Entegrasyon API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="islem-ornekleri.html"><span>Sonraki</span><strong>İşlem Örnekleri</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Açılış, kapanış, envanter, berat veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Envanter Defteri Nedir?","text":"e-Envanter Defteri kapsamı, açılış ve kapanış kayıtları, belge seti ve bileşen sorumlulukları.","keywords":"e-Envanter açılış kapanış berat","url":"e-envanter-defteri-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketi, envanter XML'i, berat, imza ve resmî kaynaklar.","keywords":"GİB envanter şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve açılış/kapanış dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"1 Ocak açılış ve 31 Aralık kapanış kayıtlarının kaynak dosyadan arşive kadar işlem sırası.","keywords":"senaryo açılış kapanış imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Envanter Defteri Akışı","text":"Kaynak veriden GİB onaylı envanter beratına uzanan gözlemlenebilir durum akışı.","keywords":"durum akış state GİB","url":"e-envanter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, açılış/kapanış tarihi, tekilleştirme, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun envanter üretimi, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint InventoryState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → UBL Mapping","text":"Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.","keywords":"mapping UBL XML envanter","url":"veri-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, açılış/kapanış kuralları, dosya türleri ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Envanter Defteri rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin açılış, kapanış, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru açılış kapanış","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

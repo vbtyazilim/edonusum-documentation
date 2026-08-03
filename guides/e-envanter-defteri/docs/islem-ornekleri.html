@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İşlem Örnekleri — e-Envanter Defteri Entegrasyon Rehberi</title>
+<meta name="description" content="Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-envanter-defteri/docs/islem-ornekleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="İşlem Örnekleri — e-Envanter Defteri Entegrasyon Rehberi">
+<meta property="og:description" content="Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-envanter-defteri/docs/islem-ornekleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="İşlem Örnekleri — e-Envanter Defteri Entegrasyon Rehberi">
+<meta name="twitter:description" content="Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Envanter Defteri</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-envanter-defteri-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-envanter-defteri-nedir.html">e-Envanter Defteri Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="e-envanter-akisi.html">e-Envanter Defteri Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link active" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link" href="veri-ubl-mapping.html">Veri → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>İşlem Örnekleri</h1><p class="docs-lead">Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="islem-ornekleri">
+<h2 id="h-oturum">Oturum Açma</h2>
+<details class="example-details" open><summary><code>POST /api/<wbr>Session/<wbr>Login</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="auth">{
+  "Email": "entegrasyon@example.com",
+  "Password": "GuvenliParolaniz"
+}</code></pre><p>Başarılı cevapta alınan token ve firma kimliği sonraki çağrıların header'larında kullanılır; parola yeniden gönderilmez.</p></div></details>
+<h2 id="h-client-aktarimi">VBT Client Tarafından Üretilen Aktarım</h2>
+<details class="example-details"><summary><code>POST /api/<wbr>InventoryState/<wbr>TransferParsedFile</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="client-transfer">{
+  "Credentials": {
+    "IdentificationNumber": "1234567890",
+    "BranchCode": "0000",
+    "PeriodStart": "2026-01-01T00:00:00",
+    "PeriodEnd": "2026-01-01T00:00:00"
+  },
+  "ParsedFile": {
+    "Key": "client-uretimli-parca-000001.json",
+    "Value": "BASE64_ENCODED_CLIENT_PART"
+  }
+}</code></pre><div class="callout callout-warning"><b>Elle oluşturmayın:</b> <code>ParsedFile.Value</code>, VBT Client'ın ayrıştırıp sıkıştırdığı gerçek parça içeriğinin Base64 karşılığıdır. Bu örnek yalnız JSON serileştirme biçimini gösterir.</div></div></details>
+<h2 id="h-acilis-request">Açılış Envanteri</h2>
+<details class="example-details" open><summary><code>POST /api/<wbr>InventoryState/<wbr>CreateInventory</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="opening">{
+  "IdentificationNumber": "1234567890",
+  "BranchCode": "0000",
+  "PeriodStart": "2026-01-01T00:00:00",
+  "PeriodEnd": "2026-01-01T00:00:00"
+}</code></pre><p><b>Başarılı yanıt</b></p><pre><code class="language-json operation-json" data-request-kind="response">{
+  "Data": true,
+  "Messages": [],
+  "StackTrace": null,
+  "StatusCode": 200,
+  "TotalRows": 0,
+  "TotalPages": 0,
+  "IsSuccessful": true
+}</code></pre><p><code>Data=true</code> açılış kaydı için üretim isteğinin kabul edildiğini gösterir. Nihai sonuç güncel özet durumundan izlenir.</p></div></details>
+<h2 id="h-kapanis-request">Kapanış Envanteri</h2>
+<details class="example-details" open><summary><code>POST /api/<wbr>InventoryState/<wbr>CreateInventory</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="closing">{
+  "IdentificationNumber": "1234567890",
+  "BranchCode": "0000",
+  "PeriodStart": "2026-12-31T00:00:00",
+  "PeriodEnd": "2026-12-31T00:00:00"
+}</code></pre><p><b>Başarılı yanıt</b></p><pre><code class="language-json operation-json" data-request-kind="response">{
+  "Data": true,
+  "Messages": [],
+  "StackTrace": null,
+  "StatusCode": 200,
+  "TotalRows": 0,
+  "TotalPages": 0,
+  "IsSuccessful": true
+}</code></pre><p><code>Data=true</code> kapanış kaydı için üretim isteğinin kabul edildiğini gösterir. Nihai sonuç güncel özet durumundan izlenir.</p></div></details>
+<h2 id="h-rapor-durum">Rapor ve Durum</h2>
+<details class="example-details"><summary><code>POST /api/<wbr>InventoryState/<wbr>GetProcessReport</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="report">{
+  "IdentificationNumber": "1234567890",
+  "BranchCode": "0000"
+}</code></pre><p><code>Data.IsReadyForInventoryEntityCreation</code> ve <code>Data.IsReadyForInventoryUblCreation</code> değerleri ile <code>Data.DiagnoseMessages</code> birlikte değerlendirilir.</p></div></details>
+<details class="example-details"><summary><code>POST /api/<wbr>InventorySummary/<wbr>GetCurrentInventorySummary</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="status">{
+  "IdentificationNumber": "1234567890",
+  "BranchCode": "0000"
+}</code></pre><p>Güncel özetin <code>Uuid</code>, dönem ve <code>CurrentStatus</code> alanları sonraki onay/durum çağrıları için korunur.</p></div></details>
+<details class="example-details"><summary><code>POST /api/<wbr>InventoryApproval/<wbr>InventoryApproval</code></summary><div class="example-body"><p>Request gövdesi, <code>GetEntity</code> veya güncel özet cevabındaki <code>Data</code> nesnesinin tamamıdır.</p><pre><code class="language-json operation-json" data-request-kind="approve">{
+  "Uuid": "22222222-2222-2222-2222-222222222222",
+  "SecurityFirmUuid": "11111111-1111-1111-1111-111111111111",
+  "IdentificationNumber": "1234567890",
+  "BranchCode": "0000",
+  "BranchDescription": "Merkez",
+  "IsBranch": false,
+  "PeriodStart": "2026-01-01T00:00:00",
+  "PeriodEnd": "2026-01-01T00:00:00",
+  "PartCount": 1,
+  "HeaderCount": 25,
+  "FirstHeader": 1,
+  "LastHeader": 25,
+  "DetailCount": 80,
+  "FirstDetail": 1,
+  "LastDetail": 80,
+  "SourceApplication": "ERP",
+  "SourceMethod": "Client",
+  "SourceUser": "entegrasyon",
+  "CurrentStatus": "WaitingForApprove",
+  "PreviousStatus": "WaitingForInventoryUblCreation",
+  "PeriodYear": 2026,
+  "PeriodMonth": 1,
+  "FailDescription": null,
+  "IsFirmSummaryUpdatable": false,
+  "FirmLastUniqueNumber": "25",
+  "StatusDescription": "Envanter Onayı Bekleniyor",
+  "InventoryFileSize": 102400
+}</code></pre></div></details>
+<h2 id="h-gib">GİB Durumu ve Onaylı Dosya</h2>
+<details class="example-details"><summary><code>POST /api/<wbr>InventoryGib/<wbr>GetBatchStatus</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="gib-status">{
+  "FileName": "PLATFORMDAN_DONEN_DOSYA_ADI.zip"
+}</code></pre><p><b>Örnek yanıt</b></p><pre><code class="language-json operation-json" data-request-kind="response">{
+  "Data": {
+    "StatusDescription": "GİB TARAFINDAN İŞLENDİ",
+    "StatusCode": "PAKET_DURUM_KODU",
+    "FileName": "PLATFORMDAN_DONEN_DOSYA_ADI.zip"
+  },
+  "Messages": [],
+  "StackTrace": null,
+  "StatusCode": 200,
+  "TotalRows": 0,
+  "TotalPages": 0,
+  "IsSuccessful": true
+}</code></pre><p><code>Data.StatusCode</code>, <code>Data.StatusDescription</code> ve <code>Data.FileName</code> birlikte değerlendirilir. GİB durum kodu ve açıklaması örnekte temsili gösterilmiştir; entegrasyon gerçek yanıttaki değerleri kullanır.</p></div></details>
+<details class="example-details"><summary><code>POST /api/<wbr>InventoryGib/<wbr>ReceiveFile</code></summary><div class="example-body"><pre><code class="language-json operation-json" data-request-kind="gib-receive">{
+  "FileName": "PLATFORMDAN_DONEN_DOSYA_ADI.zip"
+}</code></pre><p><b>Başarılı yanıt</b></p><pre><code class="language-json operation-json" data-request-kind="response">{
+  "Data": {
+    "FileName": "PLATFORMDAN_DONEN_DOSYA_ADI.zip",
+    "FileByte": "UEsDBBQAAAAI..."
+  },
+  "Messages": [],
+  "StackTrace": null,
+  "StatusCode": 200,
+  "TotalRows": 0,
+  "TotalPages": 0,
+  "IsSuccessful": true
+}</code></pre><p><code>Data.FileName</code> dosya adını, <code>Data.FileByte</code> ise JSON içinde Base64 olarak serileştirilen dosya içeriğini taşır.</p></div></details>
+<div class="callout callout-warning"><b>Tarih modeli:</b> Açılış ve kapanış isteklerinde başlangıç ile bitiş aynı gündür. <code>2026-01-01 / 2026-12-31</code> gibi bütün yılı kapsayan tek istek gönderilmez.</div>
+<!-- vbt-source: LoginModel.cs; SessionModel.cs; InventoryCredentials.cs; DocumentCredentials.cs; InventoryPeriodPolicy.cs; ParsedInventoryFileTransferService.cs; InventorySummaryViewModel.cs; DocumentSummaryViewModel.cs; GetBatchStatusRequestModel.cs; GetBatchStatusResponseModel.cs; ReceiveDocumentRequestModel.cs; ReceiveDocumentResponseModel.cs -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="portal-api-endpoint-referansi.html"><span>Önceki</span><strong>Listeleme ve Çıktı API Referansı</strong></a>
+<a class="docs-page-link docs-page-next" href="veri-ubl-mapping.html"><span>Sonraki</span><strong>Veri → UBL Mapping</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Açılış, kapanış, envanter, berat veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Envanter Defteri Nedir?","text":"e-Envanter Defteri kapsamı, açılış ve kapanış kayıtları, belge seti ve bileşen sorumlulukları.","keywords":"e-Envanter açılış kapanış berat","url":"e-envanter-defteri-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketi, envanter XML'i, berat, imza ve resmî kaynaklar.","keywords":"GİB envanter şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve açılış/kapanış dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"1 Ocak açılış ve 31 Aralık kapanış kayıtlarının kaynak dosyadan arşive kadar işlem sırası.","keywords":"senaryo açılış kapanış imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Envanter Defteri Akışı","text":"Kaynak veriden GİB onaylı envanter beratına uzanan gözlemlenebilir durum akışı.","keywords":"durum akış state GİB","url":"e-envanter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, açılış/kapanış tarihi, tekilleştirme, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun envanter üretimi, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint InventoryState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → UBL Mapping","text":"Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.","keywords":"mapping UBL XML envanter","url":"veri-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, açılış/kapanış kuralları, dosya türleri ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Envanter Defteri rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin açılış, kapanış, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru açılış kapanış","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

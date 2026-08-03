@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-Defter Akışı — e-Defter Entegrasyon Rehberi</title>
+<meta name="description" content="VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/e-defter-akisi.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="e-Defter Akışı — e-Defter Entegrasyon Rehberi">
+<meta property="og:description" content="VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/e-defter-akisi.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="e-Defter Akışı — e-Defter Entegrasyon Rehberi">
+<meta name="twitter:description" content="VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Defter</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-defter-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-defter-nedir.html">e-Defter Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link active" href="e-defter-akisi.html">e-Defter Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link" href="veri-xbrl-ubl-mapping.html">Veri → XBRL/UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">İş Akışı</p><h1>e-Defter Akışı</h1><p class="docs-lead">VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.</p></header>
+<!-- vbt:article-header:end -->
+<section id="e-defter-akisi">
+<p>e-Defter yaşam döngüsü tek bir <code>CurrentStatus</code> alanı üzerinden izlenir. Durum adları farklı uygulamaların ayrı kayıtları değildir; VBT Client, kullanıcı arayüzü/API ve GİB işlemlerinin aynı dönem özeti üzerinde sırayla oluşturduğu gözlemlenebilir aşamalardır.</p>
+<div class="callout callout-info"><b>Okuma kuralı:</b> Akış şemaları durum sırasını, altlarındaki geçiş tabloları ise her değişikliği başlatan işlem veya sonucu gösterir. Bir işlemin ön koşulu “Mevcut durum”, başarılı tamamlanma kanıtı “Sonraki durum” sütunundadır.</div>
+
+<h2 id="h-ana-akis">Ana Akış ve Uygulama Sınırları</h2>
+<p>Akış üç sorumluluk alanında ilerler. Client kaynak veriyi hazırlar ve aktarır; kullanıcı arayüzü/API defter üretimi, onay ve imza adımlarını yürütür; GİB aşaması gönderim sonucunu ve onaylı beratları tamamlar. Bir alanın son durumu, sonraki alanın başlangıç durumudur.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Akış alanı</th><th>Başlangıç durumu</th><th>Bitiş durumu</th><th>Bu alanda tamamlanan iş</th></tr></thead><tbody>
+<tr><td>VBT Client</td><td><code>WaitingForUpload</code></td><td><code>WaitingForLedgerCreation</code></td><td>Kaynak dosyanın açılması, ayrıştırılması, analizi ve parçaların sunucuya aktarılması.</td></tr>
+<tr><td>Kullanıcı arayüzü ve API</td><td><code>WaitingForLedgerCreation</code></td><td><code>WaitingForSendingToGib</code></td><td>Defter ve beratların üretilmesi, kullanıcı onayı ve imzanın tamamlanması.</td></tr>
+<tr><td>GİB ve sonuç</td><td><code>WaitingForSendingToGib</code></td><td><code>SentSecondCopy</code></td><td>Gönderimin başlatılması, GİB durumunun izlenmesi, onaylı beratların ve ikincil kopyaların alınması.</td></tr>
+</tbody></table></div>
+
+<h2 id="h-client-akisi">VBT Client Durumları</h2>
+<p>Bu bölüm, kaynak dosyanın seçilmesinden analiz edilen parçaların API'ye aktarılmasına kadar Client tarafından yürütülen hazırlık zinciridir. Entegratör bu durumlarda defter üretimini başlatmaz; Client işleminin tamamlanmasını ve güncel dönem özetini izler.</p>
+<div class="state-flow" aria-label="VBT Client e-Defter durum akışı">
+<div class="state-node"><code>WaitingForUpload</code><span>Kaynak dosya bekleniyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node"><code>WaitingForExtraction</code><span>Arşiv açılıyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node"><code>WaitingForParse</code><span>Kayıtlar ayrıştırılıyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node"><code>WaitingForAnalysis</code><span>Veri analiz ediliyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node"><code>WaitingForClientToServerTransfer</code><span>Parçalar aktarılıyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="success"><code>WaitingForLedgerCreation</code><span>Üretime hazır</span></div>
+</div>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Mevcut durum</th><th>Geçişi oluşturan işlem veya sonuç</th><th>Sonraki durum</th><th>Kontrol</th></tr></thead><tbody>
+<tr><td><code>WaitingForUpload</code></td><td>Kaynak dosya Client'a yüklenir.</td><td><code>WaitingForExtraction</code></td><td>Yüklemenin aynı firma, şube ve dönem için başladığını doğrulayın.</td></tr>
+<tr><td><code>WaitingForExtraction</code></td><td>Sıkıştırılmış kaynak dosya başarıyla açılır.</td><td><code>WaitingForParse</code></td><td>Aynı dosyayı yeniden seçmeden Client sonucunu izleyin.</td></tr>
+<tr><td><code>WaitingForParse</code></td><td>Kaynak kayıtlar Client tarafından ayrıştırılır.</td><td><code>WaitingForAnalysis</code></td><td>Ayrıştırma hatası varsa kaynak dosyayı düzeltin; aktarımı başlatmayın.</td></tr>
+<tr><td><code>WaitingForAnalysis</code></td><td>Client analizi hatasız tamamlanır.</td><td><code>WaitingForClientToServerTransfer</code></td><td>Analiz sonucundaki parça ve toplamları kontrol edin.</td></tr>
+<tr><td><code>WaitingForClientToServerTransfer</code></td><td>Son analiz parçası <code>LedgerState/TransferParsedFile</code> ile aktarılır.</td><td><code>WaitingForLedgerCreation</code></td><td><code>GetProcessReport</code> sonucunda üretime hazır bilgisini ve teşhis listesini birlikte değerlendirin.</td></tr>
+</tbody></table></div>
+
+<h2 id="h-ui-api-akisi">Kullanıcı Arayüzü ve API Durumları</h2>
+<p>Bu aşamada kaynak aktarımı bitmiştir. Defter üretimi kullanıcı tarafından başlatılır; üretilen içerik kontrol edilip onaylandıktan sonra imza işlemi tamamlanır. Her işlemden önce güncel özet yeniden alınır.</p>
+<div class="state-flow" aria-label="e-Defter kullanıcı arayüzü ve API durum akışı">
+<div class="state-node"><code>WaitingForLedgerCreation</code><span>Üretim başlatılabilir</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="waiting"><code>WaitingForApprove</code><span>İçerik onayı bekleniyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="waiting"><code>WaitingForSign</code><span>İmza bekleniyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="success"><code>WaitingForSendingToGib</code><span>GİB gönderimine hazır</span></div>
+</div>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Mevcut durum</th><th>Tetikleyen işlem</th><th>Başarılı işlemin sonucu</th><th>Sonraki durum</th></tr></thead><tbody>
+<tr><td><code>WaitingForLedgerCreation</code></td><td><code>LedgerState/CreateLedger</code></td><td>Yevmiye, kebir ve berat dosyaları üretilir.</td><td><code>WaitingForApprove</code></td></tr>
+<tr><td><code>WaitingForApprove</code></td><td><code>LedgerApproval/LedgerApproval</code></td><td>Güncel özet ve mali toplamlar kullanıcı tarafından onaylanır.</td><td><code>WaitingForSign</code></td></tr>
+<tr><td><code>WaitingForSign</code></td><td>Yetkili imza işlemi tamamlanır.</td><td>İmzalı defter ve beratlar GİB gönderimine hazırlanır.</td><td><code>WaitingForSendingToGib</code></td></tr>
+</tbody></table></div>
+<div class="callout callout-warning"><b>İşlem cevabı ile durum aynı şey değildir:</b> Bir çağrının kabul edilmesi zincirin tamamlandığını göstermez. Sonraki adıma yalnız güncel özet beklenen sonraki durumu döndürdüğünde geçin.</div>
+
+<h2 id="h-gib-akisi">GİB ve Sonuç Durumları</h2>
+<p>GİB gönderimini başlatan kullanıcı işleminden sonra ilerleme platform ve GİB sonuçlarıyla gerçekleşir. <code>GetBatchStatus</code> ve <code>ReceiveFile</code> sonuçları gözlemlemek ve onaylı dosyayı almak içindir; aynı dönem için yeni bir gönderim başlatma gerekçesi değildir.</p>
+<div class="state-flow" aria-label="e-Defter GİB durum akışı">
+<div class="state-node"><code>WaitingForSendingToGib</code><span>Gönderim tetiklenebilir</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="waiting"><code>InGibSendQueue</code><span>Beratlar gönderiliyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="waiting"><code>InGibStatusQueue</code><span>GİB sonucu sorgulanıyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="waiting"><code>InGibReceiveQueue</code><span>Onaylı berat alınıyor</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="success"><code>SentToGib</code><span>GİB onaylı berat alındı</span></div><span class="state-connector" aria-hidden="true"></span>
+<div class="state-node" data-state-tone="success"><code>SentSecondCopy</code><span>İkincil kopya tamamlandı</span></div>
+</div>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Mevcut durum</th><th>Geçişi oluşturan işlem veya sonuç</th><th>Sonraki durum</th><th>Entegratör davranışı</th></tr></thead><tbody>
+<tr><td><code>WaitingForSendingToGib</code></td><td><code>LedgerGib/BulkSendGibQueue</code> isteği kabul edilir.</td><td><code>InGibSendQueue</code></td><td>Gönderimi yinelemeyin; mevcut <code>Uuid</code>'yi izleyin.</td></tr>
+<tr><td><code>InGibSendQueue</code></td><td>İmzalı beratların GİB'e gönderimi tamamlanır.</td><td><code>InGibStatusQueue</code></td><td>Gerçek paket adıyla GİB sonucunu izleyin.</td></tr>
+<tr><td><code>InGibStatusQueue</code></td><td>GİB paket sonucu olumlu olarak alınır.</td><td><code>InGibReceiveQueue</code></td><td>Yeni paket üretmeyin; onaylı beratın alınmasını bekleyin.</td></tr>
+<tr><td><code>InGibReceiveQueue</code></td><td>GİB onaylı berat başarıyla alınır ve dönemle ilişkilendirilir.</td><td><code>SentToGib</code></td><td>Onaylı dosyaların erişilebilir olduğunu doğrulayın.</td></tr>
+<tr><td><code>SentToGib</code></td><td>İkincil kopya gönderimi başarıyla tamamlanır.</td><td><code>SentSecondCopy</code></td><td>Yerel mutabakatı ve arşiv kaydını kapatın.</td></tr>
+</tbody></table></div>
+
+<h2 id="h-gecis-matrisi">Uçtan Uca Geçiş Matrisi</h2>
+<p>Aşağıdaki matris, bir sonraki işlemin hangi durumda yapılacağını ve geçişin hangi alanda gerçekleştiğini tek görünümde özetler.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Sorumlu alan</th><th>İşlem öncesi durum</th><th>İşlem veya sonuç</th><th>Beklenen sonraki durum</th></tr></thead><tbody>
+<tr><td>VBT Client</td><td><code>WaitingForUpload</code></td><td>Yükleme, açma, ayrıştırma ve analiz</td><td><code>WaitingForClientToServerTransfer</code></td></tr>
+<tr><td>VBT Client → API</td><td><code>WaitingForClientToServerTransfer</code></td><td><code>TransferParsedFile</code> ile son parçanın aktarılması</td><td><code>WaitingForLedgerCreation</code></td></tr>
+<tr><td>Kullanıcı arayüzü → API</td><td><code>WaitingForLedgerCreation</code></td><td><code>CreateLedger</code> ve üretimin tamamlanması</td><td><code>WaitingForApprove</code></td></tr>
+<tr><td>Kullanıcı arayüzü → API</td><td><code>WaitingForApprove</code></td><td><code>LedgerApproval</code></td><td><code>WaitingForSign</code></td></tr>
+<tr><td>İmza uygulaması</td><td><code>WaitingForSign</code></td><td>Yetkili imzanın tamamlanması</td><td><code>WaitingForSendingToGib</code></td></tr>
+<tr><td>Kullanıcı arayüzü → API</td><td><code>WaitingForSendingToGib</code></td><td><code>BulkSendGibQueue</code></td><td><code>InGibSendQueue</code></td></tr>
+<tr><td>Platform ve GİB</td><td><code>InGibSendQueue</code></td><td>Gönderim, durum sorgusu ve onaylı beratın alınması</td><td><code>SentToGib</code></td></tr>
+<tr><td>Platform ve GİB</td><td><code>SentToGib</code></td><td>İkincil kopyanın tamamlanması</td><td><code>SentSecondCopy</code></td></tr>
+</tbody></table></div>
+
+<h2 id="h-hata-dali">Hata Dalı</h2>
+<p><code>Failed</code>, Client hazırlığından GİB sonucuna kadar her aşamada oluşabilen ortak hata durumudur. Hatanın yeri yalnız <code>Failed</code> değerinden anlaşılmaz; <code>PreviousStatus</code>, <code>FailDescription</code> ve <code>Messages[]</code> birlikte değerlendirilir.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th><code>PreviousStatus</code> alanı</th><th>Hata alanı</th><th>İlk kontrol</th><th>Güvenli davranış</th></tr></thead><tbody>
+<tr><td><code>WaitingForUpload</code> – <code>WaitingForClientToServerTransfer</code></td><td>VBT Client</td><td>Kaynak dosya biçimi, parça adı, teşhis fiş ve satırı</td><td>Kaynak veriyi düzeltin; defter üretimini başlatmayın.</td></tr>
+<tr><td><code>WaitingForLedgerCreation</code></td><td>Defter üretimi</td><td>Süreç raporu, dönem ve mali toplamlar</td><td>Mevcut <code>Uuid</code> sonucunu netleştirmeden yeniden üretmeyin.</td></tr>
+<tr><td><code>WaitingForApprove</code> / <code>WaitingForSign</code></td><td>Onay veya imza</td><td>Güncel özet, önceki durum ve hata açıklaması</td><td>Eski özetle yeniden onay vermeyin; güncel kaydı alın.</td></tr>
+<tr><td><code>WaitingForSendingToGib</code> – <code>InGibReceiveQueue</code></td><td>GİB iletişimi</td><td>Paket adı, GİB sonucu ve güncel özet</td><td>Yeni paket oluşturmayın; aynı paket ve <code>Uuid</code> üzerinden izleyin.</td></tr>
+</tbody></table></div>
+<div class="callout callout-warning"><b>Durum geçişi:</b> Ara durumlar atlanmaz ve özet kaydı dışarıdan doğrudan güncellenmez. Bir sonraki işlem yalnız güncel <code>CurrentStatus</code> o işlemin ön koşuluyla eşleştiğinde çağrılır.</div>
+<!-- vbt-source: LedgerSummaryStates.cs; ParsedLedgerFileTransferService.cs; LedgerCreationRequestService.cs; LedgerApprovalService.cs; LedgerGibService.cs; DocumentSummaryViewModel.cs -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="kullanim-senaryolari.html"><span>Önceki</span><strong>Kullanım Senaryoları</strong></a>
+<a class="docs-page-link docs-page-next" href="entegrator-sorumluluklari.html"><span>Sonraki</span><strong>Entegratör Sorumlulukları</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Dönem, defter, berat, durum veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Defter Nedir?","text":"e-Defter kapsamı, üretilen belge seti, aylık dönem modeli ve bileşen sorumlulukları.","keywords":"e-Defter yevmiye kebir berat","url":"e-defter-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.","keywords":"GİB XBRL-GL şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Kaynak dosyadan arşive kadar aylık e-Defter işlemini müşteri ve operasyon adımlarıyla uygulayın.","keywords":"senaryo aylık onay imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Defter Akışı","text":"VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.","keywords":"durum akış state GİB","url":"e-defter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, dönem, tekilleştirme, durum takibi, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun üretim, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client, kullanıcı arayüzü ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint LedgerState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → XBRL/UBL Mapping","text":"Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.","keywords":"mapping XBRL UBL XML","url":"veri-xbrl-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, dosya türleri, dönem kuralları ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Defter rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru dönem berat","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>
