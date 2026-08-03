@@ -13,9 +13,15 @@
   "home": {
     "title": "e-Fatura Entegrasyon Rehberi",
     "description": "Temel Fatura, Ticari Fatura, İhracat, Yolcu Beraberinde Eşya, Kamu, Yatırım Teşvik, Hal Kayıt Sistemi, Enerji, İlaç/Tıbbi Cihaz ve İDİS profilleri için GİB standardında e-Fatura düzenlemeye yönelik entegrasyon, API ve uygulama referansı.",
+    "layout": "integration",
+    "showEyebrow": false,
     "primaryAction": {
       "target": "e-fatura-nedir",
-      "label": "Dokümanı inceleyin"
+      "label": "Rehbere başlayın"
+    },
+    "secondaryAction": {
+      "target": "api-temelleri",
+      "label": "API sözleşmeleri"
     },
     "announcement": {
       "enabled": false
@@ -24,6 +30,8 @@
   "sections": [
     {
       "label": "Başlangıç",
+      "icon": "start",
+      "description": "Ürün kapsamı, belge profilleri ve GİB teknik temeli",
       "pages": [
         {
           "slug": "e-fatura-nedir",
@@ -46,6 +54,8 @@
     },
     {
       "label": "API Temelleri",
+      "icon": "api",
+      "description": "Kimlik doğrulama, ortak istek ve yanıt sözleşmesi",
       "pages": [
         {
           "slug": "api-temelleri",
@@ -60,6 +70,8 @@
     },
     {
       "label": "Giden Fatura",
+      "icon": "outgoing",
+      "description": "Oluşturma, gönderim, durum takibi ve UBL üretimi",
       "pages": [
         {
           "slug": "giden-fatura-senaryolari",
@@ -121,6 +133,8 @@
     },
     {
       "label": "Gelen Fatura",
+      "icon": "incoming",
+      "description": "Belge alımı, ERP aktarımı ve uygulama yanıtı",
       "pages": [
         {
           "slug": "gelen-fatura-senaryolari",
@@ -182,6 +196,8 @@
     },
     {
       "label": "Referans",
+      "icon": "reference",
+      "description": "Teknik sözlük, değişiklik geçmişi ve operasyon soruları",
       "pages": [
         {
           "slug": "teknik-referans",
@@ -202,7 +218,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında müşteri ve entegratör soruları.",
+          "description": "Profil seçimi, giden ve gelen fatura, durum takibi, hata yönetimi, UBL/JSON, iptal, itiraz ve canlı operasyon hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": ["SSS", "sorular", "durum", "timeout", "UBL", "iptal", "itiraz"],
           "roles": ["faq"],

@@ -68,7 +68,10 @@
       "borderless VBT brand mark in document headers",
       "standard favicon assets",
       "home hero with brand mark layout",
-      "home card entry indicator asset"
+      "home card entry indicator asset",
+      "developer portal landing layout",
+      "product family catalog",
+      "integration topology panel"
     ],
     "html": [
       ".docs-topbar",
@@ -84,6 +87,12 @@
       ".docs-home-hero-with-mark",
       ".docs-home-hero-text",
       ".docs-home-hero-mark",
+      ".docs-portal",
+      ".docs-portal-hero",
+      ".docs-portal-search",
+      ".docs-portal-catalog",
+      ".docs-portal-family",
+      ".docs-portal-product",
       ".docs-shell",
       "[data-docs-sidebar]",
       "[data-docs-toc]",
@@ -272,10 +281,12 @@
     "html": [
       "#searchOverlay",
       "#searchInput",
-      "#searchResults"
+      "#searchResults",
+      ".search-modal-header (optional)",
+      ".search-result-item (generated)"
     ],
     "api": [
-      "search.openSearch()",
+      "search.openSearch(query)",
       "search.closeSearch()",
       "search.closeSearchOnOverlay(event)",
       "search.navigateToResult(anchor, sectionId)"

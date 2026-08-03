@@ -14,6 +14,7 @@
     var scripts = [
         'theme/theme.js',
         'docs-layout/docs-layout.js',
+        'search/search.js',
         'navigation-progress/navigation-progress.js'
     ];
     var loadPromise = null;
