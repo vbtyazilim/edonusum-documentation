@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "id": "e-envanter-defteri",
+  "dir": "e-envanter-defteri",
+  "title": "e-Envanter Defteri Entegrasyon Rehberi",
+  "shortTitle": "e-Envanter Defteri",
+  "description": "Hesap döneminin açılış ve kapanış günlerine ait envanter defteri ve beratlarının hazırlanması, imzalanması ve GİB'e iletilmesi için entegrasyon rehberi.",
+  "eyebrow": "GİB e-Envanter Defteri",
+  "canonicalBase": "https://vbtyazilim.github.io/edonusum-documentation/guides/e-envanter-defteri/",
+  "templateVersion": "local-2026-07-08",
+  "searchPlaceholder": "Açılış, kapanış, envanter, berat veya endpoint arayın...",
+  "home": {
+    "title": "e-Envanter Defteri Entegrasyon Rehberi",
+    "description": "e-Envanter Defteri ürün kapsamı, açılış ve kapanış süreçleri, GİB yaşam döngüsü ve entegrasyon sözleşmesi.",
+    "primaryAction": {
+      "target": "e-envanter-defteri-nedir",
+      "label": "Rehbere başlayın"
+    },
+    "announcement": {
+      "enabled": false
+    }
+  },
+  "sections": [
+    {
+      "label": "Başlangıç",
+      "pages": [
+        {
+          "slug": "e-envanter-defteri-nedir",
+          "title": "e-Envanter Defteri Nedir?",
+          "description": "e-Envanter Defteri kapsamı, açılış ve kapanış kayıtları, belge seti ve bileşen sorumlulukları.",
+          "keywords": [
+            "e-Envanter",
+            "açılış",
+            "kapanış",
+            "berat"
+          ],
+          "roles": [
+            "guide-start"
+          ],
+          "homeCard": {
+            "label": "Başlangıç"
+          }
+        },
+        {
+          "slug": "gib-teknik-gereksinimleri",
+          "title": "GİB Teknik Gereksinimleri",
+          "description": "GİB teknik paketi, envanter XML'i, berat, imza ve resmî kaynaklar.",
+          "keywords": [
+            "GİB",
+            "envanter",
+            "şema",
+            "berat"
+          ]
+        },
+        {
+          "slug": "api-temelleri",
+          "title": "API Temelleri",
+          "description": "Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve açılış/kapanış dönem kimliği.",
+          "keywords": [
+            "API",
+            "token",
+            "dönem",
+            "ServiceResponse"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "İş Akışı",
+      "pages": [
+        {
+          "slug": "kullanim-senaryolari",
+          "title": "Kullanım Senaryoları",
+          "description": "1 Ocak açılış ve 31 Aralık kapanış kayıtlarının kaynak dosyadan arşive kadar işlem sırası.",
+          "keywords": [
+            "senaryo",
+            "açılış",
+            "kapanış",
+            "imza"
+          ]
+        },
+        {
+          "slug": "e-envanter-akisi",
+          "title": "e-Envanter Defteri Akışı",
+          "description": "Kaynak veriden GİB onaylı envanter beratına uzanan gözlemlenebilir durum akışı.",
+          "keywords": [
+            "durum",
+            "akış",
+            "state",
+            "GİB"
+          ]
+        },
+        {
+          "slug": "entegrator-sorumluluklari",
+          "title": "Entegratör Sorumlulukları",
+          "description": "Kaynak veri, açılış/kapanış tarihi, tekilleştirme, hata yönetimi ve arşivleme sorumlulukları.",
+          "keywords": [
+            "entegratör",
+            "sorumluluk",
+            "kontrol"
+          ]
+        },
+        {
+          "slug": "platform-sorumluluklari",
+          "title": "Platform Sorumlulukları",
+          "description": "VBT platformunun envanter üretimi, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.",
+          "keywords": [
+            "platform",
+            "VBT",
+            "sorumluluk"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "API",
+      "pages": [
+        {
+          "slug": "entegrator-api-endpoint-referansi",
+          "title": "Entegrasyon API Endpoint Referansı",
+          "description": "Client ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.",
+          "keywords": [
+            "API",
+            "endpoint",
+            "InventoryState"
+          ],
+          "roles": [
+            "api"
+          ],
+          "homeCard": {
+            "label": "API"
+          }
+        },
+        {
+          "slug": "portal-api-endpoint-referansi",
+          "title": "Listeleme ve Çıktı API Referansı",
+          "description": "Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.",
+          "keywords": [
+            "Portal",
+            "liste",
+            "PDF",
+            "ZIP"
+          ]
+        },
+        {
+          "slug": "islem-ornekleri",
+          "title": "İşlem Örnekleri",
+          "description": "Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.",
+          "keywords": [
+            "JSON",
+            "örnek",
+            "request"
+          ]
+        },
+        {
+          "slug": "veri-ubl-mapping",
+          "title": "Veri → UBL Mapping",
+          "description": "Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.",
+          "keywords": [
+            "mapping",
+            "UBL",
+            "XML",
+            "envanter"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Referans",
+      "pages": [
+        {
+          "slug": "teknik-referans",
+          "title": "Teknik Referans",
+          "description": "Durum değerleri, açılış/kapanış kuralları, dosya türleri ve hata yönetimi referansı.",
+          "keywords": [
+            "enum",
+            "durum",
+            "hata",
+            "referans"
+          ]
+        },
+        {
+          "slug": "changelog",
+          "title": "Changelog",
+          "description": "e-Envanter Defteri rehberinin yayımlanmış dış sözleşme değişiklikleri.",
+          "keywords": [
+            "changelog",
+            "değişiklik"
+          ]
+        },
+        {
+          "slug": "sss",
+          "title": "Sıkça Sorulan Sorular",
+          "description": "Müşteri ve entegratörlerin açılış, kapanış, berat, durum, imza, GİB ve arşivleme soruları.",
+          "keywords": [
+            "SSS",
+            "soru",
+            "açılış",
+            "kapanış"
+          ],
+          "roles": [
+            "faq"
+          ],
+          "homeCard": {
+            "label": "SSS"
+          }
+        }
+      ]
+    }
+  ]
+}

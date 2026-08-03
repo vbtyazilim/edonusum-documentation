@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Temelleri — e-Defter Entegrasyon Rehberi</title>
+<meta name="description" content="Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/api-temelleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="API Temelleri — e-Defter Entegrasyon Rehberi">
+<meta property="og:description" content="Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/api-temelleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="API Temelleri — e-Defter Entegrasyon Rehberi">
+<meta name="twitter:description" content="Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Defter</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-defter-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-defter-nedir.html">e-Defter Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link active" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="e-defter-akisi.html">e-Defter Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link" href="veri-xbrl-ubl-mapping.html">Veri → XBRL/UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Başlangıç</p><h1>API Temelleri</h1><p class="docs-lead">Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.</p></header>
+<!-- vbt:article-header:end -->
+<section id="api-temelleri">
+<p>Bu sayfa, ilk API çağrısından dönem sonucunun izlenmesine kadar tüm endpointlerde ortak olan sözleşmeyi açıklar. İşlem örneklerine geçmeden önce oturum, firma bağlamı, dönem anahtarı ve yanıt zarfı birlikte uygulanmalıdır.</p>
+<h2 id="h-baslamadan-once">Başlamadan Önce</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Hazırlık</th><th>Gerekli bilgi</th><th>Nerede kullanılır?</th><th>Kontrol</th></tr></thead><tbody>
+<tr><td>API erişimi</td><td>Ortamın Gateway API ana adresi</td><td>Tüm endpoint adreslerinin önünde</td><td>Test ve canlı ortam adreslerini karıştırmayın.</td></tr>
+<tr><td>Kullanıcı</td><td>E-posta ve parola</td><td><code>POST /api/Session/Login</code></td><td>Parolayı yalnız oturum açma isteğinde gönderin.</td></tr>
+<tr><td>Firma bağlamı</td><td><code>SecurityFirmUuid</code>, VKN/TCKN ve şube kodu</td><td>Header ve işlem gövdeleri</td><td>Login cevabındaki firma ile işlem gövdesindeki firma aynı olmalıdır.</td></tr>
+<tr><td>Dönem</td><td>Aynı ayın ilk ve son günü</td><td>Aktarım, üretim, özet ve gönderim işlemleri</td><td>Özel hesap dönemi ve parçalı ay göndermeyin.</td></tr>
+</tbody></table></div>
+<h2 id="h-kimlik-dogrulama">Kimlik Doğrulama</h2>
+<p>Oturum açma isteğinde yalnızca hesap e-postası ve parola gönderilir. Başarılı cevapta alınan token, sonraki korumalı çağrıların <code>Authorization</code> header'ında kullanılır.</p>
+<div class="endpoint-card"><div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/Session/Login</span></div><div class="endpoint-body"><p class="endpoint-description">API oturumu için yetkilendirme token'ı üretir.</p><div class="table-wrapper"><table><tbody><tr><td><b>Request</b></td><td><code>Email</code>, <code>Password</code></td></tr><tr><td><b>Response</b></td><td>Token bilgisi</td></tr></tbody></table></div></div></div>
+<details class="example-details"><summary>Oturum açma JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json">{
+  "Email": "entegrasyon@firma.com",
+  "Password": "GUCLU_PAROLANIZ"
+}</code></pre></div></details>
+<div class="table-wrapper"><table><thead><tr><th>Header</th><th>Değer</th><th>Zorunluluk</th></tr></thead><tbody>
+<tr><td><code>Authorization</code></td><td><code>Bearer {token}</code></td><td>Oturum açma dışındaki korumalı endpointlerde zorunlu.</td></tr>
+<tr><td><code>SecurityFirmUUID</code></td><td>İşlem yapılacak firmanın kimliği</td><td>Firma bağlamı kullanan işlemlerde gönderilir.</td></tr>
+<tr><td><code>Content-Type</code></td><td><code>application/json</code></td><td>JSON gövdeli POST isteklerinde gönderilir.</td></tr>
+</tbody></table></div>
+<p><code>SecurityFirmUUID</code> kullanıcı kimliği değildir. Firma değiştirildiğinde çağrılar yeni firma kimliğiyle sürdürülmelidir.</p>
+<div class="callout callout-warning"><b>Güvenlik:</b> Parola, token, defter içeriği ve kişisel veriler loglara yazılmamalıdır. Örneklerdeki değerler temsilidir.</div>
+<h2 id="h-ortak-kimlik">Firma ve Dönem Kimliği</h2>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Tür</th><th>Kural</th></tr></thead><tbody>
+<tr><td><code>IdentificationNumber</code></td><td>string</td><td>İşlem yapılan firmanın VKN/TCKN'si.</td></tr>
+<tr><td><code>BranchCode</code></td><td>string</td><td>Şube yoksa <code>0000</code>; şube varsa sözleşmedeki dört haneli kod.</td></tr>
+<tr><td><code>PeriodStart</code></td><td>ISO 8601 datetime</td><td>Aylık dönemin ilk günü.</td></tr>
+<tr><td><code>PeriodEnd</code></td><td>ISO 8601 datetime</td><td>Aynı ayın son günü.</td></tr>
+</tbody></table></div>
+<p>Bu dört alan birlikte dönem anahtarını oluşturur. Şube kodunun veya tarih saatinin çağrılar arasında değişmesi aynı muhasebe döneminin farklı kayıtlar gibi değerlendirilmesine neden olabilir. Bir kayıt oluşturulduktan sonra response içindeki <code>Uuid</code> yerel ERP kaydına yazılmalı ve sonraki sorgularda birincil teknik izleme anahtarı olarak kullanılmalıdır.</p>
+<h2 id="h-yanit-zarfi">Yanıt Zarfı</h2>
+<p>Endpointler <code>ServiceResponse&lt;T&gt;</code> döndürür. <code>Data</code> işlem verisini, <code>Messages[]</code> uyarı ve hataları, <code>StatusCode</code> servis sonucunu taşır. <code>IsSuccessful</code>, hata türünde mesaj bulunmadığında <code>true</code> olur. Sayfalı sonuçlarda <code>TotalRows</code> ve <code>TotalPages</code> ayrıca değerlendirilir. Yalnız HTTP 200'e bakarak işlemi tamamlandı saymayın.</p>
+<pre><code class="language-json">{
+  "Data": true,
+  "Messages": [],
+  "StackTrace": null,
+  "StatusCode": 200,
+  "TotalRows": 0,
+  "TotalPages": 0,
+  "IsSuccessful": true
+}</code></pre>
+<p>Hata halinde <code>Messages[]</code> içindeki <code>MessageType</code>, <code>MessageModel.Code</code>, <code>Message</code> ve varsa <code>Argument</code> birlikte okunur:</p>
+<pre><code class="language-json">{
+  "Data": false,
+  "Messages": [
+    {
+      "Service": null,
+      "Action": "LedgerApproval",
+      "MessageModel": {
+        "Type": "LedgerMessage",
+        "Code": "LedgerSummary.InvalidState"
+      },
+      "MessageType": 2,
+      "Argument": null,
+      "Message": "Defter özet durumu, gerçekleştirilmek istenen işlem için uygun değil"
+    }
+  ],
+  "StackTrace": null,
+  "StatusCode": 400,
+  "TotalRows": 0,
+  "TotalPages": 0,
+  "IsSuccessful": false
+}</code></pre>
+<div class="callout callout-info"><b>Hata anahtarı:</b> <code>MessageType=2</code> hata seviyesidir. Programatik ayrım için yerelleştirilmiş <code>Message</code> metni yerine <code>MessageModel.Type</code> ve <code>MessageModel.Code</code> alanlarını kullanın. <code>Service</code> ve <code>Action</code> alanlarını yalnız izleme bağlamı olarak saklayın.</div>
+<div class="table-wrapper"><table><thead><tr><th>Durum</th><th>Güvenli davranış</th></tr></thead><tbody>
+<tr><td>HTTP 401</td><td><code>Email</code> ve <code>Password</code> ile yeniden oturum açın; aynı işlem gövdesini körlemesine tekrarlamayın.</td></tr>
+<tr><td><code>Messages[]</code> hata içeriyor</td><td>Mesajı ilgili alan veya durumla eşleştirip düzeltin.</td></tr>
+<tr><td>Timeout/bağlantı kopması</td><td>Yeni kayıt oluşturmadan önce firma, dönem veya <code>Uuid</code> ile mevcut sonucu sorgulayın.</td></tr>
+<tr><td>Asenkron süreç başladı</td><td><code>GetEntity</code> veya güncel özet sorgusuyla terminal duruma kadar izleyin.</td></tr>
+</tbody></table></div>
+<h2 id="h-basari-olcutu">Başarı Ölçütü</h2>
+<p>Bir çağrının başarılı olması ile e-Defter döneminin tamamlanması farklıdır. Aşağıdaki kanıtların tamamı oluşmadan dönem kapatılmış sayılmamalıdır.</p>
+<ol><li>İstek cevabında <code>IsSuccessful=true</code> olmalı ve hata türünde mesaj bulunmamalıdır.</li><li>Özet kaydı beklenen bir sonraki <code>CurrentStatus</code> değerine ilerlemelidir.</li><li>Onay öncesinde yevmiye, kebir ve berat önizlemeleri kaynak muhasebe toplamlarıyla mutabık olmalıdır.</li><li>GİB aşamasında paket sonucu olumlu olmalı ve GİB onaylı berat dosyaları erişilebilir olmalıdır.</li><li>İmzalı defterler ile GİB onaylı beratlar aynı firma, şube, dönem ve <code>Uuid</code> altında arşivlenmelidir.</li></ol>
+<!-- vbt-source: SessionController.cs; GatewayAuthorizationFilter.cs; BaseSendRequestService.cs; RestClientManager.cs; SessionModel.cs; FirmCredentials.cs; DocumentCredentials.cs; ServiceResponse.cs -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="gib-teknik-gereksinimleri.html"><span>Önceki</span><strong>GİB Teknik Gereksinimleri</strong></a>
+<a class="docs-page-link docs-page-next" href="kullanim-senaryolari.html"><span>Sonraki</span><strong>Kullanım Senaryoları</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Dönem, defter, berat, durum veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Defter Nedir?","text":"e-Defter kapsamı, üretilen belge seti, aylık dönem modeli ve bileşen sorumlulukları.","keywords":"e-Defter yevmiye kebir berat","url":"e-defter-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.","keywords":"GİB XBRL-GL şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Kaynak dosyadan arşive kadar aylık e-Defter işlemini müşteri ve operasyon adımlarıyla uygulayın.","keywords":"senaryo aylık onay imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Defter Akışı","text":"VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.","keywords":"durum akış state GİB","url":"e-defter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, dönem, tekilleştirme, durum takibi, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun üretim, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client, kullanıcı arayüzü ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint LedgerState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → XBRL/UBL Mapping","text":"Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.","keywords":"mapping XBRL UBL XML","url":"veri-xbrl-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, dosya türleri, dönem kuralları ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Defter rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru dönem berat","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

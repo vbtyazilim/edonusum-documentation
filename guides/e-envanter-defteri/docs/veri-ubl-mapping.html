@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veri → UBL Mapping — e-Envanter Defteri Entegrasyon Rehberi</title>
+<meta name="description" content="Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-envanter-defteri/docs/veri-ubl-mapping.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Veri → UBL Mapping — e-Envanter Defteri Entegrasyon Rehberi">
+<meta property="og:description" content="Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-envanter-defteri/docs/veri-ubl-mapping.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Veri → UBL Mapping — e-Envanter Defteri Entegrasyon Rehberi">
+<meta name="twitter:description" content="Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Envanter Defteri</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-envanter-defteri-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-envanter-defteri-nedir.html">e-Envanter Defteri Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="e-envanter-akisi.html">e-Envanter Defteri Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link active" href="veri-ubl-mapping.html">Veri → UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Veri → UBL Mapping</h1><p class="docs-lead">Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="veri-ubl-mapping">
+<h2 id="h-mapping-kapsami">Mapping Kapsamı</h2>
+<p>Kaynak envanter kayıtları <code>Inventory_EntryHeaderModel</code> ve <code>Inventory_EntryDetailModel</code> alanlarına, ardından GİB <code>envanter.xsd</code> modeline dönüştürülür. Aşağıdaki hedef adları doğrudan platformun üretim eşlemesindeki alanlardır.</p>
+<div class="table-wrapper"><table class="reference-table-wide mapping-table"><thead><tr><th>Kaynak alan</th><th>Envanter XML hedef alanı</th><th>Platform kuralı</th></tr></thead><tbody>
+<tr><td><code>EntryNumber</code></td><td><code class="mapping-path">EnvanterHeader.<wbr>EntryNumber</code></td><td>Envanter kayıt kimliğini taşır.</td></tr>
+<tr><td><code>HeaderSequenceNumber</code></td><td><code class="mapping-path">EnvanterHeader.<wbr>EntryNumberCounter</code> ve <code class="mapping-path">EnvanterDetail.<wbr>LineNumberCounter</code></td><td>Başlık sırası benzersiz ve kesintisiz ilerler; satırın başlık numarası üst kayıtla aynı olur.</td></tr>
+<tr><td><code>EnteredBy</code></td><td><code class="mapping-path">EnvanterHeader.<wbr>EnteredBy</code></td><td>Boş bırakılamaz.</td></tr>
+<tr><td><code>EnteredDate</code></td><td><code class="mapping-path">EnvanterHeader.<wbr>EnteredDate</code></td><td>Açılışta 1 Ocak, kapanışta 31 Aralık olarak seçilen tek günlük dönem içinde olmalıdır.</td></tr>
+<tr><td><code>EntryComment</code></td><td><code class="mapping-path">EnvanterHeader.<wbr>EntryComment</code></td><td>Envanter kayıt açıklamasını taşır.</td></tr>
+<tr><td><code>LineSequenceNumber</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>LineNumber</code></td><td>Satır sırası benzersiz ve kesintisiz ilerler.</td></tr>
+<tr><td><code>AccountMainId</code>, <code>AccountMainDescription</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>Account.<wbr>AccountMainID</code>, <code class="mapping-path">EnvanterDetail.<wbr>Account.<wbr>AccountMainDescription</code></td><td>Ana hesap kodu 3 veya 4 karakterdir; kod ve açıklama boş bırakılamaz.</td></tr>
+<tr><td><code>AccountSubId</code>, <code>AccountSubDescription</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>Account.<wbr>AccountSub.<wbr>AccountSubID</code>, <code class="mapping-path">EnvanterDetail.<wbr>Account.<wbr>AccountSub.<wbr>AccountSubDescription</code></td><td>Alt hesap kodu varsa ana hesap koduyla başlamalıdır.</td></tr>
+<tr><td><code>Amount</code>, <code>AmountCurrency</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>Amount</code>, <code class="mapping-path">EnvanterDetail.<wbr>AmountCurrency</code></td><td>Tutar sıfırdan büyük ve en fazla iki ondalık basamaklıdır.</td></tr>
+<tr><td><code>AmountOriginalAmount</code>, <code>AmountOriginalCurrency</code>, <code>AmountOriginalExchangeRate*</code></td><td>Aynı adlı <code class="mapping-path">EnvanterDetail</code> yabancı para alanları</td><td>Orijinal tutar kullanılıyorsa para birimi ve kur tarihi; orijinal para birimi kullanılıyorsa kur değeri zorunludur.</td></tr>
+<tr><td><code>DetailComment</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>DetailComment</code></td><td>Kaynak kayıt varsa aktarılır.</td></tr>
+<tr><td><code>MeasurableIdentifier</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>Measurable.<wbr>MeasurableID</code></td><td><code>IsMeasurable=true</code> olduğunda zorunludur.</td></tr>
+<tr><td><code>MeasurableCodeDescription</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>Measurable.<wbr>MeasurableDescription</code></td><td><code>IsMeasurable=true</code> olduğunda zorunludur.</td></tr>
+<tr><td><code>MeasurableQuantity</code>, <code>MeasurableUnitOfMeasure</code></td><td><code class="mapping-path">EnvanterDetail.<wbr>Measurable.<wbr>MeasurableQuantity</code>, <code class="mapping-path">EnvanterDetail.<wbr>Measurable.<wbr>MeasurableUnitOfMeasure</code></td><td><code>IsMeasurable=true</code> olduğunda ikisi de zorunludur.</td></tr>
+</tbody></table></div>
+<h2 id="h-olculebilir-kural">Ölçülebilir Kıymet Kuralı</h2>
+<div class="table-wrapper"><table class="mapping-rule-table mapping-table"><thead><tr><th>Koşul</th><th>Zorunlu alanlar</th><th>Ek kural</th></tr></thead><tbody>
+<tr><td><code>IsMeasurable=false</code></td><td>Ölçülebilir kıymet alanları üretilmez.</td><td>Tutar ve hesap alanları normal şekilde devam eder.</td></tr>
+<tr><td><code>IsMeasurable=true</code></td><td><code>MeasurableIdentifier</code>, <code>MeasurableCodeDescription</code>, <code>MeasurableQuantity</code>, <code>MeasurableUnitOfMeasure</code></td><td>Dört alan birlikte gönderilir.</td></tr>
+<tr><td><code>MeasurableUnitOfMeasure</code></td><td><code>DAY</code>, <code>MON</code>, <code>ANN</code>, <code>HUR</code>, <code>D61</code>, <code>D62</code>, <code>C62</code>, <code>PA</code>, <code>BX</code>, <code>MGM</code>, <code>GRM</code>, <code>KGM</code>, <code>LTR</code>, <code>TNE</code>, <code>NT</code>, <code>GT</code>, <code>MMT</code>, <code>CMT</code>, <code>MTR</code>, <code>KTM</code>, <code>MLT</code>, <code>MMQ</code>, <code>CMK</code>, <code>CMQ</code>, <code>MTK</code>, <code>MTQ</code>, <code>KJO</code>, <code>CLT</code>, <code>KWH</code>, <code>MWH</code>, <code>CCT</code>, <code>D30</code>, <code>D40</code>, <code>LPA</code>, <code>B32</code>, <code>NCL</code>, <code>PR</code>, <code>R9</code>, <code>SET</code>, <code>T3</code>, <code>LM</code>, <code>AMVT</code>, <code>HAGR</code>, <code>CT</code></td><td>Karşılaştırma büyük/küçük harfe duyarsızdır; değer başındaki ve sonundaki boşluklar temizlenir.</td></tr>
+</tbody></table></div>
+<h2 id="h-berat">Berat Eşleşmesi</h2>
+<p>Firma kimliği, şube, açılış/kapanış tarihi, parça sayısı ve kayıt özetleri envanter beratıyla aynı olmalıdır. GİB onaylı berat, imzalı envanter dosyasıyla paket adı ve <code>Uuid</code> üzerinden ilişkilendirilir.</p>
+<!-- vbt-source: TempInventoryModel.cs; InventoryUblService.cs; InventoryMeasureUnitCodes.cs; InventoryEntityCreationProcessHandler.cs; GİB envanter.xsd/envanter_defter.sch/envanter_berat.sch -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="islem-ornekleri.html"><span>Önceki</span><strong>İşlem Örnekleri</strong></a>
+<a class="docs-page-link docs-page-next" href="teknik-referans.html"><span>Sonraki</span><strong>Teknik Referans</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Açılış, kapanış, envanter, berat veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Envanter Defteri Nedir?","text":"e-Envanter Defteri kapsamı, açılış ve kapanış kayıtları, belge seti ve bileşen sorumlulukları.","keywords":"e-Envanter açılış kapanış berat","url":"e-envanter-defteri-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketi, envanter XML'i, berat, imza ve resmî kaynaklar.","keywords":"GİB envanter şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve açılış/kapanış dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"1 Ocak açılış ve 31 Aralık kapanış kayıtlarının kaynak dosyadan arşive kadar işlem sırası.","keywords":"senaryo açılış kapanış imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Envanter Defteri Akışı","text":"Kaynak veriden GİB onaylı envanter beratına uzanan gözlemlenebilir durum akışı.","keywords":"durum akış state GİB","url":"e-envanter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, açılış/kapanış tarihi, tekilleştirme, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun envanter üretimi, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint InventoryState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Firma, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → UBL Mapping","text":"Kaynak envanter alanlarının envanter defteri ve berat XML'indeki teknik karşılıkları.","keywords":"mapping UBL XML envanter","url":"veri-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, açılış/kapanış kuralları, dosya türleri ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Envanter Defteri rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin açılış, kapanış, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru açılış kapanış","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

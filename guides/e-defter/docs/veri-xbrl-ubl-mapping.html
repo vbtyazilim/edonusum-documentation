@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veri → XBRL/UBL Mapping — e-Defter Entegrasyon Rehberi</title>
+<meta name="description" content="Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/veri-xbrl-ubl-mapping.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="Veri → XBRL/UBL Mapping — e-Defter Entegrasyon Rehberi">
+<meta property="og:description" content="Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/veri-xbrl-ubl-mapping.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Veri → XBRL/UBL Mapping — e-Defter Entegrasyon Rehberi">
+<meta name="twitter:description" content="Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Defter</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-defter-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-defter-nedir.html">e-Defter Nedir?</a>
+<a class="docs-nav-link" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="e-defter-akisi.html">e-Defter Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link active" href="veri-xbrl-ubl-mapping.html">Veri → XBRL/UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">API</p><h1>Veri → XBRL/UBL Mapping</h1><p class="docs-lead">Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.</p></header>
+<!-- vbt:article-header:end -->
+<section id="veri-xbrl-ubl-mapping">
+<h2 id="h-mapping-kapsami">Mapping Kapsamı</h2>
+<p>e-Defter akışı tek bir fatura JSON'u üretmez. VBT Client'ın ayrıştırdığı muhasebe kayıtları <code>Ledger_EntryHeaderModel</code> ve <code>Ledger_EntryDetailModel</code> alanlarına, ardından GİB XBRL-GL yevmiye/kebir modeline dönüştürülür. Aşağıdaki hedef adları doğrudan platformun üretim eşlemesindeki alanlardır.</p>
+<div class="table-wrapper"><table class="reference-table-wide mapping-table"><thead><tr><th>Kaynak alan</th><th>XBRL-GL hedef alanı</th><th>Platform kuralı</th></tr></thead><tbody>
+<tr><td><code>EntryNumber</code></td><td><code class="mapping-path">YevmiyeHeader.<wbr>EntryNumber</code></td><td>Muhasebe fiş numarasıdır.</td></tr>
+<tr><td><code>HeaderSequenceNumber</code></td><td><code class="mapping-path">YevmiyeHeader.<wbr>EntryNumberCounter</code> ve <code class="mapping-path">YevmiyeDetail.<wbr>LineNumberCounter</code></td><td>Başlık sırası benzersiz ve kesintisiz ilerler; satırın başlık numarası üst kayıtla aynı olur.</td></tr>
+<tr><td><code>EnteredBy</code></td><td><code class="mapping-path">YevmiyeHeader.<wbr>EnteredBy</code></td><td>Boş bırakılamaz.</td></tr>
+<tr><td><code>EnteredDate</code></td><td><code class="mapping-path">YevmiyeHeader.<wbr>EnteredDate</code></td><td>Seçilen aylık dönem içinde ve kayıt sırasıyla uyumlu olmalıdır.</td></tr>
+<tr><td><code>EntryComment</code></td><td><code class="mapping-path">YevmiyeHeader.<wbr>EntryComment</code></td><td>Fiş açıklamasını taşır.</td></tr>
+<tr><td><code>TotalDebit</code>, <code>TotalCredit</code></td><td><code class="mapping-path">YevmiyeHeader.<wbr>TotalDebit</code>, <code class="mapping-path">YevmiyeHeader.<wbr>TotalCredit</code></td><td>Birbirine ve satırlardaki D/C toplamlarına eşit olmalıdır.</td></tr>
+<tr><td><code>LineSequenceNumber</code></td><td><code class="mapping-path">YevmiyeDetail.<wbr>LineNumber</code></td><td>Satır sırası benzersiz ve kesintisiz ilerler.</td></tr>
+<tr><td><code>AccountMainId</code>, <code>AccountMainDescription</code></td><td><code class="mapping-path">YevmiyeDetail.<wbr>Account.<wbr>AccountMainID</code>, <code class="mapping-path">YevmiyeDetail.<wbr>Account.<wbr>AccountMainDescription</code></td><td>Ana hesap kodu ve açıklaması boş bırakılamaz.</td></tr>
+<tr><td><code>AccountSubId</code>, <code>AccountSubDescription</code></td><td><code class="mapping-path">YevmiyeDetail.<wbr>Account.<wbr>AccountSub.<wbr>AccountSubID</code>, <code class="mapping-path">YevmiyeDetail.<wbr>Account.<wbr>AccountSub.<wbr>AccountSubDescription</code></td><td>Alt hesap kodu ana hesap kodunu içermelidir.</td></tr>
+<tr><td><code>Amount</code>, <code>AmountCurrency</code></td><td><code class="mapping-path">YevmiyeDetail.<wbr>Amount</code>, <code class="mapping-path">YevmiyeDetail.<wbr>AmountCurrency</code></td><td>Tutar sıfırdan büyük olmalıdır; para birimi ISO 4217 koduyla taşınır.</td></tr>
+<tr><td><code>AmountOriginalAmount</code>, <code>AmountOriginalCurrency</code>, <code>AmountOriginalExchangeRate*</code></td><td>Aynı adlı <code class="mapping-path">YevmiyeDetail</code> yabancı para alanları</td><td>Orijinal tutar kullanılıyorsa para birimi, kur, kur tarihi ve ilgili kur bilgileri birlikte tamamlanır.</td></tr>
+<tr><td><code>DebitCreditNote</code></td><td><code class="mapping-path">YevmiyeDetail.<wbr>DebitCreditCode</code></td><td><code>D</code> borç, <code>C</code> alacak anlamına gelir.</td></tr>
+<tr><td><code>PostingDate</code>, <code>DocumentReference</code></td><td><code class="mapping-path">YevmiyeDetail.<wbr>PostingDate</code>, <code class="mapping-path">YevmiyeDetail.<wbr>DocumentReference</code></td><td>Satır tarihi başlığın <code>EnteredDate</code>, referans ise başlığın <code>EntryNumber</code> değeriyle eşleşir.</td></tr>
+<tr><td><code>DocumentType</code>, <code>DocumentTypeDescription</code>, <code>DocumentNumber</code>, <code>DocumentDate</code></td><td>Aynı adlı <code class="mapping-path">YevmiyeDetail</code> belge alanları</td><td>Belge türüne bağlı zorunluluklar aşağıdaki tabloda uygulanır.</td></tr>
+<tr><td><code>PaymentMethod</code>, <code>DetailComment</code></td><td><code class="mapping-path">YevmiyeDetail.<wbr>PaymentMethod</code>, <code class="mapping-path">YevmiyeDetail.<wbr>DetailComment</code></td><td>Kaynak kayıt varsa aktarılır.</td></tr>
+</tbody></table></div>
+<h2 id="h-deger-kumeleri">Kod ve Koşul Kümeleri</h2>
+<div class="table-wrapper"><table class="mapping-rule-table mapping-table"><thead><tr><th>Alan/koşul</th><th>Kabul edilen değerler</th><th>Ek kural</th></tr></thead><tbody>
+<tr><td><code>DebitCreditNote</code></td><td><code>D</code>, <code>C</code></td><td>Fişin borç ve alacak satır toplamları eşit olmalıdır.</td></tr>
+<tr><td><code>DocumentType</code></td><td><code>check</code>, <code>invoice</code>, <code>order-customer</code>, <code>order-vendor</code>, <code>voucher</code>, <code>shipment</code>, <code>receipt</code>, <code>other</code></td><td>Numara veya tarih gönderilmişse tür de gönderilir.</td></tr>
+<tr><td><code>check</code> / <code>invoice</code></td><td><code>DocumentNumber</code> ve <code>DocumentDate</code></td><td>İki alan birlikte zorunludur.</td></tr>
+<tr><td><code>other</code></td><td><code>DocumentNumber</code>, <code>DocumentDate</code>, <code>DocumentTypeDescription</code></td><td>Üç alan birlikte zorunludur.</td></tr>
+</tbody></table></div>
+<h2 id="h-berat-kimligi">Berat Kimliği</h2>
+<p><code>IdentificationNumber</code>, <code>BranchCode</code>, dönem, defter türü ve parça numarası beratın dosya ve belge kimliğine temel olur. Paket adını entegratör üretmez; platformun döndürdüğü dosya adı GİB durum sorgusunda aynen kullanılır.</p>
+<div class="callout callout-warning"><b>Doğrudan XML gönderimi değildir:</b> <code>TransferParsedFile</code>, analiz edilmiş parça içeriğini taşır. XBRL/UBL dosyasının GİB şemasına göre üretimi platform sorumluluğundadır.</div>
+<!-- vbt-source: TempLedgerModel.cs; LedgerUblService.cs; LedgerClientAnalysisService.cs; UblConstants.cs; LedgerEntityCreationProcessHandler.cs; GİB e-Defter XBRL-GL package -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="islem-ornekleri.html"><span>Önceki</span><strong>İşlem Örnekleri</strong></a>
+<a class="docs-page-link docs-page-next" href="teknik-referans.html"><span>Sonraki</span><strong>Teknik Referans</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Dönem, defter, berat, durum veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Defter Nedir?","text":"e-Defter kapsamı, üretilen belge seti, aylık dönem modeli ve bileşen sorumlulukları.","keywords":"e-Defter yevmiye kebir berat","url":"e-defter-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.","keywords":"GİB XBRL-GL şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Kaynak dosyadan arşive kadar aylık e-Defter işlemini müşteri ve operasyon adımlarıyla uygulayın.","keywords":"senaryo aylık onay imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Defter Akışı","text":"VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.","keywords":"durum akış state GİB","url":"e-defter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, dönem, tekilleştirme, durum takibi, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun üretim, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client, kullanıcı arayüzü ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint LedgerState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → XBRL/UBL Mapping","text":"Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.","keywords":"mapping XBRL UBL XML","url":"veri-xbrl-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, dosya türleri, dönem kuralları ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Defter rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru dönem berat","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>

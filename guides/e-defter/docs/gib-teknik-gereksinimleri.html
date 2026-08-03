@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<!-- vbt:head:start -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GİB Teknik Gereksinimleri — e-Defter Entegrasyon Rehberi</title>
+<meta name="description" content="GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.">
+<meta name="author" content="Erdem Özkara">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/gib-teknik-gereksinimleri.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
+<meta property="og:title" content="GİB Teknik Gereksinimleri — e-Defter Entegrasyon Rehberi">
+<meta property="og:description" content="GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-defter/docs/gib-teknik-gereksinimleri.html">
+<meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GİB Teknik Gereksinimleri — e-Defter Entegrasyon Rehberi">
+<meta name="twitter:description" content="GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.">
+<meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
+<script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
+<link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
+<link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
+<link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
+<!-- vbt:head:end -->
+</head>
+<body class="docs-page">
+<!-- vbt:topbar:start -->
+<a class="skip-link" href="#main-content">İçeriğe atla</a>
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+<header class="docs-topbar"><div class="docs-topbar-inner">
+<button class="docs-menu-toggle" type="button" data-docs-nav-toggle aria-label="Doküman menüsünü aç"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<a class="docs-brand" href="../index.html"><span class="docs-brand-mark vbt-brand-mark" aria-hidden="true"></span><span>e-Defter</span></a>
+<nav class="docs-top-links" aria-label="Üst navigasyon"><a href="../../../index.html">Ana Sayfa</a><a href="e-defter-nedir.html">Rehber</a><a href="entegrator-api-endpoint-referansi.html">API</a><a href="sss.html">SSS</a><a href="../../../iletisim.html">Çözüm Merkezi</a></nav>
+<div class="docs-top-actions"><a class="author-link" href="https://www.vbt.com.tr/" rel="author" aria-label="vbt.com.tr ana sayfasına dön">vbt.com.tr</a><button class="search-trigger" type="button" onclick="search.openSearch()" aria-label="Arama yap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg><span>Ara</span><kbd>Ctrl+K</kbd></button><button class="theme-toggle" type="button" onclick="theme.toggleTheme()" aria-label="Koyu temaya geç"><span class="theme-toggle-icon">☀️</span><span class="theme-toggle-label">Koyu tema</span></button></div>
+</div></header>
+<!-- vbt:topbar:end -->
+<!-- vbt:sidebar:start -->
+<div class="docs-overlay" data-docs-overlay></div>
+<div class="docs-shell">
+<aside class="docs-sidebar" data-docs-sidebar><div class="docs-sidebar-inner"><div class="docs-nav-group">
+<div class="docs-nav-label">Başlangıç</div>
+<a class="docs-nav-link" href="e-defter-nedir.html">e-Defter Nedir?</a>
+<a class="docs-nav-link active" href="gib-teknik-gereksinimleri.html">GİB Teknik Gereksinimleri</a>
+<a class="docs-nav-link" href="api-temelleri.html">API Temelleri</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">İş Akışı</div>
+<a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
+<a class="docs-nav-link" href="e-defter-akisi.html">e-Defter Akışı</a>
+<a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">API</div>
+<a class="docs-nav-link" href="entegrator-api-endpoint-referansi.html">Entegrasyon API Endpoint Referansı</a>
+<a class="docs-nav-link" href="portal-api-endpoint-referansi.html">Listeleme ve Çıktı API Referansı</a>
+<a class="docs-nav-link" href="islem-ornekleri.html">İşlem Örnekleri</a>
+<a class="docs-nav-link" href="veri-xbrl-ubl-mapping.html">Veri → XBRL/UBL Mapping</a>
+</div>
+<div class="docs-nav-group">
+<div class="docs-nav-label">Referans</div>
+<a class="docs-nav-link" href="teknik-referans.html">Teknik Referans</a>
+<a class="docs-nav-link" href="changelog.html">Changelog</a>
+<a class="docs-nav-link" href="sss.html">Sıkça Sorulan Sorular</a>
+</div></div></aside>
+<!-- vbt:sidebar:end -->
+<main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
+<!-- vbt:article-header:start -->
+<header class="docs-article-header"><p class="docs-eyebrow">Başlangıç</p><h1>GİB Teknik Gereksinimleri</h1><p class="docs-lead">GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.</p></header>
+<!-- vbt:article-header:end -->
+<section id="gib-teknik-gereksinimleri">
+<p>Bu sayfa GİB'in teknik dosya zinciri ile VBT entegrasyonunda doğrulanması gereken dış sonuçları ayırır. Entegratörün kaynak veriyi GİB XML'ine çevirmesi beklenmez; ancak üretilen dosyaların dönem ve mali içeriğini onaydan önce doğrulaması gerekir.</p>
+<h2 id="h-teknik-mimari">Teknik Mimari</h2>
+<p>GİB, yevmiye defteri ve büyük defterin XBRL-GL e-Defter format ve standartlarına göre hazırlanmasını ister. Defter dosyası ile bu dosyadan üretilen berat imzalanır veya mali mühürle onaylanır; aynı parçaya ait iki XML tek paket içinde GİB'e yüklenir. GİB mali mührüyle onaylanan berat ile imzalı defter dosyası birlikte muhafaza edilir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Katman</th><th>Kontrol</th><th>Entegratörün kanıtı</th></tr></thead><tbody>
+<tr><td>Kaynak veri</td><td>Fiş/satır sırası, borç-alacak dengesi, hesap ve belge bilgileri</td><td>Aktarım raporu ve teşhis mesajları</td></tr>
+<tr><td>XBRL-GL</td><td>Güncel XSD ve şematron kuralları</td><td>Doğrulamadan geçen yevmiye/kebir dosyaları</td></tr>
+<tr><td>İmza</td><td>NES veya mali mühür ve zaman damgası gereksinimi</td><td>İmzalı defter ve berat dosyaları</td></tr>
+<tr><td>GİB</td><td>Paket adı, defter/berat yüklemesi ve durum sonucu</td><td>Olumlu paket sonucu ve GİB onaylı berat</td></tr>
+</tbody></table></div>
+<h2 id="h-belge-zinciri">Belge ve Berat Zinciri</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Aşama</th><th>Oluşan teknik çıktı</th><th>GİB'e iletilen</th><th>Muhafaza kanıtı</th></tr></thead><tbody>
+<tr><td>Yevmiye üretimi</td><td>Parçalı yevmiye XBRL-GL dosyaları</td><td>Aynı parçaya ait imzalı yevmiye XML'i ile yevmiye berat XML'ini içeren ZIP paket</td><td>İmzalı yevmiye + GİB onaylı yevmiye beratı</td></tr>
+<tr><td>Kebir üretimi</td><td>Parçalı büyük defter XBRL-GL dosyaları</td><td>Aynı parçaya ait imzalı kebir XML'i ile kebir berat XML'ini içeren ZIP paket</td><td>İmzalı kebir + GİB onaylı kebir beratı</td></tr>
+<tr><td>Defter raporu</td><td>Teknik paketin öngördüğü defter raporu</td><td>İlgili rapor/berat akışı</td><td>İmzalı rapor ve ilişkili sonuç dosyası</td></tr>
+<tr><td>GİB sonucu</td><td>GİB mali mührüyle onaylı berat</td><td>Yeni bir muhasebe kaydı değil, gönderilen beratın sonucu</td><td>Orijinal dosya adı ve ilgili <code>Uuid</code> ile saklanan onaylı berat</td></tr>
+</tbody></table></div>
+<div class="callout callout-info"><b>Önemli ayrım:</b> GİB web servis paketinde aynı parçanın imzalı defter XML'i ve berat XML'i birlikte bulunur; servis sonucu GİB onaylı berat olarak alınır. PDF/HTML görünümü bu teknik dosyaların yerine geçmez.</div>
+<h2 id="h-yukleme-zamanlamasi">Yükleme Zamanlaması</h2>
+<p>Her ayın e-Defter ve berat dosyaları ayrı oluşturulur. Yasal son tarih, mükellef türüne ve GİB'e bildirilen aylık veya geçici vergi dönemi bazlı yükleme tercihine göre belirlenir.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Tercih</th><th>Gelir vergisi mükellefi</th><th>Diğer mükellefler</th><th>Uygulama notu</th></tr></thead><tbody>
+<tr><td>Aylık yükleme</td><td>İlgili ayı takip eden dördüncü ayın 10. günü sonu</td><td>İlgili ayı takip eden dördüncü ayın 14. günü sonu</td><td>Her ayın defter ve berat paketi kendi son tarihine göre tamamlanır.</td></tr>
+<tr><td>Hesap döneminin son ayı</td><td>Gelir vergisi beyannamesinin verileceği ayı takip eden ayın 10. günü sonu</td><td>Kurumlar vergisi beyannamesinin verileceği ayı takip eden ayın 14. günü sonu</td><td>Kapanış onayı yerine geçen ay için özel son tarih uygulanır.</td></tr>
+<tr><td>Geçici vergi dönemi bazlı tercih</td><td colspan="2">GİB'e hesap döneminin ilk ayında bildirilen tercihe ait güncel takvim uygulanır.</td><td>Dosyalar yine her ay için ayrı üretilir; yalnız yükleme takvimi dönem bazında değerlendirilir.</td></tr>
+</tbody></table></div>
+<div class="callout callout-warning"><b>Takvim kontrolü:</b> GİB süre uzatımı yayımlayabilir. Operasyon takvimi, güncel Tebliğ ve ilgili döneme ait GİB sirkülerleri kontrol edilerek kapatılmalıdır.</div>
+<h2 id="h-dogrulama-katmanlari">Doğrulama Katmanları</h2>
+<p>Bir dosyanın XML olarak açılabilmesi, GİB açısından geçerli olduğu anlamına gelmez. Onaydan önce aşağıdaki kontroller ayrı ayrı tamamlanmalıdır.</p>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Katman</th><th>Ne doğrulanır?</th><th>Hata halinde</th></tr></thead><tbody>
+<tr><td>Kaynak muhasebe</td><td>Fiş/satır sırası, hesaplar, belge alanları, borç-alacak dengesi ve dönem</td><td>Kaynak kayıt düzeltilir; üretime/onaya geçilmez.</td></tr>
+<tr><td>XSD</td><td>Alanların XML yapısı, türü, çokluğu ve zorunluluğu</td><td>Güncel teknik paket ve mapping karşılaştırılır.</td></tr>
+<tr><td>Şematron</td><td>Alanlar arası GİB iş kuralları ve koşullu zorunluluklar</td><td>Mesajın işaret ettiği alan ilişkisi düzeltilir.</td></tr>
+<tr><td>Mali mutabakat</td><td>Yevmiye/kebir toplamları ile kaynak ERP toplamları</td><td>Fark giderilmeden kullanıcı onayı verilmez.</td></tr>
+<tr><td>İmza/mali mühür</td><td>Yetkili sertifika, belge bütünlüğü ve imzalı çıktı</td><td>Geçerli yetki/sertifika sağlanır; imzasız dosya gönderilmez.</td></tr>
+<tr><td>GİB sonucu</td><td>Paket durumu ve GİB onaylı beratın erişilebilirliği</td><td>Aynı paket adı ve <code>Uuid</code> üzerinden sonuç izlenir.</td></tr>
+</tbody></table></div>
+<h2 id="h-dosya-kimligi">Dosya Kimliği ve Parçalar</h2>
+<p>Firma VKN/TCKN'si, şube, yıl-ay, defter türü ve parça bilgisi teknik dosya kimliğinin temelidir. Entegratör dosya veya paket adını tahmin ederek üretmez; liste, özet ve GİB çağrılarında platformun döndürdüğü gerçek <code>Uuid</code> ve <code>FileName</code> değerlerini kullanır. Çok parçalı bir ayda her parçanın yevmiye, kebir ve berat ilişkisi ayrı doğrulanır.</p>
+<h2 id="h-imza-ve-muhafaza">İmza, Onay ve Muhafaza</h2>
+<ul><li>Onay, kaynak verinin ve üretilen görünümün yetkili kullanıcı tarafından kontrol edildiğini ifade eder.</li><li>İmza veya mali mühür, teknik dosyanın bütünlüğünü ve imzalayan tarafı doğrular.</li><li>GİB onaylı berat, gönderilen beratın GİB tarafından onaylanan sonucudur.</li><li>İmzalı yevmiye/kebir dosyaları ile ilgili GİB onaylı beratlar birlikte saklanır.</li><li>PDF ve HTML yalnız okunabilir görünüm sağlar; orijinal XML/XBRL ve imza kanıtı muhafaza edilir.</li></ul>
+<p>İkincil kopya saklama akışı, GİB paket onayından ayrı bir muhafaza katmanıdır. İmzalı e-Defter ve berat dosyalarının şifreli ikincil kopyaları yetkili saklayıcı kuruluşa aktarılır; <code>SentSecondCopy</code> bu ayrı adımın tamamlandığını gösterir.</p>
+<h2 id="h-canliya-gecis-kontrolu">Canlıya Geçiş Kontrolü</h2>
+<ol><li>GİB'in yayımladığı güncel e-Defter paketini, kılavuzları ve mevzuat sayfasını kontrol edin.</li><li>VBT ortamında kullanılan teknik paket sürümüyle test verisini doğrulayın.</li><li>En az bir tek parçalı ve bir çok parçalı ay için yevmiye, kebir, berat ve GİB sonucu zincirini tamamlayın.</li><li>Onay öncesi mali mutabakatı, başarısız doğrulama mesajlarını ve timeout sonrası aynı kaydı bulma davranışını test edin.</li><li>İmzalı teknik dosyaların ve GİB onaylı beratların kurum arşivine eksiksiz aktarılabildiğini kanıtlayın.</li></ol>
+<h2 id="h-resmi-kaynaklar">Resmî Kaynaklar</h2>
+<ul>
+<li><a href="https://www.edefter.gov.tr/edeftermevzuat.html" target="_blank" rel="noopener">GİB e-Defter Mevzuat ve Teknik Mimari</a> — teknik mimari, güncel paket ve kılavuz bağlantıları.</li>
+<li><a href="https://www.edefter.gov.tr/dosyalar/tebligler/ELEKTRONIK_DEFTER_GENEL_TEBLIGI_%28SIRA%20NO_1%29_GUNCEL_HAL%C4%B0%20.pdf" target="_blank" rel="noopener">Elektronik Defter Genel Tebliği (güncel metin)</a> — dönem, imza, yükleme süresi, GİB onayı ve muhafaza hükümleri.</li>
+<li><a href="https://www.edefter.gov.tr/dosyalar/kilavuzlar/e-Defter_Uygulamasi_Web_Servis_Kilavuzu_V.1.7.pdf" target="_blank" rel="noopener">e-Defter Uygulaması Web Servis Kılavuzu</a> — paket kimliği, defter/berat ZIP içeriği ve durum/dosya alma metotları.</li>
+<li><a href="https://www.edefter.gov.tr/dosyalar/kilavuzlar/e-Defter_Saklama_Kilavuzu.pdf" target="_blank" rel="noopener">e-Defter Saklama Kılavuzu</a> — ikincil kopya saklama yükümlülüğü ve teknik akış.</li>
+</ul>
+<div class="callout callout-warning"><b>Sürüm kontrolü:</b> Canlıya geçiş ve her paket güncellemesinde GİB'in yayımladığı XSD, şematron, XSLT ve kılavuz sürümleri yeniden kontrol edilmelidir. Bu sayfa güncel paketin yerine geçmez.</div>
+<!-- vbt-source: GİB e-Defter Mevzuat ve Teknik Mimari; GİB e-Defter Paketi; Tebliğ Sıra No:6 -->
+</section>
+<!-- vbt:pagination:start -->
+<nav class="docs-pagination" aria-label="Sayfalar">
+<a class="docs-page-link docs-page-previous" href="e-defter-nedir.html"><span>Önceki</span><strong>e-Defter Nedir?</strong></a>
+<a class="docs-page-link docs-page-next" href="api-temelleri.html"><span>Sonraki</span><strong>API Temelleri</strong></a>
+</nav>
+<!-- vbt:pagination:end -->
+</article></main>
+<!-- vbt:toc:start -->
+<aside class="docs-toc" aria-label="Bu sayfada"><div class="docs-toc-inner"><div class="docs-toc-title">Bu sayfada</div><nav data-docs-toc></nav></div></aside>
+</div>
+<!-- vbt:toc:end -->
+<!-- vbt:page-tools:start -->
+<div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Dönem, defter, berat, durum veya endpoint arayın..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
+<button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Defter Nedir?","text":"e-Defter kapsamı, üretilen belge seti, aylık dönem modeli ve bileşen sorumlulukları.","keywords":"e-Defter yevmiye kebir berat","url":"e-defter-nedir.html","sectionType":"Sayfa"},{"title":"GİB Teknik Gereksinimleri","text":"GİB teknik paketleri, XBRL-GL belgeleri, beratlar, imza ve resmî kaynaklar.","keywords":"GİB XBRL-GL şema berat","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak istek alanları, yanıt zarfı, firma ve dönem kimliği.","keywords":"API token dönem ServiceResponse","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Kaynak dosyadan arşive kadar aylık e-Defter işlemini müşteri ve operasyon adımlarıyla uygulayın.","keywords":"senaryo aylık onay imza","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"e-Defter Akışı","text":"VBT Client hazırlığından kullanıcı onayı, imza, GİB sonucu ve ikincil kopyaya kadar bütün durum geçişleri.","keywords":"durum akış state GİB","url":"e-defter-akisi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Kaynak veri, dönem, tekilleştirme, durum takibi, hata yönetimi ve arşivleme sorumlulukları.","keywords":"entegratör sorumluluk kontrol","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun üretim, doğrulama, imza, GİB iletişimi ve çıktı sunma sınırları.","keywords":"platform VBT sorumluluk","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegrasyon API Endpoint Referansı","text":"Client, kullanıcı arayüzü ve API arasındaki aktarım, oluşturma, onay, durum ve GİB sonucu sözleşmeleri.","keywords":"API endpoint LedgerState","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Listeleme ve Çıktı API Referansı","text":"Listeleme, özet, önizleme, PDF ve ZIP çıktısı endpointleri.","keywords":"Portal liste PDF ZIP","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"İşlem Örnekleri","text":"Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.","keywords":"JSON örnek request","url":"islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Veri → XBRL/UBL Mapping","text":"Kaynak muhasebe alanlarının yevmiye, kebir ve berat çıktılarındaki teknik karşılıkları.","keywords":"mapping XBRL UBL XML","url":"veri-xbrl-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Durum değerleri, dosya türleri, dönem kuralları ve hata yönetimi referansı.","keywords":"enum durum hata referans","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Defter rehberinin yayımlanmış dış sözleşme değişiklikleri.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Müşteri ve entegratörlerin dönem, berat, durum, imza, GİB ve arşivleme soruları.","keywords":"SSS soru dönem berat","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
+<!-- vbt:page-tools:end -->
+</body>
+</html>
