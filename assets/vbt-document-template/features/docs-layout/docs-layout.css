@@ -341,6 +341,7 @@
     background: var(--bg);
     box-shadow: none;
 }
+.docs-article .scenario-card h3,
 .docs-article .scenario-card h4 {
     margin: -1.4rem -1.4rem 1rem;
 }
