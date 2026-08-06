@@ -148,7 +148,6 @@
 <tr><td><code>EGP0085</code></td><td><code>CustomerPersonIdentificationInvalid</code></td><td>Alıcının TCKN veya pasaport değeri geçersizdir</td></tr>
 <tr><td><code>EGP0086</code></td><td><code>CustomerIdentificationSchemeInvalidForReport</code></td><td>Tarihsel belgede kaydedilen kimlik GİB raporunda TCKN/PASAPORTNO olarak güvenle sınıflandırılamamıştır</td></tr>
 <tr><td><code>EGP0087</code></td><td><code>CargoCompanyUblDataMismatch</code></td><td>Hazır UBL içindeki kargo şirketi bilgileri <code>CargoCompanies/GetAll</code> endpointinden dönen aktif kayıtla eşleşmemiştir</td></tr>
-<tr><td><code>EGP0088</code></td><td><code>ExpenseVoucherStatusNotValidForCancellation</code></td><td>Belgenin kayıtlı e-Arşiv durumu <code>Valid</code> olmadığı için iptal isteği reddedilmiştir</td></tr>
 </tbody></table></div>
 <h3 id="h-belge-gecmisi-kodlari">Belge Geçmişi (History) Bilgi Kodları</h3>
 <p>Aşağıdaki kodlar Add/Update yanıtındaki <code>ErrorCode</code> alanında dönmez; SMS ve iade kodu adımları sırasında belgenin geçmiş kaydına (<code>GetOutgoingExpenseVoucherHistory</code>) bilgilendirme mesajı olarak yazılır. Sorun giderme ve operasyonel takip için referans alınır.</p>
@@ -157,8 +156,6 @@
 <tr><td><code>EGP0063</code></td><td><code>ExpenseVoucherSmsVerified</code></td><td>SMS doğrulaması tamamlandı</td></tr>
 <tr><td><code>EGP0064</code></td><td><code>ExpenseVoucherSmsVerificationFailed</code></td><td>SMS doğrulama denemesi başarısız oldu</td></tr>
 <tr><td><code>EGP0066</code></td><td><code>ExpenseVoucherSmsPhoneNumberChanged</code></td><td>SMS gönderimi için kayıtlı telefon numarası değiştirildi</td></tr>
-<tr><td><code>EGP0068</code></td><td><code>ExpenseVoucherSmsCancellationNotificationSent</code></td><td>Doğrulama iptali bildirimi SMS ile gönderildi</td></tr>
-<tr><td><code>EGP0069</code></td><td><code>ExpenseVoucherSmsCancellationNotificationFailed</code></td><td>Doğrulama iptali bildirimi SMS ile gönderilemedi</td></tr>
 </tbody></table></div>
 <h3 id="h-dogrulama-hata-kodlari">Doğrulama Hata Kodları ve İstemci Davranışı</h3>
 <p>Aşağıdaki kodlar SMS ve iade kodu işlemlerinde dönen servis mesajlarıdır. Entegrasyonlar mesaj metnine değil hata koduna göre davranmalıdır.</p>

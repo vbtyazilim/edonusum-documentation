@@ -245,12 +245,12 @@
 <p>İptal çağrısı, düzenlenmiş e-Gider Pusulası'nın durumuna göre değerlendirilir; platform yalnızca iptal için uygun belgelerde süreci başlatır.</p>
 <div class="endpoint-card">
     <div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/ExpenseVoucherApi/CancelOutgoingExpenseVoucher</span></div>
-    <div class="endpoint-body"><p class="endpoint-description">İptale uygun durumdaki e-Gider Pusulasını iptal eder. Kod gönderilmişse bildirim denenir; raporlanmış belgede iptal raporu oluşturulur.</p>
+    <div class="endpoint-body"><p class="endpoint-description">İmzalanmış e-Gider Pusulasını ortak e-Arşiv iptal akışıyla iptal eder; raporlanmış belgede iptal raporu oluşturulur.</p>
         <div class="table-wrapper">
             <table>
                 <tbody>
-                    <tr><td><b>Ön koşul</b></td><td><code>WaitingForVerification</code>, <code>WaitingForSmsCode</code> veya imzalanmış belge iptal edilebilir. İmzalama aşamasında olup henüz imzalanmamış belge reddedilir. Belgenin platformda kayıtlı e-Arşiv durumu ayrıca <code>Valid</code> olmalıdır; istemci request içinde durum göndermez.</td></tr>
-                    <tr><td><b>Request</b></td><td><code>ExpenseVoucherCancelRequestModel</code> — <code>{ Id, ExpenseVoucherExternalId, Ettn, ExpenseVoucherNumber, EArchiveCancelDescription }</code>. Belge kimliği alanlarından en az biri gönderilmelidir; öncelik sırası <code>Id</code>, <code>ExpenseVoucherExternalId</code>, <code>Ettn</code>, <code>ExpenseVoucherNumber</code> şeklindedir.</td></tr>
+                    <tr><td><b>Ön koşul</b></td><td>Ana belge durumu <code>Signed</code> olmalıdır. <code>WaitingForVerification</code>, <code>WaitingForSmsCode</code> ve <code>ExpenseVoucherAndXmlCreated</code> imzalanmamış durumlardır ve reddedilir.</td></tr>
+                    <tr><td><b>Request</b></td><td><code>ExpenseVoucherCancelRequestModel</code> — <code>{ Id, ExpenseVoucherExternalId, Ettn, ExpenseVoucherNumber, EArchiveStatus, EArchiveCancelDescription }</code>. İptal hedefi için <code>EArchiveStatus=2</code> (<code>Cancelled</code>) gönderilir. Belge kimliği alanlarından en az biri gönderilmelidir; öncelik sırası <code>Id</code>, <code>ExpenseVoucherExternalId</code>, <code>Ettn</code>, <code>ExpenseVoucherNumber</code> şeklindedir.</td></tr>
                     <tr><td><b>Response</b></td><td><code>bool</code></td></tr>
                 </tbody>
             </table>

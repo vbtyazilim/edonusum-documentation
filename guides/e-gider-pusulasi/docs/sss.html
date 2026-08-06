@@ -116,7 +116,7 @@
 
 <details class="example-details"><summary>SMS kodunu bekleyen belgeyi iptal edebilir miyim?</summary>
     <div class="example-body">
-        <p>Evet. Kod henüz gönderilmediyse belge doğrudan iptal edilir. Kod gönderilmişse telefona iptal bildirimi gönderilmeye çalışılır; bildirimin başarısız olması belge iptalini geri almaz.</p>
+        <p>Hayır. <code>WaitingForVerification</code> ve <code>WaitingForSmsCode</code> durumlarındaki belge henüz imzalanmamıştır. Doğrulama tamamlanıp belge <code>Signed</code> durumuna geçmeden iptal edilemez.</p>
     </div>
 </details>
 
