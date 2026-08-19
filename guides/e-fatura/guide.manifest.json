@@ -24,7 +24,10 @@
       "label": "API sözleşmeleri"
     },
     "announcement": {
-      "enabled": false
+      "enabled": true,
+      "target": "gib-2026-09-14-degisiklikleri",
+      "label": "Gelecek Değişiklikler",
+      "ariaLabel": "14 Eylül 2026 tarihinde devreye alınacak e-Fatura değişikliklerini inceleyin"
     }
   },
   "sections": [
@@ -191,6 +194,25 @@
           "eyebrow": "Gelen Fatura",
           "keywords": ["Gelen Fatura", "UBL", "API", "ERP", "mapping"],
           "homeCard": { "label": "Gelen Fatura", "description": "Alınan UBL alanlarının API ve ERP karşılıkları." }
+        }
+      ]
+    },
+    {
+      "label": "Gelecek Değişiklikler",
+      "icon": "future",
+      "description": "14 Eylül 2026 tarihinde devreye alınacak e-Fatura kuralları",
+      "pages": [
+        {
+          "slug": "gib-2026-09-14-degisiklikleri",
+          "title": "14 Eylül 2026 GİB Değişiklikleri",
+          "description": "ENERJİ, IDİS, istisna kodları ve KAMU iade faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.",
+          "eyebrow": "Gelecek Değişiklikler",
+          "keywords": ["Gelecek Değişiklikler", "GİB", "ENERJİ", "SARJ", "IDİS", "KAMU", "istisna"],
+          "homeCard": {
+            "label": "Gelecek Değişiklikler",
+            "description": "14 Eylül 2026 tarihinde başlayacak e-Fatura zorunlulukları ve hazırlık kontrolü.",
+            "action": "Planlanan değişiklikleri inceleyin"
+          }
         }
       ]
     },

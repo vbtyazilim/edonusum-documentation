@@ -160,7 +160,7 @@
 <div class="table-wrapper"><table><thead><tr><th>Durum</th><th>Kullanıcıya gösterilen anlam</th><th>Portal davranışı</th></tr></thead><tbody><tr><td><code>WaitingForVerification</code></td><td>Doğrulama bekleniyor.</td><td>SMS gönderme adımı belge ekranında sunulur.</td></tr><tr><td><code>WaitingForSmsCode</code></td><td>SMS onayı bekleniyor.</td><td>Kod giriş ve doğrulama adımı aynı ekranda yürütülür.</td></tr><tr><td><code>CreditNoteAndXmlCreated</code></td><td>Doğrulama tamamlandı.</td><td>Belge normal işleme akışına aktarılır.</td></tr><tr><td><code>Signed</code></td><td>GİB'e gönderime hazır.</td><td>Mevcut gönderim ve sorgulama akışı devam eder.</td></tr></tbody></table></div>
 
 <h3 id="portal-excel-ve-iptal">Excel ve iptal davranışı</h3>
-<p>Portal üzerinden Excel ile oluşturulan makbuzlarda doğrulama her belge için ayrı yürütülür. İptal davranışı belgenin doğrulama aşamasına göre Portal tarafından yönlendirilir; kullanıcıya izin verilen işlem ve gerekli bilgilendirme aynı ekran üzerinde gösterilir.</p>
+<p>Portal üzerinden Excel ile oluşturulan makbuzlarda doğrulama her belge için ayrı yürütülür. <code>WaitingForVerification</code>, <code>WaitingForSmsCode</code> ve <code>CreditNoteAndXmlCreated</code> durumları imzalanmamıştır; iptal edilemez. İptal işlemi yalnızca belge <code>Signed</code> durumuna geçtikten sonra kullanılabilir.</p>
 <h3 id="portal-kullanicisi-sss">Portal Kullanıcısı SSS</h3>
 <details class="example-details"><summary>Portal için ayrıca entegrasyon geliştirmek gerekir mi?</summary>
     <div class="example-body">

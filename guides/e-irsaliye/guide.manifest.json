@@ -16,7 +16,7 @@
     "layout": "integration",
     "showEyebrow": false,
     "primaryAction": { "target": "e-irsaliye-nedir", "label": "Rehbere başlayın" },
-    "announcement": { "enabled": false }
+    "announcement": { "enabled": true, "target": "gib-2026-09-14-degisiklikleri", "label": "Gelecek Değişiklikler", "ariaLabel": "14 Eylül 2026 tarihinde devreye alınacak e-İrsaliye değişikliklerini inceleyin" }
   },
   "sections": [
     {
@@ -62,6 +62,14 @@
         { "slug": "gelen-irsaliye-portal-api", "title": "Gelen İrsaliye Portal API", "description": "Portal gelen irsaliye listesi, görüntüleme, okundu, geçmiş, arşiv ve yanıt işlemleri.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "Portal API", "kabul", "red", "kısmi kabul"], "homeCard": { "label": "Gelen İrsaliye", "description": "Portalın gelen irsaliye işlemlerinde kullandığı endpointler." } },
         { "slug": "gelen-irsaliye-islem-ornekleri", "title": "Gelen İrsaliye İşlem Örnekleri", "description": "Listeleme, ERP işleme, çıktı alma ve irsaliye yanıtı için tam ve kopyalanabilir JSON örnekleri.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "JSON", "ReceiptAdvice"], "homeCard": { "label": "Gelen İrsaliye", "description": "Kopyalanabilir gelen irsaliye işlem örnekleri." } },
         { "slug": "gelen-irsaliye-ubl-api-mapping", "title": "Gelen İrsaliye UBL → API/ERP Mapping", "description": "Alınan UBL DespatchAdvice alanlarının gelen irsaliye API yanıtı ve ERP modelindeki karşılıkları.", "eyebrow": "Gelen İrsaliye", "keywords": ["Gelen İrsaliye", "UBL", "API", "ERP", "mapping"], "homeCard": { "label": "Gelen İrsaliye", "description": "Alınan UBL alanlarının API ve ERP karşılıkları." } }
+      ]
+    },
+    {
+      "label": "Gelecek Değişiklikler",
+      "description": "14 Eylül 2026 tarihinde devreye alınacak e-İrsaliye kuralları",
+      "icon": "future",
+      "pages": [
+        { "slug": "gib-2026-09-14-degisiklikleri", "title": "14 Eylül 2026 GİB Değişiklikleri", "description": "IDİS sevkiyat numarası ve yerli/yabancı plaka şemaları için 14 Eylül 2026 tarihinde başlayacak kurallar.", "eyebrow": "Gelecek Değişiklikler", "keywords": ["Gelecek Değişiklikler", "GİB", "IDİS", "plaka", "dorse", "yabancı plaka"], "homeCard": { "label": "Gelecek Değişiklikler", "description": "14 Eylül 2026 tarihinde başlayacak e-İrsaliye zorunlulukları ve hazırlık kontrolü.", "action": "Planlanan değişiklikleri inceleyin" } }
       ]
     },
     {

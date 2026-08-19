@@ -4,21 +4,21 @@
 <!-- vbt:head:start -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Platform Sorumlulukları — e-Arşiv Fatura Entegrasyon Rehberi</title>
-<meta name="description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
+<title>14 Eylül 2026 GİB Değişiklikleri — e-Arşiv Fatura Entegrasyon Rehberi</title>
+<meta name="description" content="e-Arşiv v1.1_8 rapor yapısı ve TEKNOLOJİDESTEK faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/platform-sorumluluklari.html">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/gib-2026-09-14-degisiklikleri.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
-<meta property="og:title" content="Platform Sorumlulukları — e-Arşiv Fatura Entegrasyon Rehberi">
-<meta property="og:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
-<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/platform-sorumluluklari.html">
+<meta property="og:title" content="14 Eylül 2026 GİB Değişiklikleri — e-Arşiv Fatura Entegrasyon Rehberi">
+<meta property="og:description" content="e-Arşiv v1.1_8 rapor yapısı ve TEKNOLOJİDESTEK faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/gib-2026-09-14-degisiklikleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Platform Sorumlulukları — e-Arşiv Fatura Entegrasyon Rehberi">
-<meta name="twitter:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
+<meta name="twitter:title" content="14 Eylül 2026 GİB Değişiklikleri — e-Arşiv Fatura Entegrasyon Rehberi">
+<meta name="twitter:description" content="e-Arşiv v1.1_8 rapor yapısı ve TEKNOLOJİDESTEK faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -51,7 +51,7 @@
 <a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
 <a class="docs-nav-link" href="iptal-itiraz-durum-takibi.html">İptal ve İtiraz Durum Takibi</a>
 <a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
-<a class="docs-nav-link active" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">API</div>
@@ -62,7 +62,7 @@
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Gelecek Değişiklikler</div>
-<a class="docs-nav-link" href="gib-2026-09-14-degisiklikleri.html">14 Eylül 2026 GİB Değişiklikleri</a>
+<a class="docs-nav-link active" href="gib-2026-09-14-degisiklikleri.html">14 Eylül 2026 GİB Değişiklikleri</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Referans</div>
@@ -73,45 +73,39 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Sorumluluklar</p><h1>Platform Sorumlulukları</h1><p class="docs-lead">Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>14 Eylül 2026 GİB Değişiklikleri</h1><p class="docs-lead">e-Arşiv v1.1_8 rapor yapısı ve TEKNOLOJİDESTEK faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.</p></header>
 <!-- vbt:article-header:end -->
-<section id="platform-sorumluluklari">
-<h3 id="h-otomatik">Otomatik İşlemler</h3>
-<p>Platform, entegratörün gönderdiği request'i doğruladıktan sonra UBL XML üretimi, imza kuyruğu, günlük eArşiv raporu ve GİB Portal senkronizasyonu adımlarını yönetir. Entegratör belge içeriğini sağlar; platform teknik yaşam döngüsünü işletir.</p>
-<div class="table-wrapper"><table><thead><tr><th>#</th><th>İşlem</th><th>Açıklama</th></tr></thead><tbody>
-<tr><td>1</td><td>Validasyon</td><td>Alıcı uygunluk kontrolü, alan zorunluluğu, senaryo kombinasyon kontrolleri</td></tr>
-<tr><td>2</td><td>UBL XML Üretimi</td><td>UBL 2.1 Invoice standardında XML, <code>ProfileID=EARSIVFATURA</code></td></tr>
-<!-- vbt-source: Applications/API/VbtTicari/VbtTicari.Job/TicariSignJob.cs -->
-<tr><td>3</td><td>İmzalama</td><td>Belge imzalama akışına alınır ve tamamlandığında yeni durumuyla sorgulanabilir.</td></tr>
-<!-- vbt-source: Applications/API/VbtTicari/VbtTicari.Service/EArchiveGibReportService.cs; Applications/API/VbtTicari/VbtTicari.Job/EArchiveGibReportCreateJob.cs -->
-<tr><td>4</td><td>e-Arşiv Rapor Üretimi</td><td>Geçerli, iptal ve itiraz faturaları dönemsel raporda toplanır.</td></tr>
-<!-- vbt-source: Applications/API/VbtTicari/VbtTicari.GibIntegrations/EArchive/EarchiveIntegrationService.cs -->
-<tr><td>5</td><td>GİB'e İletim</td><td>Hazırlanan rapor GİB e-Arşiv servisine iletilir ve sonucu platform durumuna yansıtılır.</td></tr>
-<!-- vbt-source: Applications/API/VbtTicari/VbtTicari.Job/EArchiveGibReportSenderJob.cs; Applications/API/VbtTicari/VbtTicari.Job/EArchiveGibReportResponseJob.cs -->
-<tr><td>6</td><td>Rapor Gönderim/Yanıt</td><td>Rapor GİB'e iletilir; teknik sonuç platformun rapor durumuna yansıtılır.</td></tr>
-<!-- vbt-source: Applications/API/VbtTicari/VbtTicari.Job/EArchiveGibPortalInvoiceDataJob.cs -->
-<tr><td>7</td><td>GİB Portal Senkronizasyonu</td><td>GİB Portal'da yapılan iptal ve itiraz işlemleri platform durumuna otomatik olarak yansıtılır.</td></tr>
-<tr><td>8</td><td>E-posta</td><td><code>EArchiveMailTo</code> alanına göre bildirim (yapılandırıldıysa)</td></tr>
-</tbody></table></div>
-<h3 id="h-validasyon">Validasyon Kuralları</h3>
-<p>Validasyonlar, e-Arşiv Fatura request'inin teknik olarak üretilebilir ve GİB raporuna taşınabilir olmasını kontrol eder; ana odak alıcı uygunluğu, senaryo alanları ve tutar bütünlüğüdür.</p>
-<div class="table-wrapper"><table><thead><tr><th>Kontrol</th><th>Kod</th><th>Açıklama</th></tr></thead><tbody>
-<tr><td>Alıcı GİB e-Fatura mükellefi <strong>olmamalı</strong> (EARSIVFATURA için)</td><td>INV0221</td><td>Alıcı kayıtlı ve kayıt tarihi fatura tarihinden önceyse e-Arşiv Fatura kesilemez</td></tr>
-<tr><td>Alıcı GİB e-Fatura mükellefi <strong>olmalı</strong> (TICARIFATURA için)</td><td>INV0220</td><td>Alıcı kayıtlı değilse e-Fatura kesilemez</td></tr>
-<tr><td>Alıcının mükellefiyet tarihi fatura tarihinden sonra olmamalı (TICARIFATURA için)</td><td>INV0229</td><td>Fatura tarihinde alıcı henüz e-Fatura mükellefi değildi</td></tr>
-<tr><td>İnternet satışı zorunlu alanları</td><td>INV0036–INV0043, INV0168, INV0263</td><td>VUK 509 md. IV.2.4.5 kapsamındaki 6 alan ve ibare kontrolü</td></tr>
-<tr><td>ÖKC referansı <code>DocumentTypeCode</code>/<code>DocumentType</code> değeri</td><td>"SCHEME"</td><td><code>OKCBF</code>/<code>OKCBilgiFisi</code> literal değerleri dışında bir değer reddedilir; bkz. <a href="teknik-referans.html#h-hata-katman-a">Teknik Referans — Katman A</a></td></tr>
-<tr><td>Tevkifat/toplam uyumu</td><td>—</td><td><code>WithholdingTaxTotal</code> ve <code>PayableAmount</code> aynı ekonomik hesabı yansıtmalı</td></tr>
-</tbody></table></div>
-<h3 id="h-hata-yaniti">Hata Yanıtları</h3>
-<p>Oluşturma ve güncelleme endpointleri işlem sonucunu <code>ResponseModel.Data.HasError</code> altında taşır; entegrasyon başarı kararını <code>HasError=false</code> üzerinden vermelidir, HTTP çağrısının tamamlanmış olması yeterli değildir.</p>
-<h3 id="h-iptal-onkosul">İptal Ön Koşulları</h3>
-<p>İptal, süre bazlı bir kısıt taşımaz; belge durumu (<code>EArchiveDocumentGIBStatusType</code>) üzerinden değerlendirilir. Platform, faturanın resmileşme tarihinden itibaren geçen gün sayısına göre iptali otomatik olarak engellemez — bu, entegratörün <a href="entegrator-sorumluluklari.html#h-on-kontrol">Entegratör Sorumlulukları</a> sayfasındaki 8 günlük yasal yanıt süresi takibiyle kendi tarafında yönetmesi gereken bir sorumluluktur.</p>
+<section id="gib-2026-09-14-degisiklikleri">
+<div class="callout callout-warning"><b>Henüz aktif değildir.</b> Aşağıdaki GİB kuralları 14.09.2026 tarihinde devreye alınacaktır. Bu tarihe kadar mevcut üretim ve raporlama davranışı geçerlidir; entegratörlerin yeni senaryoları test ortamında şimdiden hazırlaması önerilir.</div>
+
+<h2 id="nasil-okunmali">Bu sayfa nasıl okunmalı?</h2>
+<p>Her başlık tek başına okunabilir. Yalnız kullandığınız e-Arşiv Fatura tipine veya rapor kaydına ait başlığı uygulamanız yeterlidir; örneğin yatırım teşvik faturası kullanmayan bir entegratör YTB alanı göndermek zorunda değildir.</p>
+
+<h2 id="sarj-coklu-esu-rapor-kimligi">SARJ faturasında çoklu ESU rapor kimliği</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> e-Arşiv raporunda SARJ faturası bildiriyor ve bir faturayı birden fazla ESU raporuyla ilişkilendiriyorsanız etkiler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında geçerli olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>e-Arşiv v1.1_6 raporunda SARJ kaydı yalnız bir <code>esuRaporID</code> taşıyabiliyordu.</td><td>e-Arşiv v1.1_8 raporunda <code>esuRaporID</code> tekrarlanabilir. Bir SARJ faturası birden fazla ESU raporuyla ilişkiliyse tüm GUID değerleri ayrı elemanlar olarak raporlanabilir.</td><td>Faturayla ilişkili bütün ESU rapor GUID'lerini kayıpsız koruyun ve her birini ayrı <code>esuRaporID</code> olarak rapora aktarın. Tek ESU raporu olan SARJ faturasında bir değer göndermeye devam edebilirsiniz.</td></tr></tbody></table></div>
+
+<h2 id="rapor-alici-secimi">e-Arşiv raporunda alıcı seçimi</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> e-Arşiv raporuna alıcı bilgisi üreten tüm entegratörleri etkiler; belirli bir fatura tipiyle sınırlı değildir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td><code>tuzelKisi</code> ve <code>gercekKisi</code> ayrı ayrı opsiyoneldi; ikisinin birlikte doldurulması veya ikisinin de boş bırakılması şema düzeyinde mümkündü.</td><td>Alıcı VKN sahibiyse yalnız <code>tuzelKisi</code>, TCKN sahibiyse yalnız <code>gercekKisi</code> üretilmelidir. İkisi birlikte veya ikisi de boş olamaz.</td><td>Alıcının kimlik türüne göre yalnız bir yapıyı üretin. VKN için tüzel kişi, TCKN için gerçek kişi rapor örneğini ayrı ayrı test edin.</td></tr></tbody></table></div>
+
+<h2 id="ytb-tevkifat">YTBTEVKIFAT faturası</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> Yatırım teşvik kapsamında tevkifatlı e-Arşiv Fatura düzenliyorsanız etkiler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td><code>YTBTEVKIFAT</code> e-Arşiv rapor fatura tipi listesinde yoktu.</td><td><code>YTBTEVKIFAT</code> geçerli bir rapor fatura tipidir. Bu tip kullanıldığında yatırım teşvik belgesi numarası ve tarihi <code>ytbBilgileri</code> içinde bulunmalıdır.</td><td>Fatura tipi listenize <code>YTBTEVKIFAT</code> değerini ekleyin ve bu tip seçildiğinde YTB numarası ile tarihini zorunlu tutun.</td></tr></tbody></table></div>
+
+<h2 id="ytb-tevkifat-iade">YTBTEVKIFATIADE faturası</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> Yatırım teşvik kapsamında tevkifatlı faturanın iadesini e-Arşiv Fatura olarak düzenliyorsanız etkiler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td><code>YTBTEVKIFATIADE</code> e-Arşiv rapor fatura tipi listesinde yoktu.</td><td><code>YTBTEVKIFATIADE</code> geçerli bir rapor fatura tipidir. Bu tip kullanıldığında yatırım teşvik belgesi numarası ve tarihi <code>ytbBilgileri</code> içinde bulunmalıdır.</td><td>Fatura tipi listenize <code>YTBTEVKIFATIADE</code> değerini ekleyin ve bu tip seçildiğinde YTB numarası ile tarihini zorunlu tutun. <code>YTBTEVKIFAT</code> kullanmanız bu iade tipini kendiliğinden zorunlu kılmaz.</td></tr></tbody></table></div>
+
+<h2 id="teknoloji-destek-faturasi">TEKNOLOJİDESTEK faturası</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> Teknoloji destek programı kapsamında <code>InvoiceTypeCode=TEKNOLOJIDESTEK</code> faturası düzenliyorsanız etkiler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>Fatura tipi ile e-Arşiv profili arasındaki ilişki dolaylı bir kontrolle değerlendiriliyordu.</td><td><code>InvoiceTypeCode=TEKNOLOJIDESTEK</code> ise <code>ProfileID</code> mutlaka <code>EARSIVFATURA</code> olmalıdır. TEMELFATURA, TICARIFATURA veya başka bir profil altında gönderim geçersizdir. Mevcut TELEFON/TABLET_PC satır tanımlama yükümlülükleri devam eder.</td><td>TEKNOLOJİDESTEK faturalarını yalnız <code>EARSIVFATURA</code> profiliyle oluşturun ve mevcut ürün tanımlama alanlarını koruyun. Bu fatura tipini kullanmıyorsanız değişiklik belgenizi etkilemez.</td></tr></tbody></table></div>
+<p>Resmî paket ve yürürlük duyurusu için <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyurularını</a> izleyin.</p>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
-<a class="docs-page-link docs-page-previous" href="entegrator-sorumluluklari.html"><span>Önceki</span><strong>Entegratör Sorumlulukları</strong></a>
-<a class="docs-page-link docs-page-next" href="entegrator-api-endpoint-referansi.html"><span>Sonraki</span><strong>Entegratör API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-previous" href="request-ubl-xml-mapping.html"><span>Önceki</span><strong>Request → UBL XML Mapping</strong></a>
+<a class="docs-page-link docs-page-next" href="teknik-referans.html"><span>Sonraki</span><strong>Teknik Referans</strong></a>
 </nav>
 <!-- vbt:pagination:end -->
 </article></main>

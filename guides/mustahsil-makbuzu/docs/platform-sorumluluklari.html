@@ -122,9 +122,10 @@
 <p>İptal isteği, yalnızca belge durumu uygun olduğunda ilerler; bu koşullar çağrı öncesi beklenen teknik zemini belirler.</p>
 <ul>
 <li>Belge <strong>Signed</strong> durumunda olmalı (<code>CreditNoteAndXmlCreated</code> durumunda iptal edilemez — <code>EMM0024</code>)</li>
+<li>İptal requestinde <code>EArchiveStatus=2</code> (<code>Cancelled</code>) gönderilmeli</li>
 <li>Daha önce iptal edilmiş bir belge tekrar iptal edilemez (<code>EMM0025</code>)</li>
 </ul>
-<div class="callout callout-info"><b>Planlanan değişiklik:</b> Aktivasyon sonrasında bu akışa bir SMS doğrulama adımı ve yeni kullanıcı durumları eklenecektir; mevcut otomatik işlemler ve iptal ön koşulları bu duyuruya kadar değişmeden devam eder. Bkz. <a href="sms-dogrulamali-gonderim-portal.html">SMS Doğrulamalı Gönderim — Portal Kullanıcıları İçin</a>.</div>
+<div class="callout callout-info"><b>SMS doğrulaması:</b> SMS aktivasyonu yeni kullanıcı durumları ekler ancak iptal ön koşulunu değiştirmez. <code>WaitingForVerification</code> ve <code>WaitingForSmsCode</code> dahil imzalanmamış makbuzlar iptal edilemez. Bkz. <a href="sms-dogrulamali-gonderim-portal.html">SMS Doğrulamalı Gönderim — Portal Kullanıcıları İçin</a>.</div>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">

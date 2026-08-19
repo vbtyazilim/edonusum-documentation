@@ -18,6 +18,12 @@
     "primaryAction": {
       "target": "earsiv-fatura-nedir",
       "label": "Rehbere başlayın"
+    },
+    "announcement": {
+      "enabled": true,
+      "target": "gib-2026-09-14-degisiklikleri",
+      "label": "Gelecek Değişiklikler",
+      "ariaLabel": "14 Eylül 2026 tarihinde devreye alınacak e-Arşiv Fatura değişikliklerini inceleyin"
     }
   },
   "sections": [
@@ -121,6 +127,25 @@
           "eyebrow": "API",
           "keywords": ["API", "UBL", "XML", "mapping"],
           "homeCard": { "label": "API", "description": "Entegratör request alanlarının UBL Invoice XML karşılıkları." }
+        }
+      ]
+    },
+    {
+      "label": "Gelecek Değişiklikler",
+      "description": "14 Eylül 2026 tarihinde devreye alınacak e-Arşiv rapor ve fatura kuralları",
+      "icon": "future",
+      "pages": [
+        {
+          "slug": "gib-2026-09-14-degisiklikleri",
+          "title": "14 Eylül 2026 GİB Değişiklikleri",
+          "description": "e-Arşiv v1.1_8 rapor yapısı ve TEKNOLOJİDESTEK faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.",
+          "eyebrow": "Gelecek Değişiklikler",
+          "keywords": ["Gelecek Değişiklikler", "GİB", "e-Arşiv", "v1.1_8", "ESU", "YTB", "TEKNOLOJİDESTEK"],
+          "homeCard": {
+            "label": "Gelecek Değişiklikler",
+            "description": "14 Eylül 2026 tarihinde başlayacak e-Arşiv rapor ve fatura zorunlulukları.",
+            "action": "Planlanan değişiklikleri inceleyin"
+          }
         }
       ]
     },
