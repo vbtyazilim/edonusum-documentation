@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="tr" data-theme="light">
-<head><!-- vbt:head:start -->
+<head>
+<!-- vbt:head:start -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giden İrsaliye Portal API — e-İrsaliye Entegrasyon Rehberi</title>
-<meta name="description" content="Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.">
+<title>14 Eylül 2026 GİB Değişiklikleri — e-İrsaliye Entegrasyon Rehberi</title>
+<meta name="description" content="IDİS sevkiyat numarası ve yerli/yabancı plaka şemaları için 14 Eylül 2026 tarihinde başlayacak kurallar.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/giden-irsaliye-portal-api.html">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gib-2026-09-14-degisiklikleri.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
-<meta property="og:title" content="Giden İrsaliye Portal API — e-İrsaliye Entegrasyon Rehberi">
-<meta property="og:description" content="Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.">
-<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/giden-irsaliye-portal-api.html">
+<meta property="og:title" content="14 Eylül 2026 GİB Değişiklikleri — e-İrsaliye Entegrasyon Rehberi">
+<meta property="og:description" content="IDİS sevkiyat numarası ve yerli/yabancı plaka şemaları için 14 Eylül 2026 tarihinde başlayacak kurallar.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gib-2026-09-14-degisiklikleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Giden İrsaliye Portal API — e-İrsaliye Entegrasyon Rehberi">
-<meta name="twitter:description" content="Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.">
+<meta name="twitter:title" content="14 Eylül 2026 GİB Değişiklikleri — e-İrsaliye Entegrasyon Rehberi">
+<meta name="twitter:description" content="IDİS sevkiyat numarası ve yerli/yabancı plaka şemaları için 14 Eylül 2026 tarihinde başlayacak kurallar.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="../../../assets/vbt-document-template/favicon-48.png">
 <link rel="apple-touch-icon" href="../../../assets/vbt-document-template/apple-touch-icon.png">
 <link rel="stylesheet" href="../../../assets/vbt-document-template/feature-packages/full.css">
-<!-- vbt:head:end --></head>
+<!-- vbt:head:end -->
+</head>
 <body class="docs-page">
 <!-- vbt:topbar:start -->
 <a class="skip-link" href="#main-content">İçeriğe atla</a>
@@ -54,7 +56,7 @@
 <a class="docs-nav-link" href="giden-irsaliye-akisi.html">Giden İrsaliye Akışı</a>
 <a class="docs-nav-link" href="giden-irsaliye-sorumluluklari.html">Giden İrsaliye Sorumlulukları</a>
 <a class="docs-nav-link" href="giden-irsaliye-entegrator-api.html">Giden İrsaliye Entegratör API</a>
-<a class="docs-nav-link active" href="giden-irsaliye-portal-api.html">Giden İrsaliye Portal API</a>
+<a class="docs-nav-link" href="giden-irsaliye-portal-api.html">Giden İrsaliye Portal API</a>
 <a class="docs-nav-link" href="giden-irsaliye-request-ornekleri.html">Giden İrsaliye Request Örnekleri</a>
 <a class="docs-nav-link" href="giden-irsaliye-json-ubl-mapping.html">Giden İrsaliye JSON → UBL Mapping</a>
 </div>
@@ -70,7 +72,7 @@
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Gelecek Değişiklikler</div>
-<a class="docs-nav-link" href="gib-2026-09-14-degisiklikleri.html">14 Eylül 2026 GİB Değişiklikleri</a>
+<a class="docs-nav-link active" href="gib-2026-09-14-degisiklikleri.html">14 Eylül 2026 GİB Değişiklikleri</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Referans</div>
@@ -81,36 +83,40 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Giden İrsaliye</p><h1>Giden İrsaliye Portal API</h1><p class="docs-lead">Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>14 Eylül 2026 GİB Değişiklikleri</h1><p class="docs-lead">IDİS sevkiyat numarası ve yerli/yabancı plaka şemaları için 14 Eylül 2026 tarihinde başlayacak kurallar.</p></header>
 <!-- vbt:article-header:end -->
-<section id="giden-irsaliye-portal-api">
-<h2 id="h-kapsam">Portal Yüzeyinin Kapsamı</h2>
-<p>Portal endpointleri <code>/api/DespatchAdvice</code> altında, kullanıcı arayüzündeki giden irsaliye işlemlerini destekler. Bunlar entegratör otomasyonunun yerine geçmez; ekran davranışını ve yetkili kullanıcı işlemlerini tanımlar.</p>
-<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Ekran işlemi</th><th>Endpoint</th><th>Gözlenebilir sonuç</th></tr></thead><tbody>
-<tr><td>Grid listeleme</td><td><code>POST GetOutgoingDespatchAdviceGridList</code></td><td>Filtrelenmiş, sayfalı giden irsaliye satırları</td></tr>
-<tr><td>Global arama</td><td><code>POST GetGlobalSearchOutgoingDespatchAdviceList</code></td><td>Portal genel aramasına uygun özet kayıtlar</td></tr>
-<tr><td>Detay</td><td><code>GET GetOutgoingDespatchAdvice?id={id}</code></td><td>Belge, taraf, sevk ve kalem ayrıntıları</td></tr>
-<tr><td>Durum geçmişi</td><td><code>POST GetOutgoingDespatchAdviceHistory</code></td><td>Belgenin zaman sıralı işlem geçmişi</td></tr>
-<tr><td>360 görünümü</td><td><code>POST OutgoingDespatchAdvice360</code></td><td>Belge ve ilişkili kayıt özeti</td></tr>
-<tr><td>Önizleme</td><td><code>POST OutgoingDespatchAdvicePreview</code> / <code>OutgoingDespatchAdviceUblPreview</code></td><td>Kaydetmeden önce görsel ve doğrulama sonucu</td></tr>
-<tr><td>Gönderim</td><td><code>POST SendOutgoingDespatchAdviceToGib</code></td><td>Gönderim isteğinin kabul sonucu</td></tr>
-<tr><td>Yeniden gönderim</td><td><code>POST ReSendOutgoingDespatchAdviceToGib</code></td><td>Mevcut belge için kontrollü tekrar</td></tr>
-<tr><td>Fiili sevk tarihi</td><td><code>POST UpdateOutgoingActualDespatchDate</code></td><td>Sevk tarihinin güncellenme sonucu</td></tr>
-<tr><td>Arşiv / ERP</td><td><code>POST UpdateOutgoingDespatchAdviceArchiveStatus</code> / <code>UpdateOutgoingDespatchAdviceErpProcessStatus</code></td><td>Portal işaretlerinin güncel değeri</td></tr>
-</tbody></table></div><!-- vbt-source: DespatchAdviceController.cs -->
+<section id="gib-2026-09-14-degisiklikleri">
+<div class="callout callout-warning"><b>Henüz aktif değildir.</b> Aşağıdaki GİB kuralları 14.09.2026 tarihinde devreye alınacaktır. Bu tarihe kadar mevcut üretim davranışı geçerlidir; entegratörlerin yeni değerleri test ortamında şimdiden hazırlaması önerilir.</div>
 
-<h2 id="h-ciktilar">Görsel ve Dosya İşlemleri</h2>
-<p>Portal <code>GetOutgoingDespatchAdviceView</code>, <code>GetOutgoingDespatchAdvicePdf</code>, <code>GetOutgoingDespatchAdviceCustomPdf</code>, <code>GetOutgoingDespatchAdviceDocumentPackage</code> ve <code>GetOutgoingDespatchAdviceXmlList</code> endpointleriyle belge çıktısını sunar. Okundu/basıldı bilgisi yalnız kullanıcı deneyimi işaretidir; GİB durumunu değiştirmez.</p>
+<h2 id="nasil-okunmali">Bu sayfa nasıl okunmalı?</h2>
+<p>Her başlık tek başına okunabilir. Yalnız kullandığınız e-İrsaliye profiline ve taşıma biçimine ait başlığı uygulamanız yeterlidir; IDİS kullanmayan bir kullanıcı plaka değişikliği için IDİS alanı göndermek zorunda değildir.</p>
 
-<h2 id="h-mail">E-posta ve Açıklama</h2>
-<p><code>AddMailOutgoingDespatchAdvicePage</code> seçili belgeyi e-posta iş akışına alır; <code>OutgoingDespatchAdviceAddDescription</code> portal açıklamasını günceller. Bu işlemler belgenin resmi UBL içeriğini veya gönderim sonucunu değiştirmez.</p>
+<h2 id="idis-irsaliyesi">IDİS e-İrsaliyesi</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> <code>ProfileID=IDISIRSALIYE</code> ile sevkiyat numarası gönderiyorsanız etkiler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında geçerli olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>Sevkiyat numarasında yalnız <code>SE-</code> öneki ve ardından yedi rakam kabul ediliyordu.</td><td><code>SE-1234567</code> ve <code>ES-1234567</code> geçerlidir. Tire ve tam yedi rakam zorunluluğu devam eder; <code>ES-12345</code> ve <code>AB-1234567</code> geçersizdir.</td><td>IDİS sevkiyat numarası doğrulamanızın hem <code>SE-</code> hem <code>ES-</code> önekini kabul ettiğini doğrulayın. IDİS e-İrsaliyesi kullanmıyorsanız bu değişiklik belgenizi etkilemez.</td></tr></tbody></table></div>
 
-<div class="callout callout-warning"><b>Yetki sınırı:</b> Silme, yeniden gönderme, yeniden imzalama ve tarih güncelleme işlemleri yalnız portalda seçilebilir durumda ve yetkili kullanıcı bağlamında sunulmalıdır.</div>
+<h2 id="yerli-arac-ve-dorse">Yerli araç ve dorse plakası</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> e-İrsaliyenin karayolu taşıma bilgisinde Türkiye plakalı araç veya dorse gönderiyorsanız etkiler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kullanım</th><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody>
+<tr><td>Yalnız araç plakası</td><td><code>PLAKA</code> kullanılabiliyordu.</td><td><code>PLAKA</code> kullanılmaya devam eder ve değer Türk plaka biçimine uymalıdır.</td><td>Araç plakasını <code>PLAKA</code> şemasıyla gönderin.</td></tr>
+<tr><td>Yalnız dorse plakası</td><td><code>DORSE</code> kullanılabiliyordu.</td><td><code>DORSE</code> kullanılmaya devam eder ve değer Türk plaka biçimine uymalıdır.</td><td>Dorse plakasını <code>DORSE</code> şemasıyla gönderin.</td></tr>
+<tr><td>Araç ve dorse birleşik</td><td>Birleşik kullanım için ayrı bir şema değeri yoktu.</td><td><code>DORSEPLAKA</code> kullanılmalıdır ve değer Türk plaka biçimine göre doğrulanır.</td><td>Birleşik bilgiyi genel <code>PLAKA</code> veya <code>DORSE</code> yerine <code>DORSEPLAKA</code> şemasıyla gönderin.</td></tr>
+</tbody></table></div>
+
+<h2 id="yabanci-arac-ve-dorse">Yabancı araç ve dorse plakası</h2>
+<p><b>Bu değişiklik sizi etkiler mi?</b> e-İrsaliyenin karayolu taşıma bilgisinde yabancı plakalı araç veya dorse gönderiyorsanız etkiler.</p>
+<div class="table-wrapper"><table><thead><tr><th>Kullanım</th><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody>
+<tr><td>Yalnız yabancı araç plakası</td><td>Yabancı araç için ayrı bir şema değeri yoktu.</td><td><code>YABANCIPLAKA</code> kullanılmalıdır.</td><td>Yabancı araç plakasını <code>YABANCIPLAKA</code> şemasıyla gönderin.</td></tr>
+<tr><td>Yalnız yabancı dorse plakası</td><td>Yabancı dorse için ayrı bir şema değeri yoktu.</td><td><code>YABANCIDORSE</code> kullanılmalıdır.</td><td>Yabancı dorse plakasını <code>YABANCIDORSE</code> şemasıyla gönderin.</td></tr>
+<tr><td>Yabancı araç ve dorse birleşik</td><td>Birleşik yabancı plaka için ayrı bir şema değeri yoktu.</td><td><code>YABANCIDORSEPLAKA</code> kullanılmalıdır.</td><td>Birleşik bilgiyi <code>YABANCIDORSEPLAKA</code> şemasıyla gönderin.</td></tr>
+</tbody></table></div>
+<p>Üç yabancı şemada değer boş olamaz; yalnız büyük harf, rakam, <code>_</code> ve <code>-</code> kullanılabilir. Yabancı plakayı yerli <code>PLAKA</code> veya <code>DORSE</code> şemasıyla göndermeyin.</p>
+<p>Resmî paket ve yürürlük duyurusu için <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyurularını</a> izleyin.</p>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
-<a class="docs-page-link docs-page-previous" href="giden-irsaliye-entegrator-api.html"><span>Önceki</span><strong>Giden İrsaliye Entegratör API</strong></a>
-<a class="docs-page-link docs-page-next" href="giden-irsaliye-request-ornekleri.html"><span>Sonraki</span><strong>Giden İrsaliye Request Örnekleri</strong></a>
+<a class="docs-page-link docs-page-previous" href="gelen-irsaliye-ubl-api-mapping.html"><span>Önceki</span><strong>Gelen İrsaliye UBL → API/ERP Mapping</strong></a>
+<a class="docs-page-link docs-page-next" href="teknik-referans.html"><span>Sonraki</span><strong>Teknik Referans</strong></a>
 </nav>
 <!-- vbt:pagination:end -->
 </article></main>
