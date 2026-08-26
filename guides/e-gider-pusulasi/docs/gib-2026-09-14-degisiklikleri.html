@@ -75,17 +75,26 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>14 Eylül 2026 GİB Değişiklikleri</h1><p class="docs-lead">e-Gider Pusulası kullanıcı hesabı için erreceipt etiketi ve seçenek kodu kuralları.</p></header>
 <!-- vbt:article-header:end -->
 <section id="gib-2026-09-14-degisiklikleri">
-<div class="callout callout-warning"><b>Henüz aktif değildir.</b> Aşağıdaki GİB kullanıcı hesabı kuralı 14.09.2026 tarihinde devreye alınacaktır. Değişiklik, düzenlenen e-Gider Pusulası XML'inden çok GİB kullanıcı hesabı açma ve kapatma zarfını etkiler.</div>
+<div class="callout callout-warning"><b>PROD geçiş tarihi 14.09.2026'dır.</b> Aşağıdaki GİB kullanıcı hesabı kuralı bu tarihte PROD ortamında devreye alınacaktır. Değişiklik, düzenlenen e-Gider Pusulası XML'inden çok GİB kullanıcı hesabı açma ve kapatma zarfını etkiler.</div>
+
+<div class="callout callout-info"><b>Belge API sözleşmesi değişmemektedir.</b> e-Gider Pusulası oluşturma, güncelleme ve gönderme requestlerine yeni alan eklenmez. Hizmet aktivasyonu VBT tarafından yönetildiğinde kullanıcı hesabı zarfı <code>erreceipt</code> alias'ı ve <code>UserOptionCode=172</code> ile platform tarafından üretilir.</div>
+
+<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
+<tr><td>Yeni entegrasyon</td><td>Mevcut e-Gider Pusulası belge endpointleri ve request modelleri kullanılmalıdır; kullanıcı hesabı zarfı için ek belge alanı gönderilmez.</td></tr>
+<tr><td>Mevcut entegrasyon</td><td>Belge oluşturma, güncelleme ve gönderme kodunda değişiklik gerekmez.</td></tr>
+<tr><td>Doğrudan kullanıcı hesabı zarfı üreten entegrasyon</td><td><code>ProcessUserAccount</code> ve <code>CancelUserAccount</code> zarfları aşağıdaki yeni alias ve seçenek kodu sözleşmesine göre güncellenmelidir.</td></tr>
+</tbody></table></div>
 
 <h2 id="erreceipt-kullanici-hesabi">e-Gider Pusulası kullanıcı hesabı</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> GİB'e e-Gider Pusulası hizmeti için kullanıcı hesabı açma veya kapatma zarfı gönderiyorsanız etkiler. Yalnız e-Gider Pusulası belgesi üretiyor fakat kullanıcı hesabı zarflarını başka bir hizmet sağlayıcı yönetiyorsa kendi entegrasyon sorumluluğunuzu sağlayıcınızla netleştirin.</p>
-<div class="table-wrapper"><table><thead><tr><th>Alan veya işlem</th><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody>
-<tr><td>Etkilenen zarflar</td><td>e-Gider Pusulasına özgü kullanıcı hesabı etiketi tanımlı değildi.</td><td>Kural <code>ProcessUserAccount</code> ve <code>CancelUserAccount</code> zarflarında uygulanır. Düzenlenen e-Gider Pusulası belge XML'ine bu değişiklik nedeniyle yeni alan eklenmez.</td><td>Belge requestiniz yerine kullanıcı hesabı açma ve kapatma zarfı üretiminizi güncelleyin.</td></tr>
-<tr><td>Kullanıcı alias'ı</td><td><code>erreceipt</code> rezerv alias ve kullanıcı zarfı listelerinde bulunmuyordu.</td><td>e-Gider Pusulası hizmet hesabı <code>erreceipt</code> alias'ıyla tanımlanmalıdır.</td><td>Her iki kullanıcı hesabı zarfında <code>erreceipt</code> alias'ını destekleyin.</td></tr>
-<tr><td><code>AuthorizedWorkScope</code></td><td>Bu etikete özgü bir kural yoktu.</td><td><code>erreceipt</code> hesabında bulunmamalıdır.</td><td>Bu alias için <code>AuthorizedWorkScope</code> üretmeyin.</td></tr>
-<tr><td><code>UserOptionCode</code></td><td>Bu etikete özgü seçenek listesi yoktu.</td><td>Yalnız <code>171</code>, <code>172</code>, <code>173</code> veya <code>174</code> olabilir.</td><td>Değeri dört izinli seçenekten biriyle sınırlandırın ve liste dışı değerlerin gönderilmediğini test edin.</td></tr>
+<p>GİB'e e-Gider Pusulası hizmeti için doğrudan <code>ProcessUserAccount</code> veya <code>CancelUserAccount</code> zarfı gönderen entegrasyonları kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan veya işlem</th><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody>
+<tr><td>Etkilenen zarflar</td><td>e-Gider Pusulasına özgü kullanıcı hesabı etiketi tanımlı değildi.</td><td>Kural <code>ProcessUserAccount</code> ve <code>CancelUserAccount</code> zarflarında uygulanır. Düzenlenen e-Gider Pusulası belge XML'ine yeni alan eklenmez.</td><td>Doğrudan hesap açma ve kapatma zarfı üreten entegrasyon güncellenmelidir; belge requesti değiştirilmemelidir.</td></tr>
+<tr><td>Kullanıcı alias'ı</td><td><code>erreceipt</code> rezerv alias ve kullanıcı zarfı listelerinde bulunmuyordu.</td><td>e-Gider Pusulası hizmet hesabı <code>erreceipt</code> alias'ıyla tanımlanmalıdır.</td><td>Her iki kullanıcı hesabı zarfı <code>erreceipt</code> alias'ını desteklemelidir.</td></tr>
+<tr><td><code>AuthorizedWorkScope</code></td><td>Bu etikete özgü bir kural yoktu.</td><td><code>erreceipt</code> hesabında bulunmamalıdır.</td><td>Bu alias için <code>AuthorizedWorkScope</code> üretilmemelidir.</td></tr>
+<tr><td><code>UserOptionCode</code></td><td>Bu etikete özgü seçenek listesi yoktu.</td><td>GİB şemasında yalnız <code>171</code>, <code>172</code>, <code>173</code> veya <code>174</code> olabilir. VBT hizmet aktivasyonunda <code>172</code> kullanılır.</td><td>Doğrudan üretilen zarfta değer izinli seçeneklerden biri olmalıdır. VBT aktivasyon akışında entegratör tarafından ayrıca seçenek kodu gönderilmez.</td></tr>
 </tbody></table></div>
-<p>Resmî paket ve yürürlük duyurusu için <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyurularını</a> izleyin.</p>
+<p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">

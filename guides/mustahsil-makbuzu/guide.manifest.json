@@ -21,9 +21,9 @@
     },
     "announcement": {
       "enabled": true,
-      "target": "sms-dogrulamali-gonderim",
+      "target": "gib-2026-09-14-degisiklikleri",
       "label": "Gelecek Değişiklikler",
-      "ariaLabel": "Henüz aktif olmayan gelecek değişiklikleri inceleyin"
+      "ariaLabel": "14 Eylül 2026 tarihinde devreye alınacak e-Müstahsil Makbuzu değişikliklerini inceleyin"
     }
   },
   "sections": [
@@ -125,6 +125,18 @@
       "description": "Henüz aktif olmayan doğrulama akışı ve geçiş kapsamı",
       "icon": "future",
       "pages": [
+        {
+          "slug": "gib-2026-09-14-degisiklikleri",
+          "title": "14 Eylül 2026 GİB Değişiklikleri",
+          "description": "e-Müstahsil Makbuzu raporunda VKN ve TCKN alıcı ayrımı için 14 Eylül 2026 tarihinde başlayacak kural.",
+          "eyebrow": "Gelecek Değişiklikler",
+          "keywords": ["Gelecek Değişiklikler", "GİB", "e-Müstahsil Makbuzu", "VKN", "TCKN", "alıcı"],
+          "homeCard": {
+            "label": "Gelecek Değişiklikler",
+            "description": "14 Eylül 2026 tarihinde başlayacak VKN/TCKN alıcı seçimi zorunluluğu.",
+            "action": "Planlanan değişikliği inceleyin"
+          }
+        },
         {
           "slug": "sms-dogrulamali-gonderim",
           "title": "SMS Doğrulamalı Gönderim",

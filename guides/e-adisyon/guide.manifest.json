@@ -18,6 +18,12 @@
     "primaryAction": {
       "target": "eadisyon-nedir",
       "label": "Rehbere başlayın"
+    },
+    "announcement": {
+      "enabled": true,
+      "target": "gib-2026-09-14-degisiklikleri",
+      "label": "Gelecek Değişiklikler",
+      "ariaLabel": "14 Eylül 2026 tarihinde devreye alınacak e-Adisyon değişikliklerini inceleyin"
     }
   },
   "sections": [
@@ -175,6 +181,25 @@
           "homeCard": {
             "label": "API",
             "description": "Entegratör request alanlarının UBL CreditNote XML karşılıkları."
+          }
+        }
+      ]
+    },
+    {
+      "label": "Gelecek Değişiklikler",
+      "description": "14 Eylül 2026 tarihinde devreye alınacak e-Adisyon rapor kuralı",
+      "icon": "future",
+      "pages": [
+        {
+          "slug": "gib-2026-09-14-degisiklikleri",
+          "title": "14 Eylül 2026 GİB Değişiklikleri",
+          "description": "e-Adisyon raporunda VKN ve TCKN alıcı ayrımı için 14 Eylül 2026 tarihinde başlayacak kural.",
+          "eyebrow": "Gelecek Değişiklikler",
+          "keywords": ["Gelecek Değişiklikler", "GİB", "e-Adisyon", "VKN", "TCKN", "alıcı"],
+          "homeCard": {
+            "label": "Gelecek Değişiklikler",
+            "description": "14 Eylül 2026 tarihinde başlayacak VKN/TCKN alıcı seçimi zorunluluğu.",
+            "action": "Planlanan değişikliği inceleyin"
           }
         }
       ]

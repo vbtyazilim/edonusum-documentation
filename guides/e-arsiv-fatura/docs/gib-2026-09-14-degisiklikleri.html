@@ -76,31 +76,109 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>14 Eylül 2026 GİB Değişiklikleri</h1><p class="docs-lead">e-Arşiv v1.1_8 rapor yapısı ve TEKNOLOJİDESTEK faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.</p></header>
 <!-- vbt:article-header:end -->
 <section id="gib-2026-09-14-degisiklikleri">
-<div class="callout callout-warning"><b>Henüz aktif değildir.</b> Aşağıdaki GİB kuralları 14.09.2026 tarihinde devreye alınacaktır. Bu tarihe kadar mevcut üretim ve raporlama davranışı geçerlidir; entegratörlerin yeni senaryoları test ortamında şimdiden hazırlaması önerilir.</div>
+<div class="callout callout-warning"><b>PROD geçiş tarihi 14.09.2026'dır.</b> Aşağıdaki GİB kuralları bu tarihte PROD ortamında devreye alınacaktır. Geçiş tarihine kadar mevcut üretim ve raporlama davranışı geçerlidir.</div>
 
-<h2 id="nasil-okunmali">Bu sayfa nasıl okunmalı?</h2>
-<p>Her başlık tek başına okunabilir. Yalnız kullandığınız e-Arşiv Fatura tipine veya rapor kaydına ait başlığı uygulamanız yeterlidir; örneğin yatırım teşvik faturası kullanmayan bir entegratör YTB alanı göndermek zorunda değildir.</p>
+<h2 id="kapsam">Kapsam</h2>
+<p>Değişiklikler <code>SARJ</code>, <code>SARJANLIK</code>, <code>YTBTEVKIFAT</code>, <code>YTBTEVKIFATIADE</code> ve <code>TEKNOLOJIDESTEK</code> fatura tipleri ile tüm e-Arşiv faturalardaki alıcı kişi türü seçimini kapsar. Fatura tipine özgü alanlar diğer e-Arşiv senaryolarına uygulanmaz.</p>
+
+<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
+<tr><td>Yeni entegrasyon</td><td>Kullanılacak fatura tipi için bu sayfadaki 14.09.2026 alan kuralları başlangıç sözleşmesi olarak uygulanmalıdır. Gerçek ve tüzel alıcı requestleri ayrı hazırlanmalıdır.</td></tr>
+<tr><td>Mevcut entegrasyon</td><td>Yalnız kullanılan fatura tipine ait alanlar güncellenmeli; tüm entegrasyonlarda VKN/TCKN ile kişi adı kaynağı yeniden doğrulanmalıdır.</td></tr>
+<tr><td>Ortak davranış</td><td>Yeni endpoint, rapor requesti veya DTO alanı yoktur. Entegratör fatura requestini gönderir; UBL ve GİB e-Arşiv raporu platform tarafından oluşturulur.</td></tr>
+</tbody></table></div>
+
+<h2 id="sarj-ortak-request-kurallari">SARJ ve SARJANLIK ortak request kuralları</h2>
+<p><code>ProfileId=EARSIVFATURA</code> ile düzenlenen <code>SARJ</code> ve <code>SARJANLIK</code> faturalarının ortak alan sözleşmesidir.</p>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>ProfileId</code></td><td><code>EARSIVFATURA</code></td><td><code>SARJ</code> ve <code>SARJANLIK</code> faturalarında zorunludur.</td></tr>
+<tr><td><code>InvoiceTypeCode</code></td><td><code>SARJ</code> veya <code>SARJANLIK</code></td><td>Uygulanacak şarj fatura kuralını belirler.</td></tr>
+<tr><td><code>InvoicePeriod.StartDate</code></td><td><code>DateTime</code>; 01.01.2005 veya sonrası</td><td>Şarj döneminin başlangıç tarih ve saatini taşır.</td></tr>
+<tr><td><code>InvoicePeriod.EndDate</code></td><td><code>DateTime</code>; 01.01.2005 veya sonrası</td><td>Şarj döneminin bitiş tarih ve saatini taşır. Platform iki dönem değerini rapordaki tarih ve saat alanlarına ayırır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].SchemeId</code></td><td><code>PLAKA</code></td><td>Alıcı kimliklerinde tam olarak bir plaka kaydı bulunmalıdır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].Value</code></td><td>1–50 karakter; büyük harf, rakam, <code>_</code> veya <code>-</code></td><td>Alıcı plakasını taşır.</td></tr>
+<tr><td><code>InvoiceLine[]</code></td><td>Her kalemde hizmet adı, miktar, birim, birim fiyat ve en az bir vergi ayrıntısı</td><td>Birim fiyat ve miktar en fazla 8; vergi matrahı/tutarı en fazla 2; vergi oranı en fazla 3 ondalık basamak taşımalıdır.</td></tr>
+</tbody></table></div>
+<!-- vbt-source: InvoiceValidation.ValidateEnergyInvoice; EArchiveGibReportService charging report mapping; EArsiv.xsd sarj/sarjAnlik -->
 
 <h2 id="sarj-coklu-esu-rapor-kimligi">SARJ faturasında çoklu ESU rapor kimliği</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> e-Arşiv raporunda SARJ faturası bildiriyor ve bir faturayı birden fazla ESU raporuyla ilişkilendiriyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında geçerli olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>e-Arşiv v1.1_6 raporunda SARJ kaydı yalnız bir <code>esuRaporID</code> taşıyabiliyordu.</td><td>e-Arşiv v1.1_8 raporunda <code>esuRaporID</code> tekrarlanabilir. Bir SARJ faturası birden fazla ESU raporuyla ilişkiliyse tüm GUID değerleri ayrı elemanlar olarak raporlanabilir.</td><td>Faturayla ilişkili bütün ESU rapor GUID'lerini kayıpsız koruyun ve her birini ayrı <code>esuRaporID</code> olarak rapora aktarın. Tek ESU raporu olan SARJ faturasında bir değer göndermeye devam edebilirsiniz.</td></tr></tbody></table></div>
+<p>Bir SARJ faturasının birden fazla ESU raporuyla ilişkilendirildiği kayıtları kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>e-Arşiv v1.1_6 raporunda SARJ kaydı yalnız bir <code>esuRaporID</code> taşıyabiliyordu.</td><td>e-Arşiv v1.1_8 raporunda <code>esuRaporID</code> tekrarlanabilir. Bir SARJ faturası birden fazla ESU raporuyla ilişkiliyse tüm GUID değerleri ayrı elemanlar olarak raporlanabilir.</td><td>Faturayla ilişkili her ESU raporu requestte ayrı belge referansı olarak gönderilmelidir. Platform geçerli kimliklerin tamamını aynı sırayla rapora aktarır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>AdditionalDocumentReference[]</code></td><td>Her ESU raporu için ayrı kayıt</td><td>Bir faturaya bağlı tüm ESU raporları request sırasıyla gönderilmelidir.</td></tr>
+<tr><td><code>AdditionalDocumentReference[].SchemeId</code></td><td><code>ESURaporID</code></td><td>Kaydın ESU rapor referansı olduğunu belirtir.</td></tr>
+<tr><td><code>AdditionalDocumentReference[].Id</code></td><td>GUID</td><td>ESU rapor kimliğini taşır.</td></tr>
+<tr><td><code>AdditionalDocumentReference[].IssueDate</code></td><td>Dolu tarih</td><td>ESU raporunun düzenlenme tarihini taşır. Platform geçerli kayıtları aynı sırayla ayrı <code>esuRaporID</code> elemanlarına aktarır.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceRequestModel.cs:211-212; DocumentReferenceRequestModel.cs; RequestModelToUblMapper.cs:40,697-703; EArchiveGibReportService.SetChargingReportInformation -->
+
+<h2 id="sarjanlik-tek-kalem-kurali">SARJANLIK tek kalem ve seri numarası</h2>
+<p>e-Arşiv raporuna dahil edilen <code>SARJANLIK</code> faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>Rapor şemasında anlık şarj ayrıntısının tek kalem ve tek seri yapısıyla temsil edilmesi requestte açık bir sınır olarak uygulanmıyordu.</td><td><code>SARJANLIK</code> e-Arşiv Fatura tam olarak bir <code>InvoiceLine</code> ve bu kalemde tam olarak bir boş olmayan ESU seri numarası taşımalıdır.</td><td>Tek kalem <code>InvoiceLine[0]</code>, tek seri numarası <code>InvoiceLine[0].Item.ItemInstance[0].SerialId</code> alanında gönderilmelidir.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>InvoiceLine[]</code></td><td>Tam olarak bir kalem</td><td><code>SARJANLIK</code> faturası tek fatura kalemiyle gönderilmelidir.</td></tr>
+<tr><td><code>InvoiceLine[0].Item.ItemInstance[]</code></td><td>Tam olarak bir kayıt</td><td>Tek kalemde tek ESU seri numarası bulunmalıdır.</td></tr>
+<tr><td><code>InvoiceLine[0].Item.ItemInstance[0].SerialId</code></td><td>Boş olmayan seri numarası</td><td>ESU seri numarasını taşır.</td></tr>
+</tbody></table></div>
+<!-- vbt-source: InvoiceValidation.ValidateEnergyInvoice; EArchiveGibReportService.SetChargingReportInformation; EArsiv.xsd sarjAnlik -->
 
 <h2 id="rapor-alici-secimi">e-Arşiv raporunda alıcı seçimi</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> e-Arşiv raporuna alıcı bilgisi üreten tüm entegratörleri etkiler; belirli bir fatura tipiyle sınırlı değildir.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td><code>tuzelKisi</code> ve <code>gercekKisi</code> ayrı ayrı opsiyoneldi; ikisinin birlikte doldurulması veya ikisinin de boş bırakılması şema düzeyinde mümkündü.</td><td>Alıcı VKN sahibiyse yalnız <code>tuzelKisi</code>, TCKN sahibiyse yalnız <code>gercekKisi</code> üretilmelidir. İkisi birlikte veya ikisi de boş olamaz.</td><td>Alıcının kimlik türüne göre yalnız bir yapıyı üretin. VKN için tüzel kişi, TCKN için gerçek kişi rapor örneğini ayrı ayrı test edin.</td></tr></tbody></table></div>
+<p>Alıcı kişi türü seçimi tüm e-Arşiv faturalarda uygulanır; belirli bir fatura tipiyle sınırlı değildir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td><code>tuzelKisi</code> ve <code>gercekKisi</code> ayrı ayrı opsiyoneldi; ikisinin birlikte doldurulması veya ikisinin de boş bırakılması şema düzeyinde mümkündü.</td><td>Alıcı VKN sahibiyse raporda yalnız <code>tuzelKisi</code>, TCKN sahibiyse yalnız <code>gercekKisi</code> bulunur. İkisi birlikte veya ikisi de boş olamaz.</td><td>Requestte VKN/TCKN kayıtlarından tam biri ve bu kimlik türüne ait ad alanları gönderilmelidir. Platform rapordaki kişi yapısını kimlik türüne göre üretir.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[]</code></td><td>Tam olarak bir VKN veya TCKN kaydı</td><td><code>PASAPORTNO</code> ve <code>TESISATNO</code> gibi farklı şemalar korunabilir; genel alıcı kişi tipini belirlemez. <code>TEKNOLOJIDESTEK</code> kuralı bu kapsamı daraltır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].SchemeId</code></td><td><code>VKN</code> veya <code>TCKN</code></td><td>Alıcının gerçek veya tüzel kişi olarak raporlanmasını belirler.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].Value</code></td><td>VKN için 10, TCKN için 11 ASCII rakam</td><td>Kimlik türüne uygun uzunlukta ve yalnız rakamlardan oluşmalıdır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyName</code></td><td>VKN sahibinin tüzel kişi unvanı</td><td>10 haneli VKN için zorunludur ve raporda tüzel kişi unvanı olarak kullanılır. <code>Person</code> da gönderilmişse rapor seçiminde dikkate alınmaz.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.Person.FirstName</code></td><td>TCKN sahibinin adı</td><td>11 haneli TCKN için <code>FamilyName</code> ile birlikte zorunludur ve raporda gerçek kişi adı olarak kullanılır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.Person.FamilyName</code></td><td>TCKN sahibinin soyadı</td><td>11 haneli TCKN için <code>FirstName</code> ile birlikte zorunludur ve raporda gerçek kişi soyadı olarak kullanılır. <code>PartyName</code> da gönderilmişse rapor seçiminde dikkate alınmaz.</td></tr>
+</tbody></table></div><!-- vbt-source: PartyRequestModel.cs; IdRequestModel.cs; InvoiceValidation.ValidatePartyIdentificationPartyNamePerson; EArchiveGibReportService.CreateEArchiveRecipientInformation -->
 
 <h2 id="ytb-tevkifat">YTBTEVKIFAT faturası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Yatırım teşvik kapsamında tevkifatlı e-Arşiv Fatura düzenliyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td><code>YTBTEVKIFAT</code> e-Arşiv rapor fatura tipi listesinde yoktu.</td><td><code>YTBTEVKIFAT</code> geçerli bir rapor fatura tipidir. Bu tip kullanıldığında yatırım teşvik belgesi numarası ve tarihi <code>ytbBilgileri</code> içinde bulunmalıdır.</td><td>Fatura tipi listenize <code>YTBTEVKIFAT</code> değerini ekleyin ve bu tip seçildiğinde YTB numarası ile tarihini zorunlu tutun.</td></tr></tbody></table></div>
+<p>Yatırım teşvik kapsamında düzenlenen tevkifatlı e-Arşiv faturaları kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td><code>YTBTEVKIFAT</code> e-Arşiv rapor fatura tipi listesinde yoktu.</td><td><code>YTBTEVKIFAT</code> geçerli bir rapor fatura tipidir. Bu tip kullanıldığında yatırım teşvik belgesi numarası ve tarihi <code>ytbBilgileri</code> içinde bulunmalıdır.</td><td>Fatura tipi listesi <code>YTBTEVKIFAT</code> değerini desteklemeli; YTB numarası ve tarihi bu tip için zorunlu tutulmalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>InvoiceTypeCode</code></td><td><code>YTBTEVKIFAT</code></td><td>Yatırım teşvik kapsamındaki tevkifatlı fatura tipini belirtir.</td></tr>
+<tr><td><code>ContractDocumentReference[]</code></td><td>Tam olarak bir kayıt</td><td>Yatırım teşvik belgesi referansını taşır.</td></tr>
+<tr><td><code>ContractDocumentReference[].SchemeId</code></td><td><code>YTBNO</code></td><td>Kaydın yatırım teşvik belgesi olduğunu belirtir.</td></tr>
+<tr><td><code>ContractDocumentReference[].Id</code></td><td>Yalnız ASCII rakamlardan oluşan altı hane</td><td>Yatırım teşvik belgesi numarasını taşır.</td></tr>
+<tr><td><code>ContractDocumentReference[].IssueDate</code></td><td>Dolu tarih</td><td>Yatırım teşvik belgesinin tarihini taşır.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateYtbInvoice; DocumentReferenceRequestModel.cs; EArchiveGibReportService.CreateYtbReportInformation -->
 
 <h2 id="ytb-tevkifat-iade">YTBTEVKIFATIADE faturası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Yatırım teşvik kapsamında tevkifatlı faturanın iadesini e-Arşiv Fatura olarak düzenliyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td><code>YTBTEVKIFATIADE</code> e-Arşiv rapor fatura tipi listesinde yoktu.</td><td><code>YTBTEVKIFATIADE</code> geçerli bir rapor fatura tipidir. Bu tip kullanıldığında yatırım teşvik belgesi numarası ve tarihi <code>ytbBilgileri</code> içinde bulunmalıdır.</td><td>Fatura tipi listenize <code>YTBTEVKIFATIADE</code> değerini ekleyin ve bu tip seçildiğinde YTB numarası ile tarihini zorunlu tutun. <code>YTBTEVKIFAT</code> kullanmanız bu iade tipini kendiliğinden zorunlu kılmaz.</td></tr></tbody></table></div>
+<p>Yatırım teşvik kapsamında düzenlenen tevkifatlı faturanın e-Arşiv iadesini kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td><code>YTBTEVKIFATIADE</code> e-Arşiv rapor fatura tipi listesinde yoktu.</td><td><code>YTBTEVKIFATIADE</code> geçerli bir rapor fatura tipidir. Bu tip kullanıldığında yatırım teşvik belgesi numarası ve tarihi <code>ytbBilgileri</code> içinde bulunmalıdır.</td><td>Fatura tipi listesi <code>YTBTEVKIFATIADE</code> değerini desteklemeli; YTB ve iade edilen belge bilgileri bu tip için zorunlu tutulmalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>InvoiceTypeCode</code></td><td><code>YTBTEVKIFATIADE</code></td><td>Yatırım teşvik kapsamındaki tevkifatlı iade faturasını belirtir.</td></tr>
+<tr><td><code>ContractDocumentReference[]</code></td><td>Tam olarak bir kayıt</td><td>Yatırım teşvik belgesi referansını taşır.</td></tr>
+<tr><td><code>ContractDocumentReference[].SchemeId</code></td><td><code>YTBNO</code></td><td>Kaydın yatırım teşvik belgesi olduğunu belirtir.</td></tr>
+<tr><td><code>ContractDocumentReference[].Id</code></td><td>Yalnız ASCII rakamlardan oluşan altı hane</td><td>Yatırım teşvik belgesi numarasını taşır.</td></tr>
+<tr><td><code>ContractDocumentReference[].IssueDate</code></td><td>Dolu tarih</td><td>Yatırım teşvik belgesinin tarihini taşır.</td></tr>
+<tr><td><code>BillingReference[].InvoiceDocumentReference.Id</code></td><td>İade edilen faturanın 16 karakterlik numarası</td><td>İade edilen belgeyi belirtir.</td></tr>
+<tr><td><code>BillingReference[].InvoiceDocumentReference.IssueDate</code></td><td>İade edilen faturanın tarihi</td><td>İade edilen belge numarasıyla birlikte gönderilmelidir.</td></tr>
+<tr><td><code>BillingReference[].InvoiceDocumentReference.DocumentTypeCode</code></td><td><code>IADE</code></td><td>Referans verilen belgenin iade kapsamında olduğunu belirtir.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateYtbInvoice; InvoiceValidation.ValidateIadeFatura -->
 
 <h2 id="teknoloji-destek-faturasi">TEKNOLOJİDESTEK faturası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Teknoloji destek programı kapsamında <code>InvoiceTypeCode=TEKNOLOJIDESTEK</code> faturası düzenliyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>Fatura tipi ile e-Arşiv profili arasındaki ilişki dolaylı bir kontrolle değerlendiriliyordu.</td><td><code>InvoiceTypeCode=TEKNOLOJIDESTEK</code> ise <code>ProfileID</code> mutlaka <code>EARSIVFATURA</code> olmalıdır. TEMELFATURA, TICARIFATURA veya başka bir profil altında gönderim geçersizdir. Mevcut TELEFON/TABLET_PC satır tanımlama yükümlülükleri devam eder.</td><td>TEKNOLOJİDESTEK faturalarını yalnız <code>EARSIVFATURA</code> profiliyle oluşturun ve mevcut ürün tanımlama alanlarını koruyun. Bu fatura tipini kullanmıyorsanız değişiklik belgenizi etkilemez.</td></tr></tbody></table></div>
-<p>Resmî paket ve yürürlük duyurusu için <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyurularını</a> izleyin.</p>
+<p>Teknoloji destek programı kapsamında düzenlenen <code>InvoiceTypeCode=TEKNOLOJIDESTEK</code> faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>Fatura tipi ile e-Arşiv profili arasındaki ilişki dolaylı bir kontrolle değerlendiriliyordu.</td><td><code>InvoiceTypeCode=TEKNOLOJIDESTEK</code> ise <code>ProfileID</code> mutlaka <code>EARSIVFATURA</code> olmalıdır. <code>TEMELFATURA</code>, <code>TICARIFATURA</code> veya başka bir profil altında gönderim geçersizdir. Mevcut <code>TELEFON</code>/<code>TABLET_PC</code> satır tanımlama yükümlülükleri devam eder.</td><td>TEKNOLOJİDESTEK faturaları yalnız <code>EARSIVFATURA</code> profiliyle oluşturulmalı ve ürün tanımlama alanları korunmalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>ProfileId</code></td><td><code>EARSIVFATURA</code></td><td><code>TEKNOLOJIDESTEK</code> faturasında zorunludur.</td></tr>
+<tr><td><code>InvoiceTypeCode</code></td><td><code>TEKNOLOJIDESTEK</code></td><td>Teknoloji destek fatura tipini belirtir.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[]</code></td><td>Tam olarak bir kayıt</td><td>TCKN dışında <code>PASAPORTNO</code> veya başka bir kimlik şeması gönderilmemelidir.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].SchemeId</code></td><td><code>TCKN</code></td><td>Alıcı kimlik türünü belirtir.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].Value</code></td><td>Yalnız rakamlardan oluşan 11 hane</td><td>Alıcının TCKN değerini taşır.</td></tr>
+<tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[]</code></td><td>Her kalemde en az bir kayıt</td><td>Ürün tanımını taşır.</td></tr>
+<tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[].SchemeId</code></td><td><code>TELEFON</code> veya <code>TABLET_PC</code></td><td>Değer büyük harfli ve tanımlı kodlardan biri olmalıdır.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateTeknolojiDestekInvoice; InvoiceValidation.ValidatePartyIdentificationPartyNamePerson; InvoiceValidation.ValidateInvoiceTypeCode -->
+<p><b>Geçersiz örnekler:</b> <code>ProfileId=TEMELFATURA</code>, alıcıda VKN bulunması, TCKN yanında ikinci bir kimlik şeması gönderilmesi, herhangi bir kalemde ürün tanımının eksik olması veya küçük harfli <code>telefon</code>/<code>tablet_pc</code> kullanılması requestin reddedilmesine neden olur.</p>
+<p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">

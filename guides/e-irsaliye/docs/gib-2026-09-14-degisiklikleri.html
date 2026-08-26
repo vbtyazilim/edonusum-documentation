@@ -86,32 +86,53 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>14 Eylül 2026 GİB Değişiklikleri</h1><p class="docs-lead">IDİS sevkiyat numarası ve yerli/yabancı plaka şemaları için 14 Eylül 2026 tarihinde başlayacak kurallar.</p></header>
 <!-- vbt:article-header:end -->
 <section id="gib-2026-09-14-degisiklikleri">
-<div class="callout callout-warning"><b>Henüz aktif değildir.</b> Aşağıdaki GİB kuralları 14.09.2026 tarihinde devreye alınacaktır. Bu tarihe kadar mevcut üretim davranışı geçerlidir; entegratörlerin yeni değerleri test ortamında şimdiden hazırlaması önerilir.</div>
+<div class="callout callout-warning"><b>PROD geçiş tarihi 14.09.2026'dır.</b> Aşağıdaki GİB kuralları bu tarihte PROD ortamında devreye alınacaktır. Geçiş tarihine kadar mevcut üretim davranışı geçerlidir.</div>
 
-<h2 id="nasil-okunmali">Bu sayfa nasıl okunmalı?</h2>
-<p>Her başlık tek başına okunabilir. Yalnız kullandığınız e-İrsaliye profiline ve taşıma biçimine ait başlığı uygulamanız yeterlidir; IDİS kullanmayan bir kullanıcı plaka değişikliği için IDİS alanı göndermek zorunda değildir.</p>
+<h2 id="kapsam">Kapsam</h2>
+<p>Değişiklikler IDİS sevkiyat numarası ile e-İrsaliyede kullanılan yerli ve yabancı plaka şemalarını kapsar. IDİS kuralı yalnız <code>IDISIRSALIYE</code> profilinde uygulanır; plaka kuralları ise e-İrsaliye taşıma bilgisinin ortak sözleşmesidir.</p>
+
+<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
+<tr><td>Yeni entegrasyon</td><td>IDİS kullanılıyorsa yeni sevkiyat numarası biçimi uygulanmalıdır. Araç plakası <code>RoadTransport.LicensePlateId</code>, dorse plakası <code>TransportEquipment[].Id</code> alanında gönderilmelidir.</td></tr>
+<tr><td>Mevcut entegrasyon</td><td><code>IdisSevkiyatNo</code> doğrulaması <code>ES-</code> önekini kabul edecek şekilde genişletilmelidir. <code>DORSE</code> bilgisini araç plakası alanında gönderen entegrasyonlar dorse alanına geçirilmelidir.</td></tr>
+<tr><td>Request sözleşmesi</td><td>Yeni endpoint veya request modeli yoktur. Mevcut alanların kullanım bağlamı ve kabul edilen <code>SchemeId</code> değerleri değişmektedir.</td></tr>
+</tbody></table></div>
 
 <h2 id="idis-irsaliyesi">IDİS e-İrsaliyesi</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> <code>ProfileID=IDISIRSALIYE</code> ile sevkiyat numarası gönderiyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında geçerli olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>Sevkiyat numarasında yalnız <code>SE-</code> öneki ve ardından yedi rakam kabul ediliyordu.</td><td><code>SE-1234567</code> ve <code>ES-1234567</code> geçerlidir. Tire ve tam yedi rakam zorunluluğu devam eder; <code>ES-12345</code> ve <code>AB-1234567</code> geçersizdir.</td><td>IDİS sevkiyat numarası doğrulamanızın hem <code>SE-</code> hem <code>ES-</code> önekini kabul ettiğini doğrulayın. IDİS e-İrsaliyesi kullanmıyorsanız bu değişiklik belgenizi etkilemez.</td></tr></tbody></table></div>
+<p><code>ProfileID=IDISIRSALIYE</code> ile gönderilen sevkiyat numarası biçimini kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>Sevkiyat numarasında yalnız <code>SE-</code> öneki ve ardından yedi rakam kabul ediliyordu.</td><td><code>SE-1234567</code> ve <code>ES-1234567</code> geçerlidir. Tire ve tam yedi rakam zorunluluğu devam eder; <code>ES-12345</code> ve <code>AB-1234567</code> geçersizdir.</td><td>IDİS sevkiyat numarası doğrulaması hem <code>SE-</code> hem <code>ES-</code> önekini kabul etmelidir.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>IdisSevkiyatNo</code></td><td><code>SE-</code> veya <code>ES-</code> öneki ve ardından tam yedi rakam</td><td>Değer doğrudan bu alanda gönderilir; platform <code>IDISIRSALIYE</code> profilinde <code>SEVKIYATNO</code> UBL kimliğini üretir.</td></tr>
+<tr><td><code>DespatchSupplierParty.Party.PartyIdentifications[]</code></td><td><code>SEVKIYATNO</code> kaydı gönderilmez</td><td><code>IdisSevkiyatNo</code> için ikinci bir kimlik kaydı oluşturulmamalıdır.</td></tr>
+</tbody></table></div><!-- vbt-source: OutgoingDespatchAdviceRequestModel.cs:94-95; OutgoingDespatchAdviceService.cs:3300-3307; DespatchAdviceValidation.ValidateIdisDespatchAdvice -->
 
-<h2 id="yerli-arac-ve-dorse">Yerli araç ve dorse plakası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> e-İrsaliyenin karayolu taşıma bilgisinde Türkiye plakalı araç veya dorse gönderiyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Kullanım</th><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody>
-<tr><td>Yalnız araç plakası</td><td><code>PLAKA</code> kullanılabiliyordu.</td><td><code>PLAKA</code> kullanılmaya devam eder ve değer Türk plaka biçimine uymalıdır.</td><td>Araç plakasını <code>PLAKA</code> şemasıyla gönderin.</td></tr>
-<tr><td>Yalnız dorse plakası</td><td><code>DORSE</code> kullanılabiliyordu.</td><td><code>DORSE</code> kullanılmaya devam eder ve değer Türk plaka biçimine uymalıdır.</td><td>Dorse plakasını <code>DORSE</code> şemasıyla gönderin.</td></tr>
-<tr><td>Araç ve dorse birleşik</td><td>Birleşik kullanım için ayrı bir şema değeri yoktu.</td><td><code>DORSEPLAKA</code> kullanılmalıdır ve değer Türk plaka biçimine göre doğrulanır.</td><td>Birleşik bilgiyi genel <code>PLAKA</code> veya <code>DORSE</code> yerine <code>DORSEPLAKA</code> şemasıyla gönderin.</td></tr>
+<h2 id="arac-plakasi">Araç plakası</h2>
+<p>Çekici veya taşıt plakası karayolu taşıma bilgisindeki araç alanında gönderilir. Bu alanda dorse şemaları kullanılamaz.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody>
+<tr><td><code>RoadTransport.LicensePlateId</code> alanında <code>PLAKA</code> ve <code>DORSE</code> kabul ediliyordu.</td><td>Aynı alanda yalnız yerli araç için <code>PLAKA</code>, yabancı araç için <code>YABANCIPLAKA</code> kabul edilir.</td><td><code>DORSE</code>, <code>DORSEPLAKA</code>, <code>YABANCIDORSE</code> ve <code>YABANCIDORSEPLAKA</code> bu alanda gönderilmemelidir.</td></tr>
+<tr><td>Araç plakası her e-İrsaliye için koşulsuz zorunlu değildi.</td><td>Request içinde en az bir <code>DriverPerson</code> bulunuyorsa boş olmayan ve geçerli şemaya sahip en az bir araç plakası zorunludur. Şoför yoksa araç plakası genel olarak zorunlu değildir.</td><td>Araç plakası gönderildiğinde şoför bilgisinden bağımsız olarak şema ve değer biçimi geçerli olmalıdır.</td></tr>
 </tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>Shipment.ShipmentStage[].TransportMeans.RoadTransport.LicensePlateId.SchemeId</code></td><td>Yerli araçta <code>PLAKA</code>; yabancı araçta <code>YABANCIPLAKA</code></td><td>Plakanın araç alanında hangi biçim kuralıyla doğrulanacağını belirtir.</td></tr>
+<tr><td><code>Shipment.ShipmentStage[].TransportMeans.RoadTransport.LicensePlateId.Value</code></td><td><code>PLAKA</code>: 01–81 il kodu, ardından en az bir büyük harf ve en az bir rakam</td><td><code>34ABC123</code> ve <code>06A1234</code> geçerlidir; <code>99ABC123</code>, boşluklu veya tireli Türk plaka değerleri geçersizdir.</td></tr>
+<tr><td><code>Shipment.ShipmentStage[].TransportMeans.RoadTransport.LicensePlateId.Value</code></td><td><code>YABANCIPLAKA</code>: boş olmayan; yalnız büyük harf, rakam, <code>_</code> veya <code>-</code></td><td><code>DE-AB_1234</code> geçerlidir; küçük harf veya boşluk içeren <code>de-ab 1234</code> geçersizdir.</td></tr>
+</tbody></table></div><!-- vbt-source: RoadTransportRequestModel.cs; IdRequestModel.cs; DespatchAdviceValidation.ValidateLicensePlate; UBL-TR_Codelist.xml:LicensePlateIDSchemeIDType -->
 
-<h2 id="yabanci-arac-ve-dorse">Yabancı araç ve dorse plakası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> e-İrsaliyenin karayolu taşıma bilgisinde yabancı plakalı araç veya dorse gönderiyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Kullanım</th><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody>
-<tr><td>Yalnız yabancı araç plakası</td><td>Yabancı araç için ayrı bir şema değeri yoktu.</td><td><code>YABANCIPLAKA</code> kullanılmalıdır.</td><td>Yabancı araç plakasını <code>YABANCIPLAKA</code> şemasıyla gönderin.</td></tr>
-<tr><td>Yalnız yabancı dorse plakası</td><td>Yabancı dorse için ayrı bir şema değeri yoktu.</td><td><code>YABANCIDORSE</code> kullanılmalıdır.</td><td>Yabancı dorse plakasını <code>YABANCIDORSE</code> şemasıyla gönderin.</td></tr>
-<tr><td>Yabancı araç ve dorse birleşik</td><td>Birleşik yabancı plaka için ayrı bir şema değeri yoktu.</td><td><code>YABANCIDORSEPLAKA</code> kullanılmalıdır.</td><td>Birleşik bilgiyi <code>YABANCIDORSEPLAKA</code> şemasıyla gönderin.</td></tr>
+<h2 id="dorse-plakasi">Dorse plakası</h2>
+<p>Dorse plakası taşıma ekipmanı alanında gönderilir. <code>DORSEPLAKA</code> ve <code>YABANCIDORSEPLAKA</code> araç ile dorseyi tek değerde birleştiren şemalar değildir; yalnız dorse kimliği için kabul edilen şema değerleridir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody>
+<tr><td><code>DORSE</code>, araç plakasıyla aynı <code>RoadTransport.LicensePlateId</code> alanında kabul ediliyordu. Dorse alanı için ayrı bir şema listesi uygulanmıyordu.</td><td>Dorse kimliği <code>TransportEquipment[].Id</code> alanına ayrılmıştır. Yerli dorse için <code>DORSE</code> veya <code>DORSEPLAKA</code>; yabancı dorse için <code>YABANCIDORSE</code> veya <code>YABANCIDORSEPLAKA</code> kabul edilir.</td><td>Araç ve dorse ayrı nesnelerde gönderilmelidir. Bir requestte ikisi de varsa araç değeri dorse değeriyle ezilmemelidir.</td></tr>
+<tr><td>Dorse kimliği için yeni alan zorunluluğu yoktu.</td><td><code>TransportEquipment[].Id</code> isteğe bağlıdır; ancak gönderilirse şema ve değer biçimi doğrulanır.</td><td>Dorse kullanılmayan sevkiyatlarda boş bir <code>TransportEquipment[].Id</code> üretilmemelidir.</td></tr>
 </tbody></table></div>
-<p>Üç yabancı şemada değer boş olamaz; yalnız büyük harf, rakam, <code>_</code> ve <code>-</code> kullanılabilir. Yabancı plakayı yerli <code>PLAKA</code> veya <code>DORSE</code> şemasıyla göndermeyin.</p>
-<p>Resmî paket ve yürürlük duyurusu için <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyurularını</a> izleyin.</p>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>Shipment.TransportHandlingUnit[].TransportEquipment[].Id.SchemeId</code></td><td>Yerli dorse için <code>DORSE</code> veya <code>DORSEPLAKA</code>; yabancı dorse için <code>YABANCIDORSE</code> veya <code>YABANCIDORSEPLAKA</code></td><td>Şema yalnız <code>TransportEquipment[].Id</code> alanında kullanılmalıdır.</td></tr>
+<tr><td><code>Shipment.TransportHandlingUnit[].TransportEquipment[].Id.Value</code></td><td>Yerli dorse: 01–81 il kodu, ardından en az bir büyük harf ve en az bir rakam</td><td><code>34ABC123</code> geçerlidir; <code>99ABC123</code>, boşluklu veya tireli Türk plaka değerleri geçersizdir.</td></tr>
+<tr><td><code>Shipment.TransportHandlingUnit[].TransportEquipment[].Id.Value</code></td><td>Yabancı dorse: boş olmayan; yalnız büyük harf, rakam, <code>_</code> veya <code>-</code></td><td><code>DE-AB_1234</code> geçerlidir; küçük harf veya boşluk içeren değerler geçersizdir.</td></tr>
+</tbody></table></div><!-- vbt-source: TransportHandlingUnitRequestModel.cs; TransportEquipmentRequestModel.cs; IdRequestModel.cs; DespatchAdviceValidation.ValidateTransportEquipment; UBL-TR_Codelist.xml:TransportEquipmentIDSchemeIDType -->
+<p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">

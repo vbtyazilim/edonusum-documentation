@@ -86,43 +86,104 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>14 Eylül 2026 GİB Değişiklikleri</h1><p class="docs-lead">ENERJİ, IDİS, istisna kodları ve KAMU iade faturaları için 14 Eylül 2026 tarihinde başlayacak kurallar.</p></header>
 <!-- vbt:article-header:end -->
 <section id="gib-2026-09-14-degisiklikleri">
-<div class="callout callout-warning"><b>Henüz aktif değildir.</b> Aşağıdaki GİB kuralları 14.09.2026 tarihinde devreye alınacaktır. Bu tarihe kadar mevcut üretim davranışı geçerlidir; entegratörlerin yeni alanları test ortamında şimdiden hazırlaması önerilir.</div>
+<div class="callout callout-warning"><b>PROD geçiş tarihi 14.09.2026'dır.</b> Aşağıdaki GİB kuralları bu tarihte PROD ortamında devreye alınacaktır. Geçiş tarihine kadar mevcut üretim davranışı geçerlidir.</div>
 
-<h2 id="nasil-okunmali">Bu sayfa nasıl okunmalı?</h2>
-<p>Her başlık tek başına okunabilir. Yalnız kullandığınız fatura profili, fatura tipi veya istisna koduna ait başlığı uygulamanız yeterlidir; diğer başlıklardaki alanlar sizin belgeniz için kendiliğinden zorunlu olmaz.</p>
+<h2 id="kapsam">Kapsam</h2>
+<p>Değişiklikler yalnız ilgili profil, fatura tipi veya istisna kodunun kullanıldığı belgelerde uygulanır. Bir başlıktaki alan zorunluluğu diğer e-Fatura senaryolarına taşınmaz.</p>
+
+<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
+<tr><td>Yeni entegrasyon</td><td>Kullanılacak profil, fatura tipi ve istisna kodu için bu sayfadaki 14.09.2026 kuralları başlangıç sözleşmesi olarak uygulanmalıdır.</td></tr>
+<tr><td>Mevcut entegrasyon</td><td>Yalnız kullanılan <code>SARJ</code>, <code>SARJANLIK</code>, <code>IDIS</code>, <code>KAMU + IADE</code> veya istisna koduna ait alanlar güncellenmelidir. Diğer e-Fatura senaryolarının request sözleşmesi değişmemektedir.</td></tr>
+<tr><td>Ortak doğrulama</td><td>Yeni endpoint veya request alanı yoktur. İlgili senaryolar geçerli ve geçersiz requestlerle; oluşturma ve güncelleme akışlarında ayrı ayrı doğrulanmalıdır.</td></tr>
+</tbody></table></div>
 
 <h2 id="sarj-faturasi">SARJ faturası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> <code>ProfileID=ENERJI</code> ve <code>InvoiceTypeCode=SARJ</code> ile elektrikli araç şarj hizmeti faturası düzenliyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>SARJ faturasının hizmet dönemi, ESU rapor referansı ve alıcı plakası yeni paket düzeyinde zorunlu değildi.</td><td><code>StartDate</code>, <code>StartTime</code>, <code>EndDate</code> ve <code>EndTime</code> birlikte bulunmalıdır. En az bir <code>schemeID=ESURaporID</code> referansı GUID biçimindeki kimliği ve düzenlenme tarihiyle gönderilmelidir. Alıcı kimliklerinde tek, boş olmayan ve en fazla 50 karakterlik <code>schemeID=PLAKA</code> bulunmalıdır; plakada yalnız büyük harf, rakam, <code>_</code> ve <code>-</code> kullanılabilir.</td><td>SARJ request ve UBL üretiminize hizmet dönemi, ESU rapor kimliği/tarihi ve alıcı plakasını ekleyin; alanların birlikte üretildiği pozitif ve eksik alanlı negatif testler hazırlayın.</td></tr></tbody></table></div>
+<p><code>ProfileID=ENERJI</code> ve <code>InvoiceTypeCode=SARJ</code> ile düzenlenen elektrikli araç şarj hizmeti faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>SARJ faturasının hizmet dönemi, ESU rapor referansı ve alıcı plakası paket düzeyinde zorunlu değildi.</td><td><code>StartDate</code>, <code>StartTime</code>, <code>EndDate</code> ve <code>EndTime</code> birlikte bulunmalıdır; tarihler 01.01.2005'ten eski olamaz. En az bir <code>schemeID=ESURaporID</code> referansı GUID biçimindeki kimliği ve 2000–2099 aralığındaki düzenlenme tarihiyle gönderilmelidir. Alıcı kimliklerinde tek, boş olmayan ve en fazla 50 karakterlik <code>schemeID=PLAKA</code> bulunmalıdır; plakada yalnız büyük harf, rakam, <code>_</code> ve <code>-</code> kullanılabilir.</td><td>Hizmet dönemi, ESU rapor kimliği ve tarihi ile alıcı plakası mevcut request alanlarında gönderilmelidir. UBL dönüşümü platform tarafından gerçekleştirilir.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>InvoicePeriod.StartDate</code></td><td><code>DateTime</code>; 01.01.2005 veya sonrası</td><td>Hizmet başlangıç tarih ve saatini taşır.</td></tr>
+<tr><td><code>InvoicePeriod.EndDate</code></td><td><code>DateTime</code>; 01.01.2005 veya sonrası</td><td>Hizmet bitiş tarih ve saatini taşır. Platform iki dönem değerini UBL'deki tarih ve saat elemanlarına ayırır.</td></tr>
+<tr><td><code>AdditionalDocumentReference[].SchemeId</code></td><td><code>ESURaporID</code></td><td>En az bir ESU rapor referansı bulunmalıdır.</td></tr>
+<tr><td><code>AdditionalDocumentReference[].Id</code></td><td>GUID</td><td>İlgili ESU raporunun kimliğini taşır.</td></tr>
+<tr><td><code>AdditionalDocumentReference[].IssueDate</code></td><td>Dolu tarih; yıl 2000–2099 aralığında</td><td>ESU raporunun düzenlenme tarihini taşır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].SchemeId</code></td><td><code>PLAKA</code></td><td>Alıcı kimliklerinde tam olarak bir plaka kaydı bulunmalıdır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].Value</code></td><td>1–50 karakter; büyük harf, rakam, <code>_</code> veya <code>-</code></td><td>Alıcı plakasını taşır.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceRequestModel.cs; PeriodRequestModel.cs; DocumentReferenceRequestModel.cs; RequestModelToUblMapper.cs:36,40,418-435,697-703; InvoiceValidation.ValidateEnergyInvoice -->
 
 <h2 id="sarjanlik-faturasi">SARJANLIK faturası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> <code>ProfileID=ENERJI</code> ve <code>InvoiceTypeCode=SARJANLIK</code> ile şarj ağı işletmeciliği faturası düzenliyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>SARJANLIK faturasında hizmet dönemi, alıcı plakası ve her fatura satırındaki şarj ünitesi/işlem seri numarası yeni paket düzeyinde zorunlu değildi.</td><td><code>StartDate</code>, <code>StartTime</code>, <code>EndDate</code> ve <code>EndTime</code> birlikte bulunmalıdır. Alıcı kimliklerinde tek, boş olmayan ve en fazla 50 karakterlik <code>schemeID=PLAKA</code> bulunmalıdır; plakada yalnız büyük harf, rakam, <code>_</code> ve <code>-</code> kullanılabilir. Her fatura satırında boş olmayan <code>ItemInstance/SerialID</code> yer almalıdır.</td><td>SARJANLIK request ve UBL üretiminize hizmet dönemi ile alıcı plakasını ekleyin; her satır için seri numarası üretildiğini ayrı ayrı doğrulayın. SARJ faturasına özgü <code>ESURaporID</code> zorunluluğunu bu belge tipine taşımayın.</td></tr></tbody></table></div>
+<p><code>ProfileID=ENERJI</code> ve <code>InvoiceTypeCode=SARJANLIK</code> ile düzenlenen şarj ağı işletmeciliği faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>SARJANLIK faturasında hizmet dönemi, alıcı plakası ve her fatura satırındaki şarj ünitesi/işlem seri numarası paket düzeyinde zorunlu değildi.</td><td><code>StartDate</code>, <code>StartTime</code>, <code>EndDate</code> ve <code>EndTime</code> birlikte bulunmalıdır; tarihler 01.01.2005'ten eski olamaz. Alıcı kimliklerinde tek, boş olmayan ve en fazla 50 karakterlik <code>schemeID=PLAKA</code> bulunmalıdır; plakada yalnız büyük harf, rakam, <code>_</code> ve <code>-</code> kullanılabilir. Her fatura satırında boş olmayan <code>ItemInstance/SerialID</code> yer almalıdır.</td><td>Hizmet dönemi ve alıcı plakası gönderilmeli; her satır en az bir seri numarası taşımalıdır. <code>SARJ</code> faturasına özgü <code>ESURaporID</code> zorunluluğu <code>SARJANLIK</code> tipine uygulanmamalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>InvoicePeriod.StartDate</code></td><td><code>DateTime</code>; 01.01.2005 veya sonrası</td><td>Hizmet başlangıç tarih ve saatini taşır.</td></tr>
+<tr><td><code>InvoicePeriod.EndDate</code></td><td><code>DateTime</code>; 01.01.2005 veya sonrası</td><td>Hizmet bitiş tarih ve saatini taşır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].SchemeId</code></td><td><code>PLAKA</code></td><td>Alıcı kimliklerinde tam olarak bir plaka kaydı bulunmalıdır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].Value</code></td><td>1–50 karakter; büyük harf, rakam, <code>_</code> veya <code>-</code></td><td>Alıcı plakasını taşır.</td></tr>
+<tr><td><code>InvoiceLine[].Item.ItemInstance[].SerialId</code></td><td>Boş olmayan seri numarası</td><td>Her fatura kaleminde en az bir seri numarası bulunmalıdır.</td></tr>
+<tr><td><code>AdditionalDocumentReference[].SchemeId</code></td><td><code>ESURaporID</code></td><td><code>SARJANLIK</code> faturasında gönderilmesi zorunlu değildir.</td></tr>
+</tbody></table></div><!-- vbt-source: ItemRequestModel.cs; ItemInstanceRequestModel.cs; RequestModelToUblMapper.cs:1066,1070-1104; InvoiceValidation.ValidateEnergyInvoice -->
 
 <h2 id="idis-faturasi">IDİS faturası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> IDİS kapsamındaki faturada sevkiyat numarası gönderiyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında geçerli olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>Yalnız <code>SE-</code> öneki ve ardından yedi rakam kabul ediliyordu.</td><td><code>SE-1234567</code> ve <code>ES-1234567</code> geçerlidir. Tire ve tam yedi rakam zorunluluğu devam eder; <code>ES-12345</code> ve <code>AB-1234567</code> geçersizdir.</td><td>Sevkiyat numarası doğrulamanızın hem <code>SE-</code> hem <code>ES-</code> önekini kabul ettiğini doğrulayın. IDİS kullanmıyorsanız bu değişiklik belgenizi etkilemez.</td></tr></tbody></table></div>
+<p>IDİS kapsamındaki faturalarda kullanılan sevkiyat numarası biçimini kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>Yalnız <code>SE-</code> öneki ve ardından yedi rakam kabul ediliyordu.</td><td><code>SE-1234567</code> ve <code>ES-1234567</code> geçerlidir. Tire ve tam yedi rakam zorunluluğu devam eder; <code>ES-12345</code> ve <code>AB-1234567</code> geçersizdir.</td><td>Sevkiyat numarası doğrulaması hem <code>SE-</code> hem <code>ES-</code> önekini kabul etmelidir.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>IdisSevkiyatNo</code></td><td><code>SE-</code> veya <code>ES-</code> öneki ve ardından tam yedi rakam</td><td>Değer doğrudan bu alanda gönderilir; platform <code>schemeID=SEVKIYATNO</code> UBL kimliğini üretir.</td></tr>
+<tr><td><code>PartyIdentifications[]</code></td><td><code>SEVKIYATNO</code> kaydı gönderilmez</td><td><code>IdisSevkiyatNo</code> için ikinci bir kimlik kaydı oluşturulmamalıdır.</td></tr>
+</tbody></table></div><!-- vbt-source: OutgoingInvoiceRequestModel.cs:89-90; OutgoingInvoiceService.cs:4322-4325; InvoiceValidation.ValidateIdisInvoice -->
 
 <h2 id="istisna-kodu-233">İstisna kodu 233</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Faturanızda <code>TaxExemptionReasonCode=233</code> kullanmanız gerekiyorsa etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında geçerli olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>233 genel ve istisna izin listelerinde bulunmadığı için kod listesi kontrolünden geçemiyordu.</td><td>233, geçerli vergi istisna sebebi kodlarına ve ISTISNA bağlamında kullanılabilen kodlara eklenir.</td><td>Yalnız bu istisna sebebine tabi faturalarınızda 233 değerini destekleyin. GİB paketinde kodun ticari açıklaması değiştirilmediği için kodu başka bir istisna senaryosuna yorum yoluyla taşımayın.</td></tr></tbody></table></div>
+<p><code>TaxExemptionReasonCode=233</code> kullanılan ISTISNA faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>233 genel ve istisna izin listelerinde bulunmadığı için kod listesi kontrolünden geçemiyordu.</td><td>233, geçerli vergi istisna sebebi kodlarına ve ISTISNA bağlamında kullanılabilen kodlara eklenir. Resmî açıklaması “2942 Sayılı Kamulaştırma Kanunu Kapsamında Taşınmazların Kamulaştırmayı Yapan Devlet ve Kamu Tüzel Kişilerine Devri”dir.</td><td><code>TaxExemptionReasonCode=233</code> yalnız resmî açıklamadaki teslimlerde kullanılmalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>TaxTotal[].TaxSubtotal[].TaxCategory.TaxExemptionReasonCode</code></td><td><code>233</code></td><td>Kod yalnız resmî istisna açıklamasındaki teslimler için gönderilmelidir; yeni bir request alanı eklenmez.</td></tr>
+</tbody></table></div><!-- vbt-source: TaxCategoryRequestModel.cs:18-19; InvoiceValidation.ValidateTaxExemptionReasonCode -->
 
 <h2 id="istisna-kodu-555">İstisna kodu 555</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Faturanızda <code>TaxExemptionReasonCode=555</code> kullanıyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>Kod bulunabilse de yeni profil/fatura tipi sınırlaması ve sıfır KDV kontrolü aynı açıklıkta uygulanmıyordu.</td><td>555 yalnız GİB'in izin verdiği TEMELFATURA, TICARIFATURA veya EARSIVFATURA bağlamlarında ve uygun fatura tiplerinde kullanılabilir. 555 seçilmişse belge ve fatura satırı düzeyinde KDV oranı veya KDV tutarı sıfır olamaz.</td><td>555 kullanan her belgeyi profil, fatura tipi ve KDV bilgileriyle birlikte doğrulayın; sıfır KDV içeren 555 senaryolarını göndermeyin.</td></tr></tbody></table></div>
+<p><code>TaxExemptionReasonCode=555</code> kullanılan faturaları kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>Kod bulunabilse de profil, fatura tipi ve sıfır KDV kontrolleri aynı kapsamda uygulanmıyordu.</td><td>555 yalnız <code>TEMELFATURA</code>, <code>TICARIFATURA</code> veya <code>EARSIVFATURA</code> profilinde kullanılabilir. <code>ISTISNA</code>, <code>IHRACKAYITLI</code> ve e-Arşivde <code>YTB</code> ile başlayan fatura tiplerinde kullanılamaz. Belge veya satır düzeyindeki 0015 KDV oranı ya da tutarı sıfır olamaz.</td><td>Profil, fatura tipi ve belge/satır KDV bilgileri birlikte doğrulanmalı; yasaklı tip veya sıfır KDV içeren request gönderilmemelidir.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>TaxTotal[].TaxSubtotal[].TaxCategory.TaxExemptionReasonCode</code></td><td><code>555</code></td><td>İstisna kodunu belge vergi kırılımında taşır.</td></tr>
+<tr><td><code>TaxTotal[]</code></td><td>0015 KDV oranı ve tutarı sıfır olamaz</td><td>Belge düzeyindeki KDV bilgisi 555 kuralıyla birlikte doğrulanır.</td></tr>
+<tr><td><code>InvoiceLine[].TaxTotal</code></td><td>0015 KDV oranı ve tutarı sıfır olamaz</td><td>Her kalemin KDV bilgisi 555 kuralıyla birlikte doğrulanır.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateDemirbasKdvTaxExemption -->
 
 <h2 id="istisna-kodu-308">Yatırım teşvik istisna kodu 308</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Yatırım teşvik kapsamında harcama tipi <code>01</code> olan fatura düzenliyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>308 genel bir istisna kodu gibi değerlendirilebiliyordu.</td><td>308 yalnız <code>YATIRIMTESVIK</code> profili veya GİB'in tanımladığı e-Arşiv YTB fatura tiplerinde kullanılabilir. Yatırım teşvik ISTISNA faturasında harcama tipi <code>01</code> için beklenen koddur.</td><td>308 değerini normal ISTISNA faturalarında kullanmayın; yalnız yatırım teşvik bağlamı ve harcama tipi 01 ile üretin.</td></tr></tbody></table></div>
+<p>Yatırım teşvik kapsamında harcama tipi <code>01</code> olan ISTISNA faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>308 genel bir istisna kodu gibi değerlendirilebiliyordu.</td><td>308 yalnız <code>YATIRIMTESVIK</code> profili veya GİB'in tanımladığı e-Arşiv YTB fatura tiplerinde kullanılabilir. Yatırım teşvik ISTISNA faturasında harcama tipi <code>01</code> için beklenen koddur.</td><td>308 yalnız yatırım teşvik bağlamında ve harcama tipi <code>01</code> ile kullanılmalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>InvoiceLine[].Item.CommodityClassification[].Value</code></td><td><code>01</code></td><td>Kalemin yatırım teşvik harcama tipini belirtir.</td></tr>
+<tr><td><code>InvoiceLine[].TaxTotal.TaxSubtotal[].TaxCategory.TaxExemptionReasonCode</code></td><td><code>308</code></td><td>Aynı kalemin harcama tipi <code>01</code> olduğunda gönderilmelidir.</td></tr>
+</tbody></table></div><!-- vbt-source: ItemClassificationRequestModel.cs; InvoiceValidation.ValidateYatirimTesvikTaxExemption -->
 
 <h2 id="istisna-kodu-339">Yatırım teşvik istisna kodu 339</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Yatırım teşvik kapsamında harcama tipi <code>02</code> olan fatura düzenliyorsanız etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında zorunlu olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td>339 genel bir istisna kodu gibi değerlendirilebiliyordu.</td><td>339 yalnız <code>YATIRIMTESVIK</code> profili veya GİB'in tanımladığı e-Arşiv YTB fatura tiplerinde kullanılabilir. Yatırım teşvik ISTISNA faturasında harcama tipi <code>02</code> için beklenen koddur.</td><td>339 değerini normal ISTISNA faturalarında kullanmayın; yalnız yatırım teşvik bağlamı ve harcama tipi 02 ile üretin.</td></tr></tbody></table></div>
+<p>Yatırım teşvik kapsamında harcama tipi <code>02</code> olan ISTISNA faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>339 genel bir istisna kodu gibi değerlendirilebiliyordu.</td><td>339 yalnız <code>YATIRIMTESVIK</code> profili veya GİB'in tanımladığı e-Arşiv YTB fatura tiplerinde kullanılabilir. Yatırım teşvik ISTISNA faturasında harcama tipi <code>02</code> için beklenen koddur.</td><td>339 yalnız yatırım teşvik bağlamında ve harcama tipi <code>02</code> ile kullanılmalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>InvoiceLine[].Item.CommodityClassification[].Value</code></td><td><code>02</code></td><td>Kalemin yatırım teşvik harcama tipini belirtir.</td></tr>
+<tr><td><code>InvoiceLine[].TaxTotal.TaxSubtotal[].TaxCategory.TaxExemptionReasonCode</code></td><td><code>339</code></td><td>Aynı kalemin harcama tipi <code>02</code> olduğunda gönderilmelidir.</td></tr>
+</tbody></table></div><!-- vbt-source: ItemClassificationRequestModel.cs; InvoiceValidation.ValidateYatirimTesvikTaxExemption -->
 
 <h2 id="kamu-iade-faturasi">KAMU iade faturası</h2>
-<p><b>Bu değişiklik sizi etkiler mi?</b> Kamu kurumuna düzenlenen faturanın iadesini <code>KAMU</code> profiliyle göndermeniz gerekiyorsa etkiler.</p>
-<div class="table-wrapper"><table><thead><tr><th>Önceden</th><th>14.09.2026 sonrasında geçerli olan</th><th>Yapmanız gereken</th></tr></thead><tbody><tr><td><code>InvoiceTypeCode=IADE</code> ile <code>ProfileID=KAMU</code> birlikte kullanılamıyordu.</td><td>Kamuya düzenlenen faturanın iadesi <code>ProfileID=KAMU</code> ve <code>InvoiceTypeCode=IADE</code> olarak gönderilebilir. KAMU profilinin geçerli Türkiye IBAN'ı gibi mevcut diğer zorunlulukları devam eder.</td><td><code>KAMU + IADE</code> birleşimini destekleyin ve KAMU profilinin mevcut alanlarını koruyun. Kamu iade faturası düzenlemiyorsanız bu değişiklik belgenizi etkilemez.</td></tr></tbody></table></div>
-<p>Resmî paket ve yürürlük duyurusu için <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyurularını</a> izleyin.</p>
+<p><code>ProfileID=KAMU</code> ile düzenlenen iade faturalarını kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td><code>InvoiceTypeCode=IADE</code> ile <code>ProfileID=KAMU</code> birlikte kullanılamıyordu.</td><td>Kamuya düzenlenen faturanın iadesi <code>ProfileID=KAMU</code> ve <code>InvoiceTypeCode=IADE</code> olarak gönderilebilir. KAMU profilinin geçerli Türkiye IBAN'ı gibi mevcut diğer zorunlulukları devam eder.</td><td><code>KAMU + IADE</code> birleşimi desteklenmeli ve KAMU profilinin mevcut alanları korunmalıdır.</td></tr></tbody></table></div>
+<p><b>Request alanları</b></p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>ProfileId</code></td><td><code>KAMU</code></td><td>KAMU iade profili için zorunludur.</td></tr>
+<tr><td><code>InvoiceTypeCode</code></td><td><code>IADE</code></td><td><code>ProfileId=KAMU</code> ile birlikte gönderilmelidir.</td></tr>
+<tr><td><code>BillingReference[].InvoiceDocumentReference.Id</code></td><td>İade edilen faturanın 16 karakterlik numarası</td><td>İade edilen belgeyi belirtir.</td></tr>
+<tr><td><code>BillingReference[].InvoiceDocumentReference.IssueDate</code></td><td>İade edilen faturanın tarihi</td><td>İade edilen belge numarasıyla birlikte gönderilmelidir.</td></tr>
+<tr><td><code>BillingReference[].InvoiceDocumentReference.DocumentTypeCode</code></td><td><code>IADE</code></td><td>Referans verilen belgenin iade kapsamında olduğunu belirtir.</td></tr>
+<tr><td><code>PaymentMeans[].PayeeFinancialAccount.Id</code></td><td>Geçerli Türkiye IBAN'ı</td><td>KAMU profilinin mevcut hesap bilgisi zorunluluğudur.</td></tr>
+<tr><td><code>PaymentMeans[].PayeeFinancialAccount.CurrencyCode</code></td><td>Hesap para birimi</td><td>IBAN'ın bağlı olduğu hesabın para birimini belirtir.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateInvoiceTypeCode; InvoiceValidation.ValidateIadeFatura; InvoiceValidation.ValidateKamuFatura; PaymentMeansRequestModel.cs; FinancialAccountRequestModel.cs -->
+<p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
