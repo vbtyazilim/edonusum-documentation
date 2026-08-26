@@ -4,21 +4,21 @@
 <!-- vbt:head:start -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Platform Sorumlulukları — e-Müstahsil Makbuzu Entegrasyon Rehberi</title>
-<meta name="description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
+<title>14 Eylül 2026 GİB Değişiklikleri — e-Müstahsil Makbuzu Entegrasyon Rehberi</title>
+<meta name="description" content="e-Müstahsil Makbuzu raporunda VKN ve TCKN alıcı ayrımı için 14 Eylül 2026 tarihinde başlayacak kural.">
 <meta name="author" content="Erdem Özkara">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/platform-sorumluluklari.html">
+<link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/gib-2026-09-14-degisiklikleri.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
-<meta property="og:title" content="Platform Sorumlulukları — e-Müstahsil Makbuzu Entegrasyon Rehberi">
-<meta property="og:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
-<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/platform-sorumluluklari.html">
+<meta property="og:title" content="14 Eylül 2026 GİB Değişiklikleri — e-Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta property="og:description" content="e-Müstahsil Makbuzu raporunda VKN ve TCKN alıcı ayrımı için 14 Eylül 2026 tarihinde başlayacak kural.">
+<meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/gib-2026-09-14-degisiklikleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Platform Sorumlulukları — e-Müstahsil Makbuzu Entegrasyon Rehberi">
-<meta name="twitter:description" content="Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.">
+<meta name="twitter:title" content="14 Eylül 2026 GİB Değişiklikleri — e-Müstahsil Makbuzu Entegrasyon Rehberi">
+<meta name="twitter:description" content="e-Müstahsil Makbuzu raporunda VKN ve TCKN alıcı ayrımı için 14 Eylül 2026 tarihinde başlayacak kural.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -50,7 +50,7 @@
 <div class="docs-nav-label">Uygulama</div>
 <a class="docs-nav-link" href="kullanim-senaryolari.html">Kullanım Senaryoları</a>
 <a class="docs-nav-link" href="entegrator-sorumluluklari.html">Entegratör Sorumlulukları</a>
-<a class="docs-nav-link active" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
+<a class="docs-nav-link" href="platform-sorumluluklari.html">Platform Sorumlulukları</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">API</div>
@@ -60,7 +60,7 @@
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Gelecek Değişiklikler</div>
-<a class="docs-nav-link" href="gib-2026-09-14-degisiklikleri.html">14 Eylül 2026 GİB Değişiklikleri</a>
+<a class="docs-nav-link active" href="gib-2026-09-14-degisiklikleri.html">14 Eylül 2026 GİB Değişiklikleri</a>
 <a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">SMS Doğrulamalı Gönderim</a>
 <a class="docs-nav-link" href="sms-dogrulamali-gonderim-entegratorler.html">Entegratörler İçin</a>
 <a class="docs-nav-link" href="sms-dogrulamali-gonderim-portal.html">Portal Kullanıcıları İçin</a>
@@ -74,64 +74,44 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Uygulama</p><h1>Platform Sorumlulukları</h1><p class="docs-lead">Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Gelecek Değişiklikler</p><h1>14 Eylül 2026 GİB Değişiklikleri</h1><p class="docs-lead">e-Müstahsil Makbuzu raporunda VKN ve TCKN alıcı ayrımı için 14 Eylül 2026 tarihinde başlayacak kural.</p></header>
 <!-- vbt:article-header:end -->
-<section id="platform-sorumluluklari">
-<h3 id="h-otomatik">Otomatik İşlemler</h3>
-<p>Platform, entegratörün gönderdiği request'i doğruladıktan sonra e-Müstahsil Makbuzu'na özgü UBL XML üretimi, imza kuyruğu, GİB raporu ve belge görüntüleme adımlarını yönetir. Entegratör belge içeriğini sağlar; platform teknik yaşam döngüsünü işletir.</p>
-<div class="table-wrapper"><table><thead><tr><th>#</th><th>İşlem</th><th>Açıklama</th></tr></thead><tbody>
-<tr><td>1</td><td>Validasyon</td><td>Alan zorunluluk, format, kombinasyon kontrolleri</td></tr>
-<tr><td>2</td><td>UBL XML Üretimi</td><td>UBL 2.1 CreditNote standardında XML</td></tr>
-<tr><td>3</td><td>Numara/UUID Atama</td><td>Entegratör göndermezse otomatik</td></tr>
-<tr><td>4</td><td>İmzalamaya Hazırlama</td><td><code>CreditNoteAndXmlCreated</code> durumuna kaydedilir</td></tr>
-<!-- vbt-source: Applications/API/VbtMM/VbtMm.Job/CreditNoteSignJob.cs -->
-<tr><td>5</td><td>e-İmzalama</td><td>Belge imzalama akışına alınır; işlem tamamlandığında durum <code>Signed</code>'e geçer.</td></tr>
-<tr><td>6</td><td>DB Kayıt</td><td>Kalıcı saklama</td></tr>
-<tr><td>7</td><td>GİB Rapor</td><td>Periyodik toplu XML</td></tr>
-<tr><td>8</td><td>GİB Gönderim</td><td>Rapor iletimi + yanıt işleme</td></tr>
-<tr><td>9</td><td>İptal Raporu</td><td>Sonraki döngüde bildirim</td></tr>
-<tr><td>10</td><td>PDF</td><td>Yazdırılabilir çıktı</td></tr>
-<tr><td>11</td><td>E-posta</td><td>Bildirim (yapılandırıldıysa)</td></tr>
+<section id="gib-2026-09-14-degisiklikleri">
+<div class="callout callout-warning"><b>PROD geçiş tarihi 14.09.2026'dır.</b> Aşağıdaki GİB rapor kuralı bu tarihte PROD ortamında devreye alınacaktır. Geçiş tarihine kadar mevcut üretim davranışı geçerlidir.</div>
+
+<div class="callout callout-info"><b>API sözleşmesi değişmemektedir.</b> Yeni endpoint veya request alanı eklenmez. Alıcı kimliği ve kişi türüne ait ad alanı mevcut request modeli üzerinden gönderilir; GİB raporundaki kişi yapısı platform tarafından üretilir.</div>
+
+<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
+<tr><td>Yeni entegrasyon</td><td>VKN/TCKN ve ad alanları aşağıdaki request sözleşmesine göre başlangıçtan itibaren ayrıştırılmalıdır.</td></tr>
+<tr><td>Mevcut entegrasyon</td><td>Alıcı eşlemesi gözden geçirilmeli; TCKN kayıtlarının <code>Person</code>, VKN kayıtlarının <code>PartyName</code> kullandığı doğrulanmalıdır.</td></tr>
 </tbody></table></div>
 
-<h3 id="h-validasyon">Validasyon Kuralları</h3>
-<p>Validasyonlar, e-Müstahsil Makbuzu request'inin teknik olarak üretilebilir ve GİB raporuna taşınabilir olmasını kontrol eder; ana odak çiftçi/alıcı tarafları, ürün kalemleri ve stopaj hesaplarıdır.</p>
-<div class="table-wrapper"><table><thead><tr><th>Kontrol</th><th>Kod</th><th>Açıklama</th></tr></thead><tbody>
-<tr><td>CreditNoteExternalId dolu</td><td>EMM0020</td><td>Her belgede zorunlu</td></tr>
-<tr><td>CreditNoteExternalId tekil</td><td>EMM0028</td><td>Mükerrer engeli</td></tr>
-<tr><td>UUId geçerli GUID</td><td>COM0017</td><td>Gönderilirse format kontrolü</td></tr>
-<tr><td>UUId tekil</td><td>EMM0035</td><td>Mükerrer engeli</td></tr>
-<tr><td>CreditNoteNumber formatı</td><td>—</td><td>16 karakter, Seri+Sıra regex'i</td></tr>
-<tr><td>IssueDate gelecek olamaz</td><td>—</td><td>UBL kardinalite kontrolü</td></tr>
-<tr><td>IssueDate saat bileşeni dolu</td><td>—</td><td>Zaman damgası zorunlu</td></tr>
-<tr><td>En az bir CreditNoteLine</td><td>—</td><td>Makbuz satırsız oluşturulamaz</td></tr>
-<tr><td>Vergi/kesinti toplam uyumu</td><td>—</td><td><code>TaxTotal</code>, <code>WithholdingTaxTotal</code> ve <code>PayableAmount</code> aynı ekonomik hesabı yansıtmalı</td></tr>
+<h2 id="rapor-alici-secimi">GİB raporunda alıcı seçimi</h2>
+<p>Kural, VBT API üzerinden oluşturulan tüm e-Müstahsil Makbuzlarında alıcı kişi türünün VKN/TCKN'ye göre belirlenmesini kapsar.</p>
+<div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>GİB rapor şemasında <code>tuzelKisi</code> ve <code>gercekKisi</code> ayrı ayrı opsiyoneldi; ikisinin birlikte doldurulması veya ikisinin de boş bırakılması şema düzeyinde mümkündü.</td><td>Alıcı VKN sahibiyse yalnız <code>tuzelKisi</code>, TCKN sahibiyse yalnız <code>gercekKisi</code> üretilmelidir. İkisi birlikte veya ikisi de boş olamaz.</td><td>Requestte geçerli VKN veya TCKN kimliklerinden tam biri ve bu kimlik türüne ait ad alanı gönderilmelidir.</td></tr></tbody></table></div>
+
+<h2 id="request-sozlesmesi">Request alanları</h2>
+<p>Yeni bir request alanı eklenmemiştir.</p>
+<div class="table-wrapper"><table class="request-field-table"><thead><tr><th>Alan</th><th>Değer / biçim</th><th>Kullanım</th></tr></thead><tbody>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[]</code></td><td>Tam olarak bir VKN veya TCKN kaydı</td><td><code>PASAPORTNO</code> gibi farklı şemalar korunabilir; rapordaki gerçek veya tüzel kişi seçimini belirlemez.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].SchemeId</code></td><td><code>VKN</code> veya <code>TCKN</code></td><td>Alıcının raporda gerçek veya tüzel kişi olarak seçilmesini belirler.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].Value</code></td><td>VKN için 10, TCKN için 11 rakam</td><td>Kimlik türüne uygun uzunlukta ve yalnız rakamlardan oluşmalıdır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyName</code></td><td>VKN sahibinin tüzel kişi unvanı</td><td>10 haneli VKN için zorunludur ve raporda tüzel kişi unvanı olarak kullanılır. <code>Person</code> da gönderilmişse rapor seçiminde dikkate alınmaz.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.Person.FirstName</code></td><td>TCKN sahibinin adı</td><td>11 haneli TCKN için <code>FamilyName</code> ile birlikte zorunludur ve raporda gerçek kişi adı olarak kullanılır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.Person.FamilyName</code></td><td>TCKN sahibinin soyadı</td><td>11 haneli TCKN için <code>FirstName</code> ile birlikte zorunludur ve raporda gerçek kişi soyadı olarak kullanılır. <code>PartyName</code> da gönderilmişse rapor seçiminde dikkate alınmaz.</td></tr>
 </tbody></table></div>
-<div class="callout callout-info"><b>Bilgi:</b> GİB, taraf VKN/TCKN'nin belge tarihinde aktif mükellef olup olmadığına yönelik canlı doğrulamayı henüz zorunlu kılmamıştır. Bu kontrol GİB tarafından zorunlu hale getirildiğinde platform tarafımızca otomatik olarak devreye alınacaktır; entegratörün bu konuda şu an için ek bir işlem yapması gerekmez.</div>
+<!-- vbt-source: CreditNoteRequestModel AccountingCustomerParty; CreditNoteValidation.ValidateAccountingCustomerParty; CreditNoteGibReportService recipient mapping -->
+<p><b>Gönderim öncesi doğrulama:</b> 10 haneli VKN + <code>PartyName</code> ve 11 haneli TCKN + <code>Person.FirstName</code>/<code>Person.FamilyName</code> senaryoları ayrı ayrı doğrulanmalıdır. VKN+TCKN birlikte, yalnız pasaport, eksik kimlik, rakam olmayan değer ve yanlış uzunluk içeren requestlerin validasyon hatası aldığı kontrol edilmelidir.</p>
 
-<h3 id="h-hata-yaniti">Hata Yanıtı</h3>
-<p>Hata yanıtı, tüm Müstahsil endpointlerinde aynı temel şekli izler. <code>MessageCode</code> alanı, validasyon tablosundaki hata koduyla eşleştirilir.</p>
-<pre><code>{
-  "IsSuccess": false,
-  "Message": "Açıklama",
-  "MessageCode": "EMM0020",
-  "Data": null
-}</code></pre>
-<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Anlamı</th></tr></thead><tbody><tr><td><code>IsSuccess</code></td><td>İşlemin başarılı olup olmadığını gösterir</td></tr><tr><td><code>Message</code></td><td>Kullanıcıya veya log'a yazılabilecek açıklama</td></tr><tr><td><code>MessageCode</code></td><td>Validasyon veya iş kuralı hata kodu</td></tr><tr><td><code>Data</code></td><td>Başarılı işlemlerde response modeli; hatada çoğu durumda boş</td></tr></tbody></table></div>
-
-<h3 id="h-iptal-onkosul">İptal Ön-Koşulları</h3>
-<p>İptal isteği, yalnızca belge durumu uygun olduğunda ilerler; bu koşullar çağrı öncesi beklenen teknik zemini belirler.</p>
-<ul>
-<li>Belge <strong>Signed</strong> durumunda olmalı (<code>CreditNoteAndXmlCreated</code> durumunda iptal edilemez — <code>EMM0024</code>)</li>
-<li>İptal requestinde <code>EArchiveStatus=2</code> (<code>Cancelled</code>) gönderilmeli</li>
-<li>Daha önce iptal edilmiş bir belge tekrar iptal edilemez (<code>EMM0025</code>)</li>
-</ul>
-<div class="callout callout-info"><b>SMS doğrulaması:</b> SMS aktivasyonu yeni kullanıcı durumları ekler ancak iptal ön koşulunu değiştirmez. <code>WaitingForVerification</code> ve <code>WaitingForSmsCode</code> dahil imzalanmamış makbuzlar iptal edilemez. Bkz. <a href="sms-dogrulamali-gonderim-portal.html">SMS Doğrulamalı Gönderim — Portal Kullanıcıları İçin</a>.</div>
+<h2 id="etkilenmeyen-alanlar">Değişmeyen sözleşmeler</h2>
+<p>Belge kalemleri, vergi ve toplam hesapları ile mevcut gönderim endpointleri değişmemektedir. Değişiklik yalnız GİB raporundaki alıcı bilgisinin tek ve doğru kişi tipiyle üretilmesini zorunlu kılar.</p>
+<p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
-<a class="docs-page-link docs-page-previous" href="entegrator-sorumluluklari.html"><span>Önceki</span><strong>Entegratör Sorumlulukları</strong></a>
-<a class="docs-page-link docs-page-next" href="entegrator-api-endpoint-referansi.html"><span>Sonraki</span><strong>Entegratör API Endpoint Referansı</strong></a>
+<a class="docs-page-link docs-page-previous" href="request-ubl-xml-mapping.html"><span>Önceki</span><strong>Request → UBL XML Mapping</strong></a>
+<a class="docs-page-link docs-page-next" href="sms-dogrulamali-gonderim.html"><span>Sonraki</span><strong>SMS Doğrulamalı Gönderim</strong></a>
 </nav>
 <!-- vbt:pagination:end -->
 </article></main>

@@ -92,7 +92,10 @@
 <!-- vbt-source: Core/Vbt.Core.Ubl/DocumentMapper/RequestModelToUblMapper.cs:28 -->
 <tr><td><code>AccountingSupplierParty</code></td><td><code>cac:AccountingSupplierParty</code></td><td>Faturayı düzenleyen tarafın kimlik ve adres bilgilerini taşır.</td></tr>
 <!-- vbt-source: Core/Vbt.Core.Ubl/DocumentMapper/RequestModelToUblMapper.cs:29 -->
-<tr><td><code>AccountingCustomerParty</code></td><td><code>cac:AccountingCustomerParty</code></td><td>Alıcının kimlik ve adres bilgilerini taşır.</td></tr>
+<tr><td><code>AccountingCustomerParty</code></td><td><code>cac:AccountingCustomerParty</code></td><td>Alıcının kimlik, ad ve adres bilgilerini taşır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[]</code></td><td><code>cac:PartyIdentification/cbc:ID</code></td><td>Tam olarak bir VKN (10 rakam) veya TCKN (11 rakam) kaydı alıcı tipini belirler; diğer şemalar genel senaryolarda korunabilir.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.PartyName</code></td><td><code>cac:PartyName/cbc:Name</code></td><td>VKN'li tüzel alıcının unvanıdır.</td></tr>
+<tr><td><code>AccountingCustomerParty.Party.Person.FirstName</code> / <code>FamilyName</code></td><td><code>cac:Person/cbc:FirstName</code> / <code>cbc:FamilyName</code></td><td>TCKN'li gerçek alıcının ad ve soyadıdır.</td></tr>
 <!-- vbt-source: Core/Vbt.Core.Ubl/DocumentMapper/RequestModelToUblMapper.cs:30,814-844 -->
 <tr><td><code>AllowanceCharge[]</code></td><td><code>cac:AllowanceCharge</code></td><td>Belge seviyesindeki indirim ve artırımları taşır.</td></tr>
 <!-- vbt-source: Core/Vbt.Core.Ubl/DocumentMapper/RequestModelToUblMapper.cs:32,1214-1233 -->
@@ -113,6 +116,7 @@
 <tr><td><code>InternetPayment</code></td><td>Platformun UBL girişinden request modeline aktarılmaz.</td><td>İnternet satışı alanları JSON veya platformun düz XML modeliyle gönderilmelidir.</td></tr>
 </tbody></table></div>
 <div class="callout callout-warning"><b>İnternet satışı alanlarının giriş biçimi:</b> Platformun UBL giriş işlemi <code>InternetPayment</code> alanını request modeline aktarmaz. Bu bilgileri gönderecek entegratörler JSON (<code>AddOutgoingInvoice</code>) veya platformun düz XML modelini (<code>AddOutgoingInvoiceByXml</code>) kullanmalıdır. Düz XML biçimi platform model alanlarını kullanır; UBL <code>cac:</code>/<code>cbc:</code> isim alanlarıyla karıştırılmamalıdır.</div>
+<div class="callout callout-warning"><b>Alıcı ad alanı:</b> TCKN'li alıcıda <code>PartyName</code> gerçek kişi adı yerine kullanılmamalıdır; <code>Person.FirstName</code> ve <code>Person.FamilyName</code> gönderilmelidir. VKN'li alıcıda ise <code>PartyName</code> zorunludur.</div>
 <h3 id="h-uygulama-notlari">Uygulama Notları</h3>
 <p>ÖKC referansı gönderilirken <code>DocumentTypeCode</code> alanının literal olarak <code>OKCBF</code>, <code>DocumentType</code> alanının literal olarak <code>OKCBilgiFisi</code> değerini taşıması zorunludur; bu ikisi ve <code>Id</code>/<code>IssueDate</code>/<code>DocumentDescription</code>/<code class="mapping-path">Attachment.<wbr>ExternalReference</code>/<code class="mapping-path">IssuerParty.<wbr>EndpointId</code>/<code class="mapping-path">ValidityPeriod.<wbr>StartDate</code> alanlarından herhangi biri eksik veya uyumsuzsa istek <code>"SCHEME"</code> koduyla reddedilir (bkz. <a href="teknik-referans.html#h-hata-katman-a">Teknik Referans — Katman A</a>). İnternet satışı senaryosunda faturanın <code>Note</code> alanına "Bu satış internet üzerinden yapılmıştır." ibaresinin eklenmesi VUK 509 md. IV.2.4.5 gereğidir; bu ibare için UBL tarafında ayrı bir zorunlu eleman yoktur, serbest metin olarak <code>cbc:Note</code>'a taşınır.</p>
 </section>
