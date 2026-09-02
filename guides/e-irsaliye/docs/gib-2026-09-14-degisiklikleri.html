@@ -98,6 +98,25 @@
 <tr><td>Request sözleşmesi</td><td>Yeni endpoint veya request modeli yoktur. Mevcut alanların kullanım bağlamı ve kabul edilen <code>SchemeId</code> değerleri değişmektedir.</td></tr>
 </tbody></table></div>
 
+<h2 id="entegratorler-icin">Entegratörler için</h2>
+<p>Yeni endpoint veya üst seviye request modeli yoktur. Sabit <code>SchemeId</code> listeleri güncellenmeli, araç ile dorse kimlikleri kendi alanlarında gönderilmeli ve ayrıntı/güncelleme cevabında şema ile değer birlikte korunmalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Sözleşme alanı</th><th>14.09.2026 etkisi</th><th>Yapılacak işlem</th></tr></thead><tbody>
+<tr><td>IDİS sevkiyat numarası</td><td><code>SE-1234567</code> yanında <code>ES-1234567</code> kabul edilir.</td><td>İstemci doğrulaması iki öneki de desteklemelidir.</td></tr>
+<tr><td>Araç <code>SchemeId</code></td><td><code>PLAKA</code> ve <code>YABANCIPLAKA</code> kullanılır.</td><td>Seçilen değer <code>RoadTransport.LicensePlateId</code> içinde gönderilmelidir.</td></tr>
+<tr><td>Dorse <code>SchemeId</code></td><td><code>DORSE</code>, <code>DORSEPLAKA</code>, <code>YABANCIDORSE</code> ve <code>YABANCIDORSEPLAKA</code> kullanılır.</td><td>Her dorse kendi <code>TransportEquipment.Id</code> nesnesiyle gönderilmelidir.</td></tr>
+<tr><td>Ayrıntı/güncelleme cevabı</td><td>Araç ve dorse kimlikleri <code>SchemeId</code> ile <code>Value</code> alanlarını birlikte taşır.</td><td>Yanıt modeli iki alanı da kabul etmeli; boş opsiyonel dorse kimliği yapay bir değere çevrilmemelidir.</td></tr>
+</tbody></table></div><!-- vbt-source: DespatchAdviceValidation; UblToResponseModelMapper; IdResponseModel -->
+
+<h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
+<p>Portal e-İrsaliye oluşturma ekranı yerli/yabancı araç ve dorse kimlik tiplerini backend'in güncel parametre listelerinden yükler. Araç ve dorse aynı sabit şemaya zorlanmaz; seçilen değer request içinde kendi alanı ve kendi <code>SchemeId</code> değeriyle korunur.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Portal davranışı</th><th>Gözlenebilir sonuç</th></tr></thead><tbody>
+<tr><td>IDİS sevkiyat numarası</td><td>Alan <code>SE-1234567</code> ve <code>ES-1234567</code> biçimlerini kabul eder.</td><td>Geçersiz önek veya yedi rakamdan farklı uzunlukta kayıt engellenir.</td></tr>
+<tr><td>Araç plakası</td><td>Yerli ve yabancı araç tipleri tek seçim listesinde gösterilir.</td><td>Seçim <code>RoadTransport.LicensePlateId.SchemeId</code> alanına yazılır.</td></tr>
+<tr><td>Dorse kimliği</td><td>Her dorse kaydı yerli/yabancı dorse tiplerinden biriyle ayrı eklenir.</td><td>Her kayıt kendi <code>TransportEquipment.Id.SchemeId</code> ve değerini korur.</td></tr>
+<tr><td>Belge güncelleme</td><td>Mevcut araç ve dorse kimlik tipleri formda yeniden seçili gösterilir.</td><td>Kayıtlı yabancı veya yerli şema varsayılan bir dorse koduyla ezilmez.</td></tr>
+</tbody></table></div><!-- vbt-source: edonusum-frontend despatch-advice-create.component.ts; CreateDespatchAdviceModel.ts; ParameterController.GetAllParamaterList -->
+<p>Oluşturma ve güncelleme aynı UBL alanlarını kullanır. Ayrıntı cevabında araç için <code>RoadTransport.LicensePlateId</code>, dorse için her <code>TransportEquipment.Id</code> kendi <code>SchemeId</code> ve değeriyle geri döner. Opsiyonel dorse kimliği hiç gönderilmemişse portalda yapay boş bir kimlik seçimi oluşturulmaz.</p><!-- vbt-source: OutgoingDespatchAdviceService; OutgoingDespatchAdviceSearchService; UblToResponseModelMapper -->
+
 <h2 id="idis-irsaliyesi">IDİS e-İrsaliyesi</h2>
 <p><code>ProfileID=IDISIRSALIYE</code> ile gönderilen sevkiyat numarası biçimini kapsar.</p>
 <div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>Sevkiyat numarasında yalnız <code>SE-</code> öneki ve ardından yedi rakam kabul ediliyordu.</td><td><code>SE-1234567</code> ve <code>ES-1234567</code> geçerlidir. Tire ve tam yedi rakam zorunluluğu devam eder; <code>ES-12345</code> ve <code>AB-1234567</code> geçersizdir.</td><td>IDİS sevkiyat numarası doğrulaması hem <code>SE-</code> hem <code>ES-</code> önekini kabul etmelidir.</td></tr></tbody></table></div>
@@ -132,6 +151,122 @@
 <tr><td><code>Shipment.TransportHandlingUnit[].TransportEquipment[].Id.Value</code></td><td>Yerli dorse: 01–81 il kodu, ardından en az bir büyük harf ve en az bir rakam</td><td><code>34ABC123</code> geçerlidir; <code>99ABC123</code>, boşluklu veya tireli Türk plaka değerleri geçersizdir.</td></tr>
 <tr><td><code>Shipment.TransportHandlingUnit[].TransportEquipment[].Id.Value</code></td><td>Yabancı dorse: boş olmayan; yalnız büyük harf, rakam, <code>_</code> veya <code>-</code></td><td><code>DE-AB_1234</code> geçerlidir; küçük harf veya boşluk içeren değerler geçersizdir.</td></tr>
 </tbody></table></div><!-- vbt-source: TransportHandlingUnitRequestModel.cs; TransportEquipmentRequestModel.cs; IdRequestModel.cs; DespatchAdviceValidation.ValidateTransportEquipment; UBL-TR_Codelist.xml:TransportEquipmentIDSchemeIDType -->
+<h3 id="arac-dorse-tam-request-ornegi">Araç ve dorse içeren tam request örneği</h3>
+<p>Bu örnek yalnız 14.09.2026 geçiş sözleşmesini test etmek için kullanılmalıdır. Canlı geçiş tamamlanana kadar kalıcı request örnekleri sayfasına taşınmaz.</p>
+<details class="example-details"><summary>14.09.2026 araç ve dorse JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="document">{
+  "DespatchAdviceExternalId": "ERP-IRS-20260914-0001",
+  "ProfileId": "TEMELIRSALIYE",
+  "DocumentCurrencyCode": "TRY",
+  "CopyIndicator": false,
+  "IssueDate": "2026-09-14T09:00:00+03:00",
+  "DespatchAdviceTypeCode": "SEVK",
+  "Note": ["Sipariş SO-2026-1042 sevkiyatıdır."],
+  "LineCountNumeric": 1,
+  "ReceiverIdentifier": "urn:mail:defaultpk@alici.example",
+  "IsDocumentNumberIncluded": false,
+  "DespatchSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1234567890" }],
+      "PartyName": "Örnek Gönderici A.Ş.",
+      "PostalAddress": {
+        "StreetName": "Örnek Caddesi",
+        "BuildingNumber": "10",
+        "CitySubdivisionName": "Kadıköy",
+        "CityName": "İstanbul",
+        "PostalZone": "34710",
+        "Country": { "Name": "Türkiye" }
+      }
+    }
+  },
+  "DeliveryCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "9876543210" }],
+      "PartyName": "Örnek Alıcı Ltd. Şti.",
+      "PostalAddress": {
+        "StreetName": "Teslim Sokak",
+        "BuildingNumber": "25",
+        "CitySubdivisionName": "Çankaya",
+        "CityName": "Ankara",
+        "PostalZone": "06550",
+        "Country": { "Name": "Türkiye" }
+      }
+    }
+  },
+  "Shipment": {
+    "Id": { "SchemeId": "", "Value": "SHP-20260914-0001" },
+    "ShipmentStage": [
+      {
+        "TransportMeans": {
+          "RoadTransport": {
+            "LicensePlateId": { "SchemeId": "PLAKA", "Value": "34ABC123" }
+          }
+        }
+      }
+    ],
+    "Delivery": {
+      "DeliveryAddress": {
+        "StreetName": "Teslim Sokak",
+        "BuildingNumber": "25",
+        "CitySubdivisionName": "Çankaya",
+        "CityName": "Ankara",
+        "PostalZone": "06550",
+        "Country": { "Name": "Türkiye" }
+      },
+      "CarrierParty": {
+        "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1111111111" }],
+        "PartyName": "Örnek Lojistik A.Ş."
+      },
+      "Despatch": {
+        "ActualDespatchDate": "2026-09-14T09:30:00+03:00",
+        "ActualDespatchTime": "09:30:00",
+        "DespatchAddress": {
+          "StreetName": "Çıkış Deposu Caddesi",
+          "BuildingNumber": "1",
+          "CitySubdivisionName": "Tuzla",
+          "CityName": "İstanbul",
+          "PostalZone": "34940",
+          "Country": { "Name": "Türkiye" }
+        }
+      }
+    },
+    "TransportHandlingUnit": [
+      {
+        "TransportEquipment": [
+          {
+            "Id": { "SchemeId": "DORSE", "Value": "06AB123" }
+          }
+        ]
+      }
+    ]
+  },
+  "DespatchLine": [
+    {
+      "Id": "1",
+      "DeliveredQuantity": { "UnitCode": "C62", "Value": 10 },
+      "OrderLineReference": { "LineId": "1" },
+      "Item": { "Name": "Örnek Ürün", "SellersItemIdentification": "SKU-1001" }
+    }
+  ]
+}</code></pre></div></details><!-- vbt-source: OutgoingDespatchAdviceRequestModel.cs; ShipmentRequestModel.cs; ShipmentStageRequestModel.cs; RoadTransportRequestModel.cs; TransportHandlingUnitRequestModel.cs; TransportEquipmentRequestModel.cs; DespatchAdviceValidation.cs -->
+<h2 id="hata-sozlesmesi">Validasyon ve hata sözleşmesi</h2>
+<div class="callout callout-warning"><b>Bu kurallar <code>ErrorCode=SCHEME</code> ile döner.</b> İzin verilen kodların parametreye bağlı olduğu mesajlarda güncel “Tanımlı kodlar” bölümü esas alınmalıdır.</div>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Kod</th><th>Gözlenebilir mesaj</th><th>Entegratör aksiyonu</th></tr></thead><tbody>
+<tr><td><code>SCHEME</code></td><td>IDIS türündeki irsaliyelerde IdisSevkiyatNo alanı SE-0000000 veya ES-0000000 formatında olmalıdır.</td><td>Öneki <code>SE-</code> veya <code>ES-</code> seçip ardından tam yedi rakam gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>İrsaliyede şoför bilgisi bulunduğunda Shipment.ShipmentStage.TransportMeans.RoadTransport.LicensePlateId altında geçerli şema ve boş olmayan araç plakası bulunmalıdır.</td><td>Şoför gönderilen her ilgili aşamada araç kimliğini tamamlayın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Geçersiz araç plakası schemeID değeri: '...'. RoadTransport.LicensePlateId için araç plakası parametre gruplarında tanımlı bir kod kullanılmalıdır. Tanımlı kodlar: ...</td><td>Mesajdaki güncel kodlardan araç bağlamına uygun olanı kullanın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Geçersiz plaka değeri: '...'. Yerli plakalarda il kodu, büyük harf ve rakam; yabancı plakalarda yalnız büyük harf, rakam, '_' veya '-' kullanılmalıdır.</td><td>Plaka biçimini seçilen yerli/yabancı şemaya göre düzeltin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Geçersiz dorse schemeID değeri: '...'. TransportEquipment.Id için dorse parametre gruplarında tanımlı bir kod kullanılmalıdır. Tanımlı kodlar: ...</td><td>Mesajdaki güncel kodlardan dorse bağlamına uygun olanı kullanın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Geçersiz dorse plaka değeri: '...'. Yerli dorse plakalarında il kodu, büyük harf ve rakam; yabancı dorse plakalarında yalnız büyük harf, rakam, '_' veya '-' kullanılmalıdır.</td><td>Dorse değerini seçilen yerli/yabancı şemaya göre düzeltin.</td></tr>
+</tbody></table></div><!-- vbt-source: DespatchAdviceValidation.ValidateIdisInformation; DespatchAdviceValidation.ValidateLicensePlate; DespatchAdviceValidation.ValidateTransportEquipment -->
+
+<h2 id="gecis-kontrol-listesi">Geçiş kontrol listesi</h2>
+<ol>
+<li><code>ES-</code> IDİS öneki ve yeni araç/dorse <code>SchemeId</code> değerleri istemci listelerine eklenmelidir.</li>
+<li>Yerli ve yabancı araç/dorse için geçerli ve geçersiz biçimler ayrı ayrı test edilmelidir.</li>
+<li>Şoför bilgili requestin araç plakası olmadan reddedildiği doğrulanmalıdır.</li>
+<li>Oluşturulan irsaliye yeniden okunup güncellenmeli; tüm <code>SchemeId</code>/<code>Value</code> çiftlerinin korunduğu doğrulanmalıdır.</li>
+<li><code>SCHEME</code> cevabındaki dinamik “Tanımlı kodlar” bilgisinin loglandığı ve kullanıcıya gösterildiği kontrol edilmelidir.</li>
+</ol>
 <p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->

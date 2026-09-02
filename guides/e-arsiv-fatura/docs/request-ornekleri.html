@@ -77,8 +77,8 @@
 <!-- vbt:article-header:end -->
 <section id="request-ornekleri">
 <h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
-<p>Aşağıdaki örnekler <code>AddOutgoingInvoice</code> (<code>OutgoingInvoiceRequestModel : InvoiceRequestModel</code>) gövdesine dayanır ve <code>Core/Vbt.Core.Ubl/DocumentRequestModel/</code> altındaki gerçek model sınıflarından (<code>PartyRequestModel</code>, <code>InvoiceLineRequestModel</code>, <code>QuantityRequestModel</code>, <code>ItemRequestModel</code> vb.) doğrulanmıştır. Her örnek eksiksiz bir gövdedir; alan adları ve iç içe yapı birebir kod tabanındaki property adlarını kullanır.</p>
-<div class="callout callout-warning"><b>Alan tipi uyarısı:</b> <code>InvoicedQuantity</code> ve <code>LegalMonetaryTotal</code> içindeki tutarlar dışında, miktar alanı ham bir sayı değil <strong><code>{ "UnitCode": "...", "Value": ... }</code></strong> şeklinde bir nesnedir (<code>QuantityRequestModel</code>). Bu, ilk sürümde hatalı gösterilmişti; aşağıdaki örnekler düzeltilmiş halidir.</div>
+<p>Aşağıdaki fatura örnekleri <code>AddOutgoingInvoice</code> endpoint sözleşmesine göre hazırlanmıştır. Her örnek eksiksiz bir gövdedir; alan adları ve iç içe yapı API sözleşmesiyle aynıdır.</p>
+<div class="callout callout-warning"><b>Alan tipi uyarısı:</b> <code>InvoicedQuantity</code> alanı ham sayı değil <strong><code>{ "UnitCode": "...", "Value": ... }</code></strong> biçiminde bir nesnedir. Aşağıdaki örneklerde birim ve miktar birlikte gösterilir.</div>
 <h3 id="h-ex1">Örnek 1 — Normal Satış</h3>
 <p>Ek alan gerektirmeyen temel e-Arşiv Fatura akışı; alıcı GİB e-Fatura mükellefi değildir.</p>
 <details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Tek kalemli, KDV'li standart bir satış.</p><pre><code class="language-json" data-request-kind="invoice">{
@@ -105,10 +105,7 @@
           "Value": "12345678901"
         }
       ],
-      "Person": {
-        "FirstName": "Alıcı",
-        "FamilyName": "Adı Soyadı"
-      }
+      "PartyName": "Alıcı Adı Soyadı"
     }
   },
   "InvoiceLine": [
@@ -176,10 +173,7 @@
           "Value": "12345678901"
         }
       ],
-      "Person": {
-        "FirstName": "Alıcı",
-        "FamilyName": "Adı Soyadı"
-      }
+      "PartyName": "Alıcı Adı Soyadı"
     }
   },
   "InvoiceLine": [
@@ -260,10 +254,7 @@
           "Value": "12345678901"
         }
       ],
-      "Person": {
-        "FirstName": "Alıcı",
-        "FamilyName": "Adı Soyadı"
-      }
+      "PartyName": "Alıcı Adı Soyadı"
     }
   },
   "InvoiceLine": [
@@ -354,10 +345,7 @@
           "Value": "12345678901"
         }
       ],
-      "Person": {
-        "FirstName": "Alıcı",
-        "FamilyName": "Adı Soyadı"
-      }
+      "PartyName": "Alıcı Adı Soyadı"
     }
   },
   "InvoiceLine": [
@@ -445,10 +433,7 @@
           "Value": "12345678901"
         }
       ],
-      "Person": {
-        "FirstName": "Alıcı",
-        "FamilyName": "Adı Soyadı"
-      }
+      "PartyName": "Alıcı Adı Soyadı"
     }
   },
   "InvoiceLine": [
@@ -502,7 +487,7 @@
 }</code></pre></div></details>
 <div class="callout callout-warning"><b>Sık hata:</b> <code>Id</code> alanı tam olarak 16 karakter olmalıdır (örn. <code>FGH2026000000001</code>); aksi hâlde "16 haneli olmalıdır" mesajıyla reddedilir. Aynı istekte birden fazla satır aynı <code>Id</code>'yi referans veriyorsa "mükerrer" hatası döner.</div>
 <h3 id="h-ex6">Örnek 6 — İptal</h3>
-<p><code>CancelOutgoingEArchiveInvoice</code> (<code>EArchiveCancelRequestModel</code>) gövdesi.</p>
+<p><code>CancelOutgoingEArchiveInvoice</code> endpoint gövdesi.</p>
 <details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Mükerrer belge nedeniyle iptal.</p><pre><code class="language-json" data-request-kind="cancel">{
   "Ettn": "7DC52246-5750-496E-8BF2-BD27BC0764DC",
   "InvoiceNumber": "FGH2026000000001",
@@ -510,7 +495,7 @@
   "EArchiveCancelDescription": "Mükerrer belge"
 }</code></pre></div></details>
 <h3 id="h-ex7">Örnek 7 — İtiraz Bildirimi</h3>
-<p><code>ObjectOutgoingEArchiveInvoice</code> (<code>DocumentObjectionRequestModel</code>) gövdesi — alıcının TTK md. 18/3 kapsamında zaten yaptığı itirazın kayda geçirilmesi.</p>
+<p><code>ObjectOutgoingEArchiveInvoice</code> endpoint gövdesi — alıcının TTK md. 18/3 kapsamında zaten yaptığı itirazın kayda geçirilmesi.</p>
 <details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>KEP yoluyla yapılan itirazın bildirimi.</p><pre><code class="language-json" data-request-kind="objection">{
   "UUId": "7DC52246-5750-496E-8BF2-BD27BC0764DC",
   "ObjectingType": "KEP",
@@ -518,7 +503,7 @@
   "ObjectingDocumentDate": "2026-03-22",
   "ObjectingDescription": "Mal iade edildi"
 }</code></pre></div></details>
-<div class="callout callout-info"><b>Not:</b> Yukarıdaki alan adları örnek amaçlıdır; kesin sözleşme için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> sayfasındaki model referanslarını kullanın.</div>
+<div class="callout callout-info"><b>Not:</b> Kimlik, numara ve tarih değerleri temsilidir. Alan sözleşmesi için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> kullanılmalıdır.</div>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">

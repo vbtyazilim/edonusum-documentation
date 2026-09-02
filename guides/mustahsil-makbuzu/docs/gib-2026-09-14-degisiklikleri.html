@@ -81,7 +81,8 @@
 
 <div class="callout callout-info"><b>API sözleşmesi değişmemektedir.</b> Yeni endpoint veya request alanı eklenmez. Alıcı kimliği ve kişi türüne ait ad alanı mevcut request modeli üzerinden gönderilir; GİB raporundaki kişi yapısı platform tarafından üretilir.</div>
 
-<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<h2 id="entegratorler-icin">Entegratörler için</h2>
+<p>Doğrudan API kullanan entegrasyonlarda endpoint ve request modeli değişmez. Alıcı kimliği ile kişi/unvan alanları aşağıdaki sözleşmeyle ayrıştırılmalı ve <code>SCHEME</code> hata mesajları işlenmelidir.</p>
 <div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
 <tr><td>Yeni entegrasyon</td><td>VKN/TCKN ve ad alanları aşağıdaki request sözleşmesine göre başlangıçtan itibaren ayrıştırılmalıdır.</td></tr>
 <tr><td>Mevcut entegrasyon</td><td>Alıcı eşlemesi gözden geçirilmeli; TCKN kayıtlarının <code>Person</code>, VKN kayıtlarının <code>PartyName</code> kullandığı doğrulanmalıdır.</td></tr>
@@ -102,7 +103,45 @@
 <tr><td><code>AccountingCustomerParty.Party.Person.FamilyName</code></td><td>TCKN sahibinin soyadı</td><td>11 haneli TCKN için <code>FirstName</code> ile birlikte zorunludur ve raporda gerçek kişi soyadı olarak kullanılır. <code>PartyName</code> da gönderilmişse rapor seçiminde dikkate alınmaz.</td></tr>
 </tbody></table></div>
 <!-- vbt-source: CreditNoteRequestModel AccountingCustomerParty; CreditNoteValidation.ValidateAccountingCustomerParty; CreditNoteGibReportService recipient mapping -->
+<h3 id="alici-request-ornekleri">Alıcı request örnekleri</h3>
+<p>Aşağıdaki parçalar yalnız değişen <code>AccountingCustomerParty</code> bölümünü gösterir. Mevcut e-Müstahsil Makbuzu request gövdesindeki aynı nesneye uygulanmalıdır; çiftçi, kesinti, kalem ve toplam alanları değişmez.</p>
+<details class="example-details"><summary>VKN sahibi alıcı</summary><div class="example-body"><pre><code class="language-json">{
+  "Party": {
+    "PartyIdentifications": [
+      { "SchemeId": "VKN", "Value": "1234567890" }
+    ],
+    "PartyName": "Örnek Alıcı A.Ş."
+  }
+}</code></pre></div></details>
+<details class="example-details"><summary>TCKN sahibi alıcı</summary><div class="example-body"><pre><code class="language-json">{
+  "Party": {
+    "PartyIdentifications": [
+      { "SchemeId": "TCKN", "Value": "12345678901" }
+    ],
+    "Person": {
+      "FirstName": "Ayşe",
+      "FamilyName": "Yılmaz"
+    }
+  }
+}</code></pre></div></details>
 <p><b>Gönderim öncesi doğrulama:</b> 10 haneli VKN + <code>PartyName</code> ve 11 haneli TCKN + <code>Person.FirstName</code>/<code>Person.FamilyName</code> senaryoları ayrı ayrı doğrulanmalıdır. VKN+TCKN birlikte, yalnız pasaport, eksik kimlik, rakam olmayan değer ve yanlış uzunluk içeren requestlerin validasyon hatası aldığı kontrol edilmelidir.</p>
+
+<h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
+<p>Portal kullanıcılarının GİB rapor nesnesi hazırlaması gerekmez. Alıcı VKN ise unvan; TCKN ise ad ve soyad girilmelidir. Platform doğru kişi türünü raporda otomatik üretir; kimlik ve ad alanları uyumsuzsa belge ilerletilmemelidir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alıcı</th><th>Portalda girilecek bilgi</th><th>Platformun oluşturacağı rapor alanı</th></tr></thead><tbody>
+<tr><td>10 haneli VKN</td><td>VKN ve en az iki karakterlik unvan</td><td>Yalnız tüzel kişi bilgisi</td></tr>
+<tr><td>11 haneli TCKN</td><td>TCKN, ad ve soyad; birleşik değer en az iki karakter</td><td>Yalnız gerçek kişi bilgisi</td></tr>
+</tbody></table></div><!-- vbt-source: CreditNoteGibReportService recipient mapping -->
+
+<h2 id="hata-sozlesmesi">Validasyon ve hata sözleşmesi</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Kod</th><th>Gözlenebilir mesaj</th><th>Yapılacak işlem</th></tr></thead><tbody>
+<tr><td><code>SCHEME</code></td><td>AccountingCustomerParty.Party için SchemeID niteliği değeri 'VKN' veya 'TCKN' olan bir tane ID elemanı bulunmalıdır.</td><td>VKN ve TCKN kayıtlarından tam olarak birini gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>GİB raporunda alıcı adı için PartyName kaynağından en az 2 karakterlik değer üretilmelidir.</td><td>VKN alıcısının unvanını tamamlayın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>GİB raporunda alıcı adı için Person.FirstName/Person.FamilyName kaynağından en az 2 karakterlik değer üretilmelidir.</td><td>TCKN alıcısının ad ve soyadını tamamlayın.</td></tr>
+</tbody></table></div><!-- vbt-source: VbtMM ValidationContext.ValidateCustomerVknTckn -->
+
+<h2 id="gecis-kontrol-listesi">Geçiş kontrol listesi</h2>
+<ol><li>VKN + unvan ve TCKN + ad/soyad olumlu senaryoları test edilmelidir.</li><li>VKN ile TCKN'nin birlikte, ikisinin de boş veya ad bilgisinin eksik olduğu requestlerin reddedildiği doğrulanmalıdır.</li><li>Başarılı makbuzun GİB raporunda yalnız doğru kişi türünün üretildiği kontrol edilmelidir.</li><li>Portalda aynı iki alıcı türüyle oluşturma ve yeniden açma testi yapılmalıdır.</li></ol>
 
 <h2 id="etkilenmeyen-alanlar">Değişmeyen sözleşmeler</h2>
 <p>Belge kalemleri, vergi ve toplam hesapları ile mevcut gönderim endpointleri değişmemektedir. Değişiklik yalnız GİB raporundaki alıcı bilgisinin tek ve doğru kişi tipiyle üretilmesini zorunlu kılar.</p>

@@ -184,7 +184,7 @@
 </tbody></table></div>
 <h4 id="h-hata-katman-a">Katman A — Senaryo Kuralları (hepsi <code>ErrorCode="SCHEME"</code>)</h4>
 <p>Aşağıdaki mesajlar ayrı bir koda sahip değildir; ayrım <code>ErrorMessage</code> metnine bakılarak yapılmalıdır.</p>
-<div class="table-wrapper decision-table-wrapper"><table class="decision-table" class="reference-table-wide" data-error-catalog="complete"><thead><tr><th>Senaryo</th><th>Gözlenebilir mesaj veya kural</th></tr></thead><tbody>
+<div class="table-wrapper decision-table-wrapper"><table class="decision-table reference-table-wide" data-error-catalog="complete"><thead><tr><th>Senaryo</th><th>Gözlenebilir mesaj veya kural</th></tr></thead><tbody>
 <tr><td data-label="Senaryo">Tip/profil uyumu — IADE <!-- vbt-source: ValidateInvoiceTypeCode --></td><td data-label="Gözlenebilir mesaj veya kural">"Fatura tipi IADE iken fatura profili sadece TEMELFATURA, EARSIVFATURA, ILAC_TIBBICIHAZ, YATIRIMTESVIK veya IDIS olabilir"</td></tr>
 <tr><td data-label="Senaryo">Tip/profil uyumu — İDİS</td><td data-label="Gözlenebilir mesaj veya kural">"IDIS fatura senaryosunda fatura tipi SATIS, ISTISNA, IADE, TEVKIFAT, TEVKIFATIADE veya IHRACKAYITLI tiplerinden biri olmalıdır."</td></tr>
 <tr><td data-label="Senaryo">Tip/profil uyumu — SGK</td><td data-label="Gözlenebilir mesaj veya kural">"Fatura profili SGK iken fatura tipi sadece TEMELFATURA olabilir" (mesaj metni böyledir; kastedilen: <code>InvoiceTypeCode=SGK</code> iken <code>ProfileID</code> yalnızca TEMELFATURA olabilir)</td></tr>

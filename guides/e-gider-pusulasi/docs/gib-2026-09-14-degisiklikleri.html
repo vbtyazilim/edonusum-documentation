@@ -79,12 +79,21 @@
 
 <div class="callout callout-info"><b>Belge API sözleşmesi değişmemektedir.</b> e-Gider Pusulası oluşturma, güncelleme ve gönderme requestlerine yeni alan eklenmez. Hizmet aktivasyonu VBT tarafından yönetildiğinde kullanıcı hesabı zarfı <code>erreceipt</code> alias'ı ve <code>UserOptionCode=172</code> ile platform tarafından üretilir.</div>
 
-<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<h2 id="entegratorler-icin">Entegratörler için</h2>
+<p>Belge oluşturma, güncelleme ve gönderme entegrasyonu değişmez. Yalnız GİB kullanıcı hesabı zarfını doğrudan üreten sistemler aşağıdaki alias ve seçenek kodu kurallarını uygulamalıdır.</p>
 <div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
 <tr><td>Yeni entegrasyon</td><td>Mevcut e-Gider Pusulası belge endpointleri ve request modelleri kullanılmalıdır; kullanıcı hesabı zarfı için ek belge alanı gönderilmez.</td></tr>
 <tr><td>Mevcut entegrasyon</td><td>Belge oluşturma, güncelleme ve gönderme kodunda değişiklik gerekmez.</td></tr>
 <tr><td>Doğrudan kullanıcı hesabı zarfı üreten entegrasyon</td><td><code>ProcessUserAccount</code> ve <code>CancelUserAccount</code> zarfları aşağıdaki yeni alias ve seçenek kodu sözleşmesine göre güncellenmelidir.</td></tr>
 </tbody></table></div>
+
+<h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
+<p>Portal kullanıcılarının <code>erreceipt</code>, <code>UserOptionCode</code> veya kullanıcı hesabı zarfı alanlarını girmesi gerekmez. e-Gider Pusulası hizmeti firma için aktive edildiğinde hesap açma/kapatma zarfı platform tarafından hazırlanır. Portalda belge oluşturma, güncelleme ve gönderme adımları mevcut biçimde kullanılmaya devam eder.</p>
+<div class="table-wrapper"><table><thead><tr><th>İşlem</th><th>Portal kullanıcısının yapacağı</th><th>Platformun yapacağı</th></tr></thead><tbody>
+<tr><td>Hizmet aktivasyonu</td><td>Mevcut firma/hizmet aktivasyon süreci izlenir.</td><td><code>erreceipt</code> ve <code>UserOptionCode=172</code> içeren kullanıcı hesabı zarfı üretilir.</td></tr>
+<tr><td>Belge işlemleri</td><td>Mevcut e-Gider Pusulası ekranları kullanılır.</td><td>Belge requestine yeni alan eklenmeden işlem sürdürülür.</td></tr>
+<tr><td>Hizmet kapatma</td><td>Mevcut kapatma süreci izlenir.</td><td>Aynı alias sözleşmesiyle kapatma zarfı hazırlanır.</td></tr>
+</tbody></table></div><!-- vbt-source: ProcessUserAccount; CancelUserAccount; e-Gider Pusulası service activation -->
 
 <h2 id="erreceipt-kullanici-hesabi">e-Gider Pusulası kullanıcı hesabı</h2>
 <p>GİB'e e-Gider Pusulası hizmeti için doğrudan <code>ProcessUserAccount</code> veya <code>CancelUserAccount</code> zarfı gönderen entegrasyonları kapsar.</p>
@@ -94,6 +103,14 @@
 <tr><td><code>AuthorizedWorkScope</code></td><td>Bu etikete özgü bir kural yoktu.</td><td><code>erreceipt</code> hesabında bulunmamalıdır.</td><td>Bu alias için <code>AuthorizedWorkScope</code> üretilmemelidir.</td></tr>
 <tr><td><code>UserOptionCode</code></td><td>Bu etikete özgü seçenek listesi yoktu.</td><td>GİB şemasında yalnız <code>171</code>, <code>172</code>, <code>173</code> veya <code>174</code> olabilir. VBT hizmet aktivasyonunda <code>172</code> kullanılır.</td><td>Doğrudan üretilen zarfta değer izinli seçeneklerden biri olmalıdır. VBT aktivasyon akışında entegratör tarafından ayrıca seçenek kodu gönderilmez.</td></tr>
 </tbody></table></div>
+<h2 id="gecis-kontrol-listesi">Geçiş kontrol listesi</h2>
+<ol>
+<li>Yalnız belge API'si kullanan entegrasyonlarda request/endpoint değişikliği yapılmamalıdır.</li>
+<li>Doğrudan kullanıcı hesabı zarfı üretiliyorsa <code>ProcessUserAccount</code> ve <code>CancelUserAccount</code> birlikte güncellenmelidir.</li>
+<li><code>erreceipt</code> alias'ında <code>AuthorizedWorkScope</code> üretilmediği doğrulanmalıdır.</li>
+<li>VBT hizmet aktivasyonunda <code>UserOptionCode=172</code> üretildiği test edilmelidir.</li>
+<li>Portalda aktivasyon sonrası belge oluşturma ve gönderme akışının değişmeden çalıştığı doğrulanmalıdır.</li>
+</ol>
 <p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->
