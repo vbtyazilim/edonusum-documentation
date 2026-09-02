@@ -98,6 +98,24 @@
 <tr><td>Ortak doğrulama</td><td>Yeni endpoint veya request alanı yoktur. İlgili senaryolar geçerli ve geçersiz requestlerle; oluşturma ve güncelleme akışlarında ayrı ayrı doğrulanmalıdır.</td></tr>
 </tbody></table></div>
 
+<h2 id="entegratorler-icin">Entegratörler için</h2>
+<p>Doğrudan JSON API kullanan entegrasyonlarda yeni bir endpoint açılmaz. Kullanılan senaryoya göre aşağıdaki mevcut alanlar güncellenmeli, hata cevabındaki kod ve mesaj birlikte işlenmeli ve belge yeniden sorgulandığında gönderilen değerlerin korunduğu doğrulanmalıdır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Sözleşme alanı</th><th>14.09.2026 etkisi</th><th>Yapılacak işlem</th></tr></thead><tbody>
+<tr><td>Profil ve fatura tipi değerleri</td><td><code>ENERJI</code>, <code>SARJ</code> ve <code>SARJANLIK</code> güncel değer kümesinde kullanılabilir.</td><td>Sabit enum/değer listeleri güncellenmeli; bilinmeyen değer olarak reddedilmemelidir.</td></tr>
+<tr><td>Request modeli</td><td>Yeni üst seviye alan yoktur; dönem, referans, plaka, seri numarası, istisna ve iade alanlarının kullanım kuralı değişir.</td><td>Yalnız kullanılan senaryonun aşağıdaki alanları ve doğrulamaları uyarlanmalıdır.</td></tr>
+<tr><td>Ayrıntı/güncelleme cevabı</td><td>Belge referanslarında <code>SchemeId</code> korunur. <code>AdditionalItemIdentification[]</code> elemanları <code>SchemeId</code> ve <code>Value</code> taşıyan nesnelerdir.</td><td>Yanıt modeli dizi içindeki değerleri düz metin varsaymamalı; oluşturma → ayrıntı → güncelleme çevriminde şema ve değer birlikte korunmalıdır.</td></tr>
+<tr><td>Hata cevabı</td><td>Yeni senaryo kurallarının çoğu ayrı bir yeni kod yerine <code>ErrorCode=SCHEME</code> ile döner.</td><td><code>ErrorCode</code> yanında <code>ErrorMessage</code> kaydedilmeli ve kullanıcıya gösterilmelidir.</td></tr>
+</tbody></table></div><!-- vbt-source: DocumentReferenceResponseModel; ItemResponseModel; IdResponseModel; InvoiceValidation -->
+
+<h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
+<p>Portal fatura oluşturma ekranı profil ve fatura tipi seçimlerini backend'in güncel parametre listelerinden yükler. Böylece seçim listesine eklenecek yeni bir kod, mevcut biçim ve iş kuralı sınıfına uyduğu sürece portal içinde ikinci bir sabit liste güncellemesi gerektirmez.</p>
+<div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Portal davranışı</th><th>Kayıt öncesi kontrol</th></tr></thead><tbody>
+<tr><td><code>ENERJI + SARJ</code></td><td>Dönem başlangıç/bitiş saatleri, alıcı plakası ve <code>ESURaporID</code> ek belge bilgisi alınır.</td><td>Geçerli dönem, tek plaka ve GUID/tarih taşıyan en az bir ESU rapor referansı aranır.</td></tr>
+<tr><td><code>ENERJI + SARJANLIK</code></td><td>Dönem ve plaka alanları açılır; her kalemde ESU seri numarası girilir.</td><td>Her kalemde seri numarası bulunmalıdır.</td></tr>
+<tr><td><code>IDIS</code></td><td>Sevkiyat numarası alanı <code>SE-1234567</code> ve <code>ES-1234567</code> biçimlerini kabul eder.</td><td>Önek ve tam yedi rakam birlikte doğrulanır.</td></tr>
+</tbody></table></div><!-- vbt-source: edonusum-frontend invoice-create.component.ts; InvoiceAllType.ts; ParameterController.GetAllParamaterList -->
+<p>Kaydetme sonrasında ayrıntı/güncelleme cevabı arşivlenen UBL'den üretilir. <code>InvoicePeriod</code> tarih ve saat çiftleri yalnız <code>SARJ</code> ve <code>SARJANLIK</code> faturalarının update request/response dönüşümlerinde birleştirilir; ödeme, belge geçerlilik, teslimat, sevk, taşıma ve şarj dışı fatura dönemleri tarih-only kalır. Böylece enerji dönemleri, <code>PLAKA</code>, bütün <code>ESURaporID</code> referansları ve SARJANLIK seri numaraları forma geri yüklenirken ortak dönem sözleşmeleri değişmez; yeniden kaydetme aynı alanları değiştirmemelidir.</p><!-- vbt-source: OutgoingInvoiceService; OutgoingInvoiceSearchService; VbtTicari UblToRequestModelMapper; VbtTicari UblToResponseModelMapper; Vbt.Core.Ubl UblToRequestModelMapper; Vbt.Core.Ubl UblToResponseModelMapper -->
+
 <h2 id="sarj-faturasi">SARJ faturası</h2>
 <p><code>ProfileID=ENERJI</code> ve <code>InvoiceTypeCode=SARJ</code> ile düzenlenen elektrikli araç şarj hizmeti faturalarını kapsar.</p>
 <div class="table-wrapper"><table><thead><tr><th>Mevcut sözleşme</th><th>14.09.2026 sözleşmesi</th><th>Entegratör gereksinimi</th></tr></thead><tbody><tr><td>SARJ faturasının hizmet dönemi, ESU rapor referansı ve alıcı plakası paket düzeyinde zorunlu değildi.</td><td><code>StartDate</code>, <code>StartTime</code>, <code>EndDate</code> ve <code>EndTime</code> birlikte bulunmalıdır; tarihler 01.01.2005'ten eski olamaz. En az bir <code>schemeID=ESURaporID</code> referansı GUID biçimindeki kimliği ve 2000–2099 aralığındaki düzenlenme tarihiyle gönderilmelidir. Alıcı kimliklerinde tek, boş olmayan ve en fazla 50 karakterlik <code>schemeID=PLAKA</code> bulunmalıdır; plakada yalnız büyük harf, rakam, <code>_</code> ve <code>-</code> kullanılabilir.</td><td>Hizmet dönemi, ESU rapor kimliği ve tarihi ile alıcı plakası mevcut request alanlarında gönderilmelidir. UBL dönüşümü platform tarafından gerçekleştirilir.</td></tr></tbody></table></div>
@@ -111,6 +129,113 @@
 <tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].SchemeId</code></td><td><code>PLAKA</code></td><td>Alıcı kimliklerinde tam olarak bir plaka kaydı bulunmalıdır.</td></tr>
 <tr><td><code>AccountingCustomerParty.Party.PartyIdentifications[].Value</code></td><td>1–50 karakter; büyük harf, rakam, <code>_</code> veya <code>-</code></td><td>Alıcı plakasını taşır.</td></tr>
 </tbody></table></div><!-- vbt-source: InvoiceRequestModel.cs; PeriodRequestModel.cs; DocumentReferenceRequestModel.cs; RequestModelToUblMapper.cs:36,40,418-435,697-703; InvoiceValidation.ValidateEnergyInvoice -->
+<h3 id="sarj-tam-request-ornegi">SARJ tam request örneği</h3>
+<p>Bu örnek yalnız 14.09.2026 geçiş sözleşmesini test etmek için kullanılmalıdır. Canlı geçiş tamamlanana kadar kalıcı request örnekleri sayfasına taşınmaz.</p>
+<details class="example-details"><summary>14.09.2026 SARJ JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+  "InvoiceExternalId": "ERP-EF-2026-004",
+  "ProfileId": "ENERJI",
+  "InvoiceTypeCode": "SARJ",
+  "DocumentCurrencyCode": "TRY",
+  "IssueDate": "2026-09-14T09:00:00+03:00",
+  "LineCountNumeric": 1,
+  "InvoicePeriod": {
+    "StartDate": "2026-09-14T10:00:00+03:00",
+    "EndDate": "2026-09-14T11:00:00+03:00"
+  },
+  "AdditionalDocumentReference": [
+    {
+      "SchemeId": "ESURaporID",
+      "Id": "11111111-2222-3333-4444-555555555555",
+      "IssueDate": "2026-09-14T00:00:00+03:00"
+    }
+  ],
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Örnek Ticaret A.Ş.",
+      "PostalAddress": {
+        "CityName": "İstanbul",
+        "Country": {
+          "Name": "Türkiye"
+        }
+      }
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        },
+        {
+          "SchemeId": "PLAKA",
+          "Value": "34ABC123"
+        }
+      ],
+      "PartyName": "Alıcı Firma Ltd. Şti."
+    }
+  },
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  },
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 10
+      },
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Elektrikli Araç Şarj Hizmeti"
+      },
+      "Price": 100,
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}</code></pre></div></details><!-- vbt-source: InvoiceRequestModel.cs; PeriodRequestModel.cs; DocumentReferenceRequestModel.cs; InvoiceValidation.ValidateEnergyInvoice -->
 
 <h2 id="sarjanlik-faturasi">SARJANLIK faturası</h2>
 <p><code>ProfileID=ENERJI</code> ve <code>InvoiceTypeCode=SARJANLIK</code> ile düzenlenen şarj ağı işletmeciliği faturalarını kapsar.</p>
@@ -183,6 +308,33 @@
 <tr><td><code>PaymentMeans[].PayeeFinancialAccount.Id</code></td><td>Geçerli Türkiye IBAN'ı</td><td>KAMU profilinin mevcut hesap bilgisi zorunluluğudur.</td></tr>
 <tr><td><code>PaymentMeans[].PayeeFinancialAccount.CurrencyCode</code></td><td>Hesap para birimi</td><td>IBAN'ın bağlı olduğu hesabın para birimini belirtir.</td></tr>
 </tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateInvoiceTypeCode; InvoiceValidation.ValidateIadeFatura; InvoiceValidation.ValidateKamuFatura; PaymentMeansRequestModel.cs; FinancialAccountRequestModel.cs -->
+<h2 id="hata-sozlesmesi">Validasyon ve hata sözleşmesi</h2>
+<div class="callout callout-warning"><b><code>SCHEME</code> tek bir kurala ait değildir.</b> Aşağıdaki yanıtların tamamında aynı hata kodu kullanılabilir. Entegrasyonlar yalnız koda göre dallanmamalı; mesaj ve ilgili senaryo birlikte değerlendirilmelidir.</div>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Kod</th><th>Gözlenebilir mesaj</th><th>Entegratör aksiyonu</th></tr></thead><tbody>
+<tr><td><code>SCHEME</code></td><td>SARJ veya SARJANLIK faturalarında başlangıç/bitiş tarih ve saatlerini içeren InvoicePeriod zorunludur.</td><td>Dönemin başlangıç ve bitiş tarih-saatlerini birlikte gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ veya SARJANLIK faturalarında alıcı altında geçerli bir PLAKA kimliği bulunmalıdır.</td><td>Alıcı kimliklerine tek ve geçerli <code>PLAKA</code> kaydı ekleyin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ faturalarında en az bir ESURaporID referansı bulunmalı; bütün ESURaporID değerleri geçerli GUID ve 20xx tarih içermelidir.</td><td>Tüm ESU rapor kimliklerini GUID, tarihlerini 2000–2099 aralığında gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJANLIK faturalarında her fatura kaleminde boş olmayan bir ESU seri numarası bulunmalıdır.</td><td>Her kalemde en az bir boş olmayan seri numarası gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ ve SARJANLIK kalemlerinde hizmet adı, miktar/birim ve vergi detayı zorunludur.</td><td>Kalem adı, miktar, birim ve vergi kırılımını tamamlayın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ ve SARJANLIK kalemlerinde birim fiyat ve miktar en fazla 8 ondalık basamak içerebilir.</td><td>Miktar ve birim fiyatı en fazla sekiz ondalığa yuvarlayın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ ve SARJANLIK vergi tutarları en fazla 2, vergi oranı en fazla 3 ondalık basamak içerebilir.</td><td>Vergi tutarlarını iki, oranları üç ondalıkla sınırlandırın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>cbc:ProfileID değeri ENERJI olduğu durumda cbc:InvoiceTypeCode değeri SARJ veya SARJANLIK olmalıdır.</td><td><code>ENERJI</code> profilini yalnız iki enerji fatura tipiyle kullanın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>IDIS türündeki faturalarda IdisSevkiyatNo alanı SE-0000000 veya ES-0000000 formatında olmalıdır.</td><td><code>SE-</code> veya <code>ES-</code> önekinden sonra tam yedi rakam gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Fatura tipi IADE iken fatura profili sadece TEMELFATURA, EARSIVFATURA, ILAC_TIBBICIHAZ, YATIRIMTESVIK, IDIS veya KAMU olabilir.</td><td><code>KAMU + IADE</code> dışındaki profil/tip eşleşmelerini mevcut izin listesine göre düzeltin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>... senaryolu ... fatura tipinde 555 vergi muafiyet kodu kullanılamaz.</td><td>555 kodunu yalnız izin verilen profil ve fatura tiplerinde kullanın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Vergi istisna muafiyet kodu 555 olduğu durumda belge veya satır KDV oranı ve tutarı 0 olamaz.</td><td>Belge ve satır düzeyindeki 0015 KDV oranı ile tutarını sıfırdan büyük gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Vergi istisna muhafiyet kodu 308/339 yalnız YATIRIMTESVIK profili veya e-Arşiv YTB fatura tiplerinde kullanılabilir.</td><td>308 ve 339 kodlarını yalnız yatırım teşvik bağlamında kullanın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Yatırım teşvik ISTISNA faturasında harcama tipi 01 için 308; harcama tipi 02 için 339 istisna kodu seçilmelidir.</td><td>Kalem harcama tipiyle istisna kodunu eşleştirin.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateEnergyInvoice; InvoiceValidation.ValidateIdisInvoice; InvoiceValidation.ValidateInvoiceTypeCode; InvoiceValidation.ValidateIadeFatura; InvoiceValidation.ValidateDemirbasKdvTaxExemption; InvoiceValidation.ValidateTaxExemptionReasonCode; InvoiceValidation.ValidateYatirimTesvikTaxExemption -->
+
+<h2 id="gecis-kontrol-listesi">Geçiş kontrol listesi</h2>
+<ol>
+<li>Kullanılan profil, fatura tipi ve istisna kodları için enum/değer listeleri güncellenmelidir.</li>
+<li><code>SARJ</code>, <code>SARJANLIK</code>, <code>IDIS</code>, <code>KAMU + IADE</code> ve kullanılan istisna senaryolarının geçerli/geçersiz request testleri çalıştırılmalıdır.</li>
+<li>Oluşturulan belge ayrıntı endpointinden okunmalı; dönem saatleri, referans <code>SchemeId</code> değerleri, plaka ve seri numaralarının kaybolmadığı doğrulanmalıdır.</li>
+<li>Aynı belge değişiklik yapılmadan güncellenmeli ve ikinci okumada değerlerin aynı kaldığı doğrulanmalıdır.</li>
+<li><code>SCHEME</code> yanıtlarında hata mesajının loglandığı ve kullanıcıya gösterildiği kontrol edilmelidir.</li>
+</ol>
 <p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->

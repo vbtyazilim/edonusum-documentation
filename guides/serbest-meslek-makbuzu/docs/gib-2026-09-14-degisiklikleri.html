@@ -79,7 +79,8 @@
 
 <div class="callout callout-info"><b>API sözleşmesi değişmemektedir.</b> Yeni endpoint veya request alanı eklenmez. Alıcı kimliği ve kişi türüne ait ad alanı mevcut <code>Alici</code> modeli üzerinden gönderilir; GİB raporundaki kişi yapısı platform tarafından üretilir.</div>
 
-<h2 id="uygulama-kapsami">Uygulama kapsamı</h2>
+<h2 id="entegratorler-icin">Entegratörler için</h2>
+<p>Endpoint ve request modeli değişmez. <code>Alici.VknTckn</code> ile kimlik türüne ait ad alanları ayrıştırılmalı; güncellenen <code>SMM016</code> ve <code>SMM017</code> cevapları işlenmelidir.</p>
 <div class="table-wrapper"><table><thead><tr><th>Entegrasyon durumu</th><th>Uygulanacak sözleşme</th></tr></thead><tbody>
 <tr><td>Yeni entegrasyon</td><td>VKN/TCKN ve ad alanları aşağıdaki request sözleşmesine göre başlangıçtan itibaren ayrıştırılmalıdır.</td></tr>
 <tr><td>Mevcut entegrasyon</td><td>Alıcı eşlemesi gözden geçirilmeli; TCKN kayıtlarının <code>Alici.Ad</code>/<code>Alici.Soyad</code>, VKN kayıtlarının <code>Alici.Unvan</code> kullandığı doğrulanmalıdır.</td></tr>
@@ -98,7 +99,39 @@
 <tr><td><code>Alici.Soyad</code></td><td>TCKN sahibinin soyadı</td><td>11 haneli TCKN için <code>Alici.Ad</code> ile birlikte zorunludur ve raporda gerçek kişi soyadı olarak kullanılır. <code>Alici.Unvan</code> da gönderilmişse rapor seçiminde dikkate alınmaz.</td></tr>
 </tbody></table></div>
 <!-- vbt-source: OutgoingSmmRequestModel Alici; SmmValidation recipient validation; SmmGibReportService recipient mapping -->
+<h3 id="alici-request-ornekleri">Alıcı request örnekleri</h3>
+<p>Aşağıdaki parçalar yalnız değişen <code>Alici</code> bölümünü gösterir. Mevcut e-SMM request gövdesindeki aynı nesneye uygulanmalıdır; hizmet, vergi, stopaj ve toplam alanları değişmez.</p>
+<details class="example-details"><summary>VKN sahibi alıcı</summary><div class="example-body"><pre><code class="language-json">{
+  "VknTckn": "1234567890",
+  "Unvan": "Örnek Alıcı A.Ş.",
+  "Ad": null,
+  "Soyad": null
+}</code></pre></div></details>
+<details class="example-details"><summary>TCKN sahibi alıcı</summary><div class="example-body"><pre><code class="language-json">{
+  "VknTckn": "12345678901",
+  "Unvan": null,
+  "Ad": "Ayşe",
+  "Soyad": "Yılmaz"
+}</code></pre></div></details>
 <p><b>Gönderim öncesi doğrulama:</b> 10 haneli VKN + <code>Alici.Unvan</code> ve 11 haneli TCKN + <code>Alici.Ad</code>/<code>Alici.Soyad</code> senaryoları ayrı ayrı doğrulanmalıdır. Boş, 9/12 haneli, harfli, iç boşluklu veya pasaport biçimindeki değerlerin validasyon hatası aldığı kontrol edilmelidir.</p>
+
+<h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
+<p>Portalda VKN seçildiğinde unvan, TCKN seçildiğinde ad ve soyad girilmelidir. Kullanıcıdan ayrı bir GİB rapor alanı istenmez; platform doğru kişi tipini otomatik üretir. Rakam dışı veya 10/11 hane kuralına uymayan kimlik düzeltilmeden belge ilerletilmemelidir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alıcı</th><th>Portalda girilecek bilgi</th><th>Platformun oluşturacağı rapor alanı</th></tr></thead><tbody>
+<tr><td>10 haneli VKN</td><td>VKN ve en az iki karakterlik unvan</td><td>Yalnız tüzel kişi bilgisi</td></tr>
+<tr><td>11 haneli TCKN</td><td>TCKN, ad ve soyad</td><td>Yalnız gerçek kişi bilgisi</td></tr>
+</tbody></table></div><!-- vbt-source: SmmGibReportService recipient mapping -->
+
+<h2 id="hata-sozlesmesi">Validasyon ve hata sözleşmesi</h2>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Kod</th><th>Gözlenebilir mesaj</th><th>Yapılacak işlem</th></tr></thead><tbody>
+<tr><td><code>SMM006</code></td><td>Unvan en az 2 haneli olmalıdır.</td><td>VKN alıcısının unvanını en az iki karakter olacak biçimde tamamlayın.</td></tr>
+<tr><td><code>SMM016</code></td><td>Alıcı VKN/TCKN değeri yalnız rakamlardan oluşmalıdır.</td><td>Boşluk, harf ve noktalama karakterlerini kaldırın.</td></tr>
+<tr><td><code>SMM017</code></td><td>Alıcı VKN 10, TCKN 11 hane olmalıdır.</td><td>Kimlik uzunluğunu seçilen türe göre düzeltin.</td></tr>
+</tbody></table></div><!-- vbt-source: VbtSMM ValidationContext recipient validation -->
+<div class="callout callout-info"><b>Kod geçişi:</b> Önceki istemciler TCKN uzunluğu için <code>SMM018</code> bekliyorsa güncellenmelidir. 14.09.2026 sözleşmesinde VKN ve TCKN uzunluk kontrolü birlikte <code>SMM017</code> ile döner.</div>
+
+<h2 id="gecis-kontrol-listesi">Geçiş kontrol listesi</h2>
+<ol><li>VKN + unvan ve TCKN + ad/soyad olumlu senaryoları test edilmelidir.</li><li>Rakam dışı değer için <code>SMM016</code>, 10/11 hane dışındaki değer için <code>SMM017</code> döndüğü doğrulanmalıdır.</li><li><code>SMM018</code> koduna bağlı istemci dalları kaldırılmalı veya <code>SMM017</code> ile uyarlanmalıdır.</li><li>Başarılı belgenin GİB raporunda yalnız doğru kişi türünün üretildiği doğrulanmalıdır.</li><li>Portalda aynı iki alıcı türüyle oluşturma ve yeniden açma testi yapılmalıdır.</li></ol>
 
 <h2 id="etkilenmeyen-alanlar">Değişmeyen sözleşmeler</h2>
 <p>Hizmet kalemleri, stopaj/tevkifat hesapları, belge teslimi ve mevcut endpointler değişmemektedir. Değişiklik yalnız GİB raporundaki alıcı bilgisinin tek ve doğru kişi tipiyle üretilmesini zorunlu kılar.</p>

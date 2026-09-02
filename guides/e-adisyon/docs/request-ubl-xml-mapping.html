@@ -99,8 +99,7 @@
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">AccountingCustomerParty → cac:AccountingCustomerParty/cac:Party</td></tr>
 <tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>Value</code></td><td><code>cac:PartyIdentification/cbc:ID</code></td><td>VKN (10 hane) veya TCKN (11 hane)</td></tr>
 <tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyIdentifications[].<wbr>SchemeId</code></td><td><code>cbc:ID/@schemeID</code></td><td>VKN / TCKN</td></tr>
-<tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyName</code></td><td><code>cac:PartyName/cbc:Name</code></td><td>VKN'li tüzel alıcının unvanı</td></tr>
-<tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>Person.<wbr>FirstName</code> / <code>FamilyName</code></td><td><code>cac:Person/cbc:FirstName</code> / <code>cbc:FamilyName</code></td><td>TCKN'li gerçek alıcının ad ve soyadı</td></tr>
+<tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PartyName</code></td><td><code>cac:PartyName/cbc:Name</code></td><td>Alıcı adı/unvanı</td></tr>
 <tr><td><code class="mapping-path">AccountingCustomerParty.<wbr>Party.<wbr>PostalAddress</code></td><td><code>cac:PostalAddress</code></td><td>Şehir, ülke vb.</td></tr>
 <tr><td colspan="3" style="background:var(--surface-2);font-weight:600">Vergi ve Toplamlar</td></tr>
 <tr><td><code>TaxTotal[]</code></td><td><code>cac:TaxTotal</code></td><td>Belge seviyesi vergi toplamı</td></tr>
@@ -118,7 +117,7 @@
 <p>Mapping notları, platformun otomatik tamamladığı alanlar ile entegratörün göndermesi gereken alanlar arasındaki sınırı netleştirir.</p>
 <div class="table-wrapper"><table class="mapping-table"><thead><tr><th>Konu</th><th>Kontrol</th><th>Sonuç</th></tr></thead><tbody>
 <tr><td>Düzenleyen taraf</td><td><code>AccountingSupplierParty</code> gönderilmez, VBT firma profilinden doldurur</td><td>UBL'deki <code>cac:AccountingSupplierParty</code> platform tarafından yazılır</td></tr>
-<tr><td>Alıcı kimliği</td><td>Tüzel kişi <code>VKN + PartyName</code>, gerçek kişi <code>TCKN + Person.FirstName/FamilyName</code> ile gönderilir</td><td>UBL taraf rolleri ve GİB raporundaki kişi tipi aynı kimlik ve ad kaynağını kullanır</td></tr>
+<tr><td>Alıcı kimliği</td><td>Tüzel kişi <code>VKN</code>, gerçek kişi <code>TCKN</code> ile gönderilir</td><td>UBL taraf rolleri ve GİB raporu aynı kimliği kullanır</td></tr>
 <tr><td>Satır kalemleri</td><td>Her ürün/hizmet ayrı <code>BillLine</code> olarak yazılır</td><td>Çok kalemli adisyonlarda her kalem kendi miktar/fiyat bilgisini taşır</td></tr>
 <tr><td>Sabit değerler</td><td><code>ProfileID=EARSIVBELGE</code>, <code>CreditNoteTypeCode=ADISYON</code></td><td>Belgenin GİB tarafında e-Adisyon olarak sınıflanmasını sağlar</td></tr>
 </tbody></table></div>

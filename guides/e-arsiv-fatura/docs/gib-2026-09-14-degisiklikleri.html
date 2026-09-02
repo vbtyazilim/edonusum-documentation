@@ -88,6 +88,25 @@
 <tr><td>Ortak davranış</td><td>Yeni endpoint, rapor requesti veya DTO alanı yoktur. Entegratör fatura requestini gönderir; UBL ve GİB e-Arşiv raporu platform tarafından oluşturulur.</td></tr>
 </tbody></table></div>
 
+<h2 id="entegratorler-icin">Entegratörler için</h2>
+<p>Doğrudan JSON API kullanan entegrasyonlarda endpointler değişmez; yeni değer kümeleri, mevcut request alanlarının senaryoya özgü kullanımı ve hata mesajları güncellenir. Özellikle sabit enum listeleri ile belge ayrıntı cevabının şema bilgilerini koruyan tipleri gözden geçirilmelidir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Sözleşme alanı</th><th>14.09.2026 etkisi</th><th>Yapılacak işlem</th></tr></thead><tbody>
+<tr><td>Fatura tipi değerleri</td><td><code>SARJ</code>, <code>SARJANLIK</code>, <code>YTBTEVKIFAT</code>, <code>YTBTEVKIFATIADE</code> ve <code>TEKNOLOJIDESTEK</code> kullanılır.</td><td>Sabit enum/değer listeleri güncellenmelidir.</td></tr>
+<tr><td>Request modeli</td><td>Yeni üst seviye alan yoktur; dönem, referans, plaka, seri numarası, alıcı ve kalem kimliği kuralları değişir.</td><td>Yalnız kullanılan senaryoların aşağıdaki alanları hazırlanmalıdır.</td></tr>
+<tr><td>Ayrıntı/güncelleme cevabı</td><td><code>AdditionalDocumentReference[]</code> ve <code>ContractDocumentReference[]</code> kayıtlarında <code>SchemeId</code> korunur.</td><td>Yanıt modeli <code>Id</code> ile birlikte <code>SchemeId</code> alanını kabul etmeli; oluşturma → ayrıntı → güncelleme çevriminde değer kaybı olmamalıdır.</td></tr>
+<tr><td>Hata cevabı</td><td>Yeni kuralların çoğu <code>ErrorCode=SCHEME</code> ile döner.</td><td>Kod ve mesaj birlikte kaydedilmeli; yalnız koda göre hata ayrımı yapılmamalıdır.</td></tr>
+</tbody></table></div><!-- vbt-source: DocumentReferenceResponseModel; InvoiceValidation; EArchiveGibReportService -->
+
+<h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
+<p>Portal fatura oluşturma ekranı profil, fatura tipi ve teknoloji destek ürün sınıflarını backend'in güncel parametre listelerinden yükler. Seçenek listeleri backend ile birlikte güncellenirken senaryoya özgü zorunlu alanlar kayıt öncesinde ayrıca doğrulanır.</p>
+<div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Portal davranışı</th><th>Kayıt öncesi kontrol</th></tr></thead><tbody>
+<tr><td><code>SARJ</code></td><td>Dönem başlangıç/bitiş saatleri, alıcı plakası ve <code>ESURaporID</code> ek belge bilgisi alınır.</td><td>Geçerli dönem, tek plaka ve GUID/tarih taşıyan en az bir ESU rapor referansı aranır.</td></tr>
+<tr><td><code>SARJANLIK</code></td><td>Dönem ve plaka alanları açılır; kalemde ESU seri numarası girilir.</td><td>e-Arşiv Faturada tek kalem ve tek boş olmayan seri numarası aranır.</td></tr>
+<tr><td><code>TEKNOLOJIDESTEK</code></td><td>Kalem sınıflandırması serbest metin yerine güncel <code>TELEFON</code>/<code>TABLET_PC</code> seçim listesinden yapılır.</td><td>Profil <code>EARSIVFATURA</code>, alıcı kimliği TCKN ve her kalemde geçerli sınıflandırma olmalıdır.</td></tr>
+<tr><td><code>YTBTEVKIFAT</code> / <code>YTBTEVKIFATIADE</code></td><td>Yeni fatura tipleri seçim listesinde gösterilir ve YTB alanları açılır.</td><td>Altı haneli YTB numarası, belge tarihi ve iade tipinde fatura referansı aranır.</td></tr>
+</tbody></table></div><!-- vbt-source: edonusum-frontend invoice-create.component.ts; InvoiceAllType.ts; ParameterController.GetAllParamaterList -->
+<p>Oluşturulan veya güncellenen belge UBL olarak arşivlenir. Ayrıntı ekranı bu arşiv UBL'inden beslendiği için dönem saatleri, plaka, bütün <code>ESURaporID</code> değerleri, SARJANLIK seri numarası, teknoloji destek ürün sınıfı ve YTB referansı yeniden açıldığında aynı değerlerle görünmelidir. UBL tarih ve saatleri yalnız <code>SARJ</code>/<code>SARJANLIK</code> update request ve response modellerinde birleştirilir; şarj dışı fatura ile ödeme, belge geçerlilik, teslimat, sevk ve taşıma dönemlerinin ortak dönüşümü tarih-only kalır. <code>DocumentDescription</code> taşımayan <code>YTBNO</code> ve <code>ESURaporID</code> referansları geçerlidir; açıklama alanının bulunmaması ayrıntı cevabını kesmez.</p><!-- vbt-source: OutgoingInvoiceService; OutgoingInvoiceSearchService; VbtTicari UblToRequestModelMapper; VbtTicari UblToResponseModelMapper; Vbt.Core.Ubl UblToRequestModelMapper; Vbt.Core.Ubl UblToResponseModelMapper; EArchiveGibReportService -->
+
 <h2 id="sarj-ortak-request-kurallari">SARJ ve SARJANLIK ortak request kuralları</h2>
 <p><code>ProfileId=EARSIVFATURA</code> ile düzenlenen <code>SARJ</code> ve <code>SARJANLIK</code> faturalarının ortak alan sözleşmesidir.</p>
 <p><b>Request alanları</b></p>
@@ -101,6 +120,108 @@
 <tr><td><code>InvoiceLine[]</code></td><td>Her kalemde hizmet adı, miktar, birim, birim fiyat ve en az bir vergi ayrıntısı</td><td>Birim fiyat ve miktar en fazla 8; vergi matrahı/tutarı en fazla 2; vergi oranı en fazla 3 ondalık basamak taşımalıdır.</td></tr>
 </tbody></table></div>
 <!-- vbt-source: InvoiceValidation.ValidateEnergyInvoice; EArchiveGibReportService charging report mapping; EArsiv.xsd sarj/sarjAnlik -->
+<h3 id="sarj-tam-request-ornegi">SARJ tam request örneği</h3>
+<p>Bu örnek yalnız 14.09.2026 geçiş sözleşmesini test etmek için kullanılmalıdır. Canlı geçiş tamamlanana kadar kalıcı request örnekleri sayfasına taşınmaz.</p>
+<details class="example-details"><summary>14.09.2026 e-Arşiv SARJ JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+  "ProfileId": "EARSIVFATURA",
+  "InvoiceTypeCode": "SARJ",
+  "InvoiceExternalId": "ERP-EARSIV-SARJ-2026-0001",
+  "IssueDate": "2026-09-14T09:00:00+03:00",
+  "DocumentCurrencyCode": "TRY",
+  "LineCountNumeric": 1,
+  "InvoicePeriod": {
+    "StartDate": "2026-09-14T10:00:00+03:00",
+    "EndDate": "2026-09-14T11:00:00+03:00"
+  },
+  "AdditionalDocumentReference": [
+    {
+      "SchemeId": "ESURaporID",
+      "Id": "11111111-2222-3333-4444-555555555555",
+      "IssueDate": "2026-09-14T00:00:00+03:00"
+    }
+  ],
+  "AccountingSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "1234567890"
+        }
+      ],
+      "PartyName": "Şarj Hizmetleri A.Ş."
+    }
+  },
+  "AccountingCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [
+        {
+          "SchemeId": "VKN",
+          "Value": "9876543210"
+        },
+        {
+          "SchemeId": "PLAKA",
+          "Value": "34ABC123"
+        }
+      ],
+      "PartyName": "Kurumsal Alıcı A.Ş."
+    }
+  },
+  "InvoiceLine": [
+    {
+      "Id": "1",
+      "InvoicedQuantity": {
+        "UnitCode": "C62",
+        "Value": 10
+      },
+      "Price": 100,
+      "LineExtensionAmount": 1000,
+      "Item": {
+        "Name": "Elektrikli Araç Şarj Hizmeti"
+      },
+      "TaxTotal": {
+        "TaxAmount": 200,
+        "TaxSubtotal": [
+          {
+            "TaxableAmount": 1000,
+            "TaxAmount": 200,
+            "Percent": 20,
+            "TaxCategory": {
+              "TaxScheme": {
+                "Name": "KDV",
+                "TaxTypeCode": "0015"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "TaxTotal": [
+    {
+      "TaxAmount": 200,
+      "TaxSubtotal": [
+        {
+          "TaxableAmount": 1000,
+          "TaxAmount": 200,
+          "Percent": 20,
+          "TaxCategory": {
+            "TaxScheme": {
+              "Name": "KDV",
+              "TaxTypeCode": "0015"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "LegalMonetaryTotal": {
+    "LineExtensionAmount": 1000,
+    "TaxExclusiveAmount": 1000,
+    "TaxInclusiveAmount": 1200,
+    "PayableAmount": 1200
+  }
+}</code></pre></div></details><!-- vbt-source: InvoiceRequestModel.cs; PeriodRequestModel.cs; DocumentReferenceRequestModel.cs; EArchiveGibReportService.SetChargingReportInformation -->
+<div class="callout callout-info"><b>Diğer yeni tipler:</b> <code>SARJANLIK</code>, <code>YTBTEVKIFAT</code>, <code>YTBTEVKIFATIADE</code> ve <code>TEKNOLOJIDESTEK</code> için bu tam gövdeye yalnız ilgili alt başlıkta belirtilen alan farkları uygulanmalıdır.</div>
 
 <h2 id="sarj-coklu-esu-rapor-kimligi">SARJ faturasında çoklu ESU rapor kimliği</h2>
 <p>Bir SARJ faturasının birden fazla ESU raporuyla ilişkilendirildiği kayıtları kapsar.</p>
@@ -136,6 +257,19 @@
 <tr><td><code>AccountingCustomerParty.Party.Person.FirstName</code></td><td>TCKN sahibinin adı</td><td>11 haneli TCKN için <code>FamilyName</code> ile birlikte zorunludur ve raporda gerçek kişi adı olarak kullanılır.</td></tr>
 <tr><td><code>AccountingCustomerParty.Party.Person.FamilyName</code></td><td>TCKN sahibinin soyadı</td><td>11 haneli TCKN için <code>FirstName</code> ile birlikte zorunludur ve raporda gerçek kişi soyadı olarak kullanılır. <code>PartyName</code> da gönderilmişse rapor seçiminde dikkate alınmaz.</td></tr>
 </tbody></table></div><!-- vbt-source: PartyRequestModel.cs; IdRequestModel.cs; InvoiceValidation.ValidatePartyIdentificationPartyNamePerson; EArchiveGibReportService.CreateEArchiveRecipientInformation -->
+<h3 id="tckn-alici-request-ornegi">TCKN sahibi alıcı request bölümü</h3>
+<p>Bu parça yalnız <code>AccountingCustomerParty</code> içindeki değişen alıcı nesnesini gösterir. Mevcut e-Arşiv request gövdesindeki aynı bölüme uygulanmalıdır.</p>
+<details class="example-details"><summary>TCKN ve ad-soyad örneği</summary><div class="example-body"><pre><code class="language-json">{
+  "Party": {
+    "PartyIdentifications": [
+      { "SchemeId": "TCKN", "Value": "12345678901" }
+    ],
+    "Person": {
+      "FirstName": "Ayşe",
+      "FamilyName": "Yılmaz"
+    }
+  }
+}</code></pre></div></details>
 
 <h2 id="ytb-tevkifat">YTBTEVKIFAT faturası</h2>
 <p>Yatırım teşvik kapsamında düzenlenen tevkifatlı e-Arşiv faturaları kapsar.</p>
@@ -178,6 +312,32 @@
 <tr><td><code>InvoiceLine[].Item.AdditionalItemIdentification[].SchemeId</code></td><td><code>TELEFON</code> veya <code>TABLET_PC</code></td><td>Değer büyük harfli ve tanımlı kodlardan biri olmalıdır.</td></tr>
 </tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateTeknolojiDestekInvoice; InvoiceValidation.ValidatePartyIdentificationPartyNamePerson; InvoiceValidation.ValidateInvoiceTypeCode -->
 <p><b>Geçersiz örnekler:</b> <code>ProfileId=TEMELFATURA</code>, alıcıda VKN bulunması, TCKN yanında ikinci bir kimlik şeması gönderilmesi, herhangi bir kalemde ürün tanımının eksik olması veya küçük harfli <code>telefon</code>/<code>tablet_pc</code> kullanılması requestin reddedilmesine neden olur.</p>
+<h2 id="hata-sozlesmesi">Validasyon ve hata sözleşmesi</h2>
+<div class="callout callout-warning"><b><code>SCHEME</code> ortak hata kodudur.</b> Senaryoyu belirlemek için <code>ErrorMessage</code> de okunmalıdır.</div>
+<div class="table-wrapper"><table class="reference-table-wide"><thead><tr><th>Kod</th><th>Gözlenebilir mesaj</th><th>Entegratör aksiyonu</th></tr></thead><tbody>
+<tr><td><code>SCHEME</code></td><td>SARJ veya SARJANLIK faturalarında başlangıç/bitiş tarih ve saatlerini içeren InvoicePeriod zorunludur.</td><td>Dört dönem bileşenini birlikte gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ veya SARJANLIK faturalarında alıcı altında geçerli bir PLAKA kimliği bulunmalıdır.</td><td>Alıcı kimliklerine tek ve geçerli <code>PLAKA</code> kaydı ekleyin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ faturalarında en az bir ESURaporID referansı bulunmalı; bütün ESURaporID değerleri geçerli GUID ve 20xx tarih içermelidir.</td><td>En az bir geçerli ESU rapor referansı gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJANLIK faturalarında her fatura kaleminde boş olmayan bir ESU seri numarası bulunmalıdır.</td><td>Her kalemde en az bir boş olmayan seri numarası gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJANLIK e-Arşiv raporu için bir fatura kalemi ve bu kalemde tek bir ESU seri numarası bulunmalıdır.</td><td>Belgeyi tek kalem ve tek seri numarasıyla hazırlayın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ ve SARJANLIK kalemlerinde hizmet adı, miktar/birim ve vergi detayı zorunludur.</td><td>Kalem adı, miktar, birim ve vergi kırılımını tamamlayın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ ve SARJANLIK kalemlerinde birim fiyat ve miktar en fazla 8 ondalık basamak içerebilir.</td><td>Miktar ve birim fiyatı en fazla sekiz ondalığa yuvarlayın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>SARJ ve SARJANLIK vergi tutarları en fazla 2, vergi oranı en fazla 3 ondalık basamak içerebilir.</td><td>Vergi tutarlarını iki, oranları üç ondalıkla sınırlandırın.</td></tr>
+<tr><td><code>SCHEME</code></td><td>YTB Türündeki faturalarda yalnız bir ContractDocumentReference bulunmalıdır.</td><td>Tek bir YTB referansı gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>YTB Türündeki faturalarda yalnız rakamlardan oluşan 6 haneli YTBNO bilgisi zorunludur.</td><td><code>SchemeId=YTBNO</code> referansını altı rakamla gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>Yatırım Teşvik Belgesi tarihi dolu olmalıdır.</td><td>YTB referansının <code>IssueDate</code> alanını doldurun.</td></tr>
+<tr><td><code>SCHEME</code></td><td>TEKNOLOJIDESTEK fatura tipinde alıcı kimlik numarası TCKN olmalıdır.</td><td>Alıcı kimliğini tek bir geçerli TCKN olarak gönderin.</td></tr>
+<tr><td><code>SCHEME</code></td><td>TEKNOLOJIDESTEK fatura tipinde yer alan tüm kalemler TELEFON veya TABLET_PC schemeID'li AdditionalItemIdentification içermelidir.</td><td>Her kaleme geçerli ürün sınıfı kimliği ekleyin.</td></tr>
+</tbody></table></div><!-- vbt-source: InvoiceValidation.ValidateEnergyInvoice; InvoiceValidation.ValidateYtbInvoice; InvoiceValidation.ValidateTeknolojiDestekInvoice -->
+
+<h2 id="gecis-kontrol-listesi">Geçiş kontrol listesi</h2>
+<ol>
+<li>Kullanılan yeni fatura tipleri enum/değer listelerine eklenmelidir.</li>
+<li>Her kullanılan senaryo için geçerli ve geçersiz oluşturma requestleri test edilmelidir.</li>
+<li>Belge ayrıntısı yeniden okunmalı; dönem, plaka, tüm ESU referansları, YTB referansı ve ürün sınıfı korunmalıdır.</li>
+<li>Okunan belge aynı bilgilerle güncellenmeli ve ikinci okumada değer kaybı olmadığı doğrulanmalıdır.</li>
+<li><code>SCHEME</code> cevaplarında mesajın loglandığı ve kullanıcıya gösterildiği kontrol edilmelidir.</li>
+</ol>
 <p>Resmî paket ve yürürlük duyuruları <a href="https://ebelge.gib.gov.tr/duyurular.html" rel="noopener noreferrer">GİB e-Belge duyuruları</a> sayfasında yayımlanır.</p>
 </section>
 <!-- vbt:pagination:start -->
