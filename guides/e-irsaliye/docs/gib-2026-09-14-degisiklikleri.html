@@ -109,8 +109,9 @@
 
 <h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
 <p>Portal e-İrsaliye oluşturma ekranı yerli/yabancı araç ve dorse kimlik tiplerini backend'in güncel parametre listelerinden yükler. Araç ve dorse aynı sabit şemaya zorlanmaz; seçilen değer request içinde kendi alanı ve kendi <code>SchemeId</code> değeriyle korunur.</p>
+<p>Eksik seçim listeleri görünür uyarıyla bildirilir. Araç plakası veya dorse girilmişse ilgili kimlik tipi listesi yüklenmeden Kaydet, Güncelle ve Önizle işlemleri tamamlanamaz. Temel belge seçeneklerinin eksikliği bütün senaryoları engeller. <strong>Parametreleri tekrar yükle</strong> işlemi mevcut belgeyi ve kalemleri korur.</p><!-- vbt-source: edonusum-frontend DespatchAdviceCreateComponent.GetParameters; scenarioParametersReady; SaveDocument -->
 <div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Portal davranışı</th><th>Gözlenebilir sonuç</th></tr></thead><tbody>
-<tr><td>IDİS sevkiyat numarası</td><td>Alan <code>SE-1234567</code> ve <code>ES-1234567</code> biçimlerini kabul eder.</td><td>Geçersiz önek veya yedi rakamdan farklı uzunlukta kayıt engellenir.</td></tr>
+<tr><td>IDİS sevkiyat numarası ve etiket</td><td>Sevkiyat alanı <code>SE-1234567</code> ve <code>ES-1234567</code>; etiket numarası iki büyük harf ve yedi rakam biçimini kabul eder.</td><td>Geçersiz değer Kaydet, Güncelle ve Önizle öncesinde uyarıyla engellenir; sunucu doğrulaması da uygulanır.</td></tr>
 <tr><td>Araç plakası</td><td>Yerli ve yabancı araç tipleri tek seçim listesinde gösterilir.</td><td>Seçim <code>RoadTransport.LicensePlateId.SchemeId</code> alanına yazılır.</td></tr>
 <tr><td>Dorse kimliği</td><td>Her dorse kaydı yerli/yabancı dorse tiplerinden biriyle ayrı eklenir.</td><td>Her kayıt kendi <code>TransportEquipment.Id.SchemeId</code> ve değerini korur.</td></tr>
 <tr><td>Belge güncelleme</td><td>Mevcut araç ve dorse kimlik tipleri formda yeniden seçili gösterilir.</td><td>Kayıtlı yabancı veya yerli şema varsayılan bir dorse koduyla ezilmez.</td></tr>
