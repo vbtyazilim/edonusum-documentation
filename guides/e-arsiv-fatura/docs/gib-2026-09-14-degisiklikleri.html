@@ -99,6 +99,7 @@
 
 <h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
 <p>Portal fatura oluşturma ekranı profil, fatura tipi ve teknoloji destek ürün sınıflarını backend'in güncel parametre listelerinden yükler. Seçenek listeleri backend ile birlikte güncellenirken senaryoya özgü zorunlu alanlar kayıt öncesinde ayrıca doğrulanır.</p>
+<p>Temel seçenekler yüklenemediğinde Kaydet, Güncelle ve Önizle işlemleri engellenir ve uyarı gösterilir. Yalnız teknoloji destek ürün sınıfları eksikse ilgili fatura tipi engellenir; normal faturalar kullanılabilir kalır. <strong>Parametreleri tekrar yükle</strong> işlemi girilen belge ve kalemleri sıfırlamaz.</p><!-- vbt-source: edonusum-frontend InvoiceCreateComponent.GetParameters; scenarioParametersReady; SaveDocument -->
 <div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Portal davranışı</th><th>Kayıt öncesi kontrol</th></tr></thead><tbody>
 <tr><td><code>SARJ</code></td><td>Dönem başlangıç/bitiş saatleri, alıcı plakası ve <code>ESURaporID</code> ek belge bilgisi alınır.</td><td>Geçerli dönem, tek plaka ve GUID/tarih taşıyan en az bir ESU rapor referansı aranır.</td></tr>
 <tr><td><code>SARJANLIK</code></td><td>Dönem ve plaka alanları açılır; kalemde ESU seri numarası girilir.</td><td>e-Arşiv Faturada tek kalem ve tek boş olmayan seri numarası aranır.</td></tr>

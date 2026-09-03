@@ -109,6 +109,7 @@
 
 <h2 id="portal-kullanicilari-icin">Portal kullanıcıları için</h2>
 <p>Portal fatura oluşturma ekranı profil ve fatura tipi seçimlerini backend'in güncel parametre listelerinden yükler. Böylece seçim listesine eklenecek yeni bir kod, mevcut biçim ve iş kuralı sınıfına uyduğu sürece portal içinde ikinci bir sabit liste güncellemesi gerektirmez.</p>
+<p>Senaryo, fatura tipi, birim veya para birimi seçenekleri yüklenemediğinde ekranda uyarı gösterilir; Kaydet, Güncelle ve Önizle işlemleri listeler tamamlanana kadar kullanılamaz. <strong>Parametreleri tekrar yükle</strong> işlemi girilen belge ve kalemleri korur. Seçenekler hâlâ eksikse destek ekibine başvurulmalıdır.</p><!-- vbt-source: edonusum-frontend InvoiceCreateComponent.GetParameters; SaveDocument; ParameterService.LoadParameters -->
 <div class="table-wrapper"><table><thead><tr><th>Senaryo</th><th>Portal davranışı</th><th>Kayıt öncesi kontrol</th></tr></thead><tbody>
 <tr><td><code>ENERJI + SARJ</code></td><td>Dönem başlangıç/bitiş saatleri, alıcı plakası ve <code>ESURaporID</code> ek belge bilgisi alınır.</td><td>Geçerli dönem, tek plaka ve GUID/tarih taşıyan en az bir ESU rapor referansı aranır.</td></tr>
 <tr><td><code>ENERJI + SARJANLIK</code></td><td>Dönem ve plaka alanları açılır; her kalemde ESU seri numarası girilir.</td><td>Her kalemde seri numarası bulunmalıdır.</td></tr>
