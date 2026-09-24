@@ -53,6 +53,18 @@ node tools\build-site-search-index.js
 
 Üretilen `assets/site-search-index.js` dosyası elle düzenlenmez.
 
+## Dokümantasyon yaşam döngüsü
+
+GİB veya ürün değişikliklerinin duyurudan yürürlükteki sözleşmeye nasıl
+taşınacağı, hangi kaynaklardan doğrulanacağı ve sürüm notu ile ürün
+changelog'unun nasıl ayrılacağı
+[Dokümantasyon Yaşam Döngüsü](DOCUMENTATION-LIFECYCLE.md) belgesinde tanımlıdır.
+
+Gelecek değişiklik tarihi geçtiği için kendiliğinden yürürlükte kabul edilmez.
+Önce resmi kaynak, yayımlanan uygulama davranışı ve ilgili kod sözleşmesi teyit
+edilir. Ardından güncel rehberler, sürüm notu, ürün changelog'ları, eski bağlantı
+köprüleri, arama indeksi ve sitemap aynı geçiş kapsamında ele alınır.
+
 ## Destek ve iletişim
 
 Destek e-postası, destek telefonu, destek portalı, test portalı ve kurumsal site bağlantıları [Çözüm Merkezi](iletisim.html) sayfasında yer alır.
