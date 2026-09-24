@@ -1,8 +1,10 @@
 # Dokümantasyon Repo Talimatları
 
 Bu repo üzerinde çalışan agent, içerik üretmeden veya güncellemeden önce
-`DOCUMENTATION-LIFECYCLE.md` dosyasını ve aktif Oxara.DevKit
-`standards/guide-vbt.md` standardını okumalıdır.
+`DOCUMENTATION-LIFECYCLE.md` dosyasını ve private
+`vbtyazilim/edonusum-documentation-template` reposundaki
+`standards/guide.md` standardını okumalıdır. Codex işlerinde `$vbt-edoc-kit`
+becerisi kullanılır.
 
 ## Zorunlu çalışma kuralları
 
@@ -33,6 +35,10 @@ Bu repo üzerinde çalışan agent, içerik üretmeden veya güncellemeden önce
    sayılmaz.
 10. Commit, push, pull request, merge veya yayın işlemi ayrıca açıkça istenmeden
     yapılmaz.
+11. VBT dokümantasyon çalışmasında kişisel marka kitleri, harici template
+    kaynakları veya kullanıcıya özel sabit yollar kullanılmaz. Kit
+    `VBT_EDOC_KIT_HOME`, hedef repo `VBT_EDOC_DOCUMENTATION_HOME` ile bulunabilir;
+    araç hedefini ayrıca `--site-root` ile kabul eder.
 
 ## Tamamlama kapısı
 
