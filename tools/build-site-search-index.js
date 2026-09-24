@@ -3,6 +3,7 @@ const path = require('path');
 
 const siteRoot = path.resolve(__dirname, '..');
 const guidesRoot = path.join(siteRoot, 'guides');
+const releaseNotesRoot = path.join(siteRoot, 'surum-notlari');
 const outputPath = path.join(siteRoot, 'assets', 'site-search-index.js');
 
 function decodeHtml(value) {
@@ -84,6 +85,27 @@ for (const directory of guideDirectories) {
                 sectionType: section.label || 'Rehber'
             });
         }
+    }
+}
+
+if (fs.existsSync(releaseNotesRoot)) {
+    const releaseFiles = fs.readdirSync(releaseNotesRoot)
+        .filter((fileName) => fileName.endsWith('.html'))
+        .sort((left, right) => left.localeCompare(right, 'tr'));
+
+    for (const fileName of releaseFiles) {
+        const html = fs.readFileSync(path.join(releaseNotesRoot, fileName), 'utf8');
+        const heading = collectMatches(html, /<h1[^>]*>([\s\S]*?)<\/h1>/gi)[0];
+        const descriptionMatch = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
+        const title = heading || 'Sürüm Notları';
+
+        items.push({
+            title,
+            text: descriptionMatch ? decodeHtml(descriptionMatch[1]) : '',
+            keywords: unique(['sürüm notu', 'değişiklik duyurusu', ...pageKeywords(html)]).join(' '),
+            url: fileName === 'index.html' ? 'surum-notlari/index.html' : `surum-notlari/${fileName}`,
+            sectionType: 'Sürüm Notu'
+        });
     }
 }
 
