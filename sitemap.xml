@@ -13,7 +13,6 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/portal-api-endpoint-referansi.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/request-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/request-ubl-xml-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/gib-2026-09-14-degisiklikleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/sss.html</loc></url>
@@ -27,7 +26,6 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/portal-api-endpoint-referansi.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/request-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/request-ubl-xml-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/gib-2026-09-14-degisiklikleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/sss.html</loc></url>
@@ -40,7 +38,6 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/entegrator-api-endpoint-referansi.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/request-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/request-ubl-xml-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/gib-2026-09-14-degisiklikleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/sss.html</loc></url>
@@ -57,7 +54,6 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/portal-api-endpoint-referansi.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/request-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/request-belge-gib-raporu-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/gib-2026-09-14-degisiklikleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/sss.html</loc></url>
@@ -71,7 +67,6 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/portal-api-endpoint-referansi.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/request-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/request-ubl-xml-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/gib-2026-09-14-degisiklikleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/sss.html</loc></url>
@@ -93,7 +88,6 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/docs/gelen-fatura-portal-api.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/docs/gelen-fatura-islem-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/docs/gelen-fatura-ubl-api-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/docs/gib-2026-09-14-degisiklikleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-fatura/docs/sss.html</loc></url>
@@ -115,7 +109,6 @@
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gelen-irsaliye-portal-api.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gelen-irsaliye-islem-ornekleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gelen-irsaliye-ubl-api-mapping.html</loc></url>
-  <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/gib-2026-09-14-degisiklikleri.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/teknik-referans.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/changelog.html</loc></url>
   <url><loc>https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/sss.html</loc></url>
