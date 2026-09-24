@@ -152,13 +152,16 @@ Repo kökünde arama indeksi yeniden üretilir:
 node tools\build-site-search-index.js
 ```
 
-Oxara.DevKit içinden aşağıdaki kontroller çalıştırılır:
+`edonusum-documentation-template` repo kökünden aşağıdaki kontroller çalıştırılır.
+Hedef repo `VBT_EDOC_DOCUMENTATION_HOME` ile veya her komutta `--site-root`
+parametresiyle belirtilir:
 
 ```powershell
-node tools\guide-vbt\src\cli.js sync-guide all --check
-node tools\guide-vbt\src\cli.js audit all
-node tools\guide-vbt\src\cli.js quality all
-node tools\guide-vbt\test\guide-renderer.test.js
+$env:VBT_EDOC_DOCUMENTATION_HOME = 'C:\path\to\edonusum-documentation'
+node tools\vbt-edoc-kit\src\cli.js sync-guide all --check
+node tools\vbt-edoc-kit\src\cli.js audit all
+node tools\vbt-edoc-kit\src\cli.js quality all
+node tools\vbt-edoc-kit\test\guide-renderer.test.js
 ```
 
 Bunlara ek olarak:
@@ -188,7 +191,7 @@ Kaynak incelemesi ve render edilmiş sayfa kontrolü ayrı zorunlu kapılardır.
 - her etkilenen ürün changelog'u günceldir;
 - eski public URL'ler çalışan köprü olarak korunmuştur;
 - yayımlanmamış özellikler aktif kayıtlara karışmamıştır;
-- arama, sitemap, link, anchor, responsive görünüm ve DevKit kontrolleri
+- arama, sitemap, link, anchor, responsive görünüm ve VBT e-Doc Kit kontrolleri
   geçmiştir;
 - çalıştırılmayan runtime kontrolleri sonuç raporunda açıkça belirtilmiştir.
 
