@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Örnekleri — e-Gider Pusulası Entegrasyon Rehberi</title>
-<meta name="description" content="SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.">
+<meta name="description" content="SATIS ve IADE senaryolarına uyarlanacak tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri ve alan açıklamaları.">
 <meta name="author" content="VBT Yazılım">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/request-ornekleri.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Request Örnekleri — e-Gider Pusulası Entegrasyon Rehberi">
-<meta property="og:description" content="SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.">
+<meta property="og:description" content="SATIS ve IADE senaryolarına uyarlanacak tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri ve alan açıklamaları.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-gider-pusulasi/docs/request-ornekleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Request Örnekleri — e-Gider Pusulası Entegrasyon Rehberi">
-<meta name="twitter:description" content="SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.">
+<meta name="twitter:description" content="SATIS ve IADE senaryolarına uyarlanacak tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri ve alan açıklamaları.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -77,7 +77,7 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">SATIS ve IADE senaryolarına uyarlanacak tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri ve alan açıklamaları.</p></header>
 <!-- vbt:article-header:end -->
 <section id="section-request-ornekleri">
 <div class="callout callout-warning"><b>Şablonları kendi verinize uyarlayın:</b> ExternalId, taraf kimlikleri, telefon, sağlayıcı adı ve VKN, kargo bilgileri, tarihler ve belge referansları örnek değerlerdir. Bir request gönderilmeden önce bütün değerler gerçek işlem ve seçilen senaryoyla eşleştirilmelidir.</div>
@@ -109,10 +109,9 @@
             <!-- Ex 1: S1 -->
             <h3 id="ex1">Örnek 1: SATIS — Normal Satın Alma, SMS ile</h3>
 <p>Request gövdesi, SATIS — Normal Satın Alma, SMS ile akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S1</span></summary>
-                <div class="example-body">
+
                     <p>KDV mükellefi olmayan gerçek kişiden hizmet alımı. <code>VerificationMethod=SMS</code>.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-001",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "SATIS",
@@ -178,16 +177,14 @@
                             }
                         ]
                     }</code></pre>
-                </div>
-            </details>
+
 
             <!-- Ex 2: S3 — Yabancı SATIS (türetildi) -->
             <h3 id="ex2">Örnek 2: SATIS — Yabancı Uyruklu, SMS ile</h3>
 <p>Request gövdesi, SATIS — Yabancı Uyruklu, SMS ile akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">S3</span></summary>
-                <div class="example-body">
+
                     <p>Yabancı uyruklu kişiden hizmet alımı. <code>SchemeId = PASAPORTNO</code>.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-002",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "SATIS",
@@ -253,16 +250,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-info"><b>💡 Fark:</b> SchemeId = <code>PASAPORTNO</code>, Value = ICAO pasaport no (max 9 karakter).</div>
-                </div>
-            </details>
+
 
             <!-- Ex 3: I1 -->
             <h3 id="ex3">Örnek 3: IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu</h3>
 <p>Request gövdesi, IADE — Yüz Yüze, e-Arşiv Fatura, İade Kodu akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I1</span></summary>
-                <div class="example-body">
+
                     <p>Müşteri kasada, iade kodu doğrulanmış. <code>VerificationMethod=IADEKODU</code>.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-041",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -333,16 +328,14 @@
                             }
                         ]
                     }</code></pre>
-                </div>
-            </details>
+
 
             <!-- Ex 4: I2 — Satış fişi (türetildi) -->
             <h3 id="ex4">Örnek 4: IADE — Yüz Yüze, Satış Fişi ile</h3>
 <p>Request gövdesi, IADE — Yüz Yüze, Satış Fişi ile akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I2</span></summary>
-                <div class="example-body">
+
                     <p>Satış fişine karşılık yüz yüze iade. Örnek 3 ile aynı, sadece <code>ReturnedDocumentReference</code> farklı.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-044",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -414,16 +407,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-info"><b>💡 Fark:</b> <code>DocumentType = "SATIS_FISI"</code>, DocumentNumber = fiş numarası.</div>
-                </div>
-            </details>
+
 
             <!-- Ex 5: I3 — Belgesiz (türetildi) -->
             <h3 id="ex5">Örnek 5: IADE — Yüz Yüze, Belgesiz</h3>
 <p>Request gövdesi, IADE — Yüz Yüze, Belgesiz akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I3</span></summary>
-                <div class="example-body">
+
                     <p>Karşılığında belge yoktur. <code>DocumentNumber</code> boş bırakılır; T.C. vatandaşı için gerçek TCKN, yabancı uyruklu kişi için gerçek PASAPORTNO gönderilmelidir.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-045",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -494,16 +485,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-warning"><b>⚠️ Fark:</b> <code>DocumentNumber</code> alanı yoktur. BELGESIZ iadede T.C. vatandaşı için gerçek TCKN, yabancı uyruklu kişi için gerçek PASAPORTNO gönderilmelidir; kimliğin doğruluğu entegratörün sorumluluğundadır.</div>
-                </div>
-            </details>
+
 
             <!-- Ex 6: I4 — Yabancı yüz yüze (türetildi) -->
             <h3 id="ex6">Örnek 6: IADE — Yüz Yüze, Yabancı Uyruklu</h3>
 <p>Request gövdesi, IADE — Yüz Yüze, Yabancı Uyruklu akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I4</span></summary>
-                <div class="example-body">
+
                     <p>Yabancı uyruklu müşteri yüz yüze iade yapıyor. <code>SchemeId = PASAPORTNO</code>.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-046",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -575,16 +564,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-info"><b>💡 Fark:</b> SchemeId = <code>PASAPORTNO</code>. Kargo/vekalet yok, yabancı uyruklu yüz yüze iade.</div>
-                </div>
-            </details>
+
 
             <!-- Ex 7: I5 — Kargo, vekalet yok -->
             <h3 id="ex7">Örnek 7: IADE — Kargo, Vekalet Yok</h3>
 <p>Request gövdesi, IADE — Kargo, Vekalet Yok akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I5</span></summary>
-                <div class="example-body">
+
                     <p>Kargo ile iade, vekil yok. <code>VerificationMethod=IADEKODU</code> + <code>CargoCompanyCode</code>.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-043",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -657,16 +644,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-info"><b>💡 Fark:</b> <code>CargoCompanyCode</code> dolu, <code>DelegateReceiver</code> yok. Kargo kuralları geçerli: <code>VerificationMethod=IADEKODU</code> zorunlu.</div>
-                </div>
-            </details>
+
 
             <!-- Ex 8: I6 — Kargo + Yabancı (türetildi) -->
             <h3 id="ex8">Örnek 8: IADE — Kargo, Yabancı Uyruklu</h3>
 <p>Request gövdesi, IADE — Kargo, Yabancı Uyruklu akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I6</span></summary>
-                <div class="example-body">
+
                     <p>Kargo ile iade, alıcı yabancı. Kargo kuralları uyruğa bakılmaksızın geçerli.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-047",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -739,16 +724,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-info"><b>💡 Fark:</b> SchemeId = <code>PASAPORTNO</code> + <code>CargoCompanyCode</code> dolu. Kargo kuralı uyruğa bakmaz.</div>
-                </div>
-            </details>
+
 
             <!-- Ex 9: I8 — Vekalet, kargo yok -->
             <h3 id="ex9">Örnek 9: IADE — Vekalet, Kargo Yok</h3>
 <p>Request gövdesi, IADE — Vekalet, Kargo Yok akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I8</span></summary>
-                <div class="example-body">
+
                     <p>Yüz yüze vekalet ile iade. <code>DelegateReceiver</code> dolu, <code>CargoCompanyCode</code> yok.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-039",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -825,16 +808,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-info"><b>💡 Fark:</b> <code>DelegateReceiver</code> dolu, <code>CargoCompanyCode</code> yok. VerificationInfo vekilin telefonuna yönlendirilir.</div>
-                </div>
-            </details>
+
 
             <!-- Ex 10: I9 — Vekalet + Yabancı vekil (türetildi) -->
             <h3 id="ex10">Örnek 10: IADE — Vekalet, Yabancı Vekil</h3>
 <p>Request gövdesi, IADE — Vekalet, Yabancı Vekil akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I9</span></summary>
-                <div class="example-body">
+
                     <p>Orijinal alıcı TC vatandaşı, vekil yabancı uyruklu. Yüz yüze.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-048",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -911,16 +892,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-info"><b>💡 Fark:</b> <code>DelegateReceiver.IdentificationType = "PASAPORTNO"</code>. Vekil yabancı, ICAO max 9 karakter. AccountingCustomerParty değişmiyor (orijinal alıcı).</div>
-                </div>
-            </details>
+
 
             <!-- Ex 11: I10 — Kargo + Vekalet + e-Arşiv -->
             <h3 id="ex11">Örnek 11: IADE — Kargo + Vekalet + e-Arşiv Fatura</h3>
 <p>Request gövdesi, IADE — Kargo + Vekalet + e-Arşiv Fatura akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10</span></summary>
-                <div class="example-body">
+
                     <p>En karmaşık kombinasyon: kargo + vekil + e-arşiv fatura.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-042",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -998,16 +977,14 @@
                         ]
                     }</code></pre>
                     <div class="callout callout-warning"><b>⚠️</b> Kargo + vekalet birlikte: <code>VerificationMethod=IADEKODU</code> zorunludur. <code>DelegateReceiver</code> doğrulama yöntemi taşımaz; yalnız vekilin kimlik ve ad belge oluşturma anında kaydedilen bilgisini taşır.</div>
-                </div>
-            </details>
+
 
             <!-- Ex 12: I10 varyant — Kargo + Vekalet + Belgesiz -->
             <h3 id="ex12">Örnek 12: IADE — Kargo + Vekalet + Belgesiz</h3>
 <p>Request gövdesi, IADE — Kargo + Vekalet + Belgesiz akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
-                <div class="example-body">
+
                     <p>Kargo + vekil + belgesiz iade. <code>DocumentNumber</code> boş bırakılır; alıcı için vatandaşlığa uygun gerçek TCKN veya PASAPORTNO gönderilmelidir.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-043",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -1083,16 +1060,14 @@
                             }
                         ]
                     }</code></pre>
-                </div>
-            </details>
+
 
             <!-- Ex 13: I10 varyant — Kargo + Vekalet + Satış Fişi -->
             <h3 id="ex13">Örnek 13: IADE — Kargo + Vekalet + Satış Fişi</h3>
 <p>Request gövdesi, IADE — Kargo + Vekalet + Satış Fişi akışını ayırt eden alanları öne çıkarır.</p>
-            <details class="example-details"><summary>JSON örneğini görüntüle <span class="badge-required" style="margin-left:.5rem">I10 varyant</span></summary>
-                <div class="example-body">
+
                     <p>Kargo + vekil + satış fişi referansı ile iade.</p>
-                    <pre><code class="language-json" data-request-kind="invoice">{
+                    <p class="request-contract"><b>Endpoint:</b> <code>POST /api/ExpenseVoucherApi/AddOutgoingExpenseVoucher</code><br><b>Body:</b> <code>OutgoingExpenseVoucherRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingExpenseVoucher" data-request-model="OutgoingExpenseVoucherRequestModel">{
                         "ExpenseVoucherExternalId": "ERP-2026-IADE-033",
                         "ProfileId": "GIDERPUSULASI",
                         "ExpenseVoucherTypeCode": "IADE",
@@ -1169,8 +1144,7 @@
                             }
                         ]
                     }</code></pre>
-                </div>
-            </details>
+
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
@@ -1186,7 +1160,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="SATIS, IADE, kargo, vekalet, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal PersonParty doğrulama","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"promptText":"Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.","externalItems":[{"title":"e-Gider Pusulası Nedir?","text":"e-Gider Pusulası'nın kapsamı, belge tipleri, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Gider Pusulası CreditNote","url":"egider-pusulasi-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"SATIS ve IADE akışları için karar ağacı, yüz yüze, kargo ve vekalet senaryoları.","keywords":"Senaryolar SATIS IADE kargo vekalet","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Portal doğrulama akışları, kullanıcı durumları, gerçek kişi cari seçimi, validasyon ve iptal davranışları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın belge oluşturma, doğrulama ve gerçek kişi cari akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal PersonParty doğrulama","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"SATIS ve IADE senaryolarına uyarlanacak tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri ve alan açıklamaları.","keywords":"Örnekler SATIS IADE JSON endpoint request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, kullanıcı durumları, doğrulama ve PersonParty hata kodları ile validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Gider Pusulası rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, doğrulama yöntemleri, iade, API ve hata yönetimi hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>

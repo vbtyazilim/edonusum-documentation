@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Örnekleri — e-Arşiv Fatura Entegrasyon Rehberi</title>
-<meta name="description" content="Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.">
+<meta name="description" content="Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.">
 <meta name="author" content="VBT Yazılım">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/request-ornekleri.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Request Örnekleri — e-Arşiv Fatura Entegrasyon Rehberi">
-<meta property="og:description" content="Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.">
+<meta property="og:description" content="Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-arsiv-fatura/docs/request-ornekleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Request Örnekleri — e-Arşiv Fatura Entegrasyon Rehberi">
-<meta name="twitter:description" content="Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.">
+<meta name="twitter:description" content="Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -69,7 +69,7 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.</p></header>
 <!-- vbt:article-header:end -->
 <section id="request-ornekleri">
 <h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
@@ -78,7 +78,7 @@
 <div class="callout callout-info"><b>Özel fatura tipleri:</b> <code>SARJ</code>, <code>SARJANLIK</code>, <code>YTBTEVKIFAT</code>, <code>YTBTEVKIFATIADE</code> ve <code>TEKNOLOJIDESTEK</code> için zorunlu alanları <a href="kullanim-senaryolari.html#h-ozel-fatura-tipleri">Kullanım Senaryoları</a>, alan karşılıklarını <a href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a> sayfasından uygulayın; bu tipler yalnız temel örnek değiştirilerek gönderilmemelidir.</div>
 <h3 id="h-ex1">Örnek 1 — Normal Satış</h3>
 <p>Ek alan gerektirmeyen temel e-Arşiv Fatura akışı; alıcı GİB e-Fatura mükellefi değildir.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Tek kalemli, KDV'li standart bir satış.</p><pre><code class="language-json" data-request-kind="invoice">{
+<p>Tek kalemli, KDV'li standart bir satış.</p><div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoice</code><br><b>Body:</b> <code>OutgoingInvoiceRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingInvoice" data-request-model="OutgoingInvoiceRequestModel" data-request-pair="addoutgoinginvoice-1">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000145",
   "IssueDate": "2026-03-15T14:30:00",
@@ -143,10 +143,102 @@
     "TaxInclusiveAmount": 118,
     "PayableAmount": 118
   }
-}</code></pre></div></details>
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml" hidden><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoiceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre class="code-scroll"><code class="language-xml" data-request-kind="invoice" data-request-pair="addoutgoinginvoice-1" data-request-endpoint="AddOutgoingInvoiceByXml" data-request-model="XmlRequestModel">&lt;OutgoingInvoiceRequestModel&gt;
+  &lt;Id&gt;0&lt;/Id&gt;
+  &lt;InvoiceExternalId&gt;ERP-2026-000145&lt;/InvoiceExternalId&gt;
+  &lt;ProfileId&gt;EARSIVFATURA&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-03-15T14:30:00&lt;/IssueDate&gt;
+  &lt;LineCountNumeric&gt;0&lt;/LineCountNumeric&gt;
+  &lt;AccountingSupplierParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;VKN&lt;/SchemeId&gt;
+          &lt;Value&gt;1234567890&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;PartyName&gt;Satıcı Ticaret A.Ş.&lt;/PartyName&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingSupplierParty&gt;
+  &lt;AccountingCustomerParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;TCKN&lt;/SchemeId&gt;
+          &lt;Value&gt;12345678901&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;Person&gt;
+        &lt;FirstName&gt;Alıcı&lt;/FirstName&gt;
+        &lt;FamilyName&gt;Adı Soyadı&lt;/FamilyName&gt;
+      &lt;/Person&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingCustomerParty&gt;
+  &lt;TaxTotal&gt;
+    &lt;TaxTotalRequestModel&gt;
+      &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+      &lt;TaxSubtotal&gt;
+        &lt;TaxSubtotalRequestModel&gt;
+          &lt;TaxableAmount&gt;100&lt;/TaxableAmount&gt;
+          &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+          &lt;CalculationSequenceNumeric&gt;0&lt;/CalculationSequenceNumeric&gt;
+          &lt;TransactionCurrencyTaxAmount&gt;0&lt;/TransactionCurrencyTaxAmount&gt;
+          &lt;Percent&gt;18&lt;/Percent&gt;
+          &lt;PerUnitAmount&gt;0&lt;/PerUnitAmount&gt;
+          &lt;TaxCategory&gt;
+            &lt;TaxScheme&gt;
+              &lt;Name&gt;KDV&lt;/Name&gt;
+              &lt;TaxTypeCode&gt;0015&lt;/TaxTypeCode&gt;
+            &lt;/TaxScheme&gt;
+          &lt;/TaxCategory&gt;
+        &lt;/TaxSubtotalRequestModel&gt;
+      &lt;/TaxSubtotal&gt;
+    &lt;/TaxTotalRequestModel&gt;
+  &lt;/TaxTotal&gt;
+  &lt;LegalMonetaryTotal&gt;
+    &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+    &lt;TaxExclusiveAmount&gt;100&lt;/TaxExclusiveAmount&gt;
+    &lt;TaxInclusiveAmount&gt;118&lt;/TaxInclusiveAmount&gt;
+    &lt;AllowanceTotalAmount&gt;0&lt;/AllowanceTotalAmount&gt;
+    &lt;ChargeTotalAmount&gt;0&lt;/ChargeTotalAmount&gt;
+    &lt;PayableRoundingAmount&gt;0&lt;/PayableRoundingAmount&gt;
+    &lt;PayableAmount&gt;118&lt;/PayableAmount&gt;
+  &lt;/LegalMonetaryTotal&gt;
+  &lt;InvoiceLine&gt;
+    &lt;InvoiceLineRequestModel&gt;
+      &lt;Id&gt;1&lt;/Id&gt;
+      &lt;InvoicedQuantity&gt;
+        &lt;UnitCode&gt;C62&lt;/UnitCode&gt;
+        &lt;Value&gt;2&lt;/Value&gt;
+      &lt;/InvoicedQuantity&gt;
+      &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+      &lt;Item&gt;
+        &lt;Name&gt;Kırtasiye Malzemesi&lt;/Name&gt;
+      &lt;/Item&gt;
+      &lt;Price&gt;50&lt;/Price&gt;
+    &lt;/InvoiceLineRequestModel&gt;
+  &lt;/InvoiceLine&gt;
+  &lt;DatePosted p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;TryCount&gt;0&lt;/TryCount&gt;
+  &lt;PutInvoiceNumberIntoQrCode p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;PartyGroupId&gt;0&lt;/PartyGroupId&gt;
+  &lt;IsOocumentNumberIncluded p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+&lt;/OutgoingInvoiceRequestModel&gt;</code></pre></div></div>
 <h3 id="h-ex2">Örnek 2 — İnternet Satışı</h3>
 <p>Ortak alanlara (taraflar, satırlar, toplamlar — Örnek 1'deki gibi) ek olarak <code>InternetPayment</code> ve zorunlu <code>Note</code> ibaresi eklenir.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Mal ve hizmetlerin sipariş/satın alma sürecinin tamamı internet üzerinden yapıldığı satış.</p><pre><code class="language-json" data-request-kind="invoice">{
+<p>Mal ve hizmetlerin sipariş/satın alma sürecinin tamamı internet üzerinden yapıldığı satış.</p><div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoice</code><br><b>Body:</b> <code>OutgoingInvoiceRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingInvoice" data-request-model="OutgoingInvoiceRequestModel" data-request-pair="addoutgoinginvoice-2">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000146",
   "IssueDate": "2026-03-15T10:00:00",
@@ -223,11 +315,115 @@
     "GonderimTarihi": "2026-03-16T00:00:00",
     "Gonderilen": "Alıcı Adı Soyadı"
   }
-}</code></pre></div></details>
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml" hidden><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoiceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre class="code-scroll"><code class="language-xml" data-request-kind="invoice" data-request-pair="addoutgoinginvoice-2" data-request-endpoint="AddOutgoingInvoiceByXml" data-request-model="XmlRequestModel">&lt;OutgoingInvoiceRequestModel&gt;
+  &lt;Id&gt;0&lt;/Id&gt;
+  &lt;InvoiceExternalId&gt;ERP-2026-000146&lt;/InvoiceExternalId&gt;
+  &lt;ProfileId&gt;EARSIVFATURA&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-03-15T10:00:00&lt;/IssueDate&gt;
+  &lt;LineCountNumeric&gt;0&lt;/LineCountNumeric&gt;
+  &lt;Note&gt;
+    &lt;string&gt;Bu satış internet &#252;zerinden yapılmıştır.&lt;/string&gt;
+  &lt;/Note&gt;
+  &lt;AccountingSupplierParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;VKN&lt;/SchemeId&gt;
+          &lt;Value&gt;1234567890&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;PartyName&gt;Satıcı Ticaret A.Ş.&lt;/PartyName&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingSupplierParty&gt;
+  &lt;AccountingCustomerParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;TCKN&lt;/SchemeId&gt;
+          &lt;Value&gt;12345678901&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;Person&gt;
+        &lt;FirstName&gt;Alıcı&lt;/FirstName&gt;
+        &lt;FamilyName&gt;Adı Soyadı&lt;/FamilyName&gt;
+      &lt;/Person&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingCustomerParty&gt;
+  &lt;TaxTotal&gt;
+    &lt;TaxTotalRequestModel&gt;
+      &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+      &lt;TaxSubtotal&gt;
+        &lt;TaxSubtotalRequestModel&gt;
+          &lt;TaxableAmount&gt;100&lt;/TaxableAmount&gt;
+          &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+          &lt;CalculationSequenceNumeric&gt;0&lt;/CalculationSequenceNumeric&gt;
+          &lt;TransactionCurrencyTaxAmount&gt;0&lt;/TransactionCurrencyTaxAmount&gt;
+          &lt;Percent&gt;18&lt;/Percent&gt;
+          &lt;PerUnitAmount&gt;0&lt;/PerUnitAmount&gt;
+          &lt;TaxCategory&gt;
+            &lt;TaxScheme&gt;
+              &lt;Name&gt;KDV&lt;/Name&gt;
+              &lt;TaxTypeCode&gt;0015&lt;/TaxTypeCode&gt;
+            &lt;/TaxScheme&gt;
+          &lt;/TaxCategory&gt;
+        &lt;/TaxSubtotalRequestModel&gt;
+      &lt;/TaxSubtotal&gt;
+    &lt;/TaxTotalRequestModel&gt;
+  &lt;/TaxTotal&gt;
+  &lt;LegalMonetaryTotal&gt;
+    &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+    &lt;TaxExclusiveAmount&gt;100&lt;/TaxExclusiveAmount&gt;
+    &lt;TaxInclusiveAmount&gt;118&lt;/TaxInclusiveAmount&gt;
+    &lt;AllowanceTotalAmount&gt;0&lt;/AllowanceTotalAmount&gt;
+    &lt;ChargeTotalAmount&gt;0&lt;/ChargeTotalAmount&gt;
+    &lt;PayableRoundingAmount&gt;0&lt;/PayableRoundingAmount&gt;
+    &lt;PayableAmount&gt;118&lt;/PayableAmount&gt;
+  &lt;/LegalMonetaryTotal&gt;
+  &lt;InvoiceLine&gt;
+    &lt;InvoiceLineRequestModel&gt;
+      &lt;Id&gt;1&lt;/Id&gt;
+      &lt;InvoicedQuantity&gt;
+        &lt;UnitCode&gt;C62&lt;/UnitCode&gt;
+        &lt;Value&gt;2&lt;/Value&gt;
+      &lt;/InvoicedQuantity&gt;
+      &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+      &lt;Item&gt;
+        &lt;Name&gt;Kırtasiye Malzemesi&lt;/Name&gt;
+      &lt;/Item&gt;
+      &lt;Price&gt;50&lt;/Price&gt;
+    &lt;/InvoiceLineRequestModel&gt;
+  &lt;/InvoiceLine&gt;
+  &lt;InternetPayment&gt;
+    &lt;WebAdresi&gt;https://magaza.example.com&lt;/WebAdresi&gt;
+    &lt;OdemeSekli&gt;KREDIKARTI&lt;/OdemeSekli&gt;
+    &lt;OdemeTarihi&gt;2026-03-14T00:00:00&lt;/OdemeTarihi&gt;
+    &lt;GonderiTasiyanVknTckn&gt;1234567890&lt;/GonderiTasiyanVknTckn&gt;
+    &lt;GonderiTasiyanUnvan&gt;Kargo Firması A.Ş.&lt;/GonderiTasiyanUnvan&gt;
+    &lt;GonderimTarihi&gt;2026-03-16T00:00:00&lt;/GonderimTarihi&gt;
+    &lt;Gonderilen&gt;Alıcı Adı Soyadı&lt;/Gonderilen&gt;
+  &lt;/InternetPayment&gt;
+  &lt;DatePosted p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;TryCount&gt;0&lt;/TryCount&gt;
+  &lt;PutInvoiceNumberIntoQrCode p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;PartyGroupId&gt;0&lt;/PartyGroupId&gt;
+  &lt;IsOocumentNumberIncluded p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+&lt;/OutgoingInvoiceRequestModel&gt;</code></pre></div></div>
 <div class="callout callout-info"><b>Koşullu alanlar:</b> <code>OdemeSekli=ODEMEARACISI</code> ise <code>OdemeAracisiAdi</code>, <code>OdemeSekli=DIGER</code> ise <code>OdemeSekliAciklama</code> ayrıca zorunlu hâle gelir (<code>INV0036</code>/<code>INV0037</code>). <code>OdemeSekli</code> değeri GİB kod listesinde tanımlı olmalıdır (<code>INV0168</code>).</div>
 <h3 id="h-ex3">Örnek 3 — ÖKC ile Birlikte</h3>
 <p>ÖKC doğrulaması <code>DocumentTypeCode=OKCBF</code> ile tetiklenir; bu durumda aşağıdaki tüm alt alanlar zorunludur (bkz. <a href="teknik-referans.html#h-validasyon-referanslari">Teknik Referans — Validasyon Referansları</a>).</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Yeni nesil ÖKC'den düzenlenen fiş bilgisinin fatura ile birlikte gönderilmesi.</p><pre><code class="language-json" data-request-kind="invoice">{
+<p>Yeni nesil ÖKC'den düzenlenen fiş bilgisinin fatura ile birlikte gönderilmesi.</p><div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoice</code><br><b>Body:</b> <code>OutgoingInvoiceRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingInvoice" data-request-model="OutgoingInvoiceRequestModel" data-request-pair="addoutgoinginvoice-3">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000147",
   "IssueDate": "2026-03-15T00:00:00",
@@ -314,11 +510,132 @@
       }
     }
   ]
-}</code></pre></div></details>
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml" hidden><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoiceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre class="code-scroll"><code class="language-xml" data-request-kind="invoice" data-request-pair="addoutgoinginvoice-3" data-request-endpoint="AddOutgoingInvoiceByXml" data-request-model="XmlRequestModel">&lt;OutgoingInvoiceRequestModel&gt;
+  &lt;Id&gt;0&lt;/Id&gt;
+  &lt;InvoiceExternalId&gt;ERP-2026-000147&lt;/InvoiceExternalId&gt;
+  &lt;ProfileId&gt;EARSIVFATURA&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-03-15T00:00:00&lt;/IssueDate&gt;
+  &lt;LineCountNumeric&gt;0&lt;/LineCountNumeric&gt;
+  &lt;AccountingSupplierParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;VKN&lt;/SchemeId&gt;
+          &lt;Value&gt;1234567890&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;PartyName&gt;Satıcı Ticaret A.Ş.&lt;/PartyName&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingSupplierParty&gt;
+  &lt;AccountingCustomerParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;TCKN&lt;/SchemeId&gt;
+          &lt;Value&gt;12345678901&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;Person&gt;
+        &lt;FirstName&gt;Alıcı&lt;/FirstName&gt;
+        &lt;FamilyName&gt;Adı Soyadı&lt;/FamilyName&gt;
+      &lt;/Person&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingCustomerParty&gt;
+  &lt;TaxTotal&gt;
+    &lt;TaxTotalRequestModel&gt;
+      &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+      &lt;TaxSubtotal&gt;
+        &lt;TaxSubtotalRequestModel&gt;
+          &lt;TaxableAmount&gt;100&lt;/TaxableAmount&gt;
+          &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+          &lt;CalculationSequenceNumeric&gt;0&lt;/CalculationSequenceNumeric&gt;
+          &lt;TransactionCurrencyTaxAmount&gt;0&lt;/TransactionCurrencyTaxAmount&gt;
+          &lt;Percent&gt;18&lt;/Percent&gt;
+          &lt;PerUnitAmount&gt;0&lt;/PerUnitAmount&gt;
+          &lt;TaxCategory&gt;
+            &lt;TaxScheme&gt;
+              &lt;Name&gt;KDV&lt;/Name&gt;
+              &lt;TaxTypeCode&gt;0015&lt;/TaxTypeCode&gt;
+            &lt;/TaxScheme&gt;
+          &lt;/TaxCategory&gt;
+        &lt;/TaxSubtotalRequestModel&gt;
+      &lt;/TaxSubtotal&gt;
+    &lt;/TaxTotalRequestModel&gt;
+  &lt;/TaxTotal&gt;
+  &lt;LegalMonetaryTotal&gt;
+    &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+    &lt;TaxExclusiveAmount&gt;100&lt;/TaxExclusiveAmount&gt;
+    &lt;TaxInclusiveAmount&gt;118&lt;/TaxInclusiveAmount&gt;
+    &lt;AllowanceTotalAmount&gt;0&lt;/AllowanceTotalAmount&gt;
+    &lt;ChargeTotalAmount&gt;0&lt;/ChargeTotalAmount&gt;
+    &lt;PayableRoundingAmount&gt;0&lt;/PayableRoundingAmount&gt;
+    &lt;PayableAmount&gt;118&lt;/PayableAmount&gt;
+  &lt;/LegalMonetaryTotal&gt;
+  &lt;InvoiceLine&gt;
+    &lt;InvoiceLineRequestModel&gt;
+      &lt;Id&gt;1&lt;/Id&gt;
+      &lt;InvoicedQuantity&gt;
+        &lt;UnitCode&gt;C62&lt;/UnitCode&gt;
+        &lt;Value&gt;2&lt;/Value&gt;
+      &lt;/InvoicedQuantity&gt;
+      &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+      &lt;Item&gt;
+        &lt;Name&gt;Kırtasiye Malzemesi&lt;/Name&gt;
+      &lt;/Item&gt;
+      &lt;Price&gt;50&lt;/Price&gt;
+    &lt;/InvoiceLineRequestModel&gt;
+  &lt;/InvoiceLine&gt;
+  &lt;BillingReference&gt;
+    &lt;BillingReferenceRequestModel&gt;
+      &lt;AdditionalDocumentReference&gt;
+        &lt;Id&gt;OKC0000123&lt;/Id&gt;
+        &lt;IssueDate&gt;2026-03-15T00:00:00&lt;/IssueDate&gt;
+        &lt;DocumentTypeCode&gt;OKCBF&lt;/DocumentTypeCode&gt;
+        &lt;DocumentType&gt;OKCBilgiFisi&lt;/DocumentType&gt;
+        &lt;DocumentDescription&gt;
+          &lt;string&gt;Yeni nesil &#214;KC fiş bilgisi&lt;/string&gt;
+        &lt;/DocumentDescription&gt;
+        &lt;Attachment&gt;
+          &lt;ExternalReference&gt;https://okc.example.com/fis/OKC0000123&lt;/ExternalReference&gt;
+        &lt;/Attachment&gt;
+        &lt;ValidityPeriod&gt;
+          &lt;StartDate&gt;2026-03-15T00:00:00&lt;/StartDate&gt;
+          &lt;EndDate p6:nil=&quot;true&quot; xmlns:p6=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+        &lt;/ValidityPeriod&gt;
+        &lt;IssuerParty&gt;
+          &lt;Id&gt;0&lt;/Id&gt;
+          &lt;EndpointId&gt;1234567890&lt;/EndpointId&gt;
+          &lt;OpenningBalanceDate p6:nil=&quot;true&quot; xmlns:p6=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+          &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+          &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+          &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+        &lt;/IssuerParty&gt;
+      &lt;/AdditionalDocumentReference&gt;
+      &lt;IsUsedAsDespatchAdvice&gt;false&lt;/IsUsedAsDespatchAdvice&gt;
+    &lt;/BillingReferenceRequestModel&gt;
+  &lt;/BillingReference&gt;
+  &lt;DatePosted p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;TryCount&gt;0&lt;/TryCount&gt;
+  &lt;PutInvoiceNumberIntoQrCode p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;PartyGroupId&gt;0&lt;/PartyGroupId&gt;
+  &lt;IsOocumentNumberIncluded p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+&lt;/OutgoingInvoiceRequestModel&gt;</code></pre></div></div>
 <div class="callout callout-warning"><b>Sık hata:</b> <code>DocumentType</code> alanı literal olarak <code>OKCBilgiFisi</code> olmalıdır; ayrıca <code>ValidityPeriod.StartDate</code>, <code>IssueDate</code> ile aynı takvim gününde olmalıdır — aksi hâlde <code>"SCHEME"</code> koduyla reddedilir (bkz. <a href="teknik-referans.html#h-hata-katman-a">Teknik Referans — Katman A</a>).</div>
 <h3 id="h-ex4">Örnek 4 — Tevkifatlı</h3>
 <p><code>WithholdingTaxTotal</code> yalnızca <code>InvoiceTypeCode</code> TEVKIFAT/YTBTEVKIFAT/IADE/YTBIADE/SGK/SARJ/SARJANLIK olduğunda kabul edilir.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>GV stopajı tevkifatı içeren bir fatura.</p><pre><code class="language-json" data-request-kind="invoice">{
+<p>GV stopajı tevkifatı içeren bir fatura.</p><div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoice</code><br><b>Body:</b> <code>OutgoingInvoiceRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingInvoice" data-request-model="OutgoingInvoiceRequestModel" data-request-pair="addoutgoinginvoice-4">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000148",
   "IssueDate": "2026-03-15T00:00:00",
@@ -402,11 +719,125 @@
       ]
     }
   ]
-}</code></pre></div></details>
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml" hidden><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoiceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre class="code-scroll"><code class="language-xml" data-request-kind="invoice" data-request-pair="addoutgoinginvoice-4" data-request-endpoint="AddOutgoingInvoiceByXml" data-request-model="XmlRequestModel">&lt;OutgoingInvoiceRequestModel&gt;
+  &lt;Id&gt;0&lt;/Id&gt;
+  &lt;InvoiceExternalId&gt;ERP-2026-000148&lt;/InvoiceExternalId&gt;
+  &lt;ProfileId&gt;EARSIVFATURA&lt;/ProfileId&gt;
+  &lt;InvoiceTypeCode&gt;TEVKIFAT&lt;/InvoiceTypeCode&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-03-15T00:00:00&lt;/IssueDate&gt;
+  &lt;LineCountNumeric&gt;0&lt;/LineCountNumeric&gt;
+  &lt;AccountingSupplierParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;VKN&lt;/SchemeId&gt;
+          &lt;Value&gt;1234567890&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;PartyName&gt;Satıcı Ticaret A.Ş.&lt;/PartyName&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingSupplierParty&gt;
+  &lt;AccountingCustomerParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;TCKN&lt;/SchemeId&gt;
+          &lt;Value&gt;12345678901&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;Person&gt;
+        &lt;FirstName&gt;Alıcı&lt;/FirstName&gt;
+        &lt;FamilyName&gt;Adı Soyadı&lt;/FamilyName&gt;
+      &lt;/Person&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingCustomerParty&gt;
+  &lt;TaxTotal&gt;
+    &lt;TaxTotalRequestModel&gt;
+      &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+      &lt;TaxSubtotal&gt;
+        &lt;TaxSubtotalRequestModel&gt;
+          &lt;TaxableAmount&gt;100&lt;/TaxableAmount&gt;
+          &lt;TaxAmount&gt;18&lt;/TaxAmount&gt;
+          &lt;CalculationSequenceNumeric&gt;0&lt;/CalculationSequenceNumeric&gt;
+          &lt;TransactionCurrencyTaxAmount&gt;0&lt;/TransactionCurrencyTaxAmount&gt;
+          &lt;Percent&gt;18&lt;/Percent&gt;
+          &lt;PerUnitAmount&gt;0&lt;/PerUnitAmount&gt;
+          &lt;TaxCategory&gt;
+            &lt;TaxScheme&gt;
+              &lt;Name&gt;KDV&lt;/Name&gt;
+              &lt;TaxTypeCode&gt;0015&lt;/TaxTypeCode&gt;
+            &lt;/TaxScheme&gt;
+          &lt;/TaxCategory&gt;
+        &lt;/TaxSubtotalRequestModel&gt;
+      &lt;/TaxSubtotal&gt;
+    &lt;/TaxTotalRequestModel&gt;
+  &lt;/TaxTotal&gt;
+  &lt;WithholdingTaxTotal&gt;
+    &lt;TaxTotalRequestModel&gt;
+      &lt;TaxAmount&gt;20&lt;/TaxAmount&gt;
+      &lt;TaxSubtotal&gt;
+        &lt;TaxSubtotalRequestModel&gt;
+          &lt;TaxableAmount&gt;200&lt;/TaxableAmount&gt;
+          &lt;TaxAmount&gt;20&lt;/TaxAmount&gt;
+          &lt;CalculationSequenceNumeric&gt;0&lt;/CalculationSequenceNumeric&gt;
+          &lt;TransactionCurrencyTaxAmount&gt;0&lt;/TransactionCurrencyTaxAmount&gt;
+          &lt;Percent&gt;10&lt;/Percent&gt;
+          &lt;PerUnitAmount&gt;0&lt;/PerUnitAmount&gt;
+          &lt;TaxCategory&gt;
+            &lt;TaxScheme&gt;
+              &lt;Name&gt;GV STOPAJI&lt;/Name&gt;
+              &lt;TaxTypeCode&gt;0003&lt;/TaxTypeCode&gt;
+            &lt;/TaxScheme&gt;
+          &lt;/TaxCategory&gt;
+        &lt;/TaxSubtotalRequestModel&gt;
+      &lt;/TaxSubtotal&gt;
+    &lt;/TaxTotalRequestModel&gt;
+  &lt;/WithholdingTaxTotal&gt;
+  &lt;LegalMonetaryTotal&gt;
+    &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+    &lt;TaxExclusiveAmount&gt;100&lt;/TaxExclusiveAmount&gt;
+    &lt;TaxInclusiveAmount&gt;118&lt;/TaxInclusiveAmount&gt;
+    &lt;AllowanceTotalAmount&gt;0&lt;/AllowanceTotalAmount&gt;
+    &lt;ChargeTotalAmount&gt;0&lt;/ChargeTotalAmount&gt;
+    &lt;PayableRoundingAmount&gt;0&lt;/PayableRoundingAmount&gt;
+    &lt;PayableAmount&gt;118&lt;/PayableAmount&gt;
+  &lt;/LegalMonetaryTotal&gt;
+  &lt;InvoiceLine&gt;
+    &lt;InvoiceLineRequestModel&gt;
+      &lt;Id&gt;1&lt;/Id&gt;
+      &lt;InvoicedQuantity&gt;
+        &lt;UnitCode&gt;C62&lt;/UnitCode&gt;
+        &lt;Value&gt;2&lt;/Value&gt;
+      &lt;/InvoicedQuantity&gt;
+      &lt;LineExtensionAmount&gt;100&lt;/LineExtensionAmount&gt;
+      &lt;Item&gt;
+        &lt;Name&gt;Kırtasiye Malzemesi&lt;/Name&gt;
+      &lt;/Item&gt;
+      &lt;Price&gt;50&lt;/Price&gt;
+    &lt;/InvoiceLineRequestModel&gt;
+  &lt;/InvoiceLine&gt;
+  &lt;DatePosted p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;TryCount&gt;0&lt;/TryCount&gt;
+  &lt;PutInvoiceNumberIntoQrCode p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;PartyGroupId&gt;0&lt;/PartyGroupId&gt;
+  &lt;IsOocumentNumberIncluded p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+&lt;/OutgoingInvoiceRequestModel&gt;</code></pre></div></div>
 <div class="callout callout-warning"><b>Sık hata:</b> <code>TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode</code> ve <code>Percent</code> ikilisi platformun (parametre tablosundan gelen) tanımlı tevkifat kod/oran eşleşmelerinden biri olmalıdır; eşleşmeyen bir kombinasyon "Uyumsuz vergi tipi yüzdesi" mesajıyla reddedilir.</div>
 <h3 id="h-ex5">Örnek 5 — Mükerrer/İade Referanslı</h3>
 <p><code>InvoiceTypeCode=IADE</code> olduğunda referans verilen orijinal faturanın numarası tam 16 karakter olmalıdır.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Önceki bir faturaya iade referansı veren belge.</p><pre><code class="language-json" data-request-kind="invoice">{
+<p>Önceki bir faturaya iade referansı veren belge.</p><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingReturnedInvoice</code><br><b>Body:</b> <code>OutgoingInvoiceRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingReturnedInvoice" data-request-model="OutgoingInvoiceRequestModel">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceExternalId": "ERP-2026-000149",
   "IssueDate": "2026-03-20T00:00:00",
@@ -481,11 +912,11 @@
       }
     }
   ]
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-warning"><b>Sık hata:</b> <code>Id</code> alanı tam olarak 16 karakter olmalıdır (örn. <code>FGH2026000000001</code>); aksi hâlde "16 haneli olmalıdır" mesajıyla reddedilir. Aynı istekte birden fazla satır aynı <code>Id</code>'yi referans veriyorsa "mükerrer" hatası döner.</div>
 <h3 id="h-ex-sarj">Özel Örnek — SARJ</h3>
 <p>Hizmet dönemi, alıcı plakası ve birden fazla ESU rapor kimliği taşıyan tam e-Arşiv Fatura gövdesi.</p>
-<details class="example-details"><summary>SARJ JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoice</code><br><b>Body:</b> <code>OutgoingInvoiceRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingInvoice" data-request-model="OutgoingInvoiceRequestModel" data-request-pair="addoutgoinginvoice-6">{
   "ProfileId": "EARSIVFATURA",
   "InvoiceTypeCode": "SARJ",
   "InvoiceExternalId": "ERP-EARSIV-SARJ-2026-0001",
@@ -568,25 +999,160 @@
     "TaxInclusiveAmount": 1200,
     "PayableAmount": 1200
   }
-}</code></pre></div></details>
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml" hidden><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingInvoiceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre class="code-scroll"><code class="language-xml" data-request-kind="invoice" data-request-pair="addoutgoinginvoice-6" data-request-endpoint="AddOutgoingInvoiceByXml" data-request-model="XmlRequestModel">&lt;OutgoingInvoiceRequestModel&gt;
+  &lt;Id&gt;0&lt;/Id&gt;
+  &lt;InvoiceExternalId&gt;ERP-EARSIV-SARJ-2026-0001&lt;/InvoiceExternalId&gt;
+  &lt;ProfileId&gt;EARSIVFATURA&lt;/ProfileId&gt;
+  &lt;InvoiceTypeCode&gt;SARJ&lt;/InvoiceTypeCode&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-09-14T09:00:00+03:00&lt;/IssueDate&gt;
+  &lt;LineCountNumeric&gt;1&lt;/LineCountNumeric&gt;
+  &lt;AccountingSupplierParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;VKN&lt;/SchemeId&gt;
+          &lt;Value&gt;1234567890&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;PartyName&gt;Şarj Hizmetleri A.Ş.&lt;/PartyName&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingSupplierParty&gt;
+  &lt;AccountingCustomerParty&gt;
+    &lt;Party&gt;
+      &lt;Id&gt;0&lt;/Id&gt;
+      &lt;PartyIdentifications&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;VKN&lt;/SchemeId&gt;
+          &lt;Value&gt;9876543210&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+        &lt;IdRequestModel&gt;
+          &lt;SchemeId&gt;PLAKA&lt;/SchemeId&gt;
+          &lt;Value&gt;34ABC123&lt;/Value&gt;
+        &lt;/IdRequestModel&gt;
+      &lt;/PartyIdentifications&gt;
+      &lt;PartyName&gt;Kurumsal Alıcı A.Ş.&lt;/PartyName&gt;
+      &lt;OpenningBalanceDate p4:nil=&quot;true&quot; xmlns:p4=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+      &lt;OpenningBalance&gt;0&lt;/OpenningBalance&gt;
+      &lt;CategoryId&gt;0&lt;/CategoryId&gt;
+      &lt;PartyTypeId&gt;0&lt;/PartyTypeId&gt;
+    &lt;/Party&gt;
+  &lt;/AccountingCustomerParty&gt;
+  &lt;TaxTotal&gt;
+    &lt;TaxTotalRequestModel&gt;
+      &lt;TaxAmount&gt;200&lt;/TaxAmount&gt;
+      &lt;TaxSubtotal&gt;
+        &lt;TaxSubtotalRequestModel&gt;
+          &lt;TaxableAmount&gt;1000&lt;/TaxableAmount&gt;
+          &lt;TaxAmount&gt;200&lt;/TaxAmount&gt;
+          &lt;CalculationSequenceNumeric&gt;0&lt;/CalculationSequenceNumeric&gt;
+          &lt;TransactionCurrencyTaxAmount&gt;0&lt;/TransactionCurrencyTaxAmount&gt;
+          &lt;Percent&gt;20&lt;/Percent&gt;
+          &lt;PerUnitAmount&gt;0&lt;/PerUnitAmount&gt;
+          &lt;TaxCategory&gt;
+            &lt;TaxScheme&gt;
+              &lt;Name&gt;KDV&lt;/Name&gt;
+              &lt;TaxTypeCode&gt;0015&lt;/TaxTypeCode&gt;
+            &lt;/TaxScheme&gt;
+          &lt;/TaxCategory&gt;
+        &lt;/TaxSubtotalRequestModel&gt;
+      &lt;/TaxSubtotal&gt;
+    &lt;/TaxTotalRequestModel&gt;
+  &lt;/TaxTotal&gt;
+  &lt;LegalMonetaryTotal&gt;
+    &lt;LineExtensionAmount&gt;1000&lt;/LineExtensionAmount&gt;
+    &lt;TaxExclusiveAmount&gt;1000&lt;/TaxExclusiveAmount&gt;
+    &lt;TaxInclusiveAmount&gt;1200&lt;/TaxInclusiveAmount&gt;
+    &lt;AllowanceTotalAmount&gt;0&lt;/AllowanceTotalAmount&gt;
+    &lt;ChargeTotalAmount&gt;0&lt;/ChargeTotalAmount&gt;
+    &lt;PayableRoundingAmount&gt;0&lt;/PayableRoundingAmount&gt;
+    &lt;PayableAmount&gt;1200&lt;/PayableAmount&gt;
+  &lt;/LegalMonetaryTotal&gt;
+  &lt;InvoiceLine&gt;
+    &lt;InvoiceLineRequestModel&gt;
+      &lt;Id&gt;1&lt;/Id&gt;
+      &lt;InvoicedQuantity&gt;
+        &lt;UnitCode&gt;C62&lt;/UnitCode&gt;
+        &lt;Value&gt;10&lt;/Value&gt;
+      &lt;/InvoicedQuantity&gt;
+      &lt;LineExtensionAmount&gt;1000&lt;/LineExtensionAmount&gt;
+      &lt;TaxTotal&gt;
+        &lt;TaxAmount&gt;200&lt;/TaxAmount&gt;
+        &lt;TaxSubtotal&gt;
+          &lt;TaxSubtotalRequestModel&gt;
+            &lt;TaxableAmount&gt;1000&lt;/TaxableAmount&gt;
+            &lt;TaxAmount&gt;200&lt;/TaxAmount&gt;
+            &lt;CalculationSequenceNumeric&gt;0&lt;/CalculationSequenceNumeric&gt;
+            &lt;TransactionCurrencyTaxAmount&gt;0&lt;/TransactionCurrencyTaxAmount&gt;
+            &lt;Percent&gt;20&lt;/Percent&gt;
+            &lt;PerUnitAmount&gt;0&lt;/PerUnitAmount&gt;
+            &lt;TaxCategory&gt;
+              &lt;TaxScheme&gt;
+                &lt;Name&gt;KDV&lt;/Name&gt;
+                &lt;TaxTypeCode&gt;0015&lt;/TaxTypeCode&gt;
+              &lt;/TaxScheme&gt;
+            &lt;/TaxCategory&gt;
+          &lt;/TaxSubtotalRequestModel&gt;
+        &lt;/TaxSubtotal&gt;
+      &lt;/TaxTotal&gt;
+      &lt;Item&gt;
+        &lt;Name&gt;Elektrikli Ara&#231; Şarj Hizmeti&lt;/Name&gt;
+      &lt;/Item&gt;
+      &lt;Price&gt;100&lt;/Price&gt;
+    &lt;/InvoiceLineRequestModel&gt;
+  &lt;/InvoiceLine&gt;
+  &lt;InvoicePeriod&gt;
+    &lt;StartDate&gt;2026-09-14T10:00:00+03:00&lt;/StartDate&gt;
+    &lt;EndDate&gt;2026-09-14T11:00:00+03:00&lt;/EndDate&gt;
+  &lt;/InvoicePeriod&gt;
+  &lt;AdditionalDocumentReference&gt;
+    &lt;DocumentReferenceRequestModel&gt;
+      &lt;Id&gt;11111111-2222-3333-4444-555555555555&lt;/Id&gt;
+      &lt;SchemeId&gt;ESURaporID&lt;/SchemeId&gt;
+      &lt;IssueDate&gt;2026-09-14T00:00:00+03:00&lt;/IssueDate&gt;
+    &lt;/DocumentReferenceRequestModel&gt;
+    &lt;DocumentReferenceRequestModel&gt;
+      &lt;Id&gt;66666666-7777-8888-9999-000000000000&lt;/Id&gt;
+      &lt;SchemeId&gt;ESURaporID&lt;/SchemeId&gt;
+      &lt;IssueDate&gt;2026-09-14T00:00:00+03:00&lt;/IssueDate&gt;
+    &lt;/DocumentReferenceRequestModel&gt;
+  &lt;/AdditionalDocumentReference&gt;
+  &lt;DatePosted p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;TryCount&gt;0&lt;/TryCount&gt;
+  &lt;PutInvoiceNumberIntoQrCode p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+  &lt;PartyGroupId&gt;0&lt;/PartyGroupId&gt;
+  &lt;IsOocumentNumberIncluded p2:nil=&quot;true&quot; xmlns:p2=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; /&gt;
+&lt;/OutgoingInvoiceRequestModel&gt;</code></pre></div></div>
 <div class="callout callout-info"><b>Çoklu ESU raporu:</b> Faturayla ilişkili her rapor <code>AdditionalDocumentReference[]</code> içinde ayrı bir <code>SchemeId=ESURaporID</code> kaydı olarak gönderilir. Her kayıtta GUID biçiminde <code>Id</code> ve dolu <code>IssueDate</code> bulunur; platform geçerli kayıtların tamamını request sırasıyla e-Arşiv raporuna aktarır.</div><!-- vbt-source: InvoiceRequestModel.cs; PeriodRequestModel.cs; DocumentReferenceRequestModel.cs; RequestModelToUblMapper.cs; EArchiveGibReportService.SetChargingReportInformation -->
 <h3 id="h-ex6">Örnek 6 — İptal</h3>
 <p><code>CancelOutgoingEArchiveInvoice</code> endpoint gövdesi.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Mükerrer belge nedeniyle iptal.</p><pre><code class="language-json" data-request-kind="cancel">{
+<p>Mükerrer belge nedeniyle iptal.</p><div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/CancelOutgoingEArchiveInvoice</code><br><b>Body:</b> <code>EArchiveCancelRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="cancel" data-request-endpoint="CancelOutgoingEArchiveInvoice" data-request-model="EArchiveCancelRequestModel" data-request-pair="canceloutgoingearchiveinvoice-1">{
   "Ettn": "7DC52246-5750-496E-8BF2-BD27BC0764DC",
   "InvoiceNumber": "FGH2026000000001",
   "EArchiveStatus": 2,
   "EArchiveCancelDescription": "Mükerrer belge"
-}</code></pre></div></details>
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml" hidden><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/CancelOutgoingEArchiveInvoiceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre class="code-scroll"><code class="language-xml" data-request-kind="cancel" data-request-pair="canceloutgoingearchiveinvoice-1" data-request-endpoint="CancelOutgoingEArchiveInvoiceByXml" data-request-model="XmlRequestModel">&lt;EArchiveCancelRequestModel&gt;
+  &lt;Id&gt;0&lt;/Id&gt;
+  &lt;Ettn&gt;7DC52246-5750-496E-8BF2-BD27BC0764DC&lt;/Ettn&gt;
+  &lt;InvoiceNumber&gt;FGH2026000000001&lt;/InvoiceNumber&gt;
+  &lt;EArchiveStatus&gt;2&lt;/EArchiveStatus&gt;
+  &lt;EArchiveCancelDescription&gt;M&#252;kerrer belge&lt;/EArchiveCancelDescription&gt;
+&lt;/EArchiveCancelRequestModel&gt;</code></pre></div></div>
 <h3 id="h-ex7">Örnek 7 — İtiraz Bildirimi</h3>
 <p><code>ObjectOutgoingEArchiveInvoice</code> endpoint gövdesi — alıcının TTK md. 18/3 kapsamında zaten yaptığı itirazın kayda geçirilmesi.</p>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>KEP yoluyla yapılan itirazın bildirimi.</p><pre><code class="language-json" data-request-kind="objection">{
+<p>KEP yoluyla yapılan itirazın bildirimi.</p><p class="request-contract"><b>Endpoint:</b> <code>POST /api/VbtApi/ObjectOutgoingEArchiveInvoice</code><br><b>Body:</b> <code>DocumentObjectionRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="objection" data-request-endpoint="ObjectOutgoingEArchiveInvoice" data-request-model="DocumentObjectionRequestModel">{
   "UUId": "7DC52246-5750-496E-8BF2-BD27BC0764DC",
   "ObjectingType": "KEP",
   "ObjectingDocumentNumber": "itirazBelgeNo0",
   "ObjectingDocumentDate": "2026-03-22",
   "ObjectingDescription": "Mal iade edildi"
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-info"><b>Not:</b> Kimlik, numara ve tarih değerleri temsilidir. Alan sözleşmesi için <a href="entegrator-api-endpoint-referansi.html">Entegratör API Endpoint Referansı</a> kullanılmalıdır.</div>
 </section>
 <!-- vbt:pagination:start -->
@@ -603,7 +1169,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="EARSIVFATURA, internet satışı, ÖKC, iptal, itiraz, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Arşiv Fatura Nedir?","text":"e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.","keywords":"Başlangıç e-Arşiv Fatura EARSIVFATURA","url":"earsiv-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR VUK 509","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal satış, internet satışı, ÖKC, tevkifat ve mükerrer/iade akışları için karar ağacı.","keywords":"Senaryolar internet satışı ÖKC tevkifat","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"İptal ve İtiraz Durum Takibi","text":"GİB Portal ile senkronize iptal/itiraz durum modeli, yasal süreler ve entegratör sorumlulukları.","keywords":"İptal İtiraz GİB Portal durum takibi","url":"iptal-itiraz-durum-takibi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın e-Arşiv Fatura grid, e-posta ve iptal/itiraz tamamlama akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal e-posta iptal itiraz","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için kullanılabilir JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL Invoice XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Arşiv Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Senaryo seçimi, iptal, itiraz, çıktı, API ve UBL hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"promptText":"Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.","externalItems":[{"title":"e-Arşiv Fatura Nedir?","text":"e-Arşiv Fatura'nın kapsamı, ProfileID ayrımı, teknik kimliği ve belge yaşam döngüsü.","keywords":"Başlangıç e-Arşiv Fatura EARSIVFATURA","url":"earsiv-fatura-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR VUK 509","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal satış, internet satışı, ÖKC, tevkifat ve mükerrer/iade akışları için karar ağacı.","keywords":"Senaryolar internet satışı ÖKC tevkifat","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"İptal ve İtiraz Durum Takibi","text":"GİB Portal ile senkronize iptal/itiraz durum modeli, yasal süreler ve entegratör sorumlulukları.","keywords":"İptal İtiraz GİB Portal durum takibi","url":"iptal-itiraz-durum-takibi.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portal UI'ın e-Arşiv Fatura grid, e-posta ve iptal/itiraz tamamlama akışlarında kullandığı endpoint sözleşmeleri.","keywords":"API Portal e-posta iptal itiraz","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal satış, internet satışı, ÖKC, tevkifat ve iptal/itiraz senaryoları için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.","keywords":"Örnekler JSON request endpoint XML ByXml","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL Invoice XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Arşiv Fatura rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Senaryo seçimi, iptal, itiraz, çıktı, API ve UBL hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>

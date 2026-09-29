@@ -217,13 +217,14 @@
         {
           "slug": "karayolu-request-ornekleri",
           "title": "Karayolu Request Örnekleri",
-          "description": "Karayolu bileti oluşturma ve işlem çağrıları için tam ve kopyalanabilir örnekler.",
+          "description": "Karayolu bileti oluşturma ve işlem çağrıları için tam endpoint ve body sözleşmesiyle sunulan kopyalanabilir JSON request örnekleri.",
           "eyebrow": "Karayolu e-Bileti",
           "keywords": [
             "karayolu",
             "JSON",
             "request",
-            "örnek"
+            "örnek",
+            "endpoint"
           ],
           "homeCard": false
         },
@@ -305,13 +306,14 @@
         {
           "slug": "yolcu-listesi-request-ornekleri",
           "title": "e-Yolcu Listesi Request Örnekleri",
-          "description": "Yolcu listesi oluşturma ve durum işlemleri için tam ve kopyalanabilir örnekler.",
+          "description": "Yolcu listesi oluşturma ve durum işlemleri için tam endpoint ve body sözleşmesiyle sunulan kopyalanabilir JSON request örnekleri.",
           "eyebrow": "e-Yolcu Listesi",
           "keywords": [
             "yolcu listesi",
             "JSON",
             "request",
-            "örnek"
+            "örnek",
+            "endpoint"
           ],
           "homeCard": false
         },
@@ -393,13 +395,14 @@
         {
           "slug": "etkinlik-request-ornekleri",
           "title": "Etkinlik Request Örnekleri",
-          "description": "Etkinlik bileti oluşturma ve işlem çağrıları için tam ve kopyalanabilir örnekler.",
+          "description": "Etkinlik bileti oluşturma ve işlem çağrıları için tam endpoint ve body sözleşmesiyle sunulan kopyalanabilir JSON request örnekleri.",
           "eyebrow": "Etkinlik e-Bileti",
           "keywords": [
             "etkinlik",
             "JSON",
             "request",
-            "örnek"
+            "örnek",
+            "endpoint"
           ],
           "homeCard": false
         },
@@ -482,13 +485,14 @@
         {
           "slug": "havayolu-request-ornekleri",
           "title": "Havayolu Request Örnekleri",
-          "description": "Havayolu satış ve iade işlemleri için tam ve kopyalanabilir örnekler.",
+          "description": "Havayolu satış ve iade işlemleri için tam endpoint ve body sözleşmesiyle sunulan kopyalanabilir JSON request örnekleri.",
           "eyebrow": "Havayolu e-Bileti",
           "keywords": [
             "havayolu",
             "JSON",
             "request",
-            "örnek"
+            "örnek",
+            "endpoint"
           ],
           "homeCard": false
         },

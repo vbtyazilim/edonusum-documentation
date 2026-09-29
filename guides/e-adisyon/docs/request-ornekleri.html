@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Örnekleri — e-Adisyon Entegrasyon Rehberi</title>
-<meta name="description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.">
+<meta name="description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.">
 <meta name="author" content="VBT Yazılım">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/request-ornekleri.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Request Örnekleri — e-Adisyon Entegrasyon Rehberi">
-<meta property="og:description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.">
+<meta property="og:description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-adisyon/docs/request-ornekleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Request Örnekleri — e-Adisyon Entegrasyon Rehberi">
-<meta name="twitter:description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.">
+<meta name="twitter:description" content="Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -72,7 +72,7 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.</p></header>
 <!-- vbt:article-header:end -->
 <section id="request-ornekleri">
 <h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
@@ -86,7 +86,7 @@
 </tbody></table></div>
 
 <h3 id="h-ornek-1">Örnek 1: Tüzel Kişi Alıcı — TRY, Tek Kalem</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/BillApi/AddOutgoingBill</code><br><b>Body:</b> <code>OutgoingBillRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingBill" data-request-model="OutgoingBillRequestModel">{
   "DocumentExternalId": "ERP-2026-ADS-0001",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
@@ -161,10 +161,10 @@
       }
     }
   ]
-}</code></pre></div></details>
+}</code></pre>
 
 <h3 id="h-ornek-2">Örnek 2: Gerçek Kişi Alıcı — TRY</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/BillApi/AddOutgoingBill</code><br><b>Body:</b> <code>OutgoingBillRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingBill" data-request-model="OutgoingBillRequestModel">{
   "DocumentExternalId": "ERP-2026-ADS-0002",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
@@ -242,10 +242,10 @@
       }
     }
   ]
-}</code></pre></div></details>
+}</code></pre>
 
 <h3 id="h-ornek-3">Örnek 3: Çok Kalemli Adisyon</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/BillApi/AddOutgoingBill</code><br><b>Body:</b> <code>OutgoingBillRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingBill" data-request-model="OutgoingBillRequestModel">{
   "DocumentExternalId": "ERP-2026-ADS-0003",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
@@ -350,11 +350,11 @@
       }
     }
   ]
-}</code></pre></div></details>
+}</code></pre>
 
 <h3 id="h-ornek-4">Örnek 4: Güncelleme</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Güncelleme öncesi belge <code>GetOutgoingBill</code> ile okunur; dönen model üzerinde yalnızca değişen alanlar düzenlenip <code>Id</code> ve <code>UUId</code> ile birlikte tam olarak gönderilir.</p>
-<pre><code class="language-json" data-request-kind="invoice">{
+<p>Güncelleme öncesi belge <code>GetOutgoingBill</code> ile okunur; dönen model üzerinde yalnızca değişen alanlar düzenlenip <code>Id</code> ve <code>UUId</code> ile birlikte tam olarak gönderilir.</p>
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/BillApi/UpdateOutgoingBill</code><br><b>Body:</b> <code>OutgoingBillRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="UpdateOutgoingBill" data-request-model="OutgoingBillRequestModel">{
   "DocumentExternalId": "ERP-2026-ADS-0001",
   "ProfileId": "EARSIVBELGE",
   "BillTypeCode": "ADISYON",
@@ -431,27 +431,27 @@
   ],
   "Id": 1042,
   "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
-}</code></pre></div></details>
+}</code></pre>
 
 <h3 id="h-ornek-5">Örnek 5: İptal</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><p>Yalnızca <code>Signed</code> durumundaki belgeler iptal edilebilir.</p>
-<pre><code class="language-json" data-request-kind="cancel">{
+<p>Yalnızca <code>Signed</code> durumundaki belgeler iptal edilebilir.</p>
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/BillApi/CancelOutgoingBill</code><br><b>Body:</b> <code>BillCancelRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="cancel" data-request-endpoint="CancelOutgoingBill" data-request-model="BillCancelRequestModel">{
   "Ettn": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
   "EArchiveStatus": 2,
   "EArchiveCancelDescription": "Müşteri talebiyle iptal edildi."
 }</code></pre>
-<div class="callout callout-warning"><b>Yanıt:</b> Belge zaten iptal edilmişse <code>BLL0025</code>, imzalanmamışsa <code>BLL0024</code> hatası döner. İptal e-postası gönderilmez.</div></div></details>
+<div class="callout callout-warning"><b>Yanıt:</b> Belge zaten iptal edilmişse <code>BLL0025</code>, imzalanmamışsa <code>BLL0024</code> hatası döner. İptal e-postası gönderilmez.</div>
 
 <h3 id="h-ornek-6">Örnek 6: Liste Sorgusu ve PDF Alma</h3>
-<details class="example-details"><summary>JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="search">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/BillApi/GetOutgoingBillList</code><br><b>Body:</b> <code>SearchRequestModel&lt;OutgoingBillGetRequestModel&gt;</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="search" data-request-endpoint="GetOutgoingBillList" data-request-model="SearchRequestModel&lt;OutgoingBillGetRequestModel&gt;">{
   "DocumentExternalId": "ERP-2026-ADS-0001"
 }</code></pre>
 <p>Sorgu sonucunda dönen <code>Ettn</code> ile PDF talebi:</p>
-<pre><code class="language-json" data-request-kind="search">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/BillApi/GetOutgoingBillPdf</code><br><b>Body:</b> <code>BillPdfRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="search" data-request-endpoint="GetOutgoingBillPdf" data-request-model="BillPdfRequestModel">{
   "BillEttns": [
     "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
   ]
-}</code></pre></div></details>
+}</code></pre>
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
@@ -467,7 +467,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Adisyon, KDV, kalem, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Adisyon Nedir?","text":"e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.","keywords":"Başlangıç e-Adisyon CreditNote","url":"eadisyon-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.","keywords":"Senaryolar KDV iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, hesaplama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon, PDF/önizleme ve GİB raporlama sorumlulukları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, mail ve GİB mükellef sorgulama işlemleri.","keywords":"API Portal mükellef","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik JSON örnekleri.","keywords":"Örnekler JSON request","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL CreditNote XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Adisyon entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, iptal, çıktı, API ve hata yönetimi hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"promptText":"Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.","externalItems":[{"title":"e-Adisyon Nedir?","text":"e-Adisyon'un kapsamı, tarafları, teslim şekli ve belge yaşam döngüsü.","keywords":"Başlangıç e-Adisyon CreditNote","url":"eadisyon-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Oluşturma, güncelleme ve iptal akışı için karar ağacı ve senaryolar.","keywords":"Senaryolar KDV iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, hesaplama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon, PDF/önizleme ve GİB raporlama sorumlulukları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Entegratörün doğrudan ERP/API entegrasyonunda kullandığı belge endpointleri, alan sözleşmeleri ve yanıt örnekleri.","keywords":"API endpoint request response entegratör","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, mail ve GİB mükellef sorgulama işlemleri.","keywords":"API Portal mükellef","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel taraf, çok kalemli ve iptal senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.","keywords":"Örnekler JSON request endpoint","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL CreditNote XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Adisyon entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, iptal, çıktı, API ve hata yönetimi hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>

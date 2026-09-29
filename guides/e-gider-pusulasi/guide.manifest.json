@@ -153,13 +153,15 @@
         {
           "slug": "request-ornekleri",
           "title": "Request Örnekleri",
-          "description": "SATIS ve IADE senaryolarına uyarlanacak JSON request şablonları ve alan açıklamaları.",
+          "description": "SATIS ve IADE senaryolarına uyarlanacak tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri ve alan açıklamaları.",
           "eyebrow": "Örnekler",
           "keywords": [
             "Örnekler",
             "SATIS",
             "IADE",
-            "JSON"
+            "JSON",
+            "endpoint",
+            "request"
           ],
           "homeCard": {
             "label": "Örnekler"

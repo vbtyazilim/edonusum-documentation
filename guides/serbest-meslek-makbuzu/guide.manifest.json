@@ -154,13 +154,14 @@
         {
           "slug": "request-ornekleri",
           "title": "Request Örnekleri",
-          "description": "Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.",
+          "description": "Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.",
           "eyebrow": "Örnekler",
           "keywords": [
             "JSON",
             "request",
             "TRY",
-            "döviz"
+            "döviz",
+            "endpoint"
           ],
           "homeCard": {
             "label": "Örnekler"
