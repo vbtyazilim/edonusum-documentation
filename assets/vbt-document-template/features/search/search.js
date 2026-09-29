@@ -58,6 +58,7 @@
     var MAX_RESULTS    = searchConfig.maxResults      || 50;
     var DEBOUNCE_MS    = searchConfig.debounceMs      || 200;
     var NO_RESULTS_MESSAGE = searchConfig.noResultsText   || '✨ Sonuç bulunamadı. Farklı bir kelime deneyin.';
+    var PROMPT_TEXT    = searchConfig.promptText || 'Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.';
     var EXTERNAL_ITEMS = searchConfig.externalItems || [];
 
     var SECTION_TYPES = Object.assign({
@@ -81,12 +82,11 @@
     ══════════════════════════════════════════════════════════ */
     function buildIndex() {
         var container = document.querySelector(CONTENT_SELECTOR);
-        if (!container) return;
-
-        var sections = container.querySelectorAll('section, .scenario-card, .endpoint-card, .table-wrapper, .callout');
         var seen = new Set();
 
-        sections.forEach(function (section) {
+        if (container) {
+            var sections = container.querySelectorAll('section, .scenario-card, .endpoint-card, .table-wrapper, .callout');
+            sections.forEach(function (section) {
             if (seen.has(section)) return;
             seen.add(section);
 
@@ -124,11 +124,11 @@
                 sectionType: sectionType,
                 id:          section.id || (section.querySelector('[id]') ? section.querySelector('[id]').id : ''),
             });
-        });
+            });
 
-        /* Başlıkları da ayrıca ekle (daha hızlı gezinme için) */
-        var headings = container.querySelectorAll('h2[id], h3[id], h4[id]');
-        headings.forEach(function (heading) {
+            /* Başlıkları da ayrıca ekle (daha hızlı gezinme için) */
+            var headings = container.querySelectorAll('h2[id], h3[id], h4[id]');
+            headings.forEach(function (heading) {
             if (seen.has(heading)) return;
             seen.add(heading);
             var parentSection = heading.closest('section');
@@ -141,7 +141,8 @@
                 sectionType: 'Başlık',
                 id:          heading.id,
             });
-        });
+            });
+        }
 
         EXTERNAL_ITEMS.forEach(function (item) {
             searchableContent.push({
@@ -215,7 +216,7 @@
         searchResults.innerHTML =
             '<div class="search-search-hint">' +
             '<strong>Aramaya başlayın</strong>' +
-            '<span>Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.</span>' +
+            '<span>' + PROMPT_TEXT + '</span>' +
             '</div>';
         selectedIndex = -1;
     }

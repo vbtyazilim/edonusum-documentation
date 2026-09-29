@@ -153,11 +153,12 @@
         {
           "slug": "islem-ornekleri",
           "title": "İşlem Örnekleri",
-          "description": "Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir JSON örnekleri.",
+          "description": "Kimlik, dönem, oluşturma, rapor ve durum sorguları için tam ve kopyalanabilir tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.",
           "keywords": [
             "JSON",
             "örnek",
-            "request"
+            "request",
+            "endpoint"
           ]
         },
         {

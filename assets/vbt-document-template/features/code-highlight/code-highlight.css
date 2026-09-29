@@ -28,6 +28,11 @@ pre::-webkit-scrollbar-corner { background: var(--surface); }
 
 pre::before, pre::after { display: none; }
 
+pre.code-scroll {
+    max-height: 480px;
+    overscroll-behavior: contain;
+}
+
 pre code {
     display: block;
     background: none;

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request Örnekleri — e-Serbest Meslek Makbuzu Entegrasyon Rehberi</title>
-<meta name="description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.">
+<meta name="description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.">
 <meta name="author" content="VBT Yazılım">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/request-ornekleri.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Request Örnekleri — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
-<meta property="og:description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.">
+<meta property="og:description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/serbest-meslek-makbuzu/docs/request-ornekleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Request Örnekleri — e-Serbest Meslek Makbuzu Entegrasyon Rehberi">
-<meta name="twitter:description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.">
+<meta name="twitter:description" content="Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -68,7 +68,7 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Örnekler</p><h1>Request Örnekleri</h1><p class="docs-lead">Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.</p></header>
 <!-- vbt:article-header:end -->
 <section id="request-ornekleri">
 <h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
@@ -86,7 +86,7 @@
 </tbody></table></div>
 
 <h3 id="h-ornek-1">Örnek 1: Tüzel Kişi — TRY, KDV ve Stopaj</h3>
-<details class="example-details" open><summary>Tam oluşturma request’i</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T10:30:00+03:00",
   "BelgeZamanSpecified": true,
@@ -146,11 +146,11 @@
   "Aciklamalar": [
     "Temmuz 2026 danışmanlık hizmet bedeli"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-info"><b>Toplam kontrolü:</b> 1.000 brüt − 200 stopaj = 800 net ücret; 200 KDV ile ödenecek tutar 1.000’dir.</div>
 
 <h3 id="h-ornek-2">Örnek 2: Gerçek Kişi Alıcı — TRY</h3>
-<details class="example-details"><summary>Gerçek kişi alanlarıyla tam request</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "ANKARA",
   "IssueDate": "2026-07-27T11:00:00+03:00",
   "GonderimSekli": "Elektronik",
@@ -203,11 +203,11 @@
   "Aciklamalar": [
     "Bireysel danışmanlık"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-warning"><b>Alıcı farkı:</b> TCKN senaryosunda <code>Ad</code> ve <code>Soyad</code> birlikte gönderilir; <code>Unvan</code> ve <code>VergiDaire</code> kurum alanları kullanılmaz.</div>
 
 <h3 id="h-ornek-3">Örnek 3: USD Belge ve TRY Karşılıkları</h3>
-<details class="example-details"><summary>Dövizli request</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T12:00:00+03:00",
   "GonderimSekli": "Elektronik",
@@ -263,11 +263,11 @@
     "TaxKdvTotalAmount": 650,
     "PayableAmount": 3250
   }
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-info"><b>Kur kontrolü:</b> Belge tutarları USD, <code>Kur</code> içindeki karşılıklar TRY’dir. <code>CalculationRate</code> sıfır olamaz.</div>
 
 <h3 id="h-ornek-4">Örnek 4: Yalnız KDV — Kesintisiz İşlem</h3>
-<details class="example-details"><summary>Vergi/kesinti alanları</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T10:30:00+03:00",
   "BelgeZamanSpecified": true,
@@ -326,11 +326,11 @@
   "Aciklamalar": [
     "Temmuz 2026 danışmanlık hizmet bedeli"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <p>Bu blok, Örnek 1’deki kimlik, tarih, teslim, alıcı ve dış referans alanlarıyla birlikte kullanılır.</p>
 
 <h3 id="h-ornek-5">Örnek 5: Gelir Vergisi Stopajı</h3>
-<details class="example-details"><summary>Stopajlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T10:30:00+03:00",
   "BelgeZamanSpecified": true,
@@ -390,11 +390,11 @@
   "Aciklamalar": [
     "Temmuz 2026 danışmanlık hizmet bedeli"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <p>Aynı değerler ilgili <code>MalHizmet</code> satırında da kendi satır tutarı üzerinden gönderilir.</p>
 
 <h3 id="h-ornek-6">Örnek 6: KDV Tevkifatı</h3>
-<details class="example-details"><summary>Tevkifatlı tutar bloğu</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T10:30:00+03:00",
   "BelgeZamanSpecified": true,
@@ -454,11 +454,11 @@
   "Aciklamalar": [
     "Temmuz 2026 danışmanlık hizmet bedeli"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-warning"><b>Kod seçimi:</b> <code>601</code> yalnız örnek değerdir. Gerçek işlemde yürürlükteki mevzuata ve hizmet türüne uygun tevkifat kodu kullanılmalıdır.</div>
 
 <h3 id="h-ornek-7">Örnek 7: Stopaj ve Tevkifat Birlikte</h3>
-<details class="example-details"><summary>İki kesintinin ayrı hesaplandığı blok</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T10:30:00+03:00",
   "BelgeZamanSpecified": true,
@@ -518,11 +518,11 @@
   "Aciklamalar": [
     "Temmuz 2026 danışmanlık hizmet bedeli"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <p>Stopaj brüt bedelden, tevkifat hesaplanan KDV’den düşülür. Nihai tutar <code>800 + 100 = 900</code> olur.</p>
 
 <h3 id="h-ornek-8">Örnek 8: Çok Kalemli ve Kâğıt Teslim</h3>
-<details class="example-details"><summary>İki hizmet satırı</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/AddOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingSmm" data-request-model="SmmRequestModel">{
   "LocationCode": "MERKEZ",
   "IssueDate": "2026-07-27T10:30:00+03:00",
   "BelgeZamanSpecified": true,
@@ -597,11 +597,11 @@
   "Aciklamalar": [
     "Temmuz 2026 danışmanlık hizmet bedeli"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <p>Alıcı, tarih, kanal ve açıklama alanları Örnek 1’deki gibi eklenir. Kâğıt teslimde <code>EArchiveMailTo</code> zorunlu değildir.</p>
 
 <h3 id="h-ornek-9">Örnek 9: Güncelleme</h3>
-<details class="example-details"><summary>Mevcut kimliklerle tam güncelleme request’i</summary><div class="example-body"><pre><code class="language-json" data-request-kind="invoice">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/UpdateOutgoingSmm</code><br><b>Body:</b> <code>SmmRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="UpdateOutgoingSmm" data-request-model="SmmRequestModel">{
   "Id": 1842,
   "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
   "SmmNumber": "SMM2026000000001",
@@ -663,16 +663,16 @@
   "Aciklamalar": [
     "Güncellenmiş e-posta ve hizmet açıklaması"
   ]
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-info"><b>Güncelleme kuralı:</b> Mevcut belge önce <code>GetOutgoingSmm</code> ile okunur; değiştirilen alanlarla birlikte tam model, mevcut <code>Id</code> ve <code>UUId</code> kullanılarak gönderilir.</div>
 
 <h3 id="h-ornek-10">Örnek 10: İptal</h3>
-<details class="example-details"><summary>İptal request ve response</summary><div class="example-body"><pre><code class="language-json" data-request-kind="cancel">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/CancelOutgoingSmm</code><br><b>Body:</b> <code>SmmCancelRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="cancel" data-request-endpoint="CancelOutgoingSmm" data-request-model="SmmCancelRequestModel">{
   "UUId": "6b60c576-7ed9-4bf1-9f90-3c97747b7470"
-}</code></pre></div></details>
+}</code></pre>
 
 <h3 id="h-ornek-11">Örnek 11: Liste Sorgusu ve PDF Alma</h3>
-<details class="example-details"><summary>Dış referansla sorgulama</summary><div class="example-body"><pre><code class="language-json" data-request-kind="search">{
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/GetOutgoingSmmList</code><br><b>Body:</b> <code>SearchRequestModel&lt;OutgoingSmmGetUiRequestModel&gt;</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="search" data-request-endpoint="GetOutgoingSmmList" data-request-model="SearchRequestModel&lt;OutgoingSmmGetUiRequestModel&gt;">{
   "Query": {
     "SmmExternalId": "ERP-SMM-2026-00001",
     "IssueDate": {
@@ -684,14 +684,14 @@
   "Take": 20,
   "OrderByName": "IssueDate",
   "OrderByType": "DESC"
-}</code></pre></div></details>
-<details class="example-details"><summary>UUID listesiyle PDF</summary><div class="example-body"><pre><code class="language-json" data-request-kind="search">{
+}</code></pre>
+<p class="request-contract"><b>Endpoint:</b> <code>POST /api/Smm/GetOutgoingSmmPdf</code><br><b>Body:</b> <code>SmmPdfRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="search" data-request-endpoint="GetOutgoingSmmPdf" data-request-model="SmmPdfRequestModel">{
   "Ettns": [
     "6b60c576-7ed9-4bf1-9f90-3c97747b7470",
     "941d56fd-d928-4554-880d-6c79a5413ad4"
   ],
   "DisplayPdf": false
-}</code></pre></div></details>
+}</code></pre>
 
 <div class="callout callout-warning"><b>Örnek güvenliği:</b> VKN/TCKN, e-posta, UUID, belge numarası, oran ve kod değerleri örnektir. Canlı isteklerde gerçek işlem verisi, geçerli kimlikler ve mevzuata uygun oran/kodlar kullanılmalıdır.</div>
 </section>
@@ -709,7 +709,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="e-SMM, endpoint, stopaj, tevkifat, PDF..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-Serbest Meslek Makbuzu Nedir?","text":"e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.","keywords":"e-SMM serbest meslek makbuzu e-Arşiv","url":"esmm-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.","keywords":"GİB e-Arşiv PAdES karekod","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.","keywords":"senaryolar stopaj tevkifat iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.","keywords":"entegratör sorumluluklar doğrulama","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.","keywords":"VBT Portal PDF GİB raporu","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.","keywords":"Portal önizleme Excel e-posta","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik JSON örnekleri.","keywords":"JSON request TRY döviz","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → Belge → GİB Raporu Mapping","text":"Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.","keywords":"mapping belge GİB raporu XML","url":"request-belge-gib-raporu-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, vergi, teslim, iptal, API ve raporlama hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"promptText":"Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.","externalItems":[{"title":"e-Serbest Meslek Makbuzu Nedir?","text":"e-SMM'nin kapsamı, tarafları, teslim şekilleri ve belge yaşam döngüsü.","keywords":"e-SMM serbest meslek makbuzu e-Arşiv","url":"esmm-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi e-SMM kaynakları.","keywords":"GİB e-Arşiv PAdES karekod","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Gerçek ve tüzel alıcı, para birimi, vergi, gönderim ve iptal senaryoları.","keywords":"senaryolar stopaj tevkifat iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, kimlik, tutar, vergi ve sonuç yönetimi sorumlulukları.","keywords":"entegratör sorumluluklar doğrulama","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"VBT platformunun belge üretimi, imzalama, teslim ve GİB raporlama sorumlulukları.","keywords":"VBT Portal PDF GİB raporu","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Doğrudan ERP/API entegrasyonunda kullanılan kimlik, oluşturma, güncelleme, sorgulama, iptal ve belge endpointleri.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Portal API Endpoint Referansı","text":"Portalın listeleme, önizleme, Excel, e-posta, okunma ve mükellef sorgulama işlemleri.","keywords":"Portal önizleme Excel e-posta","url":"portal-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Gerçek ve tüzel alıcılarla TRY, döviz, stopaj ve tevkifat senaryolarına yönelik tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.","keywords":"JSON request TRY döviz endpoint","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → Belge → GİB Raporu Mapping","text":"Entegratör request alanlarının makbuzdaki iş anlamı ve GİB raporundaki karşılıkları.","keywords":"mapping belge GİB raporu XML","url":"request-belge-gib-raporu-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları ve validasyon referansları.","keywords":"referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-SMM entegrasyon rehberinde yayımlanan içerik değişikliklerinin tarihçesi.","keywords":"changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, vergi, teslim, iptal, API ve raporlama hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>

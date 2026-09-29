@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giden İrsaliye Request Örnekleri — e-İrsaliye Entegrasyon Rehberi</title>
-<meta name="description" content="Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.">
+<meta name="description" content="Üç profil, yerli ve yabancı taşıma senaryoları ile temel operasyonlar için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.">
 <meta name="author" content="VBT Yazılım">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/giden-irsaliye-request-ornekleri.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Giden İrsaliye Request Örnekleri — e-İrsaliye Entegrasyon Rehberi">
-<meta property="og:description" content="Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.">
+<meta property="og:description" content="Üç profil, yerli ve yabancı taşıma senaryoları ile temel operasyonlar için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/e-irsaliye/docs/giden-irsaliye-request-ornekleri.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Giden İrsaliye Request Örnekleri — e-İrsaliye Entegrasyon Rehberi">
-<meta name="twitter:description" content="Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.">
+<meta name="twitter:description" content="Üç profil, yerli ve yabancı taşıma senaryoları ile temel operasyonlar için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -58,7 +58,7 @@
 <a class="docs-nav-link" href="giden-irsaliye-entegrator-api.html">Giden İrsaliye Entegratör API</a>
 <a class="docs-nav-link" href="giden-irsaliye-portal-api.html">Giden İrsaliye Portal API</a>
 <a class="docs-nav-link active" href="giden-irsaliye-request-ornekleri.html">Giden İrsaliye Request Örnekleri</a>
-<a class="docs-nav-link" href="giden-irsaliye-json-ubl-mapping.html">Giden İrsaliye JSON → UBL Mapping</a>
+<a class="docs-nav-link" href="giden-irsaliye-json-ubl-mapping.html">Giden İrsaliye Request Modeli → UBL Mapping</a>
 </div>
 <div class="docs-nav-group">
 <div class="docs-nav-label">Gelen İrsaliye</div>
@@ -79,15 +79,17 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">Giden İrsaliye</p><h1>Giden İrsaliye Request Örnekleri</h1><p class="docs-lead">Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">Giden İrsaliye</p><h1>Giden İrsaliye Request Örnekleri</h1><p class="docs-lead">Üç profil, yerli ve yabancı taşıma senaryoları ile temel operasyonlar için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.</p></header>
 <!-- vbt:article-header:end -->
 <section id="giden-irsaliye-request-ornekleri">
 <h2 id="h-kullanim">Örnekleri Kullanma</h2>
-<p>Aşağıdaki gövdeler geçerli JSON'dur ve bağımsız olarak kopyalanabilir. VKN, alıcı etiketi, dış referans ve adres değerlerini test hesabınızdaki gerçek verilerle değiştirin. Tarihleri iş olayınızın düzenleme ve fiili sevk zamanına göre güncelleyin.</p>
+<p>Her örnekte doğrudan çağıracağınız <b>JSON endpointini</b> veya <b>XML endpointini (ByXml)</b> seçebilirsiniz. Seçilen panel, tam endpoint yolunu ve o endpointin beklediği body sözleşmesini koddan önce gösterir. VKN, alıcı etiketi, dış referans, adres ve tarihleri test hesabınızdaki gerçek verilerle değiştirin.</p>
+<div class="callout callout-info"><b>XML ile hazır UBL aynı şey değildir:</b> Bu sayfadaki XML sekmeleri <code>OutgoingDespatchAdviceRequestModel</code> serileştirmesidir. UBL-TR <code>DespatchAdvice</code> dosyası göndermek için ayrı <code>ByUbl</code> endpointini ve aşağıdaki Hazır UBL bölümünü kullanın.</div>
 <div class="callout callout-warning"><b>Canlı veri uyarısı:</b> Örnek kimlikler temsilidir. GİB mükellefiyet ve etiket kontrolü gerçek gönderici/alıcı verisiyle yapılır.</div>
 
-<h2 id="h-temel">TEMELIRSALIYE — Tam JSON</h2>
-<details class="example-details" open><summary>Standart sevk request'ini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="document">{
+<h2 id="h-temel">TEMELIRSALIYE — Request Endpointleri</h2>
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div>
+<div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdvice</code><br><b>Body:</b> <code>OutgoingDespatchAdviceRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-1" data-request-endpoint="AddOutgoingDespatchAdvice" data-request-model="OutgoingDespatchAdviceRequestModel">{
   "DespatchAdviceExternalId": "ERP-IRS-20260801-0001",
   "ProfileId": "TEMELIRSALIYE",
   "DocumentCurrencyCode": "TRY",
@@ -163,11 +165,43 @@
       "Item": { "Name": "Örnek Ürün", "SellersItemIdentification": "SKU-1001" }
     }
   ]
-}</code></pre></div></details><!-- vbt-source: OutgoingDespatchAdviceRequestModel.cs; DespatchAdviceRequestModel.cs; DespatchAdviceValidation.cs -->
+}</code></pre></div>
+<div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdviceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-1" data-request-endpoint="AddOutgoingDespatchAdviceByXml" data-request-model="XmlRequestModel">&lt;OutgoingDespatchAdviceRequestModel&gt;
+  &lt;DespatchAdviceExternalId&gt;ERP-IRS-20260801-0001&lt;/DespatchAdviceExternalId&gt;
+  &lt;ProfileId&gt;TEMELIRSALIYE&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-08-01T09:00:00+03:00&lt;/IssueDate&gt;
+  &lt;DespatchAdviceTypeCode&gt;SEVK&lt;/DespatchAdviceTypeCode&gt;
+  &lt;Note&gt;&lt;string&gt;Sipariş SO-2026-1042 sevkiyatıdır.&lt;/string&gt;&lt;/Note&gt;
+  &lt;LineCountNumeric&gt;1&lt;/LineCountNumeric&gt;
+  &lt;DespatchSupplierParty&gt;&lt;Party&gt;
+    &lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1234567890&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;
+    &lt;PartyName&gt;Örnek Gönderici A.Ş.&lt;/PartyName&gt;
+    &lt;PostalAddress&gt;&lt;StreetName&gt;Örnek Caddesi&lt;/StreetName&gt;&lt;BuildingNumber&gt;10&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Kadıköy&lt;/CitySubdivisionName&gt;&lt;CityName&gt;İstanbul&lt;/CityName&gt;&lt;PostalZone&gt;34710&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;
+  &lt;/Party&gt;&lt;/DespatchSupplierParty&gt;
+  &lt;DeliveryCustomerParty&gt;&lt;Party&gt;
+    &lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;9876543210&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;
+    &lt;PartyName&gt;Örnek Alıcı Ltd. Şti.&lt;/PartyName&gt;
+    &lt;PostalAddress&gt;&lt;StreetName&gt;Teslim Sokak&lt;/StreetName&gt;&lt;BuildingNumber&gt;25&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;PostalZone&gt;06550&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;
+  &lt;/Party&gt;&lt;/DeliveryCustomerParty&gt;
+  &lt;Shipment&gt;
+    &lt;Id&gt;&lt;SchemeId /&gt;&lt;Value&gt;SHP-20260801-0001&lt;/Value&gt;&lt;/Id&gt;
+    &lt;Delivery&gt;
+      &lt;DeliveryAddress&gt;&lt;StreetName&gt;Teslim Sokak&lt;/StreetName&gt;&lt;BuildingNumber&gt;25&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;PostalZone&gt;06550&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/DeliveryAddress&gt;
+      &lt;CarrierParty&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1111111111&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Lojistik A.Ş.&lt;/PartyName&gt;&lt;/CarrierParty&gt;
+      &lt;Despatch&gt;&lt;ActualDespatchDate&gt;2026-08-01T09:30:00+03:00&lt;/ActualDespatchDate&gt;&lt;ActualDespatchTime&gt;09:30:00&lt;/ActualDespatchTime&gt;&lt;DespatchAddress&gt;&lt;StreetName&gt;Çıkış Deposu Caddesi&lt;/StreetName&gt;&lt;BuildingNumber&gt;1&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Tuzla&lt;/CitySubdivisionName&gt;&lt;CityName&gt;İstanbul&lt;/CityName&gt;&lt;PostalZone&gt;34940&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/DespatchAddress&gt;&lt;/Despatch&gt;
+    &lt;/Delivery&gt;
+  &lt;/Shipment&gt;
+  &lt;DespatchLine&gt;&lt;DespatchLineRequestModel&gt;&lt;Id&gt;1&lt;/Id&gt;&lt;DeliveredQuantity&gt;&lt;UnitCode&gt;C62&lt;/UnitCode&gt;&lt;Value&gt;10&lt;/Value&gt;&lt;/DeliveredQuantity&gt;&lt;OrderLineReference&gt;&lt;LineId&gt;1&lt;/LineId&gt;&lt;/OrderLineReference&gt;&lt;Item&gt;&lt;Name&gt;Örnek Ürün&lt;/Name&gt;&lt;SellersItemIdentification&gt;SKU-1001&lt;/SellersItemIdentification&gt;&lt;/Item&gt;&lt;/DespatchLineRequestModel&gt;&lt;/DespatchLine&gt;
+  &lt;ReceiverIdentifier&gt;urn:mail:defaultpk@alici.example&lt;/ReceiverIdentifier&gt;
+  &lt;IsOocumentNumberIncluded&gt;false&lt;/IsOocumentNumberIncluded&gt;
+&lt;/OutgoingDespatchAdviceRequestModel&gt;</code></pre></div></div><!-- vbt-source: OutgoingDespatchAdviceRequestModel.cs; DespatchAdviceRequestModel.cs; XmlRequestModel.cs; BaseService.ExecuteXmlAction; DespatchAdviceValidation.cs -->
 
-<h2 id="h-matbudan">MATBUDAN — Tam JSON</h2>
+<h2 id="h-matbudan">MATBUDAN — Request Endpointleri</h2>
 <p>Bu gövde matbu dayanak numarası ve tarihini taşır; diğer ortak kümeler bağımsız biçimde dahildir.</p>
-<details class="example-details"><summary>MATBUDAN request'ini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="document">{
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div>
+<div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdvice</code><br><b>Body:</b> <code>OutgoingDespatchAdviceRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-2" data-request-endpoint="AddOutgoingDespatchAdvice" data-request-model="OutgoingDespatchAdviceRequestModel">{
   "DespatchAdviceExternalId": "ERP-MATBU-20260801-0001",
   "ProfileId": "MATBUDAN",
   "DocumentCurrencyCode": "TRY",
@@ -217,11 +251,40 @@
     }
   },
   "DespatchLine": [{ "Id": "1", "DeliveredQuantity": { "UnitCode": "C62", "Value": 4 }, "Item": { "Name": "Örnek Ürün" } }]
-}</code></pre></div></details><!-- vbt-source: DespatchAdviceValidation.ValidateAdditionalDocumentReferenceForMatbudan -->
+}</code></pre></div>
+<div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdviceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-2" data-request-endpoint="AddOutgoingDespatchAdviceByXml" data-request-model="XmlRequestModel">&lt;OutgoingDespatchAdviceRequestModel&gt;
+  &lt;DespatchAdviceExternalId&gt;ERP-MATBU-20260801-0001&lt;/DespatchAdviceExternalId&gt;
+  &lt;ProfileId&gt;MATBUDAN&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-08-01T10:00:00+03:00&lt;/IssueDate&gt;
+  &lt;DespatchAdviceTypeCode&gt;MATBUDAN&lt;/DespatchAdviceTypeCode&gt;
+  &lt;LineCountNumeric&gt;1&lt;/LineCountNumeric&gt;
+  &lt;AdditionalDocumentReference&gt;&lt;DocumentReferenceRequestModel&gt;&lt;Id&gt;MATBU-IRS-45821&lt;/Id&gt;&lt;IssueDate&gt;2026-08-01T08:45:00+03:00&lt;/IssueDate&gt;&lt;DocumentType&gt;MATBU İRSALİYE&lt;/DocumentType&gt;&lt;/DocumentReferenceRequestModel&gt;&lt;/AdditionalDocumentReference&gt;
+  &lt;DespatchSupplierParty&gt;&lt;Party&gt;
+    &lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1234567890&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;
+    &lt;PartyName&gt;Örnek Gönderici A.Ş.&lt;/PartyName&gt;
+    &lt;PostalAddress&gt;&lt;StreetName&gt;Örnek Caddesi&lt;/StreetName&gt;&lt;BuildingNumber&gt;10&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Kadıköy&lt;/CitySubdivisionName&gt;&lt;CityName&gt;İstanbul&lt;/CityName&gt;&lt;PostalZone&gt;34710&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;
+  &lt;/Party&gt;&lt;/DespatchSupplierParty&gt;
+  &lt;DeliveryCustomerParty&gt;&lt;Party&gt;
+    &lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;9876543210&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;
+    &lt;PartyName&gt;Örnek Alıcı Ltd. Şti.&lt;/PartyName&gt;
+    &lt;PostalAddress&gt;&lt;StreetName&gt;Teslim Sokak&lt;/StreetName&gt;&lt;BuildingNumber&gt;25&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;PostalZone&gt;06550&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;
+  &lt;/Party&gt;&lt;/DeliveryCustomerParty&gt;
+  &lt;Shipment&gt;&lt;Id&gt;&lt;SchemeId /&gt;&lt;Value&gt;SHP-MATBU-0001&lt;/Value&gt;&lt;/Id&gt;&lt;Delivery&gt;
+    &lt;DeliveryAddress&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;PostalZone&gt;06550&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/DeliveryAddress&gt;
+    &lt;CarrierParty&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1111111111&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Lojistik A.Ş.&lt;/PartyName&gt;&lt;/CarrierParty&gt;
+    &lt;Despatch&gt;&lt;ActualDespatchDate&gt;2026-08-01T09:00:00+03:00&lt;/ActualDespatchDate&gt;&lt;ActualDespatchTime&gt;09:00:00&lt;/ActualDespatchTime&gt;&lt;/Despatch&gt;
+  &lt;/Delivery&gt;&lt;/Shipment&gt;
+  &lt;DespatchLine&gt;&lt;DespatchLineRequestModel&gt;&lt;Id&gt;1&lt;/Id&gt;&lt;DeliveredQuantity&gt;&lt;UnitCode&gt;C62&lt;/UnitCode&gt;&lt;Value&gt;4&lt;/Value&gt;&lt;/DeliveredQuantity&gt;&lt;Item&gt;&lt;Name&gt;Örnek Ürün&lt;/Name&gt;&lt;/Item&gt;&lt;/DespatchLineRequestModel&gt;&lt;/DespatchLine&gt;
+  &lt;ReceiverIdentifier&gt;urn:mail:defaultpk@alici.example&lt;/ReceiverIdentifier&gt;
+  &lt;IsOocumentNumberIncluded&gt;false&lt;/IsOocumentNumberIncluded&gt;
+&lt;/OutgoingDespatchAdviceRequestModel&gt;</code></pre></div></div><!-- vbt-source: DespatchAdviceValidation.ValidateAdditionalDocumentReferenceForMatbudan; XmlManager.SafeDeserialize -->
 
-<h2 id="h-idis">IDISIRSALIYE — Tam JSON</h2>
+<h2 id="h-idis">IDISIRSALIYE — Yerli Araç ve Dorse</h2>
 <div class="callout callout-info"><b>IDİS biçimi:</b> <code>IdisSevkiyatNo</code> hem <code>SE-1234567</code> hem <code>ES-1234567</code> değerini kabul eder. Araç ve dorse alanlarını <a href="giden-irsaliye-senaryolari.html#h-plaka-sozlesmesi">Araç ve Dorse Kimliği</a> kurallarına göre hazırlayın.</div>
-<details class="example-details"><summary>IDISIRSALIYE request'ini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="document">{
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div>
+<div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdvice</code><br><b>Body:</b> <code>OutgoingDespatchAdviceRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-3" data-request-endpoint="AddOutgoingDespatchAdvice" data-request-model="OutgoingDespatchAdviceRequestModel">{
   "DespatchAdviceExternalId": "ERP-IDIS-20260801-0001",
   "ProfileId": "IDISIRSALIYE",
   "DocumentCurrencyCode": "TRY",
@@ -294,12 +357,188 @@
       }
     }
   ]
-}</code></pre></div></details>
+}</code></pre></div>
+<div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdviceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-3" data-request-endpoint="AddOutgoingDespatchAdviceByXml" data-request-model="XmlRequestModel">&lt;OutgoingDespatchAdviceRequestModel&gt;
+  &lt;DespatchAdviceExternalId&gt;ERP-IDIS-20260801-0001&lt;/DespatchAdviceExternalId&gt;
+  &lt;ProfileId&gt;IDISIRSALIYE&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-08-01T11:00:00+03:00&lt;/IssueDate&gt;
+  &lt;DespatchAdviceTypeCode&gt;SEVK&lt;/DespatchAdviceTypeCode&gt;
+  &lt;LineCountNumeric&gt;1&lt;/LineCountNumeric&gt;
+  &lt;DespatchSupplierParty&gt;&lt;Party&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1234567890&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Gönderici A.Ş.&lt;/PartyName&gt;&lt;PostalAddress&gt;&lt;StreetName&gt;Örnek Caddesi&lt;/StreetName&gt;&lt;BuildingNumber&gt;10&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Kadıköy&lt;/CitySubdivisionName&gt;&lt;CityName&gt;İstanbul&lt;/CityName&gt;&lt;PostalZone&gt;34710&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;&lt;/Party&gt;&lt;/DespatchSupplierParty&gt;
+  &lt;DeliveryCustomerParty&gt;&lt;Party&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;9876543210&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Alıcı Ltd. Şti.&lt;/PartyName&gt;&lt;PostalAddress&gt;&lt;StreetName&gt;Teslim Sokak&lt;/StreetName&gt;&lt;BuildingNumber&gt;25&lt;/BuildingNumber&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;PostalZone&gt;06550&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;&lt;/Party&gt;&lt;/DeliveryCustomerParty&gt;
+  &lt;Shipment&gt;
+    &lt;Id&gt;&lt;SchemeId /&gt;&lt;Value&gt;SHP-IDIS-0001&lt;/Value&gt;&lt;/Id&gt;
+    &lt;ShipmentStage&gt;&lt;TransportMeans&gt;&lt;RoadTransport&gt;&lt;LicensePlateId&gt;&lt;SchemeId&gt;PLAKA&lt;/SchemeId&gt;&lt;Value&gt;34ABC123&lt;/Value&gt;&lt;/LicensePlateId&gt;&lt;/RoadTransport&gt;&lt;/TransportMeans&gt;&lt;/ShipmentStage&gt;
+    &lt;Delivery&gt;&lt;DeliveryAddress&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;PostalZone&gt;06550&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/DeliveryAddress&gt;&lt;CarrierParty&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1111111111&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Lojistik A.Ş.&lt;/PartyName&gt;&lt;/CarrierParty&gt;&lt;Despatch&gt;&lt;ActualDespatchDate&gt;2026-08-01T11:30:00+03:00&lt;/ActualDespatchDate&gt;&lt;ActualDespatchTime&gt;11:30:00&lt;/ActualDespatchTime&gt;&lt;/Despatch&gt;&lt;/Delivery&gt;
+    &lt;TransportHandlingUnit&gt;&lt;TransportHandlingUnitRequestModel&gt;&lt;TransportEquipment&gt;&lt;TransportEquipmentRequestModel&gt;&lt;Id&gt;&lt;SchemeId&gt;DORSE&lt;/SchemeId&gt;&lt;Value&gt;06AB123&lt;/Value&gt;&lt;/Id&gt;&lt;/TransportEquipmentRequestModel&gt;&lt;/TransportEquipment&gt;&lt;/TransportHandlingUnitRequestModel&gt;&lt;/TransportHandlingUnit&gt;
+  &lt;/Shipment&gt;
+  &lt;DespatchLine&gt;&lt;DespatchLineRequestModel&gt;&lt;Id&gt;1&lt;/Id&gt;&lt;DeliveredQuantity&gt;&lt;UnitCode&gt;C62&lt;/UnitCode&gt;&lt;Value&gt;1&lt;/Value&gt;&lt;/DeliveredQuantity&gt;&lt;Item&gt;&lt;Name&gt;İDİS Kapsamındaki Ürün&lt;/Name&gt;&lt;AdditionalItemIdentification&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;ETIKETNO&lt;/SchemeId&gt;&lt;Value&gt;AB1234567&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/AdditionalItemIdentification&gt;&lt;/Item&gt;&lt;/DespatchLineRequestModel&gt;&lt;/DespatchLine&gt;
+  &lt;ReceiverIdentifier&gt;urn:mail:defaultpk@alici.example&lt;/ReceiverIdentifier&gt;
+  &lt;IsOocumentNumberIncluded&gt;false&lt;/IsOocumentNumberIncluded&gt;
+  &lt;IdisSevkiyatNo&gt;ES-1234567&lt;/IdisSevkiyatNo&gt;
+&lt;/OutgoingDespatchAdviceRequestModel&gt;</code></pre></div></div>
 <div class="callout callout-info"><b>Araç ve dorse alanları:</b> Örnekte araç plakası <code>PLAKA</code>, dorse kimliği <code>DORSE</code> şemasıyla gösterilir. Sürücü bilgisi gönderilmiyorsa araç plakası zorunlu değildir; araç veya dorse alanı gönderildiğinde şema ve değer yine doğrulanır. Sürücü gönderildiğinde aynı <code>ShipmentStage</code> içinde araç plakası da bulunmalıdır.</div><!-- vbt-source: DespatchAdviceValidation.ValidateIdisDespatchAdvice; DespatchAdviceValidation.ValidateDrivers; DespatchAdviceValidation.ValidateLicensePlate; OutgoingDespatchAdviceService.cs:3300-3307 -->
+
+<h2 id="h-idis-yabanci">IDISIRSALIYE — Yabancı Araç ve Dorse</h2>
+<p>Yabancı araç ve dorse değerlerinde yalnız büyük harf, rakam, alt çizgi ve tire kullanılır. Araç için <code>YABANCIPLAKA</code>, dorse için <code>YABANCIDORSE</code> veya <code>YABANCIDORSEPLAKA</code> gönderilir.</p>
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div>
+<div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdvice</code><br><b>Body:</b> <code>OutgoingDespatchAdviceRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-4" data-request-endpoint="AddOutgoingDespatchAdvice" data-request-model="OutgoingDespatchAdviceRequestModel">{
+  "DespatchAdviceExternalId": "ERP-IDIS-FOREIGN-20260801-0001",
+  "ProfileId": "IDISIRSALIYE",
+  "DocumentCurrencyCode": "TRY",
+  "CopyIndicator": false,
+  "IssueDate": "2026-08-01T12:00:00+03:00",
+  "DespatchAdviceTypeCode": "SEVK",
+  "LineCountNumeric": 1,
+  "ReceiverIdentifier": "urn:mail:defaultpk@alici.example",
+  "IsDocumentNumberIncluded": false,
+  "IdisSevkiyatNo": "SE-7654321",
+  "DespatchSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1234567890" }],
+      "PartyName": "Örnek Gönderici A.Ş.",
+      "PostalAddress": { "CitySubdivisionName": "Kadıköy", "CityName": "İstanbul", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "DeliveryCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "9876543210" }],
+      "PartyName": "Örnek Alıcı Ltd. Şti.",
+      "PostalAddress": { "CitySubdivisionName": "Çankaya", "CityName": "Ankara", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "Shipment": {
+    "Id": { "SchemeId": "", "Value": "SHP-IDIS-FOREIGN-0001" },
+    "ShipmentStage": [{
+      "TransportMeans": { "RoadTransport": { "LicensePlateId": { "SchemeId": "YABANCIPLAKA", "Value": "DE-B1234" } } }
+    }],
+    "TransportHandlingUnit": [{
+      "TransportEquipment": [{ "Id": { "SchemeId": "YABANCIDORSEPLAKA", "Value": "BG-TRAILER-77" } }]
+    }],
+    "Delivery": {
+      "DeliveryAddress": { "CitySubdivisionName": "Çankaya", "CityName": "Ankara", "Country": { "Name": "Türkiye" } },
+      "CarrierParty": { "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1111111111" }], "PartyName": "Örnek Lojistik A.Ş." },
+      "Despatch": { "ActualDespatchDate": "2026-08-01T12:30:00+03:00", "ActualDespatchTime": "12:30:00" }
+    }
+  },
+  "DespatchLine": [{
+    "Id": "1",
+    "DeliveredQuantity": { "UnitCode": "C62", "Value": 1 },
+    "Item": { "Name": "İDİS İthal Ürün", "AdditionalItemIdentification": [{ "SchemeId": "ETIKETNO", "Value": "CD7654321" }] }
+  }]
+}</code></pre></div>
+<div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdviceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-4" data-request-endpoint="AddOutgoingDespatchAdviceByXml" data-request-model="XmlRequestModel">&lt;OutgoingDespatchAdviceRequestModel&gt;
+  &lt;DespatchAdviceExternalId&gt;ERP-IDIS-FOREIGN-20260801-0001&lt;/DespatchAdviceExternalId&gt;
+  &lt;ProfileId&gt;IDISIRSALIYE&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-08-01T12:00:00+03:00&lt;/IssueDate&gt;
+  &lt;DespatchAdviceTypeCode&gt;SEVK&lt;/DespatchAdviceTypeCode&gt;
+  &lt;LineCountNumeric&gt;1&lt;/LineCountNumeric&gt;
+  &lt;DespatchSupplierParty&gt;&lt;Party&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1234567890&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Gönderici A.Ş.&lt;/PartyName&gt;&lt;PostalAddress&gt;&lt;CitySubdivisionName&gt;Kadıköy&lt;/CitySubdivisionName&gt;&lt;CityName&gt;İstanbul&lt;/CityName&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;&lt;/Party&gt;&lt;/DespatchSupplierParty&gt;
+  &lt;DeliveryCustomerParty&gt;&lt;Party&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;9876543210&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Alıcı Ltd. Şti.&lt;/PartyName&gt;&lt;PostalAddress&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;&lt;/Party&gt;&lt;/DeliveryCustomerParty&gt;
+  &lt;Shipment&gt;
+    &lt;Id&gt;&lt;SchemeId /&gt;&lt;Value&gt;SHP-IDIS-FOREIGN-0001&lt;/Value&gt;&lt;/Id&gt;
+    &lt;ShipmentStage&gt;&lt;TransportMeans&gt;&lt;RoadTransport&gt;&lt;LicensePlateId&gt;&lt;SchemeId&gt;YABANCIPLAKA&lt;/SchemeId&gt;&lt;Value&gt;DE-B1234&lt;/Value&gt;&lt;/LicensePlateId&gt;&lt;/RoadTransport&gt;&lt;/TransportMeans&gt;&lt;/ShipmentStage&gt;
+    &lt;Delivery&gt;&lt;DeliveryAddress&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/DeliveryAddress&gt;&lt;CarrierParty&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1111111111&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Lojistik A.Ş.&lt;/PartyName&gt;&lt;/CarrierParty&gt;&lt;Despatch&gt;&lt;ActualDespatchDate&gt;2026-08-01T12:30:00+03:00&lt;/ActualDespatchDate&gt;&lt;ActualDespatchTime&gt;12:30:00&lt;/ActualDespatchTime&gt;&lt;/Despatch&gt;&lt;/Delivery&gt;
+    &lt;TransportHandlingUnit&gt;&lt;TransportHandlingUnitRequestModel&gt;&lt;TransportEquipment&gt;&lt;TransportEquipmentRequestModel&gt;&lt;Id&gt;&lt;SchemeId&gt;YABANCIDORSEPLAKA&lt;/SchemeId&gt;&lt;Value&gt;BG-TRAILER-77&lt;/Value&gt;&lt;/Id&gt;&lt;/TransportEquipmentRequestModel&gt;&lt;/TransportEquipment&gt;&lt;/TransportHandlingUnitRequestModel&gt;&lt;/TransportHandlingUnit&gt;
+  &lt;/Shipment&gt;
+  &lt;DespatchLine&gt;&lt;DespatchLineRequestModel&gt;&lt;Id&gt;1&lt;/Id&gt;&lt;DeliveredQuantity&gt;&lt;UnitCode&gt;C62&lt;/UnitCode&gt;&lt;Value&gt;1&lt;/Value&gt;&lt;/DeliveredQuantity&gt;&lt;Item&gt;&lt;Name&gt;İDİS İthal Ürün&lt;/Name&gt;&lt;AdditionalItemIdentification&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;ETIKETNO&lt;/SchemeId&gt;&lt;Value&gt;CD7654321&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/AdditionalItemIdentification&gt;&lt;/Item&gt;&lt;/DespatchLineRequestModel&gt;&lt;/DespatchLine&gt;
+  &lt;ReceiverIdentifier&gt;urn:mail:defaultpk@alici.example&lt;/ReceiverIdentifier&gt;
+  &lt;IsOocumentNumberIncluded&gt;false&lt;/IsOocumentNumberIncluded&gt;
+  &lt;IdisSevkiyatNo&gt;SE-7654321&lt;/IdisSevkiyatNo&gt;
+&lt;/OutgoingDespatchAdviceRequestModel&gt;</code></pre></div></div><!-- vbt-source: DespatchAdviceValidation.ValidateLicensePlate; DespatchAdviceValidation.ValidateTransportEquipment; vNextVersion.sql GIB-2026-09-14-LICENSE-PLATE -->
+
+<h2 id="h-plaka-varyantlari">Araç ve Dorse Şema Varyantları</h2>
+<p>Araç ve dorse şemaları birbirinden bağımsız seçilir. Yerli araç yabancı dorseyle, yabancı araç da yerli dorseyle kullanılabilir. <code>DriverPerson</code> gönderildiğinde aynı <code>ShipmentStage</code> içinde geçerli bir araç plakası bulunmalıdır; dorse listesi ise isteğe bağlıdır ve birden fazla kayıt taşıyabilir.</p>
+<div class="table-wrapper"><table><thead><tr><th>Alan</th><th>Şema</th><th>Değer biçimi</th><th>Tam örnek</th></tr></thead><tbody>
+<tr><td><code>RoadTransport.LicensePlateId</code></td><td><code>PLAKA</code></td><td>01–81 il kodu + büyük harf + rakam</td><td>Yerli araç ve dorse</td></tr>
+<tr><td><code>RoadTransport.LicensePlateId</code></td><td><code>YABANCIPLAKA</code></td><td>Büyük harf, rakam, <code>_</code> veya <code>-</code></td><td>Yabancı araç ve dorse</td></tr>
+<tr><td><code>TransportEquipment[].Id</code></td><td><code>DORSE</code></td><td>01–81 il kodu + büyük harf + rakam</td><td>Yerli araç ve dorse</td></tr>
+<tr><td><code>TransportEquipment[].Id</code></td><td><code>DORSEPLAKA</code></td><td>01–81 il kodu + büyük harf + rakam</td><td>Karma araç, şoför ve çoklu dorse</td></tr>
+<tr><td><code>TransportEquipment[].Id</code></td><td><code>YABANCIDORSE</code></td><td>Büyük harf, rakam, <code>_</code> veya <code>-</code></td><td>Karma araç, şoför ve çoklu dorse</td></tr>
+<tr><td><code>TransportEquipment[].Id</code></td><td><code>YABANCIDORSEPLAKA</code></td><td>Büyük harf, rakam, <code>_</code> veya <code>-</code></td><td>Yabancı araç ve dorse</td></tr>
+</tbody></table></div>
+<h3 id="h-plaka-karma-ornek">Karma Araç, Şoför ve Çoklu Dorse</h3>
+<p>Bu tam request, yerli araçla birlikte bir yerli ve bir yabancı dorseyi aynı sevkiyatta gösterir. Şoför bilgisi bulunduğu için <code>PLAKA</code> aynı <code>ShipmentStage</code> içinde zorunludur. İki dorse kaydı, koleksiyon desteğini ve daha önce tam request içinde gösterilmeyen <code>DORSEPLAKA</code> ile <code>YABANCIDORSE</code> kodlarını birlikte doğrular.</p>
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div>
+<div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdvice</code><br><b>Body:</b> <code>OutgoingDespatchAdviceRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-5" data-request-endpoint="AddOutgoingDespatchAdvice" data-request-model="OutgoingDespatchAdviceRequestModel">{
+  "DespatchAdviceExternalId": "ERP-IDIS-MIXED-20260801-0001",
+  "ProfileId": "IDISIRSALIYE",
+  "DocumentCurrencyCode": "TRY",
+  "CopyIndicator": false,
+  "IssueDate": "2026-08-01T13:00:00+03:00",
+  "DespatchAdviceTypeCode": "SEVK",
+  "LineCountNumeric": 1,
+  "ReceiverIdentifier": "urn:mail:defaultpk@alici.example",
+  "IsDocumentNumberIncluded": false,
+  "IdisSevkiyatNo": "ES-2468135",
+  "DespatchSupplierParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "1234567890" }],
+      "PartyName": "Örnek Gönderici A.Ş.",
+      "PostalAddress": { "CitySubdivisionName": "Kadıköy", "CityName": "İstanbul", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "DeliveryCustomerParty": {
+    "Party": {
+      "PartyIdentifications": [{ "SchemeId": "VKN", "Value": "9876543210" }],
+      "PartyName": "Örnek Alıcı Ltd. Şti.",
+      "PostalAddress": { "CitySubdivisionName": "Çankaya", "CityName": "Ankara", "Country": { "Name": "Türkiye" } }
+    }
+  },
+  "Shipment": {
+    "Id": { "SchemeId": "", "Value": "SHP-IDIS-MIXED-0001" },
+    "ShipmentStage": [{
+      "TransportMeans": { "RoadTransport": { "LicensePlateId": { "SchemeId": "PLAKA", "Value": "34XYZ987" } } },
+      "DriverPerson": [{ "FirstName": "Ayşe", "FamilyName": "Yılmaz", "NationalityId": "TR" }]
+    }],
+    "TransportHandlingUnit": [{
+      "TransportEquipment": [
+        { "Id": { "SchemeId": "DORSEPLAKA", "Value": "34DRS456" } },
+        { "Id": { "SchemeId": "YABANCIDORSE", "Value": "RO-TRAILER-91" } }
+      ]
+    }],
+    "Delivery": {
+      "DeliveryAddress": { "CitySubdivisionName": "Çankaya", "CityName": "Ankara", "PostalZone": "06550", "Country": { "Name": "Türkiye" } },
+      "Despatch": { "ActualDespatchDate": "2026-08-01T13:30:00+03:00", "ActualDespatchTime": "13:30:00" }
+    }
+  },
+  "DespatchLine": [{
+    "Id": "1",
+    "DeliveredQuantity": { "UnitCode": "C62", "Value": 1 },
+    "Item": { "Name": "İDİS Kapsamındaki Ürün", "AdditionalItemIdentification": [{ "SchemeId": "ETIKETNO", "Value": "EF2468135" }] }
+  }]
+}</code></pre></div>
+<div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdviceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="document" data-request-pair="addoutgoingdespatchadvice-5" data-request-endpoint="AddOutgoingDespatchAdviceByXml" data-request-model="XmlRequestModel">&lt;OutgoingDespatchAdviceRequestModel&gt;
+  &lt;DespatchAdviceExternalId&gt;ERP-IDIS-MIXED-20260801-0001&lt;/DespatchAdviceExternalId&gt;
+  &lt;ProfileId&gt;IDISIRSALIYE&lt;/ProfileId&gt;
+  &lt;DocumentCurrencyCode&gt;TRY&lt;/DocumentCurrencyCode&gt;
+  &lt;CopyIndicator&gt;false&lt;/CopyIndicator&gt;
+  &lt;IssueDate&gt;2026-08-01T13:00:00+03:00&lt;/IssueDate&gt;
+  &lt;DespatchAdviceTypeCode&gt;SEVK&lt;/DespatchAdviceTypeCode&gt;
+  &lt;LineCountNumeric&gt;1&lt;/LineCountNumeric&gt;
+  &lt;DespatchSupplierParty&gt;&lt;Party&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;1234567890&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Gönderici A.Ş.&lt;/PartyName&gt;&lt;PostalAddress&gt;&lt;CitySubdivisionName&gt;Kadıköy&lt;/CitySubdivisionName&gt;&lt;CityName&gt;İstanbul&lt;/CityName&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;&lt;/Party&gt;&lt;/DespatchSupplierParty&gt;
+  &lt;DeliveryCustomerParty&gt;&lt;Party&gt;&lt;PartyIdentifications&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;VKN&lt;/SchemeId&gt;&lt;Value&gt;9876543210&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/PartyIdentifications&gt;&lt;PartyName&gt;Örnek Alıcı Ltd. Şti.&lt;/PartyName&gt;&lt;PostalAddress&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/PostalAddress&gt;&lt;/Party&gt;&lt;/DeliveryCustomerParty&gt;
+  &lt;Shipment&gt;
+    &lt;Id&gt;&lt;SchemeId /&gt;&lt;Value&gt;SHP-IDIS-MIXED-0001&lt;/Value&gt;&lt;/Id&gt;
+    &lt;ShipmentStage&gt;&lt;TransportMeans&gt;&lt;RoadTransport&gt;&lt;LicensePlateId&gt;&lt;SchemeId&gt;PLAKA&lt;/SchemeId&gt;&lt;Value&gt;34XYZ987&lt;/Value&gt;&lt;/LicensePlateId&gt;&lt;/RoadTransport&gt;&lt;/TransportMeans&gt;&lt;DriverPerson&gt;&lt;FirstName&gt;Ayşe&lt;/FirstName&gt;&lt;FamilyName&gt;Yılmaz&lt;/FamilyName&gt;&lt;NationalityId&gt;TR&lt;/NationalityId&gt;&lt;/DriverPerson&gt;&lt;/ShipmentStage&gt;
+    &lt;Delivery&gt;&lt;DeliveryAddress&gt;&lt;CitySubdivisionName&gt;Çankaya&lt;/CitySubdivisionName&gt;&lt;CityName&gt;Ankara&lt;/CityName&gt;&lt;PostalZone&gt;06550&lt;/PostalZone&gt;&lt;Country&gt;&lt;Name&gt;Türkiye&lt;/Name&gt;&lt;/Country&gt;&lt;/DeliveryAddress&gt;&lt;Despatch&gt;&lt;ActualDespatchDate&gt;2026-08-01T13:30:00+03:00&lt;/ActualDespatchDate&gt;&lt;ActualDespatchTime&gt;13:30:00&lt;/ActualDespatchTime&gt;&lt;/Despatch&gt;&lt;/Delivery&gt;
+    &lt;TransportHandlingUnit&gt;&lt;TransportHandlingUnitRequestModel&gt;&lt;TransportEquipment&gt;&lt;TransportEquipmentRequestModel&gt;&lt;Id&gt;&lt;SchemeId&gt;DORSEPLAKA&lt;/SchemeId&gt;&lt;Value&gt;34DRS456&lt;/Value&gt;&lt;/Id&gt;&lt;/TransportEquipmentRequestModel&gt;&lt;TransportEquipmentRequestModel&gt;&lt;Id&gt;&lt;SchemeId&gt;YABANCIDORSE&lt;/SchemeId&gt;&lt;Value&gt;RO-TRAILER-91&lt;/Value&gt;&lt;/Id&gt;&lt;/TransportEquipmentRequestModel&gt;&lt;/TransportEquipment&gt;&lt;/TransportHandlingUnitRequestModel&gt;&lt;/TransportHandlingUnit&gt;
+  &lt;/Shipment&gt;
+  &lt;DespatchLine&gt;&lt;DespatchLineRequestModel&gt;&lt;Id&gt;1&lt;/Id&gt;&lt;DeliveredQuantity&gt;&lt;UnitCode&gt;C62&lt;/UnitCode&gt;&lt;Value&gt;1&lt;/Value&gt;&lt;/DeliveredQuantity&gt;&lt;Item&gt;&lt;Name&gt;İDİS Kapsamındaki Ürün&lt;/Name&gt;&lt;AdditionalItemIdentification&gt;&lt;IdRequestModel&gt;&lt;SchemeId&gt;ETIKETNO&lt;/SchemeId&gt;&lt;Value&gt;EF2468135&lt;/Value&gt;&lt;/IdRequestModel&gt;&lt;/AdditionalItemIdentification&gt;&lt;/Item&gt;&lt;/DespatchLineRequestModel&gt;&lt;/DespatchLine&gt;
+  &lt;ReceiverIdentifier&gt;urn:mail:defaultpk@alici.example&lt;/ReceiverIdentifier&gt;
+  &lt;IsOocumentNumberIncluded&gt;false&lt;/IsOocumentNumberIncluded&gt;
+  &lt;IdisSevkiyatNo&gt;ES-2468135&lt;/IdisSevkiyatNo&gt;
+&lt;/OutgoingDespatchAdviceRequestModel&gt;</code></pre></div></div>
+<!-- vbt-source: DespatchAdviceValidation.ValidateCarrierPartyAndDriverPerson; DespatchAdviceValidation.ValidateLicensePlate; DespatchAdviceValidation.ValidateTransportEquipment; vNextVersion.sql GIB-2026-09-14-LICENSE-PLATE -->
 
 <h2 id="h-hazir-ubl">Hazır UBL Request'i</h2>
 <p>Kendi UBL dosyanızı üretiyorsanız XML'i UTF-8 byte dizisine çevirip JSON içinde Base64 olarak gönderin. <code>IsZipped=true</code> olduğunda <code>FileBytes</code> ZIP dosyasının, <code>false</code> olduğunda XML dosyasının Base64 karşılığıdır. <code>IsSigned=true</code> yalnızca içerik gerçekten imzalıysa kullanılmalıdır.</p>
-<details class="example-details"><summary>Hazır UBL request modelini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="ubl">{
+<p><b>Endpoint:</b> <code>POST /api/VbtApi/AddOutgoingDespatchAdviceByUbl</code><br><b>Body:</b> <code>DespatchAdviceUblRequestModel</code> (JSON içinde Base64 UBL)</p>
+<pre class="code-scroll"><code class="language-json" data-request-kind="ubl" data-request-endpoint="AddOutgoingDespatchAdviceByUbl" data-request-model="DespatchAdviceUblRequestModel">{
   "DespatchAdviceExternalId": "ERP-UBL-20260801-0001",
   "ReceiverIdentifier": "urn:mail:defaultpk@alici.example",
   "FileBytes": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPERlc3BhdGNoQWR2aWNlIHhtbG5zPSJ1cm46b2FzaXM6bmFtZXM6c3BlY2lmaWNhdGlvbjp1Ymw6c2NoZW1hOnhzZDpEZXNwYXRjaEFkdmljZS0yIiB4bWxuczpjYWM9InVybjpvYXNpczpuYW1lczpzcGVjaWZpY2F0aW9uOnVibDpzY2hlbWE6eHNkOkNvbW1vbkFnZ3JlZ2F0ZUNvbXBvbmVudHMtMiIgeG1sbnM6Y2JjPSJ1cm46b2FzaXM6bmFtZXM6c3BlY2lmaWNhdGlvbjp1Ymw6c2NoZW1hOnhzZDpDb21tb25CYXNpY0NvbXBvbmVudHMtMiIgeG1sbnM6ZXh0PSJ1cm46b2FzaXM6bmFtZXM6c3BlY2lmaWNhdGlvbjp1Ymw6c2NoZW1hOnhzZDpDb21tb25FeHRlbnNpb25Db21wb25lbnRzLTIiPgo8ZXh0OlVCTEV4dGVuc2lvbnM+PGV4dDpVQkxFeHRlbnNpb24+PGV4dDpFeHRlbnNpb25Db250ZW50Lz48L2V4dDpVQkxFeHRlbnNpb24+PC9leHQ6VUJMRXh0ZW5zaW9ucz4KPGNiYzpVQkxWZXJzaW9uSUQ+Mi4xPC9jYmM6VUJMVmVyc2lvbklEPjxjYmM6Q3VzdG9taXphdGlvbklEPlRSMS4yLjE8L2NiYzpDdXN0b21pemF0aW9uSUQ+PGNiYzpQcm9maWxlSUQ+VEVNRUxJUlNBTElZRTwvY2JjOlByb2ZpbGVJRD48Y2JjOklEPklSUzIwMjYwMDAwMDAwMDE8L2NiYzpJRD48Y2JjOkNvcHlJbmRpY2F0b3I+ZmFsc2U8L2NiYzpDb3B5SW5kaWNhdG9yPjxjYmM6VVVJRD4xMTExMTExMS0yMjIyLTMzMzMtNDQ0NC01NTU1NTU1NTU1NTU8L2NiYzpVVUlEPjxjYmM6SXNzdWVEYXRlPjIwMjYtMDgtMDE8L2NiYzpJc3N1ZURhdGU+PGNiYzpJc3N1ZVRpbWU+MDk6MDA6MDA8L2NiYzpJc3N1ZVRpbWU+PGNiYzpEZXNwYXRjaEFkdmljZVR5cGVDb2RlPlNFVks8L2NiYzpEZXNwYXRjaEFkdmljZVR5cGVDb2RlPjxjYmM6TGluZUNvdW50TnVtZXJpYz4xPC9jYmM6TGluZUNvdW50TnVtZXJpYz4KPGNhYzpTaWduYXR1cmU+PGNiYzpJRCBzY2hlbWVJRD0iVktOX1RDS04iPjEyMzQ1Njc4OTA8L2NiYzpJRD48Y2FjOlNpZ25hdG9yeVBhcnR5PjxjYWM6UGFydHlJZGVudGlmaWNhdGlvbj48Y2JjOklEIHNjaGVtZUlEPSJWS04iPjEyMzQ1Njc4OTA8L2NiYzpJRD48L2NhYzpQYXJ0eUlkZW50aWZpY2F0aW9uPjxjYWM6UG9zdGFsQWRkcmVzcz48Y2JjOlN0cmVldE5hbWU+w5ZybmVrIENhZGRlc2k8L2NiYzpTdHJlZXROYW1lPjxjYmM6Q2l0eVN1YmRpdmlzaW9uTmFtZT5LYWTEsWvDtnk8L2NiYzpDaXR5U3ViZGl2aXNpb25OYW1lPjxjYmM6Q2l0eU5hbWU+xLBzdGFuYnVsPC9jYmM6Q2l0eU5hbWU+PGNhYzpDb3VudHJ5PjxjYmM6SWRlbnRpZmljYXRpb25Db2RlPlRSPC9jYmM6SWRlbnRpZmljYXRpb25Db2RlPjxjYmM6TmFtZT5Uw7xya2l5ZTwvY2JjOk5hbWU+PC9jYWM6Q291bnRyeT48L2NhYzpQb3N0YWxBZGRyZXNzPjwvY2FjOlNpZ25hdG9yeVBhcnR5PjxjYWM6RGlnaXRhbFNpZ25hdHVyZUF0dGFjaG1lbnQ+PGNhYzpFeHRlcm5hbFJlZmVyZW5jZT48Y2JjOlVSST4jU2lnbmF0dXJlX0lSUzIwMjYwMDAwMDAwMDE8L2NiYzpVUkk+PC9jYWM6RXh0ZXJuYWxSZWZlcmVuY2U+PC9jYWM6RGlnaXRhbFNpZ25hdHVyZUF0dGFjaG1lbnQ+PC9jYWM6U2lnbmF0dXJlPgo8Y2FjOkRlc3BhdGNoU3VwcGxpZXJQYXJ0eT48Y2FjOlBhcnR5PjxjYWM6UGFydHlJZGVudGlmaWNhdGlvbj48Y2JjOklEIHNjaGVtZUlEPSJWS04iPjEyMzQ1Njc4OTA8L2NiYzpJRD48L2NhYzpQYXJ0eUlkZW50aWZpY2F0aW9uPjxjYWM6UGFydHlOYW1lPjxjYmM6TmFtZT7DlnJuZWsgR8O2bmRlcmljaSBBLsWeLjwvY2JjOk5hbWU+PC9jYWM6UGFydHlOYW1lPjxjYWM6UG9zdGFsQWRkcmVzcz48Y2JjOlN0cmVldE5hbWU+w5ZybmVrIENhZGRlc2k8L2NiYzpTdHJlZXROYW1lPjxjYmM6QnVpbGRpbmdOdW1iZXI+MTA8L2NiYzpCdWlsZGluZ051bWJlcj48Y2JjOkNpdHlTdWJkaXZpc2lvbk5hbWU+S2FkxLFrw7Z5PC9jYmM6Q2l0eVN1YmRpdmlzaW9uTmFtZT48Y2JjOkNpdHlOYW1lPsSwc3RhbmJ1bDwvY2JjOkNpdHlOYW1lPjxjYmM6UG9zdGFsWm9uZT4zNDcxMDwvY2JjOlBvc3RhbFpvbmU+PGNhYzpDb3VudHJ5PjxjYmM6SWRlbnRpZmljYXRpb25Db2RlPlRSPC9jYmM6SWRlbnRpZmljYXRpb25Db2RlPjxjYmM6TmFtZT5Uw7xya2l5ZTwvY2JjOk5hbWU+PC9jYWM6Q291bnRyeT48L2NhYzpQb3N0YWxBZGRyZXNzPjxjYWM6UGFydHlUYXhTY2hlbWU+PGNhYzpUYXhTY2hlbWU+PGNiYzpOYW1lPkthZMSxa8O2eTwvY2JjOk5hbWU+PC9jYWM6VGF4U2NoZW1lPjwvY2FjOlBhcnR5VGF4U2NoZW1lPjwvY2FjOlBhcnR5PjwvY2FjOkRlc3BhdGNoU3VwcGxpZXJQYXJ0eT4KPGNhYzpEZWxpdmVyeUN1c3RvbWVyUGFydHk+PGNhYzpQYXJ0eT48Y2FjOlBhcnR5SWRlbnRpZmljYXRpb24+PGNiYzpJRCBzY2hlbWVJRD0iVktOIj45ODc2NTQzMjEwPC9jYmM6SUQ+PC9jYWM6UGFydHlJZGVudGlmaWNhdGlvbj48Y2FjOlBhcnR5TmFtZT48Y2JjOk5hbWU+w5ZybmVrIEFsxLFjxLEgTHRkLiDFnnRpLjwvY2JjOk5hbWU+PC9jYWM6UGFydHlOYW1lPjxjYWM6UG9zdGFsQWRkcmVzcz48Y2JjOlN0cmVldE5hbWU+VGVzbGltIFNva2FrPC9jYmM6U3RyZWV0TmFtZT48Y2JjOkJ1aWxkaW5nTnVtYmVyPjI1PC9jYmM6QnVpbGRpbmdOdW1iZXI+PGNiYzpDaXR5U3ViZGl2aXNpb25OYW1lPsOHYW5rYXlhPC9jYmM6Q2l0eVN1YmRpdmlzaW9uTmFtZT48Y2JjOkNpdHlOYW1lPkFua2FyYTwvY2JjOkNpdHlOYW1lPjxjYmM6UG9zdGFsWm9uZT4wNjU1MDwvY2JjOlBvc3RhbFpvbmU+PGNhYzpDb3VudHJ5PjxjYmM6SWRlbnRpZmljYXRpb25Db2RlPlRSPC9jYmM6SWRlbnRpZmljYXRpb25Db2RlPjxjYmM6TmFtZT5Uw7xya2l5ZTwvY2JjOk5hbWU+PC9jYWM6Q291bnRyeT48L2NhYzpQb3N0YWxBZGRyZXNzPjxjYWM6UGFydHlUYXhTY2hlbWU+PGNhYzpUYXhTY2hlbWU+PGNiYzpOYW1lPsOHYW5rYXlhPC9jYmM6TmFtZT48L2NhYzpUYXhTY2hlbWU+PC9jYWM6UGFydHlUYXhTY2hlbWU+PC9jYWM6UGFydHk+PC9jYWM6RGVsaXZlcnlDdXN0b21lclBhcnR5Pgo8Y2FjOlNoaXBtZW50PjxjYmM6SUQ+U0hQLTIwMjYwODAxLTAwMDE8L2NiYzpJRD48Y2FjOkRlbGl2ZXJ5PjxjYWM6RGVsaXZlcnlBZGRyZXNzPjxjYmM6U3RyZWV0TmFtZT5UZXNsaW0gU29rYWs8L2NiYzpTdHJlZXROYW1lPjxjYmM6Q2l0eVN1YmRpdmlzaW9uTmFtZT7Dh2Fua2F5YTwvY2JjOkNpdHlTdWJkaXZpc2lvbk5hbWU+PGNiYzpDaXR5TmFtZT5BbmthcmE8L2NiYzpDaXR5TmFtZT48Y2FjOkNvdW50cnk+PGNiYzpJZGVudGlmaWNhdGlvbkNvZGU+VFI8L2NiYzpJZGVudGlmaWNhdGlvbkNvZGU+PGNiYzpOYW1lPlTDvHJraXllPC9jYmM6TmFtZT48L2NhYzpDb3VudHJ5PjwvY2FjOkRlbGl2ZXJ5QWRkcmVzcz48Y2FjOkNhcnJpZXJQYXJ0eT48Y2FjOlBhcnR5SWRlbnRpZmljYXRpb24+PGNiYzpJRCBzY2hlbWVJRD0iVktOIj4xMTExMTExMTExPC9jYmM6SUQ+PC9jYWM6UGFydHlJZGVudGlmaWNhdGlvbj48Y2FjOlBhcnR5TmFtZT48Y2JjOk5hbWU+w5ZybmVrIExvamlzdGlrIEEuxZ4uPC9jYmM6TmFtZT48L2NhYzpQYXJ0eU5hbWU+PGNhYzpQb3N0YWxBZGRyZXNzPjxjYmM6U3RyZWV0TmFtZT5Mb2ppc3RpayBDYWRkZXNpPC9jYmM6U3RyZWV0TmFtZT48Y2JjOkNpdHlTdWJkaXZpc2lvbk5hbWU+VHV6bGE8L2NiYzpDaXR5U3ViZGl2aXNpb25OYW1lPjxjYmM6Q2l0eU5hbWU+xLBzdGFuYnVsPC9jYmM6Q2l0eU5hbWU+PGNhYzpDb3VudHJ5PjxjYmM6SWRlbnRpZmljYXRpb25Db2RlPlRSPC9jYmM6SWRlbnRpZmljYXRpb25Db2RlPjxjYmM6TmFtZT5Uw7xya2l5ZTwvY2JjOk5hbWU+PC9jYWM6Q291bnRyeT48L2NhYzpQb3N0YWxBZGRyZXNzPjwvY2FjOkNhcnJpZXJQYXJ0eT48Y2FjOkRlc3BhdGNoPjxjYmM6QWN0dWFsRGVzcGF0Y2hEYXRlPjIwMjYtMDgtMDE8L2NiYzpBY3R1YWxEZXNwYXRjaERhdGU+PGNiYzpBY3R1YWxEZXNwYXRjaFRpbWU+MDk6MzA6MDA8L2NiYzpBY3R1YWxEZXNwYXRjaFRpbWU+PC9jYWM6RGVzcGF0Y2g+PC9jYWM6RGVsaXZlcnk+PC9jYWM6U2hpcG1lbnQ+CjxjYWM6RGVzcGF0Y2hMaW5lPjxjYmM6SUQ+MTwvY2JjOklEPjxjYmM6RGVsaXZlcmVkUXVhbnRpdHkgdW5pdENvZGU9IkM2MiI+MTA8L2NiYzpEZWxpdmVyZWRRdWFudGl0eT48Y2FjOk9yZGVyTGluZVJlZmVyZW5jZT48Y2JjOkxpbmVJRD4xPC9jYmM6TGluZUlEPjwvY2FjOk9yZGVyTGluZVJlZmVyZW5jZT48Y2FjOkl0ZW0+PGNiYzpOYW1lPsOWcm5layDDnHLDvG48L2NiYzpOYW1lPjxjYWM6U2VsbGVyc0l0ZW1JZGVudGlmaWNhdGlvbj48Y2JjOklEPlNLVS0xMDAxPC9jYmM6SUQ+PC9jYWM6U2VsbGVyc0l0ZW1JZGVudGlmaWNhdGlvbj48L2NhYzpJdGVtPjwvY2FjOkRlc3BhdGNoTGluZT4KPC9EZXNwYXRjaEFkdmljZT4=",
@@ -307,39 +546,60 @@
   "IsSigned": false,
   "MailTo": "operasyon@example.com",
   "FirmBranchCode": "MERKEZ"
-}</code></pre></div></details>
+}</code></pre>
 <div class="callout callout-warning"><b>Test verisini değiştirin:</b> Örnek <code>FileBytes</code>, tam bir UTF-8 <code>DespatchAdvice</code> XML'in Base64 karşılığıdır. Dış referans, ETTN, belge numarası, taraf kimlikleri, posta kutusu etiketi ve tarihleri test hesabınızın verileriyle birlikte değiştirin; ardından önce UBL önizleme endpointini çağırın.</div><!-- vbt-source: DespatchAdviceUblRequestModel.cs; OutgoingDespatchAdviceService.AddOutgoingDespatchAdviceByUbl; OutgoingDespatchAdviceService.OutgoingDespatchAdviceUblPreview -->
 
 <h2 id="h-operasyon">Operasyon Request'leri</h2>
-<p>Güncelleme işlemi, seçilecek mevcut belgenin dış referansını koruyan tam belge gövdesini kullanır; yukarıdaki profil örneklerinden ilgili olanı güncel alanlarla yeniden gönderin. Silme ve gönderme işlemlerinde belgeyi ETTN veya dış referansla seçebilirsiniz.</p>
-<details class="example-details"><summary>Silme JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="operation">{
+<p>Güncelleme ve önizleme işlemleri yukarıdaki tam belge gövdelerini kullanır. JSON için <code>UpdateOutgoingDespatchAdvice</code> / <code>OutgoingDespatchAdvicePreview</code>, XML için bunların <code>ByXml</code> son ekli endpointleri çağrılır. Aşağıdaki her işlemde endpoint seçimi ayrıca gösterilir.</p>
+
+<h3>Silme</h3>
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/DeleteOutgoingDespatchAdvice</code><br><b>Body:</b> <code>OutgoingDespatchAdviceDeleteRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="operation" data-request-pair="deleteoutgoingdespatchadvice-1" data-request-endpoint="DeleteOutgoingDespatchAdvice" data-request-model="OutgoingDespatchAdviceDeleteRequestModel">{
   "DespatchAdviceExternalId": "ERP-IRS-20260801-0001",
   "Ettn": null,
   "DespatchAdviceNumber": null
-}</code></pre></div></details>
-<details class="example-details"><summary>Durum sorgusu JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="operation">{
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/DeleteOutgoingDespatchAdviceByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="operation" data-request-pair="deleteoutgoingdespatchadvice-1" data-request-endpoint="DeleteOutgoingDespatchAdviceByXml" data-request-model="XmlRequestModel">&lt;OutgoingDespatchAdviceDeleteRequestModel&gt;
+  &lt;DespatchAdviceExternalId&gt;ERP-IRS-20260801-0001&lt;/DespatchAdviceExternalId&gt;
+&lt;/OutgoingDespatchAdviceDeleteRequestModel&gt;</code></pre></div></div>
+
+<h3>Durum sorgusu</h3>
+<p><b>Endpoint:</b> <code>POST /api/VbtApi/GetOutgoingDespatchAdvicesStatus</code><br><b>Body:</b> <code>OutgoingDespatchAdviceSummaryStatusRequestModel</code> (JSON). Bu çağrının <code>ByXml</code> karşılığı bulunmadığı için endpoint seçimi gösterilmez.</p>
+<pre><code class="language-json" data-request-kind="operation" data-request-endpoint="GetOutgoingDespatchAdvicesStatus" data-request-model="OutgoingDespatchAdviceSummaryStatusRequestModel">{
   "EttnList": [
     "11111111-2222-3333-4444-555555555555"
   ]
-}</code></pre></div></details>
-<details class="example-details"><summary>GİB'e gönderim JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="operation">{
+}</code></pre>
+
+<h3>GİB'e gönderim</h3>
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/SendOutgoingDespatchAdviceToGib</code><br><b>Body:</b> <code>OutgoingDespatchAdviceSendToGibRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="operation" data-request-pair="sendoutgoingdespatchadvicetogib-1" data-request-endpoint="SendOutgoingDespatchAdviceToGib" data-request-model="OutgoingDespatchAdviceSendToGibRequestModel">{
   "DespatchAdviceExternalId": "ERP-IRS-20260801-0001",
   "Ettn": "11111111-2222-3333-4444-555555555555"
-}</code></pre></div></details>
-<details class="example-details"><summary>Fiili sevk tarihi JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="operation">{
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/SendOutgoingDespatchAdviceToGibByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="operation" data-request-pair="sendoutgoingdespatchadvicetogib-1" data-request-endpoint="SendOutgoingDespatchAdviceToGibByXml" data-request-model="XmlRequestModel">&lt;OutgoingDespatchAdviceSendToGibRequestModel&gt;
+  &lt;DespatchAdviceExternalId&gt;ERP-IRS-20260801-0001&lt;/DespatchAdviceExternalId&gt;
+  &lt;Ettn&gt;11111111-2222-3333-4444-555555555555&lt;/Ettn&gt;
+&lt;/OutgoingDespatchAdviceSendToGibRequestModel&gt;</code></pre></div></div>
+
+<h3>Fiili sevk tarihi</h3>
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/UpdateOutgoingActualDespatchDate</code><br><b>Body:</b> <code>OutgoingActualDespatchDateUpdateRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="operation" data-request-pair="updateoutgoingactualdespatchdate-1" data-request-endpoint="UpdateOutgoingActualDespatchDate" data-request-model="OutgoingActualDespatchDateUpdateRequestModel">{
   "Ettn": "11111111-2222-3333-4444-555555555555",
   "ActualDespatchDate": "2026-08-01T09:30:00+03:00"
-}</code></pre></div></details>
-<details class="example-details"><summary>PDF çıktısı JSON örneğini görüntüle</summary><div class="example-body"><pre><code class="language-json" data-request-kind="operation">{
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/UpdateOutgoingActualDespatchDateByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="operation" data-request-pair="updateoutgoingactualdespatchdate-1" data-request-endpoint="UpdateOutgoingActualDespatchDateByXml" data-request-model="XmlRequestModel">&lt;OutgoingActualDespatchDateUpdateRequestModel&gt;
+  &lt;Ettn&gt;11111111-2222-3333-4444-555555555555&lt;/Ettn&gt;
+  &lt;ActualDespatchDate&gt;2026-08-01T09:30:00+03:00&lt;/ActualDespatchDate&gt;
+&lt;/OutgoingActualDespatchDateUpdateRequestModel&gt;</code></pre></div></div>
+
+<h3>PDF çıktısı</h3>
+<div class="code-tabs" data-code-tabs data-code-tabs-default="json"><div class="code-tabs-list" data-code-tabs-list><button class="code-tab" type="button" data-code-tab data-code-option="json">JSON endpoint</button><button class="code-tab" type="button" data-code-tab data-code-option="xml">XML endpoint (ByXml)</button></div><div class="code-tab-panel" data-code-panel data-code-option="json"><p><b>Endpoint:</b> <code>POST /api/VbtApi/GetOutgoingDespatchAdvicePdf</code><br><b>Body:</b> <code>DespatchAdvicePdfRequestModel</code> (JSON)</p><pre><code class="language-json" data-request-kind="operation" data-request-pair="getoutgoingdespatchadvicepdf-1" data-request-endpoint="GetOutgoingDespatchAdvicePdf" data-request-model="DespatchAdvicePdfRequestModel">{
   "DespatchAdviceEttns": [
     "11111111-2222-3333-4444-555555555555"
   ]
-}</code></pre></div></details><!-- vbt-source: OutgoingDespatchAdviceSummaryStatusRequestModel.cs; OutgoingDespatchAdviceSendToGibRequestModel.cs; OutgoingActualDespatchDateUpdateRequestModel.cs; DespatchAdvicePdfRequestModel.cs -->
+}</code></pre></div><div class="code-tab-panel" data-code-panel data-code-option="xml"><p><b>Endpoint:</b> <code>POST /api/VbtApi/GetOutgoingDespatchAdvicePdfByXml</code><br><b>Body:</b> <code>XmlRequestModel</code>; aşağıdaki XML <code>XmlModel</code> alanına verilir.</p><pre><code class="language-xml" data-request-kind="operation" data-request-pair="getoutgoingdespatchadvicepdf-1" data-request-endpoint="GetOutgoingDespatchAdvicePdfByXml" data-request-model="XmlRequestModel">&lt;DespatchAdvicePdfRequestModel&gt;
+  &lt;DespatchAdviceEttns&gt;&lt;string&gt;11111111-2222-3333-4444-555555555555&lt;/string&gt;&lt;/DespatchAdviceEttns&gt;
+&lt;/DespatchAdvicePdfRequestModel&gt;</code></pre></div></div><!-- vbt-source: OutgoingDespatchAdviceSummaryStatusRequestModel.cs; OutgoingDespatchAdviceDeleteRequestModel.cs; OutgoingDespatchAdviceSendToGibRequestModel.cs; OutgoingActualDespatchDateUpdateRequestModel.cs; DespatchAdvicePdfRequestModel.cs -->
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
 <a class="docs-page-link docs-page-previous" href="giden-irsaliye-portal-api.html"><span>Önceki</span><strong>Giden İrsaliye Portal API</strong></a>
-<a class="docs-page-link docs-page-next" href="giden-irsaliye-json-ubl-mapping.html"><span>Sonraki</span><strong>Giden İrsaliye JSON → UBL Mapping</strong></a>
+<a class="docs-page-link docs-page-next" href="giden-irsaliye-json-ubl-mapping.html"><span>Sonraki</span><strong>Giden İrsaliye Request Modeli → UBL Mapping</strong></a>
 </nav>
 <!-- vbt:pagination:end -->
 </article></main>
@@ -350,7 +610,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="TEMELIRSALIYE, MATBUDAN, IDISIRSALIYE, endpoint..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"externalItems":[{"title":"e-İrsaliye Nedir?","text":"e-İrsaliye'nin kapsamı, belge türleri, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-İrsaliye DespatchAdvice ReceiptAdvice","url":"e-irsaliye-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB e-İrsaliye paketi, UBL-TR belge yapıları, resmi kılavuzlar ve teknik gereksinimler.","keywords":"Teknik Temel GİB UBL-TR DespatchAdvice ReceiptAdvice","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Senaryoları","text":"TEMELIRSALIYE, MATBUDAN ve IDISIRSALIYE profilleri için profil, belge tipi ve zorunlu alan kararları.","keywords":"Giden İrsaliye TEMELIRSALIYE MATBUDAN IDISIRSALIYE","url":"giden-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Akışı","text":"Giden e-İrsaliye'nin oluşturulması, imzalanması, GİB ve alıcıya iletilmesi ile kabul, kısmi kabul ve red durumları.","keywords":"Giden İrsaliye durum GİB irsaliye yanıtı","url":"giden-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Sorumlulukları","text":"Belge hazırlama, güvenli gönderim, fiili sevk, durum takibi ve mutabakat sorumlulukları.","keywords":"Giden İrsaliye sorumluluk fiili sevk mutabakat","url":"giden-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Entegratör API","text":"Giden irsaliye oluşturma, güncelleme, gönderme, sorgulama, çıktı ve durum endpointleri.","keywords":"Giden İrsaliye Entegratör API endpoint durum","url":"giden-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Portal API","text":"Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.","keywords":"Giden İrsaliye Portal API grid geçmiş","url":"giden-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Request Örnekleri","text":"Üç profil ve temel operasyonlar için tam, ayrıştırılabilir ve kopyalanabilir JSON örnekleri.","keywords":"Giden İrsaliye JSON request","url":"giden-irsaliye-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye JSON → UBL Mapping","text":"Giden irsaliye JSON alanlarının üretilen UBL DespatchAdvice XML içindeki karşılıkları.","keywords":"Giden İrsaliye JSON UBL XML mapping","url":"giden-irsaliye-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Senaryoları","text":"Gelen irsaliyeyi alma, ERP'ye aktarma ve kabul, kısmi kabul veya red irsaliye yanıtı üretme senaryoları.","keywords":"Gelen İrsaliye ReceiptAdvice kabul kısmi kabul red ERP","url":"gelen-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Akışı","text":"Gelen e-İrsaliye'nin alınması, ERP'ye aktarılması ve irsaliye yanıtının teknik durum makinesi.","keywords":"Gelen İrsaliye durum ReceiptAdvice ERP","url":"gelen-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Sorumlulukları","text":"Gelen belgeyi tekilleştirme, ERP'ye alma, karar üretme, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen İrsaliye sorumluluk ERP irsaliye yanıtı","url":"gelen-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Entegratör API","text":"Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.","keywords":"Gelen İrsaliye Entegratör API endpoint ReceiptAdvice","url":"gelen-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Portal API","text":"Portal gelen irsaliye listesi, görüntüleme, okundu, geçmiş, arşiv ve yanıt işlemleri.","keywords":"Gelen İrsaliye Portal API kabul red kısmi kabul","url":"gelen-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye İşlem Örnekleri","text":"Listeleme, ERP işleme, çıktı alma ve irsaliye yanıtı için tam ve kopyalanabilir JSON örnekleri.","keywords":"Gelen İrsaliye JSON ReceiptAdvice","url":"gelen-irsaliye-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye UBL → API/ERP Mapping","text":"Alınan UBL DespatchAdvice alanlarının gelen irsaliye API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen İrsaliye UBL API ERP mapping","url":"gelen-irsaliye-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-İrsaliye rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında sık sorulan sorular.","keywords":"SSS durum ReceiptAdvice UBL ERP","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"promptText":"Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.","externalItems":[{"title":"e-İrsaliye Nedir?","text":"e-İrsaliye'nin kapsamı, belge türleri, teknik kimliği ve birbirinden ayrılan giden/gelen belge yaşam döngülerine giriş.","keywords":"Başlangıç e-İrsaliye DespatchAdvice ReceiptAdvice","url":"e-irsaliye-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB e-İrsaliye paketi, UBL-TR belge yapıları, resmi kılavuzlar ve teknik gereksinimler.","keywords":"Teknik Temel GİB UBL-TR DespatchAdvice ReceiptAdvice","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"API Temelleri","text":"Kimlik doğrulama, ortak header, response, hata ve belge kimliği sözleşmeleri.","keywords":"API token VbtAuthorization ResponseModel ETTN","url":"api-temelleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Senaryoları","text":"TEMELIRSALIYE, MATBUDAN ve IDISIRSALIYE profilleri için profil, belge tipi ve zorunlu alan kararları.","keywords":"Giden İrsaliye TEMELIRSALIYE MATBUDAN IDISIRSALIYE","url":"giden-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Akışı","text":"Giden e-İrsaliye'nin oluşturulması, imzalanması, GİB ve alıcıya iletilmesi ile kabul, kısmi kabul ve red durumları.","keywords":"Giden İrsaliye durum GİB irsaliye yanıtı","url":"giden-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Sorumlulukları","text":"Belge hazırlama, güvenli gönderim, fiili sevk, durum takibi ve mutabakat sorumlulukları.","keywords":"Giden İrsaliye sorumluluk fiili sevk mutabakat","url":"giden-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Entegratör API","text":"Giden irsaliye oluşturma, güncelleme, gönderme, sorgulama, çıktı ve durum endpointleri.","keywords":"Giden İrsaliye Entegratör API endpoint durum","url":"giden-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Portal API","text":"Portal giden irsaliye listesi, görüntüleme, gönderim, tarih, arşiv ve geçmiş işlemleri.","keywords":"Giden İrsaliye Portal API grid geçmiş","url":"giden-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Request Örnekleri","text":"Üç profil, yerli ve yabancı taşıma senaryoları ile temel operasyonlar için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.","keywords":"Giden İrsaliye JSON XML endpoint request ByXml","url":"giden-irsaliye-request-ornekleri.html","sectionType":"Sayfa"},{"title":"Giden İrsaliye Request Modeli → UBL Mapping","text":"JSON ve platform XML modelindeki giden irsaliye alanlarının üretilen UBL DespatchAdvice XML içindeki karşılıkları.","keywords":"Giden İrsaliye JSON platform XML UBL mapping","url":"giden-irsaliye-json-ubl-mapping.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Senaryoları","text":"Gelen irsaliyeyi alma, ERP'ye aktarma ve kabul, kısmi kabul veya red irsaliye yanıtı üretme senaryoları.","keywords":"Gelen İrsaliye ReceiptAdvice kabul kısmi kabul red ERP","url":"gelen-irsaliye-senaryolari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Akışı","text":"Gelen e-İrsaliye'nin alınması, ERP'ye aktarılması ve irsaliye yanıtının teknik durum makinesi.","keywords":"Gelen İrsaliye durum ReceiptAdvice ERP","url":"gelen-irsaliye-akisi.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Sorumlulukları","text":"Gelen belgeyi tekilleştirme, ERP'ye alma, karar üretme, güvenli tekrar ve mutabakat sorumlulukları.","keywords":"Gelen İrsaliye sorumluluk ERP irsaliye yanıtı","url":"gelen-irsaliye-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Entegratör API","text":"Gelen irsaliye listeleme, detay, çıktı, ERP işleme ve irsaliye yanıtı endpointleri.","keywords":"Gelen İrsaliye Entegratör API endpoint ReceiptAdvice","url":"gelen-irsaliye-entegrator-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye Portal API","text":"Portal gelen irsaliye listesi, görüntüleme, okundu, geçmiş, arşiv ve yanıt işlemleri.","keywords":"Gelen İrsaliye Portal API kabul red kısmi kabul","url":"gelen-irsaliye-portal-api.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye İşlem Örnekleri","text":"Listeleme, ERP işleme, çıktı alma ve irsaliye yanıtı için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.","keywords":"Gelen İrsaliye JSON ReceiptAdvice endpoint request XML ByXml","url":"gelen-irsaliye-islem-ornekleri.html","sectionType":"Sayfa"},{"title":"Gelen İrsaliye UBL → API/ERP Mapping","text":"Alınan UBL DespatchAdvice alanlarının gelen irsaliye API yanıtı ve ERP modelindeki karşılıkları.","keywords":"Gelen İrsaliye UBL API ERP mapping","url":"gelen-irsaliye-ubl-api-mapping.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Profil, belge tipi, durum, hata kodu ve doğrulama kuralları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-İrsaliye rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Profil seçimi, giden ve gelen irsaliye, irsaliye yanıtı, durum takibi, UBL/JSON ve operasyon hakkında sık sorulan sorular.","keywords":"SSS durum ReceiptAdvice UBL ERP","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>
