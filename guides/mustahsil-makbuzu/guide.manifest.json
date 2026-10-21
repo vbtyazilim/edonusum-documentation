@@ -22,8 +22,8 @@
     "announcement": {
       "enabled": true,
       "target": "sms-dogrulamali-gonderim",
-      "label": "Gelecek Değişiklikler",
-      "ariaLabel": "Henüz aktif olmayan SMS doğrulamalı gönderim değişikliklerini inceleyin"
+      "label": "5 Kasım 2026: SMS Doğrulaması",
+      "ariaLabel": "5 Kasım 2026 tarihli e-Müstahsil Makbuzu SMS doğrulama değişikliğini inceleyin"
     }
   },
   "sections": [
@@ -172,34 +172,34 @@
       ]
     },
     {
-      "label": "Gelecek Değişiklikler",
-      "description": "Henüz aktif olmayan SMS doğrulama akışı ve yürürlük koşulları",
+      "label": "5 Kasım 2026 Değişikliği",
+      "description": "5 Kasım 2026 tarihli e-Müstahsil Makbuzlarında zorunlu olacak SMS doğrulama akışı",
       "icon": "future",
       "pages": [
         {
           "slug": "sms-dogrulamali-gonderim",
-          "title": "SMS Doğrulamalı Gönderim",
-          "description": "GİB zorunluluğu ve VBT aktivasyon duyurusundan sonra geçerli olacak ortak kapsam ile hedef kitleye göre hazırlanan ayrıntılar.",
-          "eyebrow": "Gelecek Değişiklikler",
+          "title": "5 Kasım 2026 SMS Doğrulaması",
+          "description": "Belge tarihi 5 Kasım 2026 ve sonrası olan e-Müstahsil Makbuzlarında zorunlu olacak SMS doğrulamasının kapsamı.",
+          "eyebrow": "5 Kasım 2026 Değişikliği",
           "keywords": [
-            "Gelecek Değişiklikler",
+            "5 Kasım 2026",
             "Planlanan",
             "SMS",
             "Doğrulama"
           ],
           "homeCard": {
-            "label": "Gelecek Değişiklikler",
-            "description": "Henüz aktif olmayan SMS doğrulama değişikliğinin yürürlük koşulu ile entegratör ve Portal rehberleri.",
-            "action": "Planlanan değişikliği inceleyin"
+            "label": "5 Kasım 2026",
+            "description": "Belge tarihine göre zorunlu olacak SMS doğrulamasının entegratör ve Portal gereksinimleri.",
+            "action": "5 Kasım hazırlığını inceleyin"
           }
         },
         {
           "slug": "sms-dogrulamali-gonderim-entegratorler",
           "title": "Entegratörler İçin",
-          "description": "Doğrudan JSON API veya UBL kullanan entegratörlerin aktivasyon öncesinde hazırlaması gereken sözleşme değişiklikleri.",
-          "eyebrow": "Gelecek Değişiklikler",
+          "description": "Doğrudan JSON API veya UBL kullanan entegratörlerin 5 Kasım 2026 öncesinde hazırlaması gereken sözleşme değişiklikleri.",
+          "eyebrow": "5 Kasım 2026 Değişikliği",
           "keywords": [
-            "Gelecek Değişiklikler",
+            "5 Kasım 2026",
             "Entegratör",
             "SMS",
             "UBL",
@@ -210,10 +210,10 @@
         {
           "slug": "sms-dogrulamali-gonderim-portal",
           "title": "Portal Kullanıcıları İçin",
-          "description": "VBT Portalda hazır sunulacak SMS gönderme, kod doğrulama ve belgeyi ilerletme davranışları.",
-          "eyebrow": "Gelecek Değişiklikler",
+          "description": "5 Kasım 2026 geçişinde VBT Portalda hazır sunulacak SMS gönderme ve kod doğrulama davranışları.",
+          "eyebrow": "5 Kasım 2026 Değişikliği",
           "keywords": [
-            "Gelecek Değişiklikler",
+            "5 Kasım 2026",
             "Portal",
             "SMS",
             "Doğrulama"
@@ -259,7 +259,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "Belge kullanımı, kesintiler, çıktı, API ve planlanan SMS doğrulaması hakkında sık sorulan sorular.",
+          "description": "Belge kullanımı, kesintiler, çıktı, API ve 5 Kasım 2026 SMS doğrulaması hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": [
             "SSS",
