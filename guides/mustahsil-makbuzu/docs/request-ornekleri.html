@@ -78,10 +78,10 @@
 <section id="request-ornekleri">
 <h3 id="h-senaryo-kapsami">Senaryo Kapsamı</h3>
 <p>Bu sayfa, her örnekte aynı okuma düzenini izler: önce senaryonun iş anlamı, sonra fark noktası, ardından doğrudan kullanılabilir JSON gövdesi verilir. Örnek seti <code>MUSTAHSILMAKBUZ</code> belge tipi, çiftçi/alıcı tarafları, ürün kalemleri, vergi/kesinti kodları, tevkifat ve iptal akışı etrafında toplanır.</p>
-<div class="table-wrapper"><table><thead><tr><th>Örnek</th><th>Senaryo</th><th>Ayırt Edici Nokta</th></tr></thead><tbody><tr><td>1</td><td>Normal Oluşturma</td><td>Tek ürün kalemi, ek kesintisiz temel belge</td></tr><tr><td>2</td><td>Tevkifatlı İşlem</td><td><code>WithholdingTaxTotal</code> ve net <code>PayableAmount</code></td></tr><tr><td>3</td><td>Çok Kalemli Makbuz</td><td>Aynı çiftçiden birden fazla ürün satırı</td></tr><tr><td>4</td><td>GV Stopajı</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>0003</code></td></tr><tr><td>5</td><td>Borsa Tescil</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>8001</code></td></tr><tr><td>6</td><td>SGK Prim</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>SGK_PRIM</code></td></tr><tr><td>7</td><td>Mera Fonu</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>9040</code></td></tr><tr><td>8</td><td>Çoklu Kesinti</td><td>Birden fazla kesinti kodunun aynı belgede birlikte kullanılması</td></tr><tr><td>9</td><td>İptal</td><td>Belge içeriği yerine iptal modeli ve <code>Signed</code> ön koşulu</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Örnek</th><th>Senaryo</th><th>Ayırt Edici Nokta</th></tr></thead><tbody><tr><td>1</td><td>Normal Oluşturma — SMS</td><td>5 Kasım 2026 sonrası doğrudan entegrasyon; tek ürün ve tam SMS doğrulama verisi</td></tr><tr><td>2</td><td>Tevkifatlı İşlem</td><td><code>WithholdingTaxTotal</code> ve net <code>PayableAmount</code></td></tr><tr><td>3</td><td>Çok Kalemli Makbuz</td><td>Aynı çiftçiden birden fazla ürün satırı</td></tr><tr><td>4</td><td>GV Stopajı</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>0003</code></td></tr><tr><td>5</td><td>Borsa Tescil</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>8001</code></td></tr><tr><td>6</td><td>SGK Prim</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>SGK_PRIM</code></td></tr><tr><td>7</td><td>Mera Fonu</td><td><code>TaxTotal.TaxSubtotal</code> altında <code>9040</code></td></tr><tr><td>8</td><td>Çoklu Kesinti</td><td>Birden fazla kesinti kodunun aynı belgede birlikte kullanılması</td></tr><tr><td>9</td><td>İptal</td><td>Belge içeriği yerine iptal modeli ve <code>Signed</code> ön koşulu</td></tr></tbody></table></div>
 <p>Her örnek ilgili senaryoya referans verir.</p>
 <div class="table-wrapper"><table><thead><tr><th>#</th><th>Senaryo</th><th>Kalem Sayısı</th><th>Kesinti/Tevkifat</th></tr></thead><tbody>
-<tr><td><a href="#h-ex1">1</a></td><td>Normal Oluşturma</td><td>1</td><td>—</td></tr>
+<tr><td><a href="#h-ex1">1</a></td><td>Normal Oluşturma — SMS</td><td>1</td><td><code>VerificationMethod=SMS</code></td></tr>
 <tr><td><a href="#h-ex2">2</a></td><td>Tevkifatlı İşlem</td><td>1</td><td><code>WithholdingTaxTotal</code></td></tr>
 <tr><td><a href="#h-ex3">3</a></td><td>Çok Kalemli Makbuz</td><td>2</td><td><code>WithholdingTaxTotal</code></td></tr>
 <tr><td><a href="#h-ex4">4</a></td><td>GV Stopajı</td><td>1</td><td><code>0003</code></td></tr>
@@ -95,13 +95,14 @@
 <p>e-Müstahsil Makbuzunda <code>AccountingSupplierParty</code> makbuzu düzenleyen/alıcı firmayı, <code>AccountingCustomerParty</code> üretici/çiftçiyi taşır.</p>
 <div class="table-wrapper"><table><thead><tr><th>Taraf</th><th>Kimlik</th><th>Ad kaynağı</th></tr></thead><tbody><tr><td><code>AccountingSupplierParty</code></td><td><code>VKN</code> veya <code>TCKN</code></td><td><code>PartyName</code> veya <code>Person</code></td></tr><tr><td><code>AccountingCustomerParty</code></td><td>11 haneli <code>TCKN</code></td><td>Üretici/çiftçi ad soyadı</td></tr></tbody></table></div>
 <div class="callout callout-warning"><b>5 Kasım 2026 kuralı:</b> SMS doğrulamalı belgede üretici/çiftçi <code>AccountingCustomerParty</code> altında TCKN ile gönderilmelidir. SMS kodu ve telefon bilgisi de aynı tarafın <code>Contact</code> alanına eşlenir.</div><!-- vbt-source: GİB e-Arşiv Teknik Kılavuzu; e-Müstahsil Makbuzu API sözleşmesi -->
-<h3 id="h-ex1">Örnek 1: Normal Oluşturma</h3>
-<p>Request gövdesi, Normal Oluşturma akışını ayırt eden alanları öne çıkarır.</p><p>KDV mükellefi olmayan bir çiftçiden, ek kesinti olmayan bir tarımsal ürün alımı için e-Müstahsil Makbuzu oluşturma.</p><p class="request-contract"><b>Endpoint:</b> <code>POST /api/CreditNoteApi/AddOutgoingCreditNote</code><br><b>Body:</b> <code>OutgoingCreditNoteRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingCreditNote" data-request-model="OutgoingCreditNoteRequestModel">{
+<div class="callout callout-info"><b>Örnek tarihleri:</b> Örnek 1, 5 Kasım 2026 ve sonrası için tam SMS doğrulama sözleşmesini gösterir. Örnek 2–8 mevcut kesinti çeşitlerini tarih öncesi gövdelerle anlatır; bu örneklerden biri 5 Kasım 2026 ve sonrası bir belge için kullanılacaksa Örnek 1'deki <code>Person</code>, <code>VerificationMethod</code>, <code>VerificationInfo</code> ve <code>VerificationProvider</code> alanları aynı kurallarla eklenmelidir.</div>
+<h3 id="h-ex1">Örnek 1: Normal Oluşturma — SMS ile</h3>
+<p>Request gövdesi, 5 Kasım 2026 ve sonrası tarihli doğrudan entegrasyon akışında normal belge alanlarıyla SMS doğrulama alanlarını birlikte gösterir.</p><p>KDV mükellefi olmayan bir çiftçiden, ek kesinti olmayan bir tarımsal ürün alımı için e-Müstahsil Makbuzu oluşturulur. SMS entegratörün kendi sağlayıcısı üzerinden gönderilmiş ve kod entegratörün uygulamasında doğrulanmıştır.</p><p class="request-contract"><b>Endpoint:</b> <code>POST /api/CreditNoteApi/AddOutgoingCreditNote</code><br><b>Body:</b> <code>OutgoingCreditNoteRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingCreditNote" data-request-model="OutgoingCreditNoteRequestModel">{
   "CreditNoteExternalId": "ERP-MM-2026-001",
   "ProfileId": "EARSIVBELGE",
   "CreditNoteTypeCode": "MUSTAHSILMAKBUZ",
   "DocumentCurrencyCode": "TRY",
-  "IssueDate": "2026-06-10T09:00:00",
+  "IssueDate": "2026-11-05T09:00:00",
   "AccountingCustomerParty": {
     "Party": {
       "PartyIdentifications": [
@@ -110,7 +111,10 @@
           "Value": "12345678901"
         }
       ],
-      "PartyName": "Ahmet Çiftçi",
+      "Person": {
+        "FirstName": "Ahmet",
+        "FamilyName": "Çiftçi"
+      },
       "PostalAddress": {
         "CityName": "Denizli",
         "Country": {
@@ -181,9 +185,18 @@
         ]
       }
     }
-  ]
+  ],
+  "VerificationMethod": "SMS",
+  "VerificationInfo": {
+    "Code": "482193",
+    "PhoneNumber": "05551112233"
+  },
+  "VerificationProvider": {
+    "ApplicationName": "SMS_SAGLAYICI_ADI",
+    "Vkn": "1234567890"
+  }
 }</code></pre><h3 id="h-ex2">Örnek 2: Tevkifatlı İşlem</h3>
-<p>Request gövdesi, Tevkifatlı İşlem akışını ayırt eden alanları öne çıkarır.</p><p>GV STOPAJI tevkifatı uygulanan bir alım; <code>WithholdingTaxTotal</code> hem belge seviyesinde doldurulur, <code>PayableAmount</code> kesinti düşülmüş net tutarı yansıtır.</p><div class="callout callout-info"><b>Fark:</b> Örnek 1'e ek olarak <code>WithholdingTaxTotal</code> alanı doldurulmuştur; <code>PayableAmount</code>, tevkifat tutarı düşülerek hesaplanır (5000 − 250 = 4750).</div><p class="request-contract"><b>Endpoint:</b> <code>POST /api/CreditNoteApi/AddOutgoingCreditNote</code><br><b>Body:</b> <code>OutgoingCreditNoteRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingCreditNote" data-request-model="OutgoingCreditNoteRequestModel">{
+<p>Request gövdesi, Tevkifatlı İşlem akışını ayırt eden alanları öne çıkarır.</p><p>GV STOPAJI tevkifatı uygulanan bir alım; <code>WithholdingTaxTotal</code> hem belge seviyesinde doldurulur, <code>PayableAmount</code> kesinti düşülmüş net tutarı yansıtır.</p><div class="callout callout-info"><b>Ekonomik içerik farkı:</b> Normal belgeye <code>WithholdingTaxTotal</code> eklenmiş; <code>PayableAmount</code>, tevkifat tutarı düşülerek hesaplanmıştır (5000 − 250 = 4750). Belge tarihi 5 Kasım 2026 ve sonrası seçilirse SMS alanları da Örnek 1'deki gibi eklenmelidir.</div><p class="request-contract"><b>Endpoint:</b> <code>POST /api/CreditNoteApi/AddOutgoingCreditNote</code><br><b>Body:</b> <code>OutgoingCreditNoteRequestModel</code> (JSON)</p><pre class="code-scroll"><code class="language-json" data-request-kind="invoice" data-request-endpoint="AddOutgoingCreditNote" data-request-model="OutgoingCreditNoteRequestModel">{
   "CreditNoteExternalId": "ERP-MM-2026-002",
   "ProfileId": "EARSIVBELGE",
   "CreditNoteTypeCode": "MUSTAHSILMAKBUZ",
