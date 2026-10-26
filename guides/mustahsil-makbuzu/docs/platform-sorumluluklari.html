@@ -76,21 +76,33 @@
 <header class="docs-article-header"><p class="docs-eyebrow">Uygulama</p><h1>Platform Sorumlulukları</h1><p class="docs-lead">Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.</p></header>
 <!-- vbt:article-header:end -->
 <section id="platform-sorumluluklari">
+<div class="callout callout-info"><b>VBT Portal:</b> Belge tarihi 5 Kasım 2026 ve sonrası olduğunda Portal kullanıcısı üreticinin telefonunu kontrol eder ve SMS gönderimini belge ekranından başlatır. SMS'i VBT Platform gönderir; kullanıcı üreticinin ilettiği kodu ekrana girer, platform kodu doğrular ve başarılı sonuçtan sonra belgeyi imza akışına alır. SMS otomatik olarak gönderilmez.</div>
+<!-- vbt-source: Documentation/Modules/06-VbtMM.md; Applications/API/VbtMM/VbtMm.Service/OutgoingCreditNoteService.cs; Applications/API/VbtMM/VbtMm.WebApi/Controllers/CreditNoteApiController.cs -->
+<h3 id="h-portal-uctan-uca">Portal UI Geliştiricisi — Uçtan Uca Belge Akışı</h3>
+<ol>
+<li>Portal kullanıcısı üreticinin telefon numarasını kontrol eder ve makbuzu kaydeder.</li>
+<li>SMS bilgisi boş olan imzasız Portal belgesi <code>WaitingForVerification</code> durumunda tutulur; bu aşamada imza kuyruğu oluşturulmaz.</li>
+<li>Kullanıcı belge ekranındaki SMS gönderme adımını başlatır. Portal, <code>SendCreditNoteSmsCode</code> çağrısını yapar; SMS'i VBT Platform gönderir ve belge <code>WaitingForSmsCode</code> durumuna geçer.</li>
+<li>Kullanıcı üreticinin ilettiği kodu ekrana girer. Portal, gönderimden dönen doğrulama tokenı ve kodla <code>CompleteCreditNoteSmsVerification</code> çağrısını yapar.</li>
+<li>Platform kodu doğrular, doğrulama bilgilerini belgeye ekler, UBL'i yeniden üretir ve belgeyi <code>CreditNoteAndXmlCreated</code> durumuyla imza kuyruğuna alır.</li>
+<li>Belge detayı yeniden sorgulanır; <code>CreditNoteAndXmlCreated</code> veya <code>Signed</code> durumunda SMS ekranı kapatılır, hata oluşursa kullanıcıya yeniden gönderim veya kod düzeltme adımı gösterilir.</li>
+</ol>
 <h3 id="h-otomatik">Otomatik İşlemler</h3>
 <p>Platform, entegratörün gönderdiği request'i doğruladıktan sonra e-Müstahsil Makbuzu'na özgü UBL XML üretimi, imza kuyruğu, GİB raporu ve belge görüntüleme adımlarını yönetir. Entegratör belge içeriğini sağlar; platform teknik yaşam döngüsünü işletir.</p>
 <div class="table-wrapper"><table><thead><tr><th>#</th><th>İşlem</th><th>Açıklama</th></tr></thead><tbody>
 <tr><td>1</td><td>Validasyon</td><td>Alan zorunluluk, format, kombinasyon kontrolleri</td></tr>
-<tr><td>2</td><td>UBL XML Üretimi</td><td>UBL 2.1 CreditNote standardında XML</td></tr>
-<tr><td>3</td><td>Numara/UUID Atama</td><td>Entegratör göndermezse otomatik</td></tr>
-<tr><td>4</td><td>İmzalamaya Hazırlama</td><td><code>CreditNoteAndXmlCreated</code> durumuna kaydedilir</td></tr>
+<tr><td>2</td><td>Portal SMS doğrulaması</td><td>Kullanıcının başlattığı gönderimde SMS'i iletir; kod, süre ve tekrar kontrollerini yönetir; başarılı doğrulamadan sonra belgeyi imza akışına geçirir.</td></tr>
+<tr><td>3</td><td>UBL XML Üretimi</td><td>UBL 2.1 CreditNote standardında XML</td></tr>
+<tr><td>4</td><td>Numara/UUID Atama</td><td>Entegratör göndermezse otomatik</td></tr>
+<tr><td>5</td><td>İmzalamaya Hazırlama</td><td><code>CreditNoteAndXmlCreated</code> durumuna kaydedilir</td></tr>
 <!-- vbt-source: Applications/API/VbtMM/VbtMm.Job/CreditNoteSignJob.cs -->
-<tr><td>5</td><td>e-İmzalama</td><td>Belge imzalama akışına alınır; işlem tamamlandığında durum <code>Signed</code>'e geçer.</td></tr>
-<tr><td>6</td><td>Belge kaydı</td><td>Kalıcı saklama</td></tr>
-<tr><td>7</td><td>GİB Rapor</td><td>Periyodik toplu XML</td></tr>
-<tr><td>8</td><td>GİB Gönderim</td><td>Rapor iletimi + yanıt işleme</td></tr>
-<tr><td>9</td><td>İptal Raporu</td><td>Sonraki döngüde bildirim</td></tr>
-<tr><td>10</td><td>PDF</td><td>Yazdırılabilir çıktı</td></tr>
-<tr><td>11</td><td>E-posta</td><td>Bildirim (yapılandırıldıysa)</td></tr>
+<tr><td>6</td><td>e-İmzalama</td><td>Belge imzalama akışına alınır; işlem tamamlandığında durum <code>Signed</code>'e geçer.</td></tr>
+<tr><td>7</td><td>Belge kaydı</td><td>Kalıcı saklama</td></tr>
+<tr><td>8</td><td>GİB Rapor</td><td>Periyodik toplu XML</td></tr>
+<tr><td>9</td><td>GİB Gönderim</td><td>Rapor iletimi + yanıt işleme</td></tr>
+<tr><td>10</td><td>İptal Raporu</td><td>Sonraki döngüde bildirim</td></tr>
+<tr><td>11</td><td>PDF</td><td>Yazdırılabilir çıktı</td></tr>
+<tr><td>12</td><td>E-posta</td><td>Bildirim (yapılandırıldıysa)</td></tr>
 </tbody></table></div>
 
 <h3 id="h-validasyon">Validasyon Kuralları</h3>
@@ -108,6 +120,17 @@
 </tbody></table></div>
 <div class="callout callout-info"><b>Bilgi:</b> GİB, taraf VKN/TCKN'nin belge tarihinde aktif mükellef olup olmadığına yönelik canlı doğrulamayı henüz zorunlu kılmamıştır. Bu kontrol GİB tarafından zorunlu hale getirildiğinde platform tarafımızca otomatik olarak devreye alınacaktır; entegratörün bu konuda şu an için ek bir işlem yapması gerekmez.</div>
 <div class="callout callout-info"><b>Portal kullanıcıları:</b> Makbuzu düzenleyen/alıcı firma <code>AccountingSupplierParty</code>, üretici/çiftçi ise <code>AccountingCustomerParty</code> olarak oluşturulur. Belge tarihi 5 Kasım 2026 ve sonrası olduğunda üretici TCKN'si, SMS kodu ve telefon ile sağlayıcı bilgisi kayıtlı doğrulama bilgilerinden GİB raporuna otomatik aktarılır; kullanıcı ayrı bir rapor nesnesi hazırlamaz.</div><!-- vbt-source: GİB e-Arşiv Teknik Kılavuzu; e-Müstahsil Makbuzu Portal sözleşmesi -->
+
+<h3 id="h-portal-sms-dogrulama">Portal SMS Doğrulama Akışı</h3>
+<p>Portal, SMS gönderme ve kod doğrulama adımlarını belge ekranında hazır sunar; kullanıcı teknik endpoint, token veya sağlayıcı bilgisi yönetmez.</p>
+<div class="table-wrapper"><table><thead><tr><th>Adım</th><th>Portal kullanıcısı</th><th>VBT Platform</th></tr></thead><tbody><tr><td>Belge kaydı</td><td>Makbuz bilgilerini kaydeder.</td><td>Belgeyi <code>WaitingForVerification</code> durumunda tutar; imza kuyruğu oluşturmaz.</td></tr><tr><td>SMS gönderimi</td><td>Üreticinin telefonunu kontrol eder ve gönderimi başlatır.</td><td>SMS'i gönderir; başarılı gönderimde belgeyi <code>WaitingForSmsCode</code> durumuna geçirir.</td></tr><tr><td>Kod doğrulama</td><td>Üreticinin ilettiği kodu ekrana girer.</td><td>Kodu doğrular; başarılı sonuçta doğrulama bilgilerini belgeye ekler ve imza kuyruğunu oluşturur.</td></tr><tr><td>Hata veya süre aşımı</td><td>Ekrandaki yönlendirmeye göre yeniden dener.</td><td>Süre, yeniden gönderim ve deneme sınırlarını yönetir; başarısız sonucu doğrulanmış göstermez.</td></tr></tbody></table></div>
+
+<h3 id="h-portal-durumlari">Portal Durumları</h3>
+<div class="table-wrapper"><table><thead><tr><th>Teknik değer</th><th>Portal açıklaması</th><th>Kullanıcı aksiyonu</th></tr></thead><tbody><tr><td><code>WaitingForVerification</code></td><td>SMS gönderimi bekleniyor.</td><td>Üreticinin telefonu kontrol edilerek gönderim başlatılır.</td></tr><tr><td><code>WaitingForSmsCode</code></td><td>SMS onayı bekleniyor.</td><td>Üreticinin ilettiği kod girilir; gerekirse telefon düzeltilerek yeniden gönderim yapılır.</td></tr><tr><td><code>CreditNoteAndXmlCreated</code></td><td>Doğrulama tamamlandı; belge imzalama bekliyor.</td><td>Belge durumu takip edilir.</td></tr><tr><td><code>Signed</code></td><td>Belge imzalandı ve GİB raporuna hazır.</td><td>Ek SMS işlemi yapılmaz.</td></tr></tbody></table></div>
+
+<h3 id="h-sms-dogrulama-akisi">SMS Doğrulama Akışı</h3>
+<p><code>OutgoingCreditNoteStatusForUser</code>, doğrudan entegrasyon ile Portalın etkileşimli SMS akışını ayırır. Doğrudan entegrasyon tam SMS verisini Add/Update requestinde gönderir ve bekleme durumlarına girmez. Portalda ise kullanıcı gönderimi başlatır; VBT Platform SMS'i gönderip kodu doğruladıktan sonra iki kanal aynı imza kuyruğunda birleşir.</p>
+<div class="diagram-wrapper"><svg viewBox="0 0 1080 340" role="img" aria-labelledby="mm-state-flow-title mm-state-flow-desc" xmlns="http://www.w3.org/2000/svg"><title id="mm-state-flow-title">e-Müstahsil Makbuzu SMS doğrulama ve imza durum akışı</title><desc id="mm-state-flow-desc">Doğrudan entegrasyon tam SMS verisiyle imza kuyruğuna ilerler; Portal belgesi kullanıcının başlattığı SMS gönderimi ve kod doğrulaması tamamlandıktan sonra aynı kuyruğa ulaşır.</desc><style>.state-box{fill:var(--svg-box);stroke:var(--svg-stroke);stroke-width:1.5}.state-wait{fill:var(--svg-brand-bg);stroke:var(--svg-brand-s);stroke-width:1.7}.state-ok{fill:var(--svg-ok-bg);stroke:var(--svg-ok-s);stroke-width:1.7}.state-text{fill:var(--svg-text);font:600 10.5px Inter,system-ui,sans-serif;text-anchor:middle}.state-sub{fill:var(--svg-muted);font:9px Inter,system-ui,sans-serif;text-anchor:middle}.state-cond{fill:var(--svg-muted);font:italic 9px Inter,system-ui,sans-serif;text-anchor:middle}.state-line{stroke:var(--svg-line);stroke-width:1.4;fill:none;marker-end:url(#mm-state-arrow)}</style><defs><marker id="mm-state-arrow" markerWidth="8" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="var(--svg-line)"/></marker></defs><rect class="state-box" x="20" y="140" width="170" height="64" rx="8"/><text class="state-text" x="105" y="165">Add / Update</text><text class="state-sub" x="105" y="186">makbuz kaydı</text><path class="state-line" d="M190 156 L680 156"/><text class="state-sub" x="435" y="130">Doğrudan entegrasyon: tam ve önceden doğrulanmış SMS verisi</text><text class="state-cond" x="435" y="145">SMS'i entegratör gönderir; kodu entegratör doğrular</text><path class="state-line" d="M190 190 L230 273"/><text class="state-sub" x="205" y="222">Portal: SMS bilgisi boş başlangıç</text><text class="state-cond" x="205" y="236">SMS otomatik gönderilmez</text><rect class="state-wait" x="230" y="250" width="180" height="64" rx="8"/><text class="state-text" x="320" y="275">WaitingForVerification</text><text class="state-sub" x="320" y="296">kullanıcı gönderimi başlatır</text><path class="state-line" d="M410 282 L460 282"/><text class="state-sub" x="435" y="272">VBT SMS gönderir</text><rect class="state-box" x="460" y="250" width="180" height="64" rx="8"/><text class="state-text" x="550" y="275">WaitingForSmsCode</text><text class="state-sub" x="550" y="296">kullanıcı kodu girer</text><path class="state-line" d="M640 282 L680 195"/><text class="state-sub" x="700" y="240">VBT kodu doğrular</text><text class="state-cond" x="700" y="254">doğrulama bilgileri UBL'e eklenir</text><rect class="state-ok" x="680" y="130" width="230" height="64" rx="8"/><text class="state-text" x="795" y="155">CreditNoteAndXmlCreated</text><text class="state-sub" x="795" y="176">imzalama bekliyor</text><path class="state-line" d="M910 162 L950 162"/><text class="state-sub" x="930" y="148">Otomatik imzalama</text><rect class="state-ok" x="950" y="130" width="110" height="64" rx="8"/><text class="state-text" x="1005" y="158">Signed</text><text class="state-sub" x="1005" y="177">rapora hazır</text></svg></div>
 
 <h3 id="h-hata-yaniti">Hata Yanıtı</h3>
 <p>Hata yanıtı, tüm Müstahsil endpointlerinde aynı temel şekli izler. <code>MessageCode</code> alanı, validasyon tablosundaki hata koduyla eşleştirilir.</p>

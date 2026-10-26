@@ -189,11 +189,11 @@
 <details class="example-details" open><summary>Portal endpoint sözleşmeleri</summary><div class="example-body">
 <div class="endpoint-card">
 <div class="endpoint-header"><span class="endpoint-method method-post">POST</span><span class="endpoint-path">/api/CreditNoteApi/SendCreditNoteSmsCode</span></div>
-<div class="endpoint-body"><p class="endpoint-description">e-Müstahsil Makbuzu için üreticinin telefonuna doğrulama kodu gönderir.</p>
+<div class="endpoint-body"><p class="endpoint-description">e-Müstahsil Makbuzu için üreticinin telefonuna 6 haneli sayısal doğrulama kodu gönderir.</p>
 <div class="table-wrapper"><table><tbody>
-<tr><td><b>Çağrı koşulu</b></td><td>Belge <code>WaitingForVerification</code> durumundadır.</td></tr>
+<tr><td><b>Çağrı koşulu</b></td><td>Belge ilk gönderim için <code>WaitingForVerification</code>; telefon düzeltme veya yeniden gönderim için <code>WaitingForSmsCode</code> durumundadır.</td></tr>
 <tr><td><b>Request</b></td><td><code>SendCreditNoteSmsCodeRequestModel</code> — belge kimliği alanlarından en az biri ve <code>PhoneNumber</code></td></tr>
-<tr><td><b>Response</b></td><td><code>SendCreditNoteSmsCodeResponseModel</code> — <code>MaskedPhoneNumber</code>, <code>VerificationToken</code>, <code>ExpiresInSeconds</code></td></tr>
+<tr><td><b>Response</b></td><td><code>SendCreditNoteSmsCodeResponseModel</code> — <code>MaskedPhoneNumber</code>, <code>VerificationToken</code>, <code>ExpiresInSeconds=180</code>; kod response içinde dönmez</td></tr>
 <tr><td><b>UI davranışı</b></td><td>Maskeli telefon ve kalan süre gösterilir; token kullanıcıya gösterilmeden kod doğrulama çağrısına taşınır.</td></tr>
 </tbody></table></div></div></div>
 <div class="endpoint-card">
