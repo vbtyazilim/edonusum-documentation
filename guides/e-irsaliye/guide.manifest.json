@@ -97,7 +97,7 @@
         {
           "slug": "giden-irsaliye-senaryolari",
           "title": "Giden İrsaliye Senaryoları",
-          "description": "TEMELIRSALIYE, MATBUDAN ve IDISIRSALIYE profilleri için profil, belge tipi ve zorunlu alan kararları.",
+          "description": "TEMELIRSALIYE ve IDISIRSALIYE profilleri ile SEVK ve MATBUDAN belge tipleri için zorunlu alan kararları.",
           "eyebrow": "Giden İrsaliye",
           "keywords": [
             "Giden İrsaliye",
@@ -177,7 +177,7 @@
         {
           "slug": "giden-irsaliye-request-ornekleri",
           "title": "Giden İrsaliye Request Örnekleri",
-          "description": "Üç profil, yerli ve yabancı taşıma senaryoları ile temel operasyonlar için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.",
+          "description": "Oluşturma, güncelleme, önizleme ve taşıma senaryoları için JSON, platform XML ve UBL örnekleri; İDİS veri kaynağı ve imza sınırları.",
           "eyebrow": "Giden İrsaliye",
           "keywords": [
             "Giden İrsaliye",
@@ -302,7 +302,7 @@
         {
           "slug": "gelen-irsaliye-islem-ornekleri",
           "title": "Gelen İrsaliye İşlem Örnekleri",
-          "description": "Listeleme, ERP işleme, çıktı alma ve irsaliye yanıtı için JSON ve ByXml endpointlerine ayrılmış kopyalanabilir request örnekleri.",
+          "description": "Listeleme, ERP işleme ve çıktı alma için JSON/XML; kabul, kısmi kabul ve red için JSON, platform XML ve UBL yanıt örnekleri.",
           "eyebrow": "Gelen İrsaliye",
           "keywords": [
             "Gelen İrsaliye",
