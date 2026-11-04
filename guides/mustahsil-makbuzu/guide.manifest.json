@@ -22,8 +22,8 @@
     "announcement": {
       "enabled": true,
       "target": "sms-dogrulamali-gonderim",
-      "label": "5 Kasım 2026: SMS Doğrulaması",
-      "ariaLabel": "5 Kasım 2026 tarihli e-Müstahsil Makbuzu SMS doğrulama değişikliğini inceleyin"
+      "label": "30 Haziran 2027: SMS Doğrulaması",
+      "ariaLabel": "30 Haziran 2027 e-Müstahsil Makbuzu SMS doğrulama geçişini inceleyin"
     }
   },
   "sections": [
@@ -172,34 +172,34 @@
       ]
     },
     {
-      "label": "5 Kasım 2026 Değişikliği",
-      "description": "5 Kasım 2026 tarihli e-Müstahsil Makbuzlarında zorunlu olacak SMS doğrulama akışı",
+      "label": "30 Haziran 2027 Geçişi",
+      "description": "Geçiş dönemindeki SMS kullanımı ve sorumluluklar",
       "icon": "future",
       "pages": [
         {
           "slug": "sms-dogrulamali-gonderim",
-          "title": "5 Kasım 2026 SMS Doğrulaması",
-          "description": "Belge tarihi 5 Kasım 2026 ve sonrası olan e-Müstahsil Makbuzlarında zorunlu olacak SMS doğrulamasının kapsamı.",
-          "eyebrow": "5 Kasım 2026 Değişikliği",
+          "title": "30 Haziran 2027 SMS Doğrulama Geçişi",
+          "description": "Geçiş döneminde SMS bilgisinin makbuza ve rapora aktarılması.",
+          "eyebrow": "30 Haziran 2027 Geçişi",
           "keywords": [
-            "5 Kasım 2026",
+            "30 Haziran 2027",
             "Planlanan",
             "SMS",
             "Doğrulama"
           ],
           "homeCard": {
-            "label": "5 Kasım 2026",
-            "description": "Belge tarihine göre zorunlu olacak SMS doğrulamasının entegratör ve Portal gereksinimleri.",
-            "action": "5 Kasım hazırlığını inceleyin"
+            "label": "30 Haziran 2027",
+            "description": "SMS doğrulamasının geçiş kuralları ile entegratör ve Portal sorumlulukları.",
+            "action": "Geçiş sözleşmesini inceleyin"
           }
         },
         {
           "slug": "sms-dogrulamali-gonderim-entegratorler",
           "title": "Entegratörler İçin",
-          "description": "Doğrudan JSON API veya UBL kullanan entegratörlerin 5 Kasım 2026 öncesinde hazırlaması gereken sözleşme değişiklikleri.",
-          "eyebrow": "5 Kasım 2026 Değişikliği",
+          "description": "Doğrudan JSON API veya UBL kullanan entegratörlerin SMS paketi ve GİB rapor geçiş kuralları.",
+          "eyebrow": "30 Haziran 2027 Geçişi",
           "keywords": [
-            "5 Kasım 2026",
+            "30 Haziran 2027",
             "Entegratör",
             "SMS",
             "UBL",
@@ -210,10 +210,10 @@
         {
           "slug": "sms-dogrulamali-gonderim-portal",
           "title": "Portal Kullanıcıları İçin",
-          "description": "5 Kasım 2026 geçişinde VBT Portalda hazır sunulacak SMS gönderme ve kod doğrulama davranışları.",
-          "eyebrow": "5 Kasım 2026 Değişikliği",
+          "description": "30 Haziran 2027 geçişinde VBT Portalda sunulacak SMS gönderme ve kod doğrulama davranışları.",
+          "eyebrow": "30 Haziran 2027 Geçişi",
           "keywords": [
-            "5 Kasım 2026",
+            "30 Haziran 2027",
             "Portal",
             "SMS",
             "Doğrulama"
@@ -259,7 +259,7 @@
         {
           "slug": "sss",
           "title": "Sıkça Sorulan Sorular",
-          "description": "Belge kullanımı, kesintiler, çıktı, API ve 5 Kasım 2026 SMS doğrulaması hakkında sık sorulan sorular.",
+          "description": "Belge kullanımı, kesintiler, çıktı, API ve 30 Haziran 2027 SMS doğrulama geçişi hakkında sık sorulan sorular.",
           "eyebrow": "Referans",
           "keywords": [
             "SSS",

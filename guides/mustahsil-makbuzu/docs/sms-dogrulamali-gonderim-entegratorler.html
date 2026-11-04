@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Entegratörler İçin — e-Müstahsil Makbuzu Entegrasyon Rehberi</title>
-<meta name="description" content="Doğrudan JSON API veya UBL kullanan entegratörlerin 5 Kasım 2026 öncesinde hazırlaması gereken sözleşme değişiklikleri.">
+<meta name="description" content="Doğrudan JSON API veya UBL kullanan entegratörlerin SMS paketi ve GİB rapor geçiş kuralları.">
 <meta name="author" content="VBT Yazılım">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/sms-dogrulamali-gonderim-entegratorler.html">
@@ -13,12 +13,12 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="VBT e-Dönüşüm Dokümantasyon">
 <meta property="og:title" content="Entegratörler İçin — e-Müstahsil Makbuzu Entegrasyon Rehberi">
-<meta property="og:description" content="Doğrudan JSON API veya UBL kullanan entegratörlerin 5 Kasım 2026 öncesinde hazırlaması gereken sözleşme değişiklikleri.">
+<meta property="og:description" content="Doğrudan JSON API veya UBL kullanan entegratörlerin SMS paketi ve GİB rapor geçiş kuralları.">
 <meta property="og:url" content="https://vbtyazilim.github.io/edonusum-documentation/guides/mustahsil-makbuzu/docs/sms-dogrulamali-gonderim-entegratorler.html">
 <meta property="og:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Entegratörler İçin — e-Müstahsil Makbuzu Entegrasyon Rehberi">
-<meta name="twitter:description" content="Doğrudan JSON API veya UBL kullanan entegratörlerin 5 Kasım 2026 öncesinde hazırlaması gereken sözleşme değişiklikleri.">
+<meta name="twitter:description" content="Doğrudan JSON API veya UBL kullanan entegratörlerin SMS paketi ve GİB rapor geçiş kuralları.">
 <meta name="twitter:image" content="https://vbtyazilim.github.io/edonusum-documentation/assets/readme-cover.png">
 <script src="../../../assets/vbt-document-template/features/theme/theme-boot.js"></script>
 <link rel="icon" type="image/svg+xml" href="../../../assets/vbt-document-template/assets/vbt-mark.svg">
@@ -59,8 +59,8 @@
 <a class="docs-nav-link" href="request-ubl-xml-mapping.html">Request → UBL XML Mapping</a>
 </div>
 <div class="docs-nav-group">
-<div class="docs-nav-label">5 Kasım 2026 Değişikliği</div>
-<a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">5 Kasım 2026 SMS Doğrulaması</a>
+<div class="docs-nav-label">30 Haziran 2027 Geçişi</div>
+<a class="docs-nav-link" href="sms-dogrulamali-gonderim.html">30 Haziran 2027 SMS Doğrulama Geçişi</a>
 <a class="docs-nav-link active" href="sms-dogrulamali-gonderim-entegratorler.html">Entegratörler İçin</a>
 <a class="docs-nav-link" href="sms-dogrulamali-gonderim-portal.html">Portal Kullanıcıları İçin</a>
 </div>
@@ -73,10 +73,10 @@
 <!-- vbt:sidebar:end -->
 <main class="docs-main" id="main-content" tabindex="-1"><article class="docs-article">
 <!-- vbt:article-header:start -->
-<header class="docs-article-header"><p class="docs-eyebrow">5 Kasım 2026 Değişikliği</p><h1>Entegratörler İçin</h1><p class="docs-lead">Doğrudan JSON API veya UBL kullanan entegratörlerin 5 Kasım 2026 öncesinde hazırlaması gereken sözleşme değişiklikleri.</p></header>
+<header class="docs-article-header"><p class="docs-eyebrow">30 Haziran 2027 Geçişi</p><h1>Entegratörler İçin</h1><p class="docs-lead">Doğrudan JSON API veya UBL kullanan entegratörlerin SMS paketi ve GİB rapor geçiş kuralları.</p></header>
 <!-- vbt:article-header:end -->
 <section id="entegratorler-icin">
-<div class="callout callout-warning"><b>5 Kasım 2026'ya hazırlık:</b> Aşağıdaki gereksinimler belge tarihi (<code>IssueDate</code>) 5 Kasım 2026 ve sonrası olan e-Müstahsil Makbuzlarında zorunlu olacaktır. Bu tarih öncesinde mevcut üretim sözleşmesi değişmez; yeni alanlar test ortamında denenebilir. Ortak yürürlük bilgisi için <a href="sms-dogrulamali-gonderim.html">5 Kasım 2026 SMS Doğrulaması</a> sayfasını inceleyin.</div>
+<div class="callout callout-info">Planlanan sürümde tam SMS paketi UBL ve rapora yazılır. SMS kullanılmadığında raporda kod, telefon ve operatör bölümü oluşturulmaz. 4 Kasım 2026 testinde GİB, SMS’li, SMS’siz ve her iki türü içeren karma raporu kabul etti (sonuç kodu 30). Yayımlanan GİB rapor şeması SMS’siz satırı zorunlu alan kontrolünde reddediyor. Canlı ortam için GİB teyidi bekleniyor.</div>
 <p>Doğrudan JSON API veya hazır UBL kullanan entegratörlerin yeni bir SMS gönderme endpointi çağırması beklenmez. Entegratörün kendi doğrulama sürecinde elde ettiği bilgiler, zaten kullanılan e-müstahsil makbuzu oluşturma veya güncelleme endpointine eklenmelidir.</p>
 <div class="callout callout-info"><b>Kapsam:</b> Değişiklik yeni bir entegratör akışı eklemekten çok, mevcut request modellerinin doğrulama bilgileriyle genişletilmesidir. Portalın kullandığı SMS gönderme ve kod tamamlama işlemleri entegratör sözleşmesine dahil değildir.</div>
 
@@ -91,7 +91,7 @@
     <div class="table-wrapper"><table><tbody>
       <tr><td><b>Değişen model</b></td><td><code>OutgoingCreditNoteRequestModel</code></td></tr>
       <tr><td><b>Yeni alanlar</b></td><td><code>VerificationMethod</code>, <code>VerificationInfo</code> ve <code>VerificationProvider</code></td></tr>
-      <tr><td><b>Aktivasyon sonrası</b></td><td><code>VerificationMethod = SMS</code> ile dört doğrulama alt alanı birlikte gönderilmelidir.</td></tr>
+<tr><td><b>SMS paketi</b></td><td><code>VerificationMethod = SMS</code> ile dört doğrulama alt alanı birlikte gönderilmeli veya alanların tamamı boş bırakılmalıdır.</td></tr>
     </tbody></table></div>
   </div>
 </div>
@@ -103,7 +103,7 @@
     <div class="table-wrapper"><table><tbody>
       <tr><td><b>Değişen model</b></td><td><code>OutgoingCreditNoteRequestModel</code></td></tr>
       <tr><td><b>Yeni alanlar</b></td><td><code>VerificationMethod</code>, <code>VerificationInfo</code> ve <code>VerificationProvider</code></td></tr>
-      <tr><td><b>Aktivasyon sonrası</b></td><td>Yöntem ve güncel doğrulama bilgileri request içinde yeniden gönderilmelidir.</td></tr>
+<tr><td><b>SMS paketi</b></td><td>Yöntem ve güncel doğrulama bilgileri request içinde yeniden gönderilmelidir; eski bilginin korunacağı varsayılmamalıdır.</td></tr>
     </tbody></table></div>
   </div>
 </div>
@@ -116,7 +116,7 @@
     <div class="table-wrapper"><table><tbody>
       <tr><td><b>Değişen içerik</b></td><td><code>CreditNoteUblRequestModel</code> içindeki UBL XML</td></tr>
       <tr><td><b>Yeni alanlar</b></td><td>Doğrulama bilgileri ilgili tarafların <code>Contact</code> düğümlerinde taşınmalıdır.</td></tr>
-      <tr><td><b>Aktivasyon sonrası</b></td><td>UBL, yöntem sabitleri ve dört doğrulama değeriyle tamamlanmış olarak gönderilmelidir.</td></tr>
+<tr><td><b>SMS paketi</b></td><td>SMS kullanılacaksa UBL, yöntem sabitleri ve dört doğrulama değeriyle tamamlanmış olmalıdır.</td></tr>
       <tr><td><b>İmzalı UBL</b></td><td><code>IsSigned = true</code> ise XML içindeki telefon ve diğer doğrulama değerleri imzadan önce nihai ve GİB'e uygun olmalıdır.</td></tr>
     </tbody></table></div>
   </div>
@@ -129,7 +129,7 @@
     <div class="table-wrapper"><table><tbody>
       <tr><td><b>Değişen içerik</b></td><td><code>CreditNoteUblRequestModel</code> içindeki UBL XML</td></tr>
       <tr><td><b>Yeni alanlar</b></td><td>Güncel doğrulama bilgileri tarafların <code>Contact</code> düğümlerinde taşınmalıdır.</td></tr>
-      <tr><td><b>Aktivasyon sonrası</b></td><td>Doğrulama verisi güncel UBL içinde yeniden sağlanmalıdır.</td></tr>
+<tr><td><b>SMS paketi</b></td><td>Doğrulama verisi güncel UBL içinde yeniden eksiksiz sağlanmalıdır.</td></tr>
       <tr><td><b>İmzalı UBL</b></td><td>Değiştirilen XML yeniden imzalanmalı ve <code>IsSigned = true</code> ile nihai hali gönderilmelidir.</td></tr>
     </tbody></table></div>
   </div>
@@ -139,17 +139,17 @@
 <div class="callout callout-info"><b>Response alanları:</b> Kullanıcıya yönelik süreç durumu mevcut <code>OutgoingCreditNoteStatusForUser</code> alanında doldurulur. Doğrulama yöntemi belge detay ve geçmiş response modellerinde <code>VerificationMethod</code> olarak döner; grid response içinde yer almaz. Mevcut <code>OutgoingCreditNoteStatus</code> korunur.</div>
 
 <h3 id="veri-sorumluluk-tablosu">Veri Sorumluluk Tablosu</h3>
-<p>Belge tarihi 5 Kasım 2026 ve sonrası olduğunda doğrudan entegrasyon kullanan sistemlerin API çağrısından önce sağlaması gereken doğrulama verileri aşağıdaki sorumluluk sınırına göre hazırlanmalıdır.</p>
+<p>Doğrudan entegrasyonda SMS kullanıyorsanız kodu API çağrısından önce doğrulayın. İşlem ve belge tarihi birlikte 30 Haziran 2027’ye ulaştığında tam SMS paketi zorunludur.</p>
 <div class="table-wrapper"><table><thead><tr><th>Veri</th><th>Kim üretir?</th><th>Entegratör ne yapmalı?</th><th>Platform ne yapar?</th></tr></thead><tbody><tr><td><code>VerificationMethod</code></td><td>Entegratör</td><td>MM için desteklenen <code>SMS</code> değeri gönderilmelidir.</td><td>Değeri doğrular; model requestinde GİB UBL yöntem sabitlerini üretir.</td></tr><tr><td><code>VerificationInfo.Code</code></td><td>SMS doğrulama hizmeti</td><td>Üreticinin doğruladığı 4–6 karakterli kod değiştirilmeden gönderilmelidir; boşluk ve kontrol karakteri kullanılamaz.</td><td>Kodu GİB e-Arşiv XSD sözleşmesine göre doğrular.</td></tr><tr><td><code>VerificationInfo.PhoneNumber</code></td><td>Entegratörün SMS doğrulama süreci</td><td>Kodun gerçekten gönderildiği Türkiye mobil numarası gönderilmelidir. İmzalı hazır UBL'deki <code>Telephone</code> doğrudan <code>5XXXXXXXXX</code> biçiminde olmalıdır.</td><td>JSON/model girişinde <code>5XXXXXXXXX</code>, <code>05XXXXXXXXX</code> veya <code>+905XXXXXXXXX</code> biçimini normalize eder. İmzalı UBL'i değiştirmez; canonical olmayan telefonla gelen imzalı UBL'i reddeder. Ayrı e-Arşiv raporunda <code>05XXXXXXXXX</code> üretir.</td></tr><tr><td><code>VerificationProvider.ApplicationName</code></td><td>SMS sağlayıcısı</td><td>Kendi SMS sağlayıcısı kullanılıyorsa sağlayıcının resmî unvanı gönderilmelidir.</td><td>Değeri UBL sağlayıcı alanına taşır.</td></tr><tr><td><code>VerificationProvider.Vkn</code></td><td>SMS sağlayıcısı</td><td>Kendi SMS sağlayıcısı kullanılıyorsa sağlayıcının 10 haneli VKN'si gönderilmelidir.</td><td>VKN'yi UBL sağlayıcı alanına taşır.</td></tr></tbody></table></div>
 <div class="callout callout-info"><b>Sağlayıcı bilgisi:</b> <code>VerificationProvider</code>, SMS kodunu fiilen gönderen hizmet sağlayıcının resmî bilgileridir. Kendi SMS sağlayıcınızı kullanıyorsanız resmî unvanı ve 10 haneli VKN'yi gönderin. SMS VBT Portal üzerinden gönderiliyorsa <code>VerificationProvider</code> göndermeyin; sağlayıcı bilgisi platform tarafından eklenir.</div>
 
 <h3 id="senaryo-bazli-hazirlik-matrisi">Senaryo Bazlı Hazırlık Matrisi</h3>
-<div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Senaryo</th><th>Aktivasyon sonrası veri</th><th>Beklenen sonuç</th><th>Gönderim öncesi kontrol</th></tr></thead><tbody><tr><td data-label="Senaryo">JSON ile oluşturma</td><td data-label="Aktivasyon sonrası veri"><code>VerificationMethod = SMS</code> ve dört alt alan</td><td data-label="Beklenen sonuç">Belge doğrulanmış veriyle normal işleme alınır.</td><td data-label="Gönderim öncesi kontrol">Kod, telefon, sağlayıcı adı ve VKN aynı doğrulama kaydına ait olmalıdır.</td></tr><tr><td data-label="Senaryo">JSON ile güncelleme</td><td data-label="Aktivasyon sonrası veri">Yöntem ve güncel doğrulama bilgileri</td><td data-label="Beklenen sonuç">Belge yeni request ve doğrulama verisiyle yeniden değerlendirilir.</td><td data-label="Gönderim öncesi kontrol">Güncel request tam gönderilmeli; önceki doğrulama bilgisine dayanılmamalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile oluşturma</td><td data-label="Aktivasyon sonrası veri"><code>SMS</code>/<code>SMS_PROVIDER</code> sabitleri ve iki tarafın <code>Contact</code> verileri</td><td data-label="Beklenen sonuç">UBL doğrulama verisiyle birlikte kabul edilir.</td><td data-label="Gönderim öncesi kontrol">Mevcut taraf, adres ve kimlik alanları korunmalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile güncelleme</td><td data-label="Aktivasyon sonrası veri">Güncel UBL içinde tam yöntem ve doğrulama verisi</td><td data-label="Beklenen sonuç">Belge UBL'deki yeni doğrulama verisiyle güncellenir.</td><td data-label="Gönderim öncesi kontrol">Eski ve yeni <code>Contact</code> değerlerinin çelişmediği doğrulanmalıdır.</td></tr><tr><td data-label="Senaryo">İmzalı hazır UBL</td><td data-label="Aktivasyon sonrası veri">İmzadan önce tamamlanmış, nihai UBL ve <code>IsSigned = true</code></td><td data-label="Beklenen sonuç">İmzalı XML değiştirilmeden saklanır ve imzalı belge olarak işlenir.</td><td data-label="Gönderim öncesi kontrol">Telefon dahil tüm SMS alanları GİB'e uygun olmalı; düzeltme gerekiyorsa XML yeniden oluşturulup yeniden imzalanmalıdır.</td></tr><tr><td data-label="Senaryo">Önizleme</td><td data-label="Aktivasyon sonrası veri">Doğrulama bilgisi aranmaz</td><td data-label="Beklenen sonuç">Belge kaydedilmeden önizleme üretilir.</td><td data-label="Gönderim öncesi kontrol">Önizleme başarısı gerçek gönderim kabulü olarak yorumlanmamalıdır.</td></tr><tr><td data-label="Senaryo">Eksik veya geçersiz yöntem</td><td data-label="Aktivasyon sonrası veri"><code>VerificationMethod</code> yok ya da <code>SMS</code> dışında</td><td data-label="Beklenen sonuç">Request zorunlu alan veya <code>EMM0060</code> hatasıyla reddedilir.</td><td data-label="Gönderim öncesi kontrol">MM için yalnızca <code>SMS</code> gönderilmelidir.</td></tr><tr><td data-label="Senaryo">Kısmi doğrulama verisi</td><td data-label="Aktivasyon sonrası veri">Dört alt alandan biri veya daha fazlası eksik</td><td data-label="Beklenen sonuç">Request validasyon hatasıyla reddedilir.</td><td data-label="Gönderim öncesi kontrol">Yöntem, iki model ve dört alt alan birlikte gönderilmelidir.</td></tr></tbody></table></div>
+<div class="table-wrapper decision-table-wrapper"><table class="decision-table"><thead><tr><th>Senaryo</th><th>SMS doğrulama bilgileri</th><th>Beklenen sonuç</th><th>Gönderim öncesi kontrol</th></tr></thead><tbody><tr><td data-label="Senaryo">JSON ile oluşturma</td><td data-label="SMS doğrulama bilgileri"><code>VerificationMethod = SMS</code> ve dört alt alan</td><td data-label="Beklenen sonuç">Belge doğrulanmış veriyle normal işleme alınır.</td><td data-label="Gönderim öncesi kontrol">Kod, telefon, sağlayıcı adı ve VKN aynı doğrulama kaydına ait olmalıdır.</td></tr><tr><td data-label="Senaryo">JSON ile güncelleme</td><td data-label="SMS doğrulama bilgileri">Yöntem ve güncel doğrulama bilgileri</td><td data-label="Beklenen sonuç">Belge yeni request ve doğrulama verisiyle yeniden değerlendirilir.</td><td data-label="Gönderim öncesi kontrol">Güncel request tam gönderilmeli; önceki doğrulama bilgisine dayanılmamalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile oluşturma</td><td data-label="SMS doğrulama bilgileri"><code>SMS</code>/<code>SMS_PROVIDER</code> sabitleri ve iki tarafın <code>Contact</code> verileri</td><td data-label="Beklenen sonuç">UBL doğrulama verisiyle birlikte kabul edilir.</td><td data-label="Gönderim öncesi kontrol">Mevcut taraf, adres ve kimlik alanları korunmalıdır.</td></tr><tr><td data-label="Senaryo">Hazır UBL ile güncelleme</td><td data-label="SMS doğrulama bilgileri">Güncel UBL içinde tam yöntem ve doğrulama verisi</td><td data-label="Beklenen sonuç">Belge UBL'deki yeni doğrulama verisiyle güncellenir.</td><td data-label="Gönderim öncesi kontrol">Eski ve yeni <code>Contact</code> değerlerinin çelişmediği doğrulanmalıdır.</td></tr><tr><td data-label="Senaryo">İmzalı hazır UBL</td><td data-label="SMS doğrulama bilgileri">İmzadan önce tamamlanmış, nihai UBL ve <code>IsSigned = true</code></td><td data-label="Beklenen sonuç">İmzalı XML değiştirilmeden saklanır ve imzalı belge olarak işlenir.</td><td data-label="Gönderim öncesi kontrol">Telefon dahil tüm SMS alanları GİB'e uygun olmalı; düzeltme gerekiyorsa XML yeniden oluşturulup yeniden imzalanmalıdır.</td></tr><tr><td data-label="Senaryo">Önizleme</td><td data-label="SMS doğrulama bilgileri">Doğrulama bilgisi aranmaz</td><td data-label="Beklenen sonuç">Belge kaydedilmeden önizleme üretilir.</td><td data-label="Gönderim öncesi kontrol">Önizleme başarısı gerçek gönderim kabulü olarak yorumlanmamalıdır.</td></tr><tr><td data-label="Senaryo">Eksik veya geçersiz yöntem</td><td data-label="SMS doğrulama bilgileri"><code>VerificationMethod</code> yok ya da <code>SMS</code> dışında</td><td data-label="Beklenen sonuç">Request zorunlu alan veya <code>EMM0060</code> hatasıyla reddedilir.</td><td data-label="Gönderim öncesi kontrol">MM için yalnızca <code>SMS</code> gönderilmelidir.</td></tr><tr><td data-label="Senaryo">Kısmi doğrulama verisi</td><td data-label="SMS doğrulama bilgileri">Dört alt alandan biri veya daha fazlası eksik</td><td data-label="Beklenen sonuç">Request validasyon hatasıyla reddedilir.</td><td data-label="Gönderim öncesi kontrol">Yöntem, iki model ve dört alt alan birlikte gönderilmelidir.</td></tr></tbody></table></div>
 
 <h3 id="request-model-degisiklikleri">Request model değişiklikleri</h3>
-<p><code>OutgoingCreditNoteRequestModel</code>, üst seviyedeki yöntem alanı ve iki doğrulama nesnesiyle genişletilecektir. Aktivasyon sonrasında yöntem veya alt alanlar eksik gönderilmemelidir.</p>
+<p><code>OutgoingCreditNoteRequestModel</code>, üst seviyedeki yöntem alanı ve iki doğrulama nesnesiyle genişletilecektir. SMS kullanılacaksa yöntem ve alt alanlar eksiksiz gönderilmelidir; kullanılmayacaksa tamamı boş bırakılmalıdır.</p>
 <div class="table-wrapper"><table><thead><tr><th>Yeni alan</th><th>Alt alan / değer</th><th>Anlamı</th></tr></thead><tbody><tr><td><code>VerificationMethod</code></td><td><code>SMS</code></td><td>MM için desteklenen doğrulama yöntemidir. <code>ChannelCode</code> veya <code>Type</code> gönderilmez.</td></tr><tr><td rowspan="2"><code>VerificationInfo</code></td><td><code>Code</code></td><td>Üreticinin doğruladığı, GİB e-Arşiv XSD'sine uygun 4–6 karakterli SMS kodu; boşluk veya kontrol karakteri içeremez.</td></tr><tr><td><code>PhoneNumber</code></td><td>Doğrulama kodunun gönderildiği telefon numarası.</td></tr><tr><td rowspan="2"><code>VerificationProvider</code></td><td><code>ApplicationName</code></td><td>SMS doğrulama hizmetini sağlayan firmanın veya servisin adı.</td></tr><tr><td><code>Vkn</code></td><td>SMS doğrulama hizmeti sağlayıcısının VKN'si.</td></tr></tbody></table></div>
-<div class="callout callout-warning"><b>Tek sözleşme:</b> <code>VerificationMethod</code>, <code>Code</code>, <code>PhoneNumber</code>, <code>ApplicationName</code> ve <code>Vkn</code> tek doğrulama kaydıdır. Bu özellik canlıya çıkmadığı için eski <code>ChannelCode</code>/<code>Type</code> biçimi desteklenmeyecektir.</div>
+<div class="callout callout-warning"><b>SMS paket bütünlüğü:</b> <code>VerificationMethod</code>, <code>Code</code>, <code>PhoneNumber</code>, <code>ApplicationName</code> ve <code>Vkn</code> aynı doğrulama kaydının ayrılmaz alanlarıdır. SMS kullanılacaksa paket eksiksiz gönderilmelidir; eski <code>ChannelCode</code>/<code>Type</code> biçimi desteklenmez.</div>
 
 <h4 id="json-model-ornegi">Planlanan JSON model örneği</h4>
 <p>Örnek, normal bir e-Müstahsil Makbuzu için gereken belge alanlarıyla doğrulama alanlarını birlikte içerir ve JSON olarak doğrudan kopyalanabilir.</p>
@@ -158,7 +158,7 @@
   "ProfileId": "EARSIVBELGE",
   "CreditNoteTypeCode": "MUSTAHSILMAKBUZ",
   "DocumentCurrencyCode": "TRY",
-  "IssueDate": "2026-11-05T09:00:00",
+  "IssueDate": "2026-11-04T09:00:00",
   "AccountingSupplierParty": {
     "Party": {
       "PartyIdentifications": [
@@ -291,7 +291,7 @@
 <div class="callout callout-info"><b>Response sınırı:</b> Belge detay response'una kod, telefon veya sağlayıcı için yeni üst seviye alan eklenmez. <code>GetOutgoingCreditNote</code> yanıtında <code>OutgoingCreditNoteStatusForUser</code> ve <code>VerificationMethod</code> izlenir.</div>
 
 <h3 id="gib-rapor-mapping">GİB e-Arşiv raporu eşlemesi</h3>
-<p>Platform, kayıt sırasında doğrulanan veriyi saklar ve GİB raporuna aktarır; entegratörden rapor için ikinci bir request veya <code>operatorKullanimType</code> alanı beklenmez.</p>
+<p>Planlanan sürümde tam SMS paketi UBL ve rapora yazılır. SMS kullanılmadığında raporda kod, telefon ve operatör bölümü oluşturulmaz. Entegratör rapor için ayrı istek göndermez.</p>
 <div class="table-wrapper"><table><thead><tr><th>Request alanı</th><th>Rapor alanı</th><th>Değer</th></tr></thead><tbody><tr><td><code>AccountingCustomerParty</code></td><td><code>mustahsilBilgileri.gercekKisi</code></td><td><code>tckn</code>, <code>adiSoyadi</code></td></tr><tr><td><code>VerificationInfo</code></td><td><code>mustahsilBilgileri.gercekKisi.bilgiDetay</code></td><td><code>kod</code>, <code>telefon</code> (<code>05XXXXXXXXX</code>)</td></tr><tr><td><code>VerificationProvider</code></td><td><code>operatorUygulamaBilgi</code></td><td><code>unvan</code>, <code>vkn</code></td></tr></tbody></table></div>
 <div class="callout callout-info"><b>UBL imzası ile rapor imzası ayrıdır:</b> Hazır UBL içindeki <code>Telephone</code> değeri değiştirilmez. Platform, kayıt sırasında doğrulanıp saklanan <code>5XXXXXXXXX</code> değerini ayrı e-Arşiv raporu oluşturulurken <code>05XXXXXXXXX</code> biçiminde rapora yazar; rapor daha sonra kendi imza sürecinden geçer. Bu dönüşüm kaynak UBL'e uygulanmadığı için UBL imzasını etkilemez.</div>
 <div class="callout callout-info"><b>Tip adı request alanı değildir:</b> <code>operatorKullanimType</code>, e-Arşiv rapor XSD'sindeki teknik tip adıdır ve JSON requestine eklenmez.</div>
@@ -318,7 +318,7 @@
 <div class="callout callout-info"><b>Başarı kararı:</b> <code>Errors</code> listesinin boş olduğu varsayılmamalıdır. Belgenin kabul edildiği kararı <code>Data.HasError = false</code> değeri üzerinden verilmelidir; belge numarası ve ETTN aynı <code>Data</code> nesnesinden okunmalıdır.</div>
 
 <h4 id="basarisiz-olusturma-yaniti">Başarısız oluşturma yanıtı</h4>
-<p>Aktivasyon sonrasında doğrudan entegrasyonda doğrulama alanlarından biri eksik gönderilirse oluşturma veya güncelleme sonucu aşağıdaki biçimde döner.</p>
+<p>Doğrudan entegrasyonda SMS alanlarından biri gönderildiği halde paket tamamlanmazsa oluşturma veya güncelleme sonucu aşağıdaki biçimde döner.</p>
 <pre><code class="language-json">{
   "RefreshToken": "",
   "Data": {
@@ -354,7 +354,7 @@
 <div class="table-wrapper"><table><thead><tr><th>Durum</th><th>Sonuç</th><th>Entegratör davranışı</th></tr></thead><tbody><tr><td><code>VerificationMethod</code> boş, doğrulama nesneleri dolu</td><td>Zorunlu alan hatasıyla reddedilir.</td><td><code>VerificationMethod = SMS</code> eklenmelidir.</td></tr><tr><td><code>VerificationMethod</code> değeri <code>SMS</code> dışında</td><td><code>EMM0060</code> ile reddedilir.</td><td>MM için yalnızca <code>SMS</code> kullanılmalıdır.</td></tr><tr><td><code>VerificationInfo</code> dolu, <code>VerificationProvider</code> boş</td><td>Reddedilir.</td><td>SMS sağlayıcısının adı ve VKN'siyle birlikte yeniden gönderilmelidir.</td></tr><tr><td>Sağlayıcı dolu, kod veya telefon eksik</td><td>Reddedilir.</td><td>Eksik üretici doğrulama bilgisi tamamlanmalıdır.</td></tr><tr><td>JSON requestinde yöntem ve dört alt alan tam</td><td>Normal belge akışına alınır.</td><td>Response ve belge durumu mevcut yöntemle takip edilmelidir.</td></tr><tr><td>Hazır UBL'de <code>Contact/Name</code> veya <code>ChannelCode/@name</code> yanlış</td><td>Yöntem çözümlenemez ve request reddedilir.</td><td><code>SMS</code> ve <code>SMS_PROVIDER</code> sabitleri düzeltilmelidir.</td></tr><tr><td>UBL içinde ikinci ve çelişen <code>Contact</code> üretilmiş</td><td>Belge anlamı belirsizleşir veya validasyon hatası oluşur.</td><td>Doğrulama alanları tarafın mevcut <code>Contact</code> yapısıyla birleştirilmelidir.</td></tr><tr><td>İmzalı UBL'de telefon veya başka bir SMS alanı hatalı</td><td>Platform imzalı XML üzerinde düzeltme yapmaz.</td><td>UBL düzeltilmeli, yeniden imzalanmalı ve <code>IsSigned = true</code> ile yeniden gönderilmelidir.</td></tr><tr><td>Preview başarılı, gerçek gönderimde doğrulama alanı eksik</td><td>Gerçek gönderim reddedilir.</td><td>Preview ile gönderim validasyonunun aynı olmadığı dikkate alınmalıdır.</td></tr></tbody></table></div>
 
 <h3 id="entegrator-gecis-listesi">Entegratör geçiş kontrol listesi</h3>
-<ul class="checklist"><li>VBT aktivasyon duyurusu ve yürürlük tarihi alındı.</li><li>Kullanılan oluşturma ve güncelleme endpointleri belirlendi.</li><li><code>VerificationMethod = SMS</code>, iki doğrulama nesnesi ve dört alt alan eşlendi.</li><li>Hazır UBL üreten sistemlerde <code>SMS</code> ve <code>SMS_PROVIDER</code> sabitleri eklendi.</li><li>İmzalı UBL'de telefon ve tüm SMS alanlarının imzadan önce nihai olduğu, düzeltme halinde UBL'in yeniden imzalandığı test edildi.</li><li>Detay ve geçmiş response parser'ları <code>VerificationMethod</code> alanını okuyacak şekilde güncellendi.</li><li><code>OutgoingCreditNoteStatusForUser</code> durumları desteklendi.</li><li>Eksiksiz JSON, eksik yöntem, geçersiz yöntem, kısmi JSON, eksiksiz UBL, imzalı UBL ve kısmi UBL senaryoları test edildi.</li><li>Üretim değişikliği yalnızca duyurulan aktivasyon tarihinde açıldı.</li></ul>
+<ul class="checklist"><li>VBT aktivasyon duyurusu ve yürürlük tarihi alındı.</li><li>Kullanılan oluşturma ve güncelleme endpointleri belirlendi.</li><li><code>VerificationMethod = SMS</code>, iki doğrulama nesnesi ve dört alt alan eşlendi.</li><li>Hazır UBL üreten sistemlerde <code>SMS</code> ve <code>SMS_PROVIDER</code> sabitleri eklendi.</li><li>İmzalı UBL'de telefon ve tüm SMS alanlarının imzadan önce nihai olduğu, düzeltme halinde UBL'in yeniden imzalandığı test edildi.</li><li>Detay ve geçmiş response parser'ları <code>VerificationMethod</code> alanını okuyacak şekilde güncellendi.</li><li><code>OutgoingCreditNoteStatusForUser</code> durumları desteklendi.</li><li>Eksiksiz JSON, eksik yöntem, geçersiz yöntem, kısmi JSON, eksiksiz UBL, imzalı UBL ve kısmi UBL senaryoları test edildi.</li><li>Erken kabul gerekiyorsa VBT tarafından bildirilen ortam yürürlük tarihi izlendi; belge tarihiyle birlikte değerlendirilmesi test edildi.</li></ul>
 
 <h3 id="entegrator-state-machine">Entegratör durum akışı</h3>
 <p>Doğrudan entegrasyonda Portalın etkileşimli SMS adımları bulunmaz. Request, doğrulama yöntemi ve doğrulama alanlarının bütünlüğüne göre mevcut belge işleme akışına alınır veya reddedilir.</p>
@@ -436,9 +436,9 @@
 <div class="callout callout-info"><b>API hatası olmayan kodlar:</b> <code>EMM0042–EMM0046</code> aralığındaki kayıtlar başarılı SMS gönderimi, doğrulama ve telefon değişikliği gibi platform olaylarında kullanılan mesaj kayıtlarıdır. Entegratör hata yönetimi bu kodlara dayandırılmamalıdır.</div>
 
 <h3 id="teknik-entegrasyon-sorulari">Teknik Entegrasyon Soruları</h3>
-<details class="example-details"><summary>Aktivasyon öncesinde yeni alanları göndermeli miyiz?</summary>
+<details class="example-details"><summary>30 Haziran 2027 öncesinde hangi sözleşmeyi göndermeliyiz?</summary>
     <div class="example-body">
-        <p>Hayır. VBT aktivasyon duyurusuna kadar mevcut request sözleşmesi kullanılmaya devam eder. Yeni alanlar üretimde zorunlu kabul edilmemelidir.</p>
+<p>Canlıda mevcut SMS’siz gönderim devam eder. SMS desteği açıldığında erken kullanım için yöntemi, kodu, telefonu, sağlayıcı adını ve VKN’yi birlikte gönderin.</p>
     </div>
 </details>
 <details class="example-details"><summary>SMS gönderme ve kod doğrulama endpointlerini entegratör mü çağıracak?</summary>
@@ -448,7 +448,7 @@
 </details>
 <details class="example-details"><summary>Doğrulama alanlarından yalnızca telefon numarasını gönderebilir miyiz?</summary>
     <div class="example-body">
-        <p>Hayır. Aktivasyon sonrasında <code>VerificationMethod = SMS</code>, kod, telefon, SMS sağlayıcısının adı ve sağlayıcı VKN'si birlikte gönderilmelidir.</p>
+        <p>Hayır. SMS kullanılacaksa <code>VerificationMethod = SMS</code>, kod, telefon, SMS sağlayıcısının adı ve sağlayıcı VKN'si birlikte gönderilmelidir. Alanlardan birinin varlığı paket bütünlüğü kontrolünü başlatır; eksik paket kabul edilmez.</p>
     </div>
 </details>
 <details class="example-details"><summary>Update işleminde eski doğrulama bilgisi korunur mu?</summary>
@@ -463,7 +463,7 @@
 </details>
 <details class="example-details"><summary>Preview neden doğrulama alanı olmadan başarılı olabilir?</summary>
     <div class="example-body">
-        <p>Preview belgeyi kaydetmez veya imzalama sürecine sokmaz. Gerçek oluşturma ve güncelleme çağrıları aktivasyon sonrasında ayrıca doğrulama alanlarını denetler.</p>
+        <p>Preview belgeyi kaydetmez veya imzalama sürecine sokmaz. Gerçek oluşturma ve güncelleme çağrıları seçilen sözleşmenin alan bütünlüğünü ayrıca denetler.</p>
     </div>
 </details>
 
@@ -471,7 +471,7 @@
 </section>
 <!-- vbt:pagination:start -->
 <nav class="docs-pagination" aria-label="Sayfalar">
-<a class="docs-page-link docs-page-previous" href="sms-dogrulamali-gonderim.html"><span>Önceki</span><strong>5 Kasım 2026 SMS Doğrulaması</strong></a>
+<a class="docs-page-link docs-page-previous" href="sms-dogrulamali-gonderim.html"><span>Önceki</span><strong>30 Haziran 2027 SMS Doğrulama Geçişi</strong></a>
 <a class="docs-page-link docs-page-next" href="sms-dogrulamali-gonderim-portal.html"><span>Sonraki</span><strong>Portal Kullanıcıları İçin</strong></a>
 </nav>
 <!-- vbt:pagination:end -->
@@ -483,7 +483,7 @@
 <!-- vbt:page-tools:start -->
 <div class="search-overlay" id="searchOverlay" onclick="search.closeSearchOnOverlay(event)"><div class="search-modal" onclick="event.stopPropagation()"><div class="search-input-wrapper"><input type="text" class="search-input" id="searchInput" placeholder="Ara..." autocomplete="off"><button class="search-close" type="button" onclick="search.closeSearch()" aria-label="Aramayı kapat">×</button></div><div class="search-results" id="searchResults"></div></div></div>
 <button class="scroll-top" id="scrollTop" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Başa dön"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
-<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"promptText":"Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.","externalItems":[{"title":"e-Müstahsil Makbuzu Nedir?","text":"e-Müstahsil Makbuzu'nun kapsamı, belge tipi, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Müstahsil Makbuzu CreditNote","url":"mustahsil-makbuzu-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal, GV stopajı, borsa tescil, SGK prim, mera fonu, çoklu kesinti, tevkifat, çok kalemli oluşturma ve iptal akışları için karar ağacı.","keywords":"Senaryolar kesinti stopaj iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, alt modeller ve response alanları.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.","keywords":"Örnekler JSON request endpoint","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"5 Kasım 2026 SMS Doğrulaması","text":"Belge tarihi 5 Kasım 2026 ve sonrası olan e-Müstahsil Makbuzlarında zorunlu olacak SMS doğrulamasının kapsamı.","keywords":"5 Kasım 2026 Planlanan SMS Doğrulama","url":"sms-dogrulamali-gonderim.html","sectionType":"Sayfa"},{"title":"Entegratörler İçin","text":"Doğrudan JSON API veya UBL kullanan entegratörlerin 5 Kasım 2026 öncesinde hazırlaması gereken sözleşme değişiklikleri.","keywords":"5 Kasım 2026 Entegratör SMS UBL API","url":"sms-dogrulamali-gonderim-entegratorler.html","sectionType":"Sayfa"},{"title":"Portal Kullanıcıları İçin","text":"5 Kasım 2026 geçişinde VBT Portalda hazır sunulacak SMS gönderme ve kod doğrulama davranışları.","keywords":"5 Kasım 2026 Portal SMS Doğrulama","url":"sms-dogrulamali-gonderim-portal.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Müstahsil Makbuzu rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, kesintiler, çıktı, API ve 5 Kasım 2026 SMS doğrulaması hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
+<script>window.SEARCH_CONFIG={"contentSelector":".docs-article","maxResults":60,"promptText":"Ürün, endpoint, model alanı, hata kodu veya UBL terimi yazın.","externalItems":[{"title":"e-Müstahsil Makbuzu Nedir?","text":"e-Müstahsil Makbuzu'nun kapsamı, belge tipi, XML yapısı ve belge yaşam döngüsü.","keywords":"Başlangıç e-Müstahsil Makbuzu CreditNote","url":"mustahsil-makbuzu-nedir.html","sectionType":"Sayfa"},{"title":"GİB Referansı","text":"GİB paketi, kullanım yöntemi, teknik gereksinimler ve resmi kaynaklar.","keywords":"Teknik Temel GİB UBL-TR","url":"gib-teknik-gereksinimleri.html","sectionType":"Sayfa"},{"title":"Kullanım Senaryoları","text":"Normal, GV stopajı, borsa tescil, SGK prim, mera fonu, çoklu kesinti, tevkifat, çok kalemli oluşturma ve iptal akışları için karar ağacı.","keywords":"Senaryolar kesinti stopaj iptal","url":"kullanim-senaryolari.html","sectionType":"Sayfa"},{"title":"Entegratör Sorumlulukları","text":"Entegratörün veri hazırlama, doğrulama ve belge oluşturma sürecindeki sorumlulukları.","keywords":"Sorumluluklar entegratör","url":"entegrator-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Platform Sorumlulukları","text":"Platformun otomatik işlemleri, validasyon kuralları, hata yanıtları ve iptal ön koşulları.","keywords":"Sorumluluklar platform validasyon","url":"platform-sorumluluklari.html","sectionType":"Sayfa"},{"title":"Entegratör API Endpoint Referansı","text":"Kimlik doğrulama, belge işlemleri, sorgulama, alt modeller ve response alanları.","keywords":"API endpoint request response","url":"entegrator-api-endpoint-referansi.html","sectionType":"Sayfa"},{"title":"Request Örnekleri","text":"Normal, kesintili, çok kalemli ve iptal senaryoları için kullanılabilir tam endpoint ve body sözleşmesiyle sunulan JSON request örnekleri.","keywords":"Örnekler JSON request endpoint","url":"request-ornekleri.html","sectionType":"Sayfa"},{"title":"Request → UBL XML Mapping","text":"Entegratörün gönderdiği JSON alanlarının UBL XML'deki karşılığını gösteren referans tablo.","keywords":"API UBL XML mapping","url":"request-ubl-xml-mapping.html","sectionType":"Sayfa"},{"title":"30 Haziran 2027 SMS Doğrulama Geçişi","text":"Geçiş döneminde SMS bilgisinin makbuza ve rapora aktarılması.","keywords":"30 Haziran 2027 Planlanan SMS Doğrulama","url":"sms-dogrulamali-gonderim.html","sectionType":"Sayfa"},{"title":"Entegratörler İçin","text":"Doğrudan JSON API veya UBL kullanan entegratörlerin SMS paketi ve GİB rapor geçiş kuralları.","keywords":"30 Haziran 2027 Entegratör SMS UBL API","url":"sms-dogrulamali-gonderim-entegratorler.html","sectionType":"Sayfa"},{"title":"Portal Kullanıcıları İçin","text":"30 Haziran 2027 geçişinde VBT Portalda sunulacak SMS gönderme ve kod doğrulama davranışları.","keywords":"30 Haziran 2027 Portal SMS Doğrulama","url":"sms-dogrulamali-gonderim-portal.html","sectionType":"Sayfa"},{"title":"Teknik Referans","text":"Enum değerleri, hata/mesaj kodları, validasyon referansları ve kaynak bölüm bağlantıları.","keywords":"Referans enum hata kodları validasyon","url":"teknik-referans.html","sectionType":"Sayfa"},{"title":"Changelog","text":"e-Müstahsil Makbuzu rehberindeki business ve teknik içerik değişikliklerinin tarihçesi.","keywords":"Referans changelog değişiklik","url":"changelog.html","sectionType":"Sayfa"},{"title":"Sıkça Sorulan Sorular","text":"Belge kullanımı, kesintiler, çıktı, API ve 30 Haziran 2027 SMS doğrulama geçişi hakkında sık sorulan sorular.","keywords":"SSS sorular","url":"sss.html","sectionType":"Sayfa"}]};window.READING_PROGRESS_CONFIG={elementId:'readingProgress',contentSelector:'.docs-article'};</script>
 <script src="../../../assets/vbt-document-template/feature-packages/full.js"></script>
 <!-- vbt:page-tools:end -->
 </body>
